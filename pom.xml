@@ -69,11 +69,13 @@
       <groupId>org.springframework.boot</groupId>
       <optional>true</optional>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.omnisci/omnisci-jdbc -->
     <dependency>
-      <artifactId>lombok</artifactId>
-      <groupId>org.projectlombok</groupId>
-      <optional>true</optional>
+      <artifactId>omnisci-jdbc</artifactId>
+      <groupId>com.omnisci</groupId>
+      <version>5.0.0</version>
     </dependency>
+    <!-- TEST SCOPE -->
     <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
       <exclusions>
