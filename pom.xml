@@ -75,6 +75,11 @@
       <groupId>com.omnisci</groupId>
       <version>5.0.0</version>
     </dependency>
+    <dependency>
+      <artifactId>kotlin-logging</artifactId>
+      <groupId>io.github.microutils</groupId>
+      <version>1.7.6</version>
+    </dependency>
     <!-- TEST SCOPE -->
     <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
