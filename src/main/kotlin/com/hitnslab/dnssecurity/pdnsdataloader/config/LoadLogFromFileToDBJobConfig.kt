@@ -73,11 +73,15 @@ class LoadLogFromFileToDBJobConfig {
                 .build()
     }
 
+    @StepScope
     @Bean
-    fun itemWriter(@Qualifier("AppDataSource") dataSource: DataSource): ItemWriter<PDNSInfo> {
+    fun itemWriter(
+            @Qualifier("AppDataSource") dataSource: DataSource,
+            @Value("#{jobParameters[table]}") table: String
+    ): ItemWriter<PDNSInfo> {
         return JdbcBatchItemWriterBuilder<PDNSInfo>()
                 .dataSource(dataSource)
-                .sql("INSERT INTO raw_dns_log ( client_ip, domain, q_time, q_type, r_cnames, r_code, r_ips, r_ttl ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+                .sql("INSERT INTO $table ( client_ip, domain, q_time, q_type, r_cnames, r_code, r_ips, r_ttl ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
                 .itemPreparedStatementSetter(PDNSPreparedStatementSetter())
                 .build()
     }
