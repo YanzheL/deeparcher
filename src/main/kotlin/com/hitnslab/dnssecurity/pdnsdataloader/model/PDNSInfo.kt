@@ -45,6 +45,13 @@ data class PDNSInfo(
                     .getInt(0)
         }
 
-        fun intToIp(ip: Int) = InetAddress.getByName(ip.toString()).hostAddress
+        fun intToIp(ip: Int): String {
+            val bytes = ByteBuffer
+                    .allocate(4)
+                    .order(ByteOrder.BIG_ENDIAN)
+                    .putInt(ip)
+                    .array()
+            return InetAddress.getByAddress(bytes).hostAddress
+        }
     }
 }
