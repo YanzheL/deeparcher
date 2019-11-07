@@ -80,6 +80,16 @@
       <groupId>io.github.microutils</groupId>
       <version>1.7.6</version>
     </dependency>
+    <dependency>
+      <artifactId>h2</artifactId>
+      <groupId>com.h2database</groupId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <artifactId>guava</artifactId>
+      <groupId>com.google.guava</groupId>
+      <version>28.1-jre</version>
+    </dependency>
     <!-- TEST SCOPE -->
     <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
