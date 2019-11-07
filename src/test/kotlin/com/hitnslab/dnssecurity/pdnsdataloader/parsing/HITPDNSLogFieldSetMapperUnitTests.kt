@@ -45,6 +45,8 @@ class HITPDNSLogFieldSetMapperUnitTests {
         val fieldSetMapper = HITPDNSLogFieldSetMapper()
         val result = fieldSetMapper.mapFieldSet(fieldSet)
         assertEquals(result, correct)
-        print(result)
+        println(result)
+        println(result.ipStrings)
+        println(result.cnames)
     }
 }

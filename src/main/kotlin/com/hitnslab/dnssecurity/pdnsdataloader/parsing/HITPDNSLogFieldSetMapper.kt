@@ -48,44 +48,46 @@ open class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 .append(fieldSet.readString(2))
                 .append(" ")
                 .append(fieldSet.readString(3))
-        val pdnsInfo = PDNSInfo(
+        val ret = PDNSInfo(
                 queryTime = timeFmt.parse(dataStringBuilder.toString()),
                 domain = fieldSet.readString(9),
                 queryType = fieldSet.readString(11),
                 replyCode = fieldSet.readString(12)
         )
-        pdnsInfo.clientIpString = fieldSet.readString(5)
+        ret.clientIpString = fieldSet.readString(5)
         var hasResponseBody = false
         var bodyBaseIdx = -1
-        val size = fieldSet.values.size
+        val values = fieldSet.values
+        val size = values.size
         for (i in 13 until size) {
-            if (fieldSet.readString(i) == "Response:") {
+            if (values[i].trim() == "Response:") {
                 hasResponseBody = true
                 bodyBaseIdx = i + 1
                 break
             }
         }
         if (hasResponseBody) {
-            val replies: List<String> = fieldSet.values
-                    .slice(bodyBaseIdx until size)
-                    .joinToString(separator = " ")
-                    .split(";")
-            for (reply in replies) {
-                if (reply.isEmpty())
-                    continue
-                val parsedReply = reply.split("\\s+".toRegex())
-                if (parsedReply.size != 5) {
-                    logger.warn { "Malformed DNS reply entry: <$reply>" }
-                    continue
+            var entryStart = bodyBaseIdx
+            do {
+                val entryEnd = entryStart + 4
+                if (entryEnd >= size) {
+//                    logger.warn { "Malformed DNS reply entry: <${values.slice(entryStart until size)}>" }
+                    break
                 }
-                val replyType = parsedReply[3]
-                val replyData: String = parsedReply[4].trimEnd('.')
+                val replyType = values[entryStart + 3].trim()
+                val conjunction = values[entryStart + 4]
+                if (';' !in conjunction) {
+                    logger.error { "Malformed DNS reply entry conjunction data: <$conjunction>" }
+                    break
+                }
+                val replyData: String = conjunction.split(";")[0].trimEnd('.')
                 when (replyType) {
-                    "CNAME" -> pdnsInfo.cnames.add(replyData)
-                    "A" -> pdnsInfo.addIpStrings(replyData)
+                    "CNAME" -> ret.cnames.add(replyData)
+                    "A" -> ret.addIpStrings(replyData)
                 }
-            }
+                entryStart = entryEnd
+            } while (entryStart < size - 1)
         }
-        return pdnsInfo
+        return ret
     }
 }
