@@ -1,7 +1,8 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.config
 
 import com.hitnslab.dnssecurity.pdnsdataloader.io.PDNSPreparedStatementSetter
-import com.hitnslab.dnssecurity.pdnsdataloader.model.PDNSInfo
+import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
+import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsDataDAO
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
@@ -10,6 +11,7 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.repository.JobRepository
+import org.springframework.batch.item.ItemProcessor
 import org.springframework.batch.item.ItemReader
 import org.springframework.batch.item.ItemWriter
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder
@@ -28,7 +30,7 @@ import javax.sql.DataSource
 
 @Configuration
 @EnableBatchProcessing
-class LoadLogFromFileToDBJobConfig {
+class LoadLogToDBJobConfig {
     @Autowired
     lateinit var jobBuilderFactory: JobBuilderFactory
 
@@ -37,7 +39,7 @@ class LoadLogFromFileToDBJobConfig {
 
     @Bean
     fun loadLogFromFileToDB(jobRepository: JobRepository, step: Step): Job {
-        return jobBuilderFactory.get("loadLogFromFileToDB")
+        return jobBuilderFactory.get("LoadLogToDB")
                 .repository(jobRepository)
                 .start(step)
                 .build()
@@ -46,21 +48,22 @@ class LoadLogFromFileToDBJobConfig {
     @Bean
     fun step1(
             transactionManager: PlatformTransactionManager,
-            itemReader: ItemReader<PDNSInfo>,
-            itemWriter: ItemWriter<PDNSInfo>
+            itemReader: ItemReader<PDnsData>,
+            itemWriter: ItemWriter<PDnsDataDAO>
     ): Step {
         return this.stepBuilderFactory.get("step1")
                 .transactionManager(transactionManager)
-                .chunk<PDNSInfo, PDNSInfo>(20000)
+                .chunk<PDnsData, PDnsDataDAO>(20000)
                 .reader(itemReader)
+                .processor(ItemProcessor<PDnsData, PDnsDataDAO> { PDnsDataDAO(it) })
                 .writer(itemWriter)
                 .build()
     }
 
     @StepScope
     @Bean
-    fun itemReader(@Value("#{jobParameters[input]}") filename: String): FlatFileItemReader<PDNSInfo> {
-        return FlatFileItemReaderBuilder<PDNSInfo>()
+    fun itemReader(@Value("#{jobParameters[input]}") filename: String): FlatFileItemReader<PDnsData> {
+        return FlatFileItemReaderBuilder<PDnsData>()
                 .name("reader")
                 .resource(FileSystemResource(filename))
                 .fieldSetMapper(HITPDNSLogFieldSetMapper())
@@ -78,10 +81,10 @@ class LoadLogFromFileToDBJobConfig {
     fun itemWriter(
             @Qualifier("AppDataSource") dataSource: DataSource,
             @Value("#{jobParameters[table]}") table: String
-    ): ItemWriter<PDNSInfo> {
-        return JdbcBatchItemWriterBuilder<PDNSInfo>()
+    ): ItemWriter<PDnsDataDAO> {
+        return JdbcBatchItemWriterBuilder<PDnsDataDAO>()
                 .dataSource(dataSource)
-                .sql("INSERT INTO $table ( client_ip, domain, q_time, q_type, r_cnames, r_code, r_ips, r_ttl ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+                .sql("INSERT INTO $table ( client_ip, domain, q_time, q_type, r_cnames, r_code, r_ips, top_priv_domain ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
                 .itemPreparedStatementSetter(PDNSPreparedStatementSetter())
                 .build()
     }

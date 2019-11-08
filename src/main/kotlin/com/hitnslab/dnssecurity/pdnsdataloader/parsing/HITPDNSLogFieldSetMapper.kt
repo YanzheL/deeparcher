@@ -1,6 +1,6 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.parsing
 
-import com.hitnslab.dnssecurity.pdnsdataloader.model.PDNSInfo
+import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
 import java.text.SimpleDateFormat
@@ -42,19 +42,19 @@ open class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     private val logger = KotlinLogging.logger {}
 
-    override fun mapFieldSet(fieldSet: FieldSet): PDNSInfo {
+    override fun mapFieldSet(fieldSet: FieldSet): PDnsData {
         dataStringBuilder
                 .clear()
                 .append(fieldSet.readString(2))
                 .append(" ")
                 .append(fieldSet.readString(3))
-        val ret = PDNSInfo(
+        val ret = PDnsData(
                 queryTime = timeFmt.parse(dataStringBuilder.toString()),
                 domain = fieldSet.readString(9),
                 queryType = fieldSet.readString(11),
                 replyCode = fieldSet.readString(12)
         )
-        ret.clientIpString = fieldSet.readString(5)
+        ret.clientIp = fieldSet.readString(5)
         var hasResponseBody = false
         var bodyBaseIdx = -1
         val values = fieldSet.values
@@ -83,7 +83,7 @@ open class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 val replyData: String = conjunction.split(";")[0].trimEnd('.')
                 when (replyType) {
                     "CNAME" -> ret.cnames.add(replyData)
-                    "A" -> ret.addIpStrings(replyData)
+                    "A" -> ret.ips.add(replyData)
                 }
                 entryStart = entryEnd
             } while (entryStart < size - 1)
