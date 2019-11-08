@@ -1,9 +1,11 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.config
 
+import com.hitnslab.dnssecurity.pdnsdataloader.error.DomainValidationException
 import com.hitnslab.dnssecurity.pdnsdataloader.io.PDNSPreparedStatementSetter
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsDataDAO
-import com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
+import com.hitnslab.dnssecurity.pdnsdataloader.parsing.ByCauseSkipPolicy
+import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
@@ -57,16 +59,21 @@ class LoadLogToDBJobConfig {
                 .reader(itemReader)
                 .processor(ItemProcessor<PDnsData, PDnsDataDAO> { PDnsDataDAO(it) })
                 .writer(itemWriter)
+                .faultTolerant()
+                .skipPolicy(ByCauseSkipPolicy(DomainValidationException::class))
                 .build()
     }
 
     @StepScope
     @Bean
-    fun itemReader(@Value("#{jobParameters[input]}") filename: String): FlatFileItemReader<PDnsData> {
+    fun itemReader(
+            @Value("#{jobParameters[input]}") filename: String,
+            fieldSetMapper: PDNSLogFieldSetMapper
+    ): FlatFileItemReader<PDnsData> {
         return FlatFileItemReaderBuilder<PDnsData>()
                 .name("reader")
                 .resource(FileSystemResource(filename))
-                .fieldSetMapper(HITPDNSLogFieldSetMapper())
+                .fieldSetMapper(fieldSetMapper)
                 .lineTokenizer { line: String? ->
                     if (line == null)
                         DefaultFieldSet(arrayOf())
