@@ -1,5 +1,6 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.parsing
 
+import com.hitnslab.dnssecurity.pdnsdataloader.error.DomainValidationException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
@@ -32,7 +33,7 @@ import java.text.SimpleDateFormat
  * 21       Response:
  * 22       tile-service.weather.microsoft.com 499 IN CNAME wildcard.weather.microsoft.com.edgekey.net.;wildcard.weather.microsoft.com.edgekey.net 780 IN CNAME e15275.g.akamaiedge.net.;e15275.g.akamaiedge.net 60 IN A 184.85.125.248;
  */
-open class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
+class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     private val dataStringBuilder = StringBuilder(3)
 
@@ -48,12 +49,17 @@ open class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 .append(fieldSet.readString(2))
                 .append(" ")
                 .append(fieldSet.readString(3))
-        val ret = PDnsData(
-                queryTime = timeFmt.parse(dataStringBuilder.toString()),
-                domain = fieldSet.readString(9),
-                queryType = fieldSet.readString(11),
-                replyCode = fieldSet.readString(12)
-        )
+        val ret: PDnsData
+        try {
+            ret = PDnsData(
+                    queryTime = timeFmt.parse(dataStringBuilder.toString()),
+                    domain = fieldSet.readString(9),
+                    queryType = fieldSet.readString(11),
+                    replyCode = fieldSet.readString(12)
+            )
+        } catch (e: Exception) {
+            throw DomainValidationException(e)
+        }
         ret.clientIp = fieldSet.readString(5)
         var hasResponseBody = false
         var bodyBaseIdx = -1
