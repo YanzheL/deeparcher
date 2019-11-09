@@ -4,6 +4,7 @@ import com.hitnslab.dnssecurity.pdnsdataloader.error.DomainValidationException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
+import org.springframework.stereotype.Component
 import java.text.SimpleDateFormat
 
 /**
@@ -33,13 +34,12 @@ import java.text.SimpleDateFormat
  * 21       Response:
  * 22       tile-service.weather.microsoft.com 499 IN CNAME wildcard.weather.microsoft.com.edgekey.net.;wildcard.weather.microsoft.com.edgekey.net 780 IN CNAME e15275.g.akamaiedge.net.;e15275.g.akamaiedge.net 60 IN A 184.85.125.248;
  */
+@Component
 class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     private val dataStringBuilder = StringBuilder(3)
 
-    companion object {
-        private val timeFmt = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss.SSS")
-    }
+    private val timeFmt = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss.SSS")
 
     private val logger = KotlinLogging.logger {}
 
@@ -65,6 +65,9 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
         var bodyBaseIdx = -1
         val values = fieldSet.values
         val size = values.size
+        if (size <= 14) {
+            throw DomainValidationException("Invalid pDNS record <$values>")
+        }
         for (i in 13 until size) {
             if (values[i].trim() == "Response:") {
                 hasResponseBody = true
