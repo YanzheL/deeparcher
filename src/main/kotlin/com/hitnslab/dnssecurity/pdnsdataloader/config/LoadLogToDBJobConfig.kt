@@ -5,6 +5,7 @@ import com.hitnslab.dnssecurity.pdnsdataloader.io.PDNSPreparedStatementSetter
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsDataDAO
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.ByCauseSkipPolicy
+import com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
@@ -77,7 +78,7 @@ class LoadLogToDBJobConfig {
     ): Step {
         return this.stepBuilderFactory.get("slaveStep")
                 .transactionManager(transactionManager)
-                .chunk<PDnsData, PDnsDataDAO>(10000)
+                .chunk<PDnsData, PDnsDataDAO>(50000)
                 .reader(itemReader)
                 .processor(ItemProcessor<PDnsData, PDnsDataDAO> { PDnsDataDAO(it) })
                 .writer(itemWriter)
@@ -91,14 +92,13 @@ class LoadLogToDBJobConfig {
     @StepScope
     @Bean
     fun itemReader(
-            @Value("#{stepExecutionContext['fileName']}") filename: String,
-            fieldSetMapper: PDNSLogFieldSetMapper
+            @Value("#{stepExecutionContext['fileName']}") filename: String
     ): FlatFileItemReader<PDnsData> {
         logger.info { "Reading file <$filename> ..." }
         return FlatFileItemReaderBuilder<PDnsData>()
                 .name("reader")
                 .resource(UrlResource(filename))
-                .fieldSetMapper(fieldSetMapper)
+                .fieldSetMapper(fieldSetMapper())
                 .lineTokenizer { line: String? ->
                     if (line == null)
                         DefaultFieldSet(arrayOf())
@@ -106,6 +106,11 @@ class LoadLogToDBJobConfig {
                         DefaultFieldSet(line.split("\\s+".toRegex()).toTypedArray())
                 }
                 .build()
+    }
+
+    @Bean
+    fun fieldSetMapper(): PDNSLogFieldSetMapper {
+        return HITPDNSLogFieldSetMapper()
     }
 
     @StepScope
@@ -140,9 +145,9 @@ class LoadLogToDBJobConfig {
     @JobScope
     @Bean
     fun taskExecutor(
-            @Value("#{jobParameters['min-pool-size'] ?: 24}") minPoolSize: Int,
-            @Value("#{jobParameters['max-pool-size'] ?: 48}") maxPoolSize: Int,
-            @Value("#{jobParameters['queue-capability'] ?: 12}") queueCapability: Int
+            @Value("#{jobParameters['min-pool-size'] ?: 12}") minPoolSize: Int,
+            @Value("#{jobParameters['max-pool-size'] ?: 24}") maxPoolSize: Int,
+            @Value("#{jobParameters['queue-capability'] ?: 6}") queueCapability: Int
     ): ThreadPoolTaskExecutor {
         val taskExecutor = ThreadPoolTaskExecutor()
         taskExecutor.maxPoolSize = maxPoolSize
