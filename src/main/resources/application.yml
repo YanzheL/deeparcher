@@ -8,13 +8,31 @@ spring:
     url: jdbc:mariadb://nistdev0:3306/springbatch?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
     username: springbatch
     password: HITnsLAB-springbatch!
+    hikari:
+      connection-timeout: 400000
+      idle-timeout: 400000
+      validation-timeout: 400000
+      max-lifetime: 4000000
+      leak-detection-threshold: 400000
 app:
   datasource:
     url: jdbc:omnisci:nistdev0:6274:omnisci
     username: admin
     password: HITnsLAB-admin!
     driver-class-name: com.omnisci.jdbc.OmniSciDriver
+    hikari:
+      connection-timeout: 500000
+      idle-timeout: 500000
+      validation-timeout: 500000
+      max-lifetime: 5000000
+      leak-detection-threshold: 500000
 management:
   health:
     db:
       enabled: false
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: DEBUG
+
