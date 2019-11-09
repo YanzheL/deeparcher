@@ -12,23 +12,25 @@ import javax.sql.DataSource
 @Configuration
 class AppDataSourceConfig {
 
-    @Bean(name = ["AppDataSourceProperties"])
+    @Bean("AppDataSourceProperties")
     @ConfigurationProperties("app.datasource")
     fun appDataSourceProperties() = DataSourceProperties()
 
-    @Bean(name = ["AppDataSource"])
+    @Bean("AppDataSource")
+    @ConfigurationProperties("app.datasource.hikari")
     fun appDataSource(@Qualifier("AppDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource::class.java)
                 .build()
     }
 
     @Primary
-    @Bean(name = ["InternalDataSourceProperties"])
+    @Bean("InternalDataSourceProperties")
     @ConfigurationProperties("spring.datasource")
     fun internalDataSourceProperties() = DataSourceProperties()
 
     @Primary
-    @Bean(name = ["InternalDataSource"])
+    @Bean("InternalDataSource")
+    @ConfigurationProperties("spring.datasource.hikari")
     fun dataSource(@Qualifier("InternalDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource::class.java)
                 .build()
