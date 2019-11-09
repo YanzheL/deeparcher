@@ -1,11 +1,20 @@
 spring:
+  batch:
+    initialize-schema: always
   datasource:
-    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
-    username: sa
-    password: sa
+    #    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    #    username: sa
+    #    password: sa
+    url: jdbc:mariadb://nistdev0:3306/springbatch?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
+    username: springbatch
+    password: HITnsLAB-springbatch!
 app:
   datasource:
     url: jdbc:omnisci:nistdev0:6274:omnisci
     username: admin
     password: HITnsLAB-admin!
     driver-class-name: com.omnisci.jdbc.OmniSciDriver
+management:
+  health:
+    db:
+      enabled: false

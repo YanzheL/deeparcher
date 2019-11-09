@@ -90,6 +90,12 @@
       <groupId>com.google.guava</groupId>
       <version>28.1-jre</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+    <dependency>
+      <artifactId>mariadb-java-client</artifactId>
+      <groupId>org.mariadb.jdbc</groupId>
+      <version>2.5.1</version>
+    </dependency>
     <!-- TEST SCOPE -->
     <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
