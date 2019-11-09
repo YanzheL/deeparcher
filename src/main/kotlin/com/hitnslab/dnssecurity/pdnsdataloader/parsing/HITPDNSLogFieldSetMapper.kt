@@ -37,22 +37,19 @@ import java.text.SimpleDateFormat
 @Component
 class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
-    private val dataStringBuilder = StringBuilder(3)
-
-    private val timeFmt = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss.SSS")
+    private val dataStringBuilder = StringBuffer(3)
 
     private val logger = KotlinLogging.logger {}
 
     override fun mapFieldSet(fieldSet: FieldSet): PDnsData {
-        dataStringBuilder
-                .clear()
-                .append(fieldSet.readString(2))
+        dataStringBuilder.setLength(0)
+        dataStringBuilder.append(fieldSet.readString(2))
                 .append(" ")
                 .append(fieldSet.readString(3))
         val ret: PDnsData
         try {
             ret = PDnsData(
-                    queryTime = timeFmt.parse(dataStringBuilder.toString()),
+                    queryTime = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss.SSS").parse(dataStringBuilder.toString()),
                     domain = fieldSet.readString(9),
                     queryType = fieldSet.readString(11),
                     replyCode = fieldSet.readString(12)
