@@ -17,7 +17,6 @@ class AppDataSourceConfig {
     fun appDataSourceProperties() = DataSourceProperties()
 
     @Bean(name = ["AppDataSource"])
-    @ConfigurationProperties("app.datasource.configuration")
     fun appDataSource(@Qualifier("AppDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource::class.java)
                 .build()
@@ -30,7 +29,6 @@ class AppDataSourceConfig {
 
     @Primary
     @Bean(name = ["InternalDataSource"])
-    @ConfigurationProperties("spring.datasource.configuration")
     fun dataSource(@Qualifier("InternalDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource::class.java)
                 .build()
