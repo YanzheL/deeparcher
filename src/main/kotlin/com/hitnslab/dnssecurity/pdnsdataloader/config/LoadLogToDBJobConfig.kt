@@ -78,7 +78,7 @@ class LoadLogToDBJobConfig {
     ): Step {
         return this.stepBuilderFactory.get("slaveStep")
                 .transactionManager(transactionManager)
-                .chunk<PDnsData, PDnsDataDAO>(50000)
+                .chunk<PDnsData, PDnsDataDAO>(100000)
                 .reader(itemReader)
                 .processor(ItemProcessor<PDnsData, PDnsDataDAO> { PDnsDataDAO(it) })
                 .writer(itemWriter)
@@ -145,9 +145,9 @@ class LoadLogToDBJobConfig {
     @JobScope
     @Bean
     fun taskExecutor(
-            @Value("#{jobParameters['min-pool-size'] ?: 12}") minPoolSize: Int,
+            @Value("#{jobParameters['min-pool-size'] ?: 24}") minPoolSize: Int,
             @Value("#{jobParameters['max-pool-size'] ?: 24}") maxPoolSize: Int,
-            @Value("#{jobParameters['queue-capability'] ?: 6}") queueCapability: Int
+            @Value("#{jobParameters['queue-capability'] ?: 0}") queueCapability: Int
     ): ThreadPoolTaskExecutor {
         val taskExecutor = ThreadPoolTaskExecutor()
         taskExecutor.maxPoolSize = maxPoolSize

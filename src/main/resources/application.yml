@@ -5,15 +5,17 @@ spring:
     #    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
     #    username: sa
     #    password: sa
-    url: jdbc:mariadb://nistdev0:3306/springbatch?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
+    url: jdbc:mariadb://nistdev0:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
     username: springbatch
     password: HITnsLAB-springbatch!
     hikari:
-      connection-timeout: 400000
-      idle-timeout: 400000
-      validation-timeout: 400000
-      max-lifetime: 4000000
-      leak-detection-threshold: 400000
+      connection-timeout: 300000
+      idle-timeout: 60000
+      validation-timeout: 5000
+      max-lifetime: 600000
+      maximum-pool-size: 1024
+      minimum-idle: 6
+      pool-name: spring-batch-db-pool
 app:
   datasource:
     url: jdbc:omnisci:nistdev0:6274:omnisci
@@ -21,15 +23,17 @@ app:
     password: HITnsLAB-admin!
     driver-class-name: com.omnisci.jdbc.OmniSciDriver
     hikari:
-      connection-timeout: 500000
-      idle-timeout: 500000
-      validation-timeout: 500000
-      max-lifetime: 5000000
-      leak-detection-threshold: 500000
-management:
-  health:
-    db:
-      enabled: false
+      connection-timeout: 3600000
+      idle-timeout: 300000
+      validation-timeout: 10000
+      max-lifetime: 1800000
+      maximum-pool-size: 128
+      minimum-idle: 6
+      pool-name: omnisci-db-pool
+# management:
+#   health:
+#     db:
+#       enabled: false
 logging:
   level:
     com:
