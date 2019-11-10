@@ -12,10 +12,9 @@ class SpringBatchConfig : DefaultBatchConfigurer() {
     @Bean
     fun threadPoolTaskExecutor(): ThreadPoolTaskExecutor {
         val taskExecutor = ThreadPoolTaskExecutor()
-        taskExecutor.maxPoolSize = 12
-        taskExecutor.corePoolSize = 6
-        taskExecutor.setQueueCapacity(0)
-        taskExecutor.setAllowCoreThreadTimeOut(true)
+//        taskExecutor.maxPoolSize = 12
+        taskExecutor.corePoolSize = Runtime.getRuntime().availableProcessors()
+//        taskExecutor.setAllowCoreThreadTimeOut(true)
         taskExecutor.afterPropertiesSet()
         return taskExecutor
     }
