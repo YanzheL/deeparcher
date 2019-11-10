@@ -27,7 +27,7 @@ app:
       idle-timeout: 600000
       validation-timeout: 10000
       max-lifetime: 1800000
-      maximum-pool-size: 96
+      maximum-pool-size: 48
       minimum-idle: 6
       pool-name: omnisci-db-pool
 # management:
