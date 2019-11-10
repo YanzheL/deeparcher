@@ -10,28 +10,28 @@ import org.springframework.context.annotation.Primary
 import javax.sql.DataSource
 
 @Configuration
-class AppDataSourceConfig {
+class DataSourceConfig {
 
-    @Bean("AppDataSourceProperties")
+    @Bean("appDataSourceProperties")
     @ConfigurationProperties("app.datasource")
     fun appDataSourceProperties() = DataSourceProperties()
 
-    @Bean("AppDataSource")
+    @Bean("appDataSource")
     @ConfigurationProperties("app.datasource.hikari")
-    fun appDataSource(@Qualifier("AppDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
+    fun appDataSource(@Qualifier("appDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource::class.java)
                 .build()
     }
 
     @Primary
-    @Bean("InternalDataSourceProperties")
+    @Bean("internalDataSourceProperties")
     @ConfigurationProperties("spring.datasource")
     fun internalDataSourceProperties() = DataSourceProperties()
 
     @Primary
-    @Bean("InternalDataSource")
+    @Bean("internalDataSource")
     @ConfigurationProperties("spring.datasource.hikari")
-    fun dataSource(@Qualifier("InternalDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
+    fun dataSource(@Qualifier("internalDataSourceProperties") dataSourceProperties: DataSourceProperties): DataSource {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource::class.java)
                 .build()
     }
