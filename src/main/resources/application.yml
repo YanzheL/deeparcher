@@ -10,11 +10,11 @@ spring:
     password: HITnsLAB-springbatch!
     hikari:
       connection-timeout: 300000
-      idle-timeout: 60000
+      idle-timeout: 600000
       validation-timeout: 5000
       max-lifetime: 600000
-      maximum-pool-size: 1024
-      minimum-idle: 6
+      maximum-pool-size: 512
+      minimum-idle: 12
       pool-name: spring-batch-db-pool
 app:
   datasource:
@@ -24,10 +24,10 @@ app:
     driver-class-name: com.omnisci.jdbc.OmniSciDriver
     hikari:
       connection-timeout: 3600000
-      idle-timeout: 300000
+      idle-timeout: 600000
       validation-timeout: 10000
       max-lifetime: 1800000
-      maximum-pool-size: 128
+      maximum-pool-size: 96
       minimum-idle: 6
       pool-name: omnisci-db-pool
 # management:
@@ -39,4 +39,10 @@ logging:
     com:
       zaxxer:
         hikari: DEBUG
-
+com:
+  sun:
+    management:
+      jmxremote:
+        port: 56789
+        authenticate: false
+        ssl: false
