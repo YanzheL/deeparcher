@@ -15,6 +15,7 @@ class SpringBatchConfig : DefaultBatchConfigurer() {
         taskExecutor.maxPoolSize = 12
         taskExecutor.corePoolSize = 6
         taskExecutor.setQueueCapacity(0)
+        taskExecutor.setAllowCoreThreadTimeOut(true)
         taskExecutor.afterPropertiesSet()
         return taskExecutor
     }

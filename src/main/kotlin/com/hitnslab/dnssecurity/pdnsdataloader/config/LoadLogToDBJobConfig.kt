@@ -152,6 +152,7 @@ class LoadLogToDBJobConfig {
         retVal.setTaskExecutor(taskExecutor)
         retVal.step = step
         retVal.gridSize = 24
+        retVal.afterPropertiesSet()
         return retVal
     }
 }
