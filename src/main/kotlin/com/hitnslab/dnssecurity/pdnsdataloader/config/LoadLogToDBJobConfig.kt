@@ -117,7 +117,7 @@ class LoadLogToDBJobConfig {
     @StepScope
     @Bean
     fun itemWriter(
-            @Qualifier("AppDataSource") dataSource: DataSource,
+            @Qualifier("appDataSource") dataSource: DataSource,
             @Value("#{jobParameters['table']}") table: String,
             pdnsPreparedStatementSetter: PDNSPreparedStatementSetter
     ): JdbcBatchItemWriter<PDnsDataDAO> {
