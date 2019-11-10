@@ -11,8 +11,10 @@ import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.*
+import org.springframework.batch.core.partition.PartitionHandler
 import org.springframework.batch.core.partition.support.MultiResourcePartitioner
 import org.springframework.batch.core.partition.support.Partitioner
+import org.springframework.batch.core.partition.support.TaskExecutorPartitionHandler
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.item.ItemProcessor
 import org.springframework.batch.item.ItemReader
@@ -31,7 +33,6 @@ import org.springframework.core.io.Resource
 import org.springframework.core.io.UrlResource
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.core.task.TaskExecutor
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.transaction.CannotCreateTransactionException
 import org.springframework.transaction.PlatformTransactionManager
 import javax.sql.DataSource
@@ -61,12 +62,12 @@ class LoadLogToDBJobConfig {
     fun masterStep(
             @Qualifier("slaveStep") step: Step,
             @Qualifier("partitioner") partitioner: Partitioner,
-            @Qualifier("taskExecutor") taskExecutor: TaskExecutor
+            partitionHandler: PartitionHandler
     ): Step {
         return this.stepBuilderFactory.get("masterStep")
                 .partitioner("slaveStep", partitioner)
                 .step(step)
-                .taskExecutor(taskExecutor)
+                .partitionHandler(partitionHandler)
                 .build()
     }
 
@@ -78,7 +79,7 @@ class LoadLogToDBJobConfig {
     ): Step {
         return this.stepBuilderFactory.get("slaveStep")
                 .transactionManager(transactionManager)
-                .chunk<PDnsData, PDnsDataDAO>(100000)
+                .chunk<PDnsData, PDnsDataDAO>(120000)
                 .reader(itemReader)
                 .processor(ItemProcessor<PDnsData, PDnsDataDAO> { PDnsDataDAO(it) })
                 .writer(itemWriter)
@@ -138,22 +139,19 @@ class LoadLogToDBJobConfig {
         val resources = resolver.getResources(pattern)
         resources.sortBy(Resource::getFilename)
         partitioner.setResources(resources)
-        partitioner.partition(24)
         return partitioner
     }
 
     @JobScope
     @Bean
-    fun taskExecutor(
-            @Value("#{jobParameters['min-pool-size'] ?: 24}") minPoolSize: Int,
-            @Value("#{jobParameters['max-pool-size'] ?: 24}") maxPoolSize: Int,
-            @Value("#{jobParameters['queue-capability'] ?: 0}") queueCapability: Int
-    ): ThreadPoolTaskExecutor {
-        val taskExecutor = ThreadPoolTaskExecutor()
-        taskExecutor.maxPoolSize = maxPoolSize
-        taskExecutor.corePoolSize = minPoolSize
-        taskExecutor.setQueueCapacity(queueCapability)
-        taskExecutor.afterPropertiesSet()
-        return taskExecutor
+    fun partitionHandler(
+            @Qualifier("threadPoolTaskExecutor") taskExecutor: TaskExecutor,
+            @Qualifier("slaveStep") step: Step
+    ): PartitionHandler {
+        val retVal = TaskExecutorPartitionHandler()
+        retVal.setTaskExecutor(taskExecutor)
+        retVal.step = step
+        retVal.gridSize = 24
+        return retVal
     }
 }
