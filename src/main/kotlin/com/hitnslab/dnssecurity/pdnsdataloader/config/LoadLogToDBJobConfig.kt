@@ -1,10 +1,11 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.config
 
-import com.hitnslab.dnssecurity.pdnsdataloader.error.DomainValidationException
+import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.pdnsdataloader.io.PDNSPreparedStatementSetter
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsDataDAO
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.ByCauseSkipPolicy
+import com.hitnslab.dnssecurity.pdnsdataloader.parsing.DAOConverterProcessor
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import mu.KotlinLogging
@@ -24,6 +25,7 @@ import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilde
 import org.springframework.batch.item.file.FlatFileItemReader
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder
 import org.springframework.batch.item.file.transform.DefaultFieldSet
+import org.springframework.batch.item.support.CompositeItemProcessor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.annotation.Value
@@ -75,31 +77,43 @@ class LoadLogToDBJobConfig {
     fun slaveStep(
             transactionManager: PlatformTransactionManager,
             itemReader: ItemReader<PDnsData>,
-            itemWriter: ItemWriter<PDnsDataDAO>
+            itemWriter: ItemWriter<PDnsDataDAO>,
+            itemProcessor: ItemProcessor<PDnsData, PDnsDataDAO?>
     ): Step {
         return this.stepBuilderFactory.get("slaveStep")
                 .transactionManager(transactionManager)
                 .chunk<PDnsData, PDnsDataDAO>(120000)
                 .reader(itemReader)
-                .processor(ItemProcessor<PDnsData, PDnsDataDAO> { PDnsDataDAO(it) })
+                .processor(itemProcessor)
                 .writer(itemWriter)
                 .faultTolerant()
-                .skipPolicy(ByCauseSkipPolicy(DomainValidationException::class))
-                .retryLimit(3)
+                .skipPolicy(ByCauseSkipPolicy(PDNSParseException::class))
+                .retryLimit(10)
                 .retry(CannotCreateTransactionException::class.java)
                 .build()
     }
 
     @StepScope
     @Bean
+    fun itemProcessor(): ItemProcessor<PDnsData, PDnsDataDAO?> {
+        val compositeItemProcessor = CompositeItemProcessor<PDnsData, PDnsDataDAO?>()
+        val processors = mutableListOf<ItemProcessor<*, *>>()
+        processors.add(DAOConverterProcessor())
+        compositeItemProcessor.setDelegates(processors)
+        return compositeItemProcessor
+    }
+
+    @StepScope
+    @Bean
     fun itemReader(
-            @Value("#{stepExecutionContext['fileName']}") filename: String
+            @Value("#{stepExecutionContext['fileName']}") filename: String,
+            fieldSetMapper: PDNSLogFieldSetMapper
     ): FlatFileItemReader<PDnsData> {
         logger.info { "Reading file <$filename> ..." }
         return FlatFileItemReaderBuilder<PDnsData>()
                 .name("reader")
                 .resource(UrlResource(filename))
-                .fieldSetMapper(fieldSetMapper())
+                .fieldSetMapper(fieldSetMapper)
                 .lineTokenizer { line: String? ->
                     if (line == null)
                         DefaultFieldSet(arrayOf())
