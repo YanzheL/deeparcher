@@ -1,11 +1,14 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.parsing
 
-import com.hitnslab.dnssecurity.pdnsdataloader.error.DomainValidationException
+import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
 import org.springframework.stereotype.Component
-import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  *
@@ -39,31 +42,38 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     private val dataStringBuilder = StringBuffer(3)
 
+    private val dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss.nnn")
+
     private val logger = KotlinLogging.logger {}
 
     override fun mapFieldSet(fieldSet: FieldSet): PDnsData {
-        dataStringBuilder.setLength(0)
-        dataStringBuilder.append(fieldSet.readString(2))
-                .append(" ")
-                .append(fieldSet.readString(3))
+        val queryTime: String
+        synchronized(this) {
+            dataStringBuilder.setLength(0)
+            dataStringBuilder.append(fieldSet.readString(2))
+                    .append(" ")
+                    .append(fieldSet.readString(3))
+            queryTime = dataStringBuilder.toString()
+        }
+        val values = fieldSet.values
         val ret: PDnsData
         try {
+            val localDateTime = LocalDateTime.parse(queryTime, dateTimeFormatter)
             ret = PDnsData(
-                    queryTime = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss.SSS").parse(dataStringBuilder.toString()),
+                    queryTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault()).toInstant(),
                     domain = fieldSet.readString(9),
                     queryType = fieldSet.readString(11),
                     replyCode = fieldSet.readString(12)
             )
         } catch (e: Exception) {
-            throw DomainValidationException(e)
+            throw PDNSParseException("Invalid pDNS record <$values>, exception <$e>", e)
         }
         ret.clientIp = fieldSet.readString(5)
         var hasResponseBody = false
         var bodyBaseIdx = -1
-        val values = fieldSet.values
         val size = values.size
         if (size <= 14) {
-            throw DomainValidationException("Invalid pDNS record <$values>")
+            throw PDNSParseException("Invalid pDNS record <$values>")
         }
         for (i in 13 until size) {
             if (values[i].trim() == "Response:") {
@@ -83,7 +93,7 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 val replyType = values[entryStart + 3].trim()
                 val conjunction = values[entryStart + 4]
                 if (';' !in conjunction) {
-                    logger.error { "Malformed DNS reply entry conjunction data: <$conjunction>" }
+                    logger.warn { "Malformed DNS reply entry conjunction data: <$conjunction>" }
                     break
                 }
                 val replyData: String = conjunction.split(";")[0].trimEnd('.')

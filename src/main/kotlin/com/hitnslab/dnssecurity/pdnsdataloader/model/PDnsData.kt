@@ -1,11 +1,11 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.model
 
 import com.google.common.net.InternetDomainName
-import java.util.*
+import java.time.Instant
 
 
 data class PDnsData(
-        val queryTime: Date,
+        val queryTime: Instant,
         val domain: String,
         val queryType: String,
         val replyCode: String,
@@ -16,7 +16,7 @@ data class PDnsData(
     lateinit var cnames: MutableSet<String>
         private set
 
-    constructor(queryTime: Date, domain: String, queryType: String, replyCode: String) : this(
+    constructor(queryTime: Instant, domain: String, queryType: String, replyCode: String) : this(
             queryTime,
             domain,
             queryType,
@@ -29,8 +29,8 @@ data class PDnsData(
     constructor(data: PDnsDataDAO) : this(
             data.queryTime,
             data.domain,
-            data.queryType,
-            data.replyCode,
+            data.queryType.name,
+            data.replyCode.name,
             data.topPrivateDomain
     ) {
         ips.addAll(data.ips.mapNotNull(PDnsDataDAO.Companion::intToIp))

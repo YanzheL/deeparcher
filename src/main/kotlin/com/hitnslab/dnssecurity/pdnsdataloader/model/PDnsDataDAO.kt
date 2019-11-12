@@ -4,14 +4,14 @@ import com.google.common.net.InternetDomainName
 import java.net.InetAddress
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import java.util.*
+import java.time.Instant
 
 
 data class PDnsDataDAO(
-        val queryTime: Date,
+        val queryTime: Instant,
         val domain: String,
-        val queryType: String,
-        val replyCode: String,
+        val queryType: DnsQueryType,
+        val replyCode: DnsRCode,
         val topPrivateDomain: String
 ) {
     var clientIp: Int = 0
@@ -19,11 +19,11 @@ data class PDnsDataDAO(
     lateinit var cnames: MutableSet<String>
         private set
 
-    constructor(queryTime: Date, domain: String, queryType: String, replyCode: String) : this(
+    constructor(queryTime: Instant, domain: String, queryType: String, replyCode: String) : this(
             queryTime,
             domain,
-            queryType,
-            replyCode,
+            DnsQueryType.valueOf(queryType),
+            DnsRCode.valueOf(replyCode),
             InternetDomainName.from(domain).topPrivateDomain().toString()
     ) {
         cnames = mutableSetOf()
@@ -32,8 +32,8 @@ data class PDnsDataDAO(
     constructor(data: PDnsData) : this(
             data.queryTime,
             data.domain,
-            data.queryType,
-            data.replyCode,
+            DnsQueryType.valueOf(data.queryType),
+            DnsRCode.valueOf(data.replyCode),
             data.topPrivateDomain
     ) {
         clientIp = ipToInt(data.clientIp)

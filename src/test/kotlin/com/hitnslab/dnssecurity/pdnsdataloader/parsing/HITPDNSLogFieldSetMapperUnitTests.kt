@@ -5,16 +5,20 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.springframework.batch.item.file.transform.DefaultFieldSet
-import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class HITPDNSLogFieldSetMapperUnitTests {
-    private val dateFmt = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss.SSS")
+
+    private val dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss.nnn")
 
     @Test
     fun normal() {
         val correct = PDnsData(
-                queryTime = dateFmt.parse("01-Nov-2019 23:56:39.256"),
+                queryTime = ZonedDateTime.of(LocalDateTime.parse("01-Nov-2019 23:56:39.256", dateTimeFormatter), ZoneId.systemDefault()).toInstant(),
                 domain = "m.qpic.cn",
                 queryType = "A",
                 replyCode = "NOERROR"
