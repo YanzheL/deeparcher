@@ -1,0 +1,4 @@
+stages:
+  - build
+  - package
+  - test

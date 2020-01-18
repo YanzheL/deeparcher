@@ -1,0 +1,5 @@
+Maven Test:
+  extends: .maven_ctx
+  stage: test
+  script:
+    - mvn $MAVEN_CLI_OPTS -Dspring.profiles.active=test test
