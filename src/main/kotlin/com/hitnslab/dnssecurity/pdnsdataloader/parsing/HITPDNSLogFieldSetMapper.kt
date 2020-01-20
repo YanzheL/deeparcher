@@ -48,15 +48,19 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     override fun mapFieldSet(fieldSet: FieldSet): PDnsData {
         val queryTime: String
-        synchronized(this) {
-            dataStringBuilder.setLength(0)
-            dataStringBuilder.append(fieldSet.readString(2))
-                    .append(" ")
-                    .append(fieldSet.readString(3))
-            queryTime = dataStringBuilder.toString()
+        try {
+            synchronized(this) {
+                dataStringBuilder.setLength(0)
+                dataStringBuilder.append(fieldSet.readString(2))
+                        .append(" ")
+                        .append(fieldSet.readString(3))
+                queryTime = dataStringBuilder.toString()
+            }
+        } catch (e: Exception) {
+            throw PDNSParseException("PDNS parse failed: Invalid queryTime in fieldSet <${fieldSet}>, exception <$e>", e)
         }
-        val values = fieldSet.values
         val ret: PDnsData
+        val values = fieldSet.values
         try {
             val localDateTime = LocalDateTime.parse(queryTime, dateTimeFormatter)
             ret = PDnsData(
@@ -66,15 +70,15 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                     replyCode = fieldSet.readString(12)
             )
         } catch (e: Exception) {
-            throw PDNSParseException("Invalid pDNS record <$values>, exception <$e>", e)
+            throw PDNSParseException("PDNS parse failed: Cannot create PDnsData object with values <$values>, exception <$e>", e)
+        }
+        val size = values.size
+        if (size <= 14) {
+            throw PDNSParseException("PDNS parse failed: Insufficient number of fields in <$values>")
         }
         ret.clientIp = fieldSet.readString(5)
         var hasResponseBody = false
         var bodyBaseIdx = -1
-        val size = values.size
-        if (size <= 14) {
-            throw PDNSParseException("Invalid pDNS record <$values>")
-        }
         for (i in 13 until size) {
             if (values[i].trim() == "Response:") {
                 hasResponseBody = true
