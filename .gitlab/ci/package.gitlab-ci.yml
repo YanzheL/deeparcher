@@ -17,7 +17,12 @@
       EOF
       cat <<-EOF > /kaniko/default-executor
       #!/busybox/sh
-      /kaniko/executor --single-snapshot --cache --cache-dir $CI_PROJECT_DIR/.kaniko --context dir://$CI_PROJECT_DIR "\$@"
+      /kaniko/executor \
+        --single-snapshot \
+        --cache \
+        --cache-dir $CI_PROJECT_DIR/.kaniko \
+        --context dir://$CI_PROJECT_DIR \
+        "\$@"
       EOF
       chmod +x /kaniko/default-executor
     - find . -maxdepth 3

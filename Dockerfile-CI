@@ -1,4 +1,4 @@
-FROM openjdk:15-jdk-slim
+FROM dockerhub.hitnslab.com/library/openjdk:15-jdk-slim
 
 LABEL maintainer="Yanzhe Lee"
 
