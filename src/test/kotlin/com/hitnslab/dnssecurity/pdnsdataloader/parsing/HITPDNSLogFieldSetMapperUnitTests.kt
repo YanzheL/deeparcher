@@ -5,7 +5,6 @@ import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
 import org.springframework.batch.item.file.transform.DefaultFieldSet
 import org.springframework.core.io.DefaultResourceLoader
 import java.time.LocalDateTime
@@ -55,7 +54,7 @@ class HITPDNSLogFieldSetMapperUnitTests {
 
     @Test
     fun testParseFile() {
-        assertThrows<PDNSInvalidFieldException> { parseOneFile("classpath:example-pdns.log") }
+        parseOneFile("classpath:example-pdns.log")
     }
 
     fun parseOneLine(line: String): PDnsData {
@@ -68,8 +67,15 @@ class HITPDNSLogFieldSetMapperUnitTests {
         return result
     }
 
-    fun parseOneFile(path: String): List<PDnsData> {
+    fun parseOneFile(path: String): List<PDnsData?> {
         val file = DefaultResourceLoader().getResource(path).file
-        return file.readLines().map(::parseOneLine)
+        return file.readLines().map {
+            try {
+                parseOneLine(it)
+            } catch (e: PDNSInvalidFieldException) {
+                null
+            }
+        }
+
     }
 }
