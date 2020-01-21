@@ -1,6 +1,7 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.parsing
 
-import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSParseException
+import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSInvalidFieldException
+import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSInvalidFormatException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
@@ -57,7 +58,7 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 queryTime = dataStringBuilder.toString()
             }
         } catch (e: Exception) {
-            throw PDNSParseException("PDNS parse failed: Invalid queryTime in fieldSet <$fieldSet>, exception <$e>", e)
+            throw PDNSInvalidFieldException("PDNS parse failed: Invalid queryTime in fieldSet <$fieldSet>, exception <$e>", e)
         }
         val ret: PDnsData
         val values = fieldSet.values
@@ -70,11 +71,11 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                     replyCode = fieldSet.readString(12)
             )
         } catch (e: Exception) {
-            throw PDNSParseException("PDNS parse failed: Cannot create PDnsData object with values <$fieldSet>, exception <$e>", e)
+            throw PDNSInvalidFieldException("PDNS parse failed: Cannot create PDnsData object with values <$fieldSet>, exception <$e>", e)
         }
         val size = values.size
         if (size <= 14) {
-            throw PDNSParseException("PDNS parse failed: Insufficient number of fields in <$fieldSet>")
+            throw PDNSInvalidFormatException("PDNS parse failed: Insufficient number of fields in <$fieldSet>")
         }
         ret.clientIp = fieldSet.readString(5)
         var hasResponseBody = false

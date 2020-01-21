@@ -1,11 +1,13 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.parsing
 
+import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSInvalidFieldException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.assertThrows
 import org.springframework.batch.item.file.transform.DefaultFieldSet
-import org.springframework.core.io.FileUrlResource
+import org.springframework.core.io.DefaultResourceLoader
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -53,7 +55,7 @@ class HITPDNSLogFieldSetMapperUnitTests {
 
     @Test
     fun testParseFile() {
-        parseOneFile("classpath:example-pdns.log")
+        assertThrows<PDNSInvalidFieldException> { parseOneFile("classpath:example-pdns.log") }
     }
 
     fun parseOneLine(line: String): PDnsData {
@@ -61,13 +63,13 @@ class HITPDNSLogFieldSetMapperUnitTests {
         val fieldSetMapper = HITPDNSLogFieldSetMapper()
         val result = fieldSetMapper.mapFieldSet(fieldSet)
         println(result)
-        println(result.ips)
+        print(result.ips)
         println(result.cnames)
         return result
     }
 
     fun parseOneFile(path: String): List<PDnsData> {
-        val file = FileUrlResource(path).file
+        val file = DefaultResourceLoader().getResource(path).file
         return file.readLines().map(::parseOneLine)
     }
 }
