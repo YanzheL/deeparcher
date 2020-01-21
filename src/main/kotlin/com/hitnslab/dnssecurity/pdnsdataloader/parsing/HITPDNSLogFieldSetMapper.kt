@@ -57,7 +57,7 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 queryTime = dataStringBuilder.toString()
             }
         } catch (e: Exception) {
-            throw PDNSParseException("PDNS parse failed: Invalid queryTime in fieldSet <${fieldSet}>, exception <$e>", e)
+            throw PDNSParseException("PDNS parse failed: Invalid queryTime in fieldSet <$fieldSet>, exception <$e>", e)
         }
         val ret: PDnsData
         val values = fieldSet.values
@@ -70,11 +70,11 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                     replyCode = fieldSet.readString(12)
             )
         } catch (e: Exception) {
-            throw PDNSParseException("PDNS parse failed: Cannot create PDnsData object with values <$values>, exception <$e>", e)
+            throw PDNSParseException("PDNS parse failed: Cannot create PDnsData object with values <$fieldSet>, exception <$e>", e)
         }
         val size = values.size
         if (size <= 14) {
-            throw PDNSParseException("PDNS parse failed: Insufficient number of fields in <$values>")
+            throw PDNSParseException("PDNS parse failed: Insufficient number of fields in <$fieldSet>")
         }
         ret.clientIp = fieldSet.readString(5)
         var hasResponseBody = false
