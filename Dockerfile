@@ -20,14 +20,10 @@ WORKDIR /app
 
 COPY --from=builder /app/target/*.jar ./app.jar
 
-ENV JAVA_OPTS "-server -XX:+HeapDumpOnOutOfMemoryError -Xss256k -Xmx10g -XX:+UnlockExperimentalVMOptions -XX:+UseZGC -Xlog:gc*:gc.log"
+ENV JVM_OPTS "-server -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+UseZGC -Xlog:gc*:gc.log"
 
-ENV EXTRA_OPTS "-Djava.rmi.server.hostname=127.0.0.1 -Dcom.sun.management.jmxremote.port=56789 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
-
-ENV JOB_CLASS ""
-
-ENV JOB_NAME ""
+ENV EXTRA_OPTS ""
 
 ENV JOB_PARAMETERS ""
 
-CMD java $JAVA_OPTS $EXTRA_OPTS -jar app.jar $JOB_CLASS $JOB_NAME $JOB_PARAMETERS
+CMD java $JVM_OPTS $EXTRA_OPTS -jar app.jar $JOB_PARAMETERS
