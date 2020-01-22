@@ -1,20 +1,20 @@
-package com.hitnslab.dnssecurity.pdnsdataloader.io
+package com.hitnslab.dnssecurity.pdnsdataloader.processing
 
-import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsDataDAO
+import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.springframework.batch.item.ItemWriter
 import org.springframework.kafka.core.KafkaTemplate
 
-class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsDataDAO>) : ItemWriter<PDnsDataDAO> {
+class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : ItemWriter<PDnsData> {
 
     private val logger = KotlinLogging.logger {}
 
-    override fun write(items: MutableList<out PDnsDataDAO>) {
+    override fun write(items: MutableList<out PDnsData>) {
         val results = items
                 .map {
                     //            val headers = mutableListOf<Header>()
-                    val record = ProducerRecord<String, PDnsDataDAO>(kafkaTemplate.defaultTopic, null, it.queryTime.epochSecond, it.domain, it)
+                    val record = ProducerRecord<String, PDnsData>(kafkaTemplate.defaultTopic, null, it.queryTime.epochSecond, it.domain, it)
                     kafkaTemplate.send(record)
                 }
                 .asSequence()
@@ -29,6 +29,8 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsDataDAO>)
                 .toList()
         if (results.isEmpty()) {
             logger.info { "Successfully wrote ${items.size} items to kafka" }
+        } else {
+            logger.warn { "Fail to wrote ${results.size} items to kafka" }
         }
     }
 }
