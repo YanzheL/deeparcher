@@ -5,7 +5,6 @@ import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSInvalidFormatException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
-import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -38,7 +37,6 @@ import java.time.format.DateTimeFormatter
  * 21       Response:
  * 22       tile-service.weather.microsoft.com 499 IN CNAME wildcard.weather.microsoft.com.edgekey.net.;wildcard.weather.microsoft.com.edgekey.net 780 IN CNAME e15275.g.akamaiedge.net.;e15275.g.akamaiedge.net 60 IN A 184.85.125.248;
  */
-@Component
 class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     private val dataStringBuilder = StringBuffer(3)
