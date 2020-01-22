@@ -7,9 +7,13 @@ option cc_enable_arenas = true;
 //import "google/protobuf/wrappers.proto";
 
 message PDnsData {
-  int64 query_time = 1;
+  string fqdn = 1;
   string domain = 2;
-  int32 query_type = 3;
-  int32 reply_code = 4;
-  string top_private_domain = 5;
+  bytes client_ip = 3;
+  int64 q_time = 4;
+  int32 q_type = 5;
+  int32 r_code = 6;
+  bytes r_ipv4_addrs = 7;
+  bytes r_ipv6_addrs = 8;
+  repeated string r_cnames = 9;
 }
