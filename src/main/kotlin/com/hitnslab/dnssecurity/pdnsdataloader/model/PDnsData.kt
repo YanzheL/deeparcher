@@ -8,21 +8,24 @@ data class PDnsData(
         val queryTime: Instant,
         val domain: String,
         val queryType: String,
-        val replyCode: String,
-        val topPrivateDomain: String
+        val replyCode: String
 ) {
+//    private val logger = KotlinLogging.logger {}
+
     var clientIp: String? = null
-    val ips = mutableSetOf<String>()
-    lateinit var cnames: MutableSet<String>
+
+    var topPrivateDomain: String? = null
         private set
 
-    constructor(queryTime: Instant, domain: String, queryType: String, replyCode: String) : this(
-            queryTime,
-            domain,
-            queryType,
-            replyCode,
+    val ips = mutableSetOf<String>()
+
+    val cnames: MutableSet<String> = mutableSetOf()
+
+    init {
+        topPrivateDomain = try {
             InternetDomainName.from(domain).topPrivateDomain().toString()
-    ) {
-        cnames = mutableSetOf()
+        } catch (e: Exception) {
+            null
+        }
     }
 }
