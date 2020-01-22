@@ -12,6 +12,7 @@ class SpringBatchConfig : DefaultBatchConfigurer() {
 
     private val logger = KotlinLogging.logger {}
 
+//    @Primary
 //    @Bean
 //    fun taskExecutor(): ThreadPoolTaskExecutor {
 //        val taskExecutor = ThreadPoolTaskExecutor()

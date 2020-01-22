@@ -12,6 +12,7 @@ spring:
       acks: 1
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
+    #      transaction-id-prefix: PDNS_DATA_LOADER
     template:
       default-topic: test.raw.pdns
   batch:
@@ -31,6 +32,8 @@ spring:
 app:
   job:
     slave-step:
+      #      transaction:
+      #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
       chunk-size: 120000
       retry-limit: 10
       item-reader:

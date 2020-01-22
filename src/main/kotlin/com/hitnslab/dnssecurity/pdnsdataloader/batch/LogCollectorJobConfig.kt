@@ -2,12 +2,11 @@ package com.hitnslab.dnssecurity.pdnsdataloader.batch
 
 import com.hitnslab.dnssecurity.pdnsdataloader.config.PDnsJobProperties
 import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSParseException
-import com.hitnslab.dnssecurity.pdnsdataloader.io.PDNSKafkaItemWriter
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
-import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsDataDAO
-import com.hitnslab.dnssecurity.pdnsdataloader.parsing.ByCauseSkipPolicy
-import com.hitnslab.dnssecurity.pdnsdataloader.parsing.DAOConverterProcessor
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
+import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDnsDataValidator
+import com.hitnslab.dnssecurity.pdnsdataloader.processing.ByCauseSkipPolicy
+import com.hitnslab.dnssecurity.pdnsdataloader.processing.PDNSKafkaItemWriter
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
@@ -29,6 +28,7 @@ import org.springframework.batch.item.support.CompositeItemProcessor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.Resource
@@ -37,13 +37,15 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.core.task.TaskExecutor
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.transaction.CannotCreateTransactionException
-import org.springframework.transaction.PlatformTransactionManager
 
 
 @Configuration
 class LogCollectorJobConfig {
 
     private val logger = KotlinLogging.logger {}
+
+    @Autowired
+    lateinit var applicationContext: ApplicationContext
 
     @Autowired
     lateinit var jobRepository: JobRepository
@@ -57,11 +59,11 @@ class LogCollectorJobConfig {
     @Autowired
     lateinit var properties: PDnsJobProperties
 
-    @Bean("LogCollectorJob")
+    @Bean("logCollectorJob")
     fun job(
             masterStep: Step
     ): Job {
-        return jobBuilderFactory.get("LogCollector")
+        return jobBuilderFactory.get("logCollector")
                 .repository(jobRepository)
                 .start(masterStep)
                 .build()
@@ -74,8 +76,8 @@ class LogCollectorJobConfig {
             partitioner: Partitioner,
             partitionHandler: PartitionHandler
     ): Step {
-        return stepBuilderFactory.get("LogCollectorMasterStep")
-                .partitioner("LogCollectorSlaveStep", partitioner)
+        return stepBuilderFactory.get("logCollectorMasterStep")
+                .partitioner("logCollectorSlaveStep", partitioner)
                 .step(slaveStep)
                 .partitionHandler(partitionHandler)
                 .build()
@@ -83,14 +85,13 @@ class LogCollectorJobConfig {
 
     @Bean
     fun slaveStep(
-            transactionManager: PlatformTransactionManager,
             itemReader: ItemReader<PDnsData>,
-            itemWriter: ItemWriter<PDnsDataDAO>,
-            itemProcessor: ItemProcessor<PDnsData, PDnsDataDAO?>
+            itemWriter: ItemWriter<PDnsData>,
+            itemProcessor: ItemProcessor<PDnsData, PDnsData?>
     ): Step {
-        return stepBuilderFactory.get("LogCollectorSlaveStep")
-                .transactionManager(transactionManager)
-                .chunk<PDnsData, PDnsDataDAO>(properties.slaveStep!!.chunkSize)
+        val config = properties.slaveStep
+        val builder = stepBuilderFactory.get("LogCollectorSlaveStep")
+                .chunk<PDnsData, PDnsData>(properties.slaveStep!!.chunkSize)
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)
@@ -98,13 +99,19 @@ class LogCollectorJobConfig {
                 .skipPolicy(ByCauseSkipPolicy(PDNSParseException::class))
                 .retryLimit(properties.slaveStep!!.retryLimit)
                 .retry(CannotCreateTransactionException::class.java)
-                .build()
+        val manager = config?.transaction?.manager
+        if (manager != null) {
+            val transactionManager = applicationContext.getBean(manager)
+            builder.transactionManager(transactionManager)
+        }
+        return builder.build()
     }
 
     @Bean
     @ConditionalOnProperty(name = ["app.job.slave-step.item-writer.name"], havingValue = "kafka")
-    fun kafkaItemWriter(kafkaTemplate: KafkaTemplate<*, *>): ItemWriter<PDnsDataDAO> {
-        return PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsDataDAO>)
+    fun kafkaItemWriter(): ItemWriter<PDnsData> {
+        val kafkaTemplate = applicationContext.getBean(KafkaTemplate::class.java)
+        return PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
     }
 
     @Bean
@@ -112,6 +119,7 @@ class LogCollectorJobConfig {
             taskExecutor: TaskExecutor,
             slaveStep: Step
     ): PartitionHandler {
+        logger.info { "Using <${taskExecutor.javaClass.name}> as TaskExecutor for PartitionHandler" }
         val retVal = TaskExecutorPartitionHandler()
         retVal.setTaskExecutor(taskExecutor)
         retVal.step = slaveStep
@@ -134,10 +142,10 @@ class LogCollectorJobConfig {
     }
 
     @Bean
-    fun itemProcessor(): ItemProcessor<PDnsData, PDnsDataDAO?> {
-        val compositeItemProcessor = CompositeItemProcessor<PDnsData, PDnsDataDAO?>()
+    fun itemProcessor(): ItemProcessor<PDnsData, PDnsData?> {
+        val compositeItemProcessor = CompositeItemProcessor<PDnsData, PDnsData?>()
         val processors = mutableListOf<ItemProcessor<*, *>>()
-        processors.add(DAOConverterProcessor())
+        processors.add(PDnsDataValidator())
         compositeItemProcessor.setDelegates(processors)
         return compositeItemProcessor
     }
