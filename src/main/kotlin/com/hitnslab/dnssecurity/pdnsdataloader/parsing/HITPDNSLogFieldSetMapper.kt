@@ -102,7 +102,7 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 val replyData: String = conjunction.split(";")[0].trimEnd('.')
                 when (replyType) {
                     "CNAME" -> ret.cnames.add(replyData)
-                    "A" -> ret.ips.add(replyData)
+                    "A", "AAAA" -> ret.ips.add(replyData)
                 }
                 entryStart = entryEnd
             } while (entryStart < size - 1)
