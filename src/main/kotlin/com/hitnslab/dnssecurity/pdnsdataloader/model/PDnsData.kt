@@ -25,15 +25,4 @@ data class PDnsData(
     ) {
         cnames = mutableSetOf()
     }
-
-    constructor(data: PDnsDataDAO) : this(
-            data.queryTime,
-            data.domain,
-            data.queryType.name,
-            data.replyCode.name,
-            data.topPrivateDomain
-    ) {
-        ips.addAll(data.ips.mapNotNull(PDnsDataDAO.Companion::intToIp))
-        cnames = data.cnames
-    }
 }
