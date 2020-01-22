@@ -2,7 +2,7 @@ spring:
   task:
     execution:
       pool:
-        core-size: 12
+        core-size: 8
   kafka:
     producer:
       bootstrap-servers:
@@ -34,7 +34,7 @@ app:
     slave-step:
       #      transaction:
       #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
-      chunk-size: 120000
+      chunk-size: 10000
       retry-limit: 10
       item-reader:
         field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper

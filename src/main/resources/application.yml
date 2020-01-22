@@ -1,35 +1,45 @@
 spring:
+  task:
+    execution:
+      pool:
+        core-size: 8
+  kafka:
+    producer:
+      bootstrap-servers:
+        - kafka-headless:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.hitnslab.dnssecurity.pdnsdataloader.serdes.PDnsSerializer
+      acks: 1
+      compression-type: gzip
+      client-id: PDNS_DATA_LOADER
+    #      transaction-id-prefix: PDNS_DATA_LOADER
+    template:
+      default-topic: test.raw.pdns
   batch:
     initialize-schema: always
   datasource:
-    #    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    url: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
     #    username: sa
     #    password: sa
-    url: jdbc:mariadb://nistdev0:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
-    username: springbatch
-    password: HITnsLAB-springbatch!
     hikari:
       connection-timeout: 300000
       idle-timeout: 600000
       validation-timeout: 5000
       max-lifetime: 1800000
-      maximum-pool-size: 48
-      minimum-idle: 6
+      maximum-pool-size: 32
+      minimum-idle: 2
       pool-name: spring-batch-db-pool
 app:
-  datasource:
-    url: jdbc:omnisci:nistdev0:6274:omnisci
-    username: admin
-    password: HITnsLAB-admin!
-    driver-class-name: com.omnisci.jdbc.OmniSciDriver
-    hikari:
-      connection-timeout: 3600000
-      idle-timeout: 600000
-      validation-timeout: 10000
-      max-lifetime: 1800000
-      maximum-pool-size: 48
-      minimum-idle: 6
-      pool-name: omnisci-db-pool
+  job:
+    slave-step:
+      #      transaction:
+      #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
+      chunk-size: 10000
+      retry-limit: 10
+      item-reader:
+        field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
+      item-writer:
+        name: kafka
 # management:
 #   health:
 #     db:

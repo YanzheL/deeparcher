@@ -8,10 +8,8 @@ COPY target/*.jar ./app.jar
 
 ENV JVM_OPTS "-server -XX:+HeapDumpOnOutOfMemoryError -Xss256k -Xmx10g -XX:+UnlockExperimentalVMOptions -XX:+UseZGC -Xlog:gc*:gc.log"
 
-ENV JMX_OPTS "-Djava.rmi.server.hostname=127.0.0.1"
-
 ENV EXTRA_OPTS ""
 
 ENV JOB_PARAMETERS ""
 
-CMD java $JVM_OPTS $JMX_OPTS $EXTRA_OPTS -jar app.jar $JOB_PARAMETERS
+CMD java $JVM_OPTS $EXTRA_OPTS -jar app.jar $JOB_PARAMETERS
