@@ -3,6 +3,7 @@ package com.hitnslab.dnssecurity.pdnsdataloader.config
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
+import org.springframework.transaction.PlatformTransactionManager
 
 @ConfigurationProperties(prefix = "app.job")
 @Component
@@ -16,9 +17,12 @@ class PDnsJobProperties {
 
         var itemWriter: ItemWriter? = null
 
+        var transaction: Transaction? = null
+
         var chunkSize: Int = 100000
 
         var retryLimit: Int = 10
+
 
         class ItemReader {
             lateinit var fieldSetMapper: Class<PDNSLogFieldSetMapper>
@@ -26,6 +30,11 @@ class PDnsJobProperties {
 
         class ItemWriter {
             lateinit var name: String
+        }
+
+        class Transaction {
+            var enable: Boolean = false
+            var manager: Class<PlatformTransactionManager>? = null
         }
 
     }
