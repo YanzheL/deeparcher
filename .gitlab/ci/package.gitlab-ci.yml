@@ -15,13 +15,16 @@
         }
       }
       EOF
+      mkdir -p $CI_PROJECT_DIR/.kaniko
       cat <<-EOF > /kaniko/default-executor
       #!/busybox/sh
       /kaniko/executor \
-        --single-snapshot \
+        --digest-file /dev/termination-log \
         --cache \
         --cache-dir $CI_PROJECT_DIR/.kaniko \
         --context dir://$CI_PROJECT_DIR \
+        --build-arg HTTP_PROXY=http://v2ray:1081 \
+        --build-arg HTTPS_PROXY=http://v2ray:1081 \
         "\$@"
       EOF
       chmod +x /kaniko/default-executor
