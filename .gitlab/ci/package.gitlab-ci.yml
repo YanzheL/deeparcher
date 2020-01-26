@@ -1,4 +1,33 @@
-.build_image:
+.build_image_docker:
+  stage: package
+  image: library/docker:19.03.5
+  #  services:
+  #   - docker:19.03.5-dind
+  before_script:
+    - |
+      cat <<-EOF > /usr/local/bin/default-docker
+      #!/bin/sh
+      docker \
+        --tls \
+        "\$@"
+      EOF
+      chmod +x /usr/local/bin/default-docker
+    - mkdir -p /root/.docker
+    - wget -O /root/.docker/ca.pem http://seafile/seafhttp/files/e6556c44-add1-4972-a6df-f46a4516d52a/HIT_NIST_Root_CA.crt
+    - default-docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - ls -ah .
+  variables:
+    # Specify to Docker where to create the certificates, Docker will
+    # create them automatically on boot, and will create
+    # `/certs/client` that will be shared between the service and
+    # build container.
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_BUILDKIT: "1"
+    DOCKER_HOST: tcp://10.245.146.40:2376
+    DOCKER_DRIVER: overlay2
+    DOCKER_DEFAULT_BUILD_OPTS: --build-arg HTTP_PROXY=http://v2ray.production:1081 --build-arg HTTPS_PROXY=http://v2ray.production:1081
+
+.build_image_kaniko:
   stage: package
   image:
     name: gcr.azk8s.cn/kaniko-project/executor:debug-v0.16.0
@@ -33,21 +62,36 @@
     paths:
       - .kaniko
 
-.build_image_on_branch:
-  extends: .build_image
+#Build Branch Image Kaniko:
+#  extends: .build_image_kaniko
+#  script:
+#    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
+#  except:
+#    - master
+#  only:
+#    - branches
+#
+#Build Latest Image Kaniko:
+#  extends: .build_image_kaniko
+#  script:
+#    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:latest
+#  only:
+#    - master
+
+Build Branch Image Docker:
+  extends: .build_image_docker
   script:
-    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH} .
+    - default-docker push $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
+  except:
+    - master
   only:
     - branches
 
-.build_image_on_tag:
-  extends: .build_image
+Build Latest Image Docker:
+  extends: .build_image_docker
   script:
-    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:latest .
+    - default-docker push $CI_REGISTRY_IMAGE:latest
   only:
-    - tags
-
-Build Nightly Image:
-  extends: .build_image_on_branch
-  except:
     - master
