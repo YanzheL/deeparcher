@@ -13,7 +13,7 @@
       EOF
       chmod +x /usr/local/bin/default-docker
     - mkdir -p /root/.docker
-    - wget -O /root/.docker/ca.pem http://seafile/seafhttp/files/e6556c44-add1-4972-a6df-f46a4516d52a/HIT_NIST_Root_CA.crt
+    - wget -O /root/.docker/ca.pem http://seafile/d/37b586af5a1241b5bfc8/files/?p=%2FHIT_NIST_Root_CA.crt&dl=1
     - default-docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - ls -ah .
   variables:
