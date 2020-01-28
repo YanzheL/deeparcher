@@ -87,6 +87,8 @@ Build Branch Image Docker:
     - master
   only:
     - branches
+  needs:
+    - Maven Build
 
 Build Latest Image Docker:
   extends: .build_image_docker
@@ -95,6 +97,8 @@ Build Latest Image Docker:
     - default-docker push $CI_REGISTRY_IMAGE:latest
   only:
     - master
+  needs:
+    - Maven Build
 
 Build Graal Native Image:
   image: oracle/graalvm-ce:19.3.1-java11
@@ -116,6 +120,8 @@ Build Graal Native Image:
   cache:
     paths:
       - native-image-*.jar
+  needs:
+    - Maven Build Graal
   artifacts:
     paths:
       - target/
