@@ -38,14 +38,6 @@
       <groupId>org.springframework.boot</groupId>
     </dependency>
     <dependency>
-      <artifactId>spring-boot-starter-data-jdbc</artifactId>
-      <groupId>org.springframework.boot</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>kafka-streams</artifactId>
-      <groupId>org.apache.kafka</groupId>
-    </dependency>
-    <dependency>
       <artifactId>kotlin-reflect</artifactId>
       <groupId>org.jetbrains.kotlin</groupId>
     </dependency>
@@ -63,12 +55,6 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <groupId>org.springframework.boot</groupId>
       <optional>true</optional>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.omnisci/omnisci-jdbc -->
-    <dependency>
-      <artifactId>omnisci-jdbc</artifactId>
-      <groupId>com.omnisci</groupId>
-      <version>5.0.0</version>
     </dependency>
     <dependency>
       <artifactId>kotlin-logging</artifactId>
@@ -95,7 +81,6 @@
     <dependency>
       <artifactId>HikariCP</artifactId>
       <groupId>com.zaxxer</groupId>
-      <version>3.4.1</version>
     </dependency>
     <!--Kafka-->
     <dependency>
@@ -105,11 +90,6 @@
     <!--Protobuf-->
     <dependency>
       <artifactId>protobuf-java</artifactId>
-      <groupId>com.google.protobuf</groupId>
-      <version>${protobuf.version}</version>
-    </dependency>
-    <dependency>
-      <artifactId>protobuf-java-util</artifactId>
       <groupId>com.google.protobuf</groupId>
       <version>${protobuf.version}</version>
     </dependency>
