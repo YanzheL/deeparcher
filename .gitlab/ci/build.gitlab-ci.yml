@@ -19,4 +19,15 @@ Maven Build:
     - mvn $MAVEN_CLI_OPTS -DskipTests package
   artifacts:
     paths:
-      - target/
+      - target/*.jar
+
+Maven Build Graal:
+  extends: .maven_ctx
+  stage: build
+  script:
+    - mvn help:evaluate -Dexpression=project.version -q -DforceStdout > VERSION
+    - mvn $MAVEN_CLI_OPTS -DskipTests -Pgraal -DskipNativeImage package
+  artifacts:
+    paths:
+      - target/*.jar
+      - VERSION

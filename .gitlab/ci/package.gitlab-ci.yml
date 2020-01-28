@@ -95,3 +95,27 @@ Build Latest Image Docker:
     - default-docker push $CI_REGISTRY_IMAGE:latest
   only:
     - master
+
+Build Graal Native Image:
+  image: oracle/graalvm-ce:19.3.1-java11
+  stage: package
+  allow_failure: true
+  variables:
+    NATIVE_IMAGE_VERSION: 19.3.1 # ${JAVA_HOME:23:-1}
+  before_script:
+    - |
+      #!/bin/bash
+      if [[ ! -f "native-image-${NATIVE_IMAGE_VERSION}.jar" ]]
+      then
+        ALL_PROXY=http://v2ray.production:1081 \
+        curl -Lo native-image-${NATIVE_IMAGE_VERSION}.jar "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${NATIVE_IMAGE_VERSION}/native-image-installable-svm-java11-linux-amd64-${NATIVE_IMAGE_VERSION}.jar"
+      fi
+      gu -L install native-image-${NATIVE_IMAGE_VERSION}.jar
+  script:
+    - ./graal-compile.sh
+  cache:
+    paths:
+      - native-image-*.jar
+  artifacts:
+    paths:
+      - target/
