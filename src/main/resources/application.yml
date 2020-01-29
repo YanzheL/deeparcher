@@ -4,6 +4,15 @@ spring:
       pool:
         core-size: 8
   kafka:
+    ssl:
+      protocol: TLSv1.2
+      key-store-type: JKS
+      key-store-location: kafka-user-test.jks
+      key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+      #      key-password: $ Not needed
+      trust-store-type: JKS
+      trust-store-location: kafka-user-test.jks
+      trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     producer:
       bootstrap-servers:
         - kafka-headless:29092
@@ -15,6 +24,9 @@ spring:
     #      transaction-id-prefix: PDNS_DATA_LOADER
     template:
       default-topic: test.raw.pdns
+    properties:
+      security.protocol: SSL
+  #      ssl.endpoint.identification.algorithm: ""
   batch:
     initialize-schema: always
   datasource:
