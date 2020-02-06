@@ -62,6 +62,10 @@
     paths:
       - .kaniko
 
+.build_image_maven:
+  extends: .maven_ctx
+  stage: package
+
 #Build Branch Image Kaniko:
 #  extends: .build_image_kaniko
 #  script:
@@ -90,11 +94,41 @@ Build Branch Image Docker:
   needs:
     - Maven Build
 
+Build Branch Slim Image:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}-slim
+  except:
+    - master
+  only:
+    - branches
+  needs:
+    - Maven Build
+
 Build Latest Image Docker:
   extends: .build_image_docker
   script:
     - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:latest .
     - default-docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - master
+  needs:
+    - Maven Build
+
+Build Latest Slim Image:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}-slim
   only:
     - master
   needs:

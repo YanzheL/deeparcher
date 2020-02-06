@@ -19,7 +19,7 @@ Maven Build:
     - mvn $MAVEN_CLI_OPTS -DskipTests package
   artifacts:
     paths:
-      - target/*.jar
+      - target/
 
 Maven Build Graal:
   extends: .maven_ctx
@@ -29,5 +29,5 @@ Maven Build Graal:
     - mvn $MAVEN_CLI_OPTS -DskipTests -Pgraal -DskipNativeImage package
   artifacts:
     paths:
-      - target/*.jar
+      - target/
       - VERSION
