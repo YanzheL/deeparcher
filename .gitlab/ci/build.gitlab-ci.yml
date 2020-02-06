@@ -8,6 +8,20 @@
     # when running from the command line.
     # `installAtEnd` and `deployAtEnd` are only effective with recent version of the corresponding plugins.
     MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+  before_script:
+    - |
+      cat <<-EOF > .m2/settings.xml
+      <settings>
+        <mirrors>
+          <mirror>
+            <id>aliyun-maven</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Aliyun Mirrors</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+          </mirror>
+        </mirrors>
+      </settings>
+      EOF
   cache:
     paths:
       - .m2/repository/
