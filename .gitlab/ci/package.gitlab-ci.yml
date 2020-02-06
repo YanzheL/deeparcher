@@ -67,6 +67,7 @@
   stage: package
   cache:
     paths:
+      - .m2/repository/
       - .jib/
 
 #Build Branch Image Kaniko:
