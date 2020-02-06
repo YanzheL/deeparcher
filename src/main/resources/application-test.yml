@@ -4,18 +4,18 @@ spring:
       pool:
         core-size: 8
   kafka:
+    bootstrap-servers:
+      - kafka-kafka-bootstrap:9092
     ssl:
       protocol: TLSv1.2
-      key-store-type: JKS
-      key-store-location: kafka-user-test.jks
+      key-store-type: PKCS12
+      key-store-location: kafka-user-test.p12
       key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
       #      key-password: $ Not needed
-      trust-store-type: JKS
-      trust-store-location: kafka-user-test.jks
+      trust-store-type: PKCS12
+      trust-store-location: kafka-user-test.p12
       trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     producer:
-      bootstrap-servers:
-        - kafka-headless:29092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: com.hitnslab.dnssecurity.pdnsdataloader.serdes.PDnsSerializer
       acks: 1
