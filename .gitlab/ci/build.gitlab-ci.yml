@@ -29,5 +29,5 @@ Maven Build Graal:
     - mvn $MAVEN_CLI_OPTS -DskipTests -Pgraal -DskipNativeImage package
   artifacts:
     paths:
-      - target/
+      - target/*.jar
       - VERSION
