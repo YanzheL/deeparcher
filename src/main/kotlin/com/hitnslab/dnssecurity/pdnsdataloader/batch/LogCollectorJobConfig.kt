@@ -11,6 +11,7 @@ import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
+import org.springframework.batch.core.configuration.annotation.JobScope
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.partition.PartitionHandler
@@ -128,7 +129,7 @@ class LogCollectorJobConfig {
         return retVal
     }
 
-    @StepScope
+    @JobScope
     @Bean
     fun partitioner(
             @Value("#{jobParameters['pattern']}") pattern: String
