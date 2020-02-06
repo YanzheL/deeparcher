@@ -49,7 +49,7 @@
             <jvmFlags>
               <jvmFlag>-server</jvmFlag>
               <jvmFlag>-Xmx4g</jvmFlag>
-              <jvmFlag>-Xlog:gc*:gc.log</jvmFlag>
+              <jvmFlag>-Xlog:gc*:/tmp/gc.log</jvmFlag>
             </jvmFlags>
           </container>
         </configuration>
