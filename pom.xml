@@ -39,7 +39,7 @@
             <labels>
               <label>maintainer="Yanzhe Lee &lt;lee.yanzhe@yanzhe.org&gt;"</label>
             </labels>
-            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+<!--            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
             <workingDirectory>/app</workingDirectory>
             <format>OCI</format>
             <user>1001:1001</user>
@@ -48,8 +48,6 @@
             </volumes>
             <jvmFlags>
               <jvmFlag>-server</jvmFlag>
-              <jvmFlag>-Xmx4g</jvmFlag>
-              <jvmFlag>-Xlog:gc*:/tmp/gc.log</jvmFlag>
             </jvmFlags>
           </container>
         </configuration>

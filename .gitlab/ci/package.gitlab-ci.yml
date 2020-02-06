@@ -60,11 +60,14 @@
     - find . -maxdepth 3
   cache:
     paths:
-      - .kaniko
+      - .kaniko/
 
 .build_image_maven:
   extends: .maven_ctx
   stage: package
+  cache:
+    paths:
+      - .jib/
 
 #Build Branch Image Kaniko:
 #  extends: .build_image_kaniko
@@ -100,6 +103,9 @@ Build Branch Slim Image:
     - |
       mvn $MAVEN_CLI_OPTS \
         compile jib:build \
+        -Djib.console=plain \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
         -Djib.to.image=$CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}-slim
@@ -126,9 +132,12 @@ Build Latest Slim Image:
     - |
       mvn $MAVEN_CLI_OPTS \
         compile jib:build \
+        -Djib.console=plain \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}-slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE:slim
   only:
     - master
   needs:
