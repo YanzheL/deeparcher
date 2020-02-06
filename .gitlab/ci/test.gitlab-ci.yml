@@ -2,6 +2,6 @@ Maven Test:
   extends: .maven_ctx
   stage: test
   script:
-    - mvn $MAVEN_CLI_OPTS -Dspring.profiles.active=test test
+    - mvn $MAVEN_CLI_OPTS -Dspring.profiles.active=test -Dtest=*UnitTests test
   needs:
     - Maven Build
