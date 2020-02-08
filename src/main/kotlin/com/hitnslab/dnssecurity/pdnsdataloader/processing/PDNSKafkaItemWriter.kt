@@ -49,6 +49,6 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : 
                 future.addCallback(itemCallback)
             }
         }
-        logger.info { "ItemWriter wrote ${items.size} items" }
+//        logger.info { "ItemWriter wrote ${items.size} items" }
     }
 }
