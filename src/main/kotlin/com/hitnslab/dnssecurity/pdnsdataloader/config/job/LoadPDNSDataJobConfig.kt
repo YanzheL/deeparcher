@@ -8,6 +8,7 @@ import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDnsDataValidator
 import com.hitnslab.dnssecurity.pdnsdataloader.processing.ByCauseSkipPolicy
 import com.hitnslab.dnssecurity.pdnsdataloader.processing.PDNSKafkaItemWriter
 import mu.KotlinLogging
+import org.apache.kafka.common.serialization.Serializer
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
@@ -23,11 +24,16 @@ import org.springframework.batch.item.file.transform.DefaultFieldSet
 import org.springframework.batch.item.support.CompositeItemProcessor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.core.io.UrlResource
+import org.springframework.kafka.core.DefaultKafkaProducerFactory
 import org.springframework.kafka.core.KafkaTemplate
+import org.springframework.kafka.core.ProducerFactory
 import org.springframework.transaction.CannotCreateTransactionException
+import java.util.function.Supplier
 
 class LoadPDNSDataJobConfig {
 
@@ -102,6 +108,24 @@ class LoadPDNSDataJobConfig {
         processors.add(PDnsDataValidator())
         compositeItemProcessor.setDelegates(processors)
         return compositeItemProcessor
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "app.job.pdns.step.item-writer", name = ["name"], havingValue = "kafka")
+    fun kafkaProducerFactory(
+            properties: KafkaProperties
+    ): ProducerFactory<String, PDnsData>? {
+        val factory = DefaultKafkaProducerFactory<String, PDnsData>(
+                properties.buildProducerProperties(),
+                Supplier<Serializer<String>> { properties.producer.keySerializer.getConstructor().newInstance() as Serializer<String> },
+                Supplier<Serializer<PDnsData>> { properties.producer.valueSerializer.getConstructor().newInstance() as Serializer<PDnsData> }
+        )
+        val transactionIdPrefix: String? = properties.producer.transactionIdPrefix
+        if (transactionIdPrefix != null) {
+            factory.setTransactionIdPrefix(transactionIdPrefix)
+        }
+        factory.setProducerPerThread(true)
+        return factory
     }
 
     @StepScope
