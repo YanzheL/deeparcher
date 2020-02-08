@@ -43,15 +43,16 @@ spring:
       pool-name: spring-batch-db-pool
 app:
   job:
-    slave-step:
-      #      transaction:
-      #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
-      chunk-size: 10000
-      retry-limit: 10
-      item-reader:
-        field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
-      item-writer:
-        name: kafka
+    pdns:
+      step:
+        #      transaction:
+        #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
+        chunk-size: 10000
+        retry-limit: 10
+        item-reader:
+          field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
+        item-writer:
+          name: kafka
 # management:
 #   health:
 #     db:

@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
 import org.springframework.transaction.PlatformTransactionManager
 
-@ConfigurationProperties(prefix = "app.job")
+@ConfigurationProperties(prefix = "app.job.pdns")
 @Component
 class PDnsJobProperties {
 
