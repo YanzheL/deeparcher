@@ -89,6 +89,7 @@ class LoadPDNSDataJobConfig {
             val itemWriter = PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
             itemWriter.successInterval = config.metrics.successInterval
             itemWriter.failureInterval = config.metrics.failureInterval
+            itemWriter.metricsEnabled = config.metrics.enable
             return itemWriter
         }
         throw NotImplementedError("Unknown ItemWriter <$name>")

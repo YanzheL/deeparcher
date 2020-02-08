@@ -34,6 +34,7 @@ class PDnsJobProperties {
             var metrics = Metrics()
 
             class Metrics {
+                var enable = false
                 var successInterval = 100000
                 var failureInterval = 10000
             }

@@ -60,6 +60,7 @@ app:
         item-writer:
           name: kafka
           metrics:
+            enable: false
             success-interval: 100000
             failure-interval: 1000
 # management:

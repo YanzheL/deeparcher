@@ -17,6 +17,8 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : 
 
     var failedCount = AtomicInteger(0)
 
+    var metricsEnabled = false
+
     var successInterval = 100000
 
     var failureInterval = 100000
@@ -39,13 +41,14 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : 
     }
 
     override fun write(items: MutableList<out PDnsData>) {
-        val futures = items
-                .forEach {
-                    //            val headers = mutableListOf<Header>()
-                    val record = ProducerRecord<String, PDnsData>(kafkaTemplate.defaultTopic, null, it.queryTime.epochSecond, it.domain, it)
-                    val future = kafkaTemplate.send(record)
-                    future.addCallback(itemCallback)
-                }
-
+        items.forEach {
+            //            val headers = mutableListOf<Header>()
+            val record = ProducerRecord<String, PDnsData>(kafkaTemplate.defaultTopic, null, it.queryTime.epochSecond, it.domain, it)
+            val future = kafkaTemplate.send(record)
+            if (metricsEnabled) {
+                future.addCallback(itemCallback)
+            }
+        }
+        logger.info { "ItemWriter wrote ${items.size} items" }
     }
 }
