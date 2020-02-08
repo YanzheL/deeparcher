@@ -1,6 +1,8 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.config.job
 
 import com.hitnslab.dnssecurity.pdnsdataloader.batch.FileHashTasklet
+import com.hitnslab.dnssecurity.pdnsdataloader.batch.execute.DefaultJobExecutor
+import com.hitnslab.dnssecurity.pdnsdataloader.batch.launch.AggressiveJobLauncher
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.JobParametersBuilder
@@ -12,6 +14,7 @@ import org.springframework.batch.core.listener.ExecutionContextPromotionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
+import org.springframework.core.task.SyncTaskExecutor
 
 class FileHashJobConfig {
 
@@ -51,7 +54,7 @@ class FileHashJobConfig {
     }
 
     @Bean
-    fun step1(): Step {
+    fun step1(aggressiveJobLauncher: AggressiveJobLauncher): Step {
         val targetJob = jobRegistry.getJob("LOAD_PDNS_DATA")
         return stepBuilderFactory.get("FILE_HASH_STEP1")
                 .job(targetJob)
@@ -61,7 +64,15 @@ class FileHashJobConfig {
                             .addString("file", stepExecution.jobParameters.getString("file")!!, false)
                             .toJobParameters()
                 }
+                .launcher(aggressiveJobLauncher)
                 .build()
+    }
+
+    @Bean
+    fun aggressiveJobLauncher(): AggressiveJobLauncher {
+        val launcher = AggressiveJobLauncher(jobRepository)
+        launcher.jobExecutor = DefaultJobExecutor(jobRepository, SyncTaskExecutor())
+        return launcher
     }
 
     @Bean
