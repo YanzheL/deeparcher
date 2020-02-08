@@ -16,12 +16,12 @@ spring:
       trust-store-location: kafka-user-test.p12
       trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.hitnslab.dnssecurity.pdnsdataloader.serdes.PDnsSerializer
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #      value-serializer: com.hitnslab.dnssecurity.pdnsdataloader.serdes.PDnsSerializer
       acks: 1
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
-#      transaction-id-prefix: PDNS_DATA_LOADER
+      #      transaction-id-prefix: PDNS_DATA_LOADER
       batch-size: 4096000
       properties:
         linger.ms: 10000

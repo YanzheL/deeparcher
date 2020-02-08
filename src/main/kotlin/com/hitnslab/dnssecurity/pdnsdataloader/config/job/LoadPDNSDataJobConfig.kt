@@ -7,8 +7,10 @@ import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDnsDataValidator
 import com.hitnslab.dnssecurity.pdnsdataloader.processing.ByCauseSkipPolicy
 import com.hitnslab.dnssecurity.pdnsdataloader.processing.PDNSKafkaItemWriter
+import com.hitnslab.dnssecurity.pdnsdataloader.serdes.PDnsSerializer
 import mu.KotlinLogging
 import org.apache.kafka.common.serialization.Serializer
+import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
@@ -117,8 +119,8 @@ class LoadPDNSDataJobConfig {
     ): ProducerFactory<String, PDnsData>? {
         val factory = DefaultKafkaProducerFactory<String, PDnsData>(
                 properties.buildProducerProperties(),
-                Supplier<Serializer<String>> { properties.producer.keySerializer.getConstructor().newInstance() as Serializer<String> },
-                Supplier<Serializer<PDnsData>> { properties.producer.valueSerializer.getConstructor().newInstance() as Serializer<PDnsData> }
+                Supplier<Serializer<String>> { StringSerializer() },
+                Supplier<Serializer<PDnsData>> { PDnsSerializer() }
         )
         val transactionIdPrefix: String? = properties.producer.transactionIdPrefix
         if (transactionIdPrefix != null) {
