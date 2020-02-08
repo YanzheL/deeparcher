@@ -21,6 +21,10 @@ spring:
       acks: 1
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
+      batch-size: 4096000
+      properties:
+        linger.ms: 10000
+        max.request.size: 32000000
     #      transaction-id-prefix: PDNS_DATA_LOADER
     template:
       default-topic: test.raw.pdns
