@@ -9,17 +9,17 @@ import org.springframework.transaction.PlatformTransactionManager
 @Component
 class PDnsJobProperties {
 
-    var slaveStep: SlaveStep? = null
+    var step: Step = Step()
 
-    class SlaveStep {
+    class Step {
 
-        var itemReader: ItemReader? = null
+        var itemReader: ItemReader = ItemReader()
 
-        var itemWriter: ItemWriter? = null
+        var itemWriter: ItemWriter = ItemWriter()
 
-        var transaction: Transaction? = null
+        var transaction: Transaction = Transaction()
 
-        var chunkSize: Int = 100000
+        var chunkSize: Int = 10000
 
         var retryLimit: Int = 10
 
