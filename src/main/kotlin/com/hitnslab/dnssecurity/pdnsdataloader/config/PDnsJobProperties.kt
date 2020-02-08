@@ -30,6 +30,13 @@ class PDnsJobProperties {
 
         class ItemWriter {
             lateinit var name: String
+
+            var metrics = Metrics()
+
+            class Metrics {
+                var successInterval = 100000
+                var failureInterval = 10000
+            }
         }
 
         class Transaction {

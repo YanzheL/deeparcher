@@ -59,6 +59,9 @@ app:
           field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
         item-writer:
           name: kafka
+          metrics:
+            success-interval: 100000
+            failure-interval: 1000
 # management:
 #   health:
 #     db:

@@ -82,10 +82,14 @@ class LoadPDNSDataJobConfig {
 
     @Bean
     fun itemWriter(): ItemWriter<PDnsData> {
-        val name = properties.step.itemWriter.name
+        val config = properties.step.itemWriter
+        val name = config.name
         if (name == "kafka") {
             val kafkaTemplate = applicationContext.getBean(KafkaTemplate::class.java)
-            return PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
+            val itemWriter = PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
+            itemWriter.successInterval = config.metrics.successInterval
+            itemWriter.failureInterval = config.metrics.failureInterval
+            return itemWriter
         }
         throw NotImplementedError("Unknown ItemWriter <$name>")
     }
