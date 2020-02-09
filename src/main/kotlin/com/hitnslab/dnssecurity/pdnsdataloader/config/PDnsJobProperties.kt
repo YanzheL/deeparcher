@@ -5,21 +5,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
 import org.springframework.transaction.PlatformTransactionManager
 
-@ConfigurationProperties(prefix = "app.job")
+@ConfigurationProperties(prefix = "app.job.pdns")
 @Component
 class PDnsJobProperties {
 
-    var slaveStep: SlaveStep? = null
+    var step: Step = Step()
 
-    class SlaveStep {
+    class Step {
 
-        var itemReader: ItemReader? = null
+        var itemReader: ItemReader = ItemReader()
 
-        var itemWriter: ItemWriter? = null
+        var itemWriter: ItemWriter = ItemWriter()
 
-        var transaction: Transaction? = null
+        var transaction: Transaction = Transaction()
 
-        var chunkSize: Int = 100000
+        var chunkSize: Int = 10000
 
         var retryLimit: Int = 10
 
@@ -30,6 +30,14 @@ class PDnsJobProperties {
 
         class ItemWriter {
             lateinit var name: String
+
+            var metrics = Metrics()
+
+            class Metrics {
+                var enable = false
+                var successInterval = 100000
+                var failureInterval = 10000
+            }
         }
 
         class Transaction {

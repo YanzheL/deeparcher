@@ -1,23 +1,18 @@
-package com.hitnslab.dnssecurity.pdnsdataloader.batch
+package com.hitnslab.dnssecurity.pdnsdataloader.config.job
 
+import com.hitnslab.dnssecurity.pdnsdataloader.batch.ByCauseSkipPolicy
+import com.hitnslab.dnssecurity.pdnsdataloader.batch.PDNSKafkaItemWriter
 import com.hitnslab.dnssecurity.pdnsdataloader.config.PDnsJobProperties
 import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDnsDataValidator
-import com.hitnslab.dnssecurity.pdnsdataloader.processing.ByCauseSkipPolicy
-import com.hitnslab.dnssecurity.pdnsdataloader.processing.PDNSKafkaItemWriter
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
-import org.springframework.batch.core.configuration.annotation.JobScope
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepScope
-import org.springframework.batch.core.partition.PartitionHandler
-import org.springframework.batch.core.partition.support.MultiResourcePartitioner
-import org.springframework.batch.core.partition.support.Partitioner
-import org.springframework.batch.core.partition.support.TaskExecutorPartitionHandler
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.item.ItemProcessor
 import org.springframework.batch.item.ItemReader
@@ -28,20 +23,14 @@ import org.springframework.batch.item.file.transform.DefaultFieldSet
 import org.springframework.batch.item.support.CompositeItemProcessor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.Resource
-import org.springframework.core.io.UrlResource
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver
-import org.springframework.core.task.TaskExecutor
+import org.springframework.core.io.FileSystemResource
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.transaction.CannotCreateTransactionException
+import java.nio.file.Path
 
-
-@Configuration
-class LogCollectorJobConfig {
+class LoadPDNSDataJobConfig {
 
     private val logger = KotlinLogging.logger {}
 
@@ -60,47 +49,31 @@ class LogCollectorJobConfig {
     @Autowired
     lateinit var properties: PDnsJobProperties
 
-    @Bean("logCollectorJob")
-    fun job(
-            masterStep: Step
-    ): Job {
-        return jobBuilderFactory.get("logCollector")
+    @Bean
+    fun job(step: Step): Job {
+        return jobBuilderFactory.get("LOAD_PDNS_DATA")
                 .repository(jobRepository)
-                .start(masterStep)
-                .build()
-    }
-
-
-    @Bean
-    fun masterStep(
-            slaveStep: Step,
-            partitioner: Partitioner,
-            partitionHandler: PartitionHandler
-    ): Step {
-        return stepBuilderFactory.get("logCollectorMasterStep")
-                .partitioner("logCollectorSlaveStep", partitioner)
-                .step(slaveStep)
-                .partitionHandler(partitionHandler)
+                .start(step)
                 .build()
     }
 
     @Bean
-    fun slaveStep(
+    fun step(
             itemReader: ItemReader<PDnsData>,
             itemWriter: ItemWriter<PDnsData>,
             itemProcessor: ItemProcessor<PDnsData, PDnsData?>
     ): Step {
-        val config = properties.slaveStep
-        val builder = stepBuilderFactory.get("LogCollectorSlaveStep")
-                .chunk<PDnsData, PDnsData>(properties.slaveStep!!.chunkSize)
+        val config = properties.step
+        val builder = stepBuilderFactory.get("LOAD_PDNS_DATA_STEP0")
+                .chunk<PDnsData, PDnsData>(properties.step.chunkSize)
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)
                 .faultTolerant()
                 .skipPolicy(ByCauseSkipPolicy(PDNSParseException::class))
-                .retryLimit(properties.slaveStep!!.retryLimit)
+                .retryLimit(properties.step.retryLimit)
                 .retry(CannotCreateTransactionException::class.java)
-        val manager = config?.transaction?.manager
+        val manager = config.transaction.manager
         if (manager != null) {
             val transactionManager = applicationContext.getBean(manager)
             builder.transactionManager(transactionManager)
@@ -109,37 +82,18 @@ class LogCollectorJobConfig {
     }
 
     @Bean
-    @ConditionalOnProperty(name = ["app.job.slave-step.item-writer.name"], havingValue = "kafka")
-    fun kafkaItemWriter(): ItemWriter<PDnsData> {
-        val kafkaTemplate = applicationContext.getBean(KafkaTemplate::class.java)
-        return PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
-    }
-
-    @Bean
-    fun partitionHandler(
-            taskExecutor: TaskExecutor,
-            slaveStep: Step
-    ): PartitionHandler {
-        logger.info { "Using <${taskExecutor.javaClass.name}> as TaskExecutor for PartitionHandler" }
-        val retVal = TaskExecutorPartitionHandler()
-        retVal.setTaskExecutor(taskExecutor)
-        retVal.step = slaveStep
-        retVal.gridSize = 24
-        retVal.afterPropertiesSet()
-        return retVal
-    }
-
-    @JobScope
-    @Bean
-    fun partitioner(
-            @Value("#{jobParameters['pattern']}") pattern: String
-    ): Partitioner {
-        val partitioner = MultiResourcePartitioner()
-        val resolver = PathMatchingResourcePatternResolver()
-        val resources = resolver.getResources(pattern)
-        resources.sortBy(Resource::getFilename)
-        partitioner.setResources(resources)
-        return partitioner
+    fun itemWriter(): ItemWriter<PDnsData> {
+        val config = properties.step.itemWriter
+        val name = config.name
+        if (name == "kafka") {
+            val kafkaTemplate = applicationContext.getBean(KafkaTemplate::class.java)
+            val itemWriter = PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
+            itemWriter.successInterval = config.metrics.successInterval
+            itemWriter.failureInterval = config.metrics.failureInterval
+            itemWriter.metricsEnabled = config.metrics.enable
+            return itemWriter
+        }
+        throw NotImplementedError("Unknown ItemWriter <$name>")
     }
 
     @Bean
@@ -154,13 +108,13 @@ class LogCollectorJobConfig {
     @StepScope
     @Bean
     fun itemReader(
-            @Value("#{stepExecutionContext['fileName']}") filename: String,
+            @Value("#{jobParameters['file']}") filename: String,
             fieldSetMapper: PDNSLogFieldSetMapper
     ): FlatFileItemReader<PDnsData> {
         logger.info { "Reading file <$filename> ..." }
         return FlatFileItemReaderBuilder<PDnsData>()
                 .name("reader")
-                .resource(UrlResource(filename))
+                .resource(FileSystemResource(Path.of(filename)))
                 .fieldSetMapper(fieldSetMapper)
                 .lineTokenizer { line: String? ->
                     if (line == null)
@@ -173,6 +127,6 @@ class LogCollectorJobConfig {
 
     @Bean
     fun fieldSetMapper(): PDNSLogFieldSetMapper {
-        return properties.slaveStep!!.itemReader!!.fieldSetMapper.getConstructor().newInstance()
+        return properties.step.itemReader.fieldSetMapper.getConstructor().newInstance()
     }
 }

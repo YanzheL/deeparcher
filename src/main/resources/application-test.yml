@@ -3,9 +3,10 @@ spring:
     execution:
       pool:
         core-size: 8
+        max-size: 8
   kafka:
     bootstrap-servers:
-      - kafka-kafka-bootstrap:9092
+      - kafka-kafka-bootstrap:9093
     ssl:
       protocol: TLSv1.2
       key-store-type: PKCS12
@@ -21,9 +22,11 @@ spring:
       acks: 1
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
-      batch-size: 1000000
+      #      transaction-id-prefix: PDNS_DATA_LOADER
+      batch-size: 500000
       properties:
         linger.ms: 10000
+    #        max.request.size: 32000000
     template:
       default-topic: test.raw.pdns
     properties:
@@ -31,6 +34,8 @@ spring:
   #      ssl.endpoint.identification.algorithm: ""
   batch:
     initialize-schema: always
+    job:
+      enabled: false  # Disable built-in CommandLineRunner
   datasource:
     url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
     username: sa
@@ -45,15 +50,20 @@ spring:
       pool-name: spring-batch-db-pool
 app:
   job:
-    slave-step:
-      #      transaction:
-      #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
-      chunk-size: 10000
-      retry-limit: 10
-      item-reader:
-        field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
-      item-writer:
-        name: kafka
+    pdns:
+      step:
+        #      transaction:
+        #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
+        chunk-size: 5000
+        retry-limit: 10
+        item-reader:
+          field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
+        item-writer:
+          name: kafka
+          metrics:
+            enable: true
+            success-interval: 100000
+            failure-interval: 1000
 # management:
 #   health:
 #     db:
