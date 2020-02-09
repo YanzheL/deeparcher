@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.batch.JobExecutionEvent
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.ApplicationEventPublisherAware
+import org.springframework.core.io.Resource
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.stereotype.Component
@@ -52,6 +53,7 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
     protected fun buildJobParameters(properties: Properties?): List<JobParameters> {
         val pattern = properties!!["pattern"].toString()
         val resources = PathMatchingResourcePatternResolver().getResources(pattern)
+        resources.sortBy(Resource::getURI)
         val allParameters = mutableListOf<JobParameters>()
         for (resource in resources) {
             val path = resource.file.path
