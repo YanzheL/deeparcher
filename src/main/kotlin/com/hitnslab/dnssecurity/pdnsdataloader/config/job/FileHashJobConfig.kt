@@ -14,7 +14,7 @@ import org.springframework.batch.core.listener.ExecutionContextPromotionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
-import org.springframework.core.task.TaskExecutor
+import org.springframework.core.task.SyncTaskExecutor
 
 class FileHashJobConfig {
 
@@ -69,7 +69,8 @@ class FileHashJobConfig {
     }
 
     @Bean
-    fun aggressiveJobLauncher(jobStepTaskExecutor: TaskExecutor): AggressiveJobLauncher {
+    fun aggressiveJobLauncher(): AggressiveJobLauncher {
+        val jobStepTaskExecutor = SyncTaskExecutor()
         val launcher = AggressiveJobLauncher(jobRepository)
         launcher.jobExecutor = DefaultJobExecutor(jobRepository, jobStepTaskExecutor)
         return launcher
