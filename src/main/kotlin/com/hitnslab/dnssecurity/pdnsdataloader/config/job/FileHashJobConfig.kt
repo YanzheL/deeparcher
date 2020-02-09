@@ -13,8 +13,8 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.listener.ExecutionContextPromotionListener
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.task.TaskExecutorBuilder
 import org.springframework.context.annotation.Bean
+import org.springframework.core.task.TaskExecutor
 
 class FileHashJobConfig {
 
@@ -69,15 +69,20 @@ class FileHashJobConfig {
     }
 
     @Bean
-    fun aggressiveJobLauncher(taskExecutorBuilder: TaskExecutorBuilder): AggressiveJobLauncher {
-        val executor = taskExecutorBuilder
-                .threadNamePrefix("job-step-")
-                .build()
-        executor.initialize()
+    fun aggressiveJobLauncher(jobStepTaskExecutor: TaskExecutor): AggressiveJobLauncher {
         val launcher = AggressiveJobLauncher(jobRepository)
-        launcher.jobExecutor = DefaultJobExecutor(jobRepository, executor)
+        launcher.jobExecutor = DefaultJobExecutor(jobRepository, jobStepTaskExecutor)
         return launcher
     }
+
+//    @Bean
+//    fun jobStepTaskExecutor(taskExecutorBuilder: TaskExecutorBuilder): TaskExecutor {
+//        val executor = taskExecutorBuilder
+//                .threadNamePrefix("job-step-")
+//                .build()
+//        executor.initialize()
+//        return executor
+//    }
 
     @Bean
     fun promotionListener(): ExecutionContextPromotionListener {

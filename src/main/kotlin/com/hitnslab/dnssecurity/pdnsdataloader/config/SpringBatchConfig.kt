@@ -30,7 +30,7 @@ class SpringBatchConfig : DefaultBatchConfigurer() {
     private val logger = KotlinLogging.logger {}
 
     @Autowired
-    private lateinit var taskExecutor: TaskExecutor
+    private lateinit var applicationTaskExecutor: TaskExecutor
 
     @Bean
     fun job1(): ApplicationContextFactory? {
@@ -45,7 +45,7 @@ class SpringBatchConfig : DefaultBatchConfigurer() {
     override fun createJobLauncher(): JobLauncher {
         val jobLauncher = SimpleJobLauncher()
         jobLauncher.setJobRepository(jobRepository)
-        jobLauncher.setTaskExecutor(taskExecutor)
+        jobLauncher.setTaskExecutor(applicationTaskExecutor)
         jobLauncher.afterPropertiesSet()
         return jobLauncher
     }
