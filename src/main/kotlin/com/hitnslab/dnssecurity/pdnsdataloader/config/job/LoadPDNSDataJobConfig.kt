@@ -25,9 +25,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
-import org.springframework.core.io.UrlResource
+import org.springframework.core.io.FileSystemResource
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.transaction.CannotCreateTransactionException
+import java.nio.file.Path
 
 class LoadPDNSDataJobConfig {
 
@@ -113,7 +114,7 @@ class LoadPDNSDataJobConfig {
         logger.info { "Reading file <$filename> ..." }
         return FlatFileItemReaderBuilder<PDnsData>()
                 .name("reader")
-                .resource(UrlResource(filename))
+                .resource(FileSystemResource(Path.of(filename)))
                 .fieldSetMapper(fieldSetMapper)
                 .lineTokenizer { line: String? ->
                     if (line == null)
