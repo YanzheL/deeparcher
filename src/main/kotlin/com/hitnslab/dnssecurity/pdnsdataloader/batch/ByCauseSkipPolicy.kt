@@ -1,4 +1,4 @@
-package com.hitnslab.dnssecurity.pdnsdataloader.processing
+package com.hitnslab.dnssecurity.pdnsdataloader.batch
 
 import mu.KotlinLogging
 import org.springframework.batch.core.step.skip.SkipPolicy

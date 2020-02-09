@@ -1,12 +1,12 @@
 package com.hitnslab.dnssecurity.pdnsdataloader.config.job
 
+import com.hitnslab.dnssecurity.pdnsdataloader.batch.ByCauseSkipPolicy
+import com.hitnslab.dnssecurity.pdnsdataloader.batch.PDNSKafkaItemWriter
 import com.hitnslab.dnssecurity.pdnsdataloader.config.PDnsJobProperties
 import com.hitnslab.dnssecurity.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import com.hitnslab.dnssecurity.pdnsdataloader.parsing.PDnsDataValidator
-import com.hitnslab.dnssecurity.pdnsdataloader.processing.ByCauseSkipPolicy
-import com.hitnslab.dnssecurity.pdnsdataloader.processing.PDNSKafkaItemWriter
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step

@@ -1,4 +1,4 @@
-package com.hitnslab.dnssecurity.pdnsdataloader.processing
+package com.hitnslab.dnssecurity.pdnsdataloader.batch
 
 import com.hitnslab.dnssecurity.pdnsdataloader.model.PDnsData
 import mu.KotlinLogging
