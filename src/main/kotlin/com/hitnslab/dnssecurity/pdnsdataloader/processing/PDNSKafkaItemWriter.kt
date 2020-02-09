@@ -21,7 +21,7 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : 
 
     var successInterval = 100000
 
-    var failureInterval = 100000
+    var failureInterval = 10000
 
     private val itemCallback = object : ListenableFutureCallback<SendResult<*, *>> {
         override fun onSuccess(result: SendResult<*, *>?) {
