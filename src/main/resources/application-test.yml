@@ -3,9 +3,10 @@ spring:
     execution:
       pool:
         core-size: 8
+        max-size: 8
   kafka:
     bootstrap-servers:
-      - kafka-kafka-bootstrap:9092
+      - kafka-kafka-bootstrap:9093
     ssl:
       protocol: TLSv1.2
       key-store-type: PKCS12
@@ -22,7 +23,7 @@ spring:
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
       #      transaction-id-prefix: PDNS_DATA_LOADER
-      batch-size: 4096000
+      batch-size: 500000
       properties:
         linger.ms: 10000
     #        max.request.size: 32000000
@@ -53,14 +54,14 @@ app:
       step:
         #      transaction:
         #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
-        chunk-size: 10000
+        chunk-size: 5000
         retry-limit: 10
         item-reader:
           field-set-mapper: com.hitnslab.dnssecurity.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
         item-writer:
           name: kafka
           metrics:
-            enable: false
+            enable: true
             success-interval: 100000
             failure-interval: 1000
 # management:
