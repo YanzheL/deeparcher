@@ -23,7 +23,7 @@ spring:
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
       #      transaction-id-prefix: PDNS_DATA_LOADER
-      batch-size: 500000
+      batch-size: 300000
       properties:
         linger.ms: 10000
     #        max.request.size: 32000000
