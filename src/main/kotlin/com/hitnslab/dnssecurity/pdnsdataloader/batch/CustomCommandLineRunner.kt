@@ -28,7 +28,7 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
     lateinit var jobRegistry: JobRegistry
 
     @Autowired
-    lateinit var taskExecutor: ThreadPoolTaskExecutor
+    lateinit var applicationTaskExecutor: ThreadPoolTaskExecutor
 
     @Autowired(required = false)
     var publisher: ApplicationEventPublisher? = null
@@ -40,13 +40,13 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
     }
 
     override fun run(vararg args: String) {
-        logger.info("Running default command line with: " + Arrays.asList(*args))
+        logger.info("Running default command line with: " + listOf(*args))
         val job = jobRegistry.getJob("FILE_HASH")
         val properties = StringUtils.splitArrayElementsIntoProperties(args, "=")
         val executions = buildJobParameters(properties)
                 .map { execute(job, it) }
-        taskExecutor.setWaitForTasksToCompleteOnShutdown(true)
-        taskExecutor.shutdown()
+        applicationTaskExecutor.setWaitForTasksToCompleteOnShutdown(true)
+        applicationTaskExecutor.shutdown()
     }
 
     protected fun buildJobParameters(properties: Properties?): List<JobParameters> {
@@ -54,7 +54,7 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
         val resources = PathMatchingResourcePatternResolver().getResources(pattern)
         val allParameters = mutableListOf<JobParameters>()
         for (resource in resources) {
-            val path = resource.url.toExternalForm()
+            val path = resource.file.path
             val parameters = JobParametersBuilder()
                     .addString("file", path)
                     .addDate("createdAt", Date())
