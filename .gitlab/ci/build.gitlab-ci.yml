@@ -26,14 +26,14 @@
     paths:
       - .m2/repository/
 
-Maven Build:
+Maven Build Root:
   extends: .maven_ctx
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS -DskipTests package
+    - mvn $MAVEN_CLI_OPTS -DskipTests clean install
   artifacts:
     paths:
-      - target/
+      - "*/target"
 
 #Maven Build Graal:
 #  extends: .maven_ctx
