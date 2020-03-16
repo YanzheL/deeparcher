@@ -70,7 +70,7 @@
       - .m2/repository/
       - .jib/
 
-#Build Branch Image Kaniko:
+#Package pdns-data-loader Kaniko Image On Branch:
 #  extends: .build_image_kaniko
 #  script:
 #    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
@@ -79,72 +79,74 @@
 #  only:
 #    - branches
 #
-#Build Latest Image Kaniko:
+#Package pdns-data-loader Kaniko Image On Master:
 #  extends: .build_image_kaniko
 #  script:
 #    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:latest
 #  only:
 #    - master
 
-Build Branch Image Docker:
-  extends: .build_image_docker
-  script:
-    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH} .
-    - default-docker push $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
-  except:
-    - master
-  only:
-    - branches
-  needs:
-    - Maven Build
+#Package pdns-data-loader Docker Image On Branch:
+#  extends: .build_image_docker
+#  script:
+#    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH} .
+#    - default-docker push $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
+#  except:
+#    - master
+#  only:
+#    - branches
+#  needs:
+#    - Maven Build
 
-Build Branch Slim Image:
+Package pdns-data-loader Slim Image On Branch:
   extends: .build_image_maven
   script:
     - |
       mvn $MAVEN_CLI_OPTS \
         compile jib:build \
+        -pl pdns-data-loader \
         -Djib.console=plain \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}-slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}-slim
   except:
     - master
   only:
     - branches
   needs:
-    - Maven Build
+    - Maven Build Root
 
-Build Latest Image Docker:
-  extends: .build_image_docker
-  script:
-    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:latest .
-    - default-docker push $CI_REGISTRY_IMAGE:latest
-  only:
-    - master
-  needs:
-    - Maven Build
+#Package pdns-data-loader Docker Image On Master:
+#  extends: .build_image_docker
+#  script:
+#    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:latest .
+#    - default-docker push $CI_REGISTRY_IMAGE:latest
+#  only:
+#    - master
+#  needs:
+#    - Maven Build
 
-Build Latest Slim Image:
+Package pdns-data-loader Slim Image On Master:
   extends: .build_image_maven
   script:
     - |
       mvn $MAVEN_CLI_OPTS \
         compile jib:build \
+        -pl pdns-data-loader \
         -Djib.console=plain \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE:slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:slim
   only:
     - master
   needs:
-    - Maven Build
+    - Maven Build Root
 
-#Build Graal Native Image:
+#Package pdns-data-loader Graal Native Image:
 #  image: oracle/graalvm-ce:19.3.1-java11
 #  stage: package
 #  allow_failure: true
