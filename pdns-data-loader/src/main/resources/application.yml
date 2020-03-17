@@ -18,7 +18,7 @@ spring:
       trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.serdes.PDnsSerializer
+      value-serializer: com.hitnslab.dnssecurity.deeparcher.serdes.PDnsSerializer
       acks: 1
       compression-type: gzip
       client-id: PDNS_DATA_LOADER
