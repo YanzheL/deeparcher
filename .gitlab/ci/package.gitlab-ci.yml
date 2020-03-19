@@ -1,7 +1,36 @@
-.build_image:
+.build_image_docker:
+  stage: package
+  image: library/docker:19.03.5
+  #  services:
+  #   - docker:19.03.5-dind
+  before_script:
+    - |
+      cat <<-EOF > /usr/local/bin/default-docker
+      #!/bin/sh
+      docker \
+        --tls \
+        "\$@"
+      EOF
+      chmod +x /usr/local/bin/default-docker
+    - mkdir -p /root/.docker
+    - wget -O /root/.docker/ca.pem "http://seafile/d/37b586af5a1241b5bfc8/files/?p=%2FHIT_NIST_Root_CA.crt&dl=1"
+    - default-docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - ls -ah .
+  variables:
+    # Specify to Docker where to create the certificates, Docker will
+    # create them automatically on boot, and will create
+    # `/certs/client` that will be shared between the service and
+    # build container.
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_BUILDKIT: "1"
+    DOCKER_HOST: tcp://10.245.146.40:2376
+    DOCKER_DRIVER: overlay2
+    DOCKER_DEFAULT_BUILD_OPTS: --build-arg HTTP_PROXY=http://v2ray.production:1081 --build-arg HTTPS_PROXY=http://v2ray.production:1081
+
+.build_image_kaniko:
   stage: package
   image:
-    name: gcr.azk8s.cn/kaniko-project/executor:debug
+    name: gcr.azk8s.cn/kaniko-project/executor:debug-v0.16.0
     entrypoint: [""]
   before_script:
     - |
@@ -15,31 +44,130 @@
         }
       }
       EOF
+      mkdir -p $CI_PROJECT_DIR/.kaniko
       cat <<-EOF > /kaniko/default-executor
       #!/busybox/sh
-      /kaniko/executor --single-snapshot --cache --cache-dir $CI_PROJECT_DIR/.kaniko --context dir://$CI_PROJECT_DIR "\$@"
+      /kaniko/executor \
+        --digest-file /dev/termination-log \
+        --cache \
+        --cache-dir $CI_PROJECT_DIR/.kaniko \
+        --context dir://$CI_PROJECT_DIR \
+        --build-arg HTTP_PROXY=http://v2ray:1081 \
+        --build-arg HTTPS_PROXY=http://v2ray:1081 \
+        "\$@"
       EOF
       chmod +x /kaniko/default-executor
     - find . -maxdepth 3
   cache:
     paths:
-      - .kaniko
+      - .kaniko/
 
-.build_image_on_branch:
-  extends: .build_image
+.build_image_maven:
+  extends: .maven_ctx
+  stage: package
+  cache:
+    paths:
+      - .m2/repository/
+      - .jib/
+
+#Package pdns-data-loader Kaniko Image On Branch:
+#  extends: .build_image_kaniko
+#  script:
+#    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
+#  except:
+#    - master
+#  only:
+#    - branches
+#
+#Package pdns-data-loader Kaniko Image On Master:
+#  extends: .build_image_kaniko
+#  script:
+#    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:latest
+#  only:
+#    - master
+
+#Package pdns-data-loader Docker Image On Branch:
+#  extends: .build_image_docker
+#  script:
+#    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH} .
+#    - default-docker push $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
+#  except:
+#    - master
+#  only:
+#    - branches
+#  needs:
+#    - Maven Build
+
+Package pdns-data-loader Slim Image On Branch:
+  extends: .build_image_maven
   script:
-    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
-  only:
-    - branches
-
-.build_image_on_tag:
-  extends: .build_image
-  script:
-    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-  only:
-    - tags
-
-Build Nightly Image:
-  extends: .build_image_on_branch
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -pl pdns-data-loader \
+        -Djib.console=plain \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}-slim
   except:
     - master
+  only:
+    - branches
+  needs:
+    - Maven Build Root
+
+#Package pdns-data-loader Docker Image On Master:
+#  extends: .build_image_docker
+#  script:
+#    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:latest .
+#    - default-docker push $CI_REGISTRY_IMAGE:latest
+#  only:
+#    - master
+#  needs:
+#    - Maven Build
+
+Package pdns-data-loader Slim Image On Master:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -pl pdns-data-loader \
+        -Djib.console=plain \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:slim
+  only:
+    - master
+  needs:
+    - Maven Build Root
+
+#Package pdns-data-loader Graal Native Image:
+#  image: oracle/graalvm-ce:19.3.1-java11
+#  stage: package
+#  allow_failure: true
+#  variables:
+#    NATIVE_IMAGE_VERSION: 19.3.1 # ${JAVA_HOME:23:-1}
+#  before_script:
+#    - |
+#      #!/bin/bash
+#      if [[ ! -f "native-image-${NATIVE_IMAGE_VERSION}.jar" ]]
+#      then
+#        ALL_PROXY=http://v2ray.production:1081 \
+#        curl -Lo native-image-${NATIVE_IMAGE_VERSION}.jar "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${NATIVE_IMAGE_VERSION}/native-image-installable-svm-java11-linux-amd64-${NATIVE_IMAGE_VERSION}.jar"
+#      fi
+#      gu -L install native-image-${NATIVE_IMAGE_VERSION}.jar
+#  script:
+#    - ./graal-compile.sh
+#  cache:
+#    paths:
+#      - native-image-*.jar
+#  needs:
+#    - Maven Build Graal
+#  artifacts:
+#    paths:
+#      - target/

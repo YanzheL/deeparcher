@@ -1,5 +1,7 @@
-Maven Test:
+Maven Test Root:
   extends: .maven_ctx
   stage: test
   script:
-    - mvn $MAVEN_CLI_OPTS -Dspring.profiles.active=test test
+    - mvn $MAVEN_CLI_OPTS test -Dspring.profiles.active=test -Dtest=*UnitTests -DfailIfNoTests=false
+  needs:
+    - Maven Build Root
