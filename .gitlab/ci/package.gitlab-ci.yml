@@ -107,7 +107,6 @@ Package pdns-data-loader Slim Image On Branch:
         -pl pdns-data-loader \
         -Djib.console=plain \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
-        -Djib.allowInsecureRegistries=true \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
