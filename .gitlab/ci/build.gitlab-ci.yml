@@ -10,7 +10,7 @@
     MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
     HTTP_PROXY: http://v2ray.production:1081
     HTTPS_PROXY: http://v2ray.production:1081
-    NO_PROXY: '*.hitnslab.com,10.0.0.0/8,172.16.0.0/12'
+    NO_PROXY: '*.cluster.local,*.hitnslab.com,10.0.0.0/8,172.16.0.0/12'
   before_script:
     - |
       cat <<-EOF > .m2/settings.xml
