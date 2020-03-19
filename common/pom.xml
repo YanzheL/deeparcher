@@ -27,7 +27,7 @@
   <parent>
     <artifactId>deeparcher-parent</artifactId>
     <groupId>com.hitnslab.dns-security.deeparcher</groupId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
   <build>
     <plugins>
