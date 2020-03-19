@@ -1,0 +1,82 @@
+spring:
+  task:
+    execution:
+      pool:
+        core-size: 12
+        max-size: 12
+  kafka:
+    bootstrap-servers:
+      - kafka.hitnslab.com:443
+    ssl:
+      protocol: TLSv1.2
+      key-store-type: PKCS12
+      key-store-location: file:///Users/trinity/kubefiles/production/kafka/users/kafka-user-test/user.p12
+      key-store-password: h0IVo7v7EStE # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+      #      key-password: $ Not needed
+      trust-store-type: JKS
+      trust-store-location: file:///Users/trinity/kubefiles/production/kafka/users/kafka-user-test/ca.jks
+      trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.hitnslab.dnssecurity.deeparcher.serdes.PDnsSerializer
+      acks: 1
+      compression-type: gzip
+      client-id: PDNS_DATA_LOADER
+      #      transaction-id-prefix: PDNS_DATA_LOADER
+      batch-size: 100000
+    #      properties:
+    #        linger.ms: 10000
+    #        max.request.size: 32000000
+    template:
+      default-topic: test.raw.pdns
+    properties:
+      security.protocol: SSL
+      ssl.endpoint.identification.algorithm: ""
+  batch:
+    initialize-schema: always
+    job:
+      enabled: false  # Disable built-in CommandLineRunner
+  datasource:
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+    hikari:
+      connection-timeout: 300000
+      idle-timeout: 600000
+      validation-timeout: 5000
+      max-lifetime: 1800000
+      maximum-pool-size: 32
+      minimum-idle: 2
+      pool-name: spring-batch-db-pool
+app:
+  job:
+    pdns:
+      step:
+        #      transaction:
+        #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
+        chunk-size: 3000
+        retry-limit: 10
+        item-reader:
+          field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
+        item-writer:
+          name: kafka
+          metrics:
+            enable: true
+            success-interval: 1000000
+            failure-interval: 1000
+# management:
+#   health:
+#     db:
+#       enabled: false
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: DEBUG
+com:
+  sun:
+    management:
+      jmxremote:
+        port: 56789
+        authenticate: false
+        ssl: false
