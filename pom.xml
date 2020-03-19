@@ -2,7 +2,32 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <description>Malicious Domain Detection System</description>
+  <groupId>com.hitnslab.dns-security.deeparcher</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <modules>
+    <module>common</module>
+    <module>pdns-data-loader</module>
+  </modules>
   <artifactId>deeparcher-parent</artifactId>
+  <name>DeepArcher</name>
+  <packaging>pom</packaging>
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.2.5.RELEASE</version> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>11</java.version>
+    <kotlin.version>1.3.61</kotlin.version>
+    <graalvm.version>20.0.0</graalvm.version>
+    <guava.version>28.2-jre</guava.version>
+    <kafka.version>2.4.1</kafka.version>
+    <mariadb.version>2.5.1</mariadb.version>
+    <protobuf.version>3.11.4</protobuf.version>
+    <spring-kafka.version>2.4.4.RELEASE</spring-kafka.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -50,28 +75,8 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <description>Malicious Domain Detection System</description>
-  <groupId>com.hitnslab.dns-security.deeparcher</groupId>
-  <modelVersion>4.0.0</modelVersion>
-  <modules>
-    <module>common</module>
-    <module>pdns-data-loader</module>
-  </modules>
-  <name>DeepArcher</name>
-  <packaging>pom</packaging>
-  <parent>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <groupId>org.springframework.boot</groupId>
-    <relativePath/>
-    <version>2.2.5.RELEASE</version> <!-- lookup parent from repository -->
-  </parent>
 
-  <properties>
-    <java.version>11</java.version>
-    <kotlin.version>1.3.61</kotlin.version>
-  </properties>
-
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
 
   <repositories>
     <repository>

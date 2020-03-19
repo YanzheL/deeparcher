@@ -46,7 +46,7 @@
             <image>gcr.azk8s.cn/distroless/java:11</image>
           </from>
           <to>
-            <image>registry.hitnslab.com/dns-security/pdns-data-loader</image>
+            <image>registry.hitnslab.com/dns-security/deeparcher/pdns-data-loader</image>
           </to>
         </configuration>
         <groupId>com.google.cloud.tools</groupId>
@@ -57,6 +57,11 @@
     <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
   </build>
   <dependencies>
+    <dependency>
+      <artifactId>common</artifactId>
+      <groupId>com.hitnslab.dns-security.deeparcher</groupId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <artifactId>spring-boot-starter-batch</artifactId>
       <groupId>org.springframework.boot</groupId>
@@ -69,17 +74,11 @@
     <dependency>
       <artifactId>mariadb-java-client</artifactId>
       <groupId>org.mariadb.jdbc</groupId>
-      <version>2.5.1</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
     <dependency>
       <artifactId>HikariCP</artifactId>
       <groupId>com.zaxxer</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>common</artifactId>
-      <groupId>com.hitnslab.dns-security.deeparcher</groupId>
-      <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <!-- TEST SCOPE -->
     <dependency>
@@ -88,14 +87,16 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <description>Passive DNS data loader</description>
-  <modelVersion>4.0.0</modelVersion>
-  <name>pdns-data-loader</name>
   <parent>
     <artifactId>deeparcher-parent</artifactId>
     <groupId>com.hitnslab.dns-security.deeparcher</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
+  <description>Passive DNS data loader</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>pdns-data-loader</name>
+  <properties>
+  </properties>
   <profiles>
     <profile>
       <activation>
@@ -163,7 +164,6 @@
       </dependencies>
       <id>graal</id>
       <properties>
-        <graalvm.version>20.0.0</graalvm.version>
         <start-class>com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.PDNSDataLoaderApplicationKt
         </start-class>
       </properties>
