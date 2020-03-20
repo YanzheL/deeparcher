@@ -43,7 +43,7 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : 
     override fun write(items: MutableList<out PDnsData>) {
         items.forEach {
             //            val headers = mutableListOf<Header>()
-            val record = ProducerRecord<String, PDnsData>(kafkaTemplate.defaultTopic, null, it.queryTime.epochSecond, it.domain, it)
+            val record = ProducerRecord(kafkaTemplate.defaultTopic, null, it.queryTime.toEpochMilli(), it.domain, it)
             val future = kafkaTemplate.send(record)
             if (metricsEnabled) {
                 future.addCallback(itemCallback)
