@@ -21,5 +21,9 @@ enum class DnsQueryType(val value: Int) {
     DS(43),
     DNSKEY(48),
     SPF(99),
-    AMTRELAY(260)
+    AMTRELAY(260);
+
+    companion object {
+        fun fromInt(value: Int) = values().first { it.value == value }
+    }
 }

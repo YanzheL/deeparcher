@@ -15,5 +15,9 @@ enum class DnsRCode(val value: Int) {
     NXRRSET(8),
     NOTAUTH(9),
     NOTZONE(10),
-    DSOTYPENI(11)
+    DSOTYPENI(11);
+
+    companion object {
+        fun fromInt(value: Int) = DnsRCode.values().first { it.value == value }
+    }
 }
