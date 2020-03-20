@@ -37,6 +37,7 @@ Maven Build Root:
   script:
     - mvn $MAVEN_CLI_OPTS -DskipTests clean install
   artifacts:
+    expire_in: 3 days
     paths:
       - "*/target"
 
