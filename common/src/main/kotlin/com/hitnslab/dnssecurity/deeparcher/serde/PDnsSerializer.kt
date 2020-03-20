@@ -1,4 +1,4 @@
-package com.hitnslab.dnssecurity.deeparcher.serdes
+package com.hitnslab.dnssecurity.deeparcher.serde
 
 import com.google.protobuf.ByteString
 import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
@@ -24,13 +24,15 @@ class PDnsSerializer : Serializer<PDnsData> {
         val allIpv6Bytes = mutableListOf<Byte>()
         for (ip in data.ips) {
             val inetAddr = InetAddress.getByName(ip)
+            val bytes = inetAddr.address.toList()
             when (inetAddr) {
-                is Inet4Address -> allIpv4Bytes.addAll(inetAddr.address.toList())
-                is Inet6Address -> allIpv6Bytes.addAll(inetAddr.address.toList())
+                is Inet4Address -> allIpv4Bytes.addAll(bytes)
+                is Inet6Address -> allIpv6Bytes.addAll(bytes)
             }
         }
         builder.rIpv4Addrs = ByteString.copyFrom(allIpv4Bytes.toByteArray())
         builder.rIpv6Addrs = ByteString.copyFrom(allIpv6Bytes.toByteArray())
+        builder.addAllRCnames(data.cnames)
         return builder.build().toByteArray()
     }
 }
