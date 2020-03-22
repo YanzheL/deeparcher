@@ -6,6 +6,29 @@
   <build>
     <plugins>
       <plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <configuration>
+          <args>
+            <arg>-Xjsr305=warn</arg>
+          </args>
+          <compilerPlugins>
+            <plugin>spring</plugin>
+          </compilerPlugins>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <artifactId>kotlin-maven-allopen</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <version>${kotlin.version}</version>
+          </dependency>
+        </dependencies>
+        <groupId>org.jetbrains.kotlin</groupId>
+      </plugin>
+      <plugin>
         <artifactId>jib-maven-plugin</artifactId>
         <configuration>
           <container>
