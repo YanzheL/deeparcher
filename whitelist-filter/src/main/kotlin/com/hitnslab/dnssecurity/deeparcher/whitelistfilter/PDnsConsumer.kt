@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 @Service
 class PDnsConsumer {
 
-    val predicate = WhiteListPredicate("whitelist.csv")
+    val predicate = WhitelistPredicate("whitelist.csv")
     val writer = PrintWriter(FileWriter(File("filtered.txt"), true), true)
     val cache = Caffeine.newBuilder()
             .maximumSize(100000)

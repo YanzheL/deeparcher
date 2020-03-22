@@ -7,7 +7,7 @@ import org.springframework.core.io.FileSystemResource
 import java.nio.file.Path
 import java.util.function.Predicate
 
-class WhiteListPredicate(whitelistPath: String) : Predicate<PDnsData> {
+class WhitelistPredicate(whitelistPath: String) : Predicate<PDnsData> {
 
     private val logger = KotlinLogging.logger {}
 
