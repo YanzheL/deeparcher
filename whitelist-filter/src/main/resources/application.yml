@@ -43,9 +43,12 @@ spring:
 #      replication-factor: 1
 
 app:
-  kafka:
-    input:
-      topic: raw.pdns
+  whitelist:
+    file: whitelist.csv
+  output:
+    file: filtered.txt
+  input:
+    topic: raw.pdns
 
 # management:
 #   health:
