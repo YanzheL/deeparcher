@@ -1,0 +1,65 @@
+spring:
+  cache:
+    caffeine:
+      spec:
+
+  task:
+    execution:
+      pool:
+        core-size: 12
+        max-size: 12
+  kafka:
+    listener:
+      concurrency: 6
+    bootstrap-servers:
+      - kafka-kafka-bootstrap.default:9093
+    ssl:
+      protocol: TLSv1.2
+      key-store-type: PKCS12
+      key-store-location: file:///home/liyanzhe/kafka-user-test/user.p12
+      key-store-password: h0IVo7v7EStE # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+      #      key-password: $ Not needed
+      trust-store-type: JKS
+      trust-store-location: file:///home/liyanzhe/kafka-user-test/ca.jks
+      trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.hitnslab.dnssecurity.deeparcher.serde.PDnsDeserializer
+      group-id: test.whitelist-filter
+      max-poll-records: 5000000
+      fetch-max-wait: 1000
+      auto-offset-reset: earliest
+    properties:
+      security.protocol: SSL
+      ssl.endpoint.identification.algorithm: ""
+      #      metadata.max.age.ms: 5000
+      max.poll.interval.ms: 10000
+      #      session.timeout.ms: 9000
+      #      heartbeat.interval.ms: 500
+      receive.buffer.bytes: 655360
+#    streams:
+#      application-id: test.whitelist-filter
+#      state-dir: /tmp/kafka-stream
+#      replication-factor: 1
+
+app:
+  kafka:
+    input:
+      topic: raw.pdns
+
+# management:
+#   health:
+#     db:
+#       enabled: false
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: DEBUG
+com:
+  sun:
+    management:
+      jmxremote:
+        port: 56789
+        authenticate: false
+        ssl: false
