@@ -2,7 +2,6 @@ package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch
 
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import mu.KotlinLogging
-import org.apache.kafka.clients.producer.ProducerRecord
 import org.springframework.batch.item.ItemWriter
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.support.SendResult
@@ -43,8 +42,9 @@ class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : 
     override fun write(items: MutableList<out PDnsData>) {
         items.forEach {
             //            val headers = mutableListOf<Header>()
-            val record = ProducerRecord(kafkaTemplate.defaultTopic, null, it.queryTime.toEpochMilli(), it.domain, it)
-            val future = kafkaTemplate.send(record)
+//            val record = ProducerRecord(kafkaTemplate.defaultTopic, null, it.queryTime.toEpochMilli(), it.domain, it)
+//            val future = kafkaTemplate.send(record)
+            val future = kafkaTemplate.send(kafkaTemplate.defaultTopic, it.domain, it)
             if (metricsEnabled) {
                 future.addCallback(itemCallback)
             }
