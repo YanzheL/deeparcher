@@ -1,13 +1,12 @@
 package com.hitnslab.dnssecurity.deeparcher.whitelistfilter
 
 import com.google.common.net.InternetDomainName
-import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import mu.KotlinLogging
 import org.springframework.core.io.FileSystemResource
 import java.nio.file.Path
 import java.util.function.Predicate
 
-class WhitelistPredicate(whitelistPath: String) : Predicate<PDnsData> {
+class WhitelistPredicate(whitelistPath: String) : Predicate<String> {
 
     private val logger = KotlinLogging.logger {}
 
@@ -26,7 +25,7 @@ class WhitelistPredicate(whitelistPath: String) : Predicate<PDnsData> {
         }
     }
 
-    override fun test(t: PDnsData): Boolean {
-        return t.topPrivateDomain in whitelist
+    override fun test(t: String): Boolean {
+        return t in whitelist
     }
 }
