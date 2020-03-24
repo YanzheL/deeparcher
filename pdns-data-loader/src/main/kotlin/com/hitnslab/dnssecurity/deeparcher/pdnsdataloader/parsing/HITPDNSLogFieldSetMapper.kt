@@ -64,9 +64,9 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
             val localDateTime = LocalDateTime.parse(queryTime, dateTimeFormatter)
             ret = PDnsData(
                     queryTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault()).toInstant(),
-                    domain = fieldSet.readString(9),
-                    queryType = fieldSet.readString(11),
-                    replyCode = fieldSet.readString(12)
+                    domain = fieldSet.readString(9).toLowerCase(),
+                    queryType = fieldSet.readString(11).toUpperCase(),
+                    replyCode = fieldSet.readString(12).toUpperCase()
             )
         } catch (e: Exception) {
             throw PDNSInvalidFieldException("PDNS parse failed: Cannot create PDnsData object with values <$fieldSet>, exception <$e>", e)
@@ -101,7 +101,7 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 }
                 val replyData: String = conjunction.split(";")[0].trimEnd('.')
                 when (replyType) {
-                    "CNAME" -> ret.cnames.add(replyData)
+                    "CNAME" -> ret.cnames.add(replyData.toLowerCase())
                     "A", "AAAA" -> ret.ips.add(replyData)
                 }
                 entryStart = entryEnd

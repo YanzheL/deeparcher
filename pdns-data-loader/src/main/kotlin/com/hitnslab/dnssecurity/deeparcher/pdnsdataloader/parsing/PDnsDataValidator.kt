@@ -19,18 +19,15 @@ class PDnsDataValidator : ItemProcessor<PDnsData, PDnsData?> {
             return null
         if (item.clientIp != null && !InetAddresses.isInetAddress(item.clientIp!!))
             return null
-        for (ip in item.ips) {
-            if (!InetAddresses.isInetAddress(ip))
-                return null
-        }
+        item.ips.removeIf { !InetAddresses.isInetAddress(it) }
         try {
-            for (cname in item.cnames) {
-                if (!InternetDomainName.from(cname).isUnderPublicSuffix)
-                    return null
-            }
+            item.cnames.removeIf { !InternetDomainName.from(it).isUnderRegistrySuffix }
             DnsQueryType.valueOf(item.queryType)
             DnsRCode.valueOf(item.replyCode)
         } catch (e: Exception) {
+            return null
+        }
+        if (item.ips.isEmpty() && item.cnames.isEmpty()) {
             return null
         }
         return item
