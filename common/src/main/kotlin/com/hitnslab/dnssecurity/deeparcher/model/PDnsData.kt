@@ -10,7 +10,6 @@ data class PDnsData(
         val queryType: String,
         val replyCode: String
 ) {
-//    private val logger = KotlinLogging.logger {}
 
     var clientIp: String? = null
 
@@ -19,7 +18,7 @@ data class PDnsData(
 
     val ips = mutableSetOf<String>()
 
-    val cnames: MutableSet<String> = mutableSetOf()
+    val cnames = mutableSetOf<String>()
 
     init {
         topPrivateDomain = try {
