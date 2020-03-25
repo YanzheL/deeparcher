@@ -16,7 +16,7 @@ class PDnsDataValidator : ItemProcessor<PDnsData, PDnsData?> {
 
     override fun process(item: PDnsData): PDnsData? {
         if (item.topPrivateDomain == null) {
-            logger.warn { "Skipped record <$item>, reason: <Invalid topPrivateDomain>" }
+//            logger.warn { "Skipped record <$item>, reason: <Invalid topPrivateDomain>" }
             return null
         }
         if (item.clientIp != null && !InetAddresses.isInetAddress(item.clientIp)) {
