@@ -15,19 +15,21 @@ class PDnsDataValidator : ItemProcessor<PDnsData, PDnsData?> {
     private val logger = KotlinLogging.logger {}
 
     override fun process(item: PDnsData): PDnsData? {
-        if (item.topPrivateDomain == null)
+        if (item.topPrivateDomain == null) {
+            logger.warn { "Skipped record <$item>, reason: <Invalid topPrivateDomain>" }
             return null
-        if (item.clientIp != null && !InetAddresses.isInetAddress(item.clientIp!!))
+        }
+        if (item.clientIp != null && !InetAddresses.isInetAddress(item.clientIp)) {
+            logger.warn { "Skipped record <$item>, reason: <Invalid clientIp>" }
             return null
+        }
         item.ips.removeIf { !InetAddresses.isInetAddress(it) }
+        item.cnames.removeIf { !InternetDomainName.isValid(it) }
         try {
-            item.cnames.removeIf { !InternetDomainName.from(it).isUnderRegistrySuffix }
             DnsQueryType.valueOf(item.queryType)
             DnsRCode.valueOf(item.replyCode)
         } catch (e: Exception) {
-            return null
-        }
-        if (item.ips.isEmpty() && item.cnames.isEmpty()) {
+            logger.warn { "Skipped record <$item>, exception: <$e>" }
             return null
         }
         return item
