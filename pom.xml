@@ -8,6 +8,7 @@
   <modules>
     <module>common</module>
     <module>pdns-data-loader</module>
+    <module>whitelist-filter</module>
   </modules>
   <artifactId>deeparcher-parent</artifactId>
   <name>DeepArcher</name>

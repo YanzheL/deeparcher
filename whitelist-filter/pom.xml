@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>whitelist-filter</artifactId>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <configuration>
+          <args>
+            <arg>-Xjsr305=warn</arg>
+          </args>
+          <compilerPlugins>
+            <plugin>spring</plugin>
+          </compilerPlugins>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <artifactId>kotlin-maven-allopen</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <version>${kotlin.version}</version>
+          </dependency>
+        </dependencies>
+        <groupId>org.jetbrains.kotlin</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>jib-maven-plugin</artifactId>
+        <configuration>
+          <container>
+            <format>OCI</format>
+            <!--            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
+            <jvmFlags>
+              <jvmFlag>-server</jvmFlag>
+            </jvmFlags>
+            <labels>
+              <label>maintainer="Yanzhe Lee &lt;lee.yanzhe@yanzhe.org&gt;"</label>
+            </labels>
+            <user>1001:1001</user>
+            <volumes>
+              <volume>/data</volume>
+            </volumes>
+            <workingDirectory>/app</workingDirectory>
+          </container>
+          <from>
+            <image>gcr.azk8s.cn/distroless/java:11</image>
+          </from>
+          <to>
+            <image>registry.hitnslab.com/dns-security/deeparcher/whitelist-filter</image>
+          </to>
+        </configuration>
+        <groupId>com.google.cloud.tools</groupId>
+        <version>2.1.0</version>
+      </plugin>
+    </plugins>
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+  </build>
+  <dependencies>
+    <dependency>
+      <artifactId>common</artifactId>
+      <groupId>com.hitnslab.dns-security.deeparcher</groupId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <artifactId>kafka-streams</artifactId>
+      <groupId>org.apache.kafka</groupId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
+    <dependency>
+      <artifactId>caffeine</artifactId>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <version>2.8.1</version>
+    </dependency>
+  </dependencies>
+  <description>Whitelist Domain Filter</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>whitelist-filter</name>
+
+  <parent>
+    <artifactId>deeparcher-parent</artifactId>
+    <groupId>com.hitnslab.dns-security.deeparcher</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <version>0.1.0-SNAPSHOT</version>
+
+</project>
