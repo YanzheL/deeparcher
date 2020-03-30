@@ -41,6 +41,9 @@
               <label>maintainer="Yanzhe Lee &lt;lee.yanzhe@yanzhe.org&gt;"</label>
             </labels>
             <user>1001:1001</user>
+            <volumes>
+              <volume>/data</volume>
+            </volumes>
             <workingDirectory>/app</workingDirectory>
           </container>
           <from>
