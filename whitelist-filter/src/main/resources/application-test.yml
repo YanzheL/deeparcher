@@ -17,11 +17,11 @@ spring:
     properties:
       security.protocol: SSL
       ssl.endpoint.identification.algorithm: ""
-      metadata.max.age.ms: 10000
+      metadata.max.age.ms: 60000
       #      max.poll.interval.ms: 10000
       #      session.timeout.ms: 9000
       #      heartbeat.interval.ms: 500
-      receive.buffer.bytes: 655360
+      receive.buffer.bytes: 2097152
     streams:
       application-id: test.temp-work-remote
       state-dir: /tmp/kafka-stream

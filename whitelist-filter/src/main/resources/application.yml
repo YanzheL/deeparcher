@@ -17,8 +17,8 @@ spring:
     properties:
       security.protocol: SSL
       ssl.endpoint.identification.algorithm: ""
-      metadata.max.age.ms: 10000
-      receive.buffer.bytes: 655360
+      metadata.max.age.ms: 60000
+      receive.buffer.bytes: 2097152
     streams:
       application-id: whitelist-filter
       state-dir: /tmp/kafka-stream
@@ -26,7 +26,7 @@ spring:
       auto-startup: false
       properties:
         topology.optimization: all
-        num.stream.threads: 8
+        num.stream.threads: 1
 
 app:
   prefilters:
