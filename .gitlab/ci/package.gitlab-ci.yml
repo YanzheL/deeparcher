@@ -106,6 +106,7 @@ Package pdns-data-loader Slim Image On Branch:
         compile jib:build \
         -pl pdns-data-loader \
         -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
@@ -126,6 +127,7 @@ Package whitelist-filter Slim Image On Branch:
         compile jib:build \
         -pl whitelist-filter \
         -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
@@ -156,6 +158,7 @@ Package pdns-data-loader Slim Image On Master:
         compile jib:build \
         -pl pdns-data-loader \
         -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
@@ -174,6 +177,7 @@ Package whitelist-filter Slim Image On Master:
         compile jib:build \
         -pl whitelist-filter \
         -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
