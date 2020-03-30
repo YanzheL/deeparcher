@@ -2,48 +2,46 @@ package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config
 
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDNSLogFieldSetMapper
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.stereotype.Component
+import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.transaction.PlatformTransactionManager
 
+@ConstructorBinding
 @ConfigurationProperties(prefix = "app.job.pdns")
-@Component
-class PDnsJobProperties {
+class PDnsJobProperties(
+        val step: Step
+) {
 
-    var step: Step = Step()
+    class Step(
+            val itemReader: ItemReader,
 
-    class Step {
+            val itemWriter: ItemWriter,
 
-        var itemReader: ItemReader = ItemReader()
+            val transaction: Transaction = Transaction(),
 
-        var itemWriter: ItemWriter = ItemWriter()
+            val chunkSize: Int = 10000,
 
-        var transaction: Transaction = Transaction()
+            val retryLimit: Int = 10
+    ) {
 
-        var chunkSize: Int = 10000
+        class ItemReader(
+                val fieldSetMapper: Class<PDNSLogFieldSetMapper>
+        )
 
-        var retryLimit: Int = 10
-
-
-        class ItemReader {
-            lateinit var fieldSetMapper: Class<PDNSLogFieldSetMapper>
+        class ItemWriter(
+                val name: String,
+                val metrics: Metrics = Metrics()
+        ) {
+            class Metrics(
+                    val enable: Boolean = true,
+                    val successInterval: Int = 1000000,
+                    val failureInterval: Int = 10000
+            )
         }
 
-        class ItemWriter {
-            lateinit var name: String
-
-            var metrics = Metrics()
-
-            class Metrics {
-                var enable = false
-                var successInterval = 100000
-                var failureInterval = 10000
-            }
-        }
-
-        class Transaction {
-            var enable: Boolean = false
-            var manager: Class<PlatformTransactionManager>? = null
-        }
+        class Transaction(
+                val enable: Boolean = false,
+                val manager: Class<PlatformTransactionManager>? = null
+        )
 
     }
 }

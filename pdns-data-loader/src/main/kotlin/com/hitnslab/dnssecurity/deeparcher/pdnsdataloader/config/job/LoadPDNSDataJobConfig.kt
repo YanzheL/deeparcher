@@ -23,13 +23,17 @@ import org.springframework.batch.item.file.transform.DefaultFieldSet
 import org.springframework.batch.item.support.CompositeItemProcessor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.FileSystemResource
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.transaction.CannotCreateTransactionException
 import java.nio.file.Path
 
+@Configuration
+@EnableConfigurationProperties(PDnsJobProperties::class)
 class LoadPDNSDataJobConfig {
 
     private val logger = KotlinLogging.logger {}
