@@ -6,26 +6,44 @@ import org.springframework.core.io.FileSystemResource
 import java.nio.file.Path
 import java.util.function.Predicate
 
-class WhitelistPredicate(whitelistPath: String) : Predicate<String> {
+class WhitelistPredicate : Predicate<String> {
 
     private val logger = KotlinLogging.logger {}
 
-    val whitelist = mutableSetOf<String>()
+    private val whitelist = mutableSetOf<String>()
 
-    init {
-        val reader = FileSystemResource(Path.of(whitelistPath)).inputStream.bufferedReader()
+    private val patterns = mutableListOf<Regex>()
+
+    override fun test(t: String): Boolean {
+        for (pattern in patterns) {
+            if (pattern.containsMatchIn(t)) {
+                return true
+            }
+        }
+        return t in whitelist
+    }
+
+    fun fromFile(path: String): WhitelistPredicate {
+        val reader = FileSystemResource(Path.of(path)).inputStream.bufferedReader()
         reader.use {
             reader.lines().forEach {
                 try {
-                    whitelist.add(InternetDomainName.from(it).topPrivateDomain().toString())
+                    fromFQDN(it)
                 } catch (e: Exception) {
                     logger.error { "Invalid whitelist item <$it>" }
                 }
             }
         }
+        return this
     }
 
-    override fun test(t: String): Boolean {
-        return t in whitelist
+    fun fromRegex(pattern: String): WhitelistPredicate {
+        patterns.add(Regex(pattern))
+        return this
+    }
+
+    fun fromFQDN(fqdn: String): WhitelistPredicate {
+        whitelist.add(InternetDomainName.from(fqdn).topPrivateDomain().toString())
+        return this
     }
 }
