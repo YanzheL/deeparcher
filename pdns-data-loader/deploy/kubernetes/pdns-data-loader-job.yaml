@@ -1,0 +1,142 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app.kubernetes.io/name: pdns-data-loader
+    app.kubernetes.io/part-of: deeparcher
+    app.kubernetes.io/component: pdns-data-loader
+  name: pdns-data-loader
+  namespace: default
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: pdns-data-loader
+        app.kubernetes.io/part-of: deeparcher
+        app.kubernetes.io/component: pdns-data-loader
+    spec:
+      enableServiceLinks: false
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - pdns-data-loader
+      nodeSelector:
+        kubernetes.io/hostname: k8s-gpu-node0
+      imagePullSecrets:
+        - name: default-registry-key
+      containers:
+        - name: pdns-data-loader
+          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/pdns-data-loader:dev-slim
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9999
+              protocol: TCP
+              name: jmx
+          args:
+            - pattern=file:///datasource/pdns_logs/**/*.log
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&characterEncoding=utf8mb4
+            - name: SPRING_DATASOURCE_USERNAME
+              value: springbatch
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: job-repository-mariadb
+                  key: mariadb-password
+            - name: JAVA_TOOL_OPTIONS
+              value: -Xms4g -Xmx7g -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+            - name: SPRING_TASK_EXECUTION_POOL_CORE_SIZE
+              value: '12'
+            - name: SPRING_TASK_EXECUTION_POOL_MAX_SIZE
+              value: '12'
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka-kafka-bootstrap:9093
+            - name: SPRING_KAFKA_SSL_KEY_STORE_TYPE
+              value: PKCS12
+            - name: SPRING_KAFKA_SSL_KEY_STORE_LOCATION
+              value: file:///var/run/secrets/java.io/keystores/user.p12
+            - name: SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-user-pdns-data-loader
+                  key: user.password
+            - name: SPRING_KAFKA_SSL_TRUST_STORE_TYPE
+              value: JKS
+            - name: SPRING_KAFKA_SSL_TRUST_STORE_LOCATION
+              value: file:///var/run/secrets/java.io/truststores/ca.jks
+            - name: SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: truststore
+                  key: password
+            - name: SPRING_KAFKA_TEMPLATE_DEFAULT_TOPIC
+              value: raw.pdns
+            - name: SPRING_KAFKA_PRODUCER_BATCH_SIZE
+              value: '300000'
+            # - name: SPRING_KAFKA_PRODUCER_PROPERTIES_LINGER_MS
+            #   value: '10000'
+            - name: APP_JOB_PDNS_STEP_CHUNK_SIZE
+              value: '3000'
+            - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_ENABLE
+              value: 'true'
+            - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_SUCCESS_INTERVAL
+              value: '1000000'
+          resources:
+            requests:
+              cpu: 8
+              memory: 8Gi
+            limits:
+              cpu: 8
+              memory: 8Gi
+          volumeMounts:
+            - mountPath: /datasource
+              name: datasource
+            - mountPath: /var/run/secrets/java.io/keystores/
+              name: keystores
+            - mountPath: /var/run/secrets/java.io/truststores/
+              name: truststores
+      restartPolicy: Never
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+      volumes:
+        - name: keystores
+          secret:
+            secretName: kafka-user-pdns-data-loader
+            defaultMode: 256
+        - name: truststores
+          secret:
+            secretName: truststore
+            defaultMode: 256
+        - name: datasource
+          persistentVolumeClaim:
+            claimName: nfs-k8s-gpu-node0
+            # claimName: nfs-ns-2-b
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdns-data-loader
+  namespace: default
+  labels:
+    app.kubernetes.io/name: pdns-data-loader
+    app.kubernetes.io/part-of: deeparcher
+    app.kubernetes.io/component: pdns-data-loader
+spec:
+  type: ClusterIP
+  ports:
+    - name: jmx
+      port: 9999
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: pdns-data-loader
+    app.kubernetes.io/part-of: deeparcher
+    app.kubernetes.io/component: pdns-data-loader
