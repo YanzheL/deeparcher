@@ -18,12 +18,9 @@ spring:
       security.protocol: SSL
       ssl.endpoint.identification.algorithm: ""
       metadata.max.age.ms: 10000
-      #      max.poll.interval.ms: 10000
-      #      session.timeout.ms: 9000
-      #      heartbeat.interval.ms: 500
       receive.buffer.bytes: 655360
     streams:
-      application-id: test.temp-work
+      application-id: whitelist-filter
       state-dir: /tmp/kafka-stream
       replication-factor: 2
       auto-startup: false
@@ -38,7 +35,7 @@ app:
       allow: false
   whitelists:
     - type: file
-      path: whitelist.csv
+      path: /data/whitelist.csv
     - type: regex
       path: "\\.(edu|gov)(\\.[a-z]{2})?$"
   input:
@@ -60,6 +57,6 @@ com:
   sun:
     management:
       jmxremote:
-        port: 56789
+        port: 9999
         authenticate: false
         ssl: false

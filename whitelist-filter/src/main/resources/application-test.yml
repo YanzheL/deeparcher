@@ -72,6 +72,6 @@ com:
   sun:
     management:
       jmxremote:
-        port: 56789
+        port: 9999
         authenticate: false
         ssl: false
