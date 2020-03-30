@@ -32,12 +32,41 @@ spring:
         num.stream.threads: 6
 
 app:
-  whitelist:
-    file: whitelist.csv
-  output:
-    file: not-in-whitelist-uniq.txt
+  prefilters:
+    - field: domain
+      pattern: "hitwh\\.edu\\.cn$"
+      allow: false
+  whitelists:
+    - type: file
+      path: whitelist.csv
+    - type: regex
+      path: "\\.(edu|gov)(\\.[a-z]{2})?$"
   input:
-    topic: raw.pdns
+    type: topic
+    path: raw.pdns
+  output:
+    match:
+      - type: topic
+        path: test.raw.pdns.in-whitelist
+        options:
+          unique: false
+      - type: file
+        path: in-whitelist.csv
+        options:
+          unique: true
+          expectedInsertions: 2000000000
+          fpp: 0.01
+    miss:
+      - type: topic
+        path: test.raw.pdns.not-in-whitelist
+        options:
+          unique: false
+      - type: file
+        path: not-in-whitelist.csv
+        options:
+          unique: true
+          expectedInsertions: 2000000000
+          fpp: 0.01
 
 com:
   sun:

@@ -5,10 +5,10 @@ spring:
     ssl:
       protocol: TLSv1.2
       key-store-type: PKCS12
-      key-store-location: file:///home/liyanzhe/kafka-user-test/user.p12
+      key-store-location: file:///tmp/kafka-user-test/user.p12
       key-store-password: h0IVo7v7EStE # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
       trust-store-type: JKS
-      trust-store-location: file:///home/liyanzhe/kafka-user-test/ca.jks
+      trust-store-location: file:///tmp/kafka-user-test/ca.jks
       trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     consumer:
       max-poll-records: 5000000
@@ -29,15 +29,32 @@ spring:
       auto-startup: false
       properties:
         topology.optimization: all
-        num.stream.threads: 6
+        num.stream.threads: 8
 
 app:
-  whitelist:
-    file: whitelist.csv
-  output:
-    file: not-in-whitelist-uniq.txt
+  prefilters:
+    - field: domain
+      pattern: "hitwh\\.edu\\.cn$"
+      allow: false
+  whitelists:
+    - type: file
+      path: whitelist.csv
+    - type: regex
+      path: "\\.(edu|gov)(\\.[a-z]{2})?$"
   input:
-    topic: raw.pdns
+    type: topic
+    path: raw.pdns
+  output:
+    match:
+      - type: topic
+        path: raw.pdns.in-whitelist
+        options:
+          unique: false
+    miss:
+      - type: topic
+        path: raw.pdns.not-in-whitelist
+        options:
+          unique: false
 
 com:
   sun:

@@ -1,27 +1,31 @@
 package com.hitnslab.dnssecurity.deeparcher.whitelistfilter
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.stereotype.Component
+import org.springframework.boot.context.properties.ConstructorBinding
 
+@ConstructorBinding
 @ConfigurationProperties(prefix = "app")
-@Component
-class AppProperties {
+class AppProperties(
+        val whitelists: List<ResourceSpec>,
+        val input: ResourceSpec,
+        val output: Output,
+        var prefilters: List<PrefilterSpec>? = null
+) {
 
-    var whitelist = Whitelist()
+    data class Output(
+            val match: List<ResourceSpec>,
+            val miss: List<ResourceSpec>
+    )
 
-    var input = Input()
+    data class PrefilterSpec(
+            val field: String,
+            val pattern: String,
+            val allow: Boolean
+    )
 
-    var output = Output()
-
-    class Whitelist {
-        var file: String = "whitelist.txt"
-    }
-
-    class Input {
-        var topic: String = "whitelist.txt"
-    }
-
-    class Output {
-        var file: String = "whitelist.txt"
-    }
+    data class ResourceSpec(
+            val type: String,
+            val path: String,
+            var options: MutableMap<String, String> = mutableMapOf()
+    )
 }
