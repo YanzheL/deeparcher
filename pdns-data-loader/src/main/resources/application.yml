@@ -2,8 +2,8 @@ spring:
   task:
     execution:
       pool:
-        core-size: 8
-        max-size: 8
+        core-size: 12
+        max-size: 12
   kafka:
     bootstrap-servers:
       - kafka-kafka-bootstrap:9093
@@ -24,22 +24,17 @@ spring:
       client-id: PDNS_DATA_LOADER
       #      transaction-id-prefix: PDNS_DATA_LOADER
       batch-size: 300000
-      properties:
-        linger.ms: 10000
-    #        max.request.size: 32000000
     template:
       default-topic: test.raw.pdns
     properties:
       security.protocol: SSL
-  #      ssl.endpoint.identification.algorithm: ""
+      ssl.endpoint.identification.algorithm: ""
   batch:
     initialize-schema: always
     job:
       enabled: false  # Disable built-in CommandLineRunner
   datasource:
-    url: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
-    #    username: sa
-    #    password: sa
+    url: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8mb4
     hikari:
       connection-timeout: 300000
       idle-timeout: 600000
@@ -54,7 +49,7 @@ app:
       step:
         #      transaction:
         #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
-        chunk-size: 5000
+        chunk-size: 3000
         retry-limit: 10
         item-reader:
           field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
@@ -62,7 +57,7 @@ app:
           name: kafka
           metrics:
             enable: true
-            success-interval: 100000
+            success-interval: 1000000
             failure-interval: 1000
 # management:
 #   health:
