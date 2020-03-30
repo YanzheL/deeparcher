@@ -34,7 +34,7 @@ class TopologyConfig : DisposableBean {
     val fileSinkWriters by lazy {
         Caffeine.newBuilder()
                 .maximumSize(100)
-                .removalListener<String, PrintWriter> { k, v, cause ->
+                .removalListener<String, PrintWriter> { _, v, cause ->
                     v?.close()
                     logger.info { "Writer-Cache evicted <$v> for cause <$cause>" }
                 }
@@ -76,9 +76,9 @@ class TopologyConfig : DisposableBean {
             }
         }
         val matchRecords = src
-                .filter { k, v -> whitelistPredicate.test(v.topPrivateDomain!!) }
+                .filter { _, v -> whitelistPredicate.test(v.topPrivateDomain!!) }
         val missRecords = src
-                .filterNot { k, v -> whitelistPredicate.test(v.topPrivateDomain!!) }
+                .filterNot { _, v -> whitelistPredicate.test(v.topPrivateDomain!!) }
 
         appProperties.output.match.forEach {
             configSinks(matchRecords, it.type, it.path, it.options)
@@ -101,7 +101,7 @@ class TopologyConfig : DisposableBean {
         }
         when (type) {
             "topic" -> sinkSrc.to(path)
-            "file" -> sinkSrc.foreach { k, v ->
+            "file" -> sinkSrc.foreach { _, v ->
                 fileSinkWriters.get(path)!!.println(
                         "${v.queryTime},${v.queryType},${v.domain},${v.topPrivateDomain},${v.replyCode},${v.ips.joinToString(";")},${v.cnames.joinToString(";")}"
                 )
