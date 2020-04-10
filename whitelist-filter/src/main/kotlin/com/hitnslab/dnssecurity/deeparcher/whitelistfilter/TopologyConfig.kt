@@ -76,9 +76,9 @@ class TopologyConfig : DisposableBean {
             }
         }
         val matchRecords = src
-                .filter { _, v -> whitelistPredicate.test(v.topPrivateDomain!!) }
+                .filter { _, v -> whitelistPredicate.test(v.topPrivateDomain) }
         val missRecords = src
-                .filterNot { _, v -> whitelistPredicate.test(v.topPrivateDomain!!) }
+                .filterNot { _, v -> whitelistPredicate.test(v.topPrivateDomain) }
 
         appProperties.output.match.forEach {
             configSinks(matchRecords, it.type, it.path, it.options)
@@ -103,7 +103,7 @@ class TopologyConfig : DisposableBean {
             "topic" -> sinkSrc.to(path)
             "file" -> sinkSrc.foreach { _, v ->
                 fileSinkWriters.get(path)!!.println(
-                        "${v.queryTime},${v.queryType},${v.domain},${v.topPrivateDomain},${v.replyCode},${v.ips.joinToString(";")},${v.cnames.joinToString(";")}"
+                        "${v.queryTime},${v.queryType},${v.domain},${v.topPrivateDomain},${v.replyCode},${v.ips?.joinToString(";")},${v.cnames?.joinToString(";")}"
                 )
             }
             else -> throw Exception("Invalid sink type <$type>")
