@@ -6,7 +6,6 @@ import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.PDNSKafkaItemWri
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.PDnsJobProperties
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDNSLogFieldSetMapper
-import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDnsDataValidator
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
@@ -63,13 +62,13 @@ class LoadPDNSDataJobConfig {
 
     @Bean
     fun step(
-            itemReader: ItemReader<PDnsData>,
+            itemReader: ItemReader<PDnsData.Builder>,
             itemWriter: ItemWriter<PDnsData>,
-            itemProcessor: ItemProcessor<PDnsData, PDnsData?>
+            itemProcessor: ItemProcessor<PDnsData.Builder, PDnsData?>
     ): Step {
         val config = properties.step
         val builder = stepBuilderFactory.get("LOAD_PDNS_DATA_STEP0")
-                .chunk<PDnsData, PDnsData>(properties.step.chunkSize)
+                .chunk<PDnsData.Builder, PDnsData>(properties.step.chunkSize)
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)
@@ -101,10 +100,10 @@ class LoadPDNSDataJobConfig {
     }
 
     @Bean
-    fun itemProcessor(): ItemProcessor<PDnsData, PDnsData?> {
-        val compositeItemProcessor = CompositeItemProcessor<PDnsData, PDnsData?>()
+    fun itemProcessor(): ItemProcessor<PDnsData.Builder, PDnsData?> {
+        val compositeItemProcessor = CompositeItemProcessor<PDnsData.Builder, PDnsData?>()
         val processors = mutableListOf<ItemProcessor<*, *>>()
-        processors.add(PDnsDataValidator())
+        processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> { it.build() })
         compositeItemProcessor.setDelegates(processors)
         return compositeItemProcessor
     }
@@ -114,9 +113,9 @@ class LoadPDNSDataJobConfig {
     fun itemReader(
             @Value("#{jobParameters['file']}") filename: String,
             fieldSetMapper: PDNSLogFieldSetMapper
-    ): FlatFileItemReader<PDnsData> {
+    ): FlatFileItemReader<PDnsData.Builder> {
         logger.info { "Reading file <$filename> ..." }
-        return FlatFileItemReaderBuilder<PDnsData>()
+        return FlatFileItemReaderBuilder<PDnsData.Builder>()
                 .name("reader")
                 .resource(FileSystemResource(Path.of(filename)))
                 .fieldSetMapper(fieldSetMapper)

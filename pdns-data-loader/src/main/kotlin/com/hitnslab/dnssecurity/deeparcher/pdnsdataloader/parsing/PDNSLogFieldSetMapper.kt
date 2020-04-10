@@ -4,4 +4,4 @@ import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import org.springframework.batch.item.file.mapping.FieldSetMapper
 
 
-interface PDNSLogFieldSetMapper : FieldSetMapper<PDnsData>
+interface PDNSLogFieldSetMapper : FieldSetMapper<PDnsData.Builder>
