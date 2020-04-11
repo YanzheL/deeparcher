@@ -43,7 +43,7 @@
             <workingDirectory>/app</workingDirectory>
           </container>
           <from>
-            <image>gcr.azk8s.cn/distroless/java:11</image>
+            <image>gcr.io/distroless/java:11</image>
           </from>
           <to>
             <image>registry.hitnslab.com/dns-security/deeparcher/pdns-data-loader</image>

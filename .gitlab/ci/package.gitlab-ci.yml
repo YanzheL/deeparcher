@@ -30,7 +30,7 @@
 .build_image_kaniko:
   stage: package
   image:
-    name: gcr.azk8s.cn/kaniko-project/executor:debug-v0.16.0
+    name: gcr.io/kaniko-project/executor:debug-v0.16.0
     entrypoint: [""]
   before_script:
     - |
