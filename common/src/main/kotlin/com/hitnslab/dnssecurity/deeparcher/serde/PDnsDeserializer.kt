@@ -2,12 +2,12 @@ package com.hitnslab.dnssecurity.deeparcher.serde
 
 import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
+import com.hitnslab.dnssecurity.deeparcher.util.parseIpFromBytes
 import org.apache.kafka.common.serialization.Deserializer
 import java.net.InetAddress
-import java.nio.ByteBuffer
 
 class PDnsDeserializer : Deserializer<PDnsData> {
-    override fun deserialize(topic: String?, data: ByteArray?): PDnsData {
+    override fun deserialize(topic: String, data: ByteArray): PDnsData {
         val parsed = PDnsDataProto.PDnsData.parseFrom(data)
         val builder = PDnsData.Builder()
                 .queryTime(parsed.qTime)
@@ -33,22 +33,5 @@ class PDnsDeserializer : Deserializer<PDnsData> {
             throw err
         }
         throw Exception("Unknown error")
-    }
-
-    private fun parseIpFromBytes(bytesIn: ByteArray, width: Int, ipOut: MutableCollection<InetAddress>) {
-        if (bytesIn.isEmpty()) {
-            return
-        }
-        if (bytesIn.size % width != 0) {
-            throw IllegalArgumentException("IP Address Bytes <$bytesIn> has incorrect length <${bytesIn.size}>.")
-        }
-        val buffer = ByteBuffer.allocate(width)
-        for ((i, byte) in bytesIn.withIndex()) {
-            buffer.put(byte)
-            if (i != 0 && (i + 1) % width == 0) {
-                ipOut.add(InetAddress.getByAddress(buffer.array()))
-                buffer.clear()
-            }
-        }
     }
 }
