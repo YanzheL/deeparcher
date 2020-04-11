@@ -10,6 +10,7 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 
 data class PDnsData(
@@ -41,7 +42,7 @@ data class PDnsData(
                 ZonedDateTime.of(
                         LocalDateTime.parse(value, fmt),
                         ZoneId.systemDefault()
-                ).toInstant()
+                ).toInstant().truncatedTo(ChronoUnit.MILLIS)
             } catch (e: Exception) {
                 logger.warn { "Invalid queryTime<$value>" }
                 null
