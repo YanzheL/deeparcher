@@ -126,6 +126,7 @@ data class PDnsData(
         }
 
         fun build(): PDnsData? {
+            error = null
             if (queryTime == null) {
                 error = PDNSInvalidFieldException("queryTime cannot be null")
                 return null
@@ -143,9 +144,13 @@ data class PDnsData(
                 return null
             }
             if (topPrivateDomain == null) {
-                topPrivateDomain = InternetDomainName.from(domain).topPrivateDomain().toString()
+                try {
+                    topPrivateDomain = InternetDomainName.from(domain).topPrivateDomain().toString()
+                } catch (e: IllegalStateException) {
+                    error = e
+                    return null
+                }
             }
-            error = null
             return PDnsData(
                     queryTime!!,
                     domain!!,
