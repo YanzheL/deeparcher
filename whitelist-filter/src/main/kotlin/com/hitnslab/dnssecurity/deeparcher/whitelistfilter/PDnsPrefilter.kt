@@ -9,20 +9,23 @@ import kotlin.reflect.full.memberProperties
 class PDnsPrefilter(
         field: String,
         pattern: String,
-        val allow: Boolean
+        allow: Boolean
 ) : Predicate<String, PDnsData> {
 
     val propertyRef: KProperty1<PDnsData, String>
 
     val regex: Regex
 
+    val allow: Boolean
+
     init {
         propertyRef = buildPropertyRef(field)
         regex = Regex(pattern)
+        this.allow = allow
     }
 
-    override fun test(key: String?, value: PDnsData?): Boolean {
-        val res = regex.containsMatchIn(propertyRef.get(value!!))
+    override fun test(key: String, value: PDnsData): Boolean {
+        val res = regex.containsMatchIn(propertyRef.get(value))
         return if (allow) res else !res
     }
 
