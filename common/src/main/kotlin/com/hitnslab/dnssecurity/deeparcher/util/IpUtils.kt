@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.ByteBufUtil
 import io.netty.buffer.Unpooled
 import java.net.InetAddress
+import java.nio.ByteBuffer
 
 
 fun parseIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableCollection<InetAddress>) {
@@ -16,7 +17,7 @@ fun parseIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableCollection<Inet
         throw IllegalArgumentException("IP Address Bytes <$bytesIn> has incorrect length <${size}>.")
     }
     while (view.readableBytes() != 0) {
-        val address = view.readBytes(width)
+        val address = view.readSlice(width)
         ipOut.add(InetAddress.getByAddress(ByteBufUtil.getBytes(address)))
     }
 }
