@@ -59,7 +59,14 @@ data class PDnsData(
         }
 
         fun queryTime(value: Instant) = apply { queryTime = value }
-        fun domain(value: String) = apply { domain = value.toLowerCase() }
+        fun domain(value: String) = apply {
+            if (InternetDomainName.isValid(value)) {
+                domain = value.toLowerCase()
+            } else {
+                logger.warn { "Invalid domain<$value>" }
+            }
+        }
+
         fun queryType(value: String) = apply {
             queryType = try {
                 DnsQueryType.valueOf(value)
