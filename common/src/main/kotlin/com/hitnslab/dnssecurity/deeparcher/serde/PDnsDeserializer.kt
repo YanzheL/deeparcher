@@ -18,8 +18,8 @@ class PDnsDeserializer : Deserializer<PDnsData> {
                 .clientIp(parsed.clientIp.toByteArray())
 
         val ips = mutableSetOf<InetAddress>()
-        parseIpFromBytes(parsed.rIpv4Addrs.toByteArray(), 4, ips)
-        parseIpFromBytes(parsed.rIpv6Addrs.toByteArray(), 16, ips)
+        parseIpFromBytes(parsed.rIpv4Addrs.asReadOnlyByteBuffer(), 4, ips)
+        parseIpFromBytes(parsed.rIpv6Addrs.asReadOnlyByteBuffer(), 16, ips)
         builder.setIps(ips)
         val cnames = mutableSetOf<String>()
         cnames.addAll(parsed.rCnamesList)

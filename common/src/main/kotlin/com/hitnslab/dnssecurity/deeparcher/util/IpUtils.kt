@@ -25,3 +25,7 @@ fun parseIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableCollection<Inet
 fun parseIpFromBytes(bytesIn: ByteArray, width: Int, ipOut: MutableCollection<InetAddress>) {
     return parseIpFromBytes(Unpooled.wrappedBuffer(bytesIn), width, ipOut)
 }
+
+fun parseIpFromBytes(bytesIn: ByteBuffer, width: Int, ipOut: MutableCollection<InetAddress>) {
+    return parseIpFromBytes(Unpooled.wrappedBuffer(bytesIn), width, ipOut)
+}
