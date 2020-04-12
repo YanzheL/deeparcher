@@ -98,7 +98,7 @@
 #  needs:
 #    - Maven Build
 
-Package pdns-data-loader Slim Image On Branch:
+Package pdns-data-loader Image On Branch:
   extends: .build_image_maven
   script:
     - |
@@ -111,7 +111,7 @@ Package pdns-data-loader Slim Image On Branch:
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}-slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}
   except:
     - master
   only:
@@ -119,7 +119,7 @@ Package pdns-data-loader Slim Image On Branch:
   needs:
     - Maven Build Root
 
-Package whitelist-filter Slim Image On Branch:
+Package stream Image On Branch:
   extends: .build_image_maven
   script:
     - |
@@ -132,28 +132,7 @@ Package whitelist-filter Slim Image On Branch:
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/whitelist-filter:${CI_COMMIT_BRANCH}-slim
-  except:
-    - master
-  only:
-    - branches
-  needs:
-    - Maven Build Root
-
-Package aggregator Slim Image On Branch:
-  extends: .build_image_maven
-  script:
-    - |
-      mvn $MAVEN_CLI_OPTS \
-        compile jib:build \
-        -pl whitelist-filter \
-        -Djib.console=plain \
-        -Djib.httpTimeout=60000 \
-        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
-        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
-        -Djib.to.auth.username=$CI_REGISTRY_USER \
-        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/aggregator:${CI_COMMIT_BRANCH}-slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:${CI_COMMIT_BRANCH}
   except:
     - master
   only:
@@ -171,7 +150,7 @@ Package aggregator Slim Image On Branch:
 #  needs:
 #    - Maven Build
 
-Package pdns-data-loader Slim Image On Master:
+Package pdns-data-loader Image On Master:
   extends: .build_image_maven
   script:
     - |
@@ -184,13 +163,13 @@ Package pdns-data-loader Slim Image On Master:
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:latest
   only:
     - master
   needs:
     - Maven Build Root
 
-Package whitelist-filter Slim Image On Master:
+Package stream Image On Master:
   extends: .build_image_maven
   script:
     - |
@@ -203,7 +182,7 @@ Package whitelist-filter Slim Image On Master:
         -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/whitelist-filter:slim
+        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:latest
   only:
     - master
   needs:
