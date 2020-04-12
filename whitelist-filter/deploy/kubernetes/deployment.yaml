@@ -8,7 +8,7 @@ metadata:
   name: whitelist-filter
   namespace: default
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: whitelist-filter
@@ -45,7 +45,8 @@ spec:
         - name: default-registry-key
       containers:
         - name: whitelist-filter
-          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/whitelist-filter:dev-slim
+          image: registry.gitlab.com/yanzhel/deeparcher/whitelist-filter:dev-slim
+          #          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/whitelist-filter:dev-slim
           imagePullPolicy: Always
           ports:
             - containerPort: 9999
