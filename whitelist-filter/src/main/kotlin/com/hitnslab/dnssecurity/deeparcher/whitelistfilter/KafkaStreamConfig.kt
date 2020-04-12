@@ -6,32 +6,32 @@ import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsSerde
 import mu.KotlinLogging
 import org.apache.kafka.common.serialization.Serdes
+import org.apache.kafka.streams.KafkaStreams
 import org.apache.kafka.streams.StreamsBuilder
-import org.apache.kafka.streams.Topology
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
-import org.springframework.beans.factory.DisposableBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.kafka.annotation.EnableKafkaStreams
+import org.springframework.kafka.config.StreamsBuilderFactoryBeanCustomizer
 import java.io.File
 import java.io.FileWriter
 import java.io.PrintWriter
 import java.nio.charset.Charset
 
 @Configuration
+@EnableKafkaStreams
 @EnableConfigurationProperties(AppProperties::class)
-class TopologyConfig : DisposableBean {
+class KafkaStreamConfig {
 
     @Autowired
     lateinit var appProperties: AppProperties
 
-    private var fileIO = false
-
     private val logger = KotlinLogging.logger {}
 
-    val fileSinkWriters by lazy {
+    final val cacheDelegate = lazy {
         Caffeine.newBuilder()
                 .maximumSize(100)
                 .removalListener<String, PrintWriter> { _, v, cause ->
@@ -39,33 +39,39 @@ class TopologyConfig : DisposableBean {
                     logger.info { "Writer-Cache evicted <$v> for cause <$cause>" }
                 }
                 .build<String, PrintWriter> {
-                    fileIO = true
                     PrintWriter(FileWriter(File(it), true), true)
                 }
     }
 
-    override fun destroy() {
-        if (!fileIO) {
-            return
+    val fileSinkWriters by cacheDelegate
+
+    @Bean
+    fun customizer(): StreamsBuilderFactoryBeanCustomizer {
+        return StreamsBuilderFactoryBeanCustomizer { fb ->
+            fb.setStateListener { newState, _ ->
+                if (newState == KafkaStreams.State.NOT_RUNNING && cacheDelegate.isInitialized()) {
+                    logger.info { "Destroying fileSinkWriters..." }
+                    fileSinkWriters.invalidateAll()
+                    logger.info { "Destroyed fileSinkWriters" }
+                }
+            }
         }
-        logger.info { "Destroying fileSinkWriters..." }
-        fileSinkWriters.invalidateAll()
-        logger.info { "Destroyed fileSinkWriters" }
     }
 
     @Bean
-    fun topology(): Topology {
+    fun kStream(builder: StreamsBuilder): KStream<*, *> {
         val prefilters = mutableListOf<PDnsPrefilter>()
         appProperties.prefilters?.forEach {
             prefilters.add(PDnsPrefilter(it.field, it.pattern, it.allow))
         }
         val builder = StreamsBuilder()
-        var src = builder.stream(
+        val src = builder.stream(
                 appProperties.input.path,
                 Consumed.with(Serdes.String(), PDnsSerde())
         )
+        var srcPrefiltered = src
         prefilters.forEach {
-            src = src.filter(it)
+            srcPrefiltered = src.filter(it)
         }
         val whitelistPredicate = WhitelistPredicate()
         appProperties.whitelists.forEach {
@@ -75,18 +81,17 @@ class TopologyConfig : DisposableBean {
                 else -> throw Exception("Invalid whitelist source type <${it.type}>")
             }
         }
-        val matchRecords = src
+        val matchRecords = srcPrefiltered
                 .filter { _, v -> whitelistPredicate.test(v.topPrivateDomain) }
-        val missRecords = src
+        val missRecords = srcPrefiltered
                 .filterNot { _, v -> whitelistPredicate.test(v.topPrivateDomain) }
-
         appProperties.output.match.forEach {
             configSinks(matchRecords, it.type, it.path, it.options)
         }
         appProperties.output.miss.forEach {
             configSinks(missRecords, it.type, it.path, it.options)
         }
-        return builder.build()
+        return src
     }
 
     fun configSinks(src: KStream<String, PDnsData>, type: String, path: String, options: Map<String, String>) {

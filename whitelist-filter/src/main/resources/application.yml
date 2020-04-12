@@ -23,7 +23,7 @@ spring:
       application-id: whitelist-filter
       state-dir: /tmp/kafka-stream
       replication-factor: 2
-      auto-startup: false
+      auto-startup: true
       properties:
         topology.optimization: all
         num.stream.threads: 1
