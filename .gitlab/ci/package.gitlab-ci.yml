@@ -125,7 +125,7 @@ Package stream Image On Branch:
     - |
       mvn $MAVEN_CLI_OPTS \
         compile jib:build \
-        -pl whitelist-filter \
+        -pl stream \
         -Djib.console=plain \
         -Djib.httpTimeout=60000 \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
@@ -175,7 +175,7 @@ Package stream Image On Master:
     - |
       mvn $MAVEN_CLI_OPTS \
         compile jib:build \
-        -pl whitelist-filter \
+        -pl stream \
         -Djib.console=plain \
         -Djib.httpTimeout=60000 \
         -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
