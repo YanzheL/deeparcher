@@ -26,7 +26,7 @@ spring:
       auto-startup: true
       properties:
         topology.optimization: all
-        num.stream.threads: 1
+        num.stream.threads: 4
 
 app:
   whitelist-filter:
