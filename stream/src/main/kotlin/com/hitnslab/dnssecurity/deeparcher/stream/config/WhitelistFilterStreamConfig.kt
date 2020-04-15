@@ -30,7 +30,6 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
         properties.prefilters?.forEach {
             prefilters.add(PDnsPrefilter(it.field, it.pattern, it.allow))
         }
-        val builder = StreamsBuilder()
         val src = builder.stream(
                 properties.input.path,
                 Consumed.with(Serdes.String(), PDnsSerde())
