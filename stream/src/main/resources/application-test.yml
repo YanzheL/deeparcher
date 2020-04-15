@@ -35,7 +35,7 @@ app:
   aggregator:
     input:
       type: topic
-      path: raw.pdns
+      path: raw.pdns.not-in-whitelist
     output:
       - type: topic
         path: test.domain.aggregate

@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication(proxyBeanMethods = false)
-class WhitelistFilterApplication
+class StreamApplication
 
 fun main(args: Array<String>) {
-    runApplication<WhitelistFilterApplication>(*args)
+    runApplication<StreamApplication>(*args)
 }

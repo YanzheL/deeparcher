@@ -20,7 +20,7 @@ spring:
       metadata.max.age.ms: 60000
       receive.buffer.bytes: 2097152
     streams:
-      application-id: whitelist-filter
+      application-id: stream
       state-dir: /tmp/kafka-stream
       replication-factor: 2
       auto-startup: true
