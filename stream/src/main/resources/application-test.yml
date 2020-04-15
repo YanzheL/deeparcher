@@ -33,7 +33,7 @@ spring:
 
 app:
   aggregator:
-    enabled: true
+    enabled: false
     input:
       type: topic
       path: raw.pdns.not-in-whitelist
@@ -41,7 +41,7 @@ app:
       - type: topic
         path: test.domain.aggregate
   whitelist-filter:
-    enabled: true
+    enabled: false
     prefilters:
       - field: domain
         pattern: "hitwh\\.edu\\.cn$"
