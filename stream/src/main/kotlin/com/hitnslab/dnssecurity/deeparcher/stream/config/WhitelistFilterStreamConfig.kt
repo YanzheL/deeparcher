@@ -9,7 +9,7 @@ import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @EnableConfigurationProperties(WhitelistFilterProperties::class)
-@ConditionalOnBean(WhitelistFilterProperties::class)
+@ConditionalOnProperty(prefix = "app.whitelist-filter", name = ["enabled"], havingValue = "true")
 class WhitelistFilterStreamConfig : AppStreamConfigurer() {
 
     @Autowired

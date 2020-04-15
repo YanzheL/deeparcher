@@ -10,7 +10,7 @@ import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
 import org.apache.kafka.streams.kstream.Materialized
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,7 +20,8 @@ import java.net.Inet6Address
 
 @Configuration
 @EnableConfigurationProperties(AggregatorProperties::class)
-@ConditionalOnBean(AggregatorProperties::class)
+//@ConditionalOnBean(AggregatorProperties::class)
+@ConditionalOnProperty(prefix = "app.aggregator", name = ["enabled"], havingValue = "true")
 class AggregatorStreamConfig : AppStreamConfigurer() {
 
     @Autowired

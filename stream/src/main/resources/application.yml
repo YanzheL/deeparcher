@@ -30,6 +30,7 @@ spring:
 
 app:
   whitelist-filter:
+    enabled: true
     prefilters:
       - field: domain
         pattern: "hitwh\\.edu\\.cn$"
