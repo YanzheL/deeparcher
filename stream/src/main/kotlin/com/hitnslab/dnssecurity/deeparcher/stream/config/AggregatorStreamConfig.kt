@@ -1,9 +1,12 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
-import com.hitnslab.dnssecurity.deeparcher.model.DomainIPAssocDetail
-import com.hitnslab.dnssecurity.deeparcher.serde.DomainIPAssocDetailSerde
-import com.hitnslab.dnssecurity.deeparcher.serde.PDnsSerde
+import com.google.protobuf.ByteString
+import com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto
+import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.property.AggregatorProperties
+import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet
+import io.netty.buffer.Unpooled
+import mu.KotlinLogging
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
@@ -14,8 +17,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import java.net.Inet4Address
-import java.net.Inet6Address
 
 
 @Configuration
@@ -27,33 +28,53 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
     @Autowired
     lateinit var properties: AggregatorProperties
 
+    private val logger = KotlinLogging.logger {}
+
     @Bean
     fun aggregatorStream(builder: StreamsBuilder): KStream<*, *> {
         val src = builder.stream(
                 properties.input.path,
-                Consumed.with(Serdes.String(), PDnsSerde())
+                Consumed.with(
+                        Serdes.String(),
+                        GenericSerde(PDnsProtoSerializer::class, PDnsProtoDeserializer::class)
+                )
         )
         val updates = src
-                .mapValues { _, v ->
-                    val ret = DomainIPAssocDetail(v.domain, v.topPrivateDomain)
-                    v.ips?.forEach {
-                        when (it) {
-                            is Inet4Address -> ret.ipv4Addresses.add(it)
-                            is Inet6Address -> ret.ipv6Addresses.add(it)
-                        }
-                    }
-                    ret
-                }
                 .groupByKey()
-                .reduce(
-                        { v1, v2 ->
-                            v1.ipv4Addresses.addAll(v2.ipv4Addresses)
-                            v1.ipv6Addresses.addAll(v2.ipv6Addresses)
-                            v1
+                .aggregate(
+                        { DomainIPAssocDetailProto.DomainIPAssocDetail.getDefaultInstance() },
+                        { k, v, agg ->
+                            val ab = DomainIPAssocDetailProto.DomainIPAssocDetail
+                                    .newBuilder()
+                                    .mergeFrom(agg)
+                            if (ab.fqdn.isEmpty()) {
+                                ab.fqdn = k
+                            }
+                            if (ab.ipv4Addrs.isEmpty) {
+                                ab.ipv4Addrs = v.rIpv4Addrs
+                            } else {
+                                val bufSet = ByteBufSet(ab.ipv4Addrs.asReadOnlyByteBuffer())
+                                bufSet.addAll(Unpooled.wrappedBuffer(v.rIpv4Addrs.asReadOnlyByteBuffer()), 4)
+                                if (bufSet.dirty) {
+                                    ab.ipv4Addrs = ByteString.copyFrom(bufSet.buffer.nioBuffer())
+                                }
+                                bufSet.release()
+                            }
+                            if (ab.ipv6Addrs.isEmpty) {
+                                ab.ipv6Addrs = v.rIpv6Addrs
+                            } else {
+                                val bufSet = ByteBufSet(ab.ipv6Addrs.asReadOnlyByteBuffer())
+                                bufSet.addAll(Unpooled.wrappedBuffer(v.rIpv6Addrs.asReadOnlyByteBuffer()), 16)
+                                if (bufSet.dirty) {
+                                    ab.ipv6Addrs = ByteString.copyFrom(bufSet.buffer.nioBuffer())
+                                }
+                                bufSet.release()
+                            }
+                            ab.build()
                         },
                         Materialized.with(
                                 Serdes.String(),
-                                DomainIPAssocDetailSerde()
+                                GenericSerde(DomainIPAssocDetailProtoSerializer::class, DomainIPAssocDetailProtoDeserializer::class)
                         )
                 )
                 .toStream()
