@@ -50,6 +50,9 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                             if (ab.fqdn.isEmpty()) {
                                 ab.fqdn = k
                             }
+                            if (ab.domain.isEmpty()) {
+                                ab.domain = v.domain
+                            }
                             if (ab.ipv4Addrs.isEmpty) {
                                 ab.ipv4Addrs = v.rIpv4Addrs
                             } else {
