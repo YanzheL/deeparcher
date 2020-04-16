@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: stream
+  name: stream-whitelist-filter
   namespace: default
   labels:
-    app.kubernetes.io/name: stream
+    app.kubernetes.io/name: stream-whitelist-filter
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
 spec:
@@ -15,6 +15,6 @@ spec:
       port: 9999
       protocol: TCP
   selector:
-    app.kubernetes.io/name: stream
+    app.kubernetes.io/name: stream-whitelist-filter
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
