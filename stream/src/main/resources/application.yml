@@ -29,6 +29,14 @@ spring:
         num.stream.threads: 4
 
 app:
+  aggregator:
+    enabled: false
+    input:
+      type: topic
+      path: raw.pdns.not-in-whitelist
+    output:
+      - type: topic
+        path: domain.aggregate
   whitelist-filter:
     enabled: false
     prefilters:
