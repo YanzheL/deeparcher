@@ -1,13 +1,9 @@
 package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing
 
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
-import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.error.PDNSInvalidFieldException
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.error.PDNSInvalidFormatException
 import mu.KotlinLogging
 import org.springframework.batch.item.file.transform.FieldSet
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
@@ -45,7 +41,7 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
 
     private val logger = KotlinLogging.logger {}
 
-    override fun mapFieldSet(fieldSet: FieldSet): PDnsData {
+    override fun mapFieldSet(fieldSet: FieldSet): PDnsData.Builder {
         val queryTime: String
         try {
             synchronized(this) {
@@ -56,26 +52,20 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 queryTime = dataStringBuilder.toString()
             }
         } catch (e: Exception) {
-            throw PDNSInvalidFieldException("PDNS parse failed: Invalid queryTime in fieldSet <$fieldSet>, exception <$e>", e)
+            throw PDNSInvalidFormatException("PDNS parse failed: Invalid queryTime in fieldSet <$fieldSet>, exception <$e>", e)
         }
-        val ret: PDnsData
+
         val values = fieldSet.values
-        try {
-            val localDateTime = LocalDateTime.parse(queryTime, dateTimeFormatter)
-            ret = PDnsData(
-                    queryTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault()).toInstant(),
-                    domain = fieldSet.readString(9).toLowerCase(),
-                    queryType = fieldSet.readString(11).toUpperCase(),
-                    replyCode = fieldSet.readString(12).toUpperCase()
-            )
-        } catch (e: Exception) {
-            throw PDNSInvalidFieldException("PDNS parse failed: Cannot create PDnsData object with values <$fieldSet>, exception <$e>", e)
-        }
+        val builder = PDnsData.Builder()
+                .queryTime(queryTime, dateTimeFormatter)
+                .domain(fieldSet.readString(9))
+                .queryType(fieldSet.readString(11))
+                .replyCode(fieldSet.readString(12))
         val size = values.size
         if (size <= 14) {
             throw PDNSInvalidFormatException("PDNS parse failed: Insufficient number of fields in <$fieldSet>")
         }
-        ret.clientIp = fieldSet.readString(5)
+        builder.clientIp(fieldSet.readString(5))
         var hasResponseBody = false
         var bodyBaseIdx = -1
         for (i in 13 until size) {
@@ -101,12 +91,12 @@ class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
                 }
                 val replyData: String = conjunction.split(";")[0].trimEnd('.')
                 when (replyType) {
-                    "CNAME" -> ret.cnames.add(replyData.toLowerCase())
-                    "A", "AAAA" -> ret.ips.add(replyData)
+                    "CNAME" -> builder.addCName(replyData)
+                    "A", "AAAA" -> builder.addIp(replyData)
                 }
                 entryStart = entryEnd
             } while (entryStart < size - 1)
         }
-        return ret
+        return builder
     }
 }

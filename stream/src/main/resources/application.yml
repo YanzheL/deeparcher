@@ -1,0 +1,72 @@
+spring:
+  kafka:
+    bootstrap-servers:
+      - kafka-kafka-bootstrap.default:9093
+    ssl:
+      protocol: TLSv1.2
+      key-store-type: PKCS12
+      key-store-location: file:///tmp/kafka-user-test/user.p12
+      key-store-password: h0IVo7v7EStE # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+      trust-store-type: JKS
+      trust-store-location: file:///tmp/kafka-user-test/ca.jks
+      trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+    consumer:
+      max-poll-records: 5000000
+      fetch-max-wait: 2000
+      auto-offset-reset: earliest
+    properties:
+      security.protocol: SSL
+      ssl.endpoint.identification.algorithm: ""
+      metadata.max.age.ms: 60000
+      receive.buffer.bytes: 2097152
+    streams:
+      application-id: stream
+      state-dir: /tmp/kafka-stream
+      replication-factor: 2
+      auto-startup: true
+      properties:
+        topology.optimization: all
+        num.stream.threads: 4
+
+app:
+  aggregator:
+    enabled: false
+    input:
+      type: topic
+      path: raw.pdns.not-in-whitelist
+    output:
+      - type: topic
+        path: domain.aggregate
+  whitelist-filter:
+    enabled: false
+    prefilters:
+      - field: domain
+        pattern: "hitwh\\.edu\\.cn$"
+        allow: false
+    whitelists:
+      - type: file
+        path: /data/whitelist.txt
+      - type: regex
+        path: "\\.(edu|gov)(\\.[a-z]{2})?$"
+    input:
+      type: topic
+      path: raw.pdns
+    output:
+      match:
+        - type: topic
+          path: raw.pdns.in-whitelist
+          options:
+            unique: false
+      miss:
+        - type: topic
+          path: raw.pdns.not-in-whitelist
+          options:
+            unique: false
+
+com:
+  sun:
+    management:
+      jmxremote:
+        port: 9999
+        authenticate: false
+        ssl: false

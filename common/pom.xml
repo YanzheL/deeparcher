@@ -21,6 +21,12 @@
       <groupId>com.google.protobuf</groupId>
       <version>${protobuf.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.netty/netty-buffer -->
+    <dependency>
+      <artifactId>netty-buffer</artifactId>
+      <groupId>io.netty</groupId>
+      <version>4.1.48.Final</version>
+    </dependency>
   </dependencies>
   <modelVersion>4.0.0</modelVersion>
   <packaging>jar</packaging>
@@ -54,7 +60,7 @@
     <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
     <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
   </build>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
   <properties>
   </properties>
 </project>

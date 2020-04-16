@@ -2,36 +2,39 @@ package com.hitnslab.dnssecurity.deeparcher.serde
 
 import com.google.protobuf.ByteString
 import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
-import com.hitnslab.dnssecurity.deeparcher.model.DnsQueryType
-import com.hitnslab.dnssecurity.deeparcher.model.DnsRCode
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
+import io.netty.buffer.PooledByteBufAllocator
 import org.apache.kafka.common.serialization.Serializer
 import java.net.Inet4Address
 import java.net.Inet6Address
-import java.net.InetAddress
 
 class PDnsSerializer : Serializer<PDnsData> {
-    override fun serialize(topic: String?, data: PDnsData?): ByteArray {
+
+    private val allocator = PooledByteBufAllocator.DEFAULT
+
+    override fun serialize(topic: String, data: PDnsData): ByteArray {
         val builder = PDnsDataProto.PDnsData
                 .newBuilder()
                 .setQTime(data!!.queryTime.toEpochMilli())
                 .setDomain(data.topPrivateDomain)
-                .setQType(DnsQueryType.valueOf(data.queryType).value)
-                .setRCode(DnsRCode.valueOf(data.replyCode).value)
+                .setQType(data.queryType.value)
+                .setRCode(data.replyCode.value)
                 .setFqdn(data.domain)
-                .setClientIp(ByteString.copyFrom(InetAddress.getByName(data.clientIp).address))
-        val allIpv4Bytes = mutableListOf<Byte>()
-        val allIpv6Bytes = mutableListOf<Byte>()
-        for (ip in data.ips) {
-            val inetAddr = InetAddress.getByName(ip)
-            val bytes = inetAddr.address.toList()
-            when (inetAddr) {
-                is Inet4Address -> allIpv4Bytes.addAll(bytes)
-                is Inet6Address -> allIpv6Bytes.addAll(bytes)
+                .setClientIp(ByteString.copyFrom(data.clientIp?.address))
+        if (data.ips != null) {
+            val allIpv4Bytes = allocator.directBuffer(data.ips.size)
+            val allIpv6Bytes = allocator.directBuffer(data.ips.size)
+            data.ips.forEach {
+                when (it) {
+                    is Inet4Address -> allIpv4Bytes.writeBytes(it.address)
+                    is Inet6Address -> allIpv6Bytes.writeBytes(it.address)
+                }
             }
+            builder.rIpv4Addrs = ByteString.copyFrom(allIpv4Bytes.nioBuffer())
+            builder.rIpv6Addrs = ByteString.copyFrom(allIpv6Bytes.nioBuffer())
+            allIpv4Bytes.release()
+            allIpv6Bytes.release()
         }
-        builder.rIpv4Addrs = ByteString.copyFrom(allIpv4Bytes.toByteArray())
-        builder.rIpv6Addrs = ByteString.copyFrom(allIpv6Bytes.toByteArray())
         builder.addAllRCnames(data.cnames)
         return builder.build().toByteArray()
     }
