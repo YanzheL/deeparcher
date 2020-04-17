@@ -77,32 +77,6 @@
       <groupId>com.github.ben-manes.caffeine</groupId>
       <version>2.8.1</version>
     </dependency>
-    <dependency>
-      <artifactId>spring-boot-starter-data-jdbc</artifactId>
-      <groupId>org.springframework.boot</groupId>
-    </dependency>
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.omnisci/omnisci-jdbc &ndash;&gt;-->
-    <dependency>
-      <artifactId>omnisci-jdbc</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>slf4j-log4j12</artifactId>
-          <groupId>org.slf4j</groupId>
-        </exclusion>
-      </exclusions>
-      <groupId>com.omnisci</groupId>
-      <version>5.1.1-custom</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
-    <dependency>
-      <artifactId>HikariCP</artifactId>
-      <groupId>com.zaxxer</groupId>
-    </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>io.confluent</groupId>-->
-    <!--      <artifactId>kafka-connect-jdbc</artifactId>-->
-    <!--      <version>5.4.1</version>-->
-    <!--    </dependency>-->
   </dependencies>
   <description>Stream</description>
   <modelVersion>4.0.0</modelVersion>
