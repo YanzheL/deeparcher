@@ -33,7 +33,7 @@ import java.time.format.DateTimeFormatter
  * 21       Response:
  * 22       tile-service.weather.microsoft.com 499 IN CNAME wildcard.weather.microsoft.com.edgekey.net.;wildcard.weather.microsoft.com.edgekey.net 780 IN CNAME e15275.g.akamaiedge.net.;e15275.g.akamaiedge.net 60 IN A 184.85.125.248;
  */
-class HITPDNSLogFieldSetMapper : PDNSLogFieldSetMapper {
+class HITPDNSLogType1FieldSetMapper : PDNSLogFieldSetMapper {
 
     private val dataStringBuilder = StringBuffer(3)
 

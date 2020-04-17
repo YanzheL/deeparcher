@@ -10,7 +10,7 @@ import org.springframework.core.io.DefaultResourceLoader
 import java.time.format.DateTimeFormatter
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class HITPDNSLogFieldSetMapperUnitTests {
+class HITPDNSLogType1FieldSetMapperUnitTests {
 
     private val dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss.nnn")
 
@@ -52,7 +52,7 @@ class HITPDNSLogFieldSetMapperUnitTests {
 
     fun parseOneLine(line: String): PDnsData? {
         val fieldSet = DefaultFieldSet(line.split("\\s+".toRegex()).toTypedArray())
-        val fieldSetMapper = HITPDNSLogFieldSetMapper()
+        val fieldSetMapper = HITPDNSLogType1FieldSetMapper()
         val result = fieldSetMapper.mapFieldSet(fieldSet).build()
         println(result)
         print(result?.ips)

@@ -52,7 +52,7 @@ app:
         chunk-size: 3000
         retry-limit: 10
         item-reader:
-          field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogFieldSetMapper
+          field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogType1FieldSetMapper
         item-writer:
           name: kafka
           metrics:
