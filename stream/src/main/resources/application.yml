@@ -26,7 +26,7 @@ spring:
       auto-startup: true
       properties:
         topology.optimization: all
-        num.stream.threads: 4
+        num.stream.threads: 8
 
 app:
   aggregator:
