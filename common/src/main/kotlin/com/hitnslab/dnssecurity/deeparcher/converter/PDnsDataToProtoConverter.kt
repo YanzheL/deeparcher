@@ -23,8 +23,8 @@ class PDnsDataToProtoConverter : Converter<PDnsData, PDnsDataProto.PDnsData> {
                 .setFqdn(source.domain)
                 .setClientIp(ByteString.copyFrom(source.clientIp?.address))
         if (source.ips != null) {
-            val allIpv4Bytes = allocator.directBuffer(source.ips.size)
-            val allIpv6Bytes = allocator.directBuffer(source.ips.size)
+            val allIpv4Bytes = allocator.heapBuffer(source.ips.size)
+            val allIpv6Bytes = allocator.heapBuffer(source.ips.size)
             source.ips.forEach {
                 when (it) {
                     is Inet4Address -> allIpv4Bytes.writeBytes(it.address)

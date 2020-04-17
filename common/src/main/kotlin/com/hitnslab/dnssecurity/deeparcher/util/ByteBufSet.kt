@@ -21,14 +21,14 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
 
     constructor() {
         allocator = PooledByteBufAllocator.DEFAULT
-        buffer = allocator.directBuffer()
+        buffer = allocator.heapBuffer()
     }
 
     constructor(initBuffer: ByteBuffer) {
         allocator = PooledByteBufAllocator.DEFAULT
         val compositeByteBuf = allocator.compositeBuffer()
         compositeByteBuf.addComponent(true, Unpooled.wrappedBuffer(initBuffer).asReadOnly())
-        compositeByteBuf.addComponent(true, allocator.directBuffer())
+        compositeByteBuf.addComponent(true, allocator.heapBuffer())
         buffer = compositeByteBuf
     }
 
@@ -36,7 +36,7 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
         allocator = PooledByteBufAllocator.DEFAULT
         val compositeByteBuf = allocator.compositeBuffer()
         compositeByteBuf.addComponent(true, initBuffer.asReadOnly())
-        compositeByteBuf.addComponent(true, allocator.directBuffer())
+        compositeByteBuf.addComponent(true, allocator.heapBuffer())
         buffer = compositeByteBuf
     }
 

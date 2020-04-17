@@ -14,7 +14,7 @@ class IpUtilsUnitTest {
     @Test
     fun testIpv4Seq() {
         val result = mutableListOf<Int>()
-        val bytes = allocator.directBuffer()
+        val bytes = allocator.heapBuffer()
         bytes.writeBytes(InetAddress.getByName("192.168.178.111").address)
         bytes.writeBytes(InetAddress.getByName("192.168.236.23").address)
         packIpFromBytes(bytes, 4, result)

@@ -14,8 +14,8 @@ class DomainIPAssocDetailToProtoConverter : Converter<DomainIPAssocDetail, Domai
                 .newBuilder()
                 .setDomain(source.topPrivateDomain)
                 .setFqdn(source.domain)
-        val allIpv4Bytes = allocator.directBuffer(source.ipv4Addresses.size)
-        val allIpv6Bytes = allocator.directBuffer(source.ipv6Addresses.size)
+        val allIpv4Bytes = allocator.heapBuffer(source.ipv4Addresses.size)
+        val allIpv6Bytes = allocator.heapBuffer(source.ipv6Addresses.size)
         source.ipv4Addresses.forEach {
             allIpv4Bytes.writeBytes(it.address)
         }

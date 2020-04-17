@@ -22,8 +22,8 @@ class PDnsSerializer : Serializer<PDnsData> {
                 .setFqdn(data.domain)
                 .setClientIp(ByteString.copyFrom(data.clientIp?.address))
         if (data.ips != null) {
-            val allIpv4Bytes = allocator.directBuffer(data.ips.size)
-            val allIpv6Bytes = allocator.directBuffer(data.ips.size)
+            val allIpv4Bytes = allocator.heapBuffer(data.ips.size)
+            val allIpv6Bytes = allocator.heapBuffer(data.ips.size)
             data.ips.forEach {
                 when (it) {
                     is Inet4Address -> allIpv4Bytes.writeBytes(it.address)
