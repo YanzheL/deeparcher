@@ -27,7 +27,7 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
     constructor(initBuffer: ByteBuffer) {
         allocator = PooledByteBufAllocator.DEFAULT
         val compositeByteBuf = allocator.compositeBuffer()
-        compositeByteBuf.addComponent(true, Unpooled.wrappedBuffer(initBuffer.asReadOnlyBuffer()))
+        compositeByteBuf.addComponent(true, Unpooled.wrappedBuffer(initBuffer).asReadOnly())
         compositeByteBuf.addComponent(true, allocator.directBuffer())
         buffer = compositeByteBuf
     }
