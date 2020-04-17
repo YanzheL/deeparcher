@@ -1,6 +1,5 @@
-package com.hitnslab.dnssecurity.deeparcher.serde
+package com.hitnslab.dnssecurity.deeparcher.util
 
-import com.hitnslab.dnssecurity.deeparcher.util.packIpFromBytes
 import io.netty.buffer.PooledByteBufAllocator
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
