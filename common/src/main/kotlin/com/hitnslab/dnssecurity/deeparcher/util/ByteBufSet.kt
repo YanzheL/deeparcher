@@ -48,6 +48,9 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
     override fun contains(element: ByteBuf): Boolean {
         val target = element.slice()
         val chunkWidth = target.readableBytes()
+        if (chunkWidth == 0 || size % chunkWidth != 0) {
+            return false
+        }
         val view = buffer.slice()
         val chunks: Int = size / chunkWidth
         for (i in 0 until chunks) {
@@ -82,7 +85,7 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
     fun addAll(element: ByteBuf, width: Int): Boolean {
         val slice = element.slice()
         val bytes = slice.readableBytes()
-        if (bytes % width != 0) {
+        if (bytes == 0 || bytes % width != 0) {
             return false
         }
         for (i in 0 until bytes / width) {
