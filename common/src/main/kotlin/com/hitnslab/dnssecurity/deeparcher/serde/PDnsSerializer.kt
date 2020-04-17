@@ -15,7 +15,7 @@ class PDnsSerializer : Serializer<PDnsData> {
     override fun serialize(topic: String, data: PDnsData): ByteArray {
         val builder = PDnsDataProto.PDnsData
                 .newBuilder()
-                .setQTime(data!!.queryTime.toEpochMilli())
+                .setQTime(data.queryTime.toEpochMilli())
                 .setDomain(data.topPrivateDomain)
                 .setQType(data.queryType.value)
                 .setRCode(data.replyCode.value)

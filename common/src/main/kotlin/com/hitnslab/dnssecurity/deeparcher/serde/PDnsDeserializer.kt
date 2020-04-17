@@ -24,10 +24,10 @@ class PDnsDeserializer : Deserializer<PDnsData> {
         val cnames = mutableSetOf<String>()
         cnames.addAll(parsed.rCnamesList)
         builder.setCNames(cnames)
-        val data = builder.build()
+        val built = builder.build()
         val err = builder.error
-        if (data != null) {
-            return data
+        if (built != null) {
+            return built
         }
         if (err != null) {
             throw err
