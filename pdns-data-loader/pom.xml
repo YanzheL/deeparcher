@@ -32,6 +32,9 @@
             <!--            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
             <jvmFlags>
               <jvmFlag>-server</jvmFlag>
+              <jvmFlag>-XX:+UnlockExperimentalVMOptions</jvmFlag>
+              <jvmFlag>-XX:+UseAOT</jvmFlag>
+              <jvmFlag>-Dio.netty.tryReflectionSetAccessible=false</jvmFlag>
             </jvmFlags>
             <labels>
               <label>maintainer="Yanzhe Lee &lt;lee.yanzhe@yanzhe.org&gt;"</label>
