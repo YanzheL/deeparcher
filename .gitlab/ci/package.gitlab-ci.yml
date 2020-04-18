@@ -119,6 +119,28 @@ Package pdns-data-loader Image On Branch:
   needs:
     - Maven Build Root
 
+Package pdns-data-loader Graal Image On Branch:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -pl pdns-data-loader \
+        -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
+        -Djib.from.image=leeyanzhe/graalvm:ee-java11 \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}-graalvm
+  except:
+    - master
+  only:
+    - branches
+  needs:
+    - Maven Build Root
+
 Package stream Image On Branch:
   extends: .build_image_maven
   script:
@@ -133,6 +155,28 @@ Package stream Image On Branch:
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
         -Djib.to.image=$CI_REGISTRY_IMAGE/stream:${CI_COMMIT_BRANCH}
+  except:
+    - master
+  only:
+    - branches
+  needs:
+    - Maven Build Root
+
+Package stream Graal Image On Branch:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -pl stream \
+        -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
+        -Djib.from.image=leeyanzhe/graalvm:ee-java11 \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:${CI_COMMIT_BRANCH}-graalvm
   except:
     - master
   only:
@@ -169,6 +213,26 @@ Package pdns-data-loader Image On Master:
   needs:
     - Maven Build Root
 
+Package pdns-data-loader Graal Image On Master:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -pl pdns-data-loader \
+        -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
+        -Djib.from.image=leeyanzhe/graalvm:ee-java11 \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:graalvm
+  only:
+    - master
+  needs:
+    - Maven Build Root
+
 Package stream Image On Master:
   extends: .build_image_maven
   script:
@@ -183,6 +247,26 @@ Package stream Image On Master:
         -Djib.to.auth.username=$CI_REGISTRY_USER \
         -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
         -Djib.to.image=$CI_REGISTRY_IMAGE/stream:latest
+  only:
+    - master
+  needs:
+    - Maven Build Root
+
+Package stream Graal Image On Master:
+  extends: .build_image_maven
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS \
+        compile jib:build \
+        -pl stream \
+        -Djib.console=plain \
+        -Djib.httpTimeout=60000 \
+        -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base \
+        -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app \
+        -Djib.from.image=leeyanzhe/graalvm:ee-java11 \
+        -Djib.to.auth.username=$CI_REGISTRY_USER \
+        -Djib.to.auth.password=$CI_REGISTRY_PASSWORD \
+        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:graalvm
   only:
     - master
   needs:
