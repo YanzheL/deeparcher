@@ -13,20 +13,20 @@
   #    HTTPS_PROXY: http://v2ray.production:1081
   #    NO_PROXY: '*.cluster.local,*.hitnslab.com,10.0.0.0/8,172.16.0.0/12'
   before_script:
-    - |
-      mkdir -p .m2 .jib/base .jib/app
-      cat <<-EOF > .m2/settings.xml
-      <settings>
-        <mirrors>
-          <mirror>
-            <id>aliyun-maven</id>
-            <mirrorOf>central</mirrorOf>
-            <name>Aliyun Mirrors</name>
-            <url>https://maven.aliyun.com/repository/public</url>
-          </mirror>
-        </mirrors>
-      </settings>
-      EOF
+    - mkdir -p .m2 .jib/base .jib/app
+  #    - |
+  #      cat <<-EOF > .m2/settings.xml
+  #      <settings>
+  #        <mirrors>
+  #          <mirror>
+  #            <id>aliyun-maven</id>
+  #            <mirrorOf>central</mirrorOf>
+  #            <name>Aliyun Mirrors</name>
+  #            <url>https://maven.aliyun.com/repository/public</url>
+  #          </mirror>
+  #        </mirrors>
+  #      </settings>
+  #      EOF
   cache:
     paths:
       - .m2/repository/
