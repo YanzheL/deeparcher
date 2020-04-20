@@ -47,7 +47,7 @@ data class PDnsData(
                     ZoneId.systemDefault()
                 ).toInstant().truncatedTo(ChronoUnit.MILLIS)
             } catch (e: Exception) {
-                logger.warn { "Invalid queryTime<$value>" }
+                logger.debug { "Invalid queryTime<$value>" }
                 null
             }
         }
@@ -56,7 +56,7 @@ data class PDnsData(
             queryTime = try {
                 Instant.ofEpochMilli(value)
             } catch (e: Exception) {
-                logger.warn { "Invalid queryTime<$value>" }
+                logger.debug { "Invalid queryTime<$value>" }
                 null
             }
         }
@@ -69,11 +69,11 @@ data class PDnsData(
                 if (InternetDomainName.isValid(host)) {
                     host.toLowerCase()
                 } else {
-                    logger.warn { "Invalid domain<$host> fromm URI<$value>" }
+                    logger.debug { "Invalid domain<$host> fromm URI<$value>" }
                     null
                 }
             } catch (e: URISyntaxException) {
-                logger.warn { "Invalid URI<$value>" }
+                logger.debug { "Invalid URI<$value>" }
                 null
             }
 
@@ -83,7 +83,7 @@ data class PDnsData(
             queryType = try {
                 DnsQueryType.valueOf(value)
             } catch (e: Exception) {
-                logger.warn { "Invalid queryType<$value>" }
+                logger.debug { "Invalid queryType<$value>" }
                 null
             }
         }
@@ -92,7 +92,7 @@ data class PDnsData(
             queryType = try {
                 DnsQueryType.fromInt(value)
             } catch (e: Exception) {
-                logger.warn { "Invalid queryType<$value>" }
+                logger.debug { "Invalid queryType<$value>" }
                 null
             }
         }
@@ -101,7 +101,7 @@ data class PDnsData(
             replyCode = try {
                 DnsRCode.valueOf(value)
             } catch (e: Exception) {
-                logger.warn { "Invalid replyCode<$value>" }
+                logger.debug { "Invalid replyCode<$value>" }
                 null
             }
         }
@@ -110,7 +110,7 @@ data class PDnsData(
             replyCode = try {
                 DnsRCode.fromInt(value)
             } catch (e: Exception) {
-                logger.warn { "Invalid replyCode<$value>" }
+                logger.debug { "Invalid replyCode<$value>" }
                 null
             }
         }
@@ -120,7 +120,7 @@ data class PDnsData(
             clientIp = if (InetAddresses.isInetAddress(value)) {
                 InetAddress.getByName(value)
             } else {
-                logger.warn { "Invalid IP<$value>" }
+                logger.debug { "Invalid IP<$value>" }
                 null
             }
         }
@@ -128,13 +128,13 @@ data class PDnsData(
         fun clientIp(value: InetAddress) = apply { clientIp = value }
         fun clientIp(value: ByteArray) = apply {
             clientIp = if (value.isEmpty()) {
-                logger.warn { "Invalid clientIp bytes<$value>" }
+                logger.debug { "Invalid clientIp bytes<$value>" }
                 null
             } else {
                 try {
                     InetAddress.getByAddress(value)
                 } catch (e: UnknownHostException) {
-                    logger.warn { "Invalid clientIp bytes<$value>" }
+                    logger.debug { "Invalid clientIp bytes<$value>" }
                     null
                 }
             }
@@ -145,7 +145,7 @@ data class PDnsData(
             if (InetAddresses.isInetAddress(value)) {
                 addIp(InetAddress.getByName(value))
             } else {
-                logger.warn { "Invalid IP<$value>" }
+                logger.debug { "Invalid IP<$value>" }
             }
         }
 
