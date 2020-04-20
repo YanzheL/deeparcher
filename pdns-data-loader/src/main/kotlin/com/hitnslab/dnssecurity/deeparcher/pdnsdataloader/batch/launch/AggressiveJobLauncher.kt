@@ -69,9 +69,9 @@ open class AggressiveJobLauncher(val jobRepository: JobRepository) : DeferredJob
         val jobExecution: JobExecution = jobRepository.createJobExecution(job.name, jobParameters)
 
         val executor = jobExecutor
-        if (executor != null) {
+        executor?.let {
             launched = true
-            executor.execute(job, jobExecution)
+            it.execute(job, jobExecution)
         }
         return jobExecution
     }

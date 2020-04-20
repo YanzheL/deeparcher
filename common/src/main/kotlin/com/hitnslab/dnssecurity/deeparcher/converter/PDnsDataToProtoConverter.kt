@@ -15,17 +15,17 @@ class PDnsDataToProtoConverter : Converter<PDnsData, PDnsDataProto.PDnsData> {
 
     override fun convert(source: PDnsData): PDnsDataProto.PDnsData {
         val builder = PDnsDataProto.PDnsData
-                .newBuilder()
-                .setQTime(source!!.queryTime.toEpochMilli())
-                .setDomain(source.topPrivateDomain)
-                .setQType(source.queryType.value)
-                .setRCode(source.replyCode.value)
-                .setFqdn(source.domain)
-                .setClientIp(ByteString.copyFrom(source.clientIp?.address))
-        if (source.ips != null) {
-            val allIpv4Bytes = allocator.heapBuffer(source.ips.size)
-            val allIpv6Bytes = allocator.heapBuffer(source.ips.size)
-            source.ips.forEach {
+            .newBuilder()
+            .setQTime(source!!.queryTime.toEpochMilli())
+            .setDomain(source.topPrivateDomain)
+            .setQType(source.queryType.value)
+            .setRCode(source.replyCode.value)
+            .setFqdn(source.domain)
+            .setClientIp(ByteString.copyFrom(source.clientIp?.address))
+        source.ips?.let { ips ->
+            val allIpv4Bytes = allocator.heapBuffer(ips.size)
+            val allIpv6Bytes = allocator.heapBuffer(ips.size)
+            ips.forEach {
                 when (it) {
                     is Inet4Address -> allIpv4Bytes.writeBytes(it.address)
                     is Inet6Address -> allIpv6Bytes.writeBytes(it.address)
@@ -36,7 +36,7 @@ class PDnsDataToProtoConverter : Converter<PDnsData, PDnsDataProto.PDnsData> {
             allIpv4Bytes.release()
             allIpv6Bytes.release()
         }
-        builder.addAllRCnames(source.cnames)
+        source.cnames?.let { builder.addAllRCnames(it) }
         return builder.build()
     }
 }

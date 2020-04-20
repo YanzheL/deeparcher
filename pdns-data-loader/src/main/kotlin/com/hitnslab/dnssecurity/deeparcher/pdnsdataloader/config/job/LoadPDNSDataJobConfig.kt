@@ -77,8 +77,8 @@ class LoadPDNSDataJobConfig {
                 .retryLimit(properties.step.retryLimit)
                 .retry(CannotCreateTransactionException::class.java)
         val manager = config.transaction.manager
-        if (manager != null) {
-            val transactionManager = applicationContext.getBean(manager)
+        manager?.let {
+            val transactionManager = applicationContext.getBean(it)
             builder.transactionManager(transactionManager)
         }
         return builder.build()

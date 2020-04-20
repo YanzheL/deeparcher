@@ -20,14 +20,16 @@ open class AppStreamConfigurer {
             options: Map<String, String>? = null
     ) {
         var sinkSrc = src
-        if (options != null) {
-            val unique = options.getOrDefault("unique", "false").toBoolean()
+        options?.let {
+            val unique = it.getOrDefault("unique", "false").toBoolean()
             if (unique) {
-                sinkSrc = sinkSrc.filterNot(BloomFilterKStreamPredicate(
+                sinkSrc = sinkSrc.filterNot(
+                    BloomFilterKStreamPredicate(
                         Funnels.stringFunnel(Charset.defaultCharset()),
-                        options.getOrDefault("expectedInsertions", "2000000000").toLong(),
-                        options.getOrDefault("fpp", "0.01").toDouble()
-                ))
+                        it.getOrDefault("expectedInsertions", "2000000000").toLong(),
+                        it.getOrDefault("fpp", "0.01").toDouble()
+                    )
+                )
             }
         }
         when (type) {
