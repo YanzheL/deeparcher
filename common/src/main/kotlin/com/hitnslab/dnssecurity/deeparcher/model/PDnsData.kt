@@ -185,7 +185,7 @@ data class PDnsData(
             }
             if (topPrivateDomain == null) {
                 try {
-                    topPrivateDomain = InternetDomainName.from(domain).topPrivateDomain().toString()
+                    topPrivateDomain = InternetDomainName.from(domain!!).topPrivateDomain().toString()
                 } catch (e: IllegalStateException) {
                     error = e
                     return null

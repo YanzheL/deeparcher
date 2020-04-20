@@ -23,16 +23,17 @@ class WhitelistPredicate : Predicate<String> {
     }
 
     fun fromResource(resource: Resource): WhitelistPredicate {
-        val reader = resource.inputStream.bufferedReader()
-        reader.use {
-            reader.lines().forEach {
-                try {
-                    fromFQDN(it)
-                } catch (e: Exception) {
-                    logger.error { "Invalid whitelist item <$it>" }
+        resource.inputStream
+            .bufferedReader()
+            .use { rd ->
+                rd.lineSequence().forEach {
+                    try {
+                        fromFQDN(it)
+                    } catch (e: Exception) {
+                        logger.error { "Invalid whitelist item <$it>" }
+                    }
                 }
             }
-        }
         return this
     }
 
