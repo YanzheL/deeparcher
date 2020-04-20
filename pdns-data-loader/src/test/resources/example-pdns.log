@@ -10,7 +10,7 @@
 2019-11-02T00:00:00.007260+08:00 10.235.1.2  01-Nov-2019 23:56:39.154 client 10.241.60.166 51190: view WH_Student: ic.wps.cn IN AAAA NOERROR + NS NE NT ND NC H 20
 2019-11-02T00:00:00.007383+08:00 10.235.1.2  01-Nov-2019 23:56:39.154 client 10.241.82.145 56153: view WH_Student: www.baidu.com IN AAAA NOERROR + NS NE NT ND NC H 9 Response: www.baidu.com 1137 IN CNAME www.a.shifen.com.;
 2019-11-02T00:00:00.008759+08:00 10.235.1.2  01-Nov-2019 23:56:39.155 client 10.241.154.38 2060: view WH_Student: graph.instagram.com IN A NOERROR + NS NE NT ND NC H 21 Response: graph.instagram.com 0 IN A 8.7.198.45;
-2019-11-02T00:00:00.008892+08:00 10.235.1.2  01-Nov-2019 23:56:39.155 client 10.241.154.38 2060: view WH_Student: graph.instagram.com IN A NOERROR + NS NE NT ND NC H 20 Response: graph.instagram.com 0 IN A 8.7.198.45;
+2019-11-02T00:00:00.008892+08:00 10.235.1.2  01-Nov-2019 23:56:39.155 client 10.241.154.38 2060: view WH_Student: https://www.meituan.com IN A NOERROR + NS NE NT ND NC H 20 Response: graph.instagram.com 0 IN A 8.7.198.45;
 2019-11-02T00:00:00.009017+08:00 10.235.1.2  01-Nov-2019 23:56:39.155 client 10.241.104.73 63637: view WH_Student: sdksp.video.qq.com IN A NOERROR + NS NE NT ND NC H 11 Response: sdksp.video.qq.com 259 IN A 121.51.23.239;sdksp.video.qq.com 259 IN A 121.51.131.14;
 2019-11-02T00:00:00.009254+08:00 10.235.1.2  01-Nov-2019 23:56:39.156 client 10.241.148.221 56080: view WH_Student: tracker.acg.gg IN A NOERROR + NS NE NT ND NC H 19
 2019-11-02T00:00:00.010376+08:00 10.235.1.2  01-Nov-2019 23:56:39.157 client 10.241.153.70 59041: view WH_Student: init.itunes.apple.com.mwcname.com IN AAAA NOERROR + NS NE NT ND NC NH 5891
