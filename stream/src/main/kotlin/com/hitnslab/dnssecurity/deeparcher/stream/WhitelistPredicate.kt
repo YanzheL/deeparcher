@@ -2,8 +2,7 @@ package com.hitnslab.dnssecurity.deeparcher.stream
 
 import com.google.common.net.InternetDomainName
 import mu.KotlinLogging
-import org.springframework.core.io.FileSystemResource
-import java.nio.file.Path
+import org.springframework.core.io.Resource
 import java.util.function.Predicate
 
 class WhitelistPredicate : Predicate<String> {
@@ -23,8 +22,8 @@ class WhitelistPredicate : Predicate<String> {
         return t in whitelist
     }
 
-    fun fromFile(path: String): WhitelistPredicate {
-        val reader = FileSystemResource(Path.of(path)).inputStream.bufferedReader()
+    fun fromResource(resource: Resource): WhitelistPredicate {
+        val reader = resource.inputStream.bufferedReader()
         reader.use {
             reader.lines().forEach {
                 try {
