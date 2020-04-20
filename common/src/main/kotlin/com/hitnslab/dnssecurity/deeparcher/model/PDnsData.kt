@@ -69,7 +69,7 @@ data class PDnsData(
                 if (host != null && InternetDomainName.isValid(host)) {
                     host.toLowerCase()
                 } else {
-                    logger.debug { "Invalid domain<$host> fromm URI<$value>" }
+                    logger.debug { "Invalid domain<$host> from URI<$value>" }
                     null
                 }
             } catch (e: URISyntaxException) {
