@@ -45,7 +45,7 @@ app:
         allow: false
     whitelists:
       - type: file
-        path: /data/whitelist.txt
+        path: file:///data/whitelist.txt
       - type: regex
         path: "\\.(edu|gov)(\\.[a-z]{2})?$"
     input:
