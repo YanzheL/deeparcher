@@ -105,13 +105,7 @@ class LoadPDNSDataJobConfig {
     fun itemProcessor(): ItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?> {
         val compositeItemProcessor = CompositeItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?>()
         val processors = mutableListOf<ItemProcessor<*, *>>()
-        processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> {
-            val res = it.build()
-            if (res == null) {
-                logger.debug { "Skipped invalid record<$it>" }
-            }
-            res
-        })
+        processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> { it.build() })
         val converter = PDnsDataToProtoConverter()
         processors.add(ItemProcessor<PDnsData, PDnsDataProto.PDnsData?> { converter.convert(it) })
         compositeItemProcessor.setDelegates(processors)
