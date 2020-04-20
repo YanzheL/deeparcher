@@ -7,7 +7,7 @@ import org.junit.jupiter.api.TestInstance
 import java.net.InetAddress
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class IpUtilsUnitTest {
+class IpUtilsUnitTests {
     private val allocator = PooledByteBufAllocator.DEFAULT
 
     @Test
