@@ -3,6 +3,7 @@ package com.hitnslab.dnssecurity.deeparcher.stream
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.springframework.core.io.ClassPathResource
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class WhitelistPredicateUnitTests {
@@ -10,8 +11,8 @@ class WhitelistPredicateUnitTests {
     @Test
     fun test() {
         val predicate = WhitelistPredicate()
-                .fromFile("whitelist.csv")
-                .fromRegex("\\.(edu|gov)(\\.[a-z]{2})?$")
+            .fromResource(ClassPathResource("whitelist.txt"))
+            .fromRegex("\\.(edu|gov)(\\.[a-z]{2})?$")
         Assertions.assertTrue(predicate.test("www.hitwh.edu.cn"))
         Assertions.assertTrue(predicate.test("abc.hitwh.edu.cn"))
         Assertions.assertTrue(predicate.test("111.abc.efg.hitwh.edu.cn"))
