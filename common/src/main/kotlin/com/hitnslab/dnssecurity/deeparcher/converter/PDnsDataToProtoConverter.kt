@@ -16,12 +16,14 @@ class PDnsDataToProtoConverter : Converter<PDnsData, PDnsDataProto.PDnsData> {
     override fun convert(source: PDnsData): PDnsDataProto.PDnsData {
         val builder = PDnsDataProto.PDnsData
             .newBuilder()
-            .setQTime(source!!.queryTime.toEpochMilli())
+            .setQTime(source.queryTime.toEpochMilli())
             .setDomain(source.topPrivateDomain)
             .setQType(source.queryType.value)
             .setRCode(source.replyCode.value)
             .setFqdn(source.domain)
-            .setClientIp(ByteString.copyFrom(source.clientIp?.address))
+        source.clientIp?.let {
+            builder.setClientIp(ByteString.copyFrom(it.address))
+        }
         source.ips?.let { ips ->
             val allIpv4Bytes = allocator.heapBuffer(ips.size)
             val allIpv6Bytes = allocator.heapBuffer(ips.size)
