@@ -1,5 +1,7 @@
 package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.job
 
+import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
+import com.hitnslab.dnssecurity.deeparcher.converter.PDnsDataToProtoConverter
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.ByCauseSkipPolicy
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.PDNSKafkaItemWriter
@@ -55,27 +57,27 @@ class LoadPDNSDataJobConfig {
     @Bean
     fun job(step: Step): Job {
         return jobBuilderFactory.get("LOAD_PDNS_DATA")
-                .repository(jobRepository)
-                .start(step)
-                .build()
+            .repository(jobRepository)
+            .start(step)
+            .build()
     }
 
     @Bean
     fun step(
-            itemReader: ItemReader<PDnsData.Builder>,
-            itemWriter: ItemWriter<PDnsData>,
-            itemProcessor: ItemProcessor<PDnsData.Builder, PDnsData?>
+        itemReader: ItemReader<PDnsData.Builder>,
+        itemWriter: ItemWriter<PDnsData>,
+        itemProcessor: ItemProcessor<PDnsData.Builder, PDnsData?>
     ): Step {
         val config = properties.step
         val builder = stepBuilderFactory.get("LOAD_PDNS_DATA_STEP0")
-                .chunk<PDnsData.Builder, PDnsData>(properties.step.chunkSize)
-                .reader(itemReader)
-                .processor(itemProcessor)
-                .writer(itemWriter)
-                .faultTolerant()
-                .skipPolicy(ByCauseSkipPolicy(PDNSParseException::class))
-                .retryLimit(properties.step.retryLimit)
-                .retry(CannotCreateTransactionException::class.java)
+            .chunk<PDnsData.Builder, PDnsData>(properties.step.chunkSize)
+            .reader(itemReader)
+            .processor(itemProcessor)
+            .writer(itemWriter)
+            .faultTolerant()
+            .skipPolicy(ByCauseSkipPolicy(PDNSParseException::class))
+            .retryLimit(properties.step.retryLimit)
+            .retry(CannotCreateTransactionException::class.java)
         val manager = config.transaction.manager
         manager?.let {
             val transactionManager = applicationContext.getBean(it)
@@ -104,6 +106,8 @@ class LoadPDNSDataJobConfig {
         val compositeItemProcessor = CompositeItemProcessor<PDnsData.Builder, PDnsData?>()
         val processors = mutableListOf<ItemProcessor<*, *>>()
         processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> { it.build() })
+        val converter = PDnsDataToProtoConverter()
+        processors.add(ItemProcessor<PDnsData, PDnsDataProto.PDnsData?> { converter.convert(it) })
         compositeItemProcessor.setDelegates(processors)
         return compositeItemProcessor
     }
@@ -111,21 +115,21 @@ class LoadPDNSDataJobConfig {
     @StepScope
     @Bean
     fun itemReader(
-            @Value("#{jobParameters['file']}") filename: String,
-            fieldSetMapper: PDNSLogFieldSetMapper
+        @Value("#{jobParameters['file']}") filename: String,
+        fieldSetMapper: PDNSLogFieldSetMapper
     ): FlatFileItemReader<PDnsData.Builder> {
         logger.info { "Reading file <$filename> ..." }
         return FlatFileItemReaderBuilder<PDnsData.Builder>()
-                .name("reader")
-                .resource(FileSystemResource(Path.of(filename)))
-                .fieldSetMapper(fieldSetMapper)
-                .lineTokenizer { line: String? ->
-                    if (line == null)
-                        DefaultFieldSet(arrayOf())
-                    else
-                        DefaultFieldSet(line.split("\\s+".toRegex()).toTypedArray())
-                }
-                .build()
+            .name("reader")
+            .resource(FileSystemResource(Path.of(filename)))
+            .fieldSetMapper(fieldSetMapper)
+            .lineTokenizer { line: String? ->
+                if (line == null)
+                    DefaultFieldSet(arrayOf())
+                else
+                    DefaultFieldSet(line.split("\\s+".toRegex()).toTypedArray())
+            }
+            .build()
     }
 
     @Bean

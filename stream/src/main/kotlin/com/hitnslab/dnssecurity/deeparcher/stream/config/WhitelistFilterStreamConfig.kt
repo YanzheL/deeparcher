@@ -1,6 +1,8 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
-import com.hitnslab.dnssecurity.deeparcher.serde.PDnsSerde
+import com.hitnslab.dnssecurity.deeparcher.serde.GenericSerde
+import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoDeserializer
+import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer
 import com.hitnslab.dnssecurity.deeparcher.stream.PDnsPrefilter
 import com.hitnslab.dnssecurity.deeparcher.stream.WhitelistPredicate
 import com.hitnslab.dnssecurity.deeparcher.stream.property.WhitelistFilterProperties
@@ -13,6 +15,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.io.UrlResource
 
 
 @Configuration
@@ -31,8 +34,11 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
             prefilters.add(PDnsPrefilter(it.field, it.pattern, it.allow))
         }
         val src = builder.stream(
-                properties.input.path,
-                Consumed.with(Serdes.String(), PDnsSerde())
+            properties.input.path,
+            Consumed.with(
+                Serdes.String(),
+                GenericSerde(PDnsProtoSerializer::class, PDnsProtoDeserializer::class)
+            )
         )
         var srcPrefiltered = src
         prefilters.forEach {
@@ -41,15 +47,15 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
         val whitelistPredicate = WhitelistPredicate()
         properties.whitelists.forEach {
             when (it.type) {
-                "file" -> whitelistPredicate.fromFile(it.path)
+                "file" -> whitelistPredicate.fromResource(UrlResource(it.path))
                 "regex" -> whitelistPredicate.fromRegex(it.path)
                 else -> throw Exception("Invalid whitelist source type <${it.type}>")
             }
         }
         val matchRecords = srcPrefiltered
-                .filter { _, v -> whitelistPredicate.test(v.topPrivateDomain) }
+            .filter { _, v -> whitelistPredicate.test(v.domain) }
         val missRecords = srcPrefiltered
-                .filterNot { _, v -> whitelistPredicate.test(v.topPrivateDomain) }
+            .filterNot { _, v -> whitelistPredicate.test(v.domain) }
         properties.output.match.forEach {
             configSinks(matchRecords, it.type, it.path, it.options)
         }

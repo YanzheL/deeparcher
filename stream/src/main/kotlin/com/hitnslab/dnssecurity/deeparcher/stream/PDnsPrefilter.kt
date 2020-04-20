@@ -1,15 +1,15 @@
 package com.hitnslab.dnssecurity.deeparcher.stream
 
-import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
+import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto.PDnsData
 import org.apache.kafka.streams.kstream.Predicate
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.createType
 import kotlin.reflect.full.memberProperties
 
 class PDnsPrefilter(
-        field: String,
-        pattern: String,
-        allow: Boolean
+    field: String,
+    pattern: String,
+    allow: Boolean
 ) : Predicate<String, PDnsData> {
 
     val propertyRef: KProperty1<PDnsData, String>
