@@ -1,6 +1,6 @@
 package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch
 
-import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
+import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto.PDnsData
 import mu.KotlinLogging
 import org.springframework.batch.item.ItemWriter
 import org.springframework.kafka.core.KafkaTemplate
