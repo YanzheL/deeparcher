@@ -66,7 +66,7 @@ data class PDnsData(
             domain = try {
                 val uri = URI(value) // value maybe a URI
                 val host = if (uri.scheme == null) uri.path else uri.host
-                if (InternetDomainName.isValid(host)) {
+                if (host != null && InternetDomainName.isValid(host)) {
                     host.toLowerCase()
                 } else {
                     logger.debug { "Invalid domain<$host> fromm URI<$value>" }
@@ -118,9 +118,9 @@ data class PDnsData(
         fun topPrivateDomain(value: String) = apply { topPrivateDomain = value.toLowerCase() }
         fun clientIp(value: String) = apply {
             clientIp = if (InetAddresses.isInetAddress(value)) {
-                InetAddress.getByName(value)
+                InetAddresses.forString(value)
             } else {
-                logger.debug { "Invalid IP<$value>" }
+                logger.debug { "Invalid clientIp<$value>" }
                 null
             }
         }
@@ -143,7 +143,7 @@ data class PDnsData(
         fun setIps(value: MutableSet<InetAddress>) = apply { ips = value }
         fun addIp(value: String) = apply {
             if (InetAddresses.isInetAddress(value)) {
-                addIp(InetAddress.getByName(value))
+                addIp(InetAddresses.forString(value))
             } else {
                 logger.debug { "Invalid IP<$value>" }
             }
