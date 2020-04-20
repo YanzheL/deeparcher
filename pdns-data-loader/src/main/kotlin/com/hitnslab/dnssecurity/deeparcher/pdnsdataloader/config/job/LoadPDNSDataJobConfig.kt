@@ -65,12 +65,12 @@ class LoadPDNSDataJobConfig {
     @Bean
     fun step(
         itemReader: ItemReader<PDnsData.Builder>,
-        itemWriter: ItemWriter<PDnsData>,
-        itemProcessor: ItemProcessor<PDnsData.Builder, PDnsData?>
+        itemWriter: ItemWriter<PDnsDataProto.PDnsData>,
+        itemProcessor: ItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?>
     ): Step {
         val config = properties.step
         val builder = stepBuilderFactory.get("LOAD_PDNS_DATA_STEP0")
-            .chunk<PDnsData.Builder, PDnsData>(properties.step.chunkSize)
+            .chunk<PDnsData.Builder, PDnsDataProto.PDnsData>(properties.step.chunkSize)
             .reader(itemReader)
             .processor(itemProcessor)
             .writer(itemWriter)
@@ -87,12 +87,12 @@ class LoadPDNSDataJobConfig {
     }
 
     @Bean
-    fun itemWriter(): ItemWriter<PDnsData> {
+    fun itemWriter(): ItemWriter<PDnsDataProto.PDnsData> {
         val config = properties.step.itemWriter
         val name = config.name
         if (name == "kafka") {
             val kafkaTemplate = applicationContext.getBean(KafkaTemplate::class.java)
-            val itemWriter = PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsData>)
+            val itemWriter = PDNSKafkaItemWriter(kafkaTemplate as KafkaTemplate<String, PDnsDataProto.PDnsData>)
             itemWriter.successInterval = config.metrics.successInterval
             itemWriter.failureInterval = config.metrics.failureInterval
             itemWriter.metricsEnabled = config.metrics.enable
@@ -102,8 +102,8 @@ class LoadPDNSDataJobConfig {
     }
 
     @Bean
-    fun itemProcessor(): ItemProcessor<PDnsData.Builder, PDnsData?> {
-        val compositeItemProcessor = CompositeItemProcessor<PDnsData.Builder, PDnsData?>()
+    fun itemProcessor(): ItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?> {
+        val compositeItemProcessor = CompositeItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?>()
         val processors = mutableListOf<ItemProcessor<*, *>>()
         processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> { it.build() })
         val converter = PDnsDataToProtoConverter()
