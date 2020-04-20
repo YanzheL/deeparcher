@@ -5,6 +5,9 @@ import com.google.common.net.InternetDomainName
 import com.hitnslab.dnssecurity.deeparcher.error.PDNSInvalidFieldException
 import mu.KotlinLogging
 import java.net.InetAddress
+import java.net.URI
+import java.net.URISyntaxException
+import java.net.UnknownHostException
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -14,14 +17,14 @@ import java.time.temporal.ChronoUnit
 
 
 data class PDnsData(
-        val queryTime: Instant,
-        val domain: String,
-        val queryType: DnsQueryType,
-        val replyCode: DnsRCode,
-        val topPrivateDomain: String,
-        val clientIp: InetAddress?,
-        val ips: Set<InetAddress>?,
-        val cnames: Set<String>?
+    val queryTime: Instant,
+    val domain: String,
+    val queryType: DnsQueryType,
+    val replyCode: DnsRCode,
+    val topPrivateDomain: String,
+    val clientIp: InetAddress?,
+    val ips: Set<InetAddress>?,
+    val cnames: Set<String>?
 ) {
 
     class Builder {
@@ -40,8 +43,8 @@ data class PDnsData(
         fun queryTime(value: String, fmt: DateTimeFormatter) = apply {
             queryTime = try {
                 ZonedDateTime.of(
-                        LocalDateTime.parse(value, fmt),
-                        ZoneId.systemDefault()
+                    LocalDateTime.parse(value, fmt),
+                    ZoneId.systemDefault()
                 ).toInstant().truncatedTo(ChronoUnit.MILLIS)
             } catch (e: Exception) {
                 logger.warn { "Invalid queryTime<$value>" }
@@ -60,11 +63,20 @@ data class PDnsData(
 
         fun queryTime(value: Instant) = apply { queryTime = value }
         fun domain(value: String) = apply {
-            if (InternetDomainName.isValid(value)) {
-                domain = value.toLowerCase()
-            } else {
-                logger.warn { "Invalid domain<$value>" }
+            domain = try {
+                val uri = URI(value) // value maybe a URI
+                val host = if (uri.scheme == null) uri.path else uri.host
+                if (InternetDomainName.isValid(host)) {
+                    host.toLowerCase()
+                } else {
+                    logger.warn { "Invalid domain<$host> fromm URI<$value>" }
+                    null
+                }
+            } catch (e: URISyntaxException) {
+                logger.warn { "Invalid URI<$value>" }
+                null
             }
+
         }
 
         fun queryType(value: String) = apply {
@@ -104,9 +116,30 @@ data class PDnsData(
         }
 
         fun topPrivateDomain(value: String) = apply { topPrivateDomain = value.toLowerCase() }
-        fun clientIp(value: String) = apply { clientIp = InetAddress.getByName(value) }
+        fun clientIp(value: String) = apply {
+            clientIp = if (InetAddresses.isInetAddress(value)) {
+                InetAddress.getByName(value)
+            } else {
+                logger.warn { "Invalid IP<$value>" }
+                null
+            }
+        }
+
         fun clientIp(value: InetAddress) = apply { clientIp = value }
-        fun clientIp(value: ByteArray) = apply { clientIp = InetAddress.getByAddress(value) }
+        fun clientIp(value: ByteArray) = apply {
+            clientIp = if (value.isEmpty()) {
+                logger.warn { "Invalid clientIp bytes<$value>" }
+                null
+            } else {
+                try {
+                    InetAddress.getByAddress(value)
+                } catch (e: UnknownHostException) {
+                    logger.warn { "Invalid clientIp bytes<$value>" }
+                    null
+                }
+            }
+        }
+
         fun setIps(value: MutableSet<InetAddress>) = apply { ips = value }
         fun addIp(value: String) = apply {
             if (InetAddresses.isInetAddress(value)) {
@@ -159,14 +192,14 @@ data class PDnsData(
                 }
             }
             return PDnsData(
-                    queryTime!!,
-                    domain!!,
-                    queryType!!,
-                    replyCode!!,
-                    topPrivateDomain!!,
-                    clientIp,
-                    ips,
-                    cnames
+                queryTime!!,
+                domain!!,
+                queryType!!,
+                replyCode!!,
+                topPrivateDomain!!,
+                clientIp,
+                ips,
+                cnames
             )
         }
 
