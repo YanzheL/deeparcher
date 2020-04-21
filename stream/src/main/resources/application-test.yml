@@ -22,6 +22,7 @@ spring:
       #      session.timeout.ms: 9000
       #      heartbeat.interval.ms: 500
       receive.buffer.bytes: 2097152
+      delivery.timeout.ms: 1800000
     streams:
       application-id: test.temp-work-remote
       state-dir: /tmp/kafka-stream

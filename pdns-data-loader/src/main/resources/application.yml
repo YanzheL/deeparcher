@@ -29,6 +29,7 @@ spring:
     properties:
       security.protocol: SSL
       ssl.endpoint.identification.algorithm: ""
+      delivery.timeout.ms: 1800000
   batch:
     initialize-schema: always
     job:
