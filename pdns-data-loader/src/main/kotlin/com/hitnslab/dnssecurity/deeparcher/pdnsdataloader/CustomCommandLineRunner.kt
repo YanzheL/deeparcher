@@ -1,4 +1,4 @@
-package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch
+package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader
 
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
@@ -44,8 +44,8 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
         logger.info("Running default command line with: " + listOf(*args))
         val job = jobRegistry.getJob("FILE_HASH")
         val properties = StringUtils.splitArrayElementsIntoProperties(args, "=")
-        val executions = buildJobParameters(properties)
-                .map { execute(job, it) }
+        buildJobParameters(properties)
+            .map { execute(job, it) }
         applicationTaskExecutor.setWaitForTasksToCompleteOnShutdown(true)
         applicationTaskExecutor.shutdown()
     }
@@ -54,13 +54,14 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
         val pattern = properties!!["pattern"].toString()
         val resources = PathMatchingResourcePatternResolver().getResources(pattern)
         resources.sortBy(Resource::getURI)
+        logger.debug { "Discovered all log file resources as follows:\n$resources" }
         val allParameters = mutableListOf<JobParameters>()
         for (resource in resources) {
             val path = resource.file.path
             val parameters = JobParametersBuilder()
-                    .addString("file", path)
-                    .addDate("createdAt", Date())
-                    .toJobParameters()
+                .addString("file", path)
+                .addDate("createdAt", Date())
+                .toJobParameters()
             allParameters.add(parameters)
         }
         return allParameters
@@ -68,6 +69,7 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
 
     protected fun execute(job: Job, jobParameters: JobParameters): JobExecution {
         val execution = jobLauncher.run(job, jobParameters)
+        logger.debug { "Created parent job execution <$execution>" }
         publisher?.publishEvent(JobExecutionEvent(execution))
         return execution
     }
