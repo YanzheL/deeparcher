@@ -3,6 +3,7 @@ package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.job
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.FileHashTasklet
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.execute.DefaultJobExecutor
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.launch.AggressiveJobLauncher
+import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.PDnsJobProperties
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.JobParametersBuilder
@@ -31,6 +32,9 @@ class FileHashJobConfig {
 
     @Autowired
     lateinit var jobRegistry: JobRegistry
+
+    @Autowired
+    lateinit var properties: PDnsJobProperties
 
     @Bean
     fun job(steps: List<Step>): Job {
@@ -76,6 +80,7 @@ class FileHashJobConfig {
         val jobStepTaskExecutor = SyncTaskExecutor()
         val launcher = AggressiveJobLauncher(jobRepository)
         launcher.jobExecutor = DefaultJobExecutor(jobRepository, jobStepTaskExecutor)
+        launcher.tryRestart = properties.tryRestart
         return launcher
     }
 

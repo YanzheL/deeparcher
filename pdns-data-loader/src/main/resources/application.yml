@@ -47,9 +47,9 @@ spring:
 app:
   job:
     pdns:
+      try-restart: true
       step:
-        #      transaction:
-        #        manager: org.springframework.kafka.transaction.KafkaTransactionManager
+        # transaction-manager: org.springframework.kafka.transaction.KafkaTransactionManager
         chunk-size: 3000
         retry-limit: 10
         item-reader:

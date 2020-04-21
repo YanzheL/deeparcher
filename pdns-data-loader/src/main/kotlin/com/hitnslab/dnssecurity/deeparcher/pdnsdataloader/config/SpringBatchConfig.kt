@@ -60,13 +60,12 @@ class SpringBatchConfig : DefaultBatchConfigurer() {
             Supplier { properties.producer.keySerializer.getConstructor().newInstance() as Serializer<Any> }
         val valueSupplier =
             Supplier { properties.producer.valueSerializer.getConstructor().newInstance() as Serializer<Any> }
-        val factory = DefaultKafkaProducerFactory<Any, Any>(
+        val factory = DefaultKafkaProducerFactory(
             producerConfig,
             keySupplier,
             valueSupplier
         )
-        val transactionIdPrefix: String? = properties.producer.transactionIdPrefix
-        transactionIdPrefix?.let {
+        properties.producer.transactionIdPrefix?.let {
             factory.setTransactionIdPrefix(it)
         }
 //        factory.setProducerPerThread(true)

@@ -4,44 +4,41 @@ import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDNSLogFieldSe
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.transaction.PlatformTransactionManager
+import kotlin.reflect.KClass
 
 @ConstructorBinding
 @ConfigurationProperties(prefix = "app.job.pdns")
 class PDnsJobProperties(
-        val step: Step
+    val step: Step,
+    val tryRestart: Boolean = true
 ) {
 
     class Step(
-            val itemReader: ItemReader,
+        val itemReader: ItemReader,
 
-            val itemWriter: ItemWriter,
+        val itemWriter: ItemWriter,
 
-            val transaction: Transaction = Transaction(),
+        val chunkSize: Int = 10000,
 
-            val chunkSize: Int = 10000,
+        val retryLimit: Int = 10,
 
-            val retryLimit: Int = 10
+        val transactionManager: KClass<PlatformTransactionManager>? = null
     ) {
 
         class ItemReader(
-                val fieldSetMapper: Class<PDNSLogFieldSetMapper>
+            val fieldSetMapper: KClass<PDNSLogFieldSetMapper>
         )
 
         class ItemWriter(
-                val name: String,
-                val metrics: Metrics = Metrics()
+            val name: String,
+            val metrics: Metrics = Metrics()
         ) {
             class Metrics(
-                    val enable: Boolean = true,
-                    val successInterval: Int = 1000000,
-                    val failureInterval: Int = 10000
+                val enable: Boolean = true,
+                val successInterval: Int = 1000000,
+                val failureInterval: Int = 10000
             )
         }
-
-        class Transaction(
-                val enable: Boolean = false,
-                val manager: Class<PlatformTransactionManager>? = null
-        )
 
     }
 }
