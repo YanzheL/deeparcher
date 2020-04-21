@@ -1,9 +1,10 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
+import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.serde.GenericSerde
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoDeserializer
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer
-import com.hitnslab.dnssecurity.deeparcher.stream.PDnsPrefilter
+import com.hitnslab.dnssecurity.deeparcher.stream.ProtobufMessagePrefilter
 import com.hitnslab.dnssecurity.deeparcher.stream.WhitelistPredicate
 import com.hitnslab.dnssecurity.deeparcher.stream.property.WhitelistFilterProperties
 import org.apache.kafka.common.serialization.Serdes
@@ -29,9 +30,9 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
 
     @Bean
     fun whitelistFilterStream(builder: StreamsBuilder): KStream<*, *> {
-        val prefilters = mutableListOf<PDnsPrefilter>()
+        val prefilters = mutableListOf<ProtobufMessagePrefilter<PDnsDataProto.PDnsData>>()
         properties.prefilters?.forEach {
-            prefilters.add(PDnsPrefilter(it.field, it.pattern, it.allow))
+            prefilters.add(ProtobufMessagePrefilter(it.field, Regex(it.pattern), it.allow))
         }
         val src = builder.stream(
             properties.input.path,
