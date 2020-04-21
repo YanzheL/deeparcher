@@ -35,20 +35,19 @@ class FileHashTasklet : Tasklet {
             if (size != hashFunction.bits() / 4L) {
                 logger.warn { "Hash file has invalid length <$size>" }
             } else {
-                val reader = hashFile.inputStream.reader()
-                reader.use {
-                    hash = reader.readText().toUpperCase()
+                hashFile.inputStream.reader().use {
+                    hash = it.readText().toUpperCase()
                 }
                 logger.info { "Using pre-computed hash <$hash> for file <$fileLocation>" }
             }
         }
         if (hash == null) {
             hash = Files.asByteSource(resource.file)
-                    .hash(hashFunction).toString().toUpperCase()
+                .hash(hashFunction).toString().toUpperCase()
             val writer = hashFile.outputStream.writer()
             try {
                 writer.use {
-                    writer.write(hash)
+                    it.write(hash)
                     logger.info { "Wrote hash back to <$hashFileLocation>" }
                 }
             } catch (e: IOException) {
