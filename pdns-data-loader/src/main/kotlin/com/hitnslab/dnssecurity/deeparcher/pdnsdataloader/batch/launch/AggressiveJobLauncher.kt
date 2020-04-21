@@ -7,14 +7,15 @@ import org.springframework.batch.core.Job
 import org.springframework.batch.core.JobExecution
 import org.springframework.batch.core.JobParameters
 import org.springframework.batch.core.repository.JobRepository
-import org.springframework.batch.core.repository.JobRestartException
 import java.util.*
 
 open class AggressiveJobLauncher(val jobRepository: JobRepository) : DeferredJobLauncher {
 
     var jobExecutor: JobExecutor? = null
 
-    var launched: Boolean = false
+    var launched = false
+
+    var tryRestart = true
 
     private val logger = KotlinLogging.logger {}
 
@@ -23,55 +24,60 @@ open class AggressiveJobLauncher(val jobRepository: JobRepository) : DeferredJob
     }
 
     override fun run(job: Job, jobParameters: JobParameters): JobExecution {
+        logger.info { "Searching for last job execution of <${job.name}> with parameters <$jobParameters> " }
         val lastExecution: JobExecution? = jobRepository.getLastJobExecution(job.name, jobParameters)
-        val resetStatuses = setOf(
+        lastExecution?.let { le ->
+            logger.info {
+                "A job execution <$le> already exists, checking whether it is restartable..."
+            }
+            if (!tryRestart) {
+                logger.info { "This instance of AggressiveJobLauncher is configured as 'tryRestart = false', so the job <${job.name}> with parameters <$jobParameters> is skipped and maintained previous status <${le.status}>" }
+                return le
+            }
+            val resettableStatuses = setOf(
                 BatchStatus.STARTING,
                 BatchStatus.STARTED,
                 BatchStatus.STOPPING,
                 BatchStatus.UNKNOWN
-        )
-        if (null != lastExecution) {
-            logger.info {
-                "Found an existing job execution <$lastExecution>, checking whether it is restartable..."
-            }
-            if (lastExecution.status == BatchStatus.COMPLETED) {
+            )
+            if (le.status == BatchStatus.COMPLETED) {
                 logger.info {
-                    "The last job execution is <${lastExecution.status}> for parameters=<$jobParameters>. If you want to run this job again, change the parameters."
+                    "The last job execution is <${le.status}> for parameters <$jobParameters>. If you want to run this job again, change the parameters."
                 }
-                return lastExecution
+                return le
             }
             if (!job.isRestartable) {
-                throw JobRestartException("JobInstance already exists and is not restartable")
+                logger.info { "JobExecution <$le> already exists and <${job.name}> is not restartable" }
+                return le
             }
             val currentTime = Date()
-            if (lastExecution.status in resetStatuses) {
+            if (le.status in resettableStatuses) {
                 logger.info {
-                    "The last job execution is <${lastExecution.status}> for parameters=<$jobParameters>, resetting it to STOPPED"
+                    "The last job execution is <${le.status}> for parameters <$jobParameters>, resetting it to STOPPED"
                 }
-                lastExecution.status = BatchStatus.STOPPED
-                lastExecution.endTime = currentTime
+                le.status = BatchStatus.STOPPED
+                le.endTime = currentTime
             }
-            for (execution in lastExecution.stepExecutions) {
-                if (execution.status in resetStatuses) {
+            for (se in le.stepExecutions) {
+                if (se.status in resettableStatuses) {
                     logger.info {
-                        "A step execution <$execution> is <${execution.status}>, resetting it to STOPPED"
+                        "A step execution <$se> is <${se.status}>, resetting it to STOPPED"
                     }
-                    execution.status = BatchStatus.STOPPED
-                    execution.endTime = currentTime
-                    jobRepository.update(execution)
+                    se.status = BatchStatus.STOPPED
+                    se.endTime = currentTime
+                    jobRepository.update(se)
                 }
             }
-            jobRepository.update(lastExecution)
+            jobRepository.update(le)
         }
         // Check the validity of the parameters before doing creating anything in the repository...
         job.jobParametersValidator.validate(jobParameters)
 
         val jobExecution: JobExecution = jobRepository.createJobExecution(job.name, jobParameters)
 
-        val executor = jobExecutor
-        executor?.let {
-            launched = true
+        jobExecutor?.let {
             it.execute(job, jobExecution)
+            launched = true
         }
         return jobExecution
     }
