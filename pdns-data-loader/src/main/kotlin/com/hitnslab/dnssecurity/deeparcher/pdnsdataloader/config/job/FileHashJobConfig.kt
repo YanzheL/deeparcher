@@ -34,9 +34,10 @@ class FileHashJobConfig {
 
     @Bean
     fun job(steps: List<Step>): Job {
-        var builder = jobBuilderFactory.get("FILE_HASH")
-                .repository(jobRepository)
-                .start(steps[0])
+        var builder = jobBuilderFactory
+            .get("FILE_HASH")
+            .repository(jobRepository)
+            .start(steps[0])
         if (steps.size >= 2) {
             for (i in 1 until steps.size) {
                 builder = builder.next(steps[i])
@@ -47,25 +48,27 @@ class FileHashJobConfig {
 
     @Bean
     fun step0(executionContextPromotionListener: ExecutionContextPromotionListener): Step {
-        return stepBuilderFactory.get("FILE_HASH_STEP0")
-                .tasklet(FileHashTasklet())
-                .listener(executionContextPromotionListener)
-                .build()
+        return stepBuilderFactory
+            .get("FILE_HASH_STEP0")
+            .tasklet(FileHashTasklet())
+            .listener(executionContextPromotionListener)
+            .build()
     }
 
     @Bean
     fun step1(aggressiveJobLauncher: AggressiveJobLauncher): Step {
         val targetJob = jobRegistry.getJob("LOAD_PDNS_DATA")
-        return stepBuilderFactory.get("FILE_HASH_STEP1")
-                .job(targetJob)
-                .parametersExtractor { _, stepExecution ->
-                    JobParametersBuilder()
-                            .addString("hash", stepExecution.jobExecution.executionContext["hash"] as String)
-                            .addString("file", stepExecution.jobParameters.getString("file")!!, false)
-                            .toJobParameters()
-                }
-                .launcher(aggressiveJobLauncher)
-                .build()
+        return stepBuilderFactory
+            .get("FILE_HASH_STEP1")
+            .job(targetJob)
+            .parametersExtractor { _, stepExecution ->
+                JobParametersBuilder()
+                    .addString("hash", stepExecution.jobExecution.executionContext["hash"] as String)
+                    .addString("file", stepExecution.jobParameters.getString("file")!!, false)
+                    .toJobParameters()
+            }
+            .launcher(aggressiveJobLauncher)
+            .build()
     }
 
     @Bean
