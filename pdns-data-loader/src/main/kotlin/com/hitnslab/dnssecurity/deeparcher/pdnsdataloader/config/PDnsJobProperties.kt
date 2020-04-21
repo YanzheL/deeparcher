@@ -4,7 +4,6 @@ import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDNSLogFieldSe
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.transaction.PlatformTransactionManager
-import kotlin.reflect.KClass
 
 @ConstructorBinding
 @ConfigurationProperties(prefix = "app.job.pdns")
@@ -22,11 +21,11 @@ class PDnsJobProperties(
 
         val retryLimit: Int = 10,
 
-        val transactionManager: KClass<PlatformTransactionManager>? = null
+        val transactionManager: Class<PlatformTransactionManager>? = null
     ) {
 
         class ItemReader(
-            val fieldSetMapper: KClass<PDNSLogFieldSetMapper>
+            val fieldSetMapper: Class<PDNSLogFieldSetMapper>
         )
 
         class ItemWriter(

@@ -32,7 +32,6 @@ import org.springframework.core.io.FileSystemResource
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.transaction.CannotCreateTransactionException
 import java.nio.file.Path
-import kotlin.reflect.full.primaryConstructor
 
 @Configuration
 @EnableConfigurationProperties(PDnsJobProperties::class)
@@ -81,7 +80,7 @@ class LoadPDNSDataJobConfig {
             .retry(CannotCreateTransactionException::class.java)
         config.transactionManager?.let {
             builder.transactionManager(
-                applicationContext.getBean(it.java)
+                applicationContext.getBean(it)
             )
         }
         return builder.build()
@@ -135,6 +134,6 @@ class LoadPDNSDataJobConfig {
 
     @Bean
     fun fieldSetMapper(): PDNSLogFieldSetMapper {
-        return properties.step.itemReader.fieldSetMapper.primaryConstructor!!.call()
+        return properties.step.itemReader.fieldSetMapper.getConstructor().newInstance()
     }
 }
