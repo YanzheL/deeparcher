@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  labels:
+  labels: &labels
     app.kubernetes.io/name: pdns-data-loader
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: pdns-data-loader
@@ -11,9 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: pdns-data-loader
-        app.kubernetes.io/part-of: deeparcher
-        app.kubernetes.io/component: pdns-data-loader
+        <<: *labels
     spec:
       enableServiceLinks: false
       affinity:
@@ -32,7 +30,8 @@ spec:
         - name: default-registry-key
       containers:
         - name: pdns-data-loader
-          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/pdns-data-loader:dev-slim
+          #          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/pdns-data-loader:dev-graalvm
+          image: registry.gitlab.com/yanzhel/deeparcher/pdns-data-loader:dev-graalvm
           imagePullPolicy: Always
           ports:
             - containerPort: 9999
@@ -51,7 +50,7 @@ spec:
                   name: job-repository-mariadb
                   key: mariadb-password
             - name: JAVA_TOOL_OPTIONS
-              value: -Xms4g -Xmx7g -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+              value: -Xms1g -Xmx7g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
             - name: SPRING_TASK_EXECUTION_POOL_CORE_SIZE
               value: '12'
             - name: SPRING_TASK_EXECUTION_POOL_MAX_SIZE
@@ -83,17 +82,17 @@ spec:
             # - name: SPRING_KAFKA_PRODUCER_PROPERTIES_LINGER_MS
             #   value: '10000'
             - name: APP_JOB_PDNS_STEP_CHUNK_SIZE
-              value: '3000'
+              value: '5000'
             - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_ENABLE
               value: 'true'
             - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_SUCCESS_INTERVAL
               value: '1000000'
           resources:
             requests:
-              cpu: 8
-              memory: 8Gi
+              cpu: '1'
+              memory: 1Gi
             limits:
-              cpu: 8
+              cpu: '12'
               memory: 8Gi
           volumeMounts:
             - mountPath: /datasource
@@ -126,7 +125,7 @@ kind: Service
 metadata:
   name: pdns-data-loader
   namespace: default
-  labels:
+  labels: &labels
     app.kubernetes.io/name: pdns-data-loader
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: pdns-data-loader
@@ -137,6 +136,4 @@ spec:
       port: 9999
       protocol: TCP
   selector:
-    app.kubernetes.io/name: pdns-data-loader
-    app.kubernetes.io/part-of: deeparcher
-    app.kubernetes.io/component: pdns-data-loader
+    <<: *labels
