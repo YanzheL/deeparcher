@@ -46,8 +46,8 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
         val properties = StringUtils.splitArrayElementsIntoProperties(args, "=")
         buildJobParameters(properties)
             .map { execute(job, it) }
-        applicationTaskExecutor.setWaitForTasksToCompleteOnShutdown(true)
-        applicationTaskExecutor.shutdown()
+//        applicationTaskExecutor.setWaitForTasksToCompleteOnShutdown(true)
+//        applicationTaskExecutor.shutdown()
     }
 
     protected fun buildJobParameters(properties: Properties?): List<JobParameters> {
