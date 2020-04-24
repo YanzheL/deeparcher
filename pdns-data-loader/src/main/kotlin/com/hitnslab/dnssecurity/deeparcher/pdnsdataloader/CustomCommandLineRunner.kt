@@ -14,7 +14,6 @@ import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.ApplicationEventPublisherAware
 import org.springframework.core.io.Resource
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.stereotype.Component
 import org.springframework.util.StringUtils
 import java.util.*
@@ -27,9 +26,6 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
 
     @Autowired
     lateinit var jobRegistry: JobRegistry
-
-    @Autowired
-    lateinit var applicationTaskExecutor: ThreadPoolTaskExecutor
 
     @Autowired(required = false)
     var publisher: ApplicationEventPublisher? = null
@@ -46,8 +42,6 @@ class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAwar
         val properties = StringUtils.splitArrayElementsIntoProperties(args, "=")
         buildJobParameters(properties)
             .map { execute(job, it) }
-//        applicationTaskExecutor.setWaitForTasksToCompleteOnShutdown(true)
-//        applicationTaskExecutor.shutdown()
     }
 
     protected fun buildJobParameters(properties: Properties?): List<JobParameters> {
