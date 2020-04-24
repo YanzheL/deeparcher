@@ -31,7 +31,7 @@ spec:
       containers:
         - name: pdns-data-loader
           #          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/pdns-data-loader:dev-graalvm
-          image: registry.gitlab.com/yanzhel/deeparcher/pdns-data-loader:dev-graalvm
+          image: registry.gitlab.com/yanzhel/deeparcher/pdns-data-loader:dev-graalvm-ee-java11
           imagePullPolicy: Always
           ports:
             - containerPort: 9999
@@ -82,11 +82,13 @@ spec:
             # - name: SPRING_KAFKA_PRODUCER_PROPERTIES_LINGER_MS
             #   value: '10000'
             - name: APP_JOB_PDNS_STEP_CHUNK_SIZE
-              value: '5000'
+              value: '3000'
             - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_ENABLE
               value: 'true'
             - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_SUCCESS_INTERVAL
               value: '1000000'
+            - name: APP_JOB_PDNS_TRY_RESTART
+              value: 'false'
           resources:
             requests:
               cpu: '1'
