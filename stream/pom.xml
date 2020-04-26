@@ -14,17 +14,6 @@
         <groupId>org.jetbrains.kotlin</groupId>
       </plugin>
       <plugin>
-        <artifactId>maven-failsafe-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-      </plugin>
-      <plugin>
         <artifactId>jib-maven-plugin</artifactId>
         <groupId>com.google.cloud.tools</groupId>
         <configuration>
