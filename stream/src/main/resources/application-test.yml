@@ -10,10 +10,15 @@ spring:
       trust-store-type: JKS
       trust-store-location: file:///tmp/kafka-user-test/ca.jks
       trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+    producer:
+      properties:
+        interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
     consumer:
       max-poll-records: 5000000
       fetch-max-wait: 2000
       auto-offset-reset: earliest
+      properties:
+        interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
     properties:
       security.protocol: SSL
       ssl.endpoint.identification.algorithm: ""
