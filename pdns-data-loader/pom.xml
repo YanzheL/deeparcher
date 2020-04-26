@@ -6,22 +6,11 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+            </plugin>
+            <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <configuration>
-                    <args>
-                        <arg>-Xjsr305=warn</arg>
-                    </args>
-                    <compilerPlugins>
-                        <plugin>spring</plugin>
-                    </compilerPlugins>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <artifactId>kotlin-maven-allopen</artifactId>
-                        <groupId>org.jetbrains.kotlin</groupId>
-                        <version>${kotlin.version}</version>
-                    </dependency>
-                </dependencies>
                 <groupId>org.jetbrains.kotlin</groupId>
             </plugin>
             <plugin>
@@ -53,7 +42,6 @@
                     </to>
                 </configuration>
                 <groupId>com.google.cloud.tools</groupId>
-                <version>${google-jib.version}</version>
             </plugin>
         </plugins>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
@@ -105,14 +93,14 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <groupId>org.springframework.boot</groupId>
-                    </plugin>
-                </plugins>
-            </build>
+            <!--            <build>-->
+            <!--                <plugins>-->
+            <!--                    <plugin>-->
+            <!--                        <artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--                        <groupId>org.springframework.boot</groupId>-->
+            <!--                    </plugin>-->
+            <!--                </plugins>-->
+            <!--            </build>-->
             <id>jar</id>
         </profile>
         <profile>

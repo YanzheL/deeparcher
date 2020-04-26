@@ -13,24 +13,16 @@
         <dependency>
             <artifactId>guava</artifactId>
             <groupId>com.google.guava</groupId>
-            <version>${guava.version}</version>
         </dependency>
         <!--Protobuf-->
         <dependency>
             <artifactId>protobuf-java</artifactId>
             <groupId>com.google.protobuf</groupId>
-            <version>${protobuf.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.netty/netty-buffer -->
         <dependency>
             <artifactId>netty-buffer</artifactId>
             <groupId>io.netty</groupId>
-            <version>4.1.48.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>5.5.0-ccs</version>
         </dependency>
         <dependency>
             <groupId>io.confluent</groupId>
@@ -41,6 +33,16 @@
             <groupId>io.confluent</groupId>
             <artifactId>kafka-protobuf-serializer</artifactId>
             <version>5.5.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>protobuf-java</artifactId>
+                    <groupId>com.google.protobuf</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <modelVersion>4.0.0</modelVersion>
@@ -104,16 +106,4 @@
     <version>0.2.0-SNAPSHOT</version>
     <properties>
     </properties>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>confluent</id>
-            <url>http://packages.confluent.io/maven/</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <repositories>
-        <repository>
-            <id>confluent</id>
-            <url>http://packages.confluent.io/maven/</url>
-        </repository>
-    </repositories>
 </project>
