@@ -24,14 +24,14 @@
             <artifactId>netty-buffer</artifactId>
             <groupId>io.netty</groupId>
         </dependency>
-        <dependency>
-            <groupId>io.confluent</groupId>
-            <artifactId>monitoring-interceptors</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.confluent</groupId>
-            <artifactId>kafka-protobuf-serializer</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.confluent</groupId>-->
+        <!--            <artifactId>monitoring-interceptors</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.confluent</groupId>-->
+        <!--            <artifactId>kafka-protobuf-serializer</artifactId>-->
+        <!--        </dependency>-->
     </dependencies>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>

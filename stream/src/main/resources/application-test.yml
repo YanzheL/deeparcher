@@ -27,8 +27,8 @@ spring:
       properties:
         topology.optimization: all
         num.stream.threads: 1
-        producer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
-        consumer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
+        #        producer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
+        #        consumer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
         consumer.max-poll-records: 5000000
         consumer.fetch-max-wait: 2000
         consumer.auto-offset-reset: earliest
