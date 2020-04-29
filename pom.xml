@@ -77,6 +77,31 @@
                 <!--                    </exclusion>-->
                 <!--                </exclusions>-->
             </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-serialization-runtime</artifactId>
+                <version>${kotlin.serialization.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-serialization-protobuf</artifactId>
+                <version>${kotlin.serialization.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>kotlinx-coroutines-core</artifactId>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <groupId>org.springframework.boot</groupId>
+            </dependency>
+            <dependency>
+                <artifactId>spring-boot-devtools</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <optional>true</optional>
+                <scope>runtime</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -87,11 +112,6 @@
         <dependency>
             <artifactId>kotlin-reflect</artifactId>
             <groupId>org.jetbrains.kotlin</groupId>
-        </dependency>
-        <dependency>
-            <artifactId>kotlinx-coroutines-core</artifactId>
-            <groupId>org.jetbrains.kotlinx</groupId>
-            <version>${kotlinx-coroutines.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -107,16 +127,6 @@
             <groupId>org.springframework.boot</groupId>
             <optional>true</optional>
         </dependency>
-        <!--    <dependency>-->
-        <!--      <artifactId>spring-boot-starter-actuator</artifactId>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <artifactId>spring-boot-devtools</artifactId>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--      <optional>true</optional>-->
-        <!--      <scope>runtime</scope>-->
-        <!--    </dependency>-->
 
         <!-- TEST SCOPE -->
         <dependency>
@@ -144,13 +154,14 @@
         <kotlin.version>1.3.72</kotlin.version>
         <graalvm.version>20.0.0</graalvm.version>
         <google-jib.version>2.2.0</google-jib.version>
-        <kafka.version>2.4.1</kafka.version>
+        <kafka.version>2.5.0</kafka.version>
         <mariadb.version>2.5.1</mariadb.version>
         <protobuf.version>3.11.4</protobuf.version>
         <guava.version>29.0-jre</guava.version>
         <kotlin-logging.version>1.7.9</kotlin-logging.version>
         <kotlinx-coroutines.version>1.3.5</kotlinx-coroutines.version>
         <spring-kafka.version>2.4.5.RELEASE</spring-kafka.version>
+        <kotlin.serialization.version>0.20.0</kotlin.serialization.version>
     </properties>
     <build>
         <pluginManagement>
@@ -163,6 +174,7 @@
                         </args>
                         <compilerPlugins>
                             <plugin>spring</plugin>
+                            <!--                            <plugin>kotlinx-serialization</plugin>-->
                         </compilerPlugins>
                     </configuration>
                     <dependencies>
@@ -171,6 +183,11 @@
                             <groupId>org.jetbrains.kotlin</groupId>
                             <version>${kotlin.version}</version>
                         </dependency>
+                        <!--                        <dependency>-->
+                        <!--                            <groupId>org.jetbrains.kotlin</groupId>-->
+                        <!--                            <artifactId>kotlin-maven-serialization</artifactId>-->
+                        <!--                            <version>${kotlin.version}</version>-->
+                        <!--                        </dependency>-->
                     </dependencies>
                     <groupId>org.jetbrains.kotlin</groupId>
                 </plugin>

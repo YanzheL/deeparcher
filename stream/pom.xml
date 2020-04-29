@@ -57,6 +57,10 @@
       <artifactId>kafka-streams</artifactId>
       <groupId>org.apache.kafka</groupId>
     </dependency>
+    <dependency>
+      <artifactId>kotlinx-coroutines-core</artifactId>
+      <groupId>org.jetbrains.kotlinx</groupId>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
     <dependency>
       <artifactId>caffeine</artifactId>
