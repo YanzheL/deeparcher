@@ -4,42 +4,8 @@
 package com.hitnslab.dnssecurity.deeparcher.api.proto;
 
 public final class DomainIPAssocDetailProto {
-
   private static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor;
-  private static final
-  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-
-  static {
-    java.lang.String[] descriptorData = {
-        "\nJcom/hitnslab/dnssecurity/deeparcher/ap" +
-            "i/proto/domain_ip_assoc_detail.proto\022-co" +
-            "m.hitnslab.dnssecurity.deeparcher.api.pr" +
-            "oto\"[\n\023DomainIPAssocDetail\022\014\n\004fqdn\030\001 \001(\t" +
-            "\022\016\n\006domain\030\002 \001(\t\022\022\n\nipv4_addrs\030\007 \001(\014\022\022\n\n"
-            +
-            "ipv6_addrs\030\010 \001(\014BN\n-com.hitnslab.dnssecu" +
-            "rity.deeparcher.api.protoB\030DomainIPAssoc" +
-            "DetailProtoH\001\370\001\001b\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-        .internalBuildGeneratedFileFrom(descriptorData,
-            new com.google.protobuf.Descriptors.FileDescriptor[]{
-            });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor =
-        getDescriptor().getMessageTypes().get(0);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_fieldAccessorTable = new
-        com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor,
-        new java.lang.String[]{"Fqdn", "Domain", "Ipv4Addrs", "Ipv6Addrs",});
-  }
-
-  private DomainIPAssocDetailProto() {
-  }
-
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor;
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -49,74 +15,123 @@ public final class DomainIPAssocDetailProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_fieldAccessorTable;
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+
+  static {
+    java.lang.String[] descriptorData = {
+      "\nJcom/hitnslab/dnssecurity/deeparcher/ap" +
+      "i/proto/domain_ip_assoc_detail.proto\022-co" +
+      "m.hitnslab.dnssecurity.deeparcher.api.pr" +
+      "oto\"k\n\023DomainIPAssocDetail\022\014\n\004fqdn\030\001 \001(\t" +
+      "\022\016\n\006domain\030\002 \001(\t\022\022\n\nipv4_addrs\030\007 \001(\014\022\022\n\n" +
+      "ipv6_addrs\030\010 \001(\014\022\016\n\006cnames\030\t \003(\tBN\n-com." +
+      "hitnslab.dnssecurity.deeparcher.api.prot" +
+      "oB\030DomainIPAssocDetailProtoH\001\370\001\001b\006proto3"
+    };
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        });
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor,
+        new java.lang.String[] { "Fqdn", "Domain", "Ipv4Addrs", "Ipv6Addrs", "Cnames", });
+  }
+  private DomainIPAssocDetailProto() {}
 
   public static com.google.protobuf.Descriptors.FileDescriptor
-  getDescriptor() {
+      getDescriptor() {
     return descriptor;
   }
-
   public interface DomainIPAssocDetailOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetail)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string fqdn = 1;</code>
-     *
      * @return The fqdn.
      */
     java.lang.String getFqdn();
-
     /**
      * <code>string fqdn = 1;</code>
-     *
      * @return The bytes for fqdn.
      */
     com.google.protobuf.ByteString
-    getFqdnBytes();
+        getFqdnBytes();
 
     /**
      * <code>string domain = 2;</code>
-     *
      * @return The domain.
      */
     java.lang.String getDomain();
-
     /**
      * <code>string domain = 2;</code>
-     *
      * @return The bytes for domain.
      */
     com.google.protobuf.ByteString
-    getDomainBytes();
+        getDomainBytes();
 
     /**
      * <code>bytes ipv4_addrs = 7;</code>
-     *
      * @return The ipv4Addrs.
      */
     com.google.protobuf.ByteString getIpv4Addrs();
 
     /**
      * <code>bytes ipv6_addrs = 8;</code>
-     *
      * @return The ipv6Addrs.
      */
     com.google.protobuf.ByteString getIpv6Addrs();
+
+    /**
+     * <code>repeated string cnames = 9;</code>
+     * @return A list containing the cnames.
+     */
+    java.util.List<java.lang.String>
+        getCnamesList();
+    /**
+     * <code>repeated string cnames = 9;</code>
+     * @return The count of cnames.
+     */
+    int getCnamesCount();
+    /**
+     * <code>repeated string cnames = 9;</code>
+     * @param index The index of the element to return.
+     * @return The cnames at the given index.
+     */
+    java.lang.String getCnames(int index);
+    /**
+     * <code>repeated string cnames = 9;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the cnames at the given index.
+     */
+    com.google.protobuf.ByteString
+        getCnamesBytes(int index);
   }
 
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetail}
    */
-  public static final class DomainIPAssocDetail extends
+  public  static final class DomainIPAssocDetail extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetail)
       DomainIPAssocDetailOrBuilder {
-
     public static final int FQDN_FIELD_NUMBER = 1;
+    // Use DomainIPAssocDetail.newBuilder() to construct.
+    private DomainIPAssocDetail(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
     public static final int DOMAIN_FIELD_NUMBER = 2;
     public static final int IPV4_ADDRS_FIELD_NUMBER = 7;
     public static final int IPV6_ADDRS_FIELD_NUMBER = 8;
-    private static final long serialVersionUID = 0L;
+    public static final int CNAMES_FIELD_NUMBER = 9;
+  private static final long serialVersionUID = 0L;
     // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetail)
     private static final com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail DEFAULT_INSTANCE;
     private static final com.google.protobuf.Parser<DomainIPAssocDetail>
@@ -138,20 +153,16 @@ public final class DomainIPAssocDetailProto {
     private volatile java.lang.Object domain_;
     private com.google.protobuf.ByteString ipv4Addrs_;
     private com.google.protobuf.ByteString ipv6Addrs_;
+    private com.google.protobuf.LazyStringList cnames_;
     private byte memoizedIsInitialized = -1;
-
-    // Use DomainIPAssocDetail.newBuilder() to construct.
-    private DomainIPAssocDetail(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
 
     private DomainIPAssocDetail() {
       fqdn_ = "";
       domain_ = "";
       ipv4Addrs_ = com.google.protobuf.ByteString.EMPTY;
       ipv6Addrs_ = com.google.protobuf.ByteString.EMPTY;
+      cnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
-
     private DomainIPAssocDetail(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -160,6 +171,7 @@ public final class DomainIPAssocDetailProto {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -192,6 +204,15 @@ public final class DomainIPAssocDetailProto {
               ipv6Addrs_ = input.readBytes();
               break;
             }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                cnames_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              cnames_.add(s);
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -207,13 +228,23 @@ public final class DomainIPAssocDetailProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          cnames_ = cnames_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
+    /**
+     * <code>bytes ipv4_addrs = 7;</code>
+     * @return The ipv4Addrs.
+     */
+    public com.google.protobuf.ByteString getIpv4Addrs() {
+      return ipv4Addrs_;
+    }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
+        getDescriptor() {
       return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor;
     }
 
@@ -221,6 +252,13 @@ public final class DomainIPAssocDetailProto {
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
+    }
+    /**
+     * <code>bytes ipv6_addrs = 8;</code>
+     * @return The ipv6Addrs.
+     */
+    public com.google.protobuf.ByteString getIpv6Addrs() {
+      return ipv6Addrs_;
     }
 
     public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseFrom(
@@ -243,8 +281,7 @@ public final class DomainIPAssocDetailProto {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseFrom(
-        byte[] data)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
@@ -256,8 +293,7 @@ public final class DomainIPAssocDetailProto {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseFrom(
-        java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
@@ -271,8 +307,7 @@ public final class DomainIPAssocDetailProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseDelimitedFrom(
-        java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
@@ -305,8 +340,7 @@ public final class DomainIPAssocDetailProto {
       return DEFAULT_INSTANCE.toBuilder();
     }
 
-    public static Builder newBuilder(
-        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail prototype) {
+    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -333,16 +367,14 @@ public final class DomainIPAssocDetailProto {
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-    internalGetFieldAccessorTable() {
+        internalGetFieldAccessorTable() {
       return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.class,
-              com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.Builder.class);
+              com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.class, com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.Builder.class);
     }
 
     /**
      * <code>string fqdn = 1;</code>
-     *
      * @return The fqdn.
      */
     public java.lang.String getFqdn() {
@@ -360,11 +392,10 @@ public final class DomainIPAssocDetailProto {
 
     /**
      * <code>string fqdn = 1;</code>
-     *
      * @return The bytes for fqdn.
      */
     public com.google.protobuf.ByteString
-    getFqdnBytes() {
+        getFqdnBytes() {
       java.lang.Object ref = fqdn_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b =
@@ -379,7 +410,6 @@ public final class DomainIPAssocDetailProto {
 
     /**
      * <code>string domain = 2;</code>
-     *
      * @return The domain.
      */
     public java.lang.String getDomain() {
@@ -397,11 +427,10 @@ public final class DomainIPAssocDetailProto {
 
     /**
      * <code>string domain = 2;</code>
-     *
      * @return The bytes for domain.
      */
     public com.google.protobuf.ByteString
-    getDomainBytes() {
+        getDomainBytes() {
       java.lang.Object ref = domain_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b =
@@ -415,40 +444,66 @@ public final class DomainIPAssocDetailProto {
     }
 
     /**
-     * <code>bytes ipv4_addrs = 7;</code>
-     *
-     * @return The ipv4Addrs.
+     * <code>repeated string cnames = 9;</code>
+     * @return A list containing the cnames.
      */
-    public com.google.protobuf.ByteString getIpv4Addrs() {
-      return ipv4Addrs_;
+    public com.google.protobuf.ProtocolStringList
+        getCnamesList() {
+      return cnames_;
     }
 
     /**
-     * <code>bytes ipv6_addrs = 8;</code>
-     *
-     * @return The ipv6Addrs.
+     * <code>repeated string cnames = 9;</code>
+     * @return The count of cnames.
      */
-    public com.google.protobuf.ByteString getIpv6Addrs() {
-      return ipv6Addrs_;
+    public int getCnamesCount() {
+      return cnames_.size();
+    }
+
+    /**
+     * <code>repeated string cnames = 9;</code>
+     * @param index The index of the element to return.
+     * @return The cnames at the given index.
+     */
+    public java.lang.String getCnames(int index) {
+      return cnames_.get(index);
+    }
+
+    /**
+     * <code>repeated string cnames = 9;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the cnames at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getCnamesBytes(int index) {
+      return cnames_.getByteString(index);
     }
 
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) {
-        return true;
-      }
-      if (isInitialized == 0) {
-        return false;
-      }
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       memoizedIsInitialized = 1;
       return true;
     }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
 
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-        throws java.io.IOException {
+                        throws java.io.IOException {
       if (!getFqdnBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fqdn_);
       }
@@ -461,15 +516,16 @@ public final class DomainIPAssocDetailProto {
       if (!ipv6Addrs_.isEmpty()) {
         output.writeBytes(8, ipv6Addrs_);
       }
+      for (int i = 0; i < cnames_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, cnames_.getRaw(i));
+      }
       unknownFields.writeTo(output);
     }
 
     @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
-      if (size != -1) {
-        return size;
-      }
+      if (size != -1) return size;
 
       size = 0;
       if (!getFqdnBytes().isEmpty()) {
@@ -480,11 +536,19 @@ public final class DomainIPAssocDetailProto {
       }
       if (!ipv4Addrs_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(7, ipv4Addrs_);
+          .computeBytesSize(7, ipv4Addrs_);
       }
       if (!ipv6Addrs_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(8, ipv6Addrs_);
+          .computeBytesSize(8, ipv6Addrs_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < cnames_.size(); i++) {
+          dataSize += computeStringSizeNoTag(cnames_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCnamesList().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -494,7 +558,7 @@ public final class DomainIPAssocDetailProto {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-        return true;
+       return true;
       }
       if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail)) {
         return super.equals(obj);
@@ -502,24 +566,16 @@ public final class DomainIPAssocDetailProto {
       com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail other = (com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail) obj;
 
       if (!getFqdn()
-          .equals(other.getFqdn())) {
-        return false;
-      }
+          .equals(other.getFqdn())) return false;
       if (!getDomain()
-          .equals(other.getDomain())) {
-        return false;
-      }
+          .equals(other.getDomain())) return false;
       if (!getIpv4Addrs()
-          .equals(other.getIpv4Addrs())) {
-        return false;
-      }
+          .equals(other.getIpv4Addrs())) return false;
       if (!getIpv6Addrs()
-          .equals(other.getIpv6Addrs())) {
-        return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) {
-        return false;
-      }
+          .equals(other.getIpv6Addrs())) return false;
+      if (!getCnamesList()
+          .equals(other.getCnamesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -538,28 +594,17 @@ public final class DomainIPAssocDetailProto {
       hash = (53 * hash) + getIpv4Addrs().hashCode();
       hash = (37 * hash) + IPV6_ADDRS_FIELD_NUMBER;
       hash = (53 * hash) + getIpv6Addrs().hashCode();
+      if (getCnamesCount() > 0) {
+        hash = (37 * hash) + CNAMES_FIELD_NUMBER;
+        hash = (53 * hash) + getCnamesList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
-
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
+    public Builder newBuilderForType() { return newBuilder(); }
 
     @java.lang.Override
     public com.google.protobuf.Parser<DomainIPAssocDetail> getParserForType() {
@@ -578,11 +623,12 @@ public final class DomainIPAssocDetailProto {
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetail)
         com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetailOrBuilder {
-
+      private int bitField0_;
       private java.lang.Object fqdn_ = "";
       private java.lang.Object domain_ = "";
       private com.google.protobuf.ByteString ipv4Addrs_ = com.google.protobuf.ByteString.EMPTY;
       private com.google.protobuf.ByteString ipv6Addrs_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.LazyStringList cnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
 
       // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.newBuilder()
       private Builder() {
@@ -595,24 +641,70 @@ public final class DomainIPAssocDetailProto {
         maybeForceBuilderInitialization();
       }
 
+      @java.lang.Override
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail build() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
       public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
+          getDescriptor() {
         return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor;
       }
 
       @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internalGetFieldAccessorTable() {
+          internalGetFieldAccessorTable() {
         return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.class,
-                com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.Builder.class);
+                com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.class, com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.Builder.class);
       }
 
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
-            .alwaysUseFieldBuilders) {
+                .alwaysUseFieldBuilders) {
         }
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
       }
 
       @java.lang.Override
@@ -626,145 +718,23 @@ public final class DomainIPAssocDetailProto {
 
         ipv6Addrs_ = com.google.protobuf.ByteString.EMPTY;
 
+        cnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-      getDescriptorForType() {
+          getDescriptorForType() {
         return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DomainIPAssocDetail_descriptor;
       }
 
       @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail getDefaultInstanceForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail
-            .getDefaultInstance();
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.getDefaultInstance();
       }
-
-      @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail build() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail buildPartial() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail result = new com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail(
-            this);
-        result.fqdn_ = fqdn_;
-        result.domain_ = domain_;
-        result.ipv4Addrs_ = ipv4Addrs_;
-        result.ipv6Addrs_ = ipv6Addrs_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail) {
-          return mergeFrom(
-              (com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail) other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(
-          com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail other) {
-        if (other
-            == com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail
-            .getDefaultInstance()) {
-          return this;
-        }
-        if (!other.getFqdn().isEmpty()) {
-          fqdn_ = other.fqdn_;
-          onChanged();
-        }
-        if (!other.getDomain().isEmpty()) {
-          domain_ = other.domain_;
-          onChanged();
-        }
-        if (other.getIpv4Addrs() != com.google.protobuf.ByteString.EMPTY) {
-          setIpv4Addrs(other.getIpv4Addrs());
-        }
-        if (other.getIpv6Addrs() != com.google.protobuf.ByteString.EMPTY) {
-          setIpv6Addrs(other.getIpv6Addrs());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail) e
-              .getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
       /**
        * <code>string fqdn = 1;</code>
-       *
        * @return The fqdn.
        */
       public java.lang.String getFqdn() {
@@ -780,30 +750,89 @@ public final class DomainIPAssocDetailProto {
         }
       }
 
-      /**
-       * <code>string fqdn = 1;</code>
-       *
-       * @param value The fqdn to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFqdn(
-          java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
+      @java.lang.Override
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail buildPartial() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail result = new com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail(this);
+        int from_bitField0_ = bitField0_;
+        result.fqdn_ = fqdn_;
+        result.domain_ = domain_;
+        result.ipv4Addrs_ = ipv4Addrs_;
+        result.ipv6Addrs_ = ipv6Addrs_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          cnames_ = cnames_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
+        result.cnames_ = cnames_;
+        onBuilt();
+        return result;
+      }
 
-        fqdn_ = value;
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail) {
+          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail other) {
+        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail.getDefaultInstance()) return this;
+        if (!other.getFqdn().isEmpty()) {
+          fqdn_ = other.fqdn_;
+          onChanged();
+        }
+        if (!other.getDomain().isEmpty()) {
+          domain_ = other.domain_;
+          onChanged();
+        }
+        if (other.getIpv4Addrs() != com.google.protobuf.ByteString.EMPTY) {
+          setIpv4Addrs(other.getIpv4Addrs());
+        }
+        if (other.getIpv6Addrs() != com.google.protobuf.ByteString.EMPTY) {
+          setIpv6Addrs(other.getIpv6Addrs());
+        }
+        if (!other.cnames_.isEmpty()) {
+          if (cnames_.isEmpty()) {
+            cnames_ = other.cnames_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureCnamesIsMutable();
+            cnames_.addAll(other.cnames_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto.DomainIPAssocDetail) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
 
       /**
        * <code>string fqdn = 1;</code>
-       *
        * @return The bytes for fqdn.
        */
       public com.google.protobuf.ByteString
-      getFqdnBytes() {
+          getFqdnBytes() {
         java.lang.Object ref = fqdn_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b =
@@ -815,40 +844,8 @@ public final class DomainIPAssocDetailProto {
           return (com.google.protobuf.ByteString) ref;
         }
       }
-
-      /**
-       * <code>string fqdn = 1;</code>
-       *
-       * @param value The bytes for fqdn to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFqdnBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
-
-        fqdn_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string fqdn = 1;</code>
-       *
-       * @return This builder for chaining.
-       */
-      public Builder clearFqdn() {
-
-        fqdn_ = getDefaultInstance().getFqdn();
-        onChanged();
-        return this;
-      }
-
       /**
        * <code>string domain = 2;</code>
-       *
        * @return The domain.
        */
       public java.lang.String getDomain() {
@@ -865,29 +862,55 @@ public final class DomainIPAssocDetailProto {
       }
 
       /**
-       * <code>string domain = 2;</code>
-       *
-       * @param value The domain to set.
+       * <code>string fqdn = 1;</code>
+       * @param value The bytes for fqdn to set.
        * @return This builder for chaining.
        */
-      public Builder setDomain(
+      public Builder setFqdnBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+
+        fqdn_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>string fqdn = 1;</code>
+       * @param value The fqdn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFqdn(
           java.lang.String value) {
         if (value == null) {
-          throw new NullPointerException();
-        }
+    throw new NullPointerException();
+  }
 
-        domain_ = value;
+        fqdn_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>string fqdn = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFqdn() {
+
+        fqdn_ = getDefaultInstance().getFqdn();
         onChanged();
         return this;
       }
 
       /**
        * <code>string domain = 2;</code>
-       *
        * @return The bytes for domain.
        */
       public com.google.protobuf.ByteString
-      getDomainBytes() {
+          getDomainBytes() {
         java.lang.Object ref = domain_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b =
@@ -902,16 +925,38 @@ public final class DomainIPAssocDetailProto {
 
       /**
        * <code>string domain = 2;</code>
-       *
        * @param value The bytes for domain to set.
        * @return This builder for chaining.
        */
       public Builder setDomainBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+
+        domain_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes ipv4_addrs = 7;</code>
+       * @return The ipv4Addrs.
+       */
+      public com.google.protobuf.ByteString getIpv4Addrs() {
+        return ipv4Addrs_;
+      }
+
+      /**
+       * <code>string domain = 2;</code>
+       * @param value The domain to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDomain(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
 
         domain_ = value;
         onChanged();
@@ -920,7 +965,6 @@ public final class DomainIPAssocDetailProto {
 
       /**
        * <code>string domain = 2;</code>
-       *
        * @return This builder for chaining.
        */
       public Builder clearDomain() {
@@ -932,32 +976,28 @@ public final class DomainIPAssocDetailProto {
 
       /**
        * <code>bytes ipv4_addrs = 7;</code>
-       *
-       * @return The ipv4Addrs.
-       */
-      public com.google.protobuf.ByteString getIpv4Addrs() {
-        return ipv4Addrs_;
-      }
-
-      /**
-       * <code>bytes ipv4_addrs = 7;</code>
-       *
        * @param value The ipv4Addrs to set.
        * @return This builder for chaining.
        */
       public Builder setIpv4Addrs(com.google.protobuf.ByteString value) {
         if (value == null) {
-          throw new NullPointerException();
-        }
+    throw new NullPointerException();
+  }
 
         ipv4Addrs_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>bytes ipv6_addrs = 8;</code>
+       * @return The ipv6Addrs.
+       */
+      public com.google.protobuf.ByteString getIpv6Addrs() {
+        return ipv6Addrs_;
+      }
 
       /**
        * <code>bytes ipv4_addrs = 7;</code>
-       *
        * @return This builder for chaining.
        */
       public Builder clearIpv4Addrs() {
@@ -969,23 +1009,13 @@ public final class DomainIPAssocDetailProto {
 
       /**
        * <code>bytes ipv6_addrs = 8;</code>
-       *
-       * @return The ipv6Addrs.
-       */
-      public com.google.protobuf.ByteString getIpv6Addrs() {
-        return ipv6Addrs_;
-      }
-
-      /**
-       * <code>bytes ipv6_addrs = 8;</code>
-       *
        * @param value The ipv6Addrs to set.
        * @return This builder for chaining.
        */
       public Builder setIpv6Addrs(com.google.protobuf.ByteString value) {
         if (value == null) {
-          throw new NullPointerException();
-        }
+    throw new NullPointerException();
+  }
 
         ipv6Addrs_ = value;
         onChanged();
@@ -994,7 +1024,6 @@ public final class DomainIPAssocDetailProto {
 
       /**
        * <code>bytes ipv6_addrs = 8;</code>
-       *
        * @return This builder for chaining.
        */
       public Builder clearIpv6Addrs() {
@@ -1004,6 +1033,114 @@ public final class DomainIPAssocDetailProto {
         return this;
       }
 
+      private void ensureCnamesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          cnames_ = new com.google.protobuf.LazyStringArrayList(cnames_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @return A list containing the cnames.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCnamesList() {
+        return cnames_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @return The count of cnames.
+       */
+      public int getCnamesCount() {
+        return cnames_.size();
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @param index The index of the element to return.
+       * @return The cnames at the given index.
+       */
+      public java.lang.String getCnames(int index) {
+        return cnames_.get(index);
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the cnames at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getCnamesBytes(int index) {
+        return cnames_.getByteString(index);
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @param index The index to set the value at.
+       * @param value The cnames to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCnames(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCnamesIsMutable();
+        cnames_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @param value The cnames to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCnames(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCnamesIsMutable();
+        cnames_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @param values The cnames to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCnames(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCnamesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, cnames_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCnames() {
+        cnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string cnames = 9;</code>
+       * @param value The bytes of the cnames to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCnamesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureCnamesIsMutable();
+        cnames_.add(value);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1015,6 +1152,7 @@ public final class DomainIPAssocDetailProto {
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
+
 
       // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetail)
     }

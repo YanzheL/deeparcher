@@ -4,7 +4,6 @@ option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto";
 option java_outer_classname = "PDnsDataProto";
 option optimize_for = SPEED;
 option cc_enable_arenas = true;
-//import "google/protobuf/wrappers.proto";
 
 message PDnsData {
   string fqdn = 1;
