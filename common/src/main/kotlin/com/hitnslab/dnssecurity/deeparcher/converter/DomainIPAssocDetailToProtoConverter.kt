@@ -24,6 +24,7 @@ class DomainIPAssocDetailToProtoConverter : Converter<DomainIPAssocDetail, Domai
         }
         builder.ipv4Addrs = ByteString.copyFrom(allIpv4Bytes.nioBuffer())
         builder.ipv6Addrs = ByteString.copyFrom(allIpv6Bytes.nioBuffer())
+        builder.addAllCnames(source.cnames)
         allIpv4Bytes.release()
         allIpv6Bytes.release()
         return builder.build()

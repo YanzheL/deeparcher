@@ -8,6 +8,7 @@ class DomainIPAssocDetail(
 ) {
     val ipv4Addresses by lazy { mutableSetOf<InetAddress>() }
     val ipv6Addresses by lazy { mutableSetOf<InetAddress>() }
+    val cnames by lazy { mutableSetOf<String>() }
 //    class Builder {
 //        private var domain: String? = null
 //        private var topPrivateDomain: String? = null
