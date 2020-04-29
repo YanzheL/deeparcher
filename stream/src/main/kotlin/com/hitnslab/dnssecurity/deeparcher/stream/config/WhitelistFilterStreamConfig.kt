@@ -1,6 +1,6 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
-import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.serde.GenericSerde
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoDeserializer
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer

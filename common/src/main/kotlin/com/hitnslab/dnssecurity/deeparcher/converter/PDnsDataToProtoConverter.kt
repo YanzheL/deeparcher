@@ -1,7 +1,7 @@
 package com.hitnslab.dnssecurity.deeparcher.converter
 
 import com.google.protobuf.ByteString
-import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import io.netty.buffer.PooledByteBufAllocator
 import org.springframework.core.convert.converter.Converter

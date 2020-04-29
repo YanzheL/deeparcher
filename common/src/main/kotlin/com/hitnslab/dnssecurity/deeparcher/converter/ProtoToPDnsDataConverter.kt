@@ -1,6 +1,6 @@
 package com.hitnslab.dnssecurity.deeparcher.converter
 
-import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import com.hitnslab.dnssecurity.deeparcher.util.parseIpFromBytes
 import org.springframework.core.convert.converter.Converter

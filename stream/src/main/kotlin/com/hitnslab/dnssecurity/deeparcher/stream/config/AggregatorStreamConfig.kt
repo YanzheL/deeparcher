@@ -1,7 +1,7 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
 import com.google.protobuf.ByteString
-import com.hitnslab.dnssecurity.deeparcher.api.proto.DomainIPAssocDetailProto
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainIPAssocDetailProto
 import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.property.AggregatorProperties
 import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet

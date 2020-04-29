@@ -1,6 +1,6 @@
 package com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.job
 
-import com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsDataProto
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.converter.PDnsDataToProtoConverter
 import com.hitnslab.dnssecurity.deeparcher.model.PDnsData
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.ByCauseSkipPolicy
