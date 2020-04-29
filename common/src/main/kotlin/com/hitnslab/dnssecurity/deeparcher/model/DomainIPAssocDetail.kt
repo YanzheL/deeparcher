@@ -2,9 +2,13 @@ package com.hitnslab.dnssecurity.deeparcher.model
 
 import java.net.InetAddress
 
+@Deprecated(
+    "This data class is deprecated, " +
+            "please use the generated protobuf class <DomainIPAssocDetailProto.DomainIPAssocDetail> directly."
+)
 class DomainIPAssocDetail(
-        val domain: String,
-        val topPrivateDomain: String
+    val domain: String,
+    val topPrivateDomain: String
 ) {
     val ipv4Addresses by lazy { mutableSetOf<InetAddress>() }
     val ipv6Addresses by lazy { mutableSetOf<InetAddress>() }
