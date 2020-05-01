@@ -37,6 +37,7 @@ spring:
 app:
   aggregator:
     enabled: false
+    lookup-timeout: 100
     input:
       type: topic
       path: raw.pdns.not-in-whitelist

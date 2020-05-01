@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.xbill.DNS.*
 import java.net.InetAddress
+import java.time.Duration
 
 
 @Configuration
@@ -37,8 +38,17 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
 
     private val backgroundScope = CoroutineScope(newSingleThreadContext("aggregator"))
 
+    private var resolver: Resolver? = null
+
     @Bean
     fun aggregatorStream(builder: StreamsBuilder): KStream<*, *> {
+        if (properties.lookupTimeout != 0L) {
+            val resolv = ExtendedResolver()
+            if (properties.lookupTimeout != -1L) {
+                resolv.timeout = Duration.ofMillis(properties.lookupTimeout)
+            }
+            resolver = resolv
+        }
         val src = builder.stream(
             properties.input.path,
             Consumed.with(
@@ -46,7 +56,7 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                 GenericSerde(PDnsProtoSerializer::class, PDnsProtoDeserializer::class)
             )
         )
-        val updates = src
+        val table = src
             .groupByKey()
             .aggregate(
                 { DomainIPAssocDetailProto.DomainIPAssocDetail.getDefaultInstance() },
@@ -106,19 +116,27 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                     GenericSerde(DomainIPAssocDetailProtoSerializer::class, DomainIPAssocDetailProtoDeserializer::class)
                 )
             )
-            .mapValues { _, v ->
-                val agg = DomainIPAssocDetailProto.DomainIPAssocDetail
-                    .newBuilder()
-                    .mergeFrom(v)
-                postAggregationCheck(agg)
-            }
-            .mapValues { _, v ->
-                runBlocking {
-                    v.await()
-                    v.getCompleted().build()
+        val updates: KStream<String, DomainIPAssocDetailProto.DomainIPAssocDetail>
+        val resolv = resolver
+        if (resolv != null) {
+            updates = table
+                .mapValues { _, v ->
+                    val agg = DomainIPAssocDetailProto.DomainIPAssocDetail
+                        .newBuilder()
+                        .mergeFrom(v)
+                    postAggregationCheck(agg, resolv)
                 }
-            }
-            .toStream()
+                .mapValues { _, v ->
+                    runBlocking {
+                        v.await()
+                        v.getCompleted().build()
+                    }
+                }
+                .toStream()
+        } else {
+            updates = table.toStream()
+        }
+
         properties.output.forEach {
             if (it.type == "topic") {
                 updates.to(
@@ -145,7 +163,10 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
      *
      * @param builder: Current aggregation result
      */
-    private fun postAggregationCheck(builder: DomainIPAssocDetailProto.DomainIPAssocDetail.Builder) =
+    private fun postAggregationCheck(
+        builder: DomainIPAssocDetailProto.DomainIPAssocDetail.Builder,
+        resolver: Resolver
+    ) =
         backgroundScope.async {
             val jobs = mutableListOf<Job>()
             var checkRest = false
@@ -155,7 +176,9 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                 jobs.add(
                     launch {
                         logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv4 address, now performing DNS lookup" }
-                        withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.A).run() }?.let { records ->
+                        val lookup = Lookup(builder.fqdn, Type.A)
+                        lookup.setResolver(resolver)
+                        withContext(Dispatchers.IO) { lookup.run() }?.let { records ->
                             val ips = mutableSetOf<InetAddress>()
                             records.forEach { ips.add((it as ARecord).address) }
                             if (ips.isNotEmpty()) {
@@ -176,7 +199,9 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                 jobs.add(
                     launch {
                         logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv6 address" }
-                        withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.AAAA).run() }?.let { records ->
+                        val lookup = Lookup(builder.fqdn, Type.AAAA)
+                        lookup.setResolver(resolver)
+                        withContext(Dispatchers.IO) { lookup.run() }?.let { records ->
                             val ips = mutableSetOf<InetAddress>()
                             records.forEach { ips.add((it as AAAARecord).address) }
                             if (ips.isNotEmpty()) {
@@ -198,7 +223,9 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                     launch {
                         logger.info { "After one aggregation step, <${builder.fqdn}> has no CNAME" }
                         val cnames = mutableSetOf<String>()
-                        withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.CNAME).run() }?.forEach {
+                        val lookup = Lookup(builder.fqdn, Type.CNAME)
+                        lookup.setResolver(resolver)
+                        withContext(Dispatchers.IO) { lookup.run() }?.forEach {
                             cnames.add((it as CNAMERecord).target.toString(true))
                             allEmpty = false
                         }
