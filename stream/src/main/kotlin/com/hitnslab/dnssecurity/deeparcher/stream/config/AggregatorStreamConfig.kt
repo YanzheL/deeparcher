@@ -4,7 +4,7 @@ import com.google.protobuf.ByteString
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainIPAssocDetailProto
 import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.property.AggregatorProperties
-import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet
+import com.hitnslab.dnssecurity.deeparcher.util.bytesSetUnion
 import io.netty.buffer.ByteBufAllocator
 import io.netty.buffer.Unpooled
 import mu.KotlinLogging
@@ -93,24 +93,28 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                         if (aggBuilder.ipv4Addrs.isEmpty) {
                             aggBuilder.ipv4Addrs = v.rIpv4Addrs
                         } else {
-                            val bufSet = ByteBufSet(aggBuilder.ipv4Addrs.asReadOnlyByteBuffer())
-                            bufSet.addAll(Unpooled.wrappedBuffer(v.rIpv4Addrs.asReadOnlyByteBuffer()), 4)
-                            if (bufSet.dirty) {
-                                aggBuilder.ipv4Addrs = ByteString.copyFrom(bufSet.buffer.nioBuffer())
+                            bytesSetUnion(
+                                Unpooled.wrappedBuffer(aggBuilder.ipv4Addrs.asReadOnlyByteBuffer()),
+                                Unpooled.wrappedBuffer(v.rIpv4Addrs.asReadOnlyByteBuffer()),
+                                4
+                            )?.let {
+                                aggBuilder.ipv4Addrs = ByteString.copyFrom(it.nioBuffer())
+                                it.release()
                             }
-                            bufSet.release()
                         }
                     }
                     if (!v.rIpv6Addrs.isEmpty) {
                         if (aggBuilder.ipv6Addrs.isEmpty) {
                             aggBuilder.ipv6Addrs = v.rIpv6Addrs
                         } else {
-                            val bufSet = ByteBufSet(aggBuilder.ipv6Addrs.asReadOnlyByteBuffer())
-                            bufSet.addAll(Unpooled.wrappedBuffer(v.rIpv6Addrs.asReadOnlyByteBuffer()), 16)
-                            if (bufSet.dirty) {
-                                aggBuilder.ipv6Addrs = ByteString.copyFrom(bufSet.buffer.nioBuffer())
+                            bytesSetUnion(
+                                Unpooled.wrappedBuffer(aggBuilder.ipv6Addrs.asReadOnlyByteBuffer()),
+                                Unpooled.wrappedBuffer(v.rIpv6Addrs.asReadOnlyByteBuffer()),
+                                16
+                            )?.let {
+                                aggBuilder.ipv4Addrs = ByteString.copyFrom(it.nioBuffer())
+                                it.release()
                             }
-                            bufSet.release()
                         }
                     }
                     if (v.rCnamesCount != 0) {

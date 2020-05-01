@@ -21,7 +21,7 @@ class ByteBufSetUnitTests {
         val bs0 = byteArrayOf(56, 78, 90, 1)
         val bs1 = byteArrayOf(12, 34, 56, 78)
         val bs2 = byteArrayOf(34, 56, 78, 90)
-        val bufSet = ByteBufSet(Unpooled.wrappedBuffer(bs0))
+        val bufSet = ByteBufSet(bs0)
         bufSet.add(Unpooled.wrappedBuffer(bs1))
         bufSet.add(Unpooled.wrappedBuffer(bs2))
         Assertions.assertTrue(bufSet.contains(Unpooled.wrappedBuffer(bs1)))

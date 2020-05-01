@@ -55,3 +55,19 @@ fun <R : Number> packIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableLis
         }
     }
 }
+
+/**
+ * Union two sets of bytes with specified window width
+ *
+ * @return null if set1 contains set2 else the union of two sets
+ */
+fun bytesSetUnion(set1: ByteBuf, set2: ByteBuf, width: Int): ByteBuf? {
+    val bufSet = ByteBufSet(set1)
+    bufSet.addAll(set2, width)
+    var ret: ByteBuf? = null
+    if (bufSet.dirty) {
+        ret = bufSet.buffer.retainedSlice()
+    }
+    bufSet.release()
+    return ret
+}
