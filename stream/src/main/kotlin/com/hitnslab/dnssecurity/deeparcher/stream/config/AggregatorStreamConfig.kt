@@ -34,6 +34,8 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
 
     private val logger = KotlinLogging.logger {}
 
+    private val backgroundScope = CoroutineScope(newSingleThreadContext("aggregator"))
+
     @Bean
     fun aggregatorStream(builder: StreamsBuilder): KStream<*, *> {
         val src = builder.stream(
@@ -96,7 +98,6 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                             }
                         }
                     }
-                    postAggregationCheck(aggBuilder)
                     aggBuilder.build()
                 },
                 Materialized.with(
@@ -104,6 +105,18 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                     GenericSerde(DomainIPAssocDetailProtoSerializer::class, DomainIPAssocDetailProtoDeserializer::class)
                 )
             )
+            .mapValues { _, v ->
+                val agg = DomainIPAssocDetailProto.DomainIPAssocDetail
+                    .newBuilder()
+                    .mergeFrom(v)
+                postAggregationCheck(agg)
+            }
+            .mapValues { _, v ->
+                runBlocking {
+                    v.await()
+                    v.getCompleted().build()
+                }
+            }
             .toStream()
         properties.output.forEach {
             configSinks(updates, it.type, it.path, it.options)
@@ -118,75 +131,76 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
      *
      * @param builder: Current aggregation result
      */
-    private fun postAggregationCheck(builder: DomainIPAssocDetailProto.DomainIPAssocDetail.Builder) = runBlocking {
-        val jobs = mutableListOf<Job>()
-        var checkRest = false
-        var allEmpty = true
-        if (builder.ipv4Addrs.isEmpty) {
-            checkRest = true
-            jobs.add(
-                launch {
-                    logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv4 address, now performing DNS lookup" }
-                    withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.A).run() }?.let { records ->
-                        val ips = mutableSetOf<InetAddress>()
-                        records.forEach { ips.add((it as ARecord).address) }
-                        if (ips.isNotEmpty()) {
-                            val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 4)
-                            ips.forEach { ipBytes.writeBytes(it.address) }
-                            builder.ipv4Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
-                            ipBytes.release()
-                            checkRest = false
-                            allEmpty = false
+    private fun postAggregationCheck(builder: DomainIPAssocDetailProto.DomainIPAssocDetail.Builder) =
+        backgroundScope.async {
+            val jobs = mutableListOf<Job>()
+            var checkRest = false
+            var allEmpty = true
+            if (builder.ipv4Addrs.isEmpty) {
+                checkRest = true
+                jobs.add(
+                    launch {
+                        logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv4 address, now performing DNS lookup" }
+                        withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.A).run() }?.let { records ->
+                            val ips = mutableSetOf<InetAddress>()
+                            records.forEach { ips.add((it as ARecord).address) }
+                            if (ips.isNotEmpty()) {
+                                val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 4)
+                                ips.forEach { ipBytes.writeBytes(it.address) }
+                                builder.ipv4Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
+                                ipBytes.release()
+                                checkRest = false
+                                allEmpty = false
+                            }
                         }
                     }
-                }
-            )
-        } else {
-            allEmpty = false
-        }
-        if (builder.ipv6Addrs.isEmpty) {
-            jobs.add(
-                launch {
-                    logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv6 address" }
-                    withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.AAAA).run() }?.let { records ->
-                        val ips = mutableSetOf<InetAddress>()
-                        records.forEach { ips.add((it as AAAARecord).address) }
-                        if (ips.isNotEmpty()) {
-                            val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 16)
-                            ips.forEach { ipBytes.writeBytes(it.address) }
-                            builder.ipv6Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
-                            ipBytes.release()
-                            checkRest = false
-                            allEmpty = false
+                )
+            } else {
+                allEmpty = false
+            }
+            if (builder.ipv6Addrs.isEmpty) {
+                jobs.add(
+                    launch {
+                        logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv6 address" }
+                        withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.AAAA).run() }?.let { records ->
+                            val ips = mutableSetOf<InetAddress>()
+                            records.forEach { ips.add((it as AAAARecord).address) }
+                            if (ips.isNotEmpty()) {
+                                val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 16)
+                                ips.forEach { ipBytes.writeBytes(it.address) }
+                                builder.ipv6Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
+                                ipBytes.release()
+                                checkRest = false
+                                allEmpty = false
+                            }
                         }
                     }
-                }
-            )
-        } else {
-            allEmpty = false
-        }
-        if (builder.cnamesCount == 0) {
-            jobs.add(
-                launch {
-                    logger.info { "After one aggregation step, <${builder.fqdn}> has no CNAME" }
-                    val cnames = mutableSetOf<String>()
-                    withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.CNAME).run() }?.forEach {
-                        cnames.add((it as CNAMERecord).target.toString(true))
-                        allEmpty = false
+                )
+            } else {
+                allEmpty = false
+            }
+            if (builder.cnamesCount == 0) {
+                jobs.add(
+                    launch {
+                        logger.info { "After one aggregation step, <${builder.fqdn}> has no CNAME" }
+                        val cnames = mutableSetOf<String>()
+                        withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.CNAME).run() }?.forEach {
+                            cnames.add((it as CNAMERecord).target.toString(true))
+                            allEmpty = false
+                        }
+                        builder.addAllCnames(cnames)
                     }
-                    builder.addAllCnames(cnames)
-                }
-            )
-        } else {
-            allEmpty = false
+                )
+            } else {
+                allEmpty = false
+            }
+            jobs.forEach { job ->
+                job.join()
+                if (!checkRest) return@forEach
+            }
+            if (allEmpty) {
+                logger.warn { "After final checks of one aggregation step, <${builder.fqdn}> has no A, AAAA, CNAME value" }
+            }
+            builder
         }
-        jobs.forEach { job ->
-            job.join()
-            if (!checkRest) return@forEach
-        }
-        if (allEmpty) {
-            logger.warn { "After final checks of one aggregation step, <${builder.fqdn}> has no A, AAAA, CNAME value" }
-        }
-    }
-
 }
