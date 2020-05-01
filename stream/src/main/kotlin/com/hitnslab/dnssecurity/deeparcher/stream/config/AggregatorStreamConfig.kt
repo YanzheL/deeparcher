@@ -7,6 +7,7 @@ import com.hitnslab.dnssecurity.deeparcher.stream.property.AggregatorProperties
 import com.hitnslab.dnssecurity.deeparcher.util.bytesSetUnion
 import io.netty.buffer.ByteBufAllocator
 import io.netty.buffer.Unpooled
+import kotlinx.coroutines.*
 import mu.KotlinLogging
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
@@ -50,44 +51,11 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                     val aggBuilder = DomainIPAssocDetailProto.DomainIPAssocDetail
                         .newBuilder()
                         .mergeFrom(agg)
-                    var firstSeen = false
                     if (aggBuilder.fqdn.isEmpty()) {
-                        firstSeen = true
                         aggBuilder.fqdn = k
                     }
                     if (aggBuilder.domain.isEmpty()) {
                         aggBuilder.domain = v.domain
-                    }
-                    // New CNAMEs for current step
-                    val cnames by lazy { mutableSetOf<String>() }
-
-                    if (firstSeen) {
-                        // Perform DNS lookup if aggregation value is in initial state.
-                        // This tries to ensure that every aggregation value has current IP
-                        val recordsA = Lookup(v.fqdn, Type.A).run()
-                        val recordsAAAA = Lookup(v.fqdn, Type.AAAA).run()
-                        val recordsCNAME = Lookup(v.fqdn, Type.CNAME).run()
-                        recordsA?.let { records ->
-                            val ips = mutableSetOf<InetAddress>()
-                            records.forEach { ips.add((it as ARecord).address) }
-                            if (ips.isNotEmpty()) {
-                                val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 4)
-                                ips.forEach { ipBytes.writeBytes(it.address) }
-                                aggBuilder.ipv4Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
-                                ipBytes.release()
-                            }
-                        }
-                        recordsAAAA?.let { records ->
-                            val ips = mutableSetOf<InetAddress>()
-                            records.forEach { ips.add((it as AAAARecord).address) }
-                            if (ips.isNotEmpty()) {
-                                val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 16)
-                                ips.forEach { ipBytes.writeBytes(it.address) }
-                                aggBuilder.ipv6Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
-                                ipBytes.release()
-                            }
-                        }
-                        recordsCNAME?.forEach { cnames.add((it as CNAMERecord).target.toString(true)) }
                     }
                     if (!v.rIpv4Addrs.isEmpty) {
                         if (aggBuilder.ipv4Addrs.isEmpty) {
@@ -118,22 +86,17 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                         }
                     }
                     if (v.rCnamesCount != 0) {
-                        cnames.addAll(v.rCnamesList)
                         if (aggBuilder.cnamesCount == 0) {
-                            aggBuilder.addAllCnames(cnames)
+                            aggBuilder.addAllCnames(v.rCnamesList)
                         } else {
                             val aggCNames = aggBuilder.cnamesList.toMutableSet()
-                            if (aggCNames.addAll(cnames)) {
+                            if (aggCNames.addAll(v.rCnamesList)) {
                                 aggBuilder.clearCnames()
                                 aggBuilder.addAllCnames(aggCNames)
                             }
                         }
                     }
-                    when {
-                        aggBuilder.ipv4Addrs.isEmpty -> logger.info { "After one aggregation step, <${v.fqdn}> has no IPv4 address" }
-                        aggBuilder.ipv6Addrs.isEmpty -> logger.info { "After one aggregation step, <${v.fqdn}> has no IPv6 address" }
-                        aggBuilder.cnamesCount == 0 -> logger.info { "After one aggregation step, <${v.fqdn}> has no CNAME" }
-                    }
+                    postAggregationCheck(aggBuilder)
                     aggBuilder.build()
                 },
                 Materialized.with(
@@ -146,6 +109,84 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
             configSinks(updates, it.type, it.path, it.options)
         }
         return src
+    }
+
+    /**
+     * Perform DNS lookup if aggregation of some DNS related field is empty
+     * This tries to ensure that every aggregation field is not empty
+     * If high priority field is not empty, then skip checking rest fields, because DNS lookup takes too much time.
+     *
+     * @param builder: Current aggregation result
+     */
+    private fun postAggregationCheck(builder: DomainIPAssocDetailProto.DomainIPAssocDetail.Builder) = runBlocking {
+        val jobs = mutableListOf<Job>()
+        var checkRest = false
+        var allEmpty = true
+        if (builder.ipv4Addrs.isEmpty) {
+            checkRest = true
+            jobs.add(
+                launch {
+                    logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv4 address, now performing DNS lookup" }
+                    withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.A).run() }?.let { records ->
+                        val ips = mutableSetOf<InetAddress>()
+                        records.forEach { ips.add((it as ARecord).address) }
+                        if (ips.isNotEmpty()) {
+                            val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 4)
+                            ips.forEach { ipBytes.writeBytes(it.address) }
+                            builder.ipv4Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
+                            ipBytes.release()
+                            checkRest = false
+                            allEmpty = false
+                        }
+                    }
+                }
+            )
+        } else {
+            allEmpty = false
+        }
+        if (builder.ipv6Addrs.isEmpty) {
+            jobs.add(
+                launch {
+                    logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv6 address" }
+                    withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.AAAA).run() }?.let { records ->
+                        val ips = mutableSetOf<InetAddress>()
+                        records.forEach { ips.add((it as AAAARecord).address) }
+                        if (ips.isNotEmpty()) {
+                            val ipBytes = ByteBufAllocator.DEFAULT.heapBuffer(ips.size * 16)
+                            ips.forEach { ipBytes.writeBytes(it.address) }
+                            builder.ipv6Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
+                            ipBytes.release()
+                            checkRest = false
+                            allEmpty = false
+                        }
+                    }
+                }
+            )
+        } else {
+            allEmpty = false
+        }
+        if (builder.cnamesCount == 0) {
+            jobs.add(
+                launch {
+                    logger.info { "After one aggregation step, <${builder.fqdn}> has no CNAME" }
+                    val cnames = mutableSetOf<String>()
+                    withContext(Dispatchers.IO) { Lookup(builder.fqdn, Type.CNAME).run() }?.forEach {
+                        cnames.add((it as CNAMERecord).target.toString(true))
+                        allEmpty = false
+                    }
+                    builder.addAllCnames(cnames)
+                }
+            )
+        } else {
+            allEmpty = false
+        }
+        jobs.forEach { job ->
+            job.join()
+            if (!checkRest) return@forEach
+        }
+        if (allEmpty) {
+            logger.warn { "After final checks of one aggregation step, <${builder.fqdn}> has no A, AAAA, CNAME value" }
+        }
     }
 
 }
