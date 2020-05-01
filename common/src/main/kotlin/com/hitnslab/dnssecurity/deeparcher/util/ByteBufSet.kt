@@ -5,7 +5,6 @@ import io.netty.buffer.ByteBufAllocator
 import io.netty.buffer.PooledByteBufAllocator
 import io.netty.buffer.Unpooled
 import io.netty.util.ReferenceCounted
-import java.nio.ByteBuffer
 
 
 class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
@@ -24,7 +23,7 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
         buffer = allocator.heapBuffer()
     }
 
-    constructor(initBuffer: ByteBuffer) {
+    constructor(initBuffer: ByteArray) {
         allocator = PooledByteBufAllocator.DEFAULT
         val compositeByteBuf = allocator.compositeBuffer()
         compositeByteBuf.addComponent(true, Unpooled.wrappedBuffer(initBuffer).asReadOnly())
