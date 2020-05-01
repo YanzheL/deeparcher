@@ -170,12 +170,13 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
         backgroundScope.async {
             val jobs = mutableListOf<Job>()
             var checkRest = false
-            var allEmpty = true
+            var found = false
             if (builder.ipv4Addrs.isEmpty) {
+                logger.info { "Now performing DNS lookup for <${builder.fqdn}>" }
                 checkRest = true
                 jobs.add(
                     launch {
-                        logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv4 address, now performing DNS lookup" }
+                        logger.debug { "After one aggregation step, <${builder.fqdn}> has no IPv4 address" }
                         val lookup = Lookup(builder.fqdn, Type.A)
                         lookup.setResolver(resolver)
                         withContext(Dispatchers.IO) { lookup.run() }?.let { records ->
@@ -186,19 +187,16 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                                 ips.forEach { ipBytes.writeBytes(it.address) }
                                 builder.ipv4Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
                                 ipBytes.release()
-                                checkRest = false
-                                allEmpty = false
+                                found = true
                             }
                         }
                     }
                 )
-            } else {
-                allEmpty = false
             }
-            if (builder.ipv6Addrs.isEmpty) {
+            if (checkRest && builder.ipv6Addrs.isEmpty) {
                 jobs.add(
                     launch {
-                        logger.info { "After one aggregation step, <${builder.fqdn}> has no IPv6 address" }
+                        logger.debug { "After one aggregation step, <${builder.fqdn}> has no IPv6 address" }
                         val lookup = Lookup(builder.fqdn, Type.AAAA)
                         lookup.setResolver(resolver)
                         withContext(Dispatchers.IO) { lookup.run() }?.let { records ->
@@ -209,37 +207,34 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                                 ips.forEach { ipBytes.writeBytes(it.address) }
                                 builder.ipv6Addrs = ByteString.copyFrom(ipBytes.nioBuffer())
                                 ipBytes.release()
-                                checkRest = false
-                                allEmpty = false
+                                found = true
                             }
                         }
                     }
                 )
             } else {
-                allEmpty = false
+                checkRest = false
             }
-            if (builder.cnamesCount == 0) {
+            if (checkRest && builder.cnamesCount == 0) {
                 jobs.add(
                     launch {
-                        logger.info { "After one aggregation step, <${builder.fqdn}> has no CNAME" }
+                        logger.debug { "After one aggregation step, <${builder.fqdn}> has no CNAME" }
                         val cnames = mutableSetOf<String>()
                         val lookup = Lookup(builder.fqdn, Type.CNAME)
                         lookup.setResolver(resolver)
                         withContext(Dispatchers.IO) { lookup.run() }?.forEach {
                             cnames.add((it as CNAMERecord).target.toString(true))
-                            allEmpty = false
                         }
                         builder.addAllCnames(cnames)
+                        found = true
                     }
                 )
-            } else {
-                allEmpty = false
             }
             jobs.forEach { job ->
                 job.join()
-                if (!checkRest) return@forEach
+                if (found) return@forEach
             }
-            if (allEmpty) {
+            if (builder.ipv4Addrs.isEmpty && builder.ipv6Addrs.isEmpty && builder.cnamesCount == 0) {
                 logger.warn { "After final checks of one aggregation step, <${builder.fqdn}> has no A, AAAA, CNAME value" }
             }
             builder
