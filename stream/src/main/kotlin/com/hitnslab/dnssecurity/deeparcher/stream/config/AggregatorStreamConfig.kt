@@ -14,6 +14,7 @@ import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
 import org.apache.kafka.streams.kstream.Materialized
+import org.apache.kafka.streams.kstream.Produced
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -119,7 +120,20 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
             }
             .toStream()
         properties.output.forEach {
-            configSinks(updates, it.type, it.path, it.options)
+            if (it.type == "topic") {
+                updates.to(
+                    it.path,
+                    Produced.with(
+                        Serdes.String(),
+                        GenericSerde(
+                            DomainIPAssocDetailProtoSerializer::class,
+                            DomainIPAssocDetailProtoDeserializer::class
+                        )
+                    )
+                )
+            } else {
+                logger.warn { "Unsupported sink type <${it.type}>" }
+            }
         }
         return src
     }
