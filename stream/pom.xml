@@ -61,6 +61,11 @@
       <artifactId>kotlinx-coroutines-core</artifactId>
       <groupId>org.jetbrains.kotlinx</groupId>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/dnsjava/dnsjava -->
+    <dependency>
+      <groupId>dnsjava</groupId>
+      <artifactId>dnsjava</artifactId>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
     <dependency>
       <artifactId>caffeine</artifactId>
