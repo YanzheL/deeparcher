@@ -21,7 +21,9 @@ class WhitelistPredicateUnitTests {
         Assertions.assertTrue(predicate.test("abc.efg.ucr.edu"))
         Assertions.assertTrue(predicate.test("www.ucr.gov"))
         Assertions.assertTrue(predicate.test("www.gov.cn"))
+        Assertions.assertTrue(predicate.test("auditrecording-pa.googleapis.com"))
 
+        Assertions.assertFalse(predicate.test("d1uo4w7k31k5mn.cloudfront.net"))
         Assertions.assertFalse(predicate.test("www.hitwh.edu.com"))
         Assertions.assertFalse(predicate.test("abc.hitwh.edu.qwedw"))
         Assertions.assertFalse(predicate.test(""))

@@ -9,7 +9,7 @@ class WhitelistPredicate : Predicate<String> {
 
     private val logger = KotlinLogging.logger {}
 
-    private val whitelist = mutableSetOf<String>()
+    private val topPrivateDomainWhitelist = mutableSetOf<String>()
 
     private val patterns = mutableListOf<Regex>()
 
@@ -19,7 +19,13 @@ class WhitelistPredicate : Predicate<String> {
                 return true
             }
         }
-        return t in whitelist
+        return try {
+            val tpd = InternetDomainName.from(t).topPrivateDomain().toString()
+            tpd in topPrivateDomainWhitelist
+        } catch (e: RuntimeException) {
+            logger.warn { "Cannot determine topic private domain of <$t>, exception <$e>" }
+            false
+        }
     }
 
     fun fromResource(resource: Resource): WhitelistPredicate {
@@ -43,7 +49,8 @@ class WhitelistPredicate : Predicate<String> {
     }
 
     fun fromFQDN(fqdn: String): WhitelistPredicate {
-        whitelist.add(InternetDomainName.from(fqdn).topPrivateDomain().toString())
+        val dn = InternetDomainName.from(fqdn)
+        topPrivateDomainWhitelist.add(dn.topPrivateDomain().toString())
         return this
     }
 }
