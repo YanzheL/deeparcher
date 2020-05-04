@@ -9,22 +9,30 @@ class WhitelistPredicate : Predicate<String> {
 
     private val logger = KotlinLogging.logger {}
 
-    private val topPrivateDomainWhitelist = mutableSetOf<String>()
+    /**
+     * @param whitelist contains top private domains or public suffixes constructed from whitelist resource file
+     */
+    private val whitelist = mutableSetOf<String>()
 
     private val patterns = mutableListOf<Regex>()
 
     override fun test(t: String): Boolean {
-        for (pattern in patterns) {
-            if (pattern.containsMatchIn(t)) {
-                return true
+        try {
+            val dn = InternetDomainName.from(t)
+            var key = dn.toString()
+            for (pattern in patterns) {
+                if (pattern.containsMatchIn(key)) {
+                    return true
+                }
             }
-        }
-        return try {
-            val tpd = InternetDomainName.from(t).topPrivateDomain().toString()
-            tpd in topPrivateDomainWhitelist
-        } catch (e: RuntimeException) {
+            when {
+                dn.isUnderPublicSuffix -> key = dn.topPrivateDomain().toString()
+                !dn.hasPublicSuffix() -> return false
+            }
+            return key in whitelist
+        } catch (e: IllegalArgumentException) {
             logger.warn { "Cannot determine topic private domain of <$t>, exception <$e>" }
-            false
+            return false
         }
     }
 
@@ -35,8 +43,8 @@ class WhitelistPredicate : Predicate<String> {
                 rd.lineSequence().forEach {
                     try {
                         fromFQDN(it)
-                    } catch (e: Exception) {
-                        logger.error { "Invalid whitelist item <$it>" }
+                    } catch (e: IllegalArgumentException) {
+                        logger.error { "Invalid whitelist item <$it>, exception <$e>" }
                     }
                 }
             }
@@ -50,7 +58,15 @@ class WhitelistPredicate : Predicate<String> {
 
     fun fromFQDN(fqdn: String): WhitelistPredicate {
         val dn = InternetDomainName.from(fqdn)
-        topPrivateDomainWhitelist.add(dn.topPrivateDomain().toString())
+        var key = dn.toString()
+        when {
+            dn.isUnderPublicSuffix -> key = dn.topPrivateDomain().toString()
+            !dn.hasPublicSuffix() -> {
+                logger.warn { "Whitelist item <$dn> does not have public suffix" }
+                return this
+            }
+        }
+        whitelist.add(key)
         return this
     }
 }
