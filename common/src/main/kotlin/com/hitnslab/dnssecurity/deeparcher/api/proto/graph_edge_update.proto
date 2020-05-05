@@ -1,14 +1,12 @@
 syntax = "proto3";
 package com.hitnslab.dnssecurity.deeparcher.api.proto;
 option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated";
-option java_outer_classname = "DomainIPAssocDetailProto";
+option java_outer_classname = "GraphAssocEdgeUpdateProto";
 option optimize_for = SPEED;
 option cc_enable_arenas = true;
 
-message DomainIPAssocDetail {
-  string fqdn = 1;
-  string domain = 2;
-  bytes ipv4_addrs = 7;
-  bytes ipv6_addrs = 8;
-  repeated string cnames = 9;
+message GraphAssocEdgeUpdate {
+  string fqdn1 = 1;
+  string fqdn2 = 2;
+  int32 n_shared_fields = 3;
 }

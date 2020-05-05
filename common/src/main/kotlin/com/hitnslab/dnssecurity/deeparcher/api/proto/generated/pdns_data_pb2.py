@@ -6,7 +6,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,6 +17,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     serialized_options=b'\n7com.hitnslab.dnssecurity.deeparcher.api.proto.generatedB\rPDnsDataProtoH\001\370\001\001',
     serialized_pb=b'\n=com/hitnslab/dnssecurity/deeparcher/api/proto/pdns_data.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"\xa9\x01\n\x08PDnsData\x12\x0c\n\x04\x66qdn\x18\x01 \x01(\t\x12\x0e\n\x06\x64omain\x18\x02 \x01(\t\x12\x11\n\tclient_ip\x18\x03 \x01(\x0c\x12\x0e\n\x06q_time\x18\x04 \x01(\x03\x12\x0e\n\x06q_type\x18\x05 \x01(\x05\x12\x0e\n\x06r_code\x18\x06 \x01(\x05\x12\x14\n\x0cr_ipv4_addrs\x18\x07 \x01(\x0c\x12\x14\n\x0cr_ipv6_addrs\x18\x08 \x01(\x0c\x12\x10\n\x08r_cnames\x18\t \x03(\tBM\n7com.hitnslab.dnssecurity.deeparcher.api.proto.generatedB\rPDnsDataProtoH\x01\xf8\x01\x01\x62\x06proto3'
 )
+
+
+
 
 _PDNSDATA = _descriptor.Descriptor(
     name='PDnsData',
