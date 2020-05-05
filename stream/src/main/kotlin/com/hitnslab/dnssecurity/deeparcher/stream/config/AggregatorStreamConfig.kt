@@ -1,7 +1,7 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
 import com.google.protobuf.ByteString
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainIPAssocDetailProto
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto
 import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.property.AggregatorProperties
 import com.hitnslab.dnssecurity.deeparcher.util.bytesSetUnion
@@ -59,9 +59,9 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
         val table = src
             .groupByKey()
             .aggregate(
-                { DomainIPAssocDetailProto.DomainIPAssocDetail.getDefaultInstance() },
+                { DomainAssocDetailProto.DomainAssocDetail.getDefaultInstance() },
                 { k, v, agg ->
-                    val aggBuilder = DomainIPAssocDetailProto.DomainIPAssocDetail
+                    val aggBuilder = DomainAssocDetailProto.DomainAssocDetail
                         .newBuilder()
                         .mergeFrom(agg)
                     if (aggBuilder.fqdn.isEmpty()) {
@@ -113,15 +113,15 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                 },
                 Materialized.with(
                     Serdes.String(),
-                    GenericSerde(DomainIPAssocDetailProtoSerializer::class, DomainIPAssocDetailProtoDeserializer::class)
+                    GenericSerde(DomainAssocDetailProtoSerializer::class, DomainAssocDetailProtoDeserializer::class)
                 )
             )
-        val updates: KStream<String, DomainIPAssocDetailProto.DomainIPAssocDetail>
+        val updates: KStream<String, DomainAssocDetailProto.DomainAssocDetail>
         val resolv = resolver
         if (resolv != null) {
             updates = table
                 .mapValues { _, v ->
-                    val agg = DomainIPAssocDetailProto.DomainIPAssocDetail
+                    val agg = DomainAssocDetailProto.DomainAssocDetail
                         .newBuilder()
                         .mergeFrom(v)
                     postAggregationCheck(agg, resolv)
@@ -144,8 +144,8 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
                     Produced.with(
                         Serdes.String(),
                         GenericSerde(
-                            DomainIPAssocDetailProtoSerializer::class,
-                            DomainIPAssocDetailProtoDeserializer::class
+                            DomainAssocDetailProtoSerializer::class,
+                            DomainAssocDetailProtoDeserializer::class
                         )
                     )
                 )
@@ -164,7 +164,7 @@ class AggregatorStreamConfig : AppStreamConfigurer() {
      * @param builder: Current aggregation result
      */
     private fun postAggregationCheck(
-        builder: DomainIPAssocDetailProto.DomainIPAssocDetail.Builder,
+        builder: DomainAssocDetailProto.DomainAssocDetail.Builder,
         resolver: Resolver
     ) =
         backgroundScope.async {

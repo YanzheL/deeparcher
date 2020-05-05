@@ -1,19 +1,19 @@
 package com.hitnslab.dnssecurity.deeparcher.converter
 
 import com.google.protobuf.ByteString
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainIPAssocDetailProto
-import com.hitnslab.dnssecurity.deeparcher.model.DomainIPAssocDetail
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto
+import com.hitnslab.dnssecurity.deeparcher.model.DomainAssocDetail
 import io.netty.buffer.PooledByteBufAllocator
 import org.springframework.core.convert.converter.Converter
 
-class DomainIPAssocDetailToProtoConverter : Converter<DomainIPAssocDetail, DomainIPAssocDetailProto.DomainIPAssocDetail> {
+class DomainAssocDetailToProtoConverter : Converter<DomainAssocDetail, DomainAssocDetailProto.DomainAssocDetail> {
     private val allocator = PooledByteBufAllocator.DEFAULT
 
-    override fun convert(source: DomainIPAssocDetail): DomainIPAssocDetailProto.DomainIPAssocDetail {
-        val builder = DomainIPAssocDetailProto.DomainIPAssocDetail
-                .newBuilder()
-                .setDomain(source.topPrivateDomain)
-                .setFqdn(source.domain)
+    override fun convert(source: DomainAssocDetail): DomainAssocDetailProto.DomainAssocDetail {
+        val builder = DomainAssocDetailProto.DomainAssocDetail
+            .newBuilder()
+            .setDomain(source.topPrivateDomain)
+            .setFqdn(source.domain)
         val allIpv4Bytes = allocator.heapBuffer(source.ipv4Addresses.size)
         val allIpv6Bytes = allocator.heapBuffer(source.ipv6Addresses.size)
         source.ipv4Addresses.forEach {

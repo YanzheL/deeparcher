@@ -1,14 +1,14 @@
 package com.hitnslab.dnssecurity.deeparcher.converter
 
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainIPAssocDetailProto
-import com.hitnslab.dnssecurity.deeparcher.model.DomainIPAssocDetail
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto
+import com.hitnslab.dnssecurity.deeparcher.model.DomainAssocDetail
 import com.hitnslab.dnssecurity.deeparcher.util.parseIpFromBytes
 import org.springframework.core.convert.converter.Converter
 
-class ProtoToDomainIPAssocDetailConverter :
-    Converter<DomainIPAssocDetailProto.DomainIPAssocDetail, DomainIPAssocDetail> {
-    override fun convert(source: DomainIPAssocDetailProto.DomainIPAssocDetail): DomainIPAssocDetail {
-        val ret = DomainIPAssocDetail(
+class ProtoToDomainAssocDetailConverter :
+    Converter<DomainAssocDetailProto.DomainAssocDetail, DomainAssocDetail> {
+    override fun convert(source: DomainAssocDetailProto.DomainAssocDetail): DomainAssocDetail {
+        val ret = DomainAssocDetail(
             source.fqdn,
             source.domain
         )

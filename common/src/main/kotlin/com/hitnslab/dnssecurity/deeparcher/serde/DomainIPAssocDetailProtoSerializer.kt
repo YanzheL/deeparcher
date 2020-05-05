@@ -1,13 +1,13 @@
 package com.hitnslab.dnssecurity.deeparcher.serde
 
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainIPAssocDetailProto.DomainIPAssocDetail
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto.DomainAssocDetail
 import org.apache.kafka.common.serialization.Serializer
 
-class DomainIPAssocDetailProtoSerializer : Serializer<DomainIPAssocDetail> {
+class DomainAssocDetailProtoSerializer : Serializer<DomainAssocDetail> {
 
-    override fun serialize(topic: String, data: DomainIPAssocDetail): ByteArray = DomainIPAssocDetail
-            .newBuilder()
-            .mergeFrom(data)
-            .build()
-            .toByteArray()
+    override fun serialize(topic: String, data: DomainAssocDetail): ByteArray = DomainAssocDetail
+        .newBuilder()
+        .mergeFrom(data)
+        .build()
+        .toByteArray()
 }
