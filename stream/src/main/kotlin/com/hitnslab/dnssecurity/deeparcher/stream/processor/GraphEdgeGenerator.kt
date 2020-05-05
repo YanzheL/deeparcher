@@ -4,35 +4,27 @@ import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetail
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
 import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet
 import io.netty.buffer.Unpooled
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import org.apache.kafka.streams.kstream.ValueTransformer
-import org.apache.kafka.streams.processor.ProcessorContext
-import org.apache.kafka.streams.state.KeyValueStore
+import org.apache.kafka.streams.kstream.ValueMapper
 import java.util.concurrent.ConcurrentHashMap
 
-class GraphEdgeGenerator : ValueTransformer<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>?> {
+class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>?> {
 
-    lateinit var context: ProcessorContext
+    val ipv4 = mutableMapOf<String, ByteArray>()
 
-    lateinit var ipv4: KeyValueStore<String, ByteArray>
+    val ipv6 = mutableMapOf<String, ByteArray>()
 
-    lateinit var ipv6: KeyValueStore<String, ByteArray>
-
-    lateinit var cnames: KeyValueStore<String, Set<String>>
+    val cnames = mutableMapOf<String, Set<String>>()
 
     val scope = CoroutineScope(Dispatchers.Default)
 
     private val logger = KotlinLogging.logger {}
 
-    override fun init(ctx: ProcessorContext) {
-        context = ctx
-        ipv4 = ctx.getStateStore("graph-edge-generator.ipv4") as KeyValueStore<String, ByteArray>
-        ipv6 = ctx.getStateStore("graph-edge-generator.ipv6") as KeyValueStore<String, ByteArray>
-        cnames = ctx.getStateStore("graph-edge-generator.cname") as KeyValueStore<String, Set<String>>
-    }
-
-    override fun transform(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate>? {
+    override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate>? {
         val result = ConcurrentHashMap<String, Int>()
         val jobs = listOf(
             scope.launch { computeIPIntersect(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4, result) },
@@ -60,11 +52,11 @@ class GraphEdgeGenerator : ValueTransformer<DomainAssocDetail, Iterable<GraphAss
     private fun computeSetIntersect(
         fqdn: String,
         data: Set<String>,
-        store: KeyValueStore<String, Set<String>>,
+        store: MutableMap<String, Set<String>>,
         result: MutableMap<String, Int>
     ) {
-        store.put(fqdn, data)
-        store.all().forEach { entry ->
+        store[fqdn] = data
+        store.entries.forEach { entry ->
             if (entry.key != fqdn) {
                 val count = entry.value.intersect(data).size
                 if (count > 0) {
@@ -78,11 +70,11 @@ class GraphEdgeGenerator : ValueTransformer<DomainAssocDetail, Iterable<GraphAss
         fqdn: String,
         ips: ByteArray,
         width: Int,
-        store: KeyValueStore<String, ByteArray>,
+        store: MutableMap<String, ByteArray>,
         result: MutableMap<String, Int>
     ) {
-        store.put(fqdn, ips)
-        store.all().forEach { entry ->
+        store[fqdn] = ips
+        store.entries.forEach { entry ->
             if (entry.key != fqdn) {
                 val count = ByteBufSet.intersectionSize(
                     Unpooled.wrappedBuffer(ips),
@@ -96,9 +88,5 @@ class GraphEdgeGenerator : ValueTransformer<DomainAssocDetail, Iterable<GraphAss
                 }
             }
         }
-    }
-
-    override fun close() {
-        scope.cancel()
     }
 }

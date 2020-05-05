@@ -9,8 +9,6 @@ import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
 import org.apache.kafka.streams.kstream.Produced
-import org.apache.kafka.streams.kstream.ValueTransformerSupplier
-import org.apache.kafka.streams.state.Stores
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -30,28 +28,6 @@ class GraphStreamConfig : AppStreamConfigurer() {
 
     @Bean
     fun stream(builder: StreamsBuilder): KStream<*, *> {
-        builder.addStateStore(
-            Stores.keyValueStoreBuilder(
-                Stores.inMemoryKeyValueStore("graph-edge-generator.ipv4"),
-                Serdes.String(),
-                Serdes.ByteArray()
-            ).withLoggingDisabled()
-        )
-        builder.addStateStore(
-            Stores.keyValueStoreBuilder(
-                Stores.inMemoryKeyValueStore("graph-edge-generator.ipv6"),
-                Serdes.String(),
-                Serdes.ByteArray()
-            ).withLoggingDisabled()
-        )
-        builder.addStateStore(
-            Stores.keyValueStoreBuilder(
-                Stores.inMemoryKeyValueStore("graph-edge-generator.cname"),
-                Serdes.String(),
-                JsonSerde(Set::class)
-            ).withLoggingDisabled()
-        )
-
         val src = builder.stream(
             properties.input.path,
             Consumed.with(
@@ -59,13 +35,10 @@ class GraphStreamConfig : AppStreamConfigurer() {
                 GenericSerde(DomainAssocDetailProtoSerializer::class, DomainAssocDetailProtoDeserializer::class)
             )
         )
-            .flatTransformValues(
-                ValueTransformerSupplier { GraphEdgeGenerator() },
-                "graph-edge-generator.ipv4",
-                "graph-edge-generator.ipv6",
-                "graph-edge-generator.cname"
-            )
         src
+            .flatMapValues(
+                GraphEdgeGenerator()
+            )
             .to(
                 properties.output.path,
                 Produced.with(
