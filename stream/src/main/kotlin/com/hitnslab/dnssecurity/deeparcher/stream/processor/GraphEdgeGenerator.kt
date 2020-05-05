@@ -11,7 +11,7 @@ import org.apache.kafka.streams.processor.ProcessorContext
 import org.apache.kafka.streams.state.KeyValueStore
 import java.util.concurrent.ConcurrentHashMap
 
-class GraphEdgeGenerator : ValueTransformer<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>> {
+class GraphEdgeGenerator : ValueTransformer<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>?> {
 
     lateinit var context: ProcessorContext
 
