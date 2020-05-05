@@ -52,7 +52,7 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
         result: MutableMap<String, Int>
     ) {
         store[fqdn] = data
-        store.entries.forEach { entry ->
+        store.entries.parallelStream().forEach { entry ->
             if (entry.key != fqdn) {
                 val count = entry.value.intersectionSize(data)
                 if (count > 0) {
@@ -70,7 +70,7 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
         result: MutableMap<String, Int>
     ) {
         store[fqdn] = ips
-        store.entries.forEach { entry ->
+        store.entries.parallelStream().forEach { entry ->
             if (entry.key != fqdn) {
                 val count = ByteBufSet.intersectionSize(
                     Unpooled.wrappedBuffer(ips),
