@@ -24,6 +24,10 @@
             <artifactId>netty-buffer</artifactId>
             <groupId>io.netty</groupId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
         <!--        <dependency>-->
         <!--            <groupId>io.confluent</groupId>-->
         <!--            <artifactId>monitoring-interceptors</artifactId>-->
