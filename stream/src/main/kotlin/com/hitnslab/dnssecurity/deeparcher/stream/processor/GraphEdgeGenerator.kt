@@ -12,7 +12,7 @@ import mu.KotlinLogging
 import org.apache.kafka.streams.kstream.ValueMapper
 import java.util.concurrent.ConcurrentHashMap
 
-class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>?> {
+class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>> {
 
     val ipv4 = mutableMapOf<String, ByteArray>()
 
@@ -24,7 +24,7 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
 
     private val logger = KotlinLogging.logger {}
 
-    override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate>? {
+    override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate> {
         val result = ConcurrentHashMap<String, Int>()
         val jobs = listOf(
             scope.launch { computeIPIntersect(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4, result) },
@@ -32,17 +32,10 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
             scope.launch { computeSetIntersect(value.fqdn, value.cnamesList.toSet(), cnames, result) }
         )
         runBlocking { jobs.forEach { job -> job.join() } }
-        return generate(value.fqdn, result)
-    }
-
-    private fun generate(fqdn: String, result: Map<String, Int>): Iterable<GraphAssocEdgeUpdate>? {
-        if (result.isEmpty()) {
-            return null
-        }
         return result.entries.map {
             GraphAssocEdgeUpdate
                 .newBuilder()
-                .setFqdn1(fqdn)
+                .setFqdn1(value.fqdn)
                 .setFqdn2(it.key)
                 .setNSharedFields(it.value)
                 .build()
