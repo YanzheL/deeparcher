@@ -35,21 +35,21 @@ class GraphStreamConfig : AppStreamConfigurer() {
                 Stores.inMemoryKeyValueStore("graph-edge-generator.ipv4"),
                 Serdes.String(),
                 Serdes.ByteArray()
-            )
+            ).withLoggingDisabled()
         )
         builder.addStateStore(
             Stores.keyValueStoreBuilder(
                 Stores.inMemoryKeyValueStore("graph-edge-generator.ipv6"),
                 Serdes.String(),
                 Serdes.ByteArray()
-            )
+            ).withLoggingDisabled()
         )
         builder.addStateStore(
             Stores.keyValueStoreBuilder(
                 Stores.inMemoryKeyValueStore("graph-edge-generator.cname"),
                 Serdes.String(),
                 JsonSerde(Set::class)
-            )
+            ).withLoggingDisabled()
         )
 
         val src = builder.stream(
