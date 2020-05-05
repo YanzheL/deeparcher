@@ -52,4 +52,18 @@ class ByteBufSetUnitTests {
         logger.info { ByteBufUtil.getBytes(bufSet.buffer).asList() }
         bs0.release()
     }
+
+    @Test
+    fun test3() {
+        val bs0 = allocator.directBuffer()
+        bs0.writeBytes(byteArrayOf(56, 78, 90, 1))
+        val bs1 = allocator.heapBuffer()
+        bs1.writeBytes(byteArrayOf(12, 34, 56, 78))
+        Assertions.assertEquals(ByteBufSet.intersectionSize(bs0.retainedSlice(), bs1.retainedSlice(), 1), 2)
+        Assertions.assertEquals(ByteBufSet.intersectionSize(bs0.retainedSlice(), bs1.retainedSlice(), 2), 1)
+        Assertions.assertEquals(ByteBufSet.intersectionSize(bs0.retainedSlice(), bs1.retainedSlice(), 3), -1)
+        Assertions.assertEquals(ByteBufSet.intersectionSize(bs0.retainedSlice(), bs1.retainedSlice(), 4), 0)
+        bs0.release()
+        bs1.release()
+    }
 }

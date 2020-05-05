@@ -131,8 +131,9 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
             var count = 0
             while (set1.readableBytes() != 0) {
                 val packi = set1.readSlice(width)
-                while (set2.readableBytes() != 0) {
-                    val packj = set2.readSlice(width)
+                val lookup = set2.slice()
+                while (lookup.readableBytes() != 0) {
+                    val packj = lookup.readSlice(width)
                     if (packi.compareTo(packj) == 0) {
                         count += 1
                     }
