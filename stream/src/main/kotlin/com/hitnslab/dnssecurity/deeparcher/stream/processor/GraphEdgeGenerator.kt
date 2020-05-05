@@ -7,6 +7,7 @@ import com.hitnslab.dnssecurity.deeparcher.util.intersectionSize
 import io.netty.buffer.Unpooled
 import mu.KotlinLogging
 import org.apache.kafka.streams.kstream.ValueMapper
+import java.util.concurrent.ConcurrentHashMap
 
 class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>> {
 
@@ -19,7 +20,7 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
     private val logger = KotlinLogging.logger {}
 
     override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate> {
-        val result = mutableMapOf<String, Int>()
+        val result = ConcurrentHashMap<String, Int>()
         computeIPIntersect(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4Table, result)
         computeIPIntersect(value.fqdn, value.ipv6Addrs.toByteArray(), 16, ipv6Table, result)
         computeSetIntersect(value.fqdn, value.cnamesList, cnamesTable, result)
