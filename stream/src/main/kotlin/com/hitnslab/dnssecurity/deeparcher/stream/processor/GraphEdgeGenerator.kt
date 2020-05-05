@@ -3,6 +3,7 @@ package com.hitnslab.dnssecurity.deeparcher.stream.processor
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto.DomainAssocDetail
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
 import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet
+import com.hitnslab.dnssecurity.deeparcher.util.intersectionSize
 import io.netty.buffer.Unpooled
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +19,7 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
 
     val ipv6 = mutableMapOf<String, ByteArray>()
 
-    val cnames = mutableMapOf<String, Set<String>>()
+    val cnames = mutableMapOf<String, Collection<String>>()
 
     val scope = CoroutineScope(Dispatchers.Default)
 
@@ -29,9 +30,11 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
         val jobs = listOf(
             scope.launch { computeIPIntersect(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4, result) },
             scope.launch { computeIPIntersect(value.fqdn, value.ipv6Addrs.toByteArray(), 16, ipv6, result) },
-            scope.launch { computeSetIntersect(value.fqdn, value.cnamesList.toSet(), cnames, result) }
+            scope.launch { computeSetIntersect(value.fqdn, value.cnamesList, cnames, result) }
         )
-        runBlocking { jobs.forEach { job -> job.join() } }
+        runBlocking {
+            jobs.forEach { job -> job.join() }
+        }
         return result.entries.map {
             GraphAssocEdgeUpdate
                 .newBuilder()
@@ -44,14 +47,14 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
 
     private fun computeSetIntersect(
         fqdn: String,
-        data: Set<String>,
-        store: MutableMap<String, Set<String>>,
+        data: Collection<String>,
+        store: MutableMap<String, Collection<String>>,
         result: MutableMap<String, Int>
     ) {
         store[fqdn] = data
         store.entries.forEach { entry ->
             if (entry.key != fqdn) {
-                val count = entry.value.intersect(data).size
+                val count = entry.value.intersectionSize(data)
                 if (count > 0) {
                     result.merge(entry.key, count) { v1, v2 -> v1 + v2 }
                 }
