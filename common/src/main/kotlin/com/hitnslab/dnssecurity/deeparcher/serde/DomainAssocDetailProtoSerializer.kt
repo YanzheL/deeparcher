@@ -5,9 +5,5 @@ import org.apache.kafka.common.serialization.Serializer
 
 class DomainAssocDetailProtoSerializer : Serializer<DomainAssocDetail> {
 
-    override fun serialize(topic: String, data: DomainAssocDetail): ByteArray = DomainAssocDetail
-        .newBuilder()
-        .mergeFrom(data)
-        .build()
-        .toByteArray()
+    override fun serialize(topic: String, data: DomainAssocDetail): ByteArray = data.toByteArray()
 }

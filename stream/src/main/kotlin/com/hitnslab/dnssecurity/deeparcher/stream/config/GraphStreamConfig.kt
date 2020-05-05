@@ -1,9 +1,6 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
-import com.hitnslab.dnssecurity.deeparcher.serde.DomainAssocDetailProtoDeserializer
-import com.hitnslab.dnssecurity.deeparcher.serde.DomainAssocDetailProtoSerializer
-import com.hitnslab.dnssecurity.deeparcher.serde.GenericSerde
-import com.hitnslab.dnssecurity.deeparcher.serde.JsonSerde
+import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.processor.GraphEdgeGenerator
 import com.hitnslab.dnssecurity.deeparcher.stream.property.GraphProperties
 import mu.KotlinLogging
@@ -11,6 +8,7 @@ import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
+import org.apache.kafka.streams.kstream.Produced
 import org.apache.kafka.streams.kstream.ValueTransformerSupplier
 import org.apache.kafka.streams.state.Stores
 import org.springframework.beans.factory.annotation.Autowired
@@ -68,7 +66,16 @@ class GraphStreamConfig : AppStreamConfigurer() {
                 "graph-edge-generator.cname"
             )
         src
-            .to(properties.output.path)
+            .to(
+                properties.output.path,
+                Produced.with(
+                    Serdes.String(),
+                    GenericSerde(
+                        GraphAssocEdgeUpdateProtoSerializer::class,
+                        GraphAssocEdgeUpdateProtoDeserializer::class
+                    )
+                )
+            )
         return src
     }
 }

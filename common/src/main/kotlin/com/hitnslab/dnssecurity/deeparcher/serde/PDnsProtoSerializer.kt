@@ -5,9 +5,5 @@ import org.apache.kafka.common.serialization.Serializer
 
 class PDnsProtoSerializer : Serializer<PDnsData> {
 
-    override fun serialize(topic: String, data: PDnsData): ByteArray = PDnsData
-            .newBuilder()
-            .mergeFrom(data)
-            .build()
-            .toByteArray()
+    override fun serialize(topic: String, data: PDnsData): ByteArray = data.toByteArray()
 }

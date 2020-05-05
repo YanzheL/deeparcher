@@ -4,5 +4,5 @@ import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDn
 import org.apache.kafka.common.serialization.Deserializer
 
 class PDnsProtoDeserializer : Deserializer<PDnsData> {
-    override fun deserialize(topic: String, data: ByteArray): PDnsData = PDnsData.parseFrom(data)
+    override fun deserialize(topic: String, data: ByteArray) = PDnsData.parseFrom(data)
 }

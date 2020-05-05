@@ -15,9 +15,9 @@ open class AppStreamConfigurer {
     lateinit var fileWriterCache: LoadingCache<String, PrintWriter>
 
     fun configSinks(
-            src: KStream<String, *>,
-            type: String, path: String,
-            options: Map<String, String>? = null
+        src: KStream<String, *>,
+        type: String, path: String,
+        options: Map<String, String>? = null
     ) {
         var sinkSrc = src
         options?.let {
