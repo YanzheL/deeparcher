@@ -10,6 +10,9 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
+
+
+
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='com/hitnslab/dnssecurity/deeparcher/api/proto/domain_assoc_detail.proto',
   package='com.hitnslab.dnssecurity.deeparcher.api.proto',
@@ -17,6 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   serialized_options=b'\n7com.hitnslab.dnssecurity.deeparcher.api.proto.generatedB\026DomainAssocDetailProtoH\001\370\001\001',
   serialized_pb=b'\nGcom/hitnslab/dnssecurity/deeparcher/api/proto/domain_assoc_detail.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"i\n\x11\x44omainAssocDetail\x12\x0c\n\x04\x66qdn\x18\x01 \x01(\t\x12\x0e\n\x06\x64omain\x18\x02 \x01(\t\x12\x12\n\nipv4_addrs\x18\x07 \x01(\x0c\x12\x12\n\nipv6_addrs\x18\x08 \x01(\x0c\x12\x0e\n\x06\x63names\x18\t \x03(\tBV\n7com.hitnslab.dnssecurity.deeparcher.api.proto.generatedB\x16\x44omainAssocDetailProtoH\x01\xf8\x01\x01\x62\x06proto3'
 )
+
+
+
 
 _DOMAINASSOCDETAIL = _descriptor.Descriptor(
   name='DomainAssocDetail',
@@ -40,16 +46,14 @@ _DOMAINASSOCDETAIL = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ipv4_addrs', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DomainAssocDetail.ipv4_addrs',
-      index=2,
+      name='ipv4_addrs', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DomainAssocDetail.ipv4_addrs', index=2,
       number=7, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ipv6_addrs', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DomainAssocDetail.ipv6_addrs',
-      index=3,
+      name='ipv6_addrs', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DomainAssocDetail.ipv6_addrs', index=3,
       number=8, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
@@ -82,11 +86,12 @@ DESCRIPTOR.message_types_by_name['DomainAssocDetail'] = _DOMAINASSOCDETAIL
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DomainAssocDetail = _reflection.GeneratedProtocolMessageType('DomainAssocDetail', (_message.Message,), {
-  'DESCRIPTOR': _DOMAINASSOCDETAIL,
-  '__module__': 'com.hitnslab.dnssecurity.deeparcher.api.proto.domain_assoc_detail_pb2'
+  'DESCRIPTOR' : _DOMAINASSOCDETAIL,
+  '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.domain_assoc_detail_pb2'
   # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainAssocDetail)
-})
+  })
 _sym_db.RegisterMessage(DomainAssocDetail)
+
 
 DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

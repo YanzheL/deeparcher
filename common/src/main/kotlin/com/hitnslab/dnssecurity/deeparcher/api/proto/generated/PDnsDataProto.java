@@ -4,8 +4,7 @@
 package com.hitnslab.dnssecurity.deeparcher.api.proto.generated;
 
 public final class PDnsDataProto {
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor;
+  private PDnsDataProto() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -104,44 +103,6 @@ public final class PDnsDataProto {
     com.google.protobuf.ByteString
         getRCnamesBytes(int index);
   }
-  private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable;
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-
-  static {
-    java.lang.String[] descriptorData = {
-      "\n=com/hitnslab/dnssecurity/deeparcher/ap" +
-      "i/proto/pdns_data.proto\022-com.hitnslab.dn" +
-      "ssecurity.deeparcher.api.proto\"\251\001\n\010PDnsD" +
-      "ata\022\014\n\004fqdn\030\001 \001(\t\022\016\n\006domain\030\002 \001(\t\022\021\n\tcli" +
-      "ent_ip\030\003 \001(\014\022\016\n\006q_time\030\004 \001(\003\022\016\n\006q_type\030\005" +
-      " \001(\005\022\016\n\006r_code\030\006 \001(\005\022\024\n\014r_ipv4_addrs\030\007 \001" +
-      "(\014\022\024\n\014r_ipv6_addrs\030\010 \001(\014\022\020\n\010r_cnames\030\t \003" +
-      "(\tBM\n7com.hitnslab.dnssecurity.deeparche" +
-      "r.api.proto.generatedB\rPDnsDataProtoH\001\370\001" +
-      "\001b\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor,
-        new java.lang.String[] { "Fqdn", "Domain", "ClientIp", "QTime", "QType", "RCode", "RIpv4Addrs", "RIpv6Addrs", "RCnames", });
-  }
-
-  private PDnsDataProto() {}
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData}
    */
@@ -149,7 +110,7 @@ public final class PDnsDataProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData)
       PDnsDataOrBuilder {
-    public static final int FQDN_FIELD_NUMBER = 1;
+  private static final long serialVersionUID = 0L;
     // Use PDnsData.newBuilder() to construct.
     private PDnsData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -162,8 +123,19 @@ public final class PDnsDataProto {
       rIpv6Addrs_ = com.google.protobuf.ByteString.EMPTY;
       rCnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
-    public static final int DOMAIN_FIELD_NUMBER = 2;
-    public static final int CLIENT_IP_FIELD_NUMBER = 3;
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PDnsData();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     private PDnsData(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -246,395 +218,200 @@ public final class PDnsDataProto {
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-                  e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
       } finally {
-          if (((mutable_bitField0_ & 0x00000001) != 0)) {
-              rCnames_ = rCnames_.getUnmodifiableView();
-          }
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          rCnames_ = rCnames_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.Builder.class);
+    }
+
+    public static final int FQDN_FIELD_NUMBER = 1;
+    private volatile java.lang.Object fqdn_;
+    /**
+     * <code>string fqdn = 1;</code>
+     * @return The fqdn.
+     */
+    public java.lang.String getFqdn() {
+      java.lang.Object ref = fqdn_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        fqdn_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string fqdn = 1;</code>
+     * @return The bytes for fqdn.
+     */
+    public com.google.protobuf.ByteString
+        getFqdnBytes() {
+      java.lang.Object ref = fqdn_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fqdn_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
     }
 
-      public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-          return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor;
+    public static final int DOMAIN_FIELD_NUMBER = 2;
+    private volatile java.lang.Object domain_;
+    /**
+     * <code>string domain = 2;</code>
+     * @return The domain.
+     */
+    public java.lang.String getDomain() {
+      java.lang.Object ref = domain_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        domain_ = s;
+        return s;
       }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable
-                  .ensureFieldAccessorsInitialized(
-                          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.Builder.class);
+    }
+    /**
+     * <code>string domain = 2;</code>
+     * @return The bytes for domain.
+     */
+    public com.google.protobuf.ByteString
+        getDomainBytes() {
+      java.lang.Object ref = domain_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        domain_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      public static final int Q_TIME_FIELD_NUMBER = 4;
-      public static final int Q_TYPE_FIELD_NUMBER = 5;
-      public static final int R_CODE_FIELD_NUMBER = 6;
-      public static final int R_IPV4_ADDRS_FIELD_NUMBER = 7;
-      public static final int R_IPV6_ADDRS_FIELD_NUMBER = 8;
-      public static final int R_CNAMES_FIELD_NUMBER = 9;
-      private static final long serialVersionUID = 0L;
-      // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData)
-      private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData DEFAULT_INSTANCE;
-      private static final com.google.protobuf.Parser<PDnsData>
-        PARSER = new com.google.protobuf.AbstractParser<PDnsData>() {
-      @java.lang.Override
-      public PDnsData parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PDnsData(input, extensionRegistry);
-      }
-      };
-
-      static {
-          DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData();
-      }
-
-      /**
-       * <code>bytes client_ip = 3;</code>
-       *
-       * @return The clientIp.
-       */
-      public com.google.protobuf.ByteString getClientIp() {
-          return clientIp_;
-      }
-
-      private volatile java.lang.Object fqdn_;
-      private volatile java.lang.Object domain_;
-
-      /**
-       * <code>int64 q_time = 4;</code>
-       *
-       * @return The qTime.
-       */
-      public long getQTime() {
-          return qTime_;
-      }
-
-      private com.google.protobuf.ByteString clientIp_;
-      private long qTime_;
-
-      /**
-       * <code>int32 q_type = 5;</code>
-       *
-       * @return The qType.
-       */
-      public int getQType() {
-          return qType_;
-      }
-
-      private int qType_;
-      private int rCode_;
-
-      /**
-       * <code>int32 r_code = 6;</code>
-       *
-       * @return The rCode.
-       */
-      public int getRCode() {
-          return rCode_;
-      }
-
-      private com.google.protobuf.ByteString rIpv4Addrs_;
-      private com.google.protobuf.ByteString rIpv6Addrs_;
-
-      /**
-       * <code>bytes r_ipv4_addrs = 7;</code>
-       *
-       * @return The rIpv4Addrs.
-       */
-      public com.google.protobuf.ByteString getRIpv4Addrs() {
-          return rIpv4Addrs_;
-      }
-
-      private com.google.protobuf.LazyStringList rCnames_;
-      private byte memoizedIsInitialized = -1;
-
-      /**
-       * <code>bytes r_ipv6_addrs = 8;</code>
-       *
-       * @return The rIpv6Addrs.
-       */
-      public com.google.protobuf.ByteString getRIpv6Addrs() {
-          return rIpv6Addrs_;
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              java.nio.ByteBuffer data)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              java.nio.ByteBuffer data,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              com.google.protobuf.ByteString data)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-      }
-
-      /**
-       * <code>repeated string r_cnames = 9;</code>
-       *
-       * @return The count of rCnames.
-       */
-      public int getRCnamesCount() {
-          return rCnames_.size();
-      }
-
-      /**
-       * <code>repeated string r_cnames = 9;</code>
-       *
-       * @param index The index of the element to return.
-       * @return The rCnames at the given index.
-       */
-      public java.lang.String getRCnames(int index) {
-          return rCnames_.get(index);
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              com.google.protobuf.ByteString data,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+    public static final int CLIENT_IP_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString clientIp_;
+    /**
+     * <code>bytes client_ip = 3;</code>
+     * @return The clientIp.
+     */
+    public com.google.protobuf.ByteString getClientIp() {
+      return clientIp_;
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-                .parseWithIOException(PARSER, input);
+    public static final int Q_TIME_FIELD_NUMBER = 4;
+    private long qTime_;
+    /**
+     * <code>int64 q_time = 4;</code>
+     * @return The qTime.
+     */
+    public long getQTime() {
+      return qTime_;
     }
 
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input, extensionRegistry);
-      }
+    public static final int Q_TYPE_FIELD_NUMBER = 5;
+    private int qType_;
+    /**
+     * <code>int32 q_type = 5;</code>
+     * @return The qType.
+     */
+    public int getQType() {
+      return qType_;
+    }
 
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-          if (obj == this) {
-              return true;
-          }
-          if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData)) {
-              return super.equals(obj);
-          }
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData) obj;
+    public static final int R_CODE_FIELD_NUMBER = 6;
+    private int rCode_;
+    /**
+     * <code>int32 r_code = 6;</code>
+     * @return The rCode.
+     */
+    public int getRCode() {
+      return rCode_;
+    }
 
-          if (!getFqdn()
-                  .equals(other.getFqdn())) return false;
-          if (!getDomain()
-                  .equals(other.getDomain())) return false;
-          if (!getClientIp()
-                  .equals(other.getClientIp())) return false;
-          if (getQTime()
-                  != other.getQTime()) return false;
-          if (getQType()
-                  != other.getQType()) return false;
-          if (getRCode()
-                  != other.getRCode()) return false;
-          if (!getRIpv4Addrs()
-                  .equals(other.getRIpv4Addrs())) return false;
-          if (!getRIpv6Addrs()
-                  .equals(other.getRIpv6Addrs())) return false;
-          if (!getRCnamesList()
-                  .equals(other.getRCnamesList())) return false;
-          if (!unknownFields.equals(other.unknownFields)) return false;
-          return true;
-      }
+    public static final int R_IPV4_ADDRS_FIELD_NUMBER = 7;
+    private com.google.protobuf.ByteString rIpv4Addrs_;
+    /**
+     * <code>bytes r_ipv4_addrs = 7;</code>
+     * @return The rIpv4Addrs.
+     */
+    public com.google.protobuf.ByteString getRIpv4Addrs() {
+      return rIpv4Addrs_;
+    }
 
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseDelimitedFrom(java.io.InputStream input)
-              throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-                  .parseDelimitedWithIOException(PARSER, input);
-      }
+    public static final int R_IPV6_ADDRS_FIELD_NUMBER = 8;
+    private com.google.protobuf.ByteString rIpv6Addrs_;
+    /**
+     * <code>bytes r_ipv6_addrs = 8;</code>
+     * @return The rIpv6Addrs.
+     */
+    public com.google.protobuf.ByteString getRIpv6Addrs() {
+      return rIpv6Addrs_;
+    }
 
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseDelimitedFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-                  .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
+    public static final int R_CNAMES_FIELD_NUMBER = 9;
+    private com.google.protobuf.LazyStringList rCnames_;
+    /**
+     * <code>repeated string r_cnames = 9;</code>
+     * @return A list containing the rCnames.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRCnamesList() {
+      return rCnames_;
+    }
+    /**
+     * <code>repeated string r_cnames = 9;</code>
+     * @return The count of rCnames.
+     */
+    public int getRCnamesCount() {
+      return rCnames_.size();
+    }
+    /**
+     * <code>repeated string r_cnames = 9;</code>
+     * @param index The index of the element to return.
+     * @return The rCnames at the given index.
+     */
+    public java.lang.String getRCnames(int index) {
+      return rCnames_.get(index);
+    }
+    /**
+     * <code>repeated string r_cnames = 9;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the rCnames at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRCnamesBytes(int index) {
+      return rCnames_.getByteString(index);
+    }
 
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              com.google.protobuf.CodedInputStream input)
-              throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input);
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      public static Builder newBuilder() {
-          return DEFAULT_INSTANCE.toBuilder();
-      }
-
-      public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData prototype) {
-          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-
-      public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData getDefaultInstance() {
-          return DEFAULT_INSTANCE;
-      }
-
-      public static com.google.protobuf.Parser<PDnsData> parser() {
-          return PARSER;
-      }
-
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-              UnusedPrivateParameter unused) {
-          return new PDnsData();
-      }
-
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-          return this.unknownFields;
-      }
-
-      /**
-       * <code>string fqdn = 1;</code>
-       *
-       * @return The fqdn.
-       */
-      public java.lang.String getFqdn() {
-          java.lang.Object ref = fqdn_;
-          if (ref instanceof java.lang.String) {
-              return (java.lang.String) ref;
-          } else {
-              com.google.protobuf.ByteString bs =
-                      (com.google.protobuf.ByteString) ref;
-              java.lang.String s = bs.toStringUtf8();
-              fqdn_ = s;
-              return s;
-          }
-      }
-
-      /**
-       * <code>string fqdn = 1;</code>
-       *
-       * @return The bytes for fqdn.
-       */
-      public com.google.protobuf.ByteString
-      getFqdnBytes() {
-          java.lang.Object ref = fqdn_;
-          if (ref instanceof java.lang.String) {
-              com.google.protobuf.ByteString b =
-                      com.google.protobuf.ByteString.copyFromUtf8(
-                              (java.lang.String) ref);
-              fqdn_ = b;
-              return b;
-          } else {
-              return (com.google.protobuf.ByteString) ref;
-          }
-      }
-
-      /**
-       * <code>string domain = 2;</code>
-       *
-       * @return The domain.
-       */
-      public java.lang.String getDomain() {
-          java.lang.Object ref = domain_;
-          if (ref instanceof java.lang.String) {
-              return (java.lang.String) ref;
-          } else {
-              com.google.protobuf.ByteString bs =
-                      (com.google.protobuf.ByteString) ref;
-              java.lang.String s = bs.toStringUtf8();
-              domain_ = s;
-              return s;
-          }
-      }
-
-      /**
-       * <code>string domain = 2;</code>
-       *
-       * @return The bytes for domain.
-       */
-      public com.google.protobuf.ByteString
-      getDomainBytes() {
-          java.lang.Object ref = domain_;
-          if (ref instanceof java.lang.String) {
-              com.google.protobuf.ByteString b =
-                      com.google.protobuf.ByteString.copyFromUtf8(
-                              (java.lang.String) ref);
-              domain_ = b;
-              return b;
-          } else {
-              return (com.google.protobuf.ByteString) ref;
-          }
-      }
-
-      /**
-       * <code>repeated string r_cnames = 9;</code>
-       *
-       * @return A list containing the rCnames.
-       */
-      public com.google.protobuf.ProtocolStringList
-      getRCnamesList() {
-          return rCnames_;
-      }
-
-      /**
-       * <code>repeated string r_cnames = 9;</code>
-       *
-       * @param index The index of the value to return.
-       * @return The bytes of the rCnames at the given index.
-       */
-      public com.google.protobuf.ByteString
-      getRCnamesBytes(int index) {
-          return rCnames_.getByteString(index);
-      }
-
-      @java.lang.Override
-      public Builder toBuilder() {
-          return this == DEFAULT_INSTANCE
-                  ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          Builder builder = new Builder(parent);
-          return builder;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-          byte isInitialized = memoizedIsInitialized;
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
@@ -725,6 +502,38 @@ public final class PDnsDataProto {
     }
 
     @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData)) {
+        return super.equals(obj);
+      }
+      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData) obj;
+
+      if (!getFqdn()
+          .equals(other.getFqdn())) return false;
+      if (!getDomain()
+          .equals(other.getDomain())) return false;
+      if (!getClientIp()
+          .equals(other.getClientIp())) return false;
+      if (getQTime()
+          != other.getQTime()) return false;
+      if (getQType()
+          != other.getQType()) return false;
+      if (getRCode()
+          != other.getRCode()) return false;
+      if (!getRIpv4Addrs()
+          .equals(other.getRIpv4Addrs())) return false;
+      if (!getRIpv6Addrs()
+          .equals(other.getRIpv6Addrs())) return false;
+      if (!getRCnamesList()
+          .equals(other.getRCnamesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -757,19 +566,96 @@ public final class PDnsDataProto {
       return hash;
     }
 
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
     @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
-
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
     @java.lang.Override
-    public com.google.protobuf.Parser<PDnsData> getParserForType() {
-      return PARSER;
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
     }
-
     /**
      * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData}
      */
@@ -777,9 +663,23 @@ public final class PDnsDataProto {
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData)
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsDataOrBuilder {
-      private int bitField0_;
-      private java.lang.Object fqdn_ = "";
-      private java.lang.Object domain_ = "";
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.Builder.class);
+      }
+
+      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -838,33 +738,58 @@ public final class PDnsDataProto {
       @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData buildPartial() {
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData(this);
-          int from_bitField0_ = bitField0_;
-          result.fqdn_ = fqdn_;
-          result.domain_ = domain_;
-          result.clientIp_ = clientIp_;
-          result.qTime_ = qTime_;
-          result.qType_ = qType_;
-          result.rCode_ = rCode_;
-          result.rIpv4Addrs_ = rIpv4Addrs_;
-          result.rIpv6Addrs_ = rIpv6Addrs_;
-          if (((bitField0_ & 0x00000001) != 0)) {
-              rCnames_ = rCnames_.getUnmodifiableView();
-              bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.rCnames_ = rCnames_;
-          onBuilt();
-          return result;
+        int from_bitField0_ = bitField0_;
+        result.fqdn_ = fqdn_;
+        result.domain_ = domain_;
+        result.clientIp_ = clientIp_;
+        result.qTime_ = qTime_;
+        result.qType_ = qType_;
+        result.rCode_ = rCode_;
+        result.rIpv4Addrs_ = rIpv4Addrs_;
+        result.rIpv6Addrs_ = rIpv6Addrs_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          rCnames_ = rCnames_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.rCnames_ = rCnames_;
+        onBuilt();
+        return result;
       }
 
-        private com.google.protobuf.ByteString clientIp_ = com.google.protobuf.ByteString.EMPTY;
-        private long qTime_;
-        private int qType_;
-        private int rCode_;
-        private com.google.protobuf.ByteString rIpv4Addrs_ = com.google.protobuf.ByteString.EMPTY;
-        private com.google.protobuf.ByteString rIpv6Addrs_ = com.google.protobuf.ByteString.EMPTY;
-
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData) {
           return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData)other);
         } else {
@@ -904,9 +829,9 @@ public final class PDnsDataProto {
         if (!other.rCnames_.isEmpty()) {
           if (rCnames_.isEmpty()) {
             rCnames_ = other.rCnames_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-              ensureRCnamesIsMutable();
+            ensureRCnamesIsMutable();
             rCnames_.addAll(other.rCnames_);
           }
           onChanged();
@@ -915,141 +840,49 @@ public final class PDnsDataProto {
         onChanged();
         return this;
       }
-      private com.google.protobuf.LazyStringList rCnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
 
       @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parsedMessage = null;
-          try {
-              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData) e.getUnfinishedMessage();
-              throw e.unwrapIOException();
-          } finally {
-              if (parsedMessage != null) {
-                  mergeFrom(parsedMessage);
-              }
+          throws java.io.IOException {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
-          return this;
+        }
+        return this;
       }
+      private int bitField0_;
 
-        // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.newBuilder()
-        private Builder() {
-            maybeForceBuilderInitialization();
+      private java.lang.Object fqdn_ = "";
+      /**
+       * <code>string fqdn = 1;</code>
+       * @return The fqdn.
+       */
+      public java.lang.String getFqdn() {
+        java.lang.Object ref = fqdn_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          fqdn_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-
-        public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-            return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData.Builder.class);
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-            return super.clone();
-        }
-
-        @java.lang.Override
-        public Builder setField(
-                com.google.protobuf.Descriptors.FieldDescriptor field,
-                java.lang.Object value) {
-            return super.setField(field, value);
-        }
-
-        @java.lang.Override
-        public Builder clearField(
-                com.google.protobuf.Descriptors.FieldDescriptor field) {
-            return super.clearField(field);
-        }
-
-        @java.lang.Override
-        public Builder clearOneof(
-                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-            return super.clearOneof(oneof);
-        }
-
-        @java.lang.Override
-        public Builder setRepeatedField(
-                com.google.protobuf.Descriptors.FieldDescriptor field,
-                int index, java.lang.Object value) {
-            return super.setRepeatedField(field, index, value);
-        }
-
-        /**
-         * <code>string domain = 2;</code>
-         *
-         * @return The domain.
-         */
-        public java.lang.String getDomain() {
-            java.lang.Object ref = domain_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                domain_ = s;
-                return s;
-            } else {
-                return (java.lang.String) ref;
-            }
-        }
-
-        @java.lang.Override
-        public Builder addRepeatedField(
-                com.google.protobuf.Descriptors.FieldDescriptor field,
-                java.lang.Object value) {
-            return super.addRepeatedField(field, value);
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-            return true;
-        }
-
-        /**
-         * <code>string fqdn = 1;</code>
-         *
-         * @return The fqdn.
-         */
-        public java.lang.String getFqdn() {
-            java.lang.Object ref = fqdn_;
-            if (!(ref instanceof java.lang.String)) {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                fqdn_ = s;
-                return s;
-            } else {
-                return (java.lang.String) ref;
-            }
-        }
-
-        /**
-         * <code>string fqdn = 1;</code>
-         *
-         * @param value The fqdn to set.
-         * @return This builder for chaining.
-         */
-        public Builder setFqdn(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            fqdn_ = value;
-            onChanged();
-            return this;
-        }
-
+      }
       /**
        * <code>string fqdn = 1;</code>
        * @return The bytes for fqdn.
@@ -1058,7 +891,7 @@ public final class PDnsDataProto {
           getFqdnBytes() {
         java.lang.Object ref = fqdn_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           fqdn_ = b;
@@ -1067,7 +900,31 @@ public final class PDnsDataProto {
           return (com.google.protobuf.ByteString) ref;
         }
       }
-
+      /**
+       * <code>string fqdn = 1;</code>
+       * @param value The fqdn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFqdn(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        fqdn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string fqdn = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFqdn() {
+        
+        fqdn_ = getDefaultInstance().getFqdn();
+        onChanged();
+        return this;
+      }
       /**
        * <code>string fqdn = 1;</code>
        * @param value The bytes for fqdn to set.
@@ -1079,23 +936,29 @@ public final class PDnsDataProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         fqdn_ = value;
         onChanged();
         return this;
       }
 
+      private java.lang.Object domain_ = "";
       /**
-       * <code>string fqdn = 1;</code>
-       * @return This builder for chaining.
+       * <code>string domain = 2;</code>
+       * @return The domain.
        */
-      public Builder clearFqdn() {
-
-        fqdn_ = getDefaultInstance().getFqdn();
-        onChanged();
-        return this;
+      public java.lang.String getDomain() {
+        java.lang.Object ref = domain_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          domain_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
-
       /**
        * <code>string domain = 2;</code>
        * @return The bytes for domain.
@@ -1104,266 +967,247 @@ public final class PDnsDataProto {
           getDomainBytes() {
         java.lang.Object ref = domain_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-            domain_ = b;
-            return b;
+                  (java.lang.String) ref);
+          domain_ = b;
+          return b;
         } else {
-            return (com.google.protobuf.ByteString) ref;
+          return (com.google.protobuf.ByteString) ref;
         }
       }
-
-        /**
-         * <code>string domain = 2;</code>
-         *
-         * @param value The bytes for domain to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDomainBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-
-            domain_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>string domain = 2;</code>
-         *
-         * @param value The domain to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDomain(
-                java.lang.String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            domain_ = value;
-            onChanged();
-            return this;
-        }
-
+      /**
+       * <code>string domain = 2;</code>
+       * @param value The domain to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDomain(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        domain_ = value;
+        onChanged();
+        return this;
+      }
       /**
        * <code>string domain = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearDomain() {
-
+        
         domain_ = getDefaultInstance().getDomain();
         onChanged();
         return this;
       }
+      /**
+       * <code>string domain = 2;</code>
+       * @param value The bytes for domain to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDomainBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        domain_ = value;
+        onChanged();
+        return this;
+      }
 
+      private com.google.protobuf.ByteString clientIp_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes client_ip = 3;</code>
        * @return The clientIp.
        */
       public com.google.protobuf.ByteString getClientIp() {
-          return clientIp_;
+        return clientIp_;
       }
-
-        /**
-         * <code>bytes client_ip = 3;</code>
-         *
-         * @param value The clientIp to set.
-         * @return This builder for chaining.
-         */
-        public Builder setClientIp(com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            clientIp_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>bytes client_ip = 3;</code>
-         *
-         * @return This builder for chaining.
-         */
-        public Builder clearClientIp() {
-
-            clientIp_ = getDefaultInstance().getClientIp();
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>int64 q_time = 4;</code>
-         *
-         * @return The qTime.
-         */
-        public long getQTime() {
-            return qTime_;
-        }
-
-        /**
-         * <code>int64 q_time = 4;</code>
-         *
-         * @param value The qTime to set.
-         * @return This builder for chaining.
-         */
-        public Builder setQTime(long value) {
-
-            qTime_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>int64 q_time = 4;</code>
+      /**
+       * <code>bytes client_ip = 3;</code>
+       * @param value The clientIp to set.
        * @return This builder for chaining.
        */
-        public Builder clearQTime() {
-
-            qTime_ = 0L;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>int32 q_type = 5;</code>
-         *
-         * @return The qType.
-         */
-        public int getQType() {
-        return qType_;
+      public Builder setClientIp(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        clientIp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes client_ip = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearClientIp() {
+        
+        clientIp_ = getDefaultInstance().getClientIp();
+        onChanged();
+        return this;
       }
 
+      private long qTime_ ;
+      /**
+       * <code>int64 q_time = 4;</code>
+       * @return The qTime.
+       */
+      public long getQTime() {
+        return qTime_;
+      }
+      /**
+       * <code>int64 q_time = 4;</code>
+       * @param value The qTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setQTime(long value) {
+        
+        qTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 q_time = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearQTime() {
+        
+        qTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int qType_ ;
+      /**
+       * <code>int32 q_type = 5;</code>
+       * @return The qType.
+       */
+      public int getQType() {
+        return qType_;
+      }
       /**
        * <code>int32 q_type = 5;</code>
        * @param value The qType to set.
        * @return This builder for chaining.
        */
       public Builder setQType(int value) {
-
+        
         qType_ = value;
-          onChanged();
-          return this;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 q_type = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearQType() {
+        
+        qType_ = 0;
+        onChanged();
+        return this;
       }
 
-        /**
-         * <code>int32 q_type = 5;</code>
-         *
-         * @return This builder for chaining.
-         */
-        public Builder clearQType() {
+      private int rCode_ ;
+      /**
+       * <code>int32 r_code = 6;</code>
+       * @return The rCode.
+       */
+      public int getRCode() {
+        return rCode_;
+      }
+      /**
+       * <code>int32 r_code = 6;</code>
+       * @param value The rCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRCode(int value) {
+        
+        rCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 r_code = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRCode() {
+        
+        rCode_ = 0;
+        onChanged();
+        return this;
+      }
 
-            qType_ = 0;
-            onChanged();
-            return this;
-        }
+      private com.google.protobuf.ByteString rIpv4Addrs_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes r_ipv4_addrs = 7;</code>
+       * @return The rIpv4Addrs.
+       */
+      public com.google.protobuf.ByteString getRIpv4Addrs() {
+        return rIpv4Addrs_;
+      }
+      /**
+       * <code>bytes r_ipv4_addrs = 7;</code>
+       * @param value The rIpv4Addrs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRIpv4Addrs(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        rIpv4Addrs_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes r_ipv4_addrs = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRIpv4Addrs() {
+        
+        rIpv4Addrs_ = getDefaultInstance().getRIpv4Addrs();
+        onChanged();
+        return this;
+      }
 
-        /**
-         * <code>int32 r_code = 6;</code>
-         *
-         * @return The rCode.
-         */
-        public int getRCode() {
-            return rCode_;
-        }
-
-        /**
-         * <code>int32 r_code = 6;</code>
-         *
-         * @param value The rCode to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRCode(int value) {
-
-            rCode_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>int32 r_code = 6;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearRCode() {
-
-            rCode_ = 0;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>bytes r_ipv4_addrs = 7;</code>
-         *
-         * @return The rIpv4Addrs.
-         */
-        public com.google.protobuf.ByteString getRIpv4Addrs() {
-            return rIpv4Addrs_;
-        }
-
-        /**
-         * <code>bytes r_ipv4_addrs = 7;</code>
-         *
-         * @param value The rIpv4Addrs to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRIpv4Addrs(com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            rIpv4Addrs_ = value;
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>bytes r_ipv4_addrs = 7;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearRIpv4Addrs() {
-
-            rIpv4Addrs_ = getDefaultInstance().getRIpv4Addrs();
-            onChanged();
-            return this;
-        }
-
-        /**
-         * <code>bytes r_ipv6_addrs = 8;</code>
-         * @return The rIpv6Addrs.
-         */
-        public com.google.protobuf.ByteString getRIpv6Addrs() {
-            return rIpv6Addrs_;
-        }
-
-        /**
-         * <code>bytes r_ipv6_addrs = 8;</code>
-         * @param value The rIpv6Addrs to set.
-         * @return This builder for chaining.
+      private com.google.protobuf.ByteString rIpv6Addrs_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes r_ipv6_addrs = 8;</code>
+       * @return The rIpv6Addrs.
+       */
+      public com.google.protobuf.ByteString getRIpv6Addrs() {
+        return rIpv6Addrs_;
+      }
+      /**
+       * <code>bytes r_ipv6_addrs = 8;</code>
+       * @param value The rIpv6Addrs to set.
+       * @return This builder for chaining.
        */
       public Builder setRIpv6Addrs(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         rIpv6Addrs_ = value;
         onChanged();
         return this;
       }
-
       /**
        * <code>bytes r_ipv6_addrs = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearRIpv6Addrs() {
-
+        
         rIpv6Addrs_ = getDefaultInstance().getRIpv6Addrs();
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.LazyStringList rCnames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureRCnamesIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           rCnames_ = new com.google.protobuf.LazyStringArrayList(rCnames_);
@@ -1488,6 +1332,78 @@ public final class PDnsDataProto {
       // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData)
     }
 
+    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData)
+    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData();
+    }
+
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PDnsData>
+        PARSER = new com.google.protobuf.AbstractParser<PDnsData>() {
+      @java.lang.Override
+      public PDnsData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PDnsData(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PDnsData> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PDnsData> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto.PDnsData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable;
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+  static {
+    java.lang.String[] descriptorData = {
+      "\n=com/hitnslab/dnssecurity/deeparcher/ap" +
+      "i/proto/pdns_data.proto\022-com.hitnslab.dn" +
+      "ssecurity.deeparcher.api.proto\"\251\001\n\010PDnsD" +
+      "ata\022\014\n\004fqdn\030\001 \001(\t\022\016\n\006domain\030\002 \001(\t\022\021\n\tcli" +
+      "ent_ip\030\003 \001(\014\022\016\n\006q_time\030\004 \001(\003\022\016\n\006q_type\030\005" +
+      " \001(\005\022\016\n\006r_code\030\006 \001(\005\022\024\n\014r_ipv4_addrs\030\007 \001" +
+      "(\014\022\024\n\014r_ipv6_addrs\030\010 \001(\014\022\020\n\010r_cnames\030\t \003" +
+      "(\tBM\n7com.hitnslab.dnssecurity.deeparche" +
+      "r.api.proto.generatedB\rPDnsDataProtoH\001\370\001" +
+      "\001b\006proto3"
+    };
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        });
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_PDnsData_descriptor,
+        new java.lang.String[] { "Fqdn", "Domain", "ClientIp", "QTime", "QType", "RCode", "RIpv4Addrs", "RIpv6Addrs", "RCnames", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
