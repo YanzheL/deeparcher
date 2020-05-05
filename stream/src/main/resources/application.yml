@@ -23,7 +23,7 @@ spring:
       auto-startup: true
       properties:
         topology.optimization: all
-        num.stream.threads: "\${NUM_STREAM_THREADS:1}"
+        num.stream.threads: "${NUM_STREAM_THREADS:1}"
         #        producer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
         #        consumer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
         consumer.max-poll-records: 5000000
