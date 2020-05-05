@@ -39,6 +39,9 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
         store: MutableMap<String, Collection<String>>,
         result: MutableMap<String, Int>
     ) {
+        if (data.isEmpty()) {
+            return
+        }
         store[fqdn] = data
         store.entries.parallelStream().forEach { entry ->
             if (entry.key != fqdn) {
@@ -57,6 +60,9 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
         store: MutableMap<String, ByteArray>,
         result: MutableMap<String, Int>
     ) {
+        if (ips.isEmpty()) {
+            return
+        }
         store[fqdn] = ips
         store.entries.parallelStream().forEach { entry ->
             if (entry.key != fqdn) {
