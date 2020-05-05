@@ -5,36 +5,24 @@ import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpd
 import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet
 import com.hitnslab.dnssecurity.deeparcher.util.intersectionSize
 import io.netty.buffer.Unpooled
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import org.apache.kafka.streams.kstream.ValueMapper
-import java.util.concurrent.ConcurrentHashMap
 
 class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>> {
 
-    val ipv4 = mutableMapOf<String, ByteArray>()
+    val ipv4Table = mutableMapOf<String, ByteArray>()
 
-    val ipv6 = mutableMapOf<String, ByteArray>()
+    val ipv6Table = mutableMapOf<String, ByteArray>()
 
-    val cnames = mutableMapOf<String, Collection<String>>()
-
-    val scope = CoroutineScope(Dispatchers.Default)
+    val cnamesTable = mutableMapOf<String, Collection<String>>()
 
     private val logger = KotlinLogging.logger {}
 
     override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate> {
-        val result = ConcurrentHashMap<String, Int>()
-        val jobs = listOf(
-            scope.launch { computeIPIntersect(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4, result) },
-            scope.launch { computeIPIntersect(value.fqdn, value.ipv6Addrs.toByteArray(), 16, ipv6, result) },
-            scope.launch { computeSetIntersect(value.fqdn, value.cnamesList, cnames, result) }
-        )
-        runBlocking {
-            jobs.forEach { job -> job.join() }
-        }
+        val result = mutableMapOf<String, Int>()
+        computeIPIntersect(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4Table, result)
+        computeIPIntersect(value.fqdn, value.ipv6Addrs.toByteArray(), 16, ipv6Table, result)
+        computeSetIntersect(value.fqdn, value.cnamesList, cnamesTable, result)
         return result.entries.map {
             GraphAssocEdgeUpdate
                 .newBuilder()
