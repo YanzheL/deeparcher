@@ -2,9 +2,7 @@ package com.hitnslab.dnssecurity.deeparcher.stream.processor
 
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto.DomainAssocDetail
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
-import com.hitnslab.dnssecurity.deeparcher.util.ByteBufSet
 import com.hitnslab.dnssecurity.deeparcher.util.intersectionSize
-import io.netty.buffer.Unpooled
 import mu.KotlinLogging
 import org.apache.kafka.streams.kstream.ValueMapper
 import java.util.concurrent.ConcurrentHashMap
@@ -56,26 +54,22 @@ class GraphEdgeGenerator : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdg
 
     private fun computeIPIntersect(
         fqdn: String,
-        ips: ByteArray,
+        data: ByteArray,
         width: Int,
         store: MutableMap<String, ByteArray>,
         result: MutableMap<String, Int>
     ) {
-        if (ips.isEmpty()) {
+        if (data.isEmpty()) {
             return
         }
-        store[fqdn] = ips
+        store[fqdn] = data
         store.entries.parallelStream().forEach { entry ->
             if (entry.key != fqdn) {
-                val count = ByteBufSet.intersectionSize(
-                    Unpooled.wrappedBuffer(ips),
-                    Unpooled.wrappedBuffer(entry.value),
-                    width
-                )
+                val count = entry.value.intersectionSize(data, width)
                 if (count > 0) {
                     result.merge(entry.key, count) { v1, v2 -> v1 + v2 }
                 } else if (count == -1) {
-                    logger.warn { "Unable to compute intersect size for <$ips> and <${entry.value}>" }
+                    logger.warn { "Unable to compute intersect size for <$data> and <${entry.value}>" }
                 }
             }
         }
