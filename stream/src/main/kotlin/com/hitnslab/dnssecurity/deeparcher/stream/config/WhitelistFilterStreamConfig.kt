@@ -4,13 +4,15 @@ import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.PDnsDataProto
 import com.hitnslab.dnssecurity.deeparcher.serde.GenericSerde
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoDeserializer
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer
-import com.hitnslab.dnssecurity.deeparcher.stream.ProtobufMessagePrefilter
+import com.hitnslab.dnssecurity.deeparcher.stream.KStreamValuePredicateAdapter
 import com.hitnslab.dnssecurity.deeparcher.stream.WhitelistPredicate
 import com.hitnslab.dnssecurity.deeparcher.stream.property.WhitelistFilterProperties
+import com.hitnslab.dnssecurity.deeparcher.util.ProtobufMessagePrefilter
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
+import org.apache.kafka.streams.kstream.Predicate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -30,9 +32,17 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
 
     @Bean
     fun whitelistFilterStream(builder: StreamsBuilder): KStream<*, *> {
-        val prefilters = mutableListOf<ProtobufMessagePrefilter<PDnsDataProto.PDnsData>>()
+        val prefilters = mutableListOf<Predicate<String, PDnsDataProto.PDnsData>>()
         properties.prefilters?.forEach {
-            prefilters.add(ProtobufMessagePrefilter(it.field, Regex(it.pattern), it.allow))
+            prefilters.add(
+                KStreamValuePredicateAdapter(
+                    ProtobufMessagePrefilter(
+                        it.field,
+                        Regex(it.pattern),
+                        it.allow
+                    )
+                )
+            )
         }
         val src = builder.stream(
             properties.input.path,
