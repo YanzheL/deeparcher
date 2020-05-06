@@ -8,6 +8,7 @@ import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.PDNSKafkaItemWri
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.PDnsJobProperties
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDNSLogFieldSetMapper
+import com.hitnslab.dnssecurity.deeparcher.util.ProtobufMessagePrefilter
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
@@ -103,10 +104,23 @@ class LoadPDNSDataJobConfig {
 
     @Bean
     fun itemProcessor(): ItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?> {
+        val processorConfig = properties.step.itemProcessor
         val compositeItemProcessor = CompositeItemProcessor<PDnsData.Builder, PDnsDataProto.PDnsData?>()
         val processors = mutableListOf<ItemProcessor<*, *>>()
         processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> { it.build() })
         val converter = PDnsDataToProtoConverter()
+        processorConfig.prefilters
+            ?.map { filterSpec ->
+                val filter = ProtobufMessagePrefilter<PDnsDataProto.PDnsData>(
+                    filterSpec.field,
+                    Regex(filterSpec.pattern),
+                    filterSpec.allow
+                )
+                ItemProcessor<PDnsDataProto.PDnsData, PDnsDataProto.PDnsData?> {
+                    return@ItemProcessor if (filter.test(it)) it else null
+                }
+            }
+            ?.forEach { processors.add(it) }
         processors.add(ItemProcessor<PDnsData, PDnsDataProto.PDnsData?> { converter.convert(it) })
         compositeItemProcessor.setDelegates(processors)
         return compositeItemProcessor

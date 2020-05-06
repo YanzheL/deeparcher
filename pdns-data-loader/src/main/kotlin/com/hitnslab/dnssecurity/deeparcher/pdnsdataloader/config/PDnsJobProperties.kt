@@ -15,6 +15,8 @@ class PDnsJobProperties(
     class Step(
         val itemReader: ItemReader,
 
+        val itemProcessor: ItemProcessor,
+
         val itemWriter: ItemWriter,
 
         val chunkSize: Int = 10000,
@@ -28,6 +30,10 @@ class PDnsJobProperties(
             val fieldSetMapper: Class<PDNSLogFieldSetMapper>
         )
 
+        class ItemProcessor(
+            val prefilters: List<PrefilterSpec>? = null
+        )
+
         class ItemWriter(
             val name: String,
             val metrics: Metrics = Metrics()
@@ -38,6 +44,11 @@ class PDnsJobProperties(
                 val failureInterval: Int = 10000
             )
         }
-
     }
+
+    data class PrefilterSpec(
+        val field: String,
+        val pattern: String,
+        val allow: Boolean
+    )
 }
