@@ -13,7 +13,8 @@ fun <E> Collection<E>.intersectionSize(other: Collection<E>): Int {
  * Returns the intersection size of two byte arrays.
  * This function assumes bytes in each window of these byte arrays are unique.
  *
- * @param wsize: size of compare window
+ * @param [wsize] size of compare window
+ * @return the intersection size if no error occurred, `-1` if the size of two arrays are not multiple of `wsize`.
  */
 fun ByteArray.intersectionSize(other: ByteArray, wsize: Int = 1): Int {
     val size1 = this.size

@@ -2,64 +2,60 @@ package com.hitnslab.dnssecurity.deeparcher.util
 
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.ByteBufUtil
-import io.netty.buffer.Unpooled
 import java.net.InetAddress
-import java.nio.ByteBuffer
 
-
+/**
+ * Extract multiple `InetAddress` from bytes
+ *
+ * @param [bytesIn] all bytes that represents multiple IP addresses, big endian.
+ * @param [width] `4` for IPv4, `16` for IPv6
+ * @param [ipOut] output collection
+ */
 fun parseIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableCollection<InetAddress>) {
-    val view = bytesIn.slice()
-    val size = view.readableBytes()
+    val size = bytesIn.readableBytes()
     if (size == 0) {
         return
     }
     if (size % width != 0) {
         throw IllegalArgumentException("IP Address Bytes <$bytesIn> has incorrect length <${size}>.")
     }
-    while (view.readableBytes() != 0) {
-        val address = view.readSlice(width)
+    while (bytesIn.readableBytes() != 0) {
+        val address = bytesIn.readSlice(width)
         ipOut.add(InetAddress.getByAddress(ByteBufUtil.getBytes(address)))
     }
+    bytesIn.release()
 }
 
-fun parseIpFromBytes(bytesIn: ByteArray, width: Int, ipOut: MutableCollection<InetAddress>) {
-    return parseIpFromBytes(Unpooled.wrappedBuffer(bytesIn), width, ipOut)
-}
-
-fun parseIpFromBytes(bytesIn: ByteBuffer, width: Int, ipOut: MutableCollection<InetAddress>) {
-    return parseIpFromBytes(Unpooled.wrappedBuffer(bytesIn), width, ipOut)
-}
-
-fun <R : Number> packIpFromBytes(bytesIn: ByteArray, width: Int, ipOut: MutableList<R>) {
-    return packIpFromBytes(Unpooled.wrappedBuffer(bytesIn), width, ipOut)
-}
-
-fun <R : Number> packIpFromBytes(bytesIn: ByteBuffer, width: Int, ipOut: MutableList<R>) {
-    return packIpFromBytes(Unpooled.wrappedBuffer(bytesIn), width, ipOut)
-}
-
-fun <R : Number> packIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableList<R>) {
-    val view = bytesIn.slice()
-    val size = view.readableBytes()
+/**
+ * Pack bytes to integer types
+ *
+ * @param [bytesIn] input bytes
+ * @param [width] pack width, should be 1, 2, 4 or multiple of 8
+ * @param [ipOut] output collection
+ */
+fun <R : Number> packIntegerFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableList<R>) {
+    val size = bytesIn.readableBytes()
     if (size == 0) {
         return
     }
     if (size % width != 0) {
         throw IllegalArgumentException("IP Address Bytes <$bytesIn> has incorrect length <${size}>.")
     }
-    while (view.readableBytes() != 0) {
-        if (width == 4) {
-            ipOut.add(view.readInt() as R)
-        } else {
-            ipOut.add(view.readLong() as R)
+    while (bytesIn.readableBytes() != 0) {
+        when {
+            width == 1 -> ipOut.add(bytesIn.readByte() as R)
+            width == 2 -> ipOut.add(bytesIn.readShort() as R)
+            width == 4 -> ipOut.add(bytesIn.readInt() as R)
+            width % 8 == 0 -> ipOut.add(bytesIn.readLong() as R)
         }
     }
+    bytesIn.release()
 }
 
 /**
  * Union two sets of bytes with specified window width
  *
- * @return null if set1 contains set2 else the union of two sets
+ * @return `null` if set1 contains set2 else the union of two sets
  */
 fun bytesSetUnion(set1: ByteBuf, set2: ByteBuf, width: Int): ByteBuf? {
     val bufSet = ByteBufSet(set1)
