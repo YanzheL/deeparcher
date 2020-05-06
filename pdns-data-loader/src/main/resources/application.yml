@@ -28,7 +28,8 @@ spring:
       default-topic: test.raw.pdns
     properties:
       security.protocol: SSL
-      ssl.endpoint.identification.algorithm: ""
+      ssl.enabled.protocols: TLSv1.2
+      #      ssl.endpoint.identification.algorithm: ""
       delivery.timeout.ms: 1800000
   batch:
     initialize-schema: always
@@ -54,6 +55,11 @@ app:
         retry-limit: 10
         item-reader:
           field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogType1FieldSetMapper
+        item-processor:
+          prefilters:
+            - field: domain
+              pattern: "hitwh\\.edu\\.cn$"
+              allow: false
         item-writer:
           name: kafka
           metrics:
