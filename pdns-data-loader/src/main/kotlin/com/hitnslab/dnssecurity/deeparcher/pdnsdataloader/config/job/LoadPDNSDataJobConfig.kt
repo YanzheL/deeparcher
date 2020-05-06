@@ -109,6 +109,7 @@ class LoadPDNSDataJobConfig {
         val processors = mutableListOf<ItemProcessor<*, *>>()
         processors.add(ItemProcessor<PDnsData.Builder, PDnsData?> { it.build() })
         val converter = PDnsDataToProtoConverter()
+        processors.add(ItemProcessor<PDnsData, PDnsDataProto.PDnsData?> { converter.convert(it) })
         processorConfig.prefilters
             ?.map { filterSpec ->
                 val filter = ProtobufMessagePrefilter<PDnsDataProto.PDnsData>(
@@ -121,7 +122,6 @@ class LoadPDNSDataJobConfig {
                 }
             }
             ?.forEach { processors.add(it) }
-        processors.add(ItemProcessor<PDnsData, PDnsDataProto.PDnsData?> { converter.convert(it) })
         compositeItemProcessor.setDelegates(processors)
         return compositeItemProcessor
     }
