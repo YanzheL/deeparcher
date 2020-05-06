@@ -12,7 +12,8 @@ spring:
       trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     properties:
       security.protocol: SSL
-      ssl.endpoint.identification.algorithm: ""
+      ssl.enabled.protocols: TLSv1.2
+      #      ssl.endpoint.identification.algorithm: ""
       metadata.max.age.ms: 60000
       receive.buffer.bytes: 2097152
       delivery.timeout.ms: 1800000

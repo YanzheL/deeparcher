@@ -50,7 +50,7 @@ spec:
                   name: job-repository-mariadb
                   key: mariadb-password
             - name: JAVA_TOOL_OPTIONS
-              value: -Xms1g -Xmx7g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+              value: -Xms1g -Xmx7g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
             - name: SPRING_TASK_EXECUTION_POOL_CORE_SIZE
               value: '12'
             - name: SPRING_TASK_EXECUTION_POOL_MAX_SIZE

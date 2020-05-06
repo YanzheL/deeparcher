@@ -13,6 +13,7 @@ spring:
     properties:
       security.protocol: SSL
       ssl.endpoint.identification.algorithm: ""
+      ssl.enabled.protocols: TLSv1.2
       metadata.max.age.ms: 60000
       #      max.poll.interval.ms: 10000
       #      session.timeout.ms: 9000

@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels: &labels
-    app.kubernetes.io/name: stream-aggregator
+    app.kubernetes.io/name: stream-graph
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
-  name: stream-aggregator
+  name: stream-graph
   namespace: default
 spec:
   replicas: 1
@@ -43,7 +43,7 @@ spec:
               name: jmx
           env:
             - name: JAVA_TOOL_OPTIONS
-              value: -Xms500m -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+              value: -Xms500m -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
               value: kafka-kafka-bootstrap:9093
             - name: SPRING_KAFKA_SSL_KEY_STORE_TYPE
@@ -53,7 +53,7 @@ spec:
             - name: SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: kafka-user-aggregator
+                  name: kafka-user-graph
                   key: user.password
             - name: SPRING_KAFKA_SSL_TRUST_STORE_TYPE
               value: JKS
@@ -65,11 +65,9 @@ spec:
                   name: truststore
                   key: password
             - name: SPRING_KAFKA_STREAMS_APPLICATION_ID
-              value: stream-aggregator
-            - name: APP_AGGREGATOR_ENABLED
+              value: stream-graph
+            - name: APP_GRAPH_ENABLED
               value: 'true'
-            - name: APP_AGGREGATOR_LOOKUP_TIMEOUT
-              value: '0'
             - name: NUM_STREAM_THREADS
               value: '1'
           resources:
@@ -92,7 +90,7 @@ spec:
       volumes:
         - name: keystores
           secret:
-            secretName: kafka-user-aggregator
+            secretName: kafka-user-graph
             defaultMode: 256
         - name: truststores
           secret:

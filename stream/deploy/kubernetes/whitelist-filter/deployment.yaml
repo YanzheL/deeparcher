@@ -54,7 +54,7 @@ spec:
               name: jmx
           env:
             - name: JAVA_TOOL_OPTIONS
-              value: -Xms500m -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
+              value: -Xms500m -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
             #              value: -Xms500m -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
               value: kafka-kafka-bootstrap:9093
@@ -80,6 +80,8 @@ spec:
               value: stream-whitelist-filter
             - name: APP_WHITELIST_FILTER_ENABLED
               value: 'true'
+            - name: NUM_STREAM_THREADS
+              value: '4'
           resources:
             requests:
               cpu: 100m
