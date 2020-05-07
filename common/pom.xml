@@ -28,6 +28,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>software.amazon.cryptools</groupId>
+            <artifactId>AmazonCorrettoCryptoProvider</artifactId>
+        </dependency>
         <!--        <dependency>-->
         <!--            <groupId>io.confluent</groupId>-->
         <!--            <artifactId>monitoring-interceptors</artifactId>-->

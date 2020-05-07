@@ -40,68 +40,10 @@
                 <version>${kafka.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.confluent</groupId>
-                <artifactId>monitoring-interceptors</artifactId>
-                <version>5.5.0</version>
-                <!--                <exclusions>-->
-                <!--                    <exclusion>-->
-                <!--                        <artifactId>guava</artifactId>-->
-                <!--                        <groupId>com.google.guava</groupId>-->
-                <!--                    </exclusion>-->
-                <!--                    <exclusion>-->
-                <!--                        <artifactId>protobuf-java</artifactId>-->
-                <!--                        <groupId>com.google.protobuf</groupId>-->
-                <!--                    </exclusion>-->
-                <!--                    <exclusion>-->
-                <!--                        <groupId>org.apache.kafka</groupId>-->
-                <!--                        <artifactId>kafka-clients</artifactId>-->
-                <!--                    </exclusion>-->
-                <!--                </exclusions>-->
-            </dependency>
-            <dependency>
-                <groupId>io.confluent</groupId>
-                <artifactId>kafka-protobuf-serializer</artifactId>
-                <version>5.5.0</version>
-                <!--                <exclusions>-->
-                <!--                    <exclusion>-->
-                <!--                        <artifactId>guava</artifactId>-->
-                <!--                        <groupId>com.google.guava</groupId>-->
-                <!--                    </exclusion>-->
-                <!--                    <exclusion>-->
-                <!--                        <artifactId>protobuf-java</artifactId>-->
-                <!--                        <groupId>com.google.protobuf</groupId>-->
-                <!--                    </exclusion>-->
-                <!--                    <exclusion>-->
-                <!--                        <groupId>org.apache.kafka</groupId>-->
-                <!--                        <artifactId>kafka-clients</artifactId>-->
-                <!--                    </exclusion>-->
-                <!--                </exclusions>-->
-            </dependency>
-            <dependency>
-                <groupId>org.jetbrains.kotlinx</groupId>
-                <artifactId>kotlinx-serialization-runtime</artifactId>
-                <version>${kotlin.serialization.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jetbrains.kotlinx</groupId>
-                <artifactId>kotlinx-serialization-protobuf</artifactId>
-                <version>${kotlin.serialization.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-core</artifactId>
                 <version>${kotlinx-coroutines.version}</version>
                 <type>pom</type>
-            </dependency>
-            <dependency>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-                <groupId>org.springframework.boot</groupId>
-            </dependency>
-            <dependency>
-                <artifactId>spring-boot-devtools</artifactId>
-                <groupId>org.springframework.boot</groupId>
-                <optional>true</optional>
-                <scope>runtime</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/dnsjava/dnsjava -->
             <dependency>
@@ -115,18 +57,11 @@
                 <version>${fastjson.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.jetbrains.kotlinx</groupId>
-                <artifactId>atomicfu</artifactId>
-                <version>${atomicfu.version}</version>
-                <scope>provided</scope>
+                <groupId>software.amazon.cryptools</groupId>
+                <artifactId>AmazonCorrettoCryptoProvider</artifactId>
+                <version>[1.0,2.0)</version>
+                <classifier>linux-x86_64</classifier>
             </dependency>
-            <!--            &lt;!&ndash; https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core &ndash;&gt;-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.openjdk.jmh</groupId>-->
-            <!--                <artifactId>jmh-core</artifactId>-->
-            <!--                <version>${jmh.version}</version>-->
-            <!--                <scope>test</scope>-->
-            <!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -151,12 +86,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <groupId>org.springframework.boot</groupId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>software.amazon.cryptools</groupId>
-            <artifactId>AmazonCorrettoCryptoProvider</artifactId>
-            <version>[1.0,2.0)</version>
-            <classifier>linux-x86_64</classifier>
         </dependency>
 
         <!-- TEST SCOPE -->
@@ -210,53 +139,17 @@
                         </args>
                         <compilerPlugins>
                             <plugin>spring</plugin>
-                            <!--                            <plugin>kotlinx-serialization</plugin>-->
                         </compilerPlugins>
                     </configuration>
-                    <!--                    <executions>-->
-                    <!--                        <execution>-->
-                    <!--&lt;!&ndash;                            <id>compile</id>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                            <phase>compile</phase>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                            <goals>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                                <goal>compile</goal>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                            </goals>&ndash;&gt;-->
-                    <!--                            <configuration>-->
-                    <!--                                <output>${project.build.directory}/classes-pre-atomicfu</output>-->
-                    <!--                                &lt;!&ndash; "VH" to use Java 9 VarHandle, "BOTH" to produce multi-version code &ndash;&gt;-->
-                    <!--                                <variant>VH</variant>-->
-                    <!--                            </configuration>-->
-                    <!--                        </execution>-->
-                    <!--                    </executions>-->
                     <dependencies>
                         <dependency>
                             <artifactId>kotlin-maven-allopen</artifactId>
                             <groupId>org.jetbrains.kotlin</groupId>
                             <version>${kotlin.version}</version>
                         </dependency>
-                        <!--                        <dependency>-->
-                        <!--                            <groupId>org.jetbrains.kotlin</groupId>-->
-                        <!--                            <artifactId>kotlin-maven-serialization</artifactId>-->
-                        <!--                            <version>${kotlin.version}</version>-->
-                        <!--                        </dependency>-->
                     </dependencies>
                     <groupId>org.jetbrains.kotlin</groupId>
                 </plugin>
-                <!-- transform classes with AtomicFU plugin -->
-                <!--                <plugin>-->
-                <!--                    <groupId>org.jetbrains.kotlinx</groupId>-->
-                <!--                    <artifactId>atomicfu-maven-plugin</artifactId>-->
-                <!--                    <version>${atomicfu.version}</version>-->
-                <!--                    <executions>-->
-                <!--                        <execution>-->
-                <!--                            <goals>-->
-                <!--                                <goal>transform</goal>-->
-                <!--                            </goals>-->
-                <!--                            <configuration>-->
-                <!--                                <input>${project.build.directory}/classes-pre-atomicfu</input>-->
-                <!--                            </configuration>-->
-                <!--                        </execution>-->
-                <!--                    </executions>-->
-                <!--                </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
