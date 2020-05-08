@@ -120,28 +120,4 @@ class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
     override fun release(decrement: Int): Boolean = buffer.release(decrement)
     override fun retain(): ReferenceCounted = buffer.retain()
     override fun retain(increment: Int): ReferenceCounted = buffer.retain(increment)
-
-    companion object {
-        fun intersectionSize(set1: ByteBuf, set2: ByteBuf, width: Int): Int {
-            if (set1.readableBytes() % width != 0 || set2.readableBytes() % width != 0) {
-                set1.release()
-                set2.release()
-                return -1
-            }
-            var count = 0
-            while (set1.readableBytes() != 0) {
-                val packi = set1.readSlice(width)
-                val lookup = set2.slice()
-                while (lookup.readableBytes() != 0) {
-                    val packj = lookup.readSlice(width)
-                    if (packi.compareTo(packj) == 0) {
-                        count += 1
-                    }
-                }
-            }
-            set1.release()
-            set2.release()
-            return count
-        }
-    }
 }
