@@ -1,80 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>stream</artifactId>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <groupId>org.springframework.boot</groupId>
-      </plugin>
-      <plugin>
-        <artifactId>kotlin-maven-plugin</artifactId>
-        <groupId>org.jetbrains.kotlin</groupId>
-      </plugin>
-      <plugin>
-        <artifactId>jib-maven-plugin</artifactId>
-        <groupId>com.google.cloud.tools</groupId>
-        <configuration>
-          <container>
-            <format>OCI</format>
-            <!--            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
-            <jvmFlags>
-              <jvmFlag>-server</jvmFlag>
-              <jvmFlag>-XX:+UnlockExperimentalVMOptions</jvmFlag>
-              <jvmFlag>-XX:+UseAOT</jvmFlag>
-              <jvmFlag>-Dio.netty.tryReflectionSetAccessible=false</jvmFlag>
-            </jvmFlags>
-            <labels>
-              <label>maintainer="Yanzhe Lee &lt;lee.yanzhe@yanzhe.org&gt;"</label>
-            </labels>
-            <user>1001:1001</user>
-            <volumes>
-              <volume>/data</volume>
-            </volumes>
-            <workingDirectory>/app</workingDirectory>
-          </container>
-          <from>
-            <image>gcr.io/distroless/java:11</image>
-          </from>
-          <to>
-            <image>registry.hitnslab.com/dns-security/deeparcher/stream</image>
-          </to>
-        </configuration>
-      </plugin>
-    </plugins>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-  </build>
-  <dependencies>
-    <dependency>
-      <artifactId>common</artifactId>
-      <groupId>com.hitnslab.dns-security.deeparcher</groupId>
-      <version>0.2.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <artifactId>kafka-streams</artifactId>
-      <groupId>org.apache.kafka</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>kotlinx-coroutines-core</artifactId>
-      <groupId>org.jetbrains.kotlinx</groupId>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/dnsjava/dnsjava -->
-    <dependency>
-      <groupId>dnsjava</groupId>
-      <artifactId>dnsjava</artifactId>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
-    <dependency>
-      <artifactId>caffeine</artifactId>
-      <groupId>com.github.ben-manes.caffeine</groupId>
-    </dependency>
-  </dependencies>
-  <description>Stream</description>
-  <modelVersion>4.0.0</modelVersion>
-  <name>stream</name>
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>stream</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+            </plugin>
+            <plugin>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <groupId>org.jetbrains.kotlin</groupId>
+            </plugin>
+            <plugin>
+                <artifactId>jib-maven-plugin</artifactId>
+                <groupId>com.google.cloud.tools</groupId>
+                <configuration>
+                    <container>
+                        <format>OCI</format>
+                        <!--            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
+                        <jvmFlags>
+                            <jvmFlag>-server</jvmFlag>
+                            <jvmFlag>-XX:+UnlockExperimentalVMOptions</jvmFlag>
+                            <jvmFlag>-XX:+UseAOT</jvmFlag>
+                            <jvmFlag>-Dio.netty.tryReflectionSetAccessible=false</jvmFlag>
+                        </jvmFlags>
+                        <labels>
+                            <label>maintainer="Yanzhe Lee &lt;lee.yanzhe@yanzhe.org&gt;"</label>
+                        </labels>
+                        <user>1001:1001</user>
+                        <volumes>
+                            <volume>/data</volume>
+                        </volumes>
+                        <workingDirectory>/app</workingDirectory>
+                    </container>
+                    <from>
+                        <image>gcr.io/distroless/java:11</image>
+                    </from>
+                    <to>
+                        <image>registry.hitnslab.com/dns-security/deeparcher/stream</image>
+                    </to>
+                </configuration>
+            </plugin>
+        </plugins>
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    </build>
+    <dependencies>
+        <dependency>
+            <artifactId>common</artifactId>
+            <groupId>com.hitnslab.dns-security.deeparcher</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>kafka-streams</artifactId>
+            <groupId>org.apache.kafka</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>kotlinx-coroutines-core</artifactId>
+            <groupId>org.jetbrains.kotlinx</groupId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/dnsjava/dnsjava -->
+        <dependency>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
+        <dependency>
+            <artifactId>caffeine</artifactId>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+        </dependency>
+    </dependencies>
+    <description>Stream</description>
+    <modelVersion>4.0.0</modelVersion>
+    <name>stream</name>
 
     <parent>
         <artifactId>deeparcher-parent</artifactId>
