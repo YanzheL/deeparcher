@@ -21,7 +21,7 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
 
     val ipv4Table = mutableMapOf<String, ByteArray>()
 
-    val cacheSize: Long = 100000L
+    val cacheSize: Long = 1000000L
 
     val ipv4Cache = Caffeine.newBuilder()
         .expireAfterAccess(10, TimeUnit.MINUTES)
