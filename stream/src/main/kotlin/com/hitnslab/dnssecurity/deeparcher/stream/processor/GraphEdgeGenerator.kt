@@ -122,7 +122,7 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
         if (data.isEmpty()) {
             return emptyMap()
         }
-        val dataBuf = Unpooled.wrappedUnmodifiableBuffer(Unpooled.wrappedBuffer(data))
+        val dataBuf = Unpooled.wrappedBuffer(data)
         // Check old data in table.
         val old = table[key]
         // Use cache only if no old data in table or old data is same as current data.
