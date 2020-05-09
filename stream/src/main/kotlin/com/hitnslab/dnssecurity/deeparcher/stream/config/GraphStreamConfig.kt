@@ -1,5 +1,7 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.config
 
+import com.google.common.hash.BloomFilter
+import com.google.common.hash.Funnels
 import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.processor.GraphEdgeGenerator
 import com.hitnslab.dnssecurity.deeparcher.stream.property.GraphProperties
@@ -35,10 +37,24 @@ class GraphStreamConfig : AppStreamConfigurer() {
                 GenericSerde(DomainAssocDetailProtoSerializer::class, DomainAssocDetailProtoDeserializer::class)
             )
         )
-        src
-            .flatMapValues(
-                GraphEdgeGenerator()
+        var sinkSrc = src
+            .flatMapValues(GraphEdgeGenerator.INSTANCE)
+        val outputOpts = properties.output.options
+        val unique = outputOpts.getOrDefault("unique", "false").toBoolean()
+        if (unique) {
+            val filter = BloomFilter.create(
+                Funnels.integerFunnel(),
+                outputOpts.getOrDefault("expectedInsertions", "100000000").toLong(),
+                outputOpts.getOrDefault("fpp", "0.01").toDouble()
             )
+            sinkSrc = sinkSrc.filterNot { _, v ->
+                val hashcode = v.hashCode()
+                val seen = filter.mightContain(hashcode)
+                filter.put(hashcode)
+                return@filterNot seen
+            }
+        }
+        sinkSrc
             .to(
                 properties.output.path,
                 Produced.with(
