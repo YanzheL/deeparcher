@@ -5,9 +5,9 @@ import com.hitnslab.dnssecurity.deeparcher.serde.GenericSerde
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoDeserializer
 import com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer
 import com.hitnslab.dnssecurity.deeparcher.stream.KStreamValuePredicateAdapter
-import com.hitnslab.dnssecurity.deeparcher.stream.WhitelistPredicate
 import com.hitnslab.dnssecurity.deeparcher.stream.property.WhitelistFilterProperties
-import com.hitnslab.dnssecurity.deeparcher.util.ProtobufMessagePrefilter
+import com.hitnslab.dnssecurity.deeparcher.util.DomainWhitelistPredicate
+import com.hitnslab.dnssecurity.deeparcher.util.ProtobufMessagePredicate
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
@@ -36,7 +36,7 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
         properties.prefilters?.forEach {
             prefilters.add(
                 KStreamValuePredicateAdapter(
-                    ProtobufMessagePrefilter(
+                    ProtobufMessagePredicate(
                         it.field,
                         Regex(it.pattern),
                         it.allow
@@ -55,7 +55,7 @@ class WhitelistFilterStreamConfig : AppStreamConfigurer() {
         prefilters.forEach {
             srcPrefiltered = src.filter(it)
         }
-        val whitelistPredicate = WhitelistPredicate()
+        val whitelistPredicate = DomainWhitelistPredicate()
         properties.whitelists.forEach {
             when (it.type) {
                 "file" -> whitelistPredicate.fromResource(UrlResource(it.path))

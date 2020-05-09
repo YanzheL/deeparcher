@@ -1,11 +1,11 @@
-package com.hitnslab.dnssecurity.deeparcher.stream
+package com.hitnslab.dnssecurity.deeparcher.util
 
 import com.google.common.net.InternetDomainName
 import mu.KotlinLogging
 import org.springframework.core.io.Resource
 import java.util.function.Predicate
 
-class WhitelistPredicate : Predicate<String> {
+class DomainWhitelistPredicate : Predicate<String> {
 
     private val logger = KotlinLogging.logger {}
 
@@ -36,7 +36,7 @@ class WhitelistPredicate : Predicate<String> {
         }
     }
 
-    fun fromResource(resource: Resource): WhitelistPredicate {
+    fun fromResource(resource: Resource): DomainWhitelistPredicate {
         resource.inputStream
             .bufferedReader()
             .use { rd ->
@@ -51,12 +51,12 @@ class WhitelistPredicate : Predicate<String> {
         return this
     }
 
-    fun fromRegex(pattern: String): WhitelistPredicate {
+    fun fromRegex(pattern: String): DomainWhitelistPredicate {
         patterns.add(Regex(pattern))
         return this
     }
 
-    fun fromFQDN(fqdn: String): WhitelistPredicate {
+    fun fromFQDN(fqdn: String): DomainWhitelistPredicate {
         val dn = InternetDomainName.from(fqdn)
         var key = dn.toString()
         when {

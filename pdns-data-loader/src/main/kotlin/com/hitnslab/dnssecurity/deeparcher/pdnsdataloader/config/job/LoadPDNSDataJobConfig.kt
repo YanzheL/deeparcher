@@ -8,7 +8,7 @@ import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.batch.PDNSKafkaItemWri
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.config.PDnsJobProperties
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.error.PDNSParseException
 import com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.PDNSLogFieldSetMapper
-import com.hitnslab.dnssecurity.deeparcher.util.ProtobufMessagePrefilter
+import com.hitnslab.dnssecurity.deeparcher.util.ProtobufMessagePredicate
 import mu.KotlinLogging
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
@@ -112,7 +112,7 @@ class LoadPDNSDataJobConfig {
         processors.add(ItemProcessor<PDnsData, PDnsDataProto.PDnsData?> { converter.convert(it) })
         processorConfig.prefilters
             ?.map { filterSpec ->
-                val filter = ProtobufMessagePrefilter<PDnsDataProto.PDnsData>(
+                val filter = ProtobufMessagePredicate<PDnsDataProto.PDnsData>(
                     filterSpec.field,
                     Regex(filterSpec.pattern),
                     filterSpec.allow

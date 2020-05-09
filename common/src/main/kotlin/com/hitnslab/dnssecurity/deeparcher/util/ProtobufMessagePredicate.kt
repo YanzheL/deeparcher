@@ -5,7 +5,7 @@ import com.google.protobuf.Message
 import java.security.InvalidParameterException
 import java.util.function.Predicate
 
-class ProtobufMessagePrefilter<T : Message>(
+class ProtobufMessagePredicate<T : Message>(
     val field: String,
     val regex: Regex,
     val allow: Boolean
