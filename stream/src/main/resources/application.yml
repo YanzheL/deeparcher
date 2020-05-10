@@ -40,6 +40,8 @@ app:
     output:
       type: topic
       path: graph.edge
+      options:
+        unique: true
   aggregator:
     enabled: false
     lookup-timeout: 100
