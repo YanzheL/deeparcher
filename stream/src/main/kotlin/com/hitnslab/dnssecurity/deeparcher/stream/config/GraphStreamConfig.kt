@@ -38,7 +38,7 @@ class GraphStreamConfig : AppStreamConfigurer() {
             )
         )
         var sinkSrc = src
-            .flatMapValues(GraphEdgeGenerator.INSTANCE)
+            .flatMapValues(GraphEdgeGenerator.getInstance())
         val outputOpts = properties.output.options
         val unique = outputOpts.getOrDefault("unique", "false").toBoolean()
         if (unique) {

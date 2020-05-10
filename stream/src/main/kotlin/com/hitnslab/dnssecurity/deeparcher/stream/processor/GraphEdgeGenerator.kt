@@ -13,45 +13,55 @@ import org.apache.kafka.streams.kstream.ValueMapper
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
+/**
+ * Generate weighed graph edges based on aggregated [DomainAssocDetail] inputs.
+ *
+ * Inputs are regarded as [KTable][org.apache.kafka.streams.kstream.KTable] changelog, and in-memory tables will be re-constructed based on that changelog.
+ * For each input, it outputs all edges with type [GraphAssocEdgeUpdate].
+ * The edge weight represents the intersected items of IPv4/IPv6/CNAME sets between current input and a related row in table (zero-weighted edges are omitted).
+ * Tables are scanned in parallel, and results are cached internally.
+ * These in-memory tables will not persist between restarts, which means this is a non-persistent stateful operation.
+ *
+ * This is a thread-unsafe singleton class, because the order of [DomainAssocDetail] inputs should be maintained.
+ *
+ * Call [GraphEdgeGenerator.getInstance] static method to get a singleton instance.
+ *
+ * TODO: Implement [ValueTransformer][org.apache.kafka.streams.kstream.ValueTransformer] interface instead of [ValueMapper]
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>> {
 
-    companion object {
-        val INSTANCE: GraphEdgeGenerator by lazy { GraphEdgeGenerator() }
-    }
+    private val cacheLimit: Long = 1000000L
 
-    val ipv4Table = mutableMapOf<String, ByteArray>()
+    private val ipv4Table = mutableMapOf<String, ByteArray>()
 
-    val cacheSize: Long = 1000000L
-
-    val ipv4Cache = Caffeine.newBuilder()
+    private val ipv4Cache = Caffeine.newBuilder()
         .expireAfterAccess(10, TimeUnit.MINUTES)
-        .maximumSize(cacheSize)
+        .maximumSize(cacheLimit)
         .build<ByteBuf, MutableMap<String, Int>>()
 
-    val ipv6Table = mutableMapOf<String, ByteArray>()
+    private val ipv6Table = mutableMapOf<String, ByteArray>()
 
-    val ipv6Cache = Caffeine.newBuilder()
+    private val ipv6Cache = Caffeine.newBuilder()
         .expireAfterAccess(10, TimeUnit.MINUTES)
-        .maximumSize(cacheSize)
+        .maximumSize(cacheLimit)
         .build<ByteBuf, MutableMap<String, Int>>()
 
-    val cnameTable = mutableMapOf<String, Collection<String>>()
+    private val cnameTable = mutableMapOf<String, Collection<String>>()
 
-//    val cnameCache = Caffeine.newBuilder()
+//    private val cnameCache = Caffeine.newBuilder()
+//        .expireAfterAccess(10, TimeUnit.MINUTES)
 //        .maximumSize(cacheSize)
 //        .build<String, Collection<String>>()
 
-    private val logger = KotlinLogging.logger {}
-
     override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate> {
         val result = mutableMapOf<String, Int>()
-        val ipv4Bytes = value.ipv4Addrs.toByteArray()
-        val ipv6Bytes = value.ipv6Addrs.toByteArray()
-        selectBytesIntersectedNeighbors(value.fqdn, ipv4Bytes, 4, ipv4Table, ipv4Cache)
+        selectBytesIntersectedKeys(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4Table, ipv4Cache)
             .forEach { (k, v) -> result.merge(k, v) { v1, v2 -> v1 + v2 } }
-        selectBytesIntersectedNeighbors(value.fqdn, ipv6Bytes, 16, ipv6Table, ipv6Cache)
+        selectBytesIntersectedKeys(value.fqdn, value.ipv6Addrs.toByteArray(), 16, ipv6Table, ipv6Cache)
             .forEach { (k, v) -> result.merge(k, v) { v1, v2 -> v1 + v2 } }
-        selectStringsIntersectedNeighbors(value.fqdn, value.cnamesList, cnameTable)
+        selectStringsIntersectedKeys(value.fqdn, value.cnamesList, cnameTable)
             .forEach { (k, v) -> result.merge(k, v) { v1, v2 -> v1 + v2 } }
         return result.map { (k, v) ->
             // Make sure the natural order of fqdn1 < fqdn2
@@ -67,6 +77,7 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
 
     /**
      * This function is similar to the following SQL statement.
+     * TODO: Support cached results.
      *
      * SELECT [table].key, [data].intersectionSize([table].value) AS ct
      * FROM [table]
@@ -77,7 +88,7 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
      * @param [table] the table to scan.
      * @return the select result.
      */
-    private fun selectStringsIntersectedNeighbors(
+    private fun selectStringsIntersectedKeys(
         key: String,
         data: Collection<String>,
         table: MutableMap<String, Collection<String>>
@@ -112,7 +123,7 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
      * @param [cache] cached recent results. The cache key should be a `ByteBuf` instance which contains one backing array.
      * @return the select result.
      */
-    private fun selectBytesIntersectedNeighbors(
+    private fun selectBytesIntersectedKeys(
         key: String,
         data: ByteArray,
         wsize: Int,
@@ -127,12 +138,12 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
         val old = table[key]
         // Use cache only if no old data in table or old data is same as current data.
         if (old == null || data.diffSize(old, wsize) == 0) {
-            if (old == null) {
-                // Put current data in table.
-                table[key] = data
-            }
             val cached = cache.getIfPresent(dataBuf)
             if (cached != null) {
+                if (old == null) {
+                    // Put current data in table, otherwise the data will be lost.
+                    table[key] = data
+                }
                 return cached
             }
         }
@@ -170,5 +181,20 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
                 }
         }
         return result
+    }
+
+    companion object {
+
+        private lateinit var INSTANCE: GraphEdgeGenerator
+
+        private val logger = KotlinLogging.logger {}
+
+        @Synchronized
+        fun getInstance(): GraphEdgeGenerator {
+            if (!::INSTANCE.isInitialized) {
+                INSTANCE = GraphEdgeGenerator()
+            }
+            return INSTANCE
+        }
     }
 }
