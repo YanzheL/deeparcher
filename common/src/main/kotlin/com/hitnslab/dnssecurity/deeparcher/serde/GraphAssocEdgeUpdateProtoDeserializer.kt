@@ -4,5 +4,6 @@ import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpd
 import org.apache.kafka.common.serialization.Deserializer
 
 class GraphAssocEdgeUpdateProtoDeserializer : Deserializer<GraphAssocEdgeUpdate> {
-    override fun deserialize(topic: String, data: ByteArray) = GraphAssocEdgeUpdate.parseFrom(data)
+    override fun deserialize(topic: String, data: ByteArray): GraphAssocEdgeUpdate =
+        GraphAssocEdgeUpdate.parseFrom(data)
 }

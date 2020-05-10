@@ -7,7 +7,7 @@ import org.apache.kafka.streams.kstream.Predicate as KPredicate
 
 class BloomFilterKStreamPredicate<K, V>(funnel: Funnel<K>, expectedInsertions: Long, fpp: Double) : KPredicate<K, V> {
 
-    val filter = BloomFilter.create(funnel, expectedInsertions, fpp)
+    val filter: BloomFilter<K> = BloomFilter.create(funnel, expectedInsertions, fpp)
 
     override fun test(key: K, value: V): Boolean {
         val seen = filter.mightContain(key)
