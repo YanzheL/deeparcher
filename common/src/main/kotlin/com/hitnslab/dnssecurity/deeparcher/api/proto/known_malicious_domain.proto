@@ -1,0 +1,97 @@
+syntax = "proto3";
+package com.hitnslab.dnssecurity.deeparcher.api.proto;
+option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated";
+option java_outer_classname = "KnownMaliciousDomainProto";
+option optimize_for = SPEED;
+option cc_enable_arenas = true;
+
+message KnownMaliciousDomain {
+
+  /* The UTC timestamp when this record is obtained from vendor, provided by message producer.
+   * NOT NULL. */
+  int64 timestamp = 1;
+
+  /* Vendor source URI, provided by message producer.
+   * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
+   * NOT NULL. */
+  string source = 2;
+
+  /* Method of obtaining this record, provided by message producer.
+   * Should be UPPER CASE, delimited by underscore(_).
+   * NOT NULL */
+  string method = 3;
+
+  /* Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
+   * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+   * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
+   * NOT NULL. */
+  string fqdn = 4;
+
+  /* URL of this malicious domain, provided by vendor.
+   * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
+   * Some vendors do not provide the service URL of this malicious domain. So this field is
+   * NULLABLE */
+  string url = 5;
+
+  /* The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
+   * NULLABLE, use 0 for NULL. */
+  int64 created_at = 6;
+
+  /* The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
+   * NULLABLE, use 0 for NULL. */
+  int64 updated_at = 7;
+
+  /* Title of backend service, provided by vendor.
+   * If this is a HTTP service, then backend service title can be a website title.
+   * NULLABLE. */
+  string service_title = 8;
+
+  /* IPv4 addresses of this domain, provided by vendor or message producer.
+   * If vendor does not provide this value, message producer should resolve it.
+   * IP addresses are represented by concatenated big endian bytes.
+   * The length of this field should be multiple of 4.
+   * NULLABLE. */
+  bytes ipv4_addrs = 9;
+
+  /* IPv6 addresses of this domain, provided by vendor or message producer.
+   * If vendor does not provide this value, message producer should resolve it.
+   * IP addresses are represented by concatenated big endian bytes.
+   * The length of this field should be multiple of 16.
+   * NULLABLE. */
+  bytes ipv6_addrs = 10;
+
+  /* CNAMEs of this domain, provided by vendor or message producer.
+   * If vendor does not provide this value, message producer should resolve it.
+   * NULLABLE. */
+  repeated string cnames = 11;
+
+  /* Malicious type, provided by vendor.
+   * Should be UPPER CASE, delimited by underscore(_).
+   * NULLABLE. */
+  string type = 12;
+
+  /* Autonomous System Number (ASN), provided by vendor.
+   * NULLABLE, use 0 for NULL. */
+  int32 asn = 13;
+
+  /* Registrar of this domain, provided by vendor.
+   * NULLABLE. */
+  string registrar = 14;
+
+  /* Additional information of this domain, provided by vendor or message producer.
+   * NULLABLE. */
+  string remark = 15;
+
+  /* Status of this domain, provided by vendor or message producer.
+   * NULLABLE, */
+  Status status = 16;
+
+  /* Generic Status type, represents the current status of this domain. */
+  enum Status {
+    UNKNOWN = 0;
+    ACTIVE = 1;
+    HOLD = 2;
+    DEAD = 3;
+    OTHER = 4;
+  }
+}
