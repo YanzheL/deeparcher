@@ -2,8 +2,8 @@ package com.hitnslab.dnssecurity.deeparcher.stream.processor
 
 import com.github.benmanes.caffeine.cache.Cache
 import com.github.benmanes.caffeine.cache.Caffeine
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto.DomainAssocDetail
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.DomainDnsDetailProto.DomainDnsDetail
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
 import com.hitnslab.dnssecurity.deeparcher.util.diffSize
 import com.hitnslab.dnssecurity.deeparcher.util.intersectionSize
 import io.netty.buffer.ByteBuf
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
 /**
- * Generate weighed graph edges based on aggregated [DomainAssocDetail] inputs.
+ * Generate weighed graph edges based on aggregated [DomainDnsDetail] inputs.
  *
  * Inputs are regarded as [KTable][org.apache.kafka.streams.kstream.KTable] changelog, and in-memory tables will be re-constructed based on that changelog.
  * For each input, it outputs all edges with type [GraphAssocEdgeUpdate].
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
  * Tables are scanned in parallel, and results are cached internally.
  * These in-memory tables will not persist between restarts, which means this is a non-persistent stateful operation.
  *
- * This is a thread-unsafe singleton class, because the order of [DomainAssocDetail] inputs should be maintained.
+ * This is a thread-unsafe singleton class, because the order of [DomainDnsDetail] inputs should be maintained.
  *
  * Call [GraphEdgeGenerator.getInstance] static method to get a singleton instance.
  *
@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit
  *
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
-class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, Iterable<GraphAssocEdgeUpdate>> {
+class GraphEdgeGenerator private constructor() : ValueMapper<DomainDnsDetail, Iterable<GraphAssocEdgeUpdate>> {
 
     private val cacheLimit: Long = 1000000L
 
@@ -55,7 +55,7 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainAssocDetail, 
 //        .maximumSize(cacheSize)
 //        .build<String, Collection<String>>()
 
-    override fun apply(value: DomainAssocDetail): Iterable<GraphAssocEdgeUpdate> {
+    override fun apply(value: DomainDnsDetail): Iterable<GraphAssocEdgeUpdate> {
         val result = mutableMapOf<String, Int>()
         selectBytesIntersectedKeys(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4Table, ipv4Cache)
             .forEach { (k, v) -> result.merge(k, v) { v1, v2 -> v1 + v2 } }

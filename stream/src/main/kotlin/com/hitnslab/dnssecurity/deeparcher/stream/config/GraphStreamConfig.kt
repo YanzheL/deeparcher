@@ -36,7 +36,7 @@ class GraphStreamConfig : AppStreamConfigurer() {
             properties.input.path,
             Consumed.with(
                 Serdes.String(),
-                GenericSerde(DomainAssocDetailProtoSerializer::class, DomainAssocDetailProtoDeserializer::class)
+                GenericSerde(DomainDnsDetailProtoSerializer::class, DomainDnsDetailProtoDeserializer::class)
             )
         )
         var sinkSrc = src

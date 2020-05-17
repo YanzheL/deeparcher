@@ -1,19 +1,19 @@
 package com.hitnslab.dnssecurity.deeparcher.converter
 
 import com.google.protobuf.ByteString
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.DomainAssocDetailProto
-import com.hitnslab.dnssecurity.deeparcher.model.DomainAssocDetail
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.DomainDnsDetailProto
+import com.hitnslab.dnssecurity.deeparcher.model.DomainDnsDetail
 import io.netty.buffer.PooledByteBufAllocator
 import org.springframework.core.convert.converter.Converter
 
 /**
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
-class DomainAssocDetailToProtoConverter : Converter<DomainAssocDetail, DomainAssocDetailProto.DomainAssocDetail> {
+class DomainDnsDetailToProtoConverter : Converter<DomainDnsDetail, DomainDnsDetailProto.DomainDnsDetail> {
     private val allocator = PooledByteBufAllocator.DEFAULT
 
-    override fun convert(source: DomainAssocDetail): DomainAssocDetailProto.DomainAssocDetail {
-        val builder = DomainAssocDetailProto.DomainAssocDetail
+    override fun convert(source: DomainDnsDetail): DomainDnsDetailProto.DomainDnsDetail {
+        val builder = DomainDnsDetailProto.DomainDnsDetail
             .newBuilder()
             .setDomain(source.topPrivateDomain)
             .setFqdn(source.domain)

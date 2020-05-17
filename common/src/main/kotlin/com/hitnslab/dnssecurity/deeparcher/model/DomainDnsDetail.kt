@@ -7,9 +7,9 @@ import java.net.InetAddress
  */
 @Deprecated(
     "This data class is deprecated, " +
-            "please use the generated protobuf class <DomainAssocDetailProto.DomainAssocDetail> directly."
+            "please use the generated protobuf class <DomainDnsDetailProto.DomainDnsDetail> directly."
 )
-class DomainAssocDetail(
+class DomainDnsDetail(
     val domain: String,
     val topPrivateDomain: String
 ) {
@@ -50,7 +50,7 @@ class DomainAssocDetail(
 //            }
 //        }
 //
-//        fun from(value: DomainAssocDetail) = apply {
+//        fun from(value: DomainDnsDetail) = apply {
 //            domain = value.domain
 //            topPrivateDomain = value.topPrivateDomain
 //            value.ipv4Addresses?.toMutableSet()
@@ -71,7 +71,7 @@ class DomainAssocDetail(
 //            ipv6Bytes.add(value)
 //        }
 //
-//        fun build(): DomainAssocDetail? {
+//        fun build(): DomainDnsDetail? {
 //            if (domain == null) {
 //                error = PDNSInvalidFieldException("domain cannot be null")
 //                return null

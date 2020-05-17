@@ -1,6 +1,6 @@
 package com.hitnslab.dnssecurity.deeparcher.serde
 
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
 import org.apache.kafka.common.serialization.Deserializer
 
 /**
