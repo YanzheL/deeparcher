@@ -12,7 +12,11 @@ import org.springframework.core.io.FileSystemResource
 import java.io.IOException
 import java.nio.file.Path
 
-
+/**
+ * Hash given file with murmur3_128 algorithm. Hashcode will be write back to the same location with `.hash` suffix.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class FileHashTasklet : Tasklet {
 
     private val logger = KotlinLogging.logger {}

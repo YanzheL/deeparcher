@@ -5,6 +5,9 @@ import org.apache.kafka.common.serialization.Serde
 import org.apache.kafka.common.serialization.Serializer
 import kotlin.reflect.KClass
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class JsonSerde<T : Any>(val clz: KClass<T>) : Serde<T> {
 
     override fun serializer(): Serializer<T> {

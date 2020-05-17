@@ -22,7 +22,11 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory
 import org.springframework.kafka.core.ProducerFactory
 import java.util.function.Supplier
 
-
+/**
+ * Parent scope. Define submodules and general configs.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Configuration
 @EnableBatchProcessing(modular = true)
 class SpringBatchConfig : DefaultBatchConfigurer() {

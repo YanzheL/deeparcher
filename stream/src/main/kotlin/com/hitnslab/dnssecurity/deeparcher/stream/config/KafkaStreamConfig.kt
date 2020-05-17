@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.annotation.EnableKafkaStreams
 import org.springframework.kafka.config.StreamsBuilderFactoryBeanCustomizer
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Configuration
 @EnableKafkaStreams
 @EnableConfigurationProperties(AppProperties::class)

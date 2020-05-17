@@ -34,6 +34,11 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.transaction.CannotCreateTransactionException
 import java.nio.file.Path
 
+/**
+ * Config LOAD_PDNS_DATA job.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Configuration
 @EnableConfigurationProperties(PDnsJobProperties::class)
 class LoadPDNSDataJobConfig {

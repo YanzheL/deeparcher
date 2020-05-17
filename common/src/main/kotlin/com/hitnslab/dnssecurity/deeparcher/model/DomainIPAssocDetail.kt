@@ -2,6 +2,9 @@ package com.hitnslab.dnssecurity.deeparcher.model
 
 import java.net.InetAddress
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Deprecated(
     "This data class is deprecated, " +
             "please use the generated protobuf class <DomainAssocDetailProto.DomainAssocDetail> directly."

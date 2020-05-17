@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf
 
 /**
  * Returns the intersection size of two collections. This function assumes elements in these collections are unique.
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun <E> Collection<E>.intersectionSize(other: Collection<E>): Int {
     var count = 0
@@ -18,6 +19,7 @@ fun <E> Collection<E>.intersectionSize(other: Collection<E>): Int {
  *
  * @param [wsize] size of comparison window, default is `1`.
  * @return the intersection size if no error occurred, `-1` if the sizes of two arrays are not multiple of `wsize`.
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun ByteArray.intersectionSize(other: ByteArray, wsize: Int = 1): Int {
     val size1 = this.size
@@ -48,6 +50,7 @@ fun ByteArray.intersectionSize(other: ByteArray, wsize: Int = 1): Int {
  *
  * @param [wsize] size of comparison window, default is `1`.
  * @return the difference set (this - other)
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun ByteArray.diff(other: ByteArray, wsize: Int = 1): ByteArray {
     val size1 = this.size
@@ -88,6 +91,7 @@ fun ByteArray.diff(other: ByteArray, wsize: Int = 1): ByteArray {
  *
  * @param [wsize] size of comparison window, default is `1`.
  * @return the size of difference set (this - other) if no error occurred, `-1` if the sizes of two arrays are not multiple of `wsize`.
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun ByteArray.diffSize(other: ByteArray, wsize: Int = 1): Int {
     val size1 = this.size
@@ -123,6 +127,7 @@ fun ByteArray.diffSize(other: ByteArray, wsize: Int = 1): Int {
  *
  * @param [wsize] size of comparison window, default is `1`.
  * @return the intersection size if no error occurred, `-1` if the sizes of two buffers are not multiple of `wsize`.
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun ByteBuf.intersectionSize(other: ByteBuf, wsize: Int = 1): Int {
     if (this.readableBytes() % wsize != 0 || other.readableBytes() % wsize != 0) {

@@ -5,6 +5,11 @@ import com.amazon.corretto.crypto.provider.SelfTestStatus
 import mu.KotlinLogging
 import javax.crypto.Cipher
 
+/**
+ * Check whether [AmazonCorrettoCryptoProvider] is loaded and healthy.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 fun checkCorrettoCryptoProvider(): Boolean {
     val logger = KotlinLogging.logger {}
     val provider = Cipher.getInstance("AES/GCM/NoPadding").provider.name

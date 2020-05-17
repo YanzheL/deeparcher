@@ -17,6 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.core.task.SyncTaskExecutor
 
+/**
+ * Config FILE_HASH job.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class FileHashJobConfig {
 
     private val logger = KotlinLogging.logger {}

@@ -1,7 +1,8 @@
 package com.hitnslab.dnssecurity.deeparcher.model
 
 /**
- * See [DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)
+ * @see [DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 enum class DnsQueryType(val value: Int) {
     A(1),

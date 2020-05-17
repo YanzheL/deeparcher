@@ -24,7 +24,9 @@ import org.xbill.DNS.*
 import java.net.InetAddress
 import java.time.Duration
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Configuration
 @EnableConfigurationProperties(AggregatorProperties::class)
 //@ConditionalOnBean(AggregatorProperties::class)

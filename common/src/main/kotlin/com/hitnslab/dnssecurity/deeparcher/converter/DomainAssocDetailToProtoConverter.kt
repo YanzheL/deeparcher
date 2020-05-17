@@ -6,6 +6,9 @@ import com.hitnslab.dnssecurity.deeparcher.model.DomainAssocDetail
 import io.netty.buffer.PooledByteBufAllocator
 import org.springframework.core.convert.converter.Converter
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class DomainAssocDetailToProtoConverter : Converter<DomainAssocDetail, DomainAssocDetailProto.DomainAssocDetail> {
     private val allocator = PooledByteBufAllocator.DEFAULT
 

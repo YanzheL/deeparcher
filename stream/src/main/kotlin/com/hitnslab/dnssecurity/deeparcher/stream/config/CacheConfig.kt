@@ -9,6 +9,9 @@ import java.io.File
 import java.io.FileWriter
 import java.io.PrintWriter
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Configuration
 class CacheConfig {
 
@@ -17,13 +20,13 @@ class CacheConfig {
     @Bean
     fun fileWriterCache(): LoadingCache<String, PrintWriter> {
         return Caffeine.newBuilder()
-                .maximumSize(100)
-                .removalListener<String, PrintWriter> { _, v, cause ->
-                    v?.close()
-                    logger.info { "Writer-Cache evicted <$v> for cause <$cause>" }
-                }
-                .build {
-                    PrintWriter(FileWriter(File(it), true), true)
-                }
+            .maximumSize(100)
+            .removalListener<String, PrintWriter> { _, v, cause ->
+                v?.close()
+                logger.info { "Writer-Cache evicted <$v> for cause <$cause>" }
+            }
+            .build {
+                PrintWriter(FileWriter(File(it), true), true)
+            }
     }
 }

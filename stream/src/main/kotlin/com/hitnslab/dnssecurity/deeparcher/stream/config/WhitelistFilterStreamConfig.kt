@@ -20,7 +20,9 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.UrlResource
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Configuration
 @EnableConfigurationProperties(WhitelistFilterProperties::class)
 @ConditionalOnProperty(prefix = "app.whitelist-filter", name = ["enabled"], havingValue = "true")

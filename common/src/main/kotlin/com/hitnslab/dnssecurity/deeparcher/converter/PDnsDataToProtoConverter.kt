@@ -8,7 +8,9 @@ import org.springframework.core.convert.converter.Converter
 import java.net.Inet4Address
 import java.net.Inet6Address
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class PDnsDataToProtoConverter : Converter<PDnsData, PDnsDataProto.PDnsData> {
 
     private val allocator = PooledByteBufAllocator.DEFAULT

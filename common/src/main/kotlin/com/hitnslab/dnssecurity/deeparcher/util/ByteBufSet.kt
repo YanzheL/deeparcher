@@ -6,7 +6,9 @@ import io.netty.buffer.PooledByteBufAllocator
 import io.netty.buffer.Unpooled
 import io.netty.util.ReferenceCounted
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class ByteBufSet : MutableSet<ByteBuf>, ReferenceCounted {
     // From Set
     override val size: Int

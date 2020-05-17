@@ -18,6 +18,11 @@ import org.springframework.stereotype.Component
 import org.springframework.util.StringUtils
 import java.util.*
 
+/**
+ * Actual entry point for this spring batch application.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @Component
 class CustomCommandLineRunner : CommandLineRunner, ApplicationEventPublisherAware {
 

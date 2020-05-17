@@ -15,7 +15,9 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 data class PDnsData(
     val queryTime: Instant,
     val domain: String,

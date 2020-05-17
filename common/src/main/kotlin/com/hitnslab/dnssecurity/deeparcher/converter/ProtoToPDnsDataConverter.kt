@@ -7,6 +7,9 @@ import io.netty.buffer.Unpooled
 import org.springframework.core.convert.converter.Converter
 import java.net.InetAddress
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class ProtoToPDnsDataConverter : Converter<PDnsDataProto.PDnsData, PDnsData> {
     override fun convert(parsed: PDnsDataProto.PDnsData): PDnsData {
         val builder = PDnsData.Builder()

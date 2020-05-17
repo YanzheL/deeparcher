@@ -6,9 +6,13 @@ import org.apache.kafka.common.serialization.Serializer
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
-class GenericSerde
-<T, ST : Serializer<T>, DT : Deserializer<T>>
-(val serializer: KClass<ST>, val deserializer: KClass<DT>) : Serde<T> {
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
+class GenericSerde<T, ST : Serializer<T>, DT : Deserializer<T>>(
+    val serializer: KClass<ST>,
+    val deserializer: KClass<DT>
+) : Serde<T> {
 
     override fun serializer(): Serializer<T> {
         return serializer.primaryConstructor!!.call()

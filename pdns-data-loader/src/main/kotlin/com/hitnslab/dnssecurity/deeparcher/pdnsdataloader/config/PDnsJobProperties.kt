@@ -5,6 +5,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.transaction.PlatformTransactionManager
 
+/**
+ * Job properties definition.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 @ConstructorBinding
 @ConfigurationProperties(prefix = "app.job.pdns")
 class PDnsJobProperties(

@@ -8,6 +8,11 @@ import org.springframework.kafka.support.SendResult
 import org.springframework.util.concurrent.ListenableFutureCallback
 import java.util.concurrent.atomic.AtomicInteger
 
+/**
+ * Write PDnsData protobuf object to kafka.
+ *
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class PDNSKafkaItemWriter(val kafkaTemplate: KafkaTemplate<String, PDnsData>) : ItemWriter<PDnsData> {
 
     private val logger = KotlinLogging.logger {}

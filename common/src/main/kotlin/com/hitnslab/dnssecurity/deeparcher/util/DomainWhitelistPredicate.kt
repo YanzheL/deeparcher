@@ -5,12 +5,15 @@ import mu.KotlinLogging
 import org.springframework.core.io.Resource
 import java.util.function.Predicate
 
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class DomainWhitelistPredicate : Predicate<String> {
 
     private val logger = KotlinLogging.logger {}
 
     /**
-     * @param whitelist contains top private domains or public suffixes constructed from whitelist resource file
+     * contains top private domains or public suffixes constructed from whitelist resource file
      */
     private val whitelist = mutableSetOf<String>()
 

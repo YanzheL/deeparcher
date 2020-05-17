@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import java.io.PrintWriter
 import java.nio.charset.Charset
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 open class AppStreamConfigurer {
 
     @Autowired

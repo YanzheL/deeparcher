@@ -10,6 +10,7 @@ import java.net.InetAddress
  * @param [bytesIn] all bytes that represents multiple IP addresses, big endian.
  * @param [width] `4` for IPv4, `16` for IPv6
  * @param [ipOut] output collection
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun parseIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableCollection<InetAddress>) {
     val size = bytesIn.readableBytes()
@@ -32,6 +33,7 @@ fun parseIpFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableCollection<Inet
  * @param [bytesIn] input bytes
  * @param [width] pack width, should be 1, 2, 4 or multiple of 8
  * @param [ipOut] output collection
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun <R : Number> packIntegerFromBytes(bytesIn: ByteBuf, width: Int, ipOut: MutableList<R>) {
     val size = bytesIn.readableBytes()
@@ -56,6 +58,7 @@ fun <R : Number> packIntegerFromBytes(bytesIn: ByteBuf, width: Int, ipOut: Mutab
  * Union two sets of bytes with specified window width
  *
  * @return `null` if set1 contains set2 else the union of two sets
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 fun bytesSetUnion(set1: ByteBuf, set2: ByteBuf, width: Int): ByteBuf? {
     val bufSet = ByteBufSet(set1)

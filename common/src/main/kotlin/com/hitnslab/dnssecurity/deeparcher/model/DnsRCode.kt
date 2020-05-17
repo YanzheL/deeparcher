@@ -1,7 +1,8 @@
 package com.hitnslab.dnssecurity.deeparcher.model
 
 /**
- * See [DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)
+ * @see [DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 enum class DnsRCode(val value: Int) {
     NOERROR(0),
@@ -18,6 +19,6 @@ enum class DnsRCode(val value: Int) {
     DSOTYPENI(11);
 
     companion object {
-        fun fromInt(value: Int) = DnsRCode.values().first { it.value == value }
+        fun fromInt(value: Int) = values().first { it.value == value }
     }
 }

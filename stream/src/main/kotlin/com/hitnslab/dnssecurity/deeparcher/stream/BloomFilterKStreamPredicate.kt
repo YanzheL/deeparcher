@@ -4,7 +4,9 @@ import com.google.common.hash.BloomFilter
 import com.google.common.hash.Funnel
 import org.apache.kafka.streams.kstream.Predicate as KPredicate
 
-
+/**
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
 class BloomFilterKStreamPredicate<K, V>(funnel: Funnel<K>, expectedInsertions: Long, fpp: Double) : KPredicate<K, V> {
 
     val filter: BloomFilter<K> = BloomFilter.create(funnel, expectedInsertions, fpp)
