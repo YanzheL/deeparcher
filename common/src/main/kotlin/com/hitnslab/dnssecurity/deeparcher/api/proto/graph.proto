@@ -1,0 +1,67 @@
+syntax = "proto3";
+package com.hitnslab.dnssecurity.deeparcher.api.proto;
+option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated";
+option java_outer_classname = "GraphProto";
+option optimize_for = SPEED;
+option cc_enable_arenas = true;
+import "com/hitnslab/dnssecurity/deeparcher/api/proto/matrix.proto";
+import "google/protobuf/any.proto";
+
+message Graph {
+
+  /* Graph ID.
+   * This should be the offset of graph update event stream.
+   * NOT NULL. */
+  int64 id = 1;
+
+  /* Number of nodes in graph.
+   * NOT NULL. */
+  int64 nodes = 2;
+
+  /* Number of edges in graph.
+   * NOT NULL. */
+  int64 edges = 3;
+
+  /* Adjacent matrix, represented by COO/CSR/CSC/DENSE matrix.
+   * Usually, the dimension of adjacent matrix should be (nodes,nodes).
+   * If graph edge has multiple weights, then the adjacent matrix can have a depth, which means it can be a 3D or ND-matrix.
+   * NOT NULL. */
+  oneof adj {
+    DenseMat dense = 10;
+    CooMat coo = 11;
+    CsrMat csr = 12;
+    CscMat csc = 13;
+  }
+
+  /* If true, then this is a directed graph.
+   * NULLABLE, default = false. */
+  bool directed = 16;
+
+  /* If true, then this is a connected graph without any isolated node.
+   * NULLABLE, default = false. */
+  bool connected = 17;
+
+  /* If true, then this is a unweighted graph.
+   * NULLABLE, default = false. */
+  bool unweighted = 18;
+
+  /* If present, then it means all node ids in this graph are consecutive.
+   * Actual node id, which will be used to fetch node attributes from global attributes store, can be obtained by node_id_remap[node_id].
+   * NULLABLE. */
+  repeated uint64 node_id_remap = 19;
+
+  repeated google.protobuf.Any attributes = 32;
+}
+
+message ComponentAttr {
+
+  /* Parent graph ID. */
+  uint64 parent_id = 1;
+
+  /* Component id. */
+  uint64 component_id = 2;
+
+  /* Node IDs of this component in parent graph.
+   * NULLABLE. */
+  repeated uint64 components = 3;
+}
