@@ -3,7 +3,7 @@
  */
 syntax = "proto3";
 package com.hitnslab.dnssecurity.deeparcher.api.proto;
-option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated";
+option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java";
 option java_outer_classname = "GraphAssocEdgeUpdateProto";
 option optimize_for = SPEED;
 option cc_enable_arenas = true;

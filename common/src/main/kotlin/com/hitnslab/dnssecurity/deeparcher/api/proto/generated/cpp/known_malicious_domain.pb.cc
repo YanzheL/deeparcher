@@ -94,9 +94,9 @@ const char descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2
   "nssecurity.deeparcher.api.proto.KnownMal"
   "iciousDomain.Status\"@\n\006Status\022\013\n\007UNKNOWN"
   "\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002\022\010\n\004DEAD\020\003\022\t\n\005OT"
-  "HER\020\004BY\n7com.hitnslab.dnssecurity.deepar"
-  "cher.api.proto.generatedB\031KnownMalicious"
-  "DomainProtoH\001\370\001\001b\006proto3"
+  "HER\020\004B^\n<com.hitnslab.dnssecurity.deepar"
+  "cher.api.proto.generated.javaB\031KnownMali"
+  "ciousDomainProtoH\001\370\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_deps[1] = {
 };
@@ -106,7 +106,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_com
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_once;
 static bool descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto = {
-  &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_initialized, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/known_malicious_domain.proto", 664,
+  &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_initialized, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/known_malicious_domain.proto", 669,
   &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_once, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_sccs, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto::offsets,
   file_level_metadata_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, 1, file_level_enum_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, file_level_service_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto,

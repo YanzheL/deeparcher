@@ -49,7 +49,7 @@ struct TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgra
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -62,9 +62,6 @@ namespace dnssecurity {
 namespace deeparcher {
 namespace api {
 namespace proto {
-class ComponentAttr;
-class ComponentAttrDefaultTypeInternal;
-extern ComponentAttrDefaultTypeInternal _ComponentAttr_default_instance_;
 class Graph;
 class GraphDefaultTypeInternal;
 extern GraphDefaultTypeInternal _Graph_default_instance_;
@@ -75,7 +72,6 @@ extern GraphDefaultTypeInternal _Graph_default_instance_;
 }  // namespace hitnslab
 }  // namespace com
 PROTOBUF_NAMESPACE_OPEN
-template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::ComponentAttr* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::ComponentAttr>(Arena*);
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace com {
@@ -328,77 +324,77 @@ class Graph :
   void _internal_set_unweighted(bool value);
   public:
 
-  // .com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMat dense = 10;
+  // .com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;
   bool has_dense() const;
   private:
   bool _internal_has_dense() const;
   public:
   void clear_dense();
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat& dense() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* release_dense();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* mutable_dense();
-  void set_allocated_dense(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* dense);
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat& dense() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* release_dense();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* mutable_dense();
+  void set_allocated_dense(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* dense);
   private:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat& _internal_dense() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* _internal_mutable_dense();
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat& _internal_dense() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* _internal_mutable_dense();
   public:
   void unsafe_arena_set_allocated_dense(
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* dense);
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* unsafe_arena_release_dense();
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* dense);
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* unsafe_arena_release_dense();
 
-  // .com.hitnslab.dnssecurity.deeparcher.api.proto.CooMat coo = 11;
+  // .com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;
   bool has_coo() const;
   private:
   bool _internal_has_coo() const;
   public:
   void clear_coo();
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat& coo() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* release_coo();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* mutable_coo();
-  void set_allocated_coo(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* coo);
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat& coo() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* release_coo();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* mutable_coo();
+  void set_allocated_coo(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* coo);
   private:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat& _internal_coo() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* _internal_mutable_coo();
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat& _internal_coo() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* _internal_mutable_coo();
   public:
   void unsafe_arena_set_allocated_coo(
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* coo);
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* unsafe_arena_release_coo();
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* coo);
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* unsafe_arena_release_coo();
 
-  // .com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMat csr = 12;
+  // .com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;
   bool has_csr() const;
   private:
   bool _internal_has_csr() const;
   public:
   void clear_csr();
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat& csr() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* release_csr();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* mutable_csr();
-  void set_allocated_csr(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* csr);
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat& csr() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* release_csr();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* mutable_csr();
+  void set_allocated_csr(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* csr);
   private:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat& _internal_csr() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* _internal_mutable_csr();
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat& _internal_csr() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* _internal_mutable_csr();
   public:
   void unsafe_arena_set_allocated_csr(
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* csr);
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* unsafe_arena_release_csr();
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* csr);
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* unsafe_arena_release_csr();
 
-  // .com.hitnslab.dnssecurity.deeparcher.api.proto.CscMat csc = 13;
+  // .com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;
   bool has_csc() const;
   private:
   bool _internal_has_csc() const;
   public:
   void clear_csc();
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat& csc() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* release_csc();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* mutable_csc();
-  void set_allocated_csc(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* csc);
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat& csc() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* release_csc();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* mutable_csc();
+  void set_allocated_csc(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* csc);
   private:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat& _internal_csc() const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* _internal_mutable_csc();
+  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat& _internal_csc() const;
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* _internal_mutable_csc();
   public:
   void unsafe_arena_set_allocated_csc(
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* csc);
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* unsafe_arena_release_csc();
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* csc);
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* unsafe_arena_release_csc();
 
   void clear_adj();
   AdjCase adj_case() const;
@@ -428,201 +424,14 @@ class Graph :
   bool unweighted_;
   union AdjUnion {
     AdjUnion() {}
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* dense_;
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* coo_;
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* csr_;
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* csc_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* dense_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* coo_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* csr_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* csc_;
   } adj_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
 
-  friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ComponentAttr :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr) */ {
- public:
-  ComponentAttr();
-  virtual ~ComponentAttr();
-
-  ComponentAttr(const ComponentAttr& from);
-  ComponentAttr(ComponentAttr&& from) noexcept
-    : ComponentAttr() {
-    *this = ::std::move(from);
-  }
-
-  inline ComponentAttr& operator=(const ComponentAttr& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ComponentAttr& operator=(ComponentAttr&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArena() const final {
-    return GetArenaNoVirtual();
-  }
-  inline void* GetMaybeArenaPointer() const final {
-    return MaybeArenaPtr();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return GetMetadataStatic().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return GetMetadataStatic().reflection;
-  }
-  static const ComponentAttr& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ComponentAttr* internal_default_instance() {
-    return reinterpret_cast<const ComponentAttr*>(
-               &_ComponentAttr_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    1;
-
-  friend void swap(ComponentAttr& a, ComponentAttr& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ComponentAttr* other) {
-    if (other == this) return;
-    if (GetArenaNoVirtual() == other->GetArenaNoVirtual()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ComponentAttr* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetArenaNoVirtual() == other->GetArenaNoVirtual());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline ComponentAttr* New() const final {
-    return CreateMaybeMessage<ComponentAttr>(nullptr);
-  }
-
-  ComponentAttr* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ComponentAttr>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ComponentAttr& from);
-  void MergeFrom(const ComponentAttr& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ComponentAttr* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr";
-  }
-  protected:
-  explicit ComponentAttr(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  private:
-  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
-    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto);
-    return ::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto.file_level_metadata[kIndexInFileMessages];
-  }
-
-  public:
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kComponentsFieldNumber = 3,
-    kParentIdFieldNumber = 1,
-    kComponentIdFieldNumber = 2,
-  };
-  // repeated uint64 components = 3;
-  int components_size() const;
-  private:
-  int _internal_components_size() const;
-  public:
-  void clear_components();
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_components(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-      _internal_components() const;
-  void _internal_add_components(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-      _internal_mutable_components();
-  public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 components(int index) const;
-  void set_components(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_components(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-      components() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-      mutable_components();
-
-  // uint64 parent_id = 1;
-  void clear_parent_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 parent_id() const;
-  void set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_parent_id() const;
-  void _internal_set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
-  // uint64 component_id = 2;
-  void clear_component_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 component_id() const;
-  void set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_component_id() const;
-  void _internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr)
- private:
-  class _Internal;
-
-  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > components_;
-  mutable std::atomic<int> _components_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 parent_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 component_id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto;
 };
 // ===================================================================
@@ -696,7 +505,7 @@ inline void Graph::set_edges(::PROTOBUF_NAMESPACE_ID::int64 value) {
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edges)
 }
 
-// .com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMat dense = 10;
+// .com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;
 inline bool Graph::_internal_has_dense() const {
   return adj_case() == kDense;
 }
@@ -706,11 +515,11 @@ inline bool Graph::has_dense() const {
 inline void Graph::set_has_dense() {
   _oneof_case_[0] = kDense;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* Graph::release_dense() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* Graph::release_dense() {
   // @@protoc_insertion_point(field_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.dense)
   if (_internal_has_dense()) {
     clear_has_adj();
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* temp = adj_.dense_;
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* temp = adj_.dense_;
     if (GetArenaNoVirtual() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
@@ -720,27 +529,27 @@ inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* Graph::re
     return nullptr;
   }
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat& Graph::_internal_dense() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat& Graph::_internal_dense() const {
   return _internal_has_dense()
       ? *adj_.dense_
-      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_DenseMat_default_instance_);
+      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_DenseMatFloat_default_instance_);
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat& Graph::dense() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat& Graph::dense() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.dense)
   return _internal_dense();
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* Graph::unsafe_arena_release_dense() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* Graph::unsafe_arena_release_dense() {
   // @@protoc_insertion_point(field_unsafe_arena_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.dense)
   if (_internal_has_dense()) {
     clear_has_adj();
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* temp = adj_.dense_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* temp = adj_.dense_;
     adj_.dense_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void Graph::unsafe_arena_set_allocated_dense(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* dense) {
+inline void Graph::unsafe_arena_set_allocated_dense(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* dense) {
   clear_adj();
   if (dense) {
     set_has_dense();
@@ -748,21 +557,21 @@ inline void Graph::unsafe_arena_set_allocated_dense(::com::hitnslab::dnssecurity
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.dense)
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* Graph::_internal_mutable_dense() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* Graph::_internal_mutable_dense() {
   if (!_internal_has_dense()) {
     clear_adj();
     set_has_dense();
-    adj_.dense_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat >(
+    adj_.dense_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat >(
         GetArenaNoVirtual());
   }
   return adj_.dense_;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMat* Graph::mutable_dense() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* Graph::mutable_dense() {
   // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.dense)
   return _internal_mutable_dense();
 }
 
-// .com.hitnslab.dnssecurity.deeparcher.api.proto.CooMat coo = 11;
+// .com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;
 inline bool Graph::_internal_has_coo() const {
   return adj_case() == kCoo;
 }
@@ -772,11 +581,11 @@ inline bool Graph::has_coo() const {
 inline void Graph::set_has_coo() {
   _oneof_case_[0] = kCoo;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* Graph::release_coo() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* Graph::release_coo() {
   // @@protoc_insertion_point(field_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.coo)
   if (_internal_has_coo()) {
     clear_has_adj();
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* temp = adj_.coo_;
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* temp = adj_.coo_;
     if (GetArenaNoVirtual() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
@@ -786,27 +595,27 @@ inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* Graph::rele
     return nullptr;
   }
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat& Graph::_internal_coo() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat& Graph::_internal_coo() const {
   return _internal_has_coo()
       ? *adj_.coo_
-      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMat_default_instance_);
+      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMatFloat_default_instance_);
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat& Graph::coo() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat& Graph::coo() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.coo)
   return _internal_coo();
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* Graph::unsafe_arena_release_coo() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* Graph::unsafe_arena_release_coo() {
   // @@protoc_insertion_point(field_unsafe_arena_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.coo)
   if (_internal_has_coo()) {
     clear_has_adj();
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* temp = adj_.coo_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* temp = adj_.coo_;
     adj_.coo_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void Graph::unsafe_arena_set_allocated_coo(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* coo) {
+inline void Graph::unsafe_arena_set_allocated_coo(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* coo) {
   clear_adj();
   if (coo) {
     set_has_coo();
@@ -814,21 +623,21 @@ inline void Graph::unsafe_arena_set_allocated_coo(::com::hitnslab::dnssecurity::
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.coo)
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* Graph::_internal_mutable_coo() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* Graph::_internal_mutable_coo() {
   if (!_internal_has_coo()) {
     clear_adj();
     set_has_coo();
-    adj_.coo_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat >(
+    adj_.coo_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat >(
         GetArenaNoVirtual());
   }
   return adj_.coo_;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMat* Graph::mutable_coo() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* Graph::mutable_coo() {
   // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.coo)
   return _internal_mutable_coo();
 }
 
-// .com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMat csr = 12;
+// .com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;
 inline bool Graph::_internal_has_csr() const {
   return adj_case() == kCsr;
 }
@@ -838,11 +647,11 @@ inline bool Graph::has_csr() const {
 inline void Graph::set_has_csr() {
   _oneof_case_[0] = kCsr;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* Graph::release_csr() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* Graph::release_csr() {
   // @@protoc_insertion_point(field_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csr)
   if (_internal_has_csr()) {
     clear_has_adj();
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* temp = adj_.csr_;
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* temp = adj_.csr_;
     if (GetArenaNoVirtual() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
@@ -852,27 +661,27 @@ inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* Graph::rele
     return nullptr;
   }
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat& Graph::_internal_csr() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat& Graph::_internal_csr() const {
   return _internal_has_csr()
       ? *adj_.csr_
-      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMat_default_instance_);
+      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMatFloat_default_instance_);
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat& Graph::csr() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat& Graph::csr() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csr)
   return _internal_csr();
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* Graph::unsafe_arena_release_csr() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* Graph::unsafe_arena_release_csr() {
   // @@protoc_insertion_point(field_unsafe_arena_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csr)
   if (_internal_has_csr()) {
     clear_has_adj();
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* temp = adj_.csr_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* temp = adj_.csr_;
     adj_.csr_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void Graph::unsafe_arena_set_allocated_csr(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* csr) {
+inline void Graph::unsafe_arena_set_allocated_csr(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* csr) {
   clear_adj();
   if (csr) {
     set_has_csr();
@@ -880,21 +689,21 @@ inline void Graph::unsafe_arena_set_allocated_csr(::com::hitnslab::dnssecurity::
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csr)
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* Graph::_internal_mutable_csr() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* Graph::_internal_mutable_csr() {
   if (!_internal_has_csr()) {
     clear_adj();
     set_has_csr();
-    adj_.csr_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat >(
+    adj_.csr_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat >(
         GetArenaNoVirtual());
   }
   return adj_.csr_;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMat* Graph::mutable_csr() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* Graph::mutable_csr() {
   // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csr)
   return _internal_mutable_csr();
 }
 
-// .com.hitnslab.dnssecurity.deeparcher.api.proto.CscMat csc = 13;
+// .com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;
 inline bool Graph::_internal_has_csc() const {
   return adj_case() == kCsc;
 }
@@ -904,11 +713,11 @@ inline bool Graph::has_csc() const {
 inline void Graph::set_has_csc() {
   _oneof_case_[0] = kCsc;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* Graph::release_csc() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* Graph::release_csc() {
   // @@protoc_insertion_point(field_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csc)
   if (_internal_has_csc()) {
     clear_has_adj();
-      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* temp = adj_.csc_;
+      ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* temp = adj_.csc_;
     if (GetArenaNoVirtual() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
@@ -918,27 +727,27 @@ inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* Graph::rele
     return nullptr;
   }
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat& Graph::_internal_csc() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat& Graph::_internal_csc() const {
   return _internal_has_csc()
       ? *adj_.csc_
-      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMat_default_instance_);
+      : *reinterpret_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMatFloat_default_instance_);
 }
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat& Graph::csc() const {
+inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat& Graph::csc() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csc)
   return _internal_csc();
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* Graph::unsafe_arena_release_csc() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* Graph::unsafe_arena_release_csc() {
   // @@protoc_insertion_point(field_unsafe_arena_release:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csc)
   if (_internal_has_csc()) {
     clear_has_adj();
-    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* temp = adj_.csc_;
+    ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* temp = adj_.csc_;
     adj_.csc_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void Graph::unsafe_arena_set_allocated_csc(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* csc) {
+inline void Graph::unsafe_arena_set_allocated_csc(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* csc) {
   clear_adj();
   if (csc) {
     set_has_csc();
@@ -946,16 +755,16 @@ inline void Graph::unsafe_arena_set_allocated_csc(::com::hitnslab::dnssecurity::
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csc)
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* Graph::_internal_mutable_csc() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* Graph::_internal_mutable_csc() {
   if (!_internal_has_csc()) {
     clear_adj();
     set_has_csc();
-    adj_.csc_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat >(
+    adj_.csc_ = CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat >(
         GetArenaNoVirtual());
   }
   return adj_.csc_;
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMat* Graph::mutable_csc() {
+inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* Graph::mutable_csc() {
   // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csc)
   return _internal_mutable_csc();
 }
@@ -1112,102 +921,9 @@ inline void Graph::clear_has_adj() {
 inline Graph::AdjCase Graph::adj_case() const {
   return Graph::AdjCase(_oneof_case_[0]);
 }
-// -------------------------------------------------------------------
-
-// ComponentAttr
-
-// uint64 parent_id = 1;
-inline void ComponentAttr::clear_parent_id() {
-  parent_id_ = PROTOBUF_ULONGLONG(0);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::_internal_parent_id() const {
-  return parent_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::parent_id() const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.parent_id)
-  return _internal_parent_id();
-}
-inline void ComponentAttr::_internal_set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  parent_id_ = value;
-}
-inline void ComponentAttr::set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_set_parent_id(value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.parent_id)
-}
-
-// uint64 component_id = 2;
-inline void ComponentAttr::clear_component_id() {
-  component_id_ = PROTOBUF_ULONGLONG(0);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::_internal_component_id() const {
-  return component_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::component_id() const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id)
-  return _internal_component_id();
-}
-inline void ComponentAttr::_internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  component_id_ = value;
-}
-inline void ComponentAttr::set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_set_component_id(value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id)
-}
-
-// repeated uint64 components = 3;
-inline int ComponentAttr::_internal_components_size() const {
-  return components_.size();
-}
-inline int ComponentAttr::components_size() const {
-  return _internal_components_size();
-}
-inline void ComponentAttr::clear_components() {
-  components_.Clear();
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::_internal_components(int index) const {
-  return components_.Get(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::components(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
-  return _internal_components(index);
-}
-inline void ComponentAttr::set_components(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  components_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
-}
-inline void ComponentAttr::_internal_add_components(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  components_.Add(value);
-}
-inline void ComponentAttr::add_components(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_add_components(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-ComponentAttr::_internal_components() const {
-  return components_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-ComponentAttr::components() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
-  return _internal_components();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-ComponentAttr::_internal_mutable_components() {
-  return &components_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-ComponentAttr::mutable_components() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
-  return _internal_mutable_components();
-}
-
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 

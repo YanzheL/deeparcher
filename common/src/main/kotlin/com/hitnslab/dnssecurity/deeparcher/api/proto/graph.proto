@@ -3,7 +3,7 @@
  */
 syntax = "proto3";
 package com.hitnslab.dnssecurity.deeparcher.api.proto;
-option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated";
+option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java";
 option java_outer_classname = "GraphProto";
 option optimize_for = SPEED;
 option cc_enable_arenas = true;
@@ -30,10 +30,10 @@ message Graph {
    * If graph edge has multiple weights, then the adjacent matrix can have a depth, which means it can be a 3D or ND-matrix.
    * NOT NULL. */
   oneof adj {
-    DenseMat dense = 10;
-    CooMat coo = 11;
-    CsrMat csr = 12;
-    CscMat csc = 13;
+    DenseMatFloat dense = 10;
+    CooMatFloat coo = 11;
+    CsrMatFloat csr = 12;
+    CscMatFloat csc = 13;
   }
 
   /* If true, then this is a directed graph.
@@ -53,18 +53,7 @@ message Graph {
    * NULLABLE. */
   repeated uint64 node_id_remap = 19;
 
-  repeated google.protobuf.Any attributes = 32;
-}
-
-message ComponentAttr {
-
-  /* Parent graph ID. */
-  uint64 parent_id = 1;
-
-  /* Component id. */
-  uint64 component_id = 2;
-
-  /* Node IDs of this component in parent graph.
+  /* General attributes related to this graph.
    * NULLABLE. */
-  repeated uint64 components = 3;
+  repeated google.protobuf.Any attributes = 32;
 }

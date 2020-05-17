@@ -4,12 +4,11 @@
 syntax = "proto3";
 package com.hitnslab.dnssecurity.deeparcher.api.proto;
 option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java";
-option java_outer_classname = "PDnsDataProto";
+option java_outer_classname = "DomainDnsDetailProto";
 option optimize_for = SPEED;
 option cc_enable_arenas = true;
 
-/* Message type for passive DNS data. */
-message PDnsData {
+message DomainDnsDetail {
 
   /* Fully Qualified Domain Name (FQDN).
    * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
@@ -22,39 +21,19 @@ message PDnsData {
    * NOT NULL. */
   string domain = 2;
 
-  /* Client IP addresses.
+  /* IPv4 addresses.
    * IP addresses are represented by concatenated big endian bytes.
    * The length of this field should be multiple of 4.
    * NULLABLE. */
-  bytes client_ip = 3;
+  bytes ipv4_addrs = 7;
 
-  /* Timestamp of DNS query
-   * NOT NULL. */
-  int64 q_time = 4;
-
-  /* Type of DNS query
-   * @see [DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)
-   * NOT NULL. */
-  int32 q_type = 5;
-
-  /* Response code in DNS response
-   * @see [DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)
-   * NOT NULL. */
-  int32 r_code = 6;
-
-  /* IPv4 addresses (A record) in DNS response.
-   * IP addresses are represented by concatenated big endian bytes.
-   * The length of this field should be multiple of 4.
-   * NULLABLE. */
-  bytes r_ipv4_addrs = 7;
-
-  /* IPv6 addresses (AAAA record) in DNS response.
+  /* IPv6 addresses.
    * IP addresses are represented by concatenated big endian bytes.
    * The length of this field should be multiple of 16.
    * NULLABLE. */
-  bytes r_ipv6_addrs = 8;
+  bytes ipv6_addrs = 8;
 
-  /* CNAMEs in DNS response.
+  /* CNAMEs.
    * NULLABLE. */
-  repeated string r_cnames = 9;
+  repeated string cnames = 9;
 }

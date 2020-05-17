@@ -1,0 +1,48 @@
+/*
+ * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
+ */
+syntax = "proto3";
+package com.hitnslab.dnssecurity.deeparcher.api.proto;
+option java_package = "com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java";
+option java_outer_classname = "GraphEventProto";
+option optimize_for = SPEED;
+option cc_enable_arenas = true;
+import "google/protobuf/any.proto";
+
+/* Message type for graph update events. */
+message GraphEvent {
+
+  /* First node of this edge.
+   * NOT NULL. */
+  uint64 node1 = 1;
+
+  /* Second node of this edge.
+   * NOT NULL. */
+  uint64 node2 = 2;
+
+  /* Event action.
+   * NULLABLE, default is `UPSERT`. */
+  Action action = 3;
+
+  /* Edge attributes map. (attribute name -> attribute value).
+   * NULLABLE. */
+  map<string, google.protobuf.Any> attributes = 4;
+
+  enum Action {
+
+    /* Update an edge if the edge is present, otherwise insert this new edge.
+     * The behavior of edge update is same as `UPDATE` action.
+     * This is the default action. */
+    UPSERT = 0;
+
+    /* Delete an edge. Do nothing if the edge is not present. */
+    DELETE = 1;
+
+    /* Update an edge. Do nothing if the edge is not present.
+     * The edge attributes map will be merged, values with same key will be replaced by this event. */
+    UPDATE = 2;
+
+    /* Create this new edge. Do nothing if the edge is present. */
+    CREATE = 3;
+  }
+}

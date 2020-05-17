@@ -72,9 +72,9 @@ const char descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2
   "om.hitnslab.dnssecurity.deeparcher.api.p"
   "roto\"M\n\024GraphAssocEdgeUpdate\022\r\n\005fqdn1\030\001 "
   "\001(\t\022\r\n\005fqdn2\030\002 \001(\t\022\027\n\017n_shared_fields\030\003 "
-  "\001(\005BY\n7com.hitnslab.dnssecurity.deeparch"
-  "er.api.proto.generatedB\031GraphAssocEdgeUp"
-  "dateProtoH\001\370\001\001b\006proto3"
+  "\001(\005B^\n<com.hitnslab.dnssecurity.deeparch"
+  "er.api.proto.generated.javaB\031GraphAssocE"
+  "dgeUpdateProtoH\001\370\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_deps[1] = {
 };
@@ -84,7 +84,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_com
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_once;
 static bool descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto = {
-  &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_initialized, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/graph_assoc_edge_update.proto", 302,
+  &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_initialized, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/graph_assoc_edge_update.proto", 307,
   &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_once, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_sccs, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto::offsets,
   file_level_metadata_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto, 1, file_level_enum_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto, file_level_service_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fassoc_5fedge_5fupdate_2eproto,

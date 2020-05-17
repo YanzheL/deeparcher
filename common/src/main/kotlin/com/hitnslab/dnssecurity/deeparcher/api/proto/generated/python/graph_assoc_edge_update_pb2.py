@@ -17,8 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='com/hitnslab/dnssecurity/deeparcher/api/proto/graph_assoc_edge_update.proto',
   package='com.hitnslab.dnssecurity.deeparcher.api.proto',
   syntax='proto3',
-  serialized_options=b'\n7com.hitnslab.dnssecurity.deeparcher.api.proto.generatedB\031GraphAssocEdgeUpdateProtoH\001\370\001\001',
-  serialized_pb=b'\nKcom/hitnslab/dnssecurity/deeparcher/api/proto/graph_assoc_edge_update.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"M\n\x14GraphAssocEdgeUpdate\x12\r\n\x05\x66qdn1\x18\x01 \x01(\t\x12\r\n\x05\x66qdn2\x18\x02 \x01(\t\x12\x17\n\x0fn_shared_fields\x18\x03 \x01(\x05\x42Y\n7com.hitnslab.dnssecurity.deeparcher.api.proto.generatedB\x19GraphAssocEdgeUpdateProtoH\x01\xf8\x01\x01\x62\x06proto3'
+  serialized_options=b'\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\031GraphAssocEdgeUpdateProtoH\001\370\001\001',
+  serialized_pb=b'\nKcom/hitnslab/dnssecurity/deeparcher/api/proto/graph_assoc_edge_update.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"M\n\x14GraphAssocEdgeUpdate\x12\r\n\x05\x66qdn1\x18\x01 \x01(\t\x12\r\n\x05\x66qdn2\x18\x02 \x01(\t\x12\x17\n\x0fn_shared_fields\x18\x03 \x01(\x05\x42^\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x19GraphAssocEdgeUpdateProtoH\x01\xf8\x01\x01\x62\x06proto3'
 )
 
 
