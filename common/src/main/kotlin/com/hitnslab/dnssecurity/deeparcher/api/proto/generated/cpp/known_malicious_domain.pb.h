@@ -272,24 +272,24 @@ class KnownMaliciousDomain :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kCnamesFieldNumber = 11,
+    kCnamesFieldNumber = 19,
     kSourceFieldNumber = 2,
     kMethodFieldNumber = 3,
     kFqdnFieldNumber = 4,
     kUrlFieldNumber = 5,
-    kServiceTitleFieldNumber = 8,
-    kIpv4AddrsFieldNumber = 9,
-    kIpv6AddrsFieldNumber = 10,
-    kTypeFieldNumber = 12,
-    kRegistrarFieldNumber = 14,
-    kRemarkFieldNumber = 15,
+    kServiceTitleFieldNumber = 16,
+    kIpv4AddrsFieldNumber = 17,
+    kIpv6AddrsFieldNumber = 18,
+    kTypeFieldNumber = 20,
+    kRegistrarFieldNumber = 22,
+    kRemarkFieldNumber = 23,
     kTimestampFieldNumber = 1,
     kCreatedAtFieldNumber = 6,
     kUpdatedAtFieldNumber = 7,
-    kAsnFieldNumber = 13,
-    kStatusFieldNumber = 16,
+    kAsnFieldNumber = 21,
+    kStatusFieldNumber = 24,
   };
-  // repeated string cnames = 11;
+  // repeated string cnames = 19;
   int cnames_size() const;
   private:
   int _internal_cnames_size() const;
@@ -413,7 +413,7 @@ class KnownMaliciousDomain :
   std::string* _internal_mutable_url();
   public:
 
-  // string service_title = 8;
+  // string service_title = 16;
   void clear_service_title();
   const std::string& service_title() const;
   void set_service_title(const std::string& value);
@@ -438,7 +438,7 @@ class KnownMaliciousDomain :
   std::string* _internal_mutable_service_title();
   public:
 
-  // bytes ipv4_addrs = 9;
+  // bytes ipv4_addrs = 17;
   void clear_ipv4_addrs();
   const std::string& ipv4_addrs() const;
   void set_ipv4_addrs(const std::string& value);
@@ -463,7 +463,7 @@ class KnownMaliciousDomain :
   std::string* _internal_mutable_ipv4_addrs();
   public:
 
-  // bytes ipv6_addrs = 10;
+  // bytes ipv6_addrs = 18;
   void clear_ipv6_addrs();
   const std::string& ipv6_addrs() const;
   void set_ipv6_addrs(const std::string& value);
@@ -488,7 +488,7 @@ class KnownMaliciousDomain :
   std::string* _internal_mutable_ipv6_addrs();
   public:
 
-  // string type = 12;
+  // string type = 20;
   void clear_type();
   const std::string& type() const;
   void set_type(const std::string& value);
@@ -513,7 +513,7 @@ class KnownMaliciousDomain :
   std::string* _internal_mutable_type();
   public:
 
-  // string registrar = 14;
+  // string registrar = 22;
   void clear_registrar();
   const std::string& registrar() const;
   void set_registrar(const std::string& value);
@@ -538,7 +538,7 @@ class KnownMaliciousDomain :
   std::string* _internal_mutable_registrar();
   public:
 
-  // string remark = 15;
+  // string remark = 23;
   void clear_remark();
   const std::string& remark() const;
   void set_remark(const std::string& value);
@@ -590,7 +590,7 @@ class KnownMaliciousDomain :
   void _internal_set_updated_at(::PROTOBUF_NAMESPACE_ID::int64 value);
   public:
 
-  // int32 asn = 13;
+  // int32 asn = 21;
   void clear_asn();
   ::PROTOBUF_NAMESPACE_ID::int32 asn() const;
   void set_asn(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -599,7 +599,7 @@ class KnownMaliciousDomain :
   void _internal_set_asn(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // .com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;
+  // .com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;
   void clear_status();
   ::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain_Status status() const;
   void set_status(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain_Status value);
@@ -1034,7 +1034,7 @@ inline void KnownMaliciousDomain::set_updated_at(::PROTOBUF_NAMESPACE_ID::int64 
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.updated_at)
 }
 
-// string service_title = 8;
+// string service_title = 16;
 inline void KnownMaliciousDomain::clear_service_title() {
   service_title_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
@@ -1116,7 +1116,7 @@ inline void KnownMaliciousDomain::unsafe_arena_set_allocated_service_title(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.service_title)
 }
 
-// bytes ipv4_addrs = 9;
+// bytes ipv4_addrs = 17;
 inline void KnownMaliciousDomain::clear_ipv4_addrs() {
   ipv4_addrs_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
@@ -1198,7 +1198,7 @@ inline void KnownMaliciousDomain::unsafe_arena_set_allocated_ipv4_addrs(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.ipv4_addrs)
 }
 
-// bytes ipv6_addrs = 10;
+// bytes ipv6_addrs = 18;
 inline void KnownMaliciousDomain::clear_ipv6_addrs() {
   ipv6_addrs_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
@@ -1280,7 +1280,7 @@ inline void KnownMaliciousDomain::unsafe_arena_set_allocated_ipv6_addrs(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.ipv6_addrs)
 }
 
-// repeated string cnames = 11;
+// repeated string cnames = 19;
 inline int KnownMaliciousDomain::_internal_cnames_size() const {
   return cnames_.size();
 }
@@ -1354,7 +1354,7 @@ KnownMaliciousDomain::mutable_cnames() {
   return &cnames_;
 }
 
-// string type = 12;
+// string type = 20;
 inline void KnownMaliciousDomain::clear_type() {
   type_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
@@ -1436,7 +1436,7 @@ inline void KnownMaliciousDomain::unsafe_arena_set_allocated_type(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.type)
 }
 
-// int32 asn = 13;
+// int32 asn = 21;
 inline void KnownMaliciousDomain::clear_asn() {
   asn_ = 0;
 }
@@ -1456,7 +1456,7 @@ inline void KnownMaliciousDomain::set_asn(::PROTOBUF_NAMESPACE_ID::int32 value) 
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.asn)
 }
 
-// string registrar = 14;
+// string registrar = 22;
 inline void KnownMaliciousDomain::clear_registrar() {
   registrar_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
@@ -1538,7 +1538,7 @@ inline void KnownMaliciousDomain::unsafe_arena_set_allocated_registrar(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.registrar)
 }
 
-// string remark = 15;
+// string remark = 23;
 inline void KnownMaliciousDomain::clear_remark() {
   remark_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
@@ -1620,7 +1620,7 @@ inline void KnownMaliciousDomain::unsafe_arena_set_allocated_remark(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.remark)
 }
 
-// .com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;
+// .com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;
 inline void KnownMaliciousDomain::clear_status() {
   status_ = 0;
 }

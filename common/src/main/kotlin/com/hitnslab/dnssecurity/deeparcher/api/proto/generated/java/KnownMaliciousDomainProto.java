@@ -14,6 +14,37 @@ public final class KnownMaliciousDomainProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  static {
+    java.lang.String[] descriptorData = {
+      "\nJcom/hitnslab/dnssecurity/deeparcher/ap" +
+      "i/proto/known_malicious_domain.proto\022-co" +
+      "m.hitnslab.dnssecurity.deeparcher.api.pr" +
+      "oto\"\267\003\n\024KnownMaliciousDomain\022\021\n\ttimestam" +
+      "p\030\001 \001(\003\022\016\n\006source\030\002 \001(\t\022\016\n\006method\030\003 \001(\t\022" +
+      "\014\n\004fqdn\030\004 \001(\t\022\013\n\003url\030\005 \001(\t\022\022\n\ncreated_at" +
+      "\030\006 \001(\003\022\022\n\nupdated_at\030\007 \001(\003\022\025\n\rservice_ti" +
+      "tle\030\020 \001(\t\022\022\n\nipv4_addrs\030\021 \001(\014\022\022\n\nipv6_ad" +
+      "drs\030\022 \001(\014\022\016\n\006cnames\030\023 \003(\t\022\014\n\004type\030\024 \001(\t\022" +
+      "\013\n\003asn\030\025 \001(\005\022\021\n\tregistrar\030\026 \001(\t\022\016\n\006remar" +
+      "k\030\027 \001(\t\022Z\n\006status\030\030 \001(\0162J.com.hitnslab.d" +
+      "nssecurity.deeparcher.api.proto.KnownMal" +
+      "iciousDomain.Status\"@\n\006Status\022\013\n\007UNKNOWN" +
+      "\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002\022\010\n\004DEAD\020\003\022\t\n\005OT" +
+      "HER\020\004B^\n<com.hitnslab.dnssecurity.deepar" +
+      "cher.api.proto.generated.javaB\031KnownMali" +
+      "ciousDomainProtoH\001\370\001\001b\006proto3"
+    };
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        });
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor,
+        new java.lang.String[] { "Timestamp", "Source", "Method", "Fqdn", "Url", "CreatedAt", "UpdatedAt", "ServiceTitle", "Ipv4Addrs", "Ipv6Addrs", "Cnames", "Type", "Asn", "Registrar", "Remark", "Status", });
+  }
   public interface KnownMaliciousDomainOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain)
       com.google.protobuf.MessageOrBuilder {
@@ -21,7 +52,7 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * The UTC timestamp when this record is obtained from vendor, provided by message producer.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>int64 timestamp = 1;</code>
@@ -33,7 +64,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Vendor source URI, provided by message producer.
      * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string source = 2;</code>
@@ -44,7 +75,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Vendor source URI, provided by message producer.
      * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string source = 2;</code>
@@ -57,7 +88,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Method of obtaining this record, provided by message producer.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NOT NULL 
+     * NOT NULL
      * </pre>
      *
      * <code>string method = 3;</code>
@@ -68,7 +99,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Method of obtaining this record, provided by message producer.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NOT NULL 
+     * NOT NULL
      * </pre>
      *
      * <code>string method = 3;</code>
@@ -82,7 +113,7 @@ public final class KnownMaliciousDomainProto {
      * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
      * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
      * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string fqdn = 4;</code>
@@ -94,7 +125,7 @@ public final class KnownMaliciousDomainProto {
      * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
      * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
      * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string fqdn = 4;</code>
@@ -108,7 +139,7 @@ public final class KnownMaliciousDomainProto {
      * URL of this malicious domain, provided by vendor.
      * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
      * Some vendors do not provide the service URL of this malicious domain. So this field is
-     * NULLABLE 
+     * NULLABLE
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -120,7 +151,7 @@ public final class KnownMaliciousDomainProto {
      * URL of this malicious domain, provided by vendor.
      * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
      * Some vendors do not provide the service URL of this malicious domain. So this field is
-     * NULLABLE 
+     * NULLABLE
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -132,7 +163,7 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
-     * NULLABLE, use 0 for NULL. 
+     * NULLABLE, use 0 for NULL.
      * </pre>
      *
      * <code>int64 created_at = 6;</code>
@@ -143,7 +174,7 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
-     * NULLABLE, use 0 for NULL. 
+     * NULLABLE, use 0 for NULL.
      * </pre>
      *
      * <code>int64 updated_at = 7;</code>
@@ -155,10 +186,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Title of backend service, provided by vendor.
      * If this is a HTTP service, then backend service title can be a website title.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string service_title = 8;</code>
+     * <code>string service_title = 16;</code>
      * @return The serviceTitle.
      */
     java.lang.String getServiceTitle();
@@ -166,10 +197,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Title of backend service, provided by vendor.
      * If this is a HTTP service, then backend service title can be a website title.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string service_title = 8;</code>
+     * <code>string service_title = 16;</code>
      * @return The bytes for serviceTitle.
      */
     com.google.protobuf.ByteString
@@ -181,10 +212,10 @@ public final class KnownMaliciousDomainProto {
      * If vendor does not provide this value, message producer should resolve it.
      * IP addresses are represented by concatenated big endian bytes.
      * The length of this field should be multiple of 4.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>bytes ipv4_addrs = 9;</code>
+     * <code>bytes ipv4_addrs = 17;</code>
      * @return The ipv4Addrs.
      */
     com.google.protobuf.ByteString getIpv4Addrs();
@@ -195,10 +226,10 @@ public final class KnownMaliciousDomainProto {
      * If vendor does not provide this value, message producer should resolve it.
      * IP addresses are represented by concatenated big endian bytes.
      * The length of this field should be multiple of 16.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>bytes ipv6_addrs = 10;</code>
+     * <code>bytes ipv6_addrs = 18;</code>
      * @return The ipv6Addrs.
      */
     com.google.protobuf.ByteString getIpv6Addrs();
@@ -207,10 +238,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @return A list containing the cnames.
      */
     java.util.List<java.lang.String>
@@ -219,10 +250,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @return The count of cnames.
      */
     int getCnamesCount();
@@ -230,10 +261,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @param index The index of the element to return.
      * @return The cnames at the given index.
      */
@@ -242,10 +273,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @param index The index of the value to return.
      * @return The bytes of the cnames at the given index.
      */
@@ -256,10 +287,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Malicious type, provided by vendor.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string type = 12;</code>
+     * <code>string type = 20;</code>
      * @return The type.
      */
     java.lang.String getType();
@@ -267,10 +298,10 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Malicious type, provided by vendor.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string type = 12;</code>
+     * <code>string type = 20;</code>
      * @return The bytes for type.
      */
     com.google.protobuf.ByteString
@@ -279,10 +310,10 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * Autonomous System Number (ASN), provided by vendor.
-     * NULLABLE, use 0 for NULL. 
+     * NULLABLE, use 0 for NULL.
      * </pre>
      *
-     * <code>int32 asn = 13;</code>
+     * <code>int32 asn = 21;</code>
      * @return The asn.
      */
     int getAsn();
@@ -290,20 +321,20 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * Registrar of this domain, provided by vendor.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string registrar = 14;</code>
+     * <code>string registrar = 22;</code>
      * @return The registrar.
      */
     java.lang.String getRegistrar();
     /**
      * <pre>
      * Registrar of this domain, provided by vendor.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string registrar = 14;</code>
+     * <code>string registrar = 22;</code>
      * @return The bytes for registrar.
      */
     com.google.protobuf.ByteString
@@ -312,20 +343,20 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * Additional information of this domain, provided by vendor or message producer.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string remark = 15;</code>
+     * <code>string remark = 23;</code>
      * @return The remark.
      */
     java.lang.String getRemark();
     /**
      * <pre>
      * Additional information of this domain, provided by vendor or message producer.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string remark = 15;</code>
+     * <code>string remark = 23;</code>
      * @return The bytes for remark.
      */
     com.google.protobuf.ByteString
@@ -334,24 +365,38 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * Status of this domain, provided by vendor or message producer.
-     * NULLABLE, 
+     * NULLABLE,
      * </pre>
      *
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
      * <pre>
      * Status of this domain, provided by vendor or message producer.
-     * NULLABLE, 
+     * NULLABLE,
      * </pre>
      *
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
      * @return The status.
      */
     com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status getStatus();
   }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_fieldAccessorTable;
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain}
    */
@@ -391,140 +436,7 @@ public final class KnownMaliciousDomainProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private KnownMaliciousDomain(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              timestamp_ = input.readInt64();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              source_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              method_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              fqdn_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              url_ = s;
-              break;
-            }
-            case 48: {
-
-              createdAt_ = input.readInt64();
-              break;
-            }
-            case 56: {
-
-              updatedAt_ = input.readInt64();
-              break;
-            }
-            case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              serviceTitle_ = s;
-              break;
-            }
-            case 74: {
-
-              ipv4Addrs_ = input.readBytes();
-              break;
-            }
-            case 82: {
-
-              ipv6Addrs_ = input.readBytes();
-              break;
-            }
-            case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                cnames_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              cnames_.add(s);
-              break;
-            }
-            case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              type_ = s;
-              break;
-            }
-            case 104: {
-
-              asn_ = input.readInt32();
-              break;
-            }
-            case 114: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              registrar_ = s;
-              break;
-            }
-            case 122: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              remark_ = s;
-              break;
-            }
-            case 128: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          cnames_ = cnames_.getUnmodifiableView();
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    public static final int SERVICE_TITLE_FIELD_NUMBER = 16;
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor;
@@ -540,7 +452,7 @@ public final class KnownMaliciousDomainProto {
 
     /**
      * <pre>
-     * Generic Status type, represents the current status of this domain. 
+     * Generic Status type, represents the current status of this domain.
      * </pre>
      *
      * Protobuf enum {@code com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status}
@@ -678,7 +590,7 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * The UTC timestamp when this record is obtained from vendor, provided by message producer.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>int64 timestamp = 1;</code>
@@ -694,7 +606,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Vendor source URI, provided by message producer.
      * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string source = 2;</code>
@@ -705,7 +617,7 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         source_ = s;
@@ -716,7 +628,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Vendor source URI, provided by message producer.
      * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string source = 2;</code>
@@ -726,7 +638,7 @@ public final class KnownMaliciousDomainProto {
         getSourceBytes() {
       java.lang.Object ref = source_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         source_ = b;
@@ -742,7 +654,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Method of obtaining this record, provided by message producer.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NOT NULL 
+     * NOT NULL
      * </pre>
      *
      * <code>string method = 3;</code>
@@ -753,7 +665,7 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         method_ = s;
@@ -764,7 +676,7 @@ public final class KnownMaliciousDomainProto {
      * <pre>
      * Method of obtaining this record, provided by message producer.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NOT NULL 
+     * NOT NULL
      * </pre>
      *
      * <code>string method = 3;</code>
@@ -774,7 +686,7 @@ public final class KnownMaliciousDomainProto {
         getMethodBytes() {
       java.lang.Object ref = method_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         method_ = b;
@@ -791,7 +703,7 @@ public final class KnownMaliciousDomainProto {
      * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
      * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
      * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string fqdn = 4;</code>
@@ -802,7 +714,7 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         fqdn_ = s;
@@ -814,7 +726,7 @@ public final class KnownMaliciousDomainProto {
      * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
      * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
      * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-     * NOT NULL. 
+     * NOT NULL.
      * </pre>
      *
      * <code>string fqdn = 4;</code>
@@ -824,7 +736,7 @@ public final class KnownMaliciousDomainProto {
         getFqdnBytes() {
       java.lang.Object ref = fqdn_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         fqdn_ = b;
@@ -841,7 +753,7 @@ public final class KnownMaliciousDomainProto {
      * URL of this malicious domain, provided by vendor.
      * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
      * Some vendors do not provide the service URL of this malicious domain. So this field is
-     * NULLABLE 
+     * NULLABLE
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -852,7 +764,7 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         url_ = s;
@@ -864,7 +776,7 @@ public final class KnownMaliciousDomainProto {
      * URL of this malicious domain, provided by vendor.
      * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
      * Some vendors do not provide the service URL of this malicious domain. So this field is
-     * NULLABLE 
+     * NULLABLE
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -874,7 +786,7 @@ public final class KnownMaliciousDomainProto {
         getUrlBytes() {
       java.lang.Object ref = url_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         url_ = b;
@@ -889,7 +801,7 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
-     * NULLABLE, use 0 for NULL. 
+     * NULLABLE, use 0 for NULL.
      * </pre>
      *
      * <code>int64 created_at = 6;</code>
@@ -904,7 +816,7 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
-     * NULLABLE, use 0 for NULL. 
+     * NULLABLE, use 0 for NULL.
      * </pre>
      *
      * <code>int64 updated_at = 7;</code>
@@ -913,17 +825,161 @@ public final class KnownMaliciousDomainProto {
     public long getUpdatedAt() {
       return updatedAt_;
     }
-
-    public static final int SERVICE_TITLE_FIELD_NUMBER = 8;
+    public static final int IPV4_ADDRS_FIELD_NUMBER = 17;
     private volatile java.lang.Object serviceTitle_;
+    public static final int IPV6_ADDRS_FIELD_NUMBER = 18;
+    public static final int CNAMES_FIELD_NUMBER = 19;
+    public static final int TYPE_FIELD_NUMBER = 20;
+    private com.google.protobuf.ByteString ipv4Addrs_;
+    public static final int ASN_FIELD_NUMBER = 21;
+    public static final int REGISTRAR_FIELD_NUMBER = 22;
+    private com.google.protobuf.ByteString ipv6Addrs_;
+    public static final int REMARK_FIELD_NUMBER = 23;
+    public static final int STATUS_FIELD_NUMBER = 24;
+    private com.google.protobuf.LazyStringList cnames_;
+    private KnownMaliciousDomain(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              timestamp_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              source_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              method_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              fqdn_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              url_ = s;
+              break;
+            }
+            case 48: {
+
+              createdAt_ = input.readInt64();
+              break;
+            }
+            case 56: {
+
+              updatedAt_ = input.readInt64();
+              break;
+            }
+            case 130: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              serviceTitle_ = s;
+              break;
+            }
+            case 138: {
+
+              ipv4Addrs_ = input.readBytes();
+              break;
+            }
+            case 146: {
+
+              ipv6Addrs_ = input.readBytes();
+              break;
+            }
+            case 154: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                cnames_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              cnames_.add(s);
+              break;
+            }
+            case 162: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              type_ = s;
+              break;
+            }
+            case 168: {
+
+              asn_ = input.readInt32();
+              break;
+            }
+            case 178: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              registrar_ = s;
+              break;
+            }
+            case 186: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              remark_ = s;
+              break;
+            }
+            case 192: {
+              int rawValue = input.readEnum();
+
+              status_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          cnames_ = cnames_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+
     /**
      * <pre>
      * Title of backend service, provided by vendor.
      * If this is a HTTP service, then backend service title can be a website title.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string service_title = 8;</code>
+     * <code>string service_title = 16;</code>
      * @return The serviceTitle.
      */
     public java.lang.String getServiceTitle() {
@@ -931,28 +987,29 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         serviceTitle_ = s;
         return s;
       }
     }
+
     /**
      * <pre>
      * Title of backend service, provided by vendor.
      * If this is a HTTP service, then backend service title can be a website title.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string service_title = 8;</code>
+     * <code>string service_title = 16;</code>
      * @return The bytes for serviceTitle.
      */
     public com.google.protobuf.ByteString
         getServiceTitleBytes() {
       java.lang.Object ref = serviceTitle_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         serviceTitle_ = b;
@@ -962,93 +1019,92 @@ public final class KnownMaliciousDomainProto {
       }
     }
 
-    public static final int IPV4_ADDRS_FIELD_NUMBER = 9;
-    private com.google.protobuf.ByteString ipv4Addrs_;
     /**
      * <pre>
      * IPv4 addresses of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
      * IP addresses are represented by concatenated big endian bytes.
      * The length of this field should be multiple of 4.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>bytes ipv4_addrs = 9;</code>
+     * <code>bytes ipv4_addrs = 17;</code>
      * @return The ipv4Addrs.
      */
     public com.google.protobuf.ByteString getIpv4Addrs() {
       return ipv4Addrs_;
     }
 
-    public static final int IPV6_ADDRS_FIELD_NUMBER = 10;
-    private com.google.protobuf.ByteString ipv6Addrs_;
     /**
      * <pre>
      * IPv6 addresses of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
      * IP addresses are represented by concatenated big endian bytes.
      * The length of this field should be multiple of 16.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>bytes ipv6_addrs = 10;</code>
+     * <code>bytes ipv6_addrs = 18;</code>
      * @return The ipv6Addrs.
      */
     public com.google.protobuf.ByteString getIpv6Addrs() {
       return ipv6Addrs_;
     }
+    private volatile java.lang.Object type_;
 
-    public static final int CNAMES_FIELD_NUMBER = 11;
-    private com.google.protobuf.LazyStringList cnames_;
     /**
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @return A list containing the cnames.
      */
     public com.google.protobuf.ProtocolStringList
         getCnamesList() {
       return cnames_;
     }
+
     /**
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @return The count of cnames.
      */
     public int getCnamesCount() {
       return cnames_.size();
     }
+
     /**
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @param index The index of the element to return.
      * @return The cnames at the given index.
      */
     public java.lang.String getCnames(int index) {
       return cnames_.get(index);
     }
+    private int asn_;
+
     /**
      * <pre>
      * CNAMEs of this domain, provided by vendor or message producer.
      * If vendor does not provide this value, message producer should resolve it.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>repeated string cnames = 11;</code>
+     * <code>repeated string cnames = 19;</code>
      * @param index The index of the value to return.
      * @return The bytes of the cnames at the given index.
      */
@@ -1057,16 +1113,14 @@ public final class KnownMaliciousDomainProto {
       return cnames_.getByteString(index);
     }
 
-    public static final int TYPE_FIELD_NUMBER = 12;
-    private volatile java.lang.Object type_;
     /**
      * <pre>
      * Malicious type, provided by vendor.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string type = 12;</code>
+     * <code>string type = 20;</code>
      * @return The type.
      */
     public java.lang.String getType() {
@@ -1074,28 +1128,30 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         type_ = s;
         return s;
       }
     }
+    private volatile java.lang.Object registrar_;
+
     /**
      * <pre>
      * Malicious type, provided by vendor.
      * Should be UPPER CASE, delimited by underscore(_).
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string type = 12;</code>
+     * <code>string type = 20;</code>
      * @return The bytes for type.
      */
     public com.google.protobuf.ByteString
         getTypeBytes() {
       java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         type_ = b;
@@ -1105,30 +1161,26 @@ public final class KnownMaliciousDomainProto {
       }
     }
 
-    public static final int ASN_FIELD_NUMBER = 13;
-    private int asn_;
     /**
      * <pre>
      * Autonomous System Number (ASN), provided by vendor.
-     * NULLABLE, use 0 for NULL. 
+     * NULLABLE, use 0 for NULL.
      * </pre>
      *
-     * <code>int32 asn = 13;</code>
+     * <code>int32 asn = 21;</code>
      * @return The asn.
      */
     public int getAsn() {
       return asn_;
     }
 
-    public static final int REGISTRAR_FIELD_NUMBER = 14;
-    private volatile java.lang.Object registrar_;
     /**
      * <pre>
      * Registrar of this domain, provided by vendor.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string registrar = 14;</code>
+     * <code>string registrar = 22;</code>
      * @return The registrar.
      */
     public java.lang.String getRegistrar() {
@@ -1136,27 +1188,29 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         registrar_ = s;
         return s;
       }
     }
+    private volatile java.lang.Object remark_;
+
     /**
      * <pre>
      * Registrar of this domain, provided by vendor.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string registrar = 14;</code>
+     * <code>string registrar = 22;</code>
      * @return The bytes for registrar.
      */
     public com.google.protobuf.ByteString
         getRegistrarBytes() {
       java.lang.Object ref = registrar_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         registrar_ = b;
@@ -1166,15 +1220,13 @@ public final class KnownMaliciousDomainProto {
       }
     }
 
-    public static final int REMARK_FIELD_NUMBER = 15;
-    private volatile java.lang.Object remark_;
     /**
      * <pre>
      * Additional information of this domain, provided by vendor or message producer.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string remark = 15;</code>
+     * <code>string remark = 23;</code>
      * @return The remark.
      */
     public java.lang.String getRemark() {
@@ -1182,27 +1234,28 @@ public final class KnownMaliciousDomainProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         remark_ = s;
         return s;
       }
     }
+
     /**
      * <pre>
      * Additional information of this domain, provided by vendor or message producer.
-     * NULLABLE. 
+     * NULLABLE.
      * </pre>
      *
-     * <code>string remark = 15;</code>
+     * <code>string remark = 23;</code>
      * @return The bytes for remark.
      */
     public com.google.protobuf.ByteString
         getRemarkBytes() {
       java.lang.Object ref = remark_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         remark_ = b;
@@ -1211,16 +1264,15 @@ public final class KnownMaliciousDomainProto {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
-    public static final int STATUS_FIELD_NUMBER = 16;
     private int status_;
+
     /**
      * <pre>
      * Status of this domain, provided by vendor or message producer.
-     * NULLABLE, 
+     * NULLABLE,
      * </pre>
      *
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
      * @return The enum numeric value on the wire for status.
      */
     public int getStatusValue() {
@@ -1229,10 +1281,10 @@ public final class KnownMaliciousDomainProto {
     /**
      * <pre>
      * Status of this domain, provided by vendor or message producer.
-     * NULLABLE, 
+     * NULLABLE,
      * </pre>
      *
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
      * @return The status.
      */
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status getStatus() {
@@ -1277,31 +1329,31 @@ public final class KnownMaliciousDomainProto {
         output.writeInt64(7, updatedAt_);
       }
       if (!getServiceTitleBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, serviceTitle_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 16, serviceTitle_);
       }
       if (!ipv4Addrs_.isEmpty()) {
-        output.writeBytes(9, ipv4Addrs_);
+        output.writeBytes(17, ipv4Addrs_);
       }
       if (!ipv6Addrs_.isEmpty()) {
-        output.writeBytes(10, ipv6Addrs_);
+        output.writeBytes(18, ipv6Addrs_);
       }
       for (int i = 0; i < cnames_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, cnames_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 19, cnames_.getRaw(i));
       }
       if (!getTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, type_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, type_);
       }
       if (asn_ != 0) {
-        output.writeInt32(13, asn_);
+        output.writeInt32(21, asn_);
       }
       if (!getRegistrarBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 14, registrar_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 22, registrar_);
       }
       if (!getRemarkBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 15, remark_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 23, remark_);
       }
       if (status_ != com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status.UNKNOWN.getNumber()) {
-        output.writeEnum(16, status_);
+        output.writeEnum(24, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -1337,15 +1389,15 @@ public final class KnownMaliciousDomainProto {
           .computeInt64Size(7, updatedAt_);
       }
       if (!getServiceTitleBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, serviceTitle_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, serviceTitle_);
       }
       if (!ipv4Addrs_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(9, ipv4Addrs_);
+          .computeBytesSize(17, ipv4Addrs_);
       }
       if (!ipv6Addrs_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, ipv6Addrs_);
+          .computeBytesSize(18, ipv6Addrs_);
       }
       {
         int dataSize = 0;
@@ -1353,24 +1405,24 @@ public final class KnownMaliciousDomainProto {
           dataSize += computeStringSizeNoTag(cnames_.getRaw(i));
         }
         size += dataSize;
-        size += 1 * getCnamesList().size();
+        size += 2 * getCnamesList().size();
       }
       if (!getTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, type_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, type_);
       }
       if (asn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, asn_);
+          .computeInt32Size(21, asn_);
       }
       if (!getRegistrarBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, registrar_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(22, registrar_);
       }
       if (!getRemarkBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, remark_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, remark_);
       }
       if (status_ != com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status.UNKNOWN.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(16, status_);
+          .computeEnumSize(24, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1823,7 +1875,7 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is obtained from vendor, provided by message producer.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>int64 timestamp = 1;</code>
@@ -1835,7 +1887,7 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is obtained from vendor, provided by message producer.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>int64 timestamp = 1;</code>
@@ -1843,7 +1895,7 @@ public final class KnownMaliciousDomainProto {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-        
+
         timestamp_ = value;
         onChanged();
         return this;
@@ -1851,14 +1903,14 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is obtained from vendor, provided by message producer.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>int64 timestamp = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTimestamp() {
-        
+
         timestamp_ = 0L;
         onChanged();
         return this;
@@ -1869,7 +1921,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Vendor source URI, provided by message producer.
        * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string source = 2;</code>
@@ -1891,7 +1943,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Vendor source URI, provided by message producer.
        * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string source = 2;</code>
@@ -1901,7 +1953,7 @@ public final class KnownMaliciousDomainProto {
           getSourceBytes() {
         java.lang.Object ref = source_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           source_ = b;
@@ -1914,7 +1966,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Vendor source URI, provided by message producer.
        * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string source = 2;</code>
@@ -1926,7 +1978,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         source_ = value;
         onChanged();
         return this;
@@ -1935,14 +1987,14 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Vendor source URI, provided by message producer.
        * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string source = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearSource() {
-        
+
         source_ = getDefaultInstance().getSource();
         onChanged();
         return this;
@@ -1951,7 +2003,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Vendor source URI, provided by message producer.
        * Should be of [RFC3986](https://tools.ietf.org/html/rfc3986) format.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string source = 2;</code>
@@ -1964,7 +2016,7 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         source_ = value;
         onChanged();
         return this;
@@ -1975,7 +2027,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Method of obtaining this record, provided by message producer.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NOT NULL 
+       * NOT NULL
        * </pre>
        *
        * <code>string method = 3;</code>
@@ -1997,7 +2049,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Method of obtaining this record, provided by message producer.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NOT NULL 
+       * NOT NULL
        * </pre>
        *
        * <code>string method = 3;</code>
@@ -2007,7 +2059,7 @@ public final class KnownMaliciousDomainProto {
           getMethodBytes() {
         java.lang.Object ref = method_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           method_ = b;
@@ -2020,7 +2072,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Method of obtaining this record, provided by message producer.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NOT NULL 
+       * NOT NULL
        * </pre>
        *
        * <code>string method = 3;</code>
@@ -2032,7 +2084,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         method_ = value;
         onChanged();
         return this;
@@ -2041,14 +2093,14 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Method of obtaining this record, provided by message producer.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NOT NULL 
+       * NOT NULL
        * </pre>
        *
        * <code>string method = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearMethod() {
-        
+
         method_ = getDefaultInstance().getMethod();
         onChanged();
         return this;
@@ -2057,7 +2109,7 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Method of obtaining this record, provided by message producer.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NOT NULL 
+       * NOT NULL
        * </pre>
        *
        * <code>string method = 3;</code>
@@ -2070,7 +2122,7 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         method_ = value;
         onChanged();
         return this;
@@ -2082,7 +2134,7 @@ public final class KnownMaliciousDomainProto {
        * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
        * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
        * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string fqdn = 4;</code>
@@ -2105,7 +2157,7 @@ public final class KnownMaliciousDomainProto {
        * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
        * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
        * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string fqdn = 4;</code>
@@ -2115,7 +2167,7 @@ public final class KnownMaliciousDomainProto {
           getFqdnBytes() {
         java.lang.Object ref = fqdn_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           fqdn_ = b;
@@ -2129,7 +2181,7 @@ public final class KnownMaliciousDomainProto {
        * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
        * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
        * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string fqdn = 4;</code>
@@ -2141,7 +2193,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         fqdn_ = value;
         onChanged();
         return this;
@@ -2151,14 +2203,14 @@ public final class KnownMaliciousDomainProto {
        * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
        * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
        * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string fqdn = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearFqdn() {
-        
+
         fqdn_ = getDefaultInstance().getFqdn();
         onChanged();
         return this;
@@ -2168,7 +2220,7 @@ public final class KnownMaliciousDomainProto {
        * Fully Qualified Domain Name (FQDN) of this malicious domain, provided by vendor or message producer.
        * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
        * If `url` field is present and vendor does not provide FQDN, then FQDN can be extracted from that URL.
-       * NOT NULL. 
+       * NOT NULL.
        * </pre>
        *
        * <code>string fqdn = 4;</code>
@@ -2181,7 +2233,7 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         fqdn_ = value;
         onChanged();
         return this;
@@ -2193,7 +2245,7 @@ public final class KnownMaliciousDomainProto {
        * URL of this malicious domain, provided by vendor.
        * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
        * Some vendors do not provide the service URL of this malicious domain. So this field is
-       * NULLABLE 
+       * NULLABLE
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -2216,7 +2268,7 @@ public final class KnownMaliciousDomainProto {
        * URL of this malicious domain, provided by vendor.
        * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
        * Some vendors do not provide the service URL of this malicious domain. So this field is
-       * NULLABLE 
+       * NULLABLE
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -2226,7 +2278,7 @@ public final class KnownMaliciousDomainProto {
           getUrlBytes() {
         java.lang.Object ref = url_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           url_ = b;
@@ -2240,7 +2292,7 @@ public final class KnownMaliciousDomainProto {
        * URL of this malicious domain, provided by vendor.
        * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
        * Some vendors do not provide the service URL of this malicious domain. So this field is
-       * NULLABLE 
+       * NULLABLE
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -2252,7 +2304,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         url_ = value;
         onChanged();
         return this;
@@ -2262,14 +2314,14 @@ public final class KnownMaliciousDomainProto {
        * URL of this malicious domain, provided by vendor.
        * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
        * Some vendors do not provide the service URL of this malicious domain. So this field is
-       * NULLABLE 
+       * NULLABLE
        * </pre>
        *
        * <code>string url = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearUrl() {
-        
+
         url_ = getDefaultInstance().getUrl();
         onChanged();
         return this;
@@ -2279,7 +2331,7 @@ public final class KnownMaliciousDomainProto {
        * URL of this malicious domain, provided by vendor.
        * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
        * Some vendors do not provide the service URL of this malicious domain. So this field is
-       * NULLABLE 
+       * NULLABLE
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -2292,7 +2344,7 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         url_ = value;
         onChanged();
         return this;
@@ -2302,7 +2354,7 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
        * <code>int64 created_at = 6;</code>
@@ -2314,7 +2366,7 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
        * <code>int64 created_at = 6;</code>
@@ -2322,7 +2374,7 @@ public final class KnownMaliciousDomainProto {
        * @return This builder for chaining.
        */
       public Builder setCreatedAt(long value) {
-        
+
         createdAt_ = value;
         onChanged();
         return this;
@@ -2330,14 +2382,14 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
        * <code>int64 created_at = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearCreatedAt() {
-        
+
         createdAt_ = 0L;
         onChanged();
         return this;
@@ -2347,7 +2399,7 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
        * <code>int64 updated_at = 7;</code>
@@ -2359,7 +2411,7 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
        * <code>int64 updated_at = 7;</code>
@@ -2367,7 +2419,7 @@ public final class KnownMaliciousDomainProto {
        * @return This builder for chaining.
        */
       public Builder setUpdatedAt(long value) {
-        
+
         updatedAt_ = value;
         onChanged();
         return this;
@@ -2375,14 +2427,14 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
        * <code>int64 updated_at = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearUpdatedAt() {
-        
+
         updatedAt_ = 0L;
         onChanged();
         return this;
@@ -2393,10 +2445,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Title of backend service, provided by vendor.
        * If this is a HTTP service, then backend service title can be a website title.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string service_title = 8;</code>
+       * <code>string service_title = 16;</code>
        * @return The serviceTitle.
        */
       public java.lang.String getServiceTitle() {
@@ -2411,37 +2463,15 @@ public final class KnownMaliciousDomainProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <pre>
        * Title of backend service, provided by vendor.
        * If this is a HTTP service, then backend service title can be a website title.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string service_title = 8;</code>
-       * @return The bytes for serviceTitle.
-       */
-      public com.google.protobuf.ByteString
-          getServiceTitleBytes() {
-        java.lang.Object ref = serviceTitle_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          serviceTitle_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Title of backend service, provided by vendor.
-       * If this is a HTTP service, then backend service title can be a website title.
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>string service_title = 8;</code>
+       * <code>string service_title = 16;</code>
        * @param value The serviceTitle to set.
        * @return This builder for chaining.
        */
@@ -2450,35 +2480,44 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         serviceTitle_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
        * Title of backend service, provided by vendor.
        * If this is a HTTP service, then backend service title can be a website title.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string service_title = 8;</code>
-       * @return This builder for chaining.
+       * <code>string service_title = 16;</code>
+       * @return The bytes for serviceTitle.
        */
-      public Builder clearServiceTitle() {
-        
-        serviceTitle_ = getDefaultInstance().getServiceTitle();
-        onChanged();
-        return this;
+      public com.google.protobuf.ByteString
+          getServiceTitleBytes() {
+        java.lang.Object ref = serviceTitle_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          serviceTitle_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
+
       /**
        * <pre>
        * Title of backend service, provided by vendor.
        * If this is a HTTP service, then backend service title can be a website title.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string service_title = 8;</code>
+       * <code>string service_title = 16;</code>
        * @param value The bytes for serviceTitle to set.
        * @return This builder for chaining.
        */
@@ -2488,23 +2527,41 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         serviceTitle_ = value;
         onChanged();
         return this;
       }
 
+      /**
+       * <pre>
+       * Title of backend service, provided by vendor.
+       * If this is a HTTP service, then backend service title can be a website title.
+       * NULLABLE.
+       * </pre>
+       *
+       * <code>string service_title = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServiceTitle() {
+
+        serviceTitle_ = getDefaultInstance().getServiceTitle();
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.ByteString ipv4Addrs_ = com.google.protobuf.ByteString.EMPTY;
+
       /**
        * <pre>
        * IPv4 addresses of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
        * IP addresses are represented by concatenated big endian bytes.
        * The length of this field should be multiple of 4.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>bytes ipv4_addrs = 9;</code>
+       * <code>bytes ipv4_addrs = 17;</code>
        * @return The ipv4Addrs.
        */
       public com.google.protobuf.ByteString getIpv4Addrs() {
@@ -2516,10 +2573,10 @@ public final class KnownMaliciousDomainProto {
        * If vendor does not provide this value, message producer should resolve it.
        * IP addresses are represented by concatenated big endian bytes.
        * The length of this field should be multiple of 4.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>bytes ipv4_addrs = 9;</code>
+       * <code>bytes ipv4_addrs = 17;</code>
        * @param value The ipv4Addrs to set.
        * @return This builder for chaining.
        */
@@ -2527,7 +2584,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         ipv4Addrs_ = value;
         onChanged();
         return this;
@@ -2538,14 +2595,14 @@ public final class KnownMaliciousDomainProto {
        * If vendor does not provide this value, message producer should resolve it.
        * IP addresses are represented by concatenated big endian bytes.
        * The length of this field should be multiple of 4.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>bytes ipv4_addrs = 9;</code>
+       * <code>bytes ipv4_addrs = 17;</code>
        * @return This builder for chaining.
        */
       public Builder clearIpv4Addrs() {
-        
+
         ipv4Addrs_ = getDefaultInstance().getIpv4Addrs();
         onChanged();
         return this;
@@ -2558,10 +2615,10 @@ public final class KnownMaliciousDomainProto {
        * If vendor does not provide this value, message producer should resolve it.
        * IP addresses are represented by concatenated big endian bytes.
        * The length of this field should be multiple of 16.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>bytes ipv6_addrs = 10;</code>
+       * <code>bytes ipv6_addrs = 18;</code>
        * @return The ipv6Addrs.
        */
       public com.google.protobuf.ByteString getIpv6Addrs() {
@@ -2573,10 +2630,10 @@ public final class KnownMaliciousDomainProto {
        * If vendor does not provide this value, message producer should resolve it.
        * IP addresses are represented by concatenated big endian bytes.
        * The length of this field should be multiple of 16.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>bytes ipv6_addrs = 10;</code>
+       * <code>bytes ipv6_addrs = 18;</code>
        * @param value The ipv6Addrs to set.
        * @return This builder for chaining.
        */
@@ -2584,7 +2641,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         ipv6Addrs_ = value;
         onChanged();
         return this;
@@ -2595,14 +2652,14 @@ public final class KnownMaliciousDomainProto {
        * If vendor does not provide this value, message producer should resolve it.
        * IP addresses are represented by concatenated big endian bytes.
        * The length of this field should be multiple of 16.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>bytes ipv6_addrs = 10;</code>
+       * <code>bytes ipv6_addrs = 18;</code>
        * @return This builder for chaining.
        */
       public Builder clearIpv6Addrs() {
-        
+
         ipv6Addrs_ = getDefaultInstance().getIpv6Addrs();
         onChanged();
         return this;
@@ -2619,10 +2676,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @return A list containing the cnames.
        */
       public com.google.protobuf.ProtocolStringList
@@ -2633,10 +2690,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @return The count of cnames.
        */
       public int getCnamesCount() {
@@ -2646,10 +2703,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @param index The index of the element to return.
        * @return The cnames at the given index.
        */
@@ -2660,10 +2717,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @param index The index of the value to return.
        * @return The bytes of the cnames at the given index.
        */
@@ -2675,10 +2732,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @param index The index to set the value at.
        * @param value The cnames to set.
        * @return This builder for chaining.
@@ -2697,10 +2754,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @param value The cnames to add.
        * @return This builder for chaining.
        */
@@ -2718,10 +2775,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @param values The cnames to add.
        * @return This builder for chaining.
        */
@@ -2737,10 +2794,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @return This builder for chaining.
        */
       public Builder clearCnames() {
@@ -2753,10 +2810,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * CNAMEs of this domain, provided by vendor or message producer.
        * If vendor does not provide this value, message producer should resolve it.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>repeated string cnames = 11;</code>
+       * <code>repeated string cnames = 19;</code>
        * @param value The bytes of the cnames to add.
        * @return This builder for chaining.
        */
@@ -2777,10 +2834,10 @@ public final class KnownMaliciousDomainProto {
        * <pre>
        * Malicious type, provided by vendor.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string type = 12;</code>
+       * <code>string type = 20;</code>
        * @return The type.
        */
       public java.lang.String getType() {
@@ -2795,37 +2852,15 @@ public final class KnownMaliciousDomainProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <pre>
        * Malicious type, provided by vendor.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string type = 12;</code>
-       * @return The bytes for type.
-       */
-      public com.google.protobuf.ByteString
-          getTypeBytes() {
-        java.lang.Object ref = type_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          type_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Malicious type, provided by vendor.
-       * Should be UPPER CASE, delimited by underscore(_).
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>string type = 12;</code>
+       * <code>string type = 20;</code>
        * @param value The type to set.
        * @return This builder for chaining.
        */
@@ -2834,35 +2869,44 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         type_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
        * Malicious type, provided by vendor.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string type = 12;</code>
-       * @return This builder for chaining.
+       * <code>string type = 20;</code>
+       * @return The bytes for type.
        */
-      public Builder clearType() {
-        
-        type_ = getDefaultInstance().getType();
-        onChanged();
-        return this;
+      public com.google.protobuf.ByteString
+          getTypeBytes() {
+        java.lang.Object ref = type_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          type_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
+
       /**
        * <pre>
        * Malicious type, provided by vendor.
        * Should be UPPER CASE, delimited by underscore(_).
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string type = 12;</code>
+       * <code>string type = 20;</code>
        * @param value The bytes for type to set.
        * @return This builder for chaining.
        */
@@ -2872,20 +2916,38 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         type_ = value;
         onChanged();
         return this;
       }
 
+      /**
+       * <pre>
+       * Malicious type, provided by vendor.
+       * Should be UPPER CASE, delimited by underscore(_).
+       * NULLABLE.
+       * </pre>
+       *
+       * <code>string type = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+
+        type_ = getDefaultInstance().getType();
+        onChanged();
+        return this;
+      }
+
       private int asn_ ;
+
       /**
        * <pre>
        * Autonomous System Number (ASN), provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
-       * <code>int32 asn = 13;</code>
+       * <code>int32 asn = 21;</code>
        * @return The asn.
        */
       public int getAsn() {
@@ -2894,15 +2956,15 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Autonomous System Number (ASN), provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
-       * <code>int32 asn = 13;</code>
+       * <code>int32 asn = 21;</code>
        * @param value The asn to set.
        * @return This builder for chaining.
        */
       public Builder setAsn(int value) {
-        
+
         asn_ = value;
         onChanged();
         return this;
@@ -2910,14 +2972,14 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Autonomous System Number (ASN), provided by vendor.
-       * NULLABLE, use 0 for NULL. 
+       * NULLABLE, use 0 for NULL.
        * </pre>
        *
-       * <code>int32 asn = 13;</code>
+       * <code>int32 asn = 21;</code>
        * @return This builder for chaining.
        */
       public Builder clearAsn() {
-        
+
         asn_ = 0;
         onChanged();
         return this;
@@ -2927,10 +2989,10 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Registrar of this domain, provided by vendor.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string registrar = 14;</code>
+       * <code>string registrar = 22;</code>
        * @return The registrar.
        */
       public java.lang.String getRegistrar() {
@@ -2945,35 +3007,14 @@ public final class KnownMaliciousDomainProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <pre>
        * Registrar of this domain, provided by vendor.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string registrar = 14;</code>
-       * @return The bytes for registrar.
-       */
-      public com.google.protobuf.ByteString
-          getRegistrarBytes() {
-        java.lang.Object ref = registrar_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          registrar_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Registrar of this domain, provided by vendor.
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>string registrar = 14;</code>
+       * <code>string registrar = 22;</code>
        * @param value The registrar to set.
        * @return This builder for chaining.
        */
@@ -2982,33 +3023,42 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         registrar_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
        * Registrar of this domain, provided by vendor.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string registrar = 14;</code>
-       * @return This builder for chaining.
+       * <code>string registrar = 22;</code>
+       * @return The bytes for registrar.
        */
-      public Builder clearRegistrar() {
-        
-        registrar_ = getDefaultInstance().getRegistrar();
-        onChanged();
-        return this;
+      public com.google.protobuf.ByteString
+          getRegistrarBytes() {
+        java.lang.Object ref = registrar_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          registrar_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
+
       /**
        * <pre>
        * Registrar of this domain, provided by vendor.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string registrar = 14;</code>
+       * <code>string registrar = 22;</code>
        * @param value The bytes for registrar to set.
        * @return This builder for chaining.
        */
@@ -3018,20 +3068,37 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         registrar_ = value;
         onChanged();
         return this;
       }
 
+      /**
+       * <pre>
+       * Registrar of this domain, provided by vendor.
+       * NULLABLE.
+       * </pre>
+       *
+       * <code>string registrar = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegistrar() {
+
+        registrar_ = getDefaultInstance().getRegistrar();
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object remark_ = "";
+
       /**
        * <pre>
        * Additional information of this domain, provided by vendor or message producer.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string remark = 15;</code>
+       * <code>string remark = 23;</code>
        * @return The remark.
        */
       public java.lang.String getRemark() {
@@ -3046,35 +3113,14 @@ public final class KnownMaliciousDomainProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <pre>
        * Additional information of this domain, provided by vendor or message producer.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string remark = 15;</code>
-       * @return The bytes for remark.
-       */
-      public com.google.protobuf.ByteString
-          getRemarkBytes() {
-        java.lang.Object ref = remark_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          remark_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Additional information of this domain, provided by vendor or message producer.
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>string remark = 15;</code>
+       * <code>string remark = 23;</code>
        * @param value The remark to set.
        * @return This builder for chaining.
        */
@@ -3083,33 +3129,42 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+
         remark_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
        * Additional information of this domain, provided by vendor or message producer.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string remark = 15;</code>
-       * @return This builder for chaining.
+       * <code>string remark = 23;</code>
+       * @return The bytes for remark.
        */
-      public Builder clearRemark() {
-        
-        remark_ = getDefaultInstance().getRemark();
-        onChanged();
-        return this;
+      public com.google.protobuf.ByteString
+          getRemarkBytes() {
+        java.lang.Object ref = remark_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          remark_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
+
       /**
        * <pre>
        * Additional information of this domain, provided by vendor or message producer.
-       * NULLABLE. 
+       * NULLABLE.
        * </pre>
        *
-       * <code>string remark = 15;</code>
+       * <code>string remark = 23;</code>
        * @param value The bytes for remark to set.
        * @return This builder for chaining.
        */
@@ -3119,20 +3174,37 @@ public final class KnownMaliciousDomainProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+
         remark_ = value;
         onChanged();
         return this;
       }
 
+      /**
+       * <pre>
+       * Additional information of this domain, provided by vendor or message producer.
+       * NULLABLE.
+       * </pre>
+       *
+       * <code>string remark = 23;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRemark() {
+
+        remark_ = getDefaultInstance().getRemark();
+        onChanged();
+        return this;
+      }
+
       private int status_ = 0;
+
       /**
        * <pre>
        * Status of this domain, provided by vendor or message producer.
-       * NULLABLE, 
+       * NULLABLE,
        * </pre>
        *
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @return The enum numeric value on the wire for status.
        */
       public int getStatusValue() {
@@ -3141,10 +3213,10 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Status of this domain, provided by vendor or message producer.
-       * NULLABLE, 
+       * NULLABLE,
        * </pre>
        *
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
        */
@@ -3156,10 +3228,10 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Status of this domain, provided by vendor or message producer.
-       * NULLABLE, 
+       * NULLABLE,
        * </pre>
        *
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @return The status.
        */
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status getStatus() {
@@ -3170,10 +3242,10 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Status of this domain, provided by vendor or message producer.
-       * NULLABLE, 
+       * NULLABLE,
        * </pre>
        *
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
@@ -3181,7 +3253,7 @@ public final class KnownMaliciousDomainProto {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         status_ = value.getNumber();
         onChanged();
         return this;
@@ -3189,14 +3261,14 @@ public final class KnownMaliciousDomainProto {
       /**
        * <pre>
        * Status of this domain, provided by vendor or message producer.
-       * NULLABLE, 
+       * NULLABLE,
        * </pre>
        *
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 16;</code>
+       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
-        
+
         status_ = 0;
         onChanged();
         return this;
@@ -3252,50 +3324,6 @@ public final class KnownMaliciousDomainProto {
       return DEFAULT_INSTANCE;
     }
 
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\nJcom/hitnslab/dnssecurity/deeparcher/ap" +
-      "i/proto/known_malicious_domain.proto\022-co" +
-      "m.hitnslab.dnssecurity.deeparcher.api.pr" +
-      "oto\"\267\003\n\024KnownMaliciousDomain\022\021\n\ttimestam" +
-      "p\030\001 \001(\003\022\016\n\006source\030\002 \001(\t\022\016\n\006method\030\003 \001(\t\022" +
-      "\014\n\004fqdn\030\004 \001(\t\022\013\n\003url\030\005 \001(\t\022\022\n\ncreated_at" +
-      "\030\006 \001(\003\022\022\n\nupdated_at\030\007 \001(\003\022\025\n\rservice_ti" +
-      "tle\030\010 \001(\t\022\022\n\nipv4_addrs\030\t \001(\014\022\022\n\nipv6_ad" +
-      "drs\030\n \001(\014\022\016\n\006cnames\030\013 \003(\t\022\014\n\004type\030\014 \001(\t\022" +
-      "\013\n\003asn\030\r \001(\005\022\021\n\tregistrar\030\016 \001(\t\022\016\n\006remar" +
-      "k\030\017 \001(\t\022Z\n\006status\030\020 \001(\0162J.com.hitnslab.d" +
-      "nssecurity.deeparcher.api.proto.KnownMal" +
-      "iciousDomain.Status\"@\n\006Status\022\013\n\007UNKNOWN" +
-      "\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002\022\010\n\004DEAD\020\003\022\t\n\005OT" +
-      "HER\020\004B^\n<com.hitnslab.dnssecurity.deepar" +
-      "cher.api.proto.generated.javaB\031KnownMali" +
-      "ciousDomainProtoH\001\370\001\001b\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor,
-        new java.lang.String[] { "Timestamp", "Source", "Method", "Fqdn", "Url", "CreatedAt", "UpdatedAt", "ServiceTitle", "Ipv4Addrs", "Ipv6Addrs", "Cnames", "Type", "Asn", "Registrar", "Remark", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

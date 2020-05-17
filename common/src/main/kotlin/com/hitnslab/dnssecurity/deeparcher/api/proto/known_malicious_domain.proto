@@ -47,47 +47,47 @@ message KnownMaliciousDomain {
   /* Title of backend service, provided by vendor.
    * If this is a HTTP service, then backend service title can be a website title.
    * NULLABLE. */
-  string service_title = 8;
+  string service_title = 16;
 
   /* IPv4 addresses of this domain, provided by vendor or message producer.
    * If vendor does not provide this value, message producer should resolve it.
    * IP addresses are represented by concatenated big endian bytes.
    * The length of this field should be multiple of 4.
    * NULLABLE. */
-  bytes ipv4_addrs = 9;
+  bytes ipv4_addrs = 17;
 
   /* IPv6 addresses of this domain, provided by vendor or message producer.
    * If vendor does not provide this value, message producer should resolve it.
    * IP addresses are represented by concatenated big endian bytes.
    * The length of this field should be multiple of 16.
    * NULLABLE. */
-  bytes ipv6_addrs = 10;
+  bytes ipv6_addrs = 18;
 
   /* CNAMEs of this domain, provided by vendor or message producer.
    * If vendor does not provide this value, message producer should resolve it.
    * NULLABLE. */
-  repeated string cnames = 11;
+  repeated string cnames = 19;
 
   /* Malicious type, provided by vendor.
    * Should be UPPER CASE, delimited by underscore(_).
    * NULLABLE. */
-  string type = 12;
+  string type = 20;
 
   /* Autonomous System Number (ASN), provided by vendor.
    * NULLABLE, use 0 for NULL. */
-  int32 asn = 13;
+  int32 asn = 21;
 
   /* Registrar of this domain, provided by vendor.
    * NULLABLE. */
-  string registrar = 14;
+  string registrar = 22;
 
   /* Additional information of this domain, provided by vendor or message producer.
    * NULLABLE. */
-  string remark = 15;
+  string remark = 23;
 
   /* Status of this domain, provided by vendor or message producer.
    * NULLABLE, */
-  Status status = 16;
+  Status status = 24;
 
   /* Generic Status type, represents the current status of this domain. */
   enum Status {
