@@ -1,0 +1,97 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: pdns-data-loader
+  namespace: default
+  labels:
+    app.kubernetes.io/name: pdns-data-loader
+    app.kubernetes.io/part-of: deeparcher
+    app.kubernetes.io/component: pdns-data-loader
+data:
+  application.yml: |-
+    spring:
+      task:
+        execution:
+          pool:
+            core-size: 12
+            max-size: 12
+      kafka:
+        bootstrap-servers:
+          - kafka-kafka-bootstrap:9093
+        ssl:
+          protocol: TLSv1.3
+          key-store-type: PKCS12
+          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12
+          key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+          # key-password: $ Not needed
+          trust-store-type: JKS
+          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks
+          trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+        producer:
+          key-serializer: org.apache.kafka.common.serialization.StringSerializer
+          value-serializer: com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer
+          acks: 1
+          compression-type: gzip
+          client-id: PDNS_DATA_LOADER
+          # transaction-id-prefix: PDNS_DATA_LOADER
+          batch-size: 300000
+        template:
+          default-topic: raw.pdns
+        properties:
+          security.protocol: SSL
+          ssl.enabled.protocols: TLSv1.3
+          # ssl.endpoint.identification.algorithm: ""
+          delivery.timeout.ms: 1800000
+      batch:
+        initialize-schema: always
+        job:
+          enabled: false  # Disable built-in CommandLineRunner
+      datasource:
+        url: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8mb4
+        username: # Inject it via env $SPRING_DATASOURCE_USERNAME
+        password: # Inject it via env $SPRING_DATASOURCE_PASSWORD
+        hikari:
+          connection-timeout: 300000
+          idle-timeout: 600000
+          validation-timeout: 5000
+          max-lifetime: 1800000
+          maximum-pool-size: 32
+          minimum-idle: 2
+          pool-name: spring-batch-db-pool
+    app:
+      job:
+        pdns:
+          try-restart: false
+          step:
+            # transaction-manager: org.springframework.kafka.transaction.KafkaTransactionManager
+            chunk-size: 3000
+            retry-limit: 10
+            item-reader:
+              field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogType1FieldSetMapper
+            item-processor:
+              prefilters:
+                - field: domain
+                  pattern: "hitwh\\.edu\\.cn$"
+                  allow: false
+            item-writer:
+              name: kafka
+              metrics:
+                enable: true
+                success-interval: 1000000
+                failure-interval: 1000
+    # management:
+    #   health:
+    #     db:
+    #       enabled: false
+    logging:
+      level:
+        com:
+          zaxxer:
+            hikari: DEBUG
+    com:
+      sun:
+        management:
+          jmxremote:
+            port: 56789
+            authenticate: false
+            ssl: false

@@ -40,8 +40,6 @@ spec:
           args:
             - pattern=file:///datasource/pdns_logs/**/*.log
           env:
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&characterEncoding=utf8mb4
             - name: SPRING_DATASOURCE_USERNAME
               value: springbatch
             - name: SPRING_DATASOURCE_PASSWORD
@@ -51,44 +49,16 @@ spec:
                   key: mariadb-password
             - name: JAVA_TOOL_OPTIONS
               value: -Xms1g -Xmx7g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
-            - name: SPRING_TASK_EXECUTION_POOL_CORE_SIZE
-              value: '12'
-            - name: SPRING_TASK_EXECUTION_POOL_MAX_SIZE
-              value: '12'
-            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              value: kafka-kafka-bootstrap:9093
-            - name: SPRING_KAFKA_SSL_KEY_STORE_TYPE
-              value: PKCS12
-            - name: SPRING_KAFKA_SSL_KEY_STORE_LOCATION
-              value: file:///var/run/secrets/java.io/keystores/user.p12
             - name: SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-user-pdns-data-loader
                   key: user.password
-            - name: SPRING_KAFKA_SSL_TRUST_STORE_TYPE
-              value: JKS
-            - name: SPRING_KAFKA_SSL_TRUST_STORE_LOCATION
-              value: file:///var/run/secrets/java.io/truststores/ca.jks
             - name: SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: truststore
                   key: password
-            - name: SPRING_KAFKA_TEMPLATE_DEFAULT_TOPIC
-              value: raw.pdns
-            - name: SPRING_KAFKA_PRODUCER_BATCH_SIZE
-              value: '300000'
-            # - name: SPRING_KAFKA_PRODUCER_PROPERTIES_LINGER_MS
-            #   value: '10000'
-            - name: APP_JOB_PDNS_STEP_CHUNK_SIZE
-              value: '3000'
-            - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_ENABLE
-              value: 'true'
-            - name: APP_JOB_PDNS_STEP_ITEM_WRITER_METRICS_SUCCESS_INTERVAL
-              value: '1000000'
-            - name: APP_JOB_PDNS_TRY_RESTART
-              value: 'false'
           resources:
             requests:
               cpu: '1'
@@ -103,6 +73,9 @@ spec:
               name: keystores
             - mountPath: /var/run/secrets/java.io/truststores/
               name: truststores
+            - mountPath: /app/resources/application.yml
+              name: config
+              subPath: application.yml
       restartPolicy: Never
       securityContext:
         runAsUser: 1001
@@ -121,6 +94,12 @@ spec:
           persistentVolumeClaim:
             claimName: nfs-k8s-gpu-node0
             # claimName: nfs-ns-2-b
+        - name: config
+          configMap:
+            name: pdns-data-loader
+            items:
+              - key: application.yml
+                path: application.yml
 ---
 apiVersion: v1
 kind: Service
