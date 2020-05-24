@@ -61,13 +61,13 @@
                     <subjects>
                         <PDnsData>src/main/kotlin/com/hitnslab/dnssecurity/deeparcher/api/proto/pdns_data.proto
                         </PDnsData>
-                        <DomainAssocDetail>
-                            src/main/kotlin/com/hitnslab/dnssecurity/deeparcher/api/proto/domain_ip_assoc_detail.proto
-                        </DomainAssocDetail>
+                        <DomainDnsDetail>
+                            src/main/kotlin/com/hitnslab/dnssecurity/deeparcher/api/proto/domain_dns_detail.proto
+                        </DomainDnsDetail>
                     </subjects>
                     <schemaTypes>
                         <PDnsData>PROTOBUF</PDnsData>
-                        <DomainAssocDetail>PROTOBUF</DomainAssocDetail>
+                        <DomainDnsDetail>PROTOBUF</DomainDnsDetail>
                     </schemaTypes>
                     <!-- schema-registry:download -->
                     <outputDirectory>target/schema-registry</outputDirectory>
