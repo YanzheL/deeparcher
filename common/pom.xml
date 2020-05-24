@@ -77,7 +77,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
     </build>
     <version>1.0.0-SNAPSHOT</version>
