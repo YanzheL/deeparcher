@@ -1,0 +1,64 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: stream-aggregator
+  namespace: default
+  labels:
+    app.kubernetes.io/name: stream-aggregator
+    app.kubernetes.io/part-of: deeparcher
+    app.kubernetes.io/component: stream
+data:
+  application.yml: |-
+    spring:
+      kafka:
+        bootstrap-servers:
+          - kafka-kafka-bootstrap:9093
+        ssl:
+          protocol: TLSv1.3
+          key-store-type: PKCS12
+          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12
+          key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
+          trust-store-type: JKS
+          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks
+          trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+        properties:
+          security.protocol: SSL
+          ssl.enabled.protocols: TLSv1.3
+          # ssl.endpoint.identification.algorithm: ""
+          metadata.max.age.ms: 60000
+          receive.buffer.bytes: 2097152
+          delivery.timeout.ms: 1800000
+        streams:
+          application-id: stream-aggregator
+          state-dir: /tmp/kafka-stream
+          replication-factor: 2
+          auto-startup: true
+          properties:
+            topology.optimization: all
+            num.stream.threads: 1
+            consumer.max-poll-records: 5000000
+            consumer.fetch-max-wait: 2000
+            consumer.auto-offset-reset: earliest
+
+    app:
+      graph:
+        enabled: false
+      aggregator:
+        enabled: true
+        lookup-timeout: 0
+        input:
+          type: topic
+          path: raw.pdns.not-in-whitelist
+        output:
+          - type: topic
+            path: domain.aggregate
+      whitelist-filter:
+        enabled: false
+
+    com:
+      sun:
+        management:
+          jmxremote:
+            port: 9999
+            authenticate: false
+            ssl: false
