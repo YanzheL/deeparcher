@@ -47,7 +47,7 @@ data:
         job:
           enabled: false  # Disable built-in CommandLineRunner
       datasource:
-        url: jdbc:mariadb://job-repository-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8mb4
+        url: jdbc:mariadb://deeparcher-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8mb4
         username: # Inject it via env $SPRING_DATASOURCE_USERNAME
         password: # Inject it via env $SPRING_DATASOURCE_PASSWORD
         hikari:

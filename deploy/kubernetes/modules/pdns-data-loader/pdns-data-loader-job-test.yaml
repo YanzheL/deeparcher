@@ -90,10 +90,6 @@ spec:
                 secretKeyRef:
                   name: truststore
                   key: password
-            - name: SPRING_KAFKA_TEMPLATE_DEFAULT_TOPIC
-              value: test.raw.pdns
-            - name: SPRING_KAFKA_PRODUCER_BATCH_SIZE
-              value: '300000'
             # - name: SPRING_KAFKA_PRODUCER_PROPERTIES_LINGER_MS
             #   value: '10000'
             - name: APP_JOB_PDNS_STEP_CHUNK_SIZE

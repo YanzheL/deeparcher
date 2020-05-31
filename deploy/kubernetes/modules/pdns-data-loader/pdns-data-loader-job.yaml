@@ -43,10 +43,7 @@ spec:
             - name: SPRING_DATASOURCE_USERNAME
               value: springbatch
             - name: SPRING_DATASOURCE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: job-repository-mariadb
-                  key: mariadb-password
+              value: HITnsLAB-springbatch!
             - name: JAVA_TOOL_OPTIONS
               value: -Xms1g -Xmx7g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dgraal.ShowConfiguration=info
             - name: SPRING_KAFKA_SSL_KEY_STORE_PASSWORD

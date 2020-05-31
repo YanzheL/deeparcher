@@ -51,10 +51,6 @@ data:
           path: graph.edge
           options:
             unique: true
-      aggregator:
-        enabled: false
-      whitelist-filter:
-        enabled: false
 
     com:
       sun:

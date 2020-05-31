@@ -41,8 +41,6 @@ data:
             consumer.auto-offset-reset: earliest
 
     app:
-      graph:
-        enabled: false
       aggregator:
         enabled: true
         lookup-timeout: 0
@@ -52,8 +50,6 @@ data:
         output:
           - type: topic
             path: domain.aggregate
-      whitelist-filter:
-        enabled: false
 
     com:
       sun:

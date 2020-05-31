@@ -60,7 +60,7 @@ spec:
               memory: 500Mi
             limits:
               cpu: '8'
-              memory: 5Gi
+              memory: 5.5Gi
           volumeMounts:
             - mountPath: /var/run/secrets/java.io/keystores/
               name: keystores
