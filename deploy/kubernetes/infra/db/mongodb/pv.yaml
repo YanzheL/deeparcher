@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-deeparcher-mongodb-sharded-shard0-data-0
+spec:
+  storageClassName: local
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /srv/volumes/datadir-deeparcher-mongodb-sharded-shard0-data-0
+  claimRef:
+    namespace: default
+    name: datadir-deeparcher-mongodb-sharded-shard0-data-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-gpu-node0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-deeparcher-mongodb-sharded-shard1-data-0
+spec:
+  storageClassName: local
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /srv/volumes/datadir-deeparcher-mongodb-sharded-shard1-data-0
+  claimRef:
+    namespace: default
+    name: datadir-deeparcher-mongodb-sharded-shard1-data-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-node31
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-deeparcher-mongodb-sharded-shard2-data-0
+spec:
+  storageClassName: local
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /srv/volumes/datadir-deeparcher-mongodb-sharded-shard2-data-0
+  claimRef:
+    namespace: default
+    name: datadir-deeparcher-mongodb-sharded-shard2-data-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-node34
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-deeparcher-mongodb-sharded-configsvr-0
+spec:
+  storageClassName: local
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /srv/volumes/datadir-deeparcher-mongodb-sharded-configsvr-0
+  claimRef:
+    namespace: default
+    name: datadir-deeparcher-mongodb-sharded-configsvr-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-gpu-node0
