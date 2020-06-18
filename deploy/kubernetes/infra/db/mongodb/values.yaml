@@ -440,7 +440,7 @@ configsvr:
       - ReadWriteOnce
     ## PersistentVolumeClaim size
     ##
-    size: 10Gi
+    size: 20Gi
     ## Additional volume annotations
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
     ##
@@ -452,7 +452,7 @@ configsvr:
 mongos:
   ## Number of replicas
   ##
-  replicas: 2
+  replicas: 1
   ## Configure resource requests and limits
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
@@ -633,12 +633,12 @@ initScriptsSecret:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: true
   image:
     registry: docker.io
     repository: bitnami/minideb
     tag: buster
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -721,17 +721,17 @@ service:
 ##
 livenessProbe:
   enabled: true
-  initialDelaySeconds: 120
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
+  initialDelaySeconds: 30
+  periodSeconds: 20
+  timeoutSeconds: 20
+  failureThreshold: 10
   successThreshold: 1
 readinessProbe:
   enabled: true
-  initialDelaySeconds: 120
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
+  initialDelaySeconds: 30
+  periodSeconds: 20
+  timeoutSeconds: 20
+  failureThreshold: 10
   successThreshold: 1
 
 ## Prometheus Exporter / Metrics

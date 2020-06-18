@@ -68,7 +68,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - k8s-node34
+                - trinity-x
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -77,7 +77,7 @@ metadata:
 spec:
   storageClassName: local
   capacity:
-    storage: 10Gi
+    storage: 20Gi
   accessModes:
     - ReadWriteOnce
   local:
