@@ -142,7 +142,7 @@ public final class DomainDnsDetailProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DomainDnsDetail}
    */
-  public  static final class DomainDnsDetail extends
+  public static final class DomainDnsDetail extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DomainDnsDetail)
       DomainDnsDetailOrBuilder {
@@ -268,6 +268,7 @@ public final class DomainDnsDetailProto {
      * <code>string fqdn = 1;</code>
      * @return The fqdn.
      */
+    @java.lang.Override
     public java.lang.String getFqdn() {
       java.lang.Object ref = fqdn_;
       if (ref instanceof java.lang.String) {
@@ -290,6 +291,7 @@ public final class DomainDnsDetailProto {
      * <code>string fqdn = 1;</code>
      * @return The bytes for fqdn.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getFqdnBytes() {
       java.lang.Object ref = fqdn_;
@@ -317,6 +319,7 @@ public final class DomainDnsDetailProto {
      * <code>string domain = 2;</code>
      * @return The domain.
      */
+    @java.lang.Override
     public java.lang.String getDomain() {
       java.lang.Object ref = domain_;
       if (ref instanceof java.lang.String) {
@@ -340,6 +343,7 @@ public final class DomainDnsDetailProto {
      * <code>string domain = 2;</code>
      * @return The bytes for domain.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getDomainBytes() {
       java.lang.Object ref = domain_;
@@ -367,6 +371,7 @@ public final class DomainDnsDetailProto {
      * <code>bytes ipv4_addrs = 7;</code>
      * @return The ipv4Addrs.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getIpv4Addrs() {
       return ipv4Addrs_;
     }
@@ -384,6 +389,7 @@ public final class DomainDnsDetailProto {
      * <code>bytes ipv6_addrs = 8;</code>
      * @return The ipv6Addrs.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getIpv6Addrs() {
       return ipv6Addrs_;
     }
@@ -1061,6 +1067,7 @@ public final class DomainDnsDetailProto {
        * <code>bytes ipv4_addrs = 7;</code>
        * @return The ipv4Addrs.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getIpv4Addrs() {
         return ipv4Addrs_;
       }
@@ -1115,6 +1122,7 @@ public final class DomainDnsDetailProto {
        * <code>bytes ipv6_addrs = 8;</code>
        * @return The ipv6Addrs.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getIpv6Addrs() {
         return ipv6Addrs_;
       }

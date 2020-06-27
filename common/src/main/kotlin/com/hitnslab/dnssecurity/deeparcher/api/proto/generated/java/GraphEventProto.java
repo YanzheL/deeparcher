@@ -127,7 +127,7 @@ public final class GraphEventProto {
    *
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent}
    */
-  public  static final class GraphEvent extends
+  public static final class GraphEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent)
       GraphEventOrBuilder {
@@ -370,6 +370,10 @@ public final class GraphEventProto {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -415,6 +419,7 @@ public final class GraphEventProto {
      * <code>uint64 node1 = 1;</code>
      * @return The node1.
      */
+    @java.lang.Override
     public long getNode1() {
       return node1_;
     }
@@ -430,6 +435,7 @@ public final class GraphEventProto {
      * <code>uint64 node2 = 2;</code>
      * @return The node2.
      */
+    @java.lang.Override
     public long getNode2() {
       return node2_;
     }
@@ -445,7 +451,7 @@ public final class GraphEventProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action action = 3;</code>
      * @return The enum numeric value on the wire for action.
      */
-    public int getActionValue() {
+    @java.lang.Override public int getActionValue() {
       return action_;
     }
     /**
@@ -457,7 +463,7 @@ public final class GraphEventProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action action = 3;</code>
      * @return The action.
      */
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action getAction() {
+    @java.lang.Override public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action getAction() {
       @SuppressWarnings("deprecation")
       com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action.valueOf(action_);
       return result == null ? com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action.UNRECOGNIZED : result;
@@ -498,6 +504,7 @@ public final class GraphEventProto {
      * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
      */
 
+    @java.lang.Override
     public boolean containsAttributes(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -506,6 +513,7 @@ public final class GraphEventProto {
     /**
      * Use {@link #getAttributesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, com.google.protobuf.Any> getAttributes() {
       return getAttributesMap();
@@ -518,6 +526,7 @@ public final class GraphEventProto {
      *
      * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.String, com.google.protobuf.Any> getAttributesMap() {
       return internalGetAttributes().getMap();
@@ -530,6 +539,7 @@ public final class GraphEventProto {
      *
      * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
      */
+    @java.lang.Override
 
     public com.google.protobuf.Any getAttributesOrDefault(
         java.lang.String key,
@@ -547,6 +557,7 @@ public final class GraphEventProto {
      *
      * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
      */
+    @java.lang.Override
 
     public com.google.protobuf.Any getAttributesOrThrow(
         java.lang.String key) {
@@ -961,6 +972,7 @@ public final class GraphEventProto {
        * <code>uint64 node1 = 1;</code>
        * @return The node1.
        */
+      @java.lang.Override
       public long getNode1() {
         return node1_;
       }
@@ -1006,6 +1018,7 @@ public final class GraphEventProto {
        * <code>uint64 node2 = 2;</code>
        * @return The node2.
        */
+      @java.lang.Override
       public long getNode2() {
         return node2_;
       }
@@ -1051,7 +1064,7 @@ public final class GraphEventProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action action = 3;</code>
        * @return The enum numeric value on the wire for action.
        */
-      public int getActionValue() {
+      @java.lang.Override public int getActionValue() {
         return action_;
       }
       /**
@@ -1065,6 +1078,7 @@ public final class GraphEventProto {
        * @return This builder for chaining.
        */
       public Builder setActionValue(int value) {
+        
         action_ = value;
         onChanged();
         return this;
@@ -1078,6 +1092,7 @@ public final class GraphEventProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action action = 3;</code>
        * @return The action.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action getAction() {
         @SuppressWarnings("deprecation")
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action.valueOf(action_);
@@ -1153,6 +1168,7 @@ public final class GraphEventProto {
        * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
        */
 
+      @java.lang.Override
       public boolean containsAttributes(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1161,6 +1177,7 @@ public final class GraphEventProto {
       /**
        * Use {@link #getAttributesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, com.google.protobuf.Any> getAttributes() {
         return getAttributesMap();
@@ -1173,6 +1190,7 @@ public final class GraphEventProto {
        *
        * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.String, com.google.protobuf.Any> getAttributesMap() {
         return internalGetAttributes().getMap();
@@ -1185,6 +1203,7 @@ public final class GraphEventProto {
        *
        * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
        */
+      @java.lang.Override
 
       public com.google.protobuf.Any getAttributesOrDefault(
           java.lang.String key,
@@ -1202,6 +1221,7 @@ public final class GraphEventProto {
        *
        * <code>map&lt;string, .google.protobuf.Any&gt; attributes = 4;</code>
        */
+      @java.lang.Override
 
       public com.google.protobuf.Any getAttributesOrThrow(
           java.lang.String key) {

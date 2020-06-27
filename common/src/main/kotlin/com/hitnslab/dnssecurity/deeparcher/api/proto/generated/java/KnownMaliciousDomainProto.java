@@ -105,13 +105,41 @@ public final class KnownMaliciousDomainProto {
 
     /**
      * <pre>
+     * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+     * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+     * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+     * TPD can be extracted from FQDN.
+     * NOT NULL. 
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     * @return The domain.
+     */
+    java.lang.String getDomain();
+    /**
+     * <pre>
+     * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+     * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+     * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+     * TPD can be extracted from FQDN.
+     * NOT NULL. 
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     * @return The bytes for domain.
+     */
+    com.google.protobuf.ByteString
+        getDomainBytes();
+
+    /**
+     * <pre>
      * URL of this malicious domain, provided by vendor.
      * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
      * Some vendors do not provide the service URL of this malicious domain. So this field is
      * NULLABLE 
      * </pre>
      *
-     * <code>string url = 5;</code>
+     * <code>string url = 6;</code>
      * @return The url.
      */
     java.lang.String getUrl();
@@ -123,7 +151,7 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE 
      * </pre>
      *
-     * <code>string url = 5;</code>
+     * <code>string url = 6;</code>
      * @return The bytes for url.
      */
     com.google.protobuf.ByteString
@@ -135,7 +163,7 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE, use 0 for NULL. 
      * </pre>
      *
-     * <code>int64 created_at = 6;</code>
+     * <code>int64 created_at = 7;</code>
      * @return The createdAt.
      */
     long getCreatedAt();
@@ -146,7 +174,7 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE, use 0 for NULL. 
      * </pre>
      *
-     * <code>int64 updated_at = 7;</code>
+     * <code>int64 updated_at = 8;</code>
      * @return The updatedAt.
      */
     long getUpdatedAt();
@@ -355,7 +383,7 @@ public final class KnownMaliciousDomainProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain}
    */
-  public  static final class KnownMaliciousDomain extends
+  public static final class KnownMaliciousDomain extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain)
       KnownMaliciousDomainOrBuilder {
@@ -368,6 +396,7 @@ public final class KnownMaliciousDomainProto {
       source_ = "";
       method_ = "";
       fqdn_ = "";
+      domain_ = "";
       url_ = "";
       serviceTitle_ = "";
       ipv4Addrs_ = com.google.protobuf.ByteString.EMPTY;
@@ -436,15 +465,21 @@ public final class KnownMaliciousDomainProto {
             case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
+              domain_ = s;
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
               url_ = s;
               break;
             }
-            case 48: {
+            case 56: {
 
               createdAt_ = input.readInt64();
               break;
             }
-            case 56: {
+            case 64: {
 
               updatedAt_ = input.readInt64();
               break;
@@ -639,6 +674,10 @@ public final class KnownMaliciousDomainProto {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -684,6 +723,7 @@ public final class KnownMaliciousDomainProto {
      * <code>int64 timestamp = 1;</code>
      * @return The timestamp.
      */
+    @java.lang.Override
     public long getTimestamp() {
       return timestamp_;
     }
@@ -700,6 +740,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string source = 2;</code>
      * @return The source.
      */
+    @java.lang.Override
     public java.lang.String getSource() {
       java.lang.Object ref = source_;
       if (ref instanceof java.lang.String) {
@@ -722,6 +763,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string source = 2;</code>
      * @return The bytes for source.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSourceBytes() {
       java.lang.Object ref = source_;
@@ -748,6 +790,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string method = 3;</code>
      * @return The method.
      */
+    @java.lang.Override
     public java.lang.String getMethod() {
       java.lang.Object ref = method_;
       if (ref instanceof java.lang.String) {
@@ -770,6 +813,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string method = 3;</code>
      * @return The bytes for method.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMethodBytes() {
       java.lang.Object ref = method_;
@@ -797,6 +841,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string fqdn = 4;</code>
      * @return The fqdn.
      */
+    @java.lang.Override
     public java.lang.String getFqdn() {
       java.lang.Object ref = fqdn_;
       if (ref instanceof java.lang.String) {
@@ -820,6 +865,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string fqdn = 4;</code>
      * @return The bytes for fqdn.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getFqdnBytes() {
       java.lang.Object ref = fqdn_;
@@ -834,7 +880,61 @@ public final class KnownMaliciousDomainProto {
       }
     }
 
-    public static final int URL_FIELD_NUMBER = 5;
+    public static final int DOMAIN_FIELD_NUMBER = 5;
+    private volatile java.lang.Object domain_;
+    /**
+     * <pre>
+     * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+     * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+     * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+     * TPD can be extracted from FQDN.
+     * NOT NULL. 
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     * @return The domain.
+     */
+    @java.lang.Override
+    public java.lang.String getDomain() {
+      java.lang.Object ref = domain_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        domain_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+     * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+     * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+     * TPD can be extracted from FQDN.
+     * NOT NULL. 
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     * @return The bytes for domain.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDomainBytes() {
+      java.lang.Object ref = domain_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        domain_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int URL_FIELD_NUMBER = 6;
     private volatile java.lang.Object url_;
     /**
      * <pre>
@@ -844,9 +944,10 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE 
      * </pre>
      *
-     * <code>string url = 5;</code>
+     * <code>string url = 6;</code>
      * @return The url.
      */
+    @java.lang.Override
     public java.lang.String getUrl() {
       java.lang.Object ref = url_;
       if (ref instanceof java.lang.String) {
@@ -867,9 +968,10 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE 
      * </pre>
      *
-     * <code>string url = 5;</code>
+     * <code>string url = 6;</code>
      * @return The bytes for url.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getUrlBytes() {
       java.lang.Object ref = url_;
@@ -884,7 +986,7 @@ public final class KnownMaliciousDomainProto {
       }
     }
 
-    public static final int CREATED_AT_FIELD_NUMBER = 6;
+    public static final int CREATED_AT_FIELD_NUMBER = 7;
     private long createdAt_;
     /**
      * <pre>
@@ -892,14 +994,15 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE, use 0 for NULL. 
      * </pre>
      *
-     * <code>int64 created_at = 6;</code>
+     * <code>int64 created_at = 7;</code>
      * @return The createdAt.
      */
+    @java.lang.Override
     public long getCreatedAt() {
       return createdAt_;
     }
 
-    public static final int UPDATED_AT_FIELD_NUMBER = 7;
+    public static final int UPDATED_AT_FIELD_NUMBER = 8;
     private long updatedAt_;
     /**
      * <pre>
@@ -907,9 +1010,10 @@ public final class KnownMaliciousDomainProto {
      * NULLABLE, use 0 for NULL. 
      * </pre>
      *
-     * <code>int64 updated_at = 7;</code>
+     * <code>int64 updated_at = 8;</code>
      * @return The updatedAt.
      */
+    @java.lang.Override
     public long getUpdatedAt() {
       return updatedAt_;
     }
@@ -926,6 +1030,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string service_title = 16;</code>
      * @return The serviceTitle.
      */
+    @java.lang.Override
     public java.lang.String getServiceTitle() {
       java.lang.Object ref = serviceTitle_;
       if (ref instanceof java.lang.String) {
@@ -948,6 +1053,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string service_title = 16;</code>
      * @return The bytes for serviceTitle.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getServiceTitleBytes() {
       java.lang.Object ref = serviceTitle_;
@@ -976,6 +1082,7 @@ public final class KnownMaliciousDomainProto {
      * <code>bytes ipv4_addrs = 17;</code>
      * @return The ipv4Addrs.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getIpv4Addrs() {
       return ipv4Addrs_;
     }
@@ -994,6 +1101,7 @@ public final class KnownMaliciousDomainProto {
      * <code>bytes ipv6_addrs = 18;</code>
      * @return The ipv6Addrs.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getIpv6Addrs() {
       return ipv6Addrs_;
     }
@@ -1069,6 +1177,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string type = 20;</code>
      * @return The type.
      */
+    @java.lang.Override
     public java.lang.String getType() {
       java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
@@ -1091,6 +1200,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string type = 20;</code>
      * @return The bytes for type.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTypeBytes() {
       java.lang.Object ref = type_;
@@ -1116,6 +1226,7 @@ public final class KnownMaliciousDomainProto {
      * <code>int32 asn = 21;</code>
      * @return The asn.
      */
+    @java.lang.Override
     public int getAsn() {
       return asn_;
     }
@@ -1131,6 +1242,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string registrar = 22;</code>
      * @return The registrar.
      */
+    @java.lang.Override
     public java.lang.String getRegistrar() {
       java.lang.Object ref = registrar_;
       if (ref instanceof java.lang.String) {
@@ -1152,6 +1264,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string registrar = 22;</code>
      * @return The bytes for registrar.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getRegistrarBytes() {
       java.lang.Object ref = registrar_;
@@ -1177,6 +1290,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string remark = 23;</code>
      * @return The remark.
      */
+    @java.lang.Override
     public java.lang.String getRemark() {
       java.lang.Object ref = remark_;
       if (ref instanceof java.lang.String) {
@@ -1198,6 +1312,7 @@ public final class KnownMaliciousDomainProto {
      * <code>string remark = 23;</code>
      * @return The bytes for remark.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getRemarkBytes() {
       java.lang.Object ref = remark_;
@@ -1223,7 +1338,7 @@ public final class KnownMaliciousDomainProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
      * @return The enum numeric value on the wire for status.
      */
-    public int getStatusValue() {
+    @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
@@ -1235,7 +1350,7 @@ public final class KnownMaliciousDomainProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
      * @return The status.
      */
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status getStatus() {
+    @java.lang.Override public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status getStatus() {
       @SuppressWarnings("deprecation")
       com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status.valueOf(status_);
       return result == null ? com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status.UNRECOGNIZED : result;
@@ -1267,14 +1382,17 @@ public final class KnownMaliciousDomainProto {
       if (!getFqdnBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, fqdn_);
       }
+      if (!getDomainBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, domain_);
+      }
       if (!getUrlBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, url_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, url_);
       }
       if (createdAt_ != 0L) {
-        output.writeInt64(6, createdAt_);
+        output.writeInt64(7, createdAt_);
       }
       if (updatedAt_ != 0L) {
-        output.writeInt64(7, updatedAt_);
+        output.writeInt64(8, updatedAt_);
       }
       if (!getServiceTitleBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 16, serviceTitle_);
@@ -1325,16 +1443,19 @@ public final class KnownMaliciousDomainProto {
       if (!getFqdnBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, fqdn_);
       }
+      if (!getDomainBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, domain_);
+      }
       if (!getUrlBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, url_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, url_);
       }
       if (createdAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, createdAt_);
+          .computeInt64Size(7, createdAt_);
       }
       if (updatedAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, updatedAt_);
+          .computeInt64Size(8, updatedAt_);
       }
       if (!getServiceTitleBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, serviceTitle_);
@@ -1395,6 +1516,8 @@ public final class KnownMaliciousDomainProto {
           .equals(other.getMethod())) return false;
       if (!getFqdn()
           .equals(other.getFqdn())) return false;
+      if (!getDomain()
+          .equals(other.getDomain())) return false;
       if (!getUrl()
           .equals(other.getUrl())) return false;
       if (getCreatedAt()
@@ -1438,6 +1561,8 @@ public final class KnownMaliciousDomainProto {
       hash = (53 * hash) + getMethod().hashCode();
       hash = (37 * hash) + FQDN_FIELD_NUMBER;
       hash = (53 * hash) + getFqdn().hashCode();
+      hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
+      hash = (53 * hash) + getDomain().hashCode();
       hash = (37 * hash) + URL_FIELD_NUMBER;
       hash = (53 * hash) + getUrl().hashCode();
       hash = (37 * hash) + CREATED_AT_FIELD_NUMBER;
@@ -1607,6 +1732,8 @@ public final class KnownMaliciousDomainProto {
 
         fqdn_ = "";
 
+        domain_ = "";
+
         url_ = "";
 
         createdAt_ = 0L;
@@ -1662,6 +1789,7 @@ public final class KnownMaliciousDomainProto {
         result.source_ = source_;
         result.method_ = method_;
         result.fqdn_ = fqdn_;
+        result.domain_ = domain_;
         result.url_ = url_;
         result.createdAt_ = createdAt_;
         result.updatedAt_ = updatedAt_;
@@ -1739,6 +1867,10 @@ public final class KnownMaliciousDomainProto {
         }
         if (!other.getFqdn().isEmpty()) {
           fqdn_ = other.fqdn_;
+          onChanged();
+        }
+        if (!other.getDomain().isEmpty()) {
+          domain_ = other.domain_;
           onChanged();
         }
         if (!other.getUrl().isEmpty()) {
@@ -1829,6 +1961,7 @@ public final class KnownMaliciousDomainProto {
        * <code>int64 timestamp = 1;</code>
        * @return The timestamp.
        */
+      @java.lang.Override
       public long getTimestamp() {
         return timestamp_;
       }
@@ -2187,6 +2320,122 @@ public final class KnownMaliciousDomainProto {
         return this;
       }
 
+      private java.lang.Object domain_ = "";
+      /**
+       * <pre>
+       * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+       * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+       * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+       * TPD can be extracted from FQDN.
+       * NOT NULL. 
+       * </pre>
+       *
+       * <code>string domain = 5;</code>
+       * @return The domain.
+       */
+      public java.lang.String getDomain() {
+        java.lang.Object ref = domain_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          domain_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+       * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+       * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+       * TPD can be extracted from FQDN.
+       * NOT NULL. 
+       * </pre>
+       *
+       * <code>string domain = 5;</code>
+       * @return The bytes for domain.
+       */
+      public com.google.protobuf.ByteString
+          getDomainBytes() {
+        java.lang.Object ref = domain_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          domain_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+       * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+       * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+       * TPD can be extracted from FQDN.
+       * NOT NULL. 
+       * </pre>
+       *
+       * <code>string domain = 5;</code>
+       * @param value The domain to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDomain(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        domain_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+       * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+       * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+       * TPD can be extracted from FQDN.
+       * NOT NULL. 
+       * </pre>
+       *
+       * <code>string domain = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDomain() {
+        
+        domain_ = getDefaultInstance().getDomain();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+       * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+       * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+       * TPD can be extracted from FQDN.
+       * NOT NULL. 
+       * </pre>
+       *
+       * <code>string domain = 5;</code>
+       * @param value The bytes for domain to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDomainBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        domain_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object url_ = "";
       /**
        * <pre>
@@ -2196,7 +2445,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE 
        * </pre>
        *
-       * <code>string url = 5;</code>
+       * <code>string url = 6;</code>
        * @return The url.
        */
       public java.lang.String getUrl() {
@@ -2219,7 +2468,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE 
        * </pre>
        *
-       * <code>string url = 5;</code>
+       * <code>string url = 6;</code>
        * @return The bytes for url.
        */
       public com.google.protobuf.ByteString
@@ -2243,7 +2492,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE 
        * </pre>
        *
-       * <code>string url = 5;</code>
+       * <code>string url = 6;</code>
        * @param value The url to set.
        * @return This builder for chaining.
        */
@@ -2265,7 +2514,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE 
        * </pre>
        *
-       * <code>string url = 5;</code>
+       * <code>string url = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearUrl() {
@@ -2282,7 +2531,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE 
        * </pre>
        *
-       * <code>string url = 5;</code>
+       * <code>string url = 6;</code>
        * @param value The bytes for url to set.
        * @return This builder for chaining.
        */
@@ -2305,9 +2554,10 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE, use 0 for NULL. 
        * </pre>
        *
-       * <code>int64 created_at = 6;</code>
+       * <code>int64 created_at = 7;</code>
        * @return The createdAt.
        */
+      @java.lang.Override
       public long getCreatedAt() {
         return createdAt_;
       }
@@ -2317,7 +2567,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE, use 0 for NULL. 
        * </pre>
        *
-       * <code>int64 created_at = 6;</code>
+       * <code>int64 created_at = 7;</code>
        * @param value The createdAt to set.
        * @return This builder for chaining.
        */
@@ -2333,7 +2583,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE, use 0 for NULL. 
        * </pre>
        *
-       * <code>int64 created_at = 6;</code>
+       * <code>int64 created_at = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearCreatedAt() {
@@ -2350,9 +2600,10 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE, use 0 for NULL. 
        * </pre>
        *
-       * <code>int64 updated_at = 7;</code>
+       * <code>int64 updated_at = 8;</code>
        * @return The updatedAt.
        */
+      @java.lang.Override
       public long getUpdatedAt() {
         return updatedAt_;
       }
@@ -2362,7 +2613,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE, use 0 for NULL. 
        * </pre>
        *
-       * <code>int64 updated_at = 7;</code>
+       * <code>int64 updated_at = 8;</code>
        * @param value The updatedAt to set.
        * @return This builder for chaining.
        */
@@ -2378,7 +2629,7 @@ public final class KnownMaliciousDomainProto {
        * NULLABLE, use 0 for NULL. 
        * </pre>
        *
-       * <code>int64 updated_at = 7;</code>
+       * <code>int64 updated_at = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearUpdatedAt() {
@@ -2507,6 +2758,7 @@ public final class KnownMaliciousDomainProto {
        * <code>bytes ipv4_addrs = 17;</code>
        * @return The ipv4Addrs.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getIpv4Addrs() {
         return ipv4Addrs_;
       }
@@ -2564,6 +2816,7 @@ public final class KnownMaliciousDomainProto {
        * <code>bytes ipv6_addrs = 18;</code>
        * @return The ipv6Addrs.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getIpv6Addrs() {
         return ipv6Addrs_;
       }
@@ -2888,6 +3141,7 @@ public final class KnownMaliciousDomainProto {
        * <code>int32 asn = 21;</code>
        * @return The asn.
        */
+      @java.lang.Override
       public int getAsn() {
         return asn_;
       }
@@ -3135,7 +3389,7 @@ public final class KnownMaliciousDomainProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @return The enum numeric value on the wire for status.
        */
-      public int getStatusValue() {
+      @java.lang.Override public int getStatusValue() {
         return status_;
       }
       /**
@@ -3149,6 +3403,7 @@ public final class KnownMaliciousDomainProto {
        * @return This builder for chaining.
        */
       public Builder setStatusValue(int value) {
+        
         status_ = value;
         onChanged();
         return this;
@@ -3162,6 +3417,7 @@ public final class KnownMaliciousDomainProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;</code>
        * @return The status.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status getStatus() {
         @SuppressWarnings("deprecation")
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.KnownMaliciousDomainProto.KnownMaliciousDomain.Status.valueOf(status_);
@@ -3271,20 +3527,21 @@ public final class KnownMaliciousDomainProto {
       "\nJcom/hitnslab/dnssecurity/deeparcher/ap" +
       "i/proto/known_malicious_domain.proto\022-co" +
       "m.hitnslab.dnssecurity.deeparcher.api.pr" +
-      "oto\"\267\003\n\024KnownMaliciousDomain\022\021\n\ttimestam" +
+      "oto\"\307\003\n\024KnownMaliciousDomain\022\021\n\ttimestam" +
       "p\030\001 \001(\003\022\016\n\006source\030\002 \001(\t\022\016\n\006method\030\003 \001(\t\022" +
-      "\014\n\004fqdn\030\004 \001(\t\022\013\n\003url\030\005 \001(\t\022\022\n\ncreated_at" +
-      "\030\006 \001(\003\022\022\n\nupdated_at\030\007 \001(\003\022\025\n\rservice_ti" +
-      "tle\030\020 \001(\t\022\022\n\nipv4_addrs\030\021 \001(\014\022\022\n\nipv6_ad" +
-      "drs\030\022 \001(\014\022\016\n\006cnames\030\023 \003(\t\022\014\n\004type\030\024 \001(\t\022" +
-      "\013\n\003asn\030\025 \001(\005\022\021\n\tregistrar\030\026 \001(\t\022\016\n\006remar" +
-      "k\030\027 \001(\t\022Z\n\006status\030\030 \001(\0162J.com.hitnslab.d" +
-      "nssecurity.deeparcher.api.proto.KnownMal" +
-      "iciousDomain.Status\"@\n\006Status\022\013\n\007UNKNOWN" +
-      "\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002\022\010\n\004DEAD\020\003\022\t\n\005OT" +
-      "HER\020\004B^\n<com.hitnslab.dnssecurity.deepar" +
-      "cher.api.proto.generated.javaB\031KnownMali" +
-      "ciousDomainProtoH\001\370\001\001b\006proto3"
+      "\014\n\004fqdn\030\004 \001(\t\022\016\n\006domain\030\005 \001(\t\022\013\n\003url\030\006 \001" +
+      "(\t\022\022\n\ncreated_at\030\007 \001(\003\022\022\n\nupdated_at\030\010 \001" +
+      "(\003\022\025\n\rservice_title\030\020 \001(\t\022\022\n\nipv4_addrs\030" +
+      "\021 \001(\014\022\022\n\nipv6_addrs\030\022 \001(\014\022\016\n\006cnames\030\023 \003(" +
+      "\t\022\014\n\004type\030\024 \001(\t\022\013\n\003asn\030\025 \001(\005\022\021\n\tregistra" +
+      "r\030\026 \001(\t\022\016\n\006remark\030\027 \001(\t\022Z\n\006status\030\030 \001(\0162" +
+      "J.com.hitnslab.dnssecurity.deeparcher.ap" +
+      "i.proto.KnownMaliciousDomain.Status\"@\n\006S" +
+      "tatus\022\013\n\007UNKNOWN\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002" +
+      "\022\010\n\004DEAD\020\003\022\t\n\005OTHER\020\004B^\n<com.hitnslab.dn" +
+      "ssecurity.deeparcher.api.proto.generated" +
+      ".javaB\031KnownMaliciousDomainProtoH\001\370\001\001b\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3295,7 +3552,7 @@ public final class KnownMaliciousDomainProto {
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_KnownMaliciousDomain_descriptor,
-        new java.lang.String[] { "Timestamp", "Source", "Method", "Fqdn", "Url", "CreatedAt", "UpdatedAt", "ServiceTitle", "Ipv4Addrs", "Ipv6Addrs", "Cnames", "Type", "Asn", "Registrar", "Remark", "Status", });
+        new java.lang.String[] { "Timestamp", "Source", "Method", "Fqdn", "Domain", "Url", "CreatedAt", "UpdatedAt", "ServiceTitle", "Ipv4Addrs", "Ipv6Addrs", "Cnames", "Type", "Asn", "Registrar", "Remark", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

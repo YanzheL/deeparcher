@@ -73,7 +73,7 @@ public final class GraphAttributesProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr}
    */
-  public  static final class ComponentAttr extends
+  public static final class ComponentAttr extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr)
       ComponentAttrOrBuilder {
@@ -193,6 +193,7 @@ public final class GraphAttributesProto {
      * <code>uint64 parent_id = 1;</code>
      * @return The parentId.
      */
+    @java.lang.Override
     public long getParentId() {
       return parentId_;
     }
@@ -207,6 +208,7 @@ public final class GraphAttributesProto {
      * <code>uint64 component_id = 2;</code>
      * @return The componentId.
      */
+    @java.lang.Override
     public long getComponentId() {
       return componentId_;
     }
@@ -222,6 +224,7 @@ public final class GraphAttributesProto {
      * <code>repeated uint64 components = 3;</code>
      * @return A list containing the components.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getComponentsList() {
       return components_;
@@ -630,6 +633,7 @@ public final class GraphAttributesProto {
        * <code>uint64 parent_id = 1;</code>
        * @return The parentId.
        */
+      @java.lang.Override
       public long getParentId() {
         return parentId_;
       }
@@ -672,6 +676,7 @@ public final class GraphAttributesProto {
        * <code>uint64 component_id = 2;</code>
        * @return The componentId.
        */
+      @java.lang.Override
       public long getComponentId() {
         return componentId_;
       }
@@ -1013,7 +1018,7 @@ public final class GraphAttributesProto {
    *
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap}
    */
-  public  static final class GraphElementsAttrMap extends
+  public static final class GraphElementsAttrMap extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap)
       GraphElementsAttrMapOrBuilder {
@@ -1213,6 +1218,10 @@ public final class GraphAttributesProto {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -1258,6 +1267,7 @@ public final class GraphAttributesProto {
      * <code>string name = 1;</code>
      * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -1279,6 +1289,7 @@ public final class GraphAttributesProto {
      * <code>string name = 1;</code>
      * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -1299,14 +1310,14 @@ public final class GraphAttributesProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
      * @return The enum numeric value on the wire for target.
      */
-    public int getTargetValue() {
+    @java.lang.Override public int getTargetValue() {
       return target_;
     }
     /**
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
      * @return The target.
      */
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget getTarget() {
+    @java.lang.Override public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget getTarget() {
       @SuppressWarnings("deprecation")
       com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.valueOf(target_);
       return result == null ? com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.UNRECOGNIZED : result;
@@ -1347,6 +1358,7 @@ public final class GraphAttributesProto {
      * <code>map&lt;uint64, bytes&gt; data = 3;</code>
      */
 
+    @java.lang.Override
     public boolean containsData(
         long key) {
       
@@ -1355,6 +1367,7 @@ public final class GraphAttributesProto {
     /**
      * Use {@link #getDataMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getData() {
       return getDataMap();
@@ -1367,6 +1380,7 @@ public final class GraphAttributesProto {
      *
      * <code>map&lt;uint64, bytes&gt; data = 3;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getDataMap() {
       return internalGetData().getMap();
@@ -1379,6 +1393,7 @@ public final class GraphAttributesProto {
      *
      * <code>map&lt;uint64, bytes&gt; data = 3;</code>
      */
+    @java.lang.Override
 
     public com.google.protobuf.ByteString getDataOrDefault(
         long key,
@@ -1396,6 +1411,7 @@ public final class GraphAttributesProto {
      *
      * <code>map&lt;uint64, bytes&gt; data = 3;</code>
      */
+    @java.lang.Override
 
     public com.google.protobuf.ByteString getDataOrThrow(
         long key) {
@@ -1423,6 +1439,7 @@ public final class GraphAttributesProto {
      * <code>string type_url = 4;</code>
      * @return The typeUrl.
      */
+    @java.lang.Override
     public java.lang.String getTypeUrl() {
       java.lang.Object ref = typeUrl_;
       if (ref instanceof java.lang.String) {
@@ -1448,6 +1465,7 @@ public final class GraphAttributesProto {
      * <code>string type_url = 4;</code>
      * @return The bytes for typeUrl.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTypeUrlBytes() {
       java.lang.Object ref = typeUrl_;
@@ -1967,7 +1985,7 @@ public final class GraphAttributesProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
        * @return The enum numeric value on the wire for target.
        */
-      public int getTargetValue() {
+      @java.lang.Override public int getTargetValue() {
         return target_;
       }
       /**
@@ -1976,6 +1994,7 @@ public final class GraphAttributesProto {
        * @return This builder for chaining.
        */
       public Builder setTargetValue(int value) {
+        
         target_ = value;
         onChanged();
         return this;
@@ -1984,6 +2003,7 @@ public final class GraphAttributesProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
        * @return The target.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget getTarget() {
         @SuppressWarnings("deprecation")
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.valueOf(target_);
@@ -2049,6 +2069,7 @@ public final class GraphAttributesProto {
        * <code>map&lt;uint64, bytes&gt; data = 3;</code>
        */
 
+      @java.lang.Override
       public boolean containsData(
           long key) {
         
@@ -2057,6 +2078,7 @@ public final class GraphAttributesProto {
       /**
        * Use {@link #getDataMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getData() {
         return getDataMap();
@@ -2069,6 +2091,7 @@ public final class GraphAttributesProto {
        *
        * <code>map&lt;uint64, bytes&gt; data = 3;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getDataMap() {
         return internalGetData().getMap();
@@ -2081,6 +2104,7 @@ public final class GraphAttributesProto {
        *
        * <code>map&lt;uint64, bytes&gt; data = 3;</code>
        */
+      @java.lang.Override
 
       public com.google.protobuf.ByteString getDataOrDefault(
           long key,
@@ -2098,6 +2122,7 @@ public final class GraphAttributesProto {
        *
        * <code>map&lt;uint64, bytes&gt; data = 3;</code>
        */
+      @java.lang.Override
 
       public com.google.protobuf.ByteString getDataOrThrow(
           long key) {

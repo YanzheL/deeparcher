@@ -30,19 +30,26 @@ message KnownMaliciousDomain {
    * NOT NULL. */
   string fqdn = 4;
 
+  /* Top Private Domain (TPD) of this malicious domain, provided by vendor or message producer.
+   * Should be of [RFC4703](https://tools.ietf.org/html/rfc4703) format.
+   * See [InternetDomainNameExplained](https://github.com/google/guava/wiki/InternetDomainNameExplained).
+   * TPD can be extracted from FQDN.
+   * NOT NULL. */
+  string domain = 5;
+
   /* URL of this malicious domain, provided by vendor.
    * Should be of [RFC1738](https://tools.ietf.org/html/rfc1738) format.
    * Some vendors do not provide the service URL of this malicious domain. So this field is
    * NULLABLE */
-  string url = 5;
+  string url = 6;
 
   /* The UTC timestamp when this record is first shown in vendor's DB, provided by vendor.
    * NULLABLE, use 0 for NULL. */
-  int64 created_at = 6;
+  int64 created_at = 7;
 
   /* The UTC timestamp when this record is last updated in vendor's DB, provided by vendor.
    * NULLABLE, use 0 for NULL. */
-  int64 updated_at = 7;
+  int64 updated_at = 8;
 
   /* Title of backend service, provided by vendor.
    * If this is a HTTP service, then backend service title can be a website title.

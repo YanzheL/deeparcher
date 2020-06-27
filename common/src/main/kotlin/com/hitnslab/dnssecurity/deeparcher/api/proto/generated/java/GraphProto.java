@@ -234,7 +234,7 @@ public final class GraphProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.Graph}
    */
-  public  static final class Graph extends
+  public static final class Graph extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph)
       GraphOrBuilder {
@@ -490,6 +490,7 @@ public final class GraphProto {
      * <code>int64 id = 1;</code>
      * @return The id.
      */
+    @java.lang.Override
     public long getId() {
       return id_;
     }
@@ -505,6 +506,7 @@ public final class GraphProto {
      * <code>int64 nodes = 2;</code>
      * @return The nodes.
      */
+    @java.lang.Override
     public long getNodes() {
       return nodes_;
     }
@@ -520,6 +522,7 @@ public final class GraphProto {
      * <code>int64 edges = 3;</code>
      * @return The edges.
      */
+    @java.lang.Override
     public long getEdges() {
       return edges_;
     }
@@ -529,6 +532,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
      * @return Whether the dense field is set.
      */
+    @java.lang.Override
     public boolean hasDense() {
       return adjCase_ == 10;
     }
@@ -536,6 +540,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
      * @return The dense.
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloat getDense() {
       if (adjCase_ == 10) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloat) adj_;
@@ -545,6 +550,7 @@ public final class GraphProto {
     /**
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloatOrBuilder getDenseOrBuilder() {
       if (adjCase_ == 10) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloat) adj_;
@@ -557,6 +563,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;</code>
      * @return Whether the coo field is set.
      */
+    @java.lang.Override
     public boolean hasCoo() {
       return adjCase_ == 11;
     }
@@ -564,6 +571,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;</code>
      * @return The coo.
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatFloat getCoo() {
       if (adjCase_ == 11) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatFloat) adj_;
@@ -573,6 +581,7 @@ public final class GraphProto {
     /**
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;</code>
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatFloatOrBuilder getCooOrBuilder() {
       if (adjCase_ == 11) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatFloat) adj_;
@@ -585,6 +594,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;</code>
      * @return Whether the csr field is set.
      */
+    @java.lang.Override
     public boolean hasCsr() {
       return adjCase_ == 12;
     }
@@ -592,6 +602,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;</code>
      * @return The csr.
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatFloat getCsr() {
       if (adjCase_ == 12) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatFloat) adj_;
@@ -601,6 +612,7 @@ public final class GraphProto {
     /**
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;</code>
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatFloatOrBuilder getCsrOrBuilder() {
       if (adjCase_ == 12) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatFloat) adj_;
@@ -613,6 +625,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;</code>
      * @return Whether the csc field is set.
      */
+    @java.lang.Override
     public boolean hasCsc() {
       return adjCase_ == 13;
     }
@@ -620,6 +633,7 @@ public final class GraphProto {
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;</code>
      * @return The csc.
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat getCsc() {
       if (adjCase_ == 13) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat) adj_;
@@ -629,6 +643,7 @@ public final class GraphProto {
     /**
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;</code>
      */
+    @java.lang.Override
     public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloatOrBuilder getCscOrBuilder() {
       if (adjCase_ == 13) {
          return (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat) adj_;
@@ -647,6 +662,7 @@ public final class GraphProto {
      * <code>bool directed = 16;</code>
      * @return The directed.
      */
+    @java.lang.Override
     public boolean getDirected() {
       return directed_;
     }
@@ -662,6 +678,7 @@ public final class GraphProto {
      * <code>bool connected = 17;</code>
      * @return The connected.
      */
+    @java.lang.Override
     public boolean getConnected() {
       return connected_;
     }
@@ -677,6 +694,7 @@ public final class GraphProto {
      * <code>bool unweighted = 18;</code>
      * @return The unweighted.
      */
+    @java.lang.Override
     public boolean getUnweighted() {
       return unweighted_;
     }
@@ -693,6 +711,7 @@ public final class GraphProto {
      * <code>repeated uint64 node_id_remap = 19;</code>
      * @return A list containing the nodeIdRemap.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getNodeIdRemapList() {
       return nodeIdRemap_;
@@ -736,6 +755,7 @@ public final class GraphProto {
      *
      * <code>repeated .google.protobuf.Any attributes = 32;</code>
      */
+    @java.lang.Override
     public java.util.List<com.google.protobuf.Any> getAttributesList() {
       return attributes_;
     }
@@ -747,6 +767,7 @@ public final class GraphProto {
      *
      * <code>repeated .google.protobuf.Any attributes = 32;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
         getAttributesOrBuilderList() {
       return attributes_;
@@ -759,6 +780,7 @@ public final class GraphProto {
      *
      * <code>repeated .google.protobuf.Any attributes = 32;</code>
      */
+    @java.lang.Override
     public int getAttributesCount() {
       return attributes_.size();
     }
@@ -770,6 +792,7 @@ public final class GraphProto {
      *
      * <code>repeated .google.protobuf.Any attributes = 32;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.Any getAttributes(int index) {
       return attributes_.get(index);
     }
@@ -781,6 +804,7 @@ public final class GraphProto {
      *
      * <code>repeated .google.protobuf.Any attributes = 32;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.AnyOrBuilder getAttributesOrBuilder(
         int index) {
       return attributes_.get(index);
@@ -1428,6 +1452,7 @@ public final class GraphProto {
        * <code>int64 id = 1;</code>
        * @return The id.
        */
+      @java.lang.Override
       public long getId() {
         return id_;
       }
@@ -1475,6 +1500,7 @@ public final class GraphProto {
        * <code>int64 nodes = 2;</code>
        * @return The nodes.
        */
+      @java.lang.Override
       public long getNodes() {
         return nodes_;
       }
@@ -1520,6 +1546,7 @@ public final class GraphProto {
        * <code>int64 edges = 3;</code>
        * @return The edges.
        */
+      @java.lang.Override
       public long getEdges() {
         return edges_;
       }
@@ -1561,6 +1588,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
        * @return Whether the dense field is set.
        */
+      @java.lang.Override
       public boolean hasDense() {
         return adjCase_ == 10;
       }
@@ -1568,6 +1596,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
        * @return The dense.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloat getDense() {
         if (denseBuilder_ == null) {
           if (adjCase_ == 10) {
@@ -1661,6 +1690,7 @@ public final class GraphProto {
       /**
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloatOrBuilder getDenseOrBuilder() {
         if ((adjCase_ == 10) && (denseBuilder_ != null)) {
           return denseBuilder_.getMessageOrBuilder();
@@ -1699,6 +1729,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;</code>
        * @return Whether the coo field is set.
        */
+      @java.lang.Override
       public boolean hasCoo() {
         return adjCase_ == 11;
       }
@@ -1706,6 +1737,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;</code>
        * @return The coo.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatFloat getCoo() {
         if (cooBuilder_ == null) {
           if (adjCase_ == 11) {
@@ -1799,6 +1831,7 @@ public final class GraphProto {
       /**
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat coo = 11;</code>
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatFloatOrBuilder getCooOrBuilder() {
         if ((adjCase_ == 11) && (cooBuilder_ != null)) {
           return cooBuilder_.getMessageOrBuilder();
@@ -1837,6 +1870,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;</code>
        * @return Whether the csr field is set.
        */
+      @java.lang.Override
       public boolean hasCsr() {
         return adjCase_ == 12;
       }
@@ -1844,6 +1878,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;</code>
        * @return The csr.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatFloat getCsr() {
         if (csrBuilder_ == null) {
           if (adjCase_ == 12) {
@@ -1937,6 +1972,7 @@ public final class GraphProto {
       /**
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat csr = 12;</code>
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatFloatOrBuilder getCsrOrBuilder() {
         if ((adjCase_ == 12) && (csrBuilder_ != null)) {
           return csrBuilder_.getMessageOrBuilder();
@@ -1975,6 +2011,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;</code>
        * @return Whether the csc field is set.
        */
+      @java.lang.Override
       public boolean hasCsc() {
         return adjCase_ == 13;
       }
@@ -1982,6 +2019,7 @@ public final class GraphProto {
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;</code>
        * @return The csc.
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat getCsc() {
         if (cscBuilder_ == null) {
           if (adjCase_ == 13) {
@@ -2075,6 +2113,7 @@ public final class GraphProto {
       /**
        * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat csc = 13;</code>
        */
+      @java.lang.Override
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloatOrBuilder getCscOrBuilder() {
         if ((adjCase_ == 13) && (cscBuilder_ != null)) {
           return cscBuilder_.getMessageOrBuilder();
@@ -2117,6 +2156,7 @@ public final class GraphProto {
        * <code>bool directed = 16;</code>
        * @return The directed.
        */
+      @java.lang.Override
       public boolean getDirected() {
         return directed_;
       }
@@ -2162,6 +2202,7 @@ public final class GraphProto {
        * <code>bool connected = 17;</code>
        * @return The connected.
        */
+      @java.lang.Override
       public boolean getConnected() {
         return connected_;
       }
@@ -2207,6 +2248,7 @@ public final class GraphProto {
        * <code>bool unweighted = 18;</code>
        * @return The unweighted.
        */
+      @java.lang.Override
       public boolean getUnweighted() {
         return unweighted_;
       }

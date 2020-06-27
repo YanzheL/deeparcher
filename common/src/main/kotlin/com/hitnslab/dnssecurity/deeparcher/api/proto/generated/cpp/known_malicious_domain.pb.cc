@@ -58,6 +58,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_com_2fhitnslab_2fdnssecurity_2
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, source_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, method_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, fqdn_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, domain_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, url_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, created_at_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain, updated_at_),
@@ -83,20 +84,21 @@ const char descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2
   "\nJcom/hitnslab/dnssecurity/deeparcher/ap"
   "i/proto/known_malicious_domain.proto\022-co"
   "m.hitnslab.dnssecurity.deeparcher.api.pr"
-  "oto\"\267\003\n\024KnownMaliciousDomain\022\021\n\ttimestam"
+  "oto\"\307\003\n\024KnownMaliciousDomain\022\021\n\ttimestam"
   "p\030\001 \001(\003\022\016\n\006source\030\002 \001(\t\022\016\n\006method\030\003 \001(\t\022"
-  "\014\n\004fqdn\030\004 \001(\t\022\013\n\003url\030\005 \001(\t\022\022\n\ncreated_at"
-  "\030\006 \001(\003\022\022\n\nupdated_at\030\007 \001(\003\022\025\n\rservice_ti"
-  "tle\030\020 \001(\t\022\022\n\nipv4_addrs\030\021 \001(\014\022\022\n\nipv6_ad"
-  "drs\030\022 \001(\014\022\016\n\006cnames\030\023 \003(\t\022\014\n\004type\030\024 \001(\t\022"
-  "\013\n\003asn\030\025 \001(\005\022\021\n\tregistrar\030\026 \001(\t\022\016\n\006remar"
-  "k\030\027 \001(\t\022Z\n\006status\030\030 \001(\0162J.com.hitnslab.d"
-  "nssecurity.deeparcher.api.proto.KnownMal"
-  "iciousDomain.Status\"@\n\006Status\022\013\n\007UNKNOWN"
-  "\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002\022\010\n\004DEAD\020\003\022\t\n\005OT"
-  "HER\020\004B^\n<com.hitnslab.dnssecurity.deepar"
-  "cher.api.proto.generated.javaB\031KnownMali"
-  "ciousDomainProtoH\001\370\001\001b\006proto3"
+  "\014\n\004fqdn\030\004 \001(\t\022\016\n\006domain\030\005 \001(\t\022\013\n\003url\030\006 \001"
+  "(\t\022\022\n\ncreated_at\030\007 \001(\003\022\022\n\nupdated_at\030\010 \001"
+  "(\003\022\025\n\rservice_title\030\020 \001(\t\022\022\n\nipv4_addrs\030"
+  "\021 \001(\014\022\022\n\nipv6_addrs\030\022 \001(\014\022\016\n\006cnames\030\023 \003("
+  "\t\022\014\n\004type\030\024 \001(\t\022\013\n\003asn\030\025 \001(\005\022\021\n\tregistra"
+  "r\030\026 \001(\t\022\016\n\006remark\030\027 \001(\t\022Z\n\006status\030\030 \001(\0162"
+  "J.com.hitnslab.dnssecurity.deeparcher.ap"
+  "i.proto.KnownMaliciousDomain.Status\"@\n\006S"
+  "tatus\022\013\n\007UNKNOWN\020\000\022\n\n\006ACTIVE\020\001\022\010\n\004HOLD\020\002"
+  "\022\010\n\004DEAD\020\003\022\t\n\005OTHER\020\004B^\n<com.hitnslab.dn"
+  "ssecurity.deeparcher.api.proto.generated"
+  ".javaB\031KnownMaliciousDomainProtoH\001\370\001\001b\006p"
+  "roto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_deps[1] = {
 };
@@ -104,16 +106,15 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_com
   &scc_info_KnownMaliciousDomain_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_once;
-static bool descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto = {
-  &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_initialized, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/known_malicious_domain.proto", 669,
+  false, false, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/known_malicious_domain.proto", 685,
   &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_once, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_sccs, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto::offsets,
   file_level_metadata_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, 1, file_level_enum_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto, file_level_service_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto), true);
+static bool dynamic_init_dummy_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fknown_5fmalicious_5fdomain_2eproto)), true);
 namespace com {
 namespace hitnslab {
 namespace dnssecurity {
@@ -156,14 +157,8 @@ class KnownMaliciousDomain::_Internal {
  public:
 };
 
-KnownMaliciousDomain::KnownMaliciousDomain()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain)
-}
 KnownMaliciousDomain::KnownMaliciousDomain(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-  _internal_metadata_(arena),
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   cnames_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
@@ -171,58 +166,62 @@ KnownMaliciousDomain::KnownMaliciousDomain(::PROTOBUF_NAMESPACE_ID::Arena* arena
 }
 KnownMaliciousDomain::KnownMaliciousDomain(const KnownMaliciousDomain& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
       cnames_(from.cnames_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   source_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_source().empty()) {
     source_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_source(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   method_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_method().empty()) {
     method_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_method(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   fqdn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_fqdn().empty()) {
     fqdn_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_fqdn(),
-      GetArenaNoVirtual());
+      GetArena());
+  }
+  domain_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_domain().empty()) {
+    domain_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_domain(),
+      GetArena());
   }
   url_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_url().empty()) {
     url_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_url(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   service_title_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_service_title().empty()) {
     service_title_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_service_title(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   ipv4_addrs_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_ipv4_addrs().empty()) {
     ipv4_addrs_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_ipv4_addrs(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   ipv6_addrs_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_ipv6_addrs().empty()) {
     ipv6_addrs_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_ipv6_addrs(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_type().empty()) {
     type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_type(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   registrar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_registrar().empty()) {
     registrar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_registrar(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   remark_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_remark().empty()) {
     remark_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_remark(),
-      GetArenaNoVirtual());
+      GetArena());
   }
   ::memcpy(&timestamp_, &from.timestamp_,
     static_cast<size_t>(reinterpret_cast<char*>(&status_) -
@@ -235,6 +234,7 @@ void KnownMaliciousDomain::SharedCtor() {
   source_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   method_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   fqdn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  domain_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   url_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   service_title_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ipv4_addrs_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -250,13 +250,15 @@ void KnownMaliciousDomain::SharedCtor() {
 KnownMaliciousDomain::~KnownMaliciousDomain() {
   // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void KnownMaliciousDomain::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaNoVirtual() == nullptr);
+  GOOGLE_DCHECK(GetArena() == nullptr);
   source_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   method_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   fqdn_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  domain_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   url_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   service_title_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ipv4_addrs_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -288,25 +290,26 @@ void KnownMaliciousDomain::Clear() {
   (void) cached_has_bits;
 
   cnames_.Clear();
-  source_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  method_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  fqdn_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  url_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  service_title_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  ipv4_addrs_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  ipv6_addrs_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  type_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  registrar_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
-  remark_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
+  source_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  method_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  fqdn_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  domain_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  url_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  service_title_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ipv4_addrs_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ipv6_addrs_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  type_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  registrar_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  remark_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&timestamp_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&status_) -
       reinterpret_cast<char*>(&timestamp_)) + sizeof(status_));
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* KnownMaliciousDomain::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArenaNoVirtual(); (void)arena;
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -315,7 +318,7 @@ const char* KnownMaliciousDomain::_InternalParse(const char* ptr, ::PROTOBUF_NAM
       // int64 timestamp = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -346,26 +349,35 @@ const char* KnownMaliciousDomain::_InternalParse(const char* ptr, ::PROTOBUF_NAM
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string url = 5;
+      // string domain = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          auto str = _internal_mutable_domain();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.domain"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string url = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
           auto str = _internal_mutable_url();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.url"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int64 created_at = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          created_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+      // int64 created_at = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          created_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int64 updated_at = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          updated_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+      // int64 updated_at = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          updated_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -420,7 +432,7 @@ const char* KnownMaliciousDomain::_InternalParse(const char* ptr, ::PROTOBUF_NAM
       // int32 asn = 21;
       case 21:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 168)) {
-          asn_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          asn_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -445,7 +457,7 @@ const char* KnownMaliciousDomain::_InternalParse(const char* ptr, ::PROTOBUF_NAM
       // .com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.Status status = 24;
       case 24:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 192)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_status(static_cast<::com::hitnslab::dnssecurity::deeparcher::api::proto::KnownMaliciousDomain_Status>(val));
         } else goto handle_unusual;
@@ -456,7 +468,9 @@ const char* KnownMaliciousDomain::_InternalParse(const char* ptr, ::PROTOBUF_NAM
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -512,26 +526,36 @@ failure:
         4, this->_internal_fqdn(), target);
   }
 
-  // string url = 5;
+  // string domain = 5;
+  if (this->domain().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_domain().data(), static_cast<int>(this->_internal_domain().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.domain");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_domain(), target);
+  }
+
+  // string url = 6;
   if (this->url().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_url().data(), static_cast<int>(this->_internal_url().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain.url");
     target = stream->WriteStringMaybeAliased(
-        5, this->_internal_url(), target);
+        6, this->_internal_url(), target);
   }
 
-  // int64 created_at = 6;
+  // int64 created_at = 7;
   if (this->created_at() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(6, this->_internal_created_at(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(7, this->_internal_created_at(), target);
   }
 
-  // int64 updated_at = 7;
+  // int64 updated_at = 8;
   if (this->updated_at() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(7, this->_internal_updated_at(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(8, this->_internal_updated_at(), target);
   }
 
   // string service_title = 16;
@@ -611,7 +635,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain)
   return target;
@@ -654,7 +678,14 @@ size_t KnownMaliciousDomain::ByteSizeLong() const {
         this->_internal_fqdn());
   }
 
-  // string url = 5;
+  // string domain = 5;
+  if (this->domain().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_domain());
+  }
+
+  // string url = 6;
   if (this->url().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -710,14 +741,14 @@ size_t KnownMaliciousDomain::ByteSizeLong() const {
         this->_internal_timestamp());
   }
 
-  // int64 created_at = 6;
+  // int64 created_at = 7;
   if (this->created_at() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
         this->_internal_created_at());
   }
 
-  // int64 updated_at = 7;
+  // int64 updated_at = 8;
   if (this->updated_at() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
@@ -764,7 +795,7 @@ void KnownMaliciousDomain::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& fro
 void KnownMaliciousDomain::MergeFrom(const KnownMaliciousDomain& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.KnownMaliciousDomain)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -777,6 +808,9 @@ void KnownMaliciousDomain::MergeFrom(const KnownMaliciousDomain& from) {
   }
   if (from.fqdn().size() > 0) {
     _internal_set_fqdn(from._internal_fqdn());
+  }
+  if (from.domain().size() > 0) {
+    _internal_set_domain(from._internal_domain());
   }
   if (from.url().size() > 0) {
     _internal_set_url(from._internal_url());
@@ -836,33 +870,25 @@ bool KnownMaliciousDomain::IsInitialized() const {
 
 void KnownMaliciousDomain::InternalSwap(KnownMaliciousDomain* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   cnames_.InternalSwap(&other->cnames_);
-  source_.Swap(&other->source_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  method_.Swap(&other->method_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  fqdn_.Swap(&other->fqdn_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  url_.Swap(&other->url_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  service_title_.Swap(&other->service_title_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  ipv4_addrs_.Swap(&other->ipv4_addrs_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  ipv6_addrs_.Swap(&other->ipv6_addrs_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  type_.Swap(&other->type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  registrar_.Swap(&other->registrar_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  remark_.Swap(&other->remark_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(timestamp_, other->timestamp_);
-  swap(created_at_, other->created_at_);
-  swap(updated_at_, other->updated_at_);
-  swap(asn_, other->asn_);
-  swap(status_, other->status_);
+  source_.Swap(&other->source_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  method_.Swap(&other->method_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  fqdn_.Swap(&other->fqdn_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  domain_.Swap(&other->domain_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  url_.Swap(&other->url_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  service_title_.Swap(&other->service_title_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ipv4_addrs_.Swap(&other->ipv4_addrs_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ipv6_addrs_.Swap(&other->ipv6_addrs_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  type_.Swap(&other->type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  registrar_.Swap(&other->registrar_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  remark_.Swap(&other->remark_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(KnownMaliciousDomain, status_)
+      + sizeof(KnownMaliciousDomain::status_)
+      - PROTOBUF_FIELD_OFFSET(KnownMaliciousDomain, timestamp_)>(
+          reinterpret_cast<char*>(&timestamp_),
+          reinterpret_cast<char*>(&other->timestamp_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata KnownMaliciousDomain::GetMetadata() const {

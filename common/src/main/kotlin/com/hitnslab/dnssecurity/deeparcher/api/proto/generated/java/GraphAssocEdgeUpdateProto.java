@@ -51,7 +51,7 @@ public final class GraphAssocEdgeUpdateProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.GraphAssocEdgeUpdate}
    */
-  public  static final class GraphAssocEdgeUpdate extends
+  public static final class GraphAssocEdgeUpdate extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphAssocEdgeUpdate)
       GraphAssocEdgeUpdateOrBuilder {
@@ -150,6 +150,7 @@ public final class GraphAssocEdgeUpdateProto {
      * <code>string fqdn1 = 1;</code>
      * @return The fqdn1.
      */
+    @java.lang.Override
     public java.lang.String getFqdn1() {
       java.lang.Object ref = fqdn1_;
       if (ref instanceof java.lang.String) {
@@ -166,6 +167,7 @@ public final class GraphAssocEdgeUpdateProto {
      * <code>string fqdn1 = 1;</code>
      * @return The bytes for fqdn1.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getFqdn1Bytes() {
       java.lang.Object ref = fqdn1_;
@@ -186,6 +188,7 @@ public final class GraphAssocEdgeUpdateProto {
      * <code>string fqdn2 = 2;</code>
      * @return The fqdn2.
      */
+    @java.lang.Override
     public java.lang.String getFqdn2() {
       java.lang.Object ref = fqdn2_;
       if (ref instanceof java.lang.String) {
@@ -202,6 +205,7 @@ public final class GraphAssocEdgeUpdateProto {
      * <code>string fqdn2 = 2;</code>
      * @return The bytes for fqdn2.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getFqdn2Bytes() {
       java.lang.Object ref = fqdn2_;
@@ -222,6 +226,7 @@ public final class GraphAssocEdgeUpdateProto {
      * <code>int32 n_shared_fields = 3;</code>
      * @return The nSharedFields.
      */
+    @java.lang.Override
     public int getNSharedFields() {
       return nSharedFields_;
     }
@@ -719,6 +724,7 @@ public final class GraphAssocEdgeUpdateProto {
        * <code>int32 n_shared_fields = 3;</code>
        * @return The nSharedFields.
        */
+      @java.lang.Override
       public int getNSharedFields() {
         return nSharedFields_;
       }

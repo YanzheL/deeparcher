@@ -55,7 +55,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat}
    */
-  public  static final class DenseMatFloat extends
+  public static final class DenseMatFloat extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat)
       DenseMatFloatOrBuilder {
@@ -186,6 +186,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -213,6 +214,7 @@ public final class MatrixProto {
      * <code>repeated float values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Float>
         getValuesList() {
       return values_;
@@ -892,7 +894,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat}
    */
-  public  static final class CooMatFloat extends
+  public static final class CooMatFloat extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat)
       CooMatFloatOrBuilder {
@@ -1073,6 +1075,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -1100,6 +1103,7 @@ public final class MatrixProto {
      * <code>repeated uint64 rows = 2;</code>
      * @return A list containing the rows.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getRowsList() {
       return rows_;
@@ -1127,6 +1131,7 @@ public final class MatrixProto {
      * <code>repeated uint64 cols = 3;</code>
      * @return A list containing the cols.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getColsList() {
       return cols_;
@@ -1154,6 +1159,7 @@ public final class MatrixProto {
      * <code>repeated float values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Float>
         getValuesList() {
       return values_;
@@ -2079,7 +2085,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat}
    */
-  public  static final class CsrMatFloat extends
+  public static final class CsrMatFloat extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat)
       CsrMatFloatOrBuilder {
@@ -2260,6 +2266,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -2287,6 +2294,7 @@ public final class MatrixProto {
      * <code>repeated uint64 row_offsets = 2;</code>
      * @return A list containing the rowOffsets.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getRowOffsetsList() {
       return rowOffsets_;
@@ -2314,6 +2322,7 @@ public final class MatrixProto {
      * <code>repeated uint64 col_indices = 3;</code>
      * @return A list containing the colIndices.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getColIndicesList() {
       return colIndices_;
@@ -2341,6 +2350,7 @@ public final class MatrixProto {
      * <code>repeated float values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Float>
         getValuesList() {
       return values_;
@@ -3266,7 +3276,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat}
    */
-  public  static final class CscMatFloat extends
+  public static final class CscMatFloat extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat)
       CscMatFloatOrBuilder {
@@ -3447,6 +3457,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -3474,6 +3485,7 @@ public final class MatrixProto {
      * <code>repeated uint64 col_offsets = 2;</code>
      * @return A list containing the colOffsets.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getColOffsetsList() {
       return colOffsets_;
@@ -3501,6 +3513,7 @@ public final class MatrixProto {
      * <code>repeated uint64 row_indices = 3;</code>
      * @return A list containing the rowIndices.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getRowIndicesList() {
       return rowIndices_;
@@ -3528,6 +3541,7 @@ public final class MatrixProto {
      * <code>repeated float values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Float>
         getValuesList() {
       return values_;
@@ -4419,7 +4433,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64}
    */
-  public  static final class DenseMatInt64 extends
+  public static final class DenseMatInt64 extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
       DenseMatInt64OrBuilder {
@@ -4550,6 +4564,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -4577,6 +4592,7 @@ public final class MatrixProto {
      * <code>repeated int64 values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getValuesList() {
       return values_;
@@ -5259,7 +5275,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64}
    */
-  public  static final class CooMatInt64 extends
+  public static final class CooMatInt64 extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
       CooMatInt64OrBuilder {
@@ -5440,6 +5456,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -5467,6 +5484,7 @@ public final class MatrixProto {
      * <code>repeated uint64 rows = 2;</code>
      * @return A list containing the rows.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getRowsList() {
       return rows_;
@@ -5494,6 +5512,7 @@ public final class MatrixProto {
      * <code>repeated uint64 cols = 3;</code>
      * @return A list containing the cols.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getColsList() {
       return cols_;
@@ -5521,6 +5540,7 @@ public final class MatrixProto {
      * <code>repeated int64 values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getValuesList() {
       return values_;
@@ -6449,7 +6469,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64}
    */
-  public  static final class CsrMatInt64 extends
+  public static final class CsrMatInt64 extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
       CsrMatInt64OrBuilder {
@@ -6630,6 +6650,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -6657,6 +6678,7 @@ public final class MatrixProto {
      * <code>repeated uint64 row_offsets = 2;</code>
      * @return A list containing the rowOffsets.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getRowOffsetsList() {
       return rowOffsets_;
@@ -6684,6 +6706,7 @@ public final class MatrixProto {
      * <code>repeated uint64 col_indices = 3;</code>
      * @return A list containing the colIndices.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getColIndicesList() {
       return colIndices_;
@@ -6711,6 +6734,7 @@ public final class MatrixProto {
      * <code>repeated int64 values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getValuesList() {
       return values_;
@@ -7639,7 +7663,7 @@ public final class MatrixProto {
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64}
    */
-  public  static final class CscMatInt64 extends
+  public static final class CscMatInt64 extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
       CscMatInt64OrBuilder {
@@ -7820,6 +7844,7 @@ public final class MatrixProto {
      * <code>repeated uint64 dims = 1;</code>
      * @return A list containing the dims.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getDimsList() {
       return dims_;
@@ -7847,6 +7872,7 @@ public final class MatrixProto {
      * <code>repeated uint64 col_offsets = 2;</code>
      * @return A list containing the colOffsets.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getColOffsetsList() {
       return colOffsets_;
@@ -7874,6 +7900,7 @@ public final class MatrixProto {
      * <code>repeated uint64 row_indices = 3;</code>
      * @return A list containing the rowIndices.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getRowIndicesList() {
       return rowIndices_;
@@ -7901,6 +7928,7 @@ public final class MatrixProto {
      * <code>repeated int64 values = 10;</code>
      * @return A list containing the values.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getValuesList() {
       return values_;

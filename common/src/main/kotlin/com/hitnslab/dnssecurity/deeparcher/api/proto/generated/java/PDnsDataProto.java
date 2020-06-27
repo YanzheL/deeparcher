@@ -194,7 +194,7 @@ public final class PDnsDataProto {
    *
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData}
    */
-  public  static final class PDnsData extends
+  public static final class PDnsData extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.PDnsData)
       PDnsDataOrBuilder {
@@ -341,6 +341,7 @@ public final class PDnsDataProto {
      * <code>string fqdn = 1;</code>
      * @return The fqdn.
      */
+    @java.lang.Override
     public java.lang.String getFqdn() {
       java.lang.Object ref = fqdn_;
       if (ref instanceof java.lang.String) {
@@ -363,6 +364,7 @@ public final class PDnsDataProto {
      * <code>string fqdn = 1;</code>
      * @return The bytes for fqdn.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getFqdnBytes() {
       java.lang.Object ref = fqdn_;
@@ -390,6 +392,7 @@ public final class PDnsDataProto {
      * <code>string domain = 2;</code>
      * @return The domain.
      */
+    @java.lang.Override
     public java.lang.String getDomain() {
       java.lang.Object ref = domain_;
       if (ref instanceof java.lang.String) {
@@ -413,6 +416,7 @@ public final class PDnsDataProto {
      * <code>string domain = 2;</code>
      * @return The bytes for domain.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getDomainBytes() {
       java.lang.Object ref = domain_;
@@ -440,6 +444,7 @@ public final class PDnsDataProto {
      * <code>bytes client_ip = 3;</code>
      * @return The clientIp.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getClientIp() {
       return clientIp_;
     }
@@ -455,6 +460,7 @@ public final class PDnsDataProto {
      * <code>int64 q_time = 4;</code>
      * @return The qTime.
      */
+    @java.lang.Override
     public long getQTime() {
       return qTime_;
     }
@@ -471,6 +477,7 @@ public final class PDnsDataProto {
      * <code>int32 q_type = 5;</code>
      * @return The qType.
      */
+    @java.lang.Override
     public int getQType() {
       return qType_;
     }
@@ -487,6 +494,7 @@ public final class PDnsDataProto {
      * <code>int32 r_code = 6;</code>
      * @return The rCode.
      */
+    @java.lang.Override
     public int getRCode() {
       return rCode_;
     }
@@ -504,6 +512,7 @@ public final class PDnsDataProto {
      * <code>bytes r_ipv4_addrs = 7;</code>
      * @return The rIpv4Addrs.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getRIpv4Addrs() {
       return rIpv4Addrs_;
     }
@@ -521,6 +530,7 @@ public final class PDnsDataProto {
      * <code>bytes r_ipv6_addrs = 8;</code>
      * @return The rIpv6Addrs.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getRIpv6Addrs() {
       return rIpv6Addrs_;
     }
@@ -1271,6 +1281,7 @@ public final class PDnsDataProto {
        * <code>bytes client_ip = 3;</code>
        * @return The clientIp.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getClientIp() {
         return clientIp_;
       }
@@ -1323,6 +1334,7 @@ public final class PDnsDataProto {
        * <code>int64 q_time = 4;</code>
        * @return The qTime.
        */
+      @java.lang.Override
       public long getQTime() {
         return qTime_;
       }
@@ -1369,6 +1381,7 @@ public final class PDnsDataProto {
        * <code>int32 q_type = 5;</code>
        * @return The qType.
        */
+      @java.lang.Override
       public int getQType() {
         return qType_;
       }
@@ -1417,6 +1430,7 @@ public final class PDnsDataProto {
        * <code>int32 r_code = 6;</code>
        * @return The rCode.
        */
+      @java.lang.Override
       public int getRCode() {
         return rCode_;
       }
@@ -1466,6 +1480,7 @@ public final class PDnsDataProto {
        * <code>bytes r_ipv4_addrs = 7;</code>
        * @return The rIpv4Addrs.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getRIpv4Addrs() {
         return rIpv4Addrs_;
       }
@@ -1520,6 +1535,7 @@ public final class PDnsDataProto {
        * <code>bytes r_ipv6_addrs = 8;</code>
        * @return The rIpv6Addrs.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getRIpv6Addrs() {
         return rIpv6Addrs_;
       }
