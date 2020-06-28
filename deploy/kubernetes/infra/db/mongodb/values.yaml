@@ -14,7 +14,7 @@ global:
 image:
   registry: docker.io
   repository: bitnami/mongodb-sharded
-  # tag: 4.2.7-debian-10-r0
+  # tag: 4.2.8-debian-10-r14
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -87,10 +87,10 @@ shardsvr:
     resources:
       requests:
         cpu: 100m
-        memory: 1Gi
+        memory: 5Gi
       limits:
         cpu: '8'
-        memory: 5Gi
+        memory: 8Gi
     ## MongoDB additional command line flags
     ##
     ## Can be used to specify command line flags, for example:
@@ -99,7 +99,7 @@ shardsvr:
     ##  - "--wiredTigerCacheSizeGB=2"
     ##
     mongodbExtraFlags:
-      - "--wiredTigerCacheSizeGB=3"
+      - "--wiredTigerCacheSizeGB=5"
     ## Pod priority
     ## https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
     ##
@@ -325,7 +325,7 @@ configsvr:
       memory: 200Mi
     limits:
       cpu: '8'
-      memory: 2Gi
+      memory: 1Gi
   ## MongoDB additional command line flags
   ##
   ## Can be used to specify command line flags, for example:
@@ -334,7 +334,7 @@ configsvr:
   ##  - "--wiredTigerCacheSizeGB=2"
   ##
   mongodbExtraFlags:
-    - "--wiredTigerCacheSizeGB=1"
+    - "--wiredTigerCacheSizeGB=0.1"
   ## Pod priority
   ## https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
   ##
@@ -633,7 +633,7 @@ initScriptsSecret:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: true
+  enabled: false
   image:
     registry: docker.io
     repository: bitnami/minideb
@@ -721,14 +721,14 @@ service:
 ##
 livenessProbe:
   enabled: true
-  initialDelaySeconds: 30
+  initialDelaySeconds: 60
   periodSeconds: 20
   timeoutSeconds: 20
   failureThreshold: 10
   successThreshold: 1
 readinessProbe:
   enabled: true
-  initialDelaySeconds: 30
+  initialDelaySeconds: 60
   periodSeconds: 20
   timeoutSeconds: 20
   failureThreshold: 10
