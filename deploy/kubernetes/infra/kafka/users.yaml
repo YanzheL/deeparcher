@@ -1,0 +1,126 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaUser
+metadata:
+  name: kafka-user-pdns-data-loader
+  labels:
+    strimzi.io/cluster: kafka
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: raw.pdns
+          patternType: literal
+        operation: All
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaUser
+metadata:
+  name: kafka-user-whitelist-filter
+  labels:
+    strimzi.io/cluster: kafka
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: raw.pdns.in-whitelist
+          patternType: literal
+        operation: All
+      - resource:
+          type: topic
+          name: raw.pdns.not-in-whitelist
+          patternType: literal
+        operation: All
+      - resource:
+          type: topic
+          name: raw.pdns
+          patternType: literal
+        operation: Read
+      - resource:
+          type: topic
+          name: raw.pdns
+          patternType: literal
+        operation: Describe
+      - resource:
+          type: group
+          name: stream-whitelist-filter
+          patternType: literal
+        operation: All
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaUser
+metadata:
+  name: kafka-user-aggregator
+  labels:
+    strimzi.io/cluster: kafka
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: domain.aggregate
+          patternType: prefix
+        operation: All
+      - resource:
+          type: topic
+          name: stream-aggregator
+          patternType: prefix
+        operation: All
+      - resource:
+          type: topic
+          name: raw.pdns
+          patternType: prefix
+        operation: Read
+      - resource:
+          type: topic
+          name: raw.pdns
+          patternType: prefix
+        operation: Describe
+      - resource:
+          type: group
+          name: stream-aggregator
+          patternType: prefix
+        operation: All
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaUser
+metadata:
+  name: kafka-user-graph
+  labels:
+    strimzi.io/cluster: kafka
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: graph.
+          patternType: prefix
+        operation: All
+      - resource:
+          type: topic
+          name: stream-graph
+          patternType: prefix
+        operation: All
+      - resource:
+          type: topic
+          name: '*'
+          patternType: literal
+        operation: Read
+      - resource:
+          type: group
+          name: stream-graph
+          patternType: prefix
+        operation: All
