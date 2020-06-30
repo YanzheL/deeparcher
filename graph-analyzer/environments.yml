@@ -1,0 +1,15 @@
+name: graph-analyzer
+channels:
+  - intel
+  - nvidia
+  - rapidsai
+  - numba
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - scipy
+  - python-louvain
+  - networkx
+prefix: ./envs
+
