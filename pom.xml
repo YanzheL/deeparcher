@@ -127,6 +127,7 @@
         <spring-kafka.version>2.5.3.RELEASE</spring-kafka.version>
         <dnsjava.version>3.2.1</dnsjava.version>
         <fastjson.version>1.2.72</fastjson.version>
+        <tika.version>1.24.1</tika.version>
         <jmh.version>1.23</jmh.version>
         <!--        <spring-framework.version>5.2.6.RELEASE</spring-framework.version>-->
         <!--        <spring-integration.version>5.2.6.RELEASE</spring-integration.version>-->
