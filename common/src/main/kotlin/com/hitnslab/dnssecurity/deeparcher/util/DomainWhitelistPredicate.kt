@@ -2,8 +2,15 @@ package com.hitnslab.dnssecurity.deeparcher.util
 
 import com.google.common.net.InternetDomainName
 import mu.KotlinLogging
+import org.apache.tika.metadata.Metadata
+import org.apache.tika.parser.AutoDetectParser
+import org.apache.tika.parser.ParseContext
+import org.apache.tika.parser.RecursiveParserWrapper
+import org.apache.tika.sax.BasicContentHandlerFactory
+import org.apache.tika.sax.RecursiveParserWrapperHandler
 import org.springframework.core.io.Resource
 import java.util.function.Predicate
+
 
 /**
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
@@ -15,7 +22,7 @@ class DomainWhitelistPredicate : Predicate<String> {
     /**
      * contains top private domains or public suffixes constructed from whitelist resource file
      */
-    private val whitelist = mutableSetOf<String>()
+    val whitelist = mutableSetOf<String>()
 
     private val patterns = mutableListOf<Regex>()
 
@@ -40,17 +47,29 @@ class DomainWhitelistPredicate : Predicate<String> {
     }
 
     fun fromResource(resource: Resource): DomainWhitelistPredicate {
-        resource.inputStream
-            .bufferedReader()
-            .use { rd ->
-                rd.lineSequence().forEach {
-                    try {
-                        fromFQDN(it)
-                    } catch (e: IllegalArgumentException) {
-                        logger.error { "Invalid whitelist item <$it>, exception <$e>" }
+        val handler = RecursiveParserWrapperHandler(
+            BasicContentHandlerFactory(BasicContentHandlerFactory.HANDLER_TYPE.TEXT, -1)
+        )
+        val context = ParseContext()
+        val parser = RecursiveParserWrapper(AutoDetectParser())
+        context[RecursiveParserWrapper::class.java] = parser
+        parser.parse(resource.inputStream, handler, Metadata(), context)
+        var loaded = 0
+        handler.metadataList
+            .filter { it["Content-Type"].startsWith("text/plain") }
+            .forEach { metadata ->
+                metadata["X-TIKA:content"].lineSequence()
+                    .filter { it.isNotEmpty() }
+                    .forEach {
+                        try {
+                            fromFQDN(it)
+                            ++loaded
+                        } catch (e: IllegalArgumentException) {
+                            logger.error { "Invalid whitelist item <$it>, exception <$e>" }
+                        }
                     }
-                }
             }
+        logger.info { "Loaded <$loaded> whitelist items from <$resource>" }
         return this
     }
 

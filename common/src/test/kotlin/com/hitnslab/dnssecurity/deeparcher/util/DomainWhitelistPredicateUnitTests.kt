@@ -1,6 +1,5 @@
-package com.hitnslab.dnssecurity.deeparcher.stream
+package com.hitnslab.dnssecurity.deeparcher.util
 
-import com.hitnslab.dnssecurity.deeparcher.util.DomainWhitelistPredicate
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -10,9 +9,28 @@ import org.springframework.core.io.ClassPathResource
 class DomainWhitelistPredicateUnitTests {
 
     @Test
-    fun test() {
+    fun test0() {
+        val predicates = listOf(
+            DomainWhitelistPredicate().fromResource(ClassPathResource("whitelist.txt")),
+            DomainWhitelistPredicate().fromResource(ClassPathResource("whitelist.txt.gz")),
+            DomainWhitelistPredicate().fromResource(ClassPathResource("whitelist.txt.xz")),
+            DomainWhitelistPredicate().fromResource(ClassPathResource("whitelist.txt.zip"))
+        )
+        var size = -1
+        predicates.forEach {
+            if (size == -1) {
+                size = it.whitelist.size
+                Assertions.assertTrue(size > 0)
+            } else {
+                Assertions.assertTrue(it.whitelist.size == size)
+            }
+        }
+    }
+
+    @Test
+    fun test1() {
         val predicate = DomainWhitelistPredicate()
-            .fromResource(ClassPathResource("whitelist.txt"))
+            .fromResource(ClassPathResource("whitelist.txt.xz"))
             .fromRegex("\\.(edu|gov)(\\.[a-z]{2})?$")
         Assertions.assertTrue(predicate.test("www.hitwh.edu.cn"))
         Assertions.assertTrue(predicate.test("abc.hitwh.edu.cn"))
