@@ -1,3 +1,5 @@
+from typing import List
+
 import numpy as np
 from scipy.sparse import spmatrix
 
@@ -15,9 +17,9 @@ class Graph:
             connected: bool,
             unweighted: bool,
             node_id_remap: np.ndarray,
-            component_attrs: ComponentAttr = None,
-            node_attrs: GraphElementsAttrMap = None,
-            edge_attrs: GraphElementsAttrMap = None
+            component_attrs: List[ComponentAttr] = None,
+            node_attrs: List[GraphElementsAttrMap] = None,
+            edge_attrs: List[GraphElementsAttrMap] = None
 
     ):
         self._id = id
