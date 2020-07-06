@@ -47,20 +47,18 @@ class MaliciousAssociationAnalyzer(GraphAnalyzer, GraphAttrExtractor):
         self._task_queue = Queue()
         self._finished = False
 
-    @timing
-    def _build_cugraph(self) -> cugraph.DiGraph:
-        adj = self.graph.adj.tocoo()
-        df = cudf.DataFrame()
-        df['src'] = adj.row
-        df['dst'] = adj.col
-        df['weight'] = adj.data
-        g = cugraph.DiGraph()
-        g.from_cudf_edgelist(df, 'src', 'dst', 'weight')
-        # adj = self.graph.adj.tocsr()
-        # offsets = cudf.Series(adj.indptr)
-        # indices = cudf.Series(adj.indices)
-        # g.from_cudf_adjlist(offsets, indices, None)
-        return g
+    def is_finished(self) -> bool:
+        return self._finished
+
+    def get_node_attrs(self, **kwargs) -> List[NodeAttrMap]:
+        return [NodeAttrMap('mal_assoc_prob', self._scores)]
+
+    def reset(self) -> NoReturn:
+        self._scores.clear()
+        self._finished = False
+
+    def is_restartable(self) -> bool:
+        return True
 
     @timing
     def _run(self, blacklist: Optional[str] = None) -> NoReturn:
@@ -92,6 +90,21 @@ class MaliciousAssociationAnalyzer(GraphAnalyzer, GraphAttrExtractor):
                     'Begin analyzing current connected subgraph {}.'.format(self.__class__, idx))
                 self._run_for_connected_graph(subgraph, node_id_remap)
         self._finished = True
+
+    @timing
+    def _build_cugraph(self) -> cugraph.DiGraph:
+        adj = self.graph.adj.tocoo()
+        df = cudf.DataFrame()
+        df['src'] = adj.row
+        df['dst'] = adj.col
+        df['weight'] = adj.data
+        g = cugraph.DiGraph()
+        g.from_cudf_edgelist(df, 'src', 'dst', 'weight')
+        # adj = self.graph.adj.tocsr()
+        # offsets = cudf.Series(adj.indptr)
+        # indices = cudf.Series(adj.indices)
+        # g.from_cudf_adjlist(offsets, indices, None)
+        return g
 
     @timing
     def _run_for_connected_graph(self, graph: cugraph.Graph, node_id_remap: Optional[np.ndarray] = None) -> NoReturn:
@@ -150,31 +163,7 @@ class MaliciousAssociationAnalyzer(GraphAnalyzer, GraphAttrExtractor):
                 self._components.append(cudf.Series(cc.components, dtype=np.int32))
         return self._components
 
-    def is_finished(self) -> bool:
-        return self._finished
-
-    def get_node_attrs(self, **kwargs) -> List[NodeAttrMap]:
-        return [NodeAttrMap('mal_assoc_prob', self._scores)]
-
-    def reset(self) -> NoReturn:
-        self._scores.clear()
-        self._finished = False
-
-    def is_restartable(self) -> bool:
-        return True
-
     @staticmethod
     def _initialize_weights(graph: cugraph.Graph):
         weights: cudf.Series = graph.view_edge_list()['weight']
         graph.view_edge_list()['weight'] = weights.applymap(lambda x: math.log(x + 1 / x))
-
-# from timeit import timeit
-#
-# if __name__ == '__main__':
-#     a1 = np.random.rand(10000)
-#     a2 = np.random.random(20000)
-#     s1 = cudf.Series(a1, dtype=np.float, name='data')
-#     s2 = cudf.Series(a2, dtype=np.float, name='data')
-#
-#     print(timeit(lambda: np.intersect1d(a1, a2, assume_unique=True), number=1))
-#     print(timeit(lambda: s1.merge(s2), number=1))
