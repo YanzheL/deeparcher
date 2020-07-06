@@ -2,16 +2,22 @@ from abc import ABCMeta, abstractmethod
 from typing import *
 
 from app.model import Graph, NodeAttrMap, EdgeAttrMap
+from app.util.logger_router import LoggerRouter
 
 
 class GraphAnalyzer(metaclass=ABCMeta):
-    def __init__(self, graph: Graph, **configs):
+
+    def __init__(self, graph: Graph):
         self.graph = graph
-        self.configs = configs
+        self.logger = LoggerRouter().get_logger(__name__)
 
     def run(self, **runtime_configs) -> NoReturn:
-        if self.is_finished() and not self.is_restartable():
-            raise RuntimeError("This analyzer is finished and not restartable.")
+        self.logger.info('Begin running <{}>'.format(self.__class__))
+        if self.is_finished():
+            if not self.is_restartable():
+                raise RuntimeError("This analyzer is finished and not restartable.")
+            else:
+                self.reset()
         self._run(**runtime_configs)
 
     def reset(self) -> NoReturn:
