@@ -3,8 +3,8 @@ from typing import *
 import numpy as np
 from scipy.sparse import spmatrix
 
-from app.model.base import MutableBean
-from app.model.graph_attributes import ComponentAttr, GraphElementsAttrMap
+from app.struct.base import MutableBean
+from app.struct.graph_attributes import ComponentAttr, GraphElementsAttrMap
 
 
 class Graph(MutableBean):

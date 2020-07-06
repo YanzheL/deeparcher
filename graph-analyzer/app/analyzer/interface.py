@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from typing import *
 
-from app.model import Graph, NodeAttrMap, EdgeAttrMap
+from app.struct import Graph, NodeAttrMap, EdgeAttrMap
 from app.util.logger_router import LoggerRouter
 
 

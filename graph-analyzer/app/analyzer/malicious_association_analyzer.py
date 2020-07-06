@@ -10,7 +10,7 @@ from cugraph.components.connectivity import weakly_connected_components
 from cugraph.traversal.sssp import sssp
 
 from app.analyzer.interface import GraphAnalyzer, GraphAttrExtractor
-from app.model import NodeAttrMap, Graph
+from app.struct import NodeAttrMap, Graph
 from app.util.misc import timing, load_blacklist
 
 

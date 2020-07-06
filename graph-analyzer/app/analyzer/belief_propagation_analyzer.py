@@ -3,7 +3,7 @@ from typing import *
 import numpy as np
 
 from app.analyzer.interface import GraphAnalyzer, GraphAttrExtractor
-from app.model import NodeAttrMap, Graph
+from app.struct import NodeAttrMap, Graph
 from app.util.misc import load_blacklist, load_whitelist
 
 

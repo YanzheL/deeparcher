@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from app.model import Graph
+from app.struct import Graph
 
 
 class GraphReader(metaclass=ABCMeta):
