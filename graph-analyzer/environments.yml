@@ -11,5 +11,7 @@ dependencies:
   - scipy
   - python-louvain
   - networkx
+  - rapids=0.14
+  - cudatoolkit=10.2
 prefix: ./envs
 

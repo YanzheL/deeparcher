@@ -2,16 +2,17 @@ from typing import *
 
 import numpy as np
 
+from app.analyzer.interface import GraphAnalyzer, GraphAttrExtractor
 from app.model import NodeAttrMap, Graph
-from . import GraphAnalyzer, GraphAttrExtractor
+from app.util.misc import load_blacklist, load_whitelist
 
 
 class TopologyBasedFlowAnalyzer(GraphAnalyzer, GraphAttrExtractor):
 
-    def __init__(self, graph: Graph, **configs):
-        super(GraphAnalyzer).__init__(graph, **configs)
-        self.whitelist: np.ndarray = self.configs['whitelist']
-        self.blacklist: np.ndarray = self.configs['blacklist']
+    def __init__(self, graph: Graph, whitelist: str, blacklist: str):
+        super(GraphAnalyzer).__init__(graph)
+        self.whitelist: np.ndarray = load_whitelist(whitelist, self.logger)
+        self.blacklist: np.ndarray = load_blacklist(blacklist, self.logger)
         self._scores: Dict[int, float] = {}
         self._finished = False
 
