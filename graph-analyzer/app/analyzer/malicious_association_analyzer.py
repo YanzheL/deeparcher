@@ -11,7 +11,7 @@ from cugraph.traversal.sssp import sssp
 
 from app.analyzer.interface import GraphAnalyzer, GraphAttrExtractor
 from app.struct import NodeAttrMap, Graph
-from app.util.misc import timing, load_blacklist
+from app.util.misc import timing, load_blacklist, extract_labels
 
 
 class MaliciousAssociationAnalyzer(GraphAnalyzer, GraphAttrExtractor):
@@ -20,26 +20,14 @@ class MaliciousAssociationAnalyzer(GraphAnalyzer, GraphAttrExtractor):
             self,
             graph: Graph,
             blacklist: Optional[str] = None,
-            cc_size_thres=0
+            cc_size_thres=1
     ):
         super(GraphAnalyzer).__init__(graph)
         self._blacklist: Optional[np.ndarray] = None
         if blacklist is not None:
             self._blacklist = load_blacklist(blacklist, self.logger)
-        node_labels = []
-        for node_attr in self.graph.node_attrs:
-            if node_attr.name == 'fqdn':
-                items: List[Tuple[int, str]] = node_attr.data.items()
-                items.sort(key=lambda x: x[0])
-                for _, fqdn in items:
-                    node_labels.append(fqdn)
-                break
-        if len(node_labels) != self.graph.nodes:
-            raise ValueError(
-                "The input graph has {} nodes, but only {} nodes have 'fqdn' label.".format(self.graph.nodes,
-                                                                                            len(node_labels)))
+        self._node_labels: np.ndarray = extract_labels('fqdn', self.graph.node_attrs, self.graph.nodes)
         self._cc_size_thres = cc_size_thres
-        self._node_labels: np.ndarray = np.array(node_labels, dtype=str)
         self._cugraph: cugraph.DiGraph = self._build_cugraph()
         self._black_node_ids: Optional[np.ndarray] = None
         self._components: List[cudf.Series] = []

@@ -1,8 +1,10 @@
 import time
+from typing import List, Tuple
 
 import numpy as np
 from tld import get_fld
 
+from app.struct.graph_attributes import GraphElementsAttrMap
 from app.util.logger_router import LoggerRouter
 
 default_logger = LoggerRouter().get_logger(__name__)
@@ -44,3 +46,18 @@ def timing(method, logger=default_logger):
         return result
 
     return timed
+
+
+def extract_labels(name: str, attrs: List[GraphElementsAttrMap], n_expected=-1) -> np.ndarray:
+    node_labels = []
+    for attr in attrs:
+        if attr.name == name:
+            items: List[Tuple[int, object]] = attr.data.items()
+            items.sort(key=lambda x: x[0])
+            for _, data in items:
+                node_labels.append(data)
+            break
+    if 0 < n_expected != len(node_labels):
+        raise ValueError(
+            "Expected {} attributes of {}, found {} instead".format(n_expected, name, len(node_labels)))
+    return np.array(node_labels, dtype=str)

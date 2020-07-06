@@ -4,7 +4,7 @@ import numpy as np
 from scipy.sparse import spmatrix
 
 from app.struct.base import MutableBean
-from app.struct.graph_attributes import ComponentAttr, GraphElementsAttrMap
+from app.struct.graph_attributes import ComponentAttr, NodeAttrMap, EdgeAttrMap
 
 
 class Graph(MutableBean):
@@ -19,8 +19,8 @@ class Graph(MutableBean):
             unweighted: bool,
             node_id_remap: Optional[np.ndarray] = None,
             component_attrs: List[ComponentAttr] = None,
-            node_attrs: List[GraphElementsAttrMap] = None,
-            edge_attrs: List[GraphElementsAttrMap] = None
+            node_attrs: List[NodeAttrMap] = None,
+            edge_attrs: List[EdgeAttrMap] = None
 
     ):
         super().__init__()
