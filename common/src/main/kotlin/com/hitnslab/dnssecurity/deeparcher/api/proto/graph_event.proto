@@ -14,11 +14,11 @@ message GraphEvent {
 
   /* First node of this edge.
    * NOT NULL. */
-  uint64 node1 = 1;
+  uint32 node1 = 1;
 
   /* Second node of this edge.
    * NOT NULL. */
-  uint64 node2 = 2;
+  uint32 node2 = 2;
 
   /* Event action.
    * NULLABLE, default is `UPSERT`. */

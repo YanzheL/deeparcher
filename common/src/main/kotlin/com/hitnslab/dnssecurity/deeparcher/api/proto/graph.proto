@@ -8,6 +8,7 @@ option java_outer_classname = "GraphProto";
 option optimize_for = SPEED;
 option cc_enable_arenas = true;
 import "com/hitnslab/dnssecurity/deeparcher/api/proto/matrix.proto";
+import "com/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto";
 import "google/protobuf/any.proto";
 
 message Graph {
@@ -15,15 +16,15 @@ message Graph {
   /* Graph ID.
    * This should be the offset of graph update event stream.
    * NOT NULL. */
-  int64 id = 1;
+  uint32 id = 1;
 
   /* Number of nodes in graph.
    * NOT NULL. */
-  int64 nodes = 2;
+  int32 nodes = 2;
 
   /* Number of edges in graph.
    * NOT NULL. */
-  int64 edges = 3;
+  int32 edges = 3;
 
   /* Adjacent matrix, represented by COO/CSR/CSC/DENSE matrix.
    * Usually, the dimension of adjacent matrix should be (nodes,nodes).
@@ -35,6 +36,9 @@ message Graph {
     CsrMatFloat csr = 12;
     CscMatFloat csc = 13;
   }
+
+  /* Parent graph ID. */
+  uint32 parent_id = 14;
 
   /* If true, then this is a directed graph.
    * NULLABLE, default = false. */
@@ -51,9 +55,17 @@ message Graph {
   /* If present, then it means all node ids in this graph are consecutive.
    * Actual node id, which will be used to fetch node attributes from global attributes store, can be obtained by node_id_remap[node_id].
    * NULLABLE. */
-  repeated uint64 node_id_remap = 19;
+  repeated uint32 node_id_remap = 19;
+
+  /* Node attributes
+   * NULLABLE. */
+  repeated GraphElementsAttrMap node_attrs = 32;
+
+  /* Edge attributes
+   * NULLABLE. */
+  repeated GraphElementsAttrMap edge_attrs = 33;
 
   /* General attributes related to this graph.
    * NULLABLE. */
-  repeated google.protobuf.Any attributes = 32;
+  repeated google.protobuf.Any attributes = 35;
 }

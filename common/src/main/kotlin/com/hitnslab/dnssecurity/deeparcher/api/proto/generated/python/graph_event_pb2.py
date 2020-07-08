@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\017GraphEventProtoH\001\370\001\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n?com/hitnslab/dnssecurity/deeparcher/api/proto/graph_event.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\x1a\x19google/protobuf/any.proto\"\xde\x02\n\nGraphEvent\x12\r\n\x05node1\x18\x01 \x01(\x04\x12\r\n\x05node2\x18\x02 \x01(\x04\x12P\n\x06\x61\x63tion\x18\x03 \x01(\x0e\x32@.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action\x12]\n\nattributes\x18\x04 \x03(\x0b\x32I.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.AttributesEntry\x1aG\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any:\x02\x38\x01\"8\n\x06\x41\x63tion\x12\n\n\x06UPSERT\x10\x00\x12\n\n\x06\x44\x45LETE\x10\x01\x12\n\n\x06UPDATE\x10\x02\x12\n\n\x06\x43REATE\x10\x03\x42T\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x0fGraphEventProtoH\x01\xf8\x01\x01\x62\x06proto3'
+  serialized_pb=b'\n?com/hitnslab/dnssecurity/deeparcher/api/proto/graph_event.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\x1a\x19google/protobuf/any.proto\"\xde\x02\n\nGraphEvent\x12\r\n\x05node1\x18\x01 \x01(\r\x12\r\n\x05node2\x18\x02 \x01(\r\x12P\n\x06\x61\x63tion\x18\x03 \x01(\x0e\x32@.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action\x12]\n\nattributes\x18\x04 \x03(\x0b\x32I.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.AttributesEntry\x1aG\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any:\x02\x38\x01\"8\n\x06\x41\x63tion\x12\n\n\x06UPSERT\x10\x00\x12\n\n\x06\x44\x45LETE\x10\x01\x12\n\n\x06UPDATE\x10\x02\x12\n\n\x06\x43REATE\x10\x03\x42T\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x0fGraphEventProtoH\x01\xf8\x01\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -110,14 +110,14 @@ _GRAPHEVENT = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='node1', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.node1', index=0,
-      number=1, type=4, cpp_type=4, label=1,
+      number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='node2', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.node2', index=1,
-      number=2, type=4, cpp_type=4, label=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

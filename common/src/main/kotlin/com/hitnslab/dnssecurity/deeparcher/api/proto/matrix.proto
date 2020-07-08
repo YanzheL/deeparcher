@@ -9,53 +9,53 @@ option optimize_for = SPEED;
 option cc_enable_arenas = true;
 
 message DenseMatFloat {
-  repeated uint64 dims = 1;
+  repeated uint32 dims = 1;
   repeated float values = 10;
 }
 
 message CooMatFloat {
-  repeated uint64 dims = 1;
-  repeated uint64 rows = 2;
-  repeated uint64 cols = 3;
+  repeated uint32 dims = 1;
+  repeated uint32 rows = 2;
+  repeated uint32 cols = 3;
   repeated float values = 10;
 }
 
 message CsrMatFloat {
-  repeated uint64 dims = 1;
-  repeated uint64 row_offsets = 2;
-  repeated uint64 col_indices = 3;
+  repeated uint32 dims = 1;
+  repeated uint32 row_offsets = 2;
+  repeated uint32 col_indices = 3;
   repeated float values = 10;
 }
 
 message CscMatFloat {
-  repeated uint64 dims = 1;
-  repeated uint64 col_offsets = 2;
-  repeated uint64 row_indices = 3;
+  repeated uint32 dims = 1;
+  repeated uint32 col_offsets = 2;
+  repeated uint32 row_indices = 3;
   repeated float values = 10;
 }
 
-message DenseMatInt64 {
-  repeated uint64 dims = 1;
-  repeated int64 values = 10;
+message DenseMatint32 {
+  repeated uint32 dims = 1;
+  repeated int32 values = 10;
 }
 
-message CooMatInt64 {
-  repeated uint64 dims = 1;
-  repeated uint64 rows = 2;
-  repeated uint64 cols = 3;
-  repeated int64 values = 10;
+message CooMatint32 {
+  repeated uint32 dims = 1;
+  repeated uint32 rows = 2;
+  repeated uint32 cols = 3;
+  repeated int32 values = 10;
 }
 
-message CsrMatInt64 {
-  repeated uint64 dims = 1;
-  repeated uint64 row_offsets = 2;
-  repeated uint64 col_indices = 3;
-  repeated int64 values = 10;
+message CsrMatint32 {
+  repeated uint32 dims = 1;
+  repeated uint32 row_offsets = 2;
+  repeated uint32 col_indices = 3;
+  repeated int32 values = 10;
 }
 
-message CscMatInt64 {
-  repeated uint64 dims = 1;
-  repeated uint64 col_offsets = 2;
-  repeated uint64 row_indices = 3;
-  repeated int64 values = 10;
+message CscMatint32 {
+  repeated uint32 dims = 1;
+  repeated uint32 col_offsets = 2;
+  repeated uint32 row_indices = 3;
+  repeated int32 values = 10;
 }

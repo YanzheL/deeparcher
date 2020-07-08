@@ -36,22 +36,22 @@ class CscMatFloatDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CscMatFloat> _instance;
 } _CscMatFloat_default_instance_;
-class DenseMatInt64DefaultTypeInternal {
+class DenseMatint32DefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DenseMatInt64> _instance;
-} _DenseMatInt64_default_instance_;
-class CooMatInt64DefaultTypeInternal {
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DenseMatint32> _instance;
+} _DenseMatint32_default_instance_;
+class CooMatint32DefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CooMatInt64> _instance;
-} _CooMatInt64_default_instance_;
-class CsrMatInt64DefaultTypeInternal {
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CooMatint32> _instance;
+} _CooMatint32_default_instance_;
+class CsrMatint32DefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CsrMatInt64> _instance;
-} _CsrMatInt64_default_instance_;
-class CscMatInt64DefaultTypeInternal {
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CsrMatint32> _instance;
+} _CsrMatint32_default_instance_;
+class CscMatint32DefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CscMatInt64> _instance;
-} _CscMatInt64_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CscMatint32> _instance;
+} _CscMatint32_default_instance_;
 }  // namespace proto
 }  // namespace api
 }  // namespace deeparcher
@@ -72,19 +72,19 @@ static void InitDefaultsscc_info_CooMatFloat_com_2fhitnslab_2fdnssecurity_2fdeep
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CooMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CooMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
-static void InitDefaultsscc_info_CooMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
+static void InitDefaultsscc_info_CooMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMatInt64_default_instance_;
-    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64();
+    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMatint32_default_instance_;
+    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64::InitAsDefaultInstance();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CooMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CooMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CooMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CooMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
 static void InitDefaultsscc_info_CscMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -100,19 +100,19 @@ static void InitDefaultsscc_info_CscMatFloat_com_2fhitnslab_2fdnssecurity_2fdeep
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CscMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CscMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
-static void InitDefaultsscc_info_CscMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
+static void InitDefaultsscc_info_CscMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMatInt64_default_instance_;
-    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64();
+    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMatint32_default_instance_;
+    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64::InitAsDefaultInstance();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CscMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CscMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CscMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CscMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
 static void InitDefaultsscc_info_CsrMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -128,19 +128,19 @@ static void InitDefaultsscc_info_CsrMatFloat_com_2fhitnslab_2fdnssecurity_2fdeep
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CsrMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CsrMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
-static void InitDefaultsscc_info_CsrMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
+static void InitDefaultsscc_info_CsrMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMatInt64_default_instance_;
-    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64();
+    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMatint32_default_instance_;
+    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64::InitAsDefaultInstance();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CsrMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CsrMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CsrMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CsrMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
 static void InitDefaultsscc_info_DenseMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -156,19 +156,19 @@ static void InitDefaultsscc_info_DenseMatFloat_com_2fhitnslab_2fdnssecurity_2fde
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DenseMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DenseMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
-static void InitDefaultsscc_info_DenseMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
+static void InitDefaultsscc_info_DenseMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_DenseMatInt64_default_instance_;
-    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64();
+    void* ptr = &::com::hitnslab::dnssecurity::deeparcher::api::proto::_DenseMatint32_default_instance_;
+    new (ptr) ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64::InitAsDefaultInstance();
+  ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DenseMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DenseMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DenseMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DenseMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto[8];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto = nullptr;
@@ -210,49 +210,49 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_com_2fhitnslab_2fdnssecurity_2
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat, row_indices_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat, values_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64, dims_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64, values_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32, dims_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32, values_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64, dims_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64, rows_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64, cols_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64, values_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32, dims_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32, rows_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32, cols_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32, values_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64, dims_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64, row_offsets_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64, col_indices_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64, values_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32, dims_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32, row_offsets_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32, col_indices_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32, values_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64, dims_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64, col_offsets_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64, row_indices_),
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64, values_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32, dims_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32, col_offsets_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32, row_indices_),
+  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32, values_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat)},
   { 7, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat)},
   { 16, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat)},
   { 25, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat)},
-  { 34, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64)},
-  { 41, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64)},
-  { 50, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64)},
-  { 59, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64)},
+  { 34, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32)},
+  { 41, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32)},
+  { 50, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32)},
+  { 59, -1, sizeof(::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -260,31 +260,31 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMatFloat_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMatFloat_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMatFloat_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_DenseMatInt64_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMatInt64_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMatInt64_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMatInt64_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_DenseMatint32_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CooMatint32_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CsrMatint32_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::com::hitnslab::dnssecurity::deeparcher::api::proto::_CscMatint32_default_instance_),
 };
 
 const char descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n:com/hitnslab/dnssecurity/deeparcher/ap"
   "i/proto/matrix.proto\022-com.hitnslab.dnsse"
   "curity.deeparcher.api.proto\"-\n\rDenseMatF"
-  "loat\022\014\n\004dims\030\001 \003(\004\022\016\n\006values\030\n \003(\002\"G\n\013Co"
-  "oMatFloat\022\014\n\004dims\030\001 \003(\004\022\014\n\004rows\030\002 \003(\004\022\014\n"
-  "\004cols\030\003 \003(\004\022\016\n\006values\030\n \003(\002\"U\n\013CsrMatFlo"
-  "at\022\014\n\004dims\030\001 \003(\004\022\023\n\013row_offsets\030\002 \003(\004\022\023\n"
-  "\013col_indices\030\003 \003(\004\022\016\n\006values\030\n \003(\002\"U\n\013Cs"
-  "cMatFloat\022\014\n\004dims\030\001 \003(\004\022\023\n\013col_offsets\030\002"
-  " \003(\004\022\023\n\013row_indices\030\003 \003(\004\022\016\n\006values\030\n \003("
-  "\002\"-\n\rDenseMatInt64\022\014\n\004dims\030\001 \003(\004\022\016\n\006valu"
-  "es\030\n \003(\003\"G\n\013CooMatInt64\022\014\n\004dims\030\001 \003(\004\022\014\n"
-  "\004rows\030\002 \003(\004\022\014\n\004cols\030\003 \003(\004\022\016\n\006values\030\n \003("
-  "\003\"U\n\013CsrMatInt64\022\014\n\004dims\030\001 \003(\004\022\023\n\013row_of"
-  "fsets\030\002 \003(\004\022\023\n\013col_indices\030\003 \003(\004\022\016\n\006valu"
-  "es\030\n \003(\003\"U\n\013CscMatInt64\022\014\n\004dims\030\001 \003(\004\022\023\n"
-  "\013col_offsets\030\002 \003(\004\022\023\n\013row_indices\030\003 \003(\004\022"
-  "\016\n\006values\030\n \003(\003BP\n<com.hitnslab.dnssecur"
+  "loat\022\014\n\004dims\030\001 \003(\r\022\016\n\006values\030\n \003(\002\"G\n\013Co"
+  "oMatFloat\022\014\n\004dims\030\001 \003(\r\022\014\n\004rows\030\002 \003(\r\022\014\n"
+  "\004cols\030\003 \003(\r\022\016\n\006values\030\n \003(\002\"U\n\013CsrMatFlo"
+  "at\022\014\n\004dims\030\001 \003(\r\022\023\n\013row_offsets\030\002 \003(\r\022\023\n"
+  "\013col_indices\030\003 \003(\r\022\016\n\006values\030\n \003(\002\"U\n\013Cs"
+  "cMatFloat\022\014\n\004dims\030\001 \003(\r\022\023\n\013col_offsets\030\002"
+  " \003(\r\022\023\n\013row_indices\030\003 \003(\r\022\016\n\006values\030\n \003("
+  "\002\"-\n\rDenseMatint32\022\014\n\004dims\030\001 \003(\r\022\016\n\006valu"
+  "es\030\n \003(\005\"G\n\013CooMatint32\022\014\n\004dims\030\001 \003(\r\022\014\n"
+  "\004rows\030\002 \003(\r\022\014\n\004cols\030\003 \003(\r\022\016\n\006values\030\n \003("
+  "\005\"U\n\013CsrMatint32\022\014\n\004dims\030\001 \003(\r\022\023\n\013row_of"
+  "fsets\030\002 \003(\r\022\023\n\013col_indices\030\003 \003(\r\022\016\n\006valu"
+  "es\030\n \003(\005\"U\n\013CscMatint32\022\014\n\004dims\030\001 \003(\r\022\023\n"
+  "\013col_offsets\030\002 \003(\r\022\023\n\013row_indices\030\003 \003(\r\022"
+  "\016\n\006values\030\n \003(\005BP\n<com.hitnslab.dnssecur"
   "ity.deeparcher.api.proto.generated.javaB"
   "\013MatrixProtoH\001\370\001\001b\006proto3"
   ;
@@ -292,13 +292,13 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto_sccs[8] = {
   &scc_info_CooMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
-  &scc_info_CooMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
+  &scc_info_CooMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
   &scc_info_CscMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
-  &scc_info_CscMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
+  &scc_info_CscMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
   &scc_info_CsrMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
-  &scc_info_CsrMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
+  &scc_info_CsrMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
   &scc_info_DenseMatFloat_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
-  &scc_info_DenseMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
+  &scc_info_DenseMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto = {
@@ -388,13 +388,13 @@ const char* DenseMatFloat::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -436,11 +436,11 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
@@ -466,10 +466,10 @@ size_t DenseMatFloat::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -638,33 +638,33 @@ const char* CooMatFloat::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 rows = 2;
+      // repeated uint32 rows = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_rows(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_rows(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16) {
-          _internal_add_rows(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_rows(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 cols = 3;
+      // repeated uint32 cols = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_cols(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_cols(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
-          _internal_add_cols(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_cols(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -706,29 +706,29 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated uint64 rows = 2;
+  // repeated uint32 rows = 2;
   {
     int byte_size = _rows_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           2, _internal_rows(), byte_size, target);
     }
   }
 
-  // repeated uint64 cols = 3;
+  // repeated uint32 cols = 3;
   {
     int byte_size = _cols_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           3, _internal_cols(), byte_size, target);
     }
   }
@@ -754,10 +754,10 @@ size_t CooMatFloat::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -769,10 +769,10 @@ size_t CooMatFloat::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 rows = 2;
+  // repeated uint32 rows = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->rows_);
+      UInt32Size(this->rows_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -784,10 +784,10 @@ size_t CooMatFloat::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 cols = 3;
+  // repeated uint32 cols = 3;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->cols_);
+      UInt32Size(this->cols_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -960,33 +960,33 @@ const char* CsrMatFloat::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 row_offsets = 2;
+      // repeated uint32 row_offsets = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_row_offsets(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_row_offsets(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16) {
-          _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 col_indices = 3;
+      // repeated uint32 col_indices = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_col_indices(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_col_indices(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
-          _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1028,29 +1028,29 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated uint64 row_offsets = 2;
+  // repeated uint32 row_offsets = 2;
   {
     int byte_size = _row_offsets_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           2, _internal_row_offsets(), byte_size, target);
     }
   }
 
-  // repeated uint64 col_indices = 3;
+  // repeated uint32 col_indices = 3;
   {
     int byte_size = _col_indices_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           3, _internal_col_indices(), byte_size, target);
     }
   }
@@ -1076,10 +1076,10 @@ size_t CsrMatFloat::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1091,10 +1091,10 @@ size_t CsrMatFloat::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 row_offsets = 2;
+  // repeated uint32 row_offsets = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->row_offsets_);
+      UInt32Size(this->row_offsets_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1106,10 +1106,10 @@ size_t CsrMatFloat::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 col_indices = 3;
+  // repeated uint32 col_indices = 3;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->col_indices_);
+      UInt32Size(this->col_indices_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1282,33 +1282,33 @@ const char* CscMatFloat::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 col_offsets = 2;
+      // repeated uint32 col_offsets = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_col_offsets(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_col_offsets(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16) {
-          _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 row_indices = 3;
+      // repeated uint32 row_indices = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_row_indices(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_row_indices(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
-          _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1350,29 +1350,29 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated uint64 col_offsets = 2;
+  // repeated uint32 col_offsets = 2;
   {
     int byte_size = _col_offsets_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           2, _internal_col_offsets(), byte_size, target);
     }
   }
 
-  // repeated uint64 row_indices = 3;
+  // repeated uint32 row_indices = 3;
   {
     int byte_size = _row_indices_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           3, _internal_row_indices(), byte_size, target);
     }
   }
@@ -1398,10 +1398,10 @@ size_t CscMatFloat::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1413,10 +1413,10 @@ size_t CscMatFloat::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 col_offsets = 2;
+  // repeated uint32 col_offsets = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->col_offsets_);
+      UInt32Size(this->col_offsets_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1428,10 +1428,10 @@ size_t CscMatFloat::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 row_indices = 3;
+  // repeated uint32 row_indices = 3;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->row_indices_);
+      UInt32Size(this->row_indices_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1529,58 +1529,58 @@ void CscMatFloat::InternalSwap(CscMatFloat* other) {
 
 // ===================================================================
 
-void DenseMatInt64::InitAsDefaultInstance() {
+void DenseMatint32::InitAsDefaultInstance() {
 }
-class DenseMatInt64::_Internal {
+class DenseMatint32::_Internal {
  public:
 };
 
-DenseMatInt64::DenseMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+DenseMatint32::DenseMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   dims_(arena),
   values_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
 }
-DenseMatInt64::DenseMatInt64(const DenseMatInt64& from)
+DenseMatint32::DenseMatint32(const DenseMatint32& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       dims_(from.dims_),
       values_(from.values_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
 }
 
-void DenseMatInt64::SharedCtor() {
+void DenseMatint32::SharedCtor() {
 }
 
-DenseMatInt64::~DenseMatInt64() {
-  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+DenseMatint32::~DenseMatint32() {
+  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DenseMatInt64::SharedDtor() {
+void DenseMatint32::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
-void DenseMatInt64::ArenaDtor(void* object) {
-  DenseMatInt64* _this = reinterpret_cast< DenseMatInt64* >(object);
+void DenseMatint32::ArenaDtor(void* object) {
+  DenseMatint32* _this = reinterpret_cast< DenseMatint32* >(object);
   (void)_this;
 }
-void DenseMatInt64::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void DenseMatint32::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void DenseMatInt64::SetCachedSize(int size) const {
+void DenseMatint32::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const DenseMatInt64& DenseMatInt64::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DenseMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
+const DenseMatint32& DenseMatint32::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DenseMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void DenseMatInt64::Clear() {
-// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+void DenseMatint32::Clear() {
+// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1590,7 +1590,7 @@ void DenseMatInt64::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DenseMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DenseMatint32::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
@@ -1598,20 +1598,20 @@ const char* DenseMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated int64 values = 10;
+      // repeated int32 values = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt64Parser(_internal_mutable_values(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_values(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80) {
           _internal_add_values(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
@@ -1640,26 +1640,26 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DenseMatInt64::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* DenseMatint32::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     int byte_size = _values_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteInt64Packed(
+      target = stream->WriteInt32Packed(
           10, _internal_values(), byte_size, target);
     }
   }
@@ -1668,22 +1668,22 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   return target;
 }
 
-size_t DenseMatInt64::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+size_t DenseMatint32::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1695,10 +1695,10 @@ size_t DenseMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      Int64Size(this->values_);
+      Int32Size(this->values_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1719,23 +1719,23 @@ size_t DenseMatInt64::ByteSizeLong() const {
   return total_size;
 }
 
-void DenseMatInt64::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+void DenseMatint32::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   GOOGLE_DCHECK_NE(&from, this);
-  const DenseMatInt64* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DenseMatInt64>(
+  const DenseMatint32* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DenseMatint32>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
     MergeFrom(*source);
   }
 }
 
-void DenseMatInt64::MergeFrom(const DenseMatInt64& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+void DenseMatint32::MergeFrom(const DenseMatint32& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -1745,45 +1745,45 @@ void DenseMatInt64::MergeFrom(const DenseMatInt64& from) {
   values_.MergeFrom(from.values_);
 }
 
-void DenseMatInt64::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+void DenseMatint32::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void DenseMatInt64::CopyFrom(const DenseMatInt64& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+void DenseMatint32::CopyFrom(const DenseMatint32& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool DenseMatInt64::IsInitialized() const {
+bool DenseMatint32::IsInitialized() const {
   return true;
 }
 
-void DenseMatInt64::InternalSwap(DenseMatInt64* other) {
+void DenseMatint32::InternalSwap(DenseMatint32* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   dims_.InternalSwap(&other->dims_);
   values_.InternalSwap(&other->values_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata DenseMatInt64::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DenseMatint32::GetMetadata() const {
   return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void CooMatInt64::InitAsDefaultInstance() {
+void CooMatint32::InitAsDefaultInstance() {
 }
-class CooMatInt64::_Internal {
+class CooMatint32::_Internal {
  public:
 };
 
-CooMatInt64::CooMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+CooMatint32::CooMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   dims_(arena),
   rows_(arena),
@@ -1791,48 +1791,48 @@ CooMatInt64::CooMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   values_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
 }
-CooMatInt64::CooMatInt64(const CooMatInt64& from)
+CooMatint32::CooMatint32(const CooMatint32& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       dims_(from.dims_),
       rows_(from.rows_),
       cols_(from.cols_),
       values_(from.values_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
 }
 
-void CooMatInt64::SharedCtor() {
+void CooMatint32::SharedCtor() {
 }
 
-CooMatInt64::~CooMatInt64() {
-  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+CooMatint32::~CooMatint32() {
+  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void CooMatInt64::SharedDtor() {
+void CooMatint32::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
-void CooMatInt64::ArenaDtor(void* object) {
-  CooMatInt64* _this = reinterpret_cast< CooMatInt64* >(object);
+void CooMatint32::ArenaDtor(void* object) {
+  CooMatint32* _this = reinterpret_cast< CooMatint32* >(object);
   (void)_this;
 }
-void CooMatInt64::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void CooMatint32::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void CooMatInt64::SetCachedSize(int size) const {
+void CooMatint32::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const CooMatInt64& CooMatInt64::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CooMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
+const CooMatint32& CooMatint32::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CooMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void CooMatInt64::Clear() {
-// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+void CooMatint32::Clear() {
+// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1844,7 +1844,7 @@ void CooMatInt64::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CooMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CooMatint32::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
@@ -1852,40 +1852,40 @@ const char* CooMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 rows = 2;
+      // repeated uint32 rows = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_rows(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_rows(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16) {
-          _internal_add_rows(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_rows(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 cols = 3;
+      // repeated uint32 cols = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_cols(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_cols(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
-          _internal_add_cols(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_cols(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated int64 values = 10;
+      // repeated int32 values = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt64Parser(_internal_mutable_values(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_values(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80) {
           _internal_add_values(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
@@ -1914,44 +1914,44 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CooMatInt64::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* CooMatint32::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated uint64 rows = 2;
+  // repeated uint32 rows = 2;
   {
     int byte_size = _rows_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           2, _internal_rows(), byte_size, target);
     }
   }
 
-  // repeated uint64 cols = 3;
+  // repeated uint32 cols = 3;
   {
     int byte_size = _cols_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           3, _internal_cols(), byte_size, target);
     }
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     int byte_size = _values_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteInt64Packed(
+      target = stream->WriteInt32Packed(
           10, _internal_values(), byte_size, target);
     }
   }
@@ -1960,22 +1960,22 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   return target;
 }
 
-size_t CooMatInt64::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+size_t CooMatint32::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -1987,10 +1987,10 @@ size_t CooMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 rows = 2;
+  // repeated uint32 rows = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->rows_);
+      UInt32Size(this->rows_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2002,10 +2002,10 @@ size_t CooMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 cols = 3;
+  // repeated uint32 cols = 3;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->cols_);
+      UInt32Size(this->cols_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2017,10 +2017,10 @@ size_t CooMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      Int64Size(this->values_);
+      Int32Size(this->values_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2041,23 +2041,23 @@ size_t CooMatInt64::ByteSizeLong() const {
   return total_size;
 }
 
-void CooMatInt64::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+void CooMatint32::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   GOOGLE_DCHECK_NE(&from, this);
-  const CooMatInt64* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CooMatInt64>(
+  const CooMatint32* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CooMatint32>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
     MergeFrom(*source);
   }
 }
 
-void CooMatInt64::MergeFrom(const CooMatInt64& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+void CooMatint32::MergeFrom(const CooMatint32& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -2069,25 +2069,25 @@ void CooMatInt64::MergeFrom(const CooMatInt64& from) {
   values_.MergeFrom(from.values_);
 }
 
-void CooMatInt64::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+void CooMatint32::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CooMatInt64::CopyFrom(const CooMatInt64& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+void CooMatint32::CopyFrom(const CooMatint32& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CooMatInt64::IsInitialized() const {
+bool CooMatint32::IsInitialized() const {
   return true;
 }
 
-void CooMatInt64::InternalSwap(CooMatInt64* other) {
+void CooMatint32::InternalSwap(CooMatint32* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   dims_.InternalSwap(&other->dims_);
@@ -2096,20 +2096,20 @@ void CooMatInt64::InternalSwap(CooMatInt64* other) {
   values_.InternalSwap(&other->values_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CooMatInt64::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata CooMatint32::GetMetadata() const {
   return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void CsrMatInt64::InitAsDefaultInstance() {
+void CsrMatint32::InitAsDefaultInstance() {
 }
-class CsrMatInt64::_Internal {
+class CsrMatint32::_Internal {
  public:
 };
 
-CsrMatInt64::CsrMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+CsrMatint32::CsrMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   dims_(arena),
   row_offsets_(arena),
@@ -2117,48 +2117,48 @@ CsrMatInt64::CsrMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   values_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
 }
-CsrMatInt64::CsrMatInt64(const CsrMatInt64& from)
+CsrMatint32::CsrMatint32(const CsrMatint32& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       dims_(from.dims_),
       row_offsets_(from.row_offsets_),
       col_indices_(from.col_indices_),
       values_(from.values_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
 }
 
-void CsrMatInt64::SharedCtor() {
+void CsrMatint32::SharedCtor() {
 }
 
-CsrMatInt64::~CsrMatInt64() {
-  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+CsrMatint32::~CsrMatint32() {
+  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void CsrMatInt64::SharedDtor() {
+void CsrMatint32::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
-void CsrMatInt64::ArenaDtor(void* object) {
-  CsrMatInt64* _this = reinterpret_cast< CsrMatInt64* >(object);
+void CsrMatint32::ArenaDtor(void* object) {
+  CsrMatint32* _this = reinterpret_cast< CsrMatint32* >(object);
   (void)_this;
 }
-void CsrMatInt64::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void CsrMatint32::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void CsrMatInt64::SetCachedSize(int size) const {
+void CsrMatint32::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const CsrMatInt64& CsrMatInt64::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CsrMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
+const CsrMatint32& CsrMatint32::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CsrMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void CsrMatInt64::Clear() {
-// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+void CsrMatint32::Clear() {
+// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2170,7 +2170,7 @@ void CsrMatInt64::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CsrMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CsrMatint32::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
@@ -2178,40 +2178,40 @@ const char* CsrMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 row_offsets = 2;
+      // repeated uint32 row_offsets = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_row_offsets(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_row_offsets(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16) {
-          _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 col_indices = 3;
+      // repeated uint32 col_indices = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_col_indices(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_col_indices(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
-          _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated int64 values = 10;
+      // repeated int32 values = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt64Parser(_internal_mutable_values(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_values(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80) {
           _internal_add_values(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
@@ -2240,44 +2240,44 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CsrMatInt64::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* CsrMatint32::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated uint64 row_offsets = 2;
+  // repeated uint32 row_offsets = 2;
   {
     int byte_size = _row_offsets_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           2, _internal_row_offsets(), byte_size, target);
     }
   }
 
-  // repeated uint64 col_indices = 3;
+  // repeated uint32 col_indices = 3;
   {
     int byte_size = _col_indices_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           3, _internal_col_indices(), byte_size, target);
     }
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     int byte_size = _values_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteInt64Packed(
+      target = stream->WriteInt32Packed(
           10, _internal_values(), byte_size, target);
     }
   }
@@ -2286,22 +2286,22 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   return target;
 }
 
-size_t CsrMatInt64::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+size_t CsrMatint32::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2313,10 +2313,10 @@ size_t CsrMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 row_offsets = 2;
+  // repeated uint32 row_offsets = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->row_offsets_);
+      UInt32Size(this->row_offsets_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2328,10 +2328,10 @@ size_t CsrMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 col_indices = 3;
+  // repeated uint32 col_indices = 3;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->col_indices_);
+      UInt32Size(this->col_indices_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2343,10 +2343,10 @@ size_t CsrMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      Int64Size(this->values_);
+      Int32Size(this->values_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2367,23 +2367,23 @@ size_t CsrMatInt64::ByteSizeLong() const {
   return total_size;
 }
 
-void CsrMatInt64::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+void CsrMatint32::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   GOOGLE_DCHECK_NE(&from, this);
-  const CsrMatInt64* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CsrMatInt64>(
+  const CsrMatint32* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CsrMatint32>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
     MergeFrom(*source);
   }
 }
 
-void CsrMatInt64::MergeFrom(const CsrMatInt64& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+void CsrMatint32::MergeFrom(const CsrMatint32& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -2395,25 +2395,25 @@ void CsrMatInt64::MergeFrom(const CsrMatInt64& from) {
   values_.MergeFrom(from.values_);
 }
 
-void CsrMatInt64::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+void CsrMatint32::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CsrMatInt64::CopyFrom(const CsrMatInt64& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+void CsrMatint32::CopyFrom(const CsrMatint32& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CsrMatInt64::IsInitialized() const {
+bool CsrMatint32::IsInitialized() const {
   return true;
 }
 
-void CsrMatInt64::InternalSwap(CsrMatInt64* other) {
+void CsrMatint32::InternalSwap(CsrMatint32* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   dims_.InternalSwap(&other->dims_);
@@ -2422,20 +2422,20 @@ void CsrMatInt64::InternalSwap(CsrMatInt64* other) {
   values_.InternalSwap(&other->values_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CsrMatInt64::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata CsrMatint32::GetMetadata() const {
   return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void CscMatInt64::InitAsDefaultInstance() {
+void CscMatint32::InitAsDefaultInstance() {
 }
-class CscMatInt64::_Internal {
+class CscMatint32::_Internal {
  public:
 };
 
-CscMatInt64::CscMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+CscMatint32::CscMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   dims_(arena),
   col_offsets_(arena),
@@ -2443,48 +2443,48 @@ CscMatInt64::CscMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   values_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(arena_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
 }
-CscMatInt64::CscMatInt64(const CscMatInt64& from)
+CscMatint32::CscMatint32(const CscMatint32& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       dims_(from.dims_),
       col_offsets_(from.col_offsets_),
       row_indices_(from.row_indices_),
       values_(from.values_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(copy_constructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
 }
 
-void CscMatInt64::SharedCtor() {
+void CscMatint32::SharedCtor() {
 }
 
-CscMatInt64::~CscMatInt64() {
-  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+CscMatint32::~CscMatint32() {
+  // @@protoc_insertion_point(destructor:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void CscMatInt64::SharedDtor() {
+void CscMatint32::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
-void CscMatInt64::ArenaDtor(void* object) {
-  CscMatInt64* _this = reinterpret_cast< CscMatInt64* >(object);
+void CscMatint32::ArenaDtor(void* object) {
+  CscMatint32* _this = reinterpret_cast< CscMatint32* >(object);
   (void)_this;
 }
-void CscMatInt64::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void CscMatint32::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void CscMatInt64::SetCachedSize(int size) const {
+void CscMatint32::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const CscMatInt64& CscMatInt64::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CscMatInt64_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
+const CscMatint32& CscMatint32::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CscMatint32_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void CscMatInt64::Clear() {
-// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+void CscMatint32::Clear() {
+// @@protoc_insertion_point(message_clear_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2496,7 +2496,7 @@ void CscMatInt64::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CscMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CscMatint32::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
@@ -2504,40 +2504,40 @@ const char* CscMatInt64::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // repeated uint64 dims = 1;
+      // repeated uint32 dims = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_dims(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_dims(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_dims(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 col_offsets = 2;
+      // repeated uint32 col_offsets = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_col_offsets(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_col_offsets(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16) {
-          _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated uint64 row_indices = 3;
+      // repeated uint32 row_indices = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_row_indices(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_row_indices(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24) {
-          _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated int64 values = 10;
+      // repeated int32 values = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt64Parser(_internal_mutable_values(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_values(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80) {
           _internal_add_values(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
@@ -2566,44 +2566,44 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CscMatInt64::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* CscMatint32::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     int byte_size = _dims_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           1, _internal_dims(), byte_size, target);
     }
   }
 
-  // repeated uint64 col_offsets = 2;
+  // repeated uint32 col_offsets = 2;
   {
     int byte_size = _col_offsets_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           2, _internal_col_offsets(), byte_size, target);
     }
   }
 
-  // repeated uint64 row_indices = 3;
+  // repeated uint32 row_indices = 3;
   {
     int byte_size = _row_indices_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteUInt64Packed(
+      target = stream->WriteUInt32Packed(
           3, _internal_row_indices(), byte_size, target);
     }
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     int byte_size = _values_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
-      target = stream->WriteInt64Packed(
+      target = stream->WriteInt32Packed(
           10, _internal_values(), byte_size, target);
     }
   }
@@ -2612,22 +2612,22 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(serialize_to_array_end:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   return target;
 }
 
-size_t CscMatInt64::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+size_t CscMatint32::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->dims_);
+      UInt32Size(this->dims_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2639,10 +2639,10 @@ size_t CscMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 col_offsets = 2;
+  // repeated uint32 col_offsets = 2;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->col_offsets_);
+      UInt32Size(this->col_offsets_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2654,10 +2654,10 @@ size_t CscMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated uint64 row_indices = 3;
+  // repeated uint32 row_indices = 3;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      UInt64Size(this->row_indices_);
+      UInt32Size(this->row_indices_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2669,10 +2669,10 @@ size_t CscMatInt64::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   {
     size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      Int64Size(this->values_);
+      Int32Size(this->values_);
     if (data_size > 0) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -2693,23 +2693,23 @@ size_t CscMatInt64::ByteSizeLong() const {
   return total_size;
 }
 
-void CscMatInt64::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+void CscMatint32::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   GOOGLE_DCHECK_NE(&from, this);
-  const CscMatInt64* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CscMatInt64>(
+  const CscMatint32* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CscMatint32>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
     MergeFrom(*source);
   }
 }
 
-void CscMatInt64::MergeFrom(const CscMatInt64& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+void CscMatint32::MergeFrom(const CscMatint32& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -2721,25 +2721,25 @@ void CscMatInt64::MergeFrom(const CscMatInt64& from) {
   values_.MergeFrom(from.values_);
 }
 
-void CscMatInt64::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+void CscMatint32::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CscMatInt64::CopyFrom(const CscMatInt64& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+void CscMatint32::CopyFrom(const CscMatint32& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CscMatInt64::IsInitialized() const {
+bool CscMatint32::IsInitialized() const {
   return true;
 }
 
-void CscMatInt64::InternalSwap(CscMatInt64* other) {
+void CscMatint32::InternalSwap(CscMatint32* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   dims_.InternalSwap(&other->dims_);
@@ -2748,7 +2748,7 @@ void CscMatInt64::InternalSwap(CscMatInt64* other) {
   values_.InternalSwap(&other->values_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CscMatInt64::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata CscMatint32::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -2773,17 +2773,17 @@ template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::prot
 template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat >(Arena* arena) {
   return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat >(arena);
 }
-template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64 >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64 >(arena);
+template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32 >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64 >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64 >(arena);
+template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32 >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64 >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64 >(arena);
+template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32 >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32 >(arena);
 }
-template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64 >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64 >(arena);
+template<> PROTOBUF_NOINLINE ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32* Arena::CreateMaybeMessage< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32 >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32 >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -10,15 +10,12 @@ option cc_enable_arenas = true;
 
 message ComponentAttr {
 
-  /* Parent graph ID. */
-  uint64 parent_id = 1;
-
   /* Component id. */
-  uint64 component_id = 2;
+  uint32 component_id = 2;
 
   /* Node IDs of this component in parent graph.
    * NULLABLE. */
-  repeated uint64 components = 3;
+  repeated uint32 components = 3;
 }
 
 /* General type for representing a category of graph element attribute that applies to some nodes or edges in the graph.
@@ -37,11 +34,9 @@ message GraphElementsAttrMap {
    * NOT NULL. */
   string name = 1;
 
-  GraphElementsAttrTarget target = 2;
-
   /* Node ID to serialized attribute value mapping.
    * NOT NULL. */
-  map<uint64, bytes> data = 3;
+  map<uint32, bytes> data = 3;
 
   /* Type URL of the data map values.
    * It assumes that every value of data map is a [google.protobuf.Any] object with this type_url.
@@ -50,10 +45,4 @@ message GraphElementsAttrMap {
    * You can omit this field if map values are not protobuf messages, and you should parse these bytes by yourself.
    * NULLABLE. */
   string type_url = 4;
-
-  enum GraphElementsAttrTarget {
-    UNKNOWN = 0;
-    EDGE = 1;
-    NODE = 2;
-  }
 }

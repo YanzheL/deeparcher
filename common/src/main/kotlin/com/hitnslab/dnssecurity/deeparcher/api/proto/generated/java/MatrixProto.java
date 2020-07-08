@@ -19,21 +19,21 @@ public final class MatrixProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
      * <code>repeated float values = 10;</code>
@@ -65,7 +65,7 @@ public final class MatrixProto {
       super(builder);
     }
     private DenseMatFloat() {
-      dims_ = emptyLongList();
+      dims_ = emptyIntList();
       values_ = emptyFloatList();
     }
 
@@ -102,21 +102,21 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
@@ -181,30 +181,30 @@ public final class MatrixProto {
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
@@ -256,7 +256,7 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
@@ -278,7 +278,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -470,7 +470,7 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         values_ = emptyFloatList();
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -609,7 +609,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -617,60 +617,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -678,11 +678,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
@@ -824,55 +824,55 @@ public final class MatrixProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return A list containing the rows.
      */
-    java.util.List<java.lang.Long> getRowsList();
+    java.util.List<java.lang.Integer> getRowsList();
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return The count of rows.
      */
     int getRowsCount();
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @param index The index of the element to return.
      * @return The rows at the given index.
      */
-    long getRows(int index);
+    int getRows(int index);
 
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return A list containing the cols.
      */
-    java.util.List<java.lang.Long> getColsList();
+    java.util.List<java.lang.Integer> getColsList();
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return The count of cols.
      */
     int getColsCount();
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @param index The index of the element to return.
      * @return The cols at the given index.
      */
-    long getCols(int index);
+    int getCols(int index);
 
     /**
      * <code>repeated float values = 10;</code>
@@ -904,9 +904,9 @@ public final class MatrixProto {
       super(builder);
     }
     private CooMatFloat() {
-      dims_ = emptyLongList();
-      rows_ = emptyLongList();
-      cols_ = emptyLongList();
+      dims_ = emptyIntList();
+      rows_ = emptyIntList();
+      cols_ = emptyIntList();
       values_ = emptyFloatList();
     }
 
@@ -943,63 +943,63 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 16: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                rows_ = newLongList();
+                rows_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              rows_.addLong(input.readUInt64());
+              rows_.addInt(input.readUInt32());
               break;
             }
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                rows_ = newLongList();
+                rows_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                rows_.addLong(input.readUInt64());
+                rows_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                cols_ = newLongList();
+                cols_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
-              cols_.addLong(input.readUInt64());
+              cols_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
-                cols_ = newLongList();
+                cols_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                cols_.addLong(input.readUInt64());
+                cols_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
@@ -1070,86 +1070,86 @@ public final class MatrixProto {
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int ROWS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.LongList rows_;
+    private com.google.protobuf.Internal.IntList rows_;
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return A list containing the rows.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getRowsList() {
       return rows_;
     }
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return The count of rows.
      */
     public int getRowsCount() {
       return rows_.size();
     }
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @param index The index of the element to return.
      * @return The rows at the given index.
      */
-    public long getRows(int index) {
-      return rows_.getLong(index);
+    public int getRows(int index) {
+      return rows_.getInt(index);
     }
     private int rowsMemoizedSerializedSize = -1;
 
     public static final int COLS_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList cols_;
+    private com.google.protobuf.Internal.IntList cols_;
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return A list containing the cols.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getColsList() {
       return cols_;
     }
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return The count of cols.
      */
     public int getColsCount() {
       return cols_.size();
     }
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @param index The index of the element to return.
      * @return The cols at the given index.
      */
-    public long getCols(int index) {
-      return cols_.getLong(index);
+    public int getCols(int index) {
+      return cols_.getInt(index);
     }
     private int colsMemoizedSerializedSize = -1;
 
@@ -1201,21 +1201,21 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getRowsList().size() > 0) {
         output.writeUInt32NoTag(18);
         output.writeUInt32NoTag(rowsMemoizedSerializedSize);
       }
       for (int i = 0; i < rows_.size(); i++) {
-        output.writeUInt64NoTag(rows_.getLong(i));
+        output.writeUInt32NoTag(rows_.getInt(i));
       }
       if (getColsList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(colsMemoizedSerializedSize);
       }
       for (int i = 0; i < cols_.size(); i++) {
-        output.writeUInt64NoTag(cols_.getLong(i));
+        output.writeUInt32NoTag(cols_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
@@ -1237,7 +1237,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -1251,7 +1251,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < rows_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(rows_.getLong(i));
+            .computeUInt32SizeNoTag(rows_.getInt(i));
         }
         size += dataSize;
         if (!getRowsList().isEmpty()) {
@@ -1265,7 +1265,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < cols_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(cols_.getLong(i));
+            .computeUInt32SizeNoTag(cols_.getInt(i));
         }
         size += dataSize;
         if (!getColsList().isEmpty()) {
@@ -1469,11 +1469,11 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        rows_ = emptyLongList();
+        rows_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        cols_ = emptyLongList();
+        cols_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         values_ = emptyFloatList();
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -1642,7 +1642,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -1650,60 +1650,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -1711,17 +1711,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList rows_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList rows_ = emptyIntList();
       private void ensureRowsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           rows_ = mutableCopy(rows_);
@@ -1729,60 +1729,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @return A list containing the rows.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getRowsList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(rows_) : rows_;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @return The count of rows.
        */
       public int getRowsCount() {
         return rows_.size();
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param index The index of the element to return.
        * @return The rows at the given index.
        */
-      public long getRows(int index) {
-        return rows_.getLong(index);
+      public int getRows(int index) {
+        return rows_.getInt(index);
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param index The index to set the value at.
        * @param value The rows to set.
        * @return This builder for chaining.
        */
       public Builder setRows(
-          int index, long value) {
+          int index, int value) {
         ensureRowsIsMutable();
-        rows_.setLong(index, value);
+        rows_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param value The rows to add.
        * @return This builder for chaining.
        */
-      public Builder addRows(long value) {
+      public Builder addRows(int value) {
         ensureRowsIsMutable();
-        rows_.addLong(value);
+        rows_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param values The rows to add.
        * @return This builder for chaining.
        */
       public Builder addAllRows(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureRowsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, rows_);
@@ -1790,17 +1790,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearRows() {
-        rows_ = emptyLongList();
+        rows_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList cols_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList cols_ = emptyIntList();
       private void ensureColsIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
           cols_ = mutableCopy(cols_);
@@ -1808,60 +1808,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @return A list containing the cols.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getColsList() {
         return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(cols_) : cols_;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @return The count of cols.
        */
       public int getColsCount() {
         return cols_.size();
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param index The index of the element to return.
        * @return The cols at the given index.
        */
-      public long getCols(int index) {
-        return cols_.getLong(index);
+      public int getCols(int index) {
+        return cols_.getInt(index);
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param index The index to set the value at.
        * @param value The cols to set.
        * @return This builder for chaining.
        */
       public Builder setCols(
-          int index, long value) {
+          int index, int value) {
         ensureColsIsMutable();
-        cols_.setLong(index, value);
+        cols_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param value The cols to add.
        * @return This builder for chaining.
        */
-      public Builder addCols(long value) {
+      public Builder addCols(int value) {
         ensureColsIsMutable();
-        cols_.addLong(value);
+        cols_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param values The cols to add.
        * @return This builder for chaining.
        */
       public Builder addAllCols(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureColsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, cols_);
@@ -1869,11 +1869,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearCols() {
-        cols_ = emptyLongList();
+        cols_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
@@ -2015,55 +2015,55 @@ public final class MatrixProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return A list containing the rowOffsets.
      */
-    java.util.List<java.lang.Long> getRowOffsetsList();
+    java.util.List<java.lang.Integer> getRowOffsetsList();
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return The count of rowOffsets.
      */
     int getRowOffsetsCount();
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The rowOffsets at the given index.
      */
-    long getRowOffsets(int index);
+    int getRowOffsets(int index);
 
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return A list containing the colIndices.
      */
-    java.util.List<java.lang.Long> getColIndicesList();
+    java.util.List<java.lang.Integer> getColIndicesList();
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return The count of colIndices.
      */
     int getColIndicesCount();
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The colIndices at the given index.
      */
-    long getColIndices(int index);
+    int getColIndices(int index);
 
     /**
      * <code>repeated float values = 10;</code>
@@ -2095,9 +2095,9 @@ public final class MatrixProto {
       super(builder);
     }
     private CsrMatFloat() {
-      dims_ = emptyLongList();
-      rowOffsets_ = emptyLongList();
-      colIndices_ = emptyLongList();
+      dims_ = emptyIntList();
+      rowOffsets_ = emptyIntList();
+      colIndices_ = emptyIntList();
       values_ = emptyFloatList();
     }
 
@@ -2134,63 +2134,63 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 16: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                rowOffsets_ = newLongList();
+                rowOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              rowOffsets_.addLong(input.readUInt64());
+              rowOffsets_.addInt(input.readUInt32());
               break;
             }
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                rowOffsets_ = newLongList();
+                rowOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                rowOffsets_.addLong(input.readUInt64());
+                rowOffsets_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                colIndices_ = newLongList();
+                colIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
-              colIndices_.addLong(input.readUInt64());
+              colIndices_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
-                colIndices_ = newLongList();
+                colIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                colIndices_.addLong(input.readUInt64());
+                colIndices_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
@@ -2261,86 +2261,86 @@ public final class MatrixProto {
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int ROW_OFFSETS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.LongList rowOffsets_;
+    private com.google.protobuf.Internal.IntList rowOffsets_;
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return A list containing the rowOffsets.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getRowOffsetsList() {
       return rowOffsets_;
     }
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return The count of rowOffsets.
      */
     public int getRowOffsetsCount() {
       return rowOffsets_.size();
     }
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The rowOffsets at the given index.
      */
-    public long getRowOffsets(int index) {
-      return rowOffsets_.getLong(index);
+    public int getRowOffsets(int index) {
+      return rowOffsets_.getInt(index);
     }
     private int rowOffsetsMemoizedSerializedSize = -1;
 
     public static final int COL_INDICES_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList colIndices_;
+    private com.google.protobuf.Internal.IntList colIndices_;
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return A list containing the colIndices.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getColIndicesList() {
       return colIndices_;
     }
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return The count of colIndices.
      */
     public int getColIndicesCount() {
       return colIndices_.size();
     }
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The colIndices at the given index.
      */
-    public long getColIndices(int index) {
-      return colIndices_.getLong(index);
+    public int getColIndices(int index) {
+      return colIndices_.getInt(index);
     }
     private int colIndicesMemoizedSerializedSize = -1;
 
@@ -2392,21 +2392,21 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getRowOffsetsList().size() > 0) {
         output.writeUInt32NoTag(18);
         output.writeUInt32NoTag(rowOffsetsMemoizedSerializedSize);
       }
       for (int i = 0; i < rowOffsets_.size(); i++) {
-        output.writeUInt64NoTag(rowOffsets_.getLong(i));
+        output.writeUInt32NoTag(rowOffsets_.getInt(i));
       }
       if (getColIndicesList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(colIndicesMemoizedSerializedSize);
       }
       for (int i = 0; i < colIndices_.size(); i++) {
-        output.writeUInt64NoTag(colIndices_.getLong(i));
+        output.writeUInt32NoTag(colIndices_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
@@ -2428,7 +2428,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -2442,7 +2442,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < rowOffsets_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(rowOffsets_.getLong(i));
+            .computeUInt32SizeNoTag(rowOffsets_.getInt(i));
         }
         size += dataSize;
         if (!getRowOffsetsList().isEmpty()) {
@@ -2456,7 +2456,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < colIndices_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(colIndices_.getLong(i));
+            .computeUInt32SizeNoTag(colIndices_.getInt(i));
         }
         size += dataSize;
         if (!getColIndicesList().isEmpty()) {
@@ -2660,11 +2660,11 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        rowOffsets_ = emptyLongList();
+        rowOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        colIndices_ = emptyLongList();
+        colIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         values_ = emptyFloatList();
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -2833,7 +2833,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -2841,60 +2841,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -2902,17 +2902,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList rowOffsets_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList rowOffsets_ = emptyIntList();
       private void ensureRowOffsetsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           rowOffsets_ = mutableCopy(rowOffsets_);
@@ -2920,60 +2920,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @return A list containing the rowOffsets.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getRowOffsetsList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(rowOffsets_) : rowOffsets_;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @return The count of rowOffsets.
        */
       public int getRowOffsetsCount() {
         return rowOffsets_.size();
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param index The index of the element to return.
        * @return The rowOffsets at the given index.
        */
-      public long getRowOffsets(int index) {
-        return rowOffsets_.getLong(index);
+      public int getRowOffsets(int index) {
+        return rowOffsets_.getInt(index);
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param index The index to set the value at.
        * @param value The rowOffsets to set.
        * @return This builder for chaining.
        */
       public Builder setRowOffsets(
-          int index, long value) {
+          int index, int value) {
         ensureRowOffsetsIsMutable();
-        rowOffsets_.setLong(index, value);
+        rowOffsets_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param value The rowOffsets to add.
        * @return This builder for chaining.
        */
-      public Builder addRowOffsets(long value) {
+      public Builder addRowOffsets(int value) {
         ensureRowOffsetsIsMutable();
-        rowOffsets_.addLong(value);
+        rowOffsets_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param values The rowOffsets to add.
        * @return This builder for chaining.
        */
       public Builder addAllRowOffsets(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureRowOffsetsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, rowOffsets_);
@@ -2981,17 +2981,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearRowOffsets() {
-        rowOffsets_ = emptyLongList();
+        rowOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList colIndices_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList colIndices_ = emptyIntList();
       private void ensureColIndicesIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
           colIndices_ = mutableCopy(colIndices_);
@@ -2999,60 +2999,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @return A list containing the colIndices.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getColIndicesList() {
         return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(colIndices_) : colIndices_;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @return The count of colIndices.
        */
       public int getColIndicesCount() {
         return colIndices_.size();
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param index The index of the element to return.
        * @return The colIndices at the given index.
        */
-      public long getColIndices(int index) {
-        return colIndices_.getLong(index);
+      public int getColIndices(int index) {
+        return colIndices_.getInt(index);
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param index The index to set the value at.
        * @param value The colIndices to set.
        * @return This builder for chaining.
        */
       public Builder setColIndices(
-          int index, long value) {
+          int index, int value) {
         ensureColIndicesIsMutable();
-        colIndices_.setLong(index, value);
+        colIndices_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param value The colIndices to add.
        * @return This builder for chaining.
        */
-      public Builder addColIndices(long value) {
+      public Builder addColIndices(int value) {
         ensureColIndicesIsMutable();
-        colIndices_.addLong(value);
+        colIndices_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param values The colIndices to add.
        * @return This builder for chaining.
        */
       public Builder addAllColIndices(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureColIndicesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, colIndices_);
@@ -3060,11 +3060,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearColIndices() {
-        colIndices_ = emptyLongList();
+        colIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
@@ -3206,55 +3206,55 @@ public final class MatrixProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return A list containing the colOffsets.
      */
-    java.util.List<java.lang.Long> getColOffsetsList();
+    java.util.List<java.lang.Integer> getColOffsetsList();
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return The count of colOffsets.
      */
     int getColOffsetsCount();
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The colOffsets at the given index.
      */
-    long getColOffsets(int index);
+    int getColOffsets(int index);
 
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return A list containing the rowIndices.
      */
-    java.util.List<java.lang.Long> getRowIndicesList();
+    java.util.List<java.lang.Integer> getRowIndicesList();
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return The count of rowIndices.
      */
     int getRowIndicesCount();
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The rowIndices at the given index.
      */
-    long getRowIndices(int index);
+    int getRowIndices(int index);
 
     /**
      * <code>repeated float values = 10;</code>
@@ -3286,9 +3286,9 @@ public final class MatrixProto {
       super(builder);
     }
     private CscMatFloat() {
-      dims_ = emptyLongList();
-      colOffsets_ = emptyLongList();
-      rowIndices_ = emptyLongList();
+      dims_ = emptyIntList();
+      colOffsets_ = emptyIntList();
+      rowIndices_ = emptyIntList();
       values_ = emptyFloatList();
     }
 
@@ -3325,63 +3325,63 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 16: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                colOffsets_ = newLongList();
+                colOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              colOffsets_.addLong(input.readUInt64());
+              colOffsets_.addInt(input.readUInt32());
               break;
             }
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                colOffsets_ = newLongList();
+                colOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                colOffsets_.addLong(input.readUInt64());
+                colOffsets_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                rowIndices_ = newLongList();
+                rowIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
-              rowIndices_.addLong(input.readUInt64());
+              rowIndices_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
-                rowIndices_ = newLongList();
+                rowIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                rowIndices_.addLong(input.readUInt64());
+                rowIndices_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
@@ -3452,86 +3452,86 @@ public final class MatrixProto {
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int COL_OFFSETS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.LongList colOffsets_;
+    private com.google.protobuf.Internal.IntList colOffsets_;
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return A list containing the colOffsets.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getColOffsetsList() {
       return colOffsets_;
     }
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return The count of colOffsets.
      */
     public int getColOffsetsCount() {
       return colOffsets_.size();
     }
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The colOffsets at the given index.
      */
-    public long getColOffsets(int index) {
-      return colOffsets_.getLong(index);
+    public int getColOffsets(int index) {
+      return colOffsets_.getInt(index);
     }
     private int colOffsetsMemoizedSerializedSize = -1;
 
     public static final int ROW_INDICES_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList rowIndices_;
+    private com.google.protobuf.Internal.IntList rowIndices_;
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return A list containing the rowIndices.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getRowIndicesList() {
       return rowIndices_;
     }
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return The count of rowIndices.
      */
     public int getRowIndicesCount() {
       return rowIndices_.size();
     }
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The rowIndices at the given index.
      */
-    public long getRowIndices(int index) {
-      return rowIndices_.getLong(index);
+    public int getRowIndices(int index) {
+      return rowIndices_.getInt(index);
     }
     private int rowIndicesMemoizedSerializedSize = -1;
 
@@ -3583,21 +3583,21 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getColOffsetsList().size() > 0) {
         output.writeUInt32NoTag(18);
         output.writeUInt32NoTag(colOffsetsMemoizedSerializedSize);
       }
       for (int i = 0; i < colOffsets_.size(); i++) {
-        output.writeUInt64NoTag(colOffsets_.getLong(i));
+        output.writeUInt32NoTag(colOffsets_.getInt(i));
       }
       if (getRowIndicesList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(rowIndicesMemoizedSerializedSize);
       }
       for (int i = 0; i < rowIndices_.size(); i++) {
-        output.writeUInt64NoTag(rowIndices_.getLong(i));
+        output.writeUInt32NoTag(rowIndices_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
@@ -3619,7 +3619,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -3633,7 +3633,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < colOffsets_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(colOffsets_.getLong(i));
+            .computeUInt32SizeNoTag(colOffsets_.getInt(i));
         }
         size += dataSize;
         if (!getColOffsetsList().isEmpty()) {
@@ -3647,7 +3647,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < rowIndices_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(rowIndices_.getLong(i));
+            .computeUInt32SizeNoTag(rowIndices_.getInt(i));
         }
         size += dataSize;
         if (!getRowIndicesList().isEmpty()) {
@@ -3851,11 +3851,11 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        colOffsets_ = emptyLongList();
+        colOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        rowIndices_ = emptyLongList();
+        rowIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         values_ = emptyFloatList();
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -4024,7 +4024,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -4032,60 +4032,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -4093,17 +4093,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList colOffsets_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList colOffsets_ = emptyIntList();
       private void ensureColOffsetsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           colOffsets_ = mutableCopy(colOffsets_);
@@ -4111,60 +4111,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @return A list containing the colOffsets.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getColOffsetsList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(colOffsets_) : colOffsets_;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @return The count of colOffsets.
        */
       public int getColOffsetsCount() {
         return colOffsets_.size();
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param index The index of the element to return.
        * @return The colOffsets at the given index.
        */
-      public long getColOffsets(int index) {
-        return colOffsets_.getLong(index);
+      public int getColOffsets(int index) {
+        return colOffsets_.getInt(index);
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param index The index to set the value at.
        * @param value The colOffsets to set.
        * @return This builder for chaining.
        */
       public Builder setColOffsets(
-          int index, long value) {
+          int index, int value) {
         ensureColOffsetsIsMutable();
-        colOffsets_.setLong(index, value);
+        colOffsets_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param value The colOffsets to add.
        * @return This builder for chaining.
        */
-      public Builder addColOffsets(long value) {
+      public Builder addColOffsets(int value) {
         ensureColOffsetsIsMutable();
-        colOffsets_.addLong(value);
+        colOffsets_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param values The colOffsets to add.
        * @return This builder for chaining.
        */
       public Builder addAllColOffsets(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureColOffsetsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, colOffsets_);
@@ -4172,17 +4172,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearColOffsets() {
-        colOffsets_ = emptyLongList();
+        colOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList rowIndices_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList rowIndices_ = emptyIntList();
       private void ensureRowIndicesIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
           rowIndices_ = mutableCopy(rowIndices_);
@@ -4190,60 +4190,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @return A list containing the rowIndices.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getRowIndicesList() {
         return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(rowIndices_) : rowIndices_;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @return The count of rowIndices.
        */
       public int getRowIndicesCount() {
         return rowIndices_.size();
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param index The index of the element to return.
        * @return The rowIndices at the given index.
        */
-      public long getRowIndices(int index) {
-        return rowIndices_.getLong(index);
+      public int getRowIndices(int index) {
+        return rowIndices_.getInt(index);
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param index The index to set the value at.
        * @param value The rowIndices to set.
        * @return This builder for chaining.
        */
       public Builder setRowIndices(
-          int index, long value) {
+          int index, int value) {
         ensureRowIndicesIsMutable();
-        rowIndices_.setLong(index, value);
+        rowIndices_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param value The rowIndices to add.
        * @return This builder for chaining.
        */
-      public Builder addRowIndices(long value) {
+      public Builder addRowIndices(int value) {
         ensureRowIndicesIsMutable();
-        rowIndices_.addLong(value);
+        rowIndices_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param values The rowIndices to add.
        * @return This builder for chaining.
        */
       public Builder addAllRowIndices(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureRowIndicesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, rowIndices_);
@@ -4251,11 +4251,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearRowIndices() {
-        rowIndices_ = emptyLongList();
+        rowIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
@@ -4392,66 +4392,66 @@ public final class MatrixProto {
 
   }
 
-  public interface DenseMatInt64OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  public interface DenseMatint32OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
-    java.util.List<java.lang.Long> getValuesList();
+    java.util.List<java.lang.Integer> getValuesList();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     int getValuesCount();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    long getValues(int index);
+    int getValues(int index);
   }
   /**
-   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64}
+   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32}
    */
-  public static final class DenseMatInt64 extends
+  public static final class DenseMatint32 extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
-      DenseMatInt64OrBuilder {
+      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
+      DenseMatint32OrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use DenseMatInt64.newBuilder() to construct.
-    private DenseMatInt64(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use DenseMatint32.newBuilder() to construct.
+    private DenseMatint32(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private DenseMatInt64() {
-      dims_ = emptyLongList();
-      values_ = emptyLongList();
+    private DenseMatint32() {
+      dims_ = emptyIntList();
+      values_ = emptyIntList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new DenseMatInt64();
+      return new DenseMatint32();
     }
 
     @java.lang.Override
@@ -4459,7 +4459,7 @@ public final class MatrixProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private DenseMatInt64(
+    private DenseMatint32(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4480,42 +4480,42 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 80: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              values_.addLong(input.readInt64());
+              values_.addInt(input.readInt32());
               break;
             }
             case 82: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                values_.addLong(input.readInt64());
+                values_.addInt(input.readInt32());
               }
               input.popLimit(limit);
               break;
@@ -4547,70 +4547,70 @@ public final class MatrixProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_descriptor;
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_fieldAccessorTable
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.Builder.class);
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.Builder.class);
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int VALUES_FIELD_NUMBER = 10;
-    private com.google.protobuf.Internal.LongList values_;
+    private com.google.protobuf.Internal.IntList values_;
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getValuesList() {
       return values_;
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     public int getValuesCount() {
       return values_.size();
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    public long getValues(int index) {
-      return values_.getLong(index);
+    public int getValues(int index) {
+      return values_.getInt(index);
     }
     private int valuesMemoizedSerializedSize = -1;
 
@@ -4634,14 +4634,14 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
         output.writeUInt32NoTag(valuesMemoizedSerializedSize);
       }
       for (int i = 0; i < values_.size(); i++) {
-        output.writeInt64NoTag(values_.getLong(i));
+        output.writeInt32NoTag(values_.getInt(i));
       }
       unknownFields.writeTo(output);
     }
@@ -4656,7 +4656,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -4670,7 +4670,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < values_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(values_.getLong(i));
+            .computeInt32SizeNoTag(values_.getInt(i));
         }
         size += dataSize;
         if (!getValuesList().isEmpty()) {
@@ -4690,10 +4690,10 @@ public final class MatrixProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64)) {
+      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32)) {
         return super.equals(obj);
       }
-      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64) obj;
+      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32) obj;
 
       if (!getDimsList()
           .equals(other.getDimsList())) return false;
@@ -4723,69 +4723,69 @@ public final class MatrixProto {
       return hash;
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(byte[] data)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseDelimitedFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseDelimitedFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4798,7 +4798,7 @@ public final class MatrixProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 prototype) {
+    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4814,26 +4814,26 @@ public final class MatrixProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64}
+     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64OrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_fieldAccessorTable
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.Builder.class);
+                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.Builder.class);
       }
 
-      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.newBuilder()
+      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4851,9 +4851,9 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -4861,17 +4861,17 @@ public final class MatrixProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_descriptor;
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 getDefaultInstanceForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.getDefaultInstance();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 getDefaultInstanceForType() {
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 build() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 result = buildPartial();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 build() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4879,8 +4879,8 @@ public final class MatrixProto {
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 buildPartial() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64(this);
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 buildPartial() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) != 0)) {
           dims_.makeImmutable();
@@ -4930,16 +4930,16 @@ public final class MatrixProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64) {
-          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64)other);
+        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32) {
+          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 other) {
-        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 other) {
+        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32.getDefaultInstance()) return this;
         if (!other.dims_.isEmpty()) {
           if (dims_.isEmpty()) {
             dims_ = other.dims_;
@@ -4975,11 +4975,11 @@ public final class MatrixProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 parsedMessage = null;
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64) e.getUnfinishedMessage();
+          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4990,7 +4990,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -4998,60 +4998,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -5059,17 +5059,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList values_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList values_ = emptyIntList();
       private void ensureValuesIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           values_ = mutableCopy(values_);
@@ -5077,60 +5077,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return A list containing the values.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getValuesList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(values_) : values_;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return The count of values.
        */
       public int getValuesCount() {
         return values_.size();
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index of the element to return.
        * @return The values at the given index.
        */
-      public long getValues(int index) {
-        return values_.getLong(index);
+      public int getValues(int index) {
+        return values_.getInt(index);
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index to set the value at.
        * @param value The values to set.
        * @return This builder for chaining.
        */
       public Builder setValues(
-          int index, long value) {
+          int index, int value) {
         ensureValuesIsMutable();
-        values_.setLong(index, value);
+        values_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param value The values to add.
        * @return This builder for chaining.
        */
-      public Builder addValues(long value) {
+      public Builder addValues(int value) {
         ensureValuesIsMutable();
-        values_.addLong(value);
+        values_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param values The values to add.
        * @return This builder for chaining.
        */
       public Builder addAllValues(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureValuesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, values_);
@@ -5138,11 +5138,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearValues() {
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
@@ -5160,142 +5160,142 @@ public final class MatrixProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
     }
 
-    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
-    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
+    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64();
+      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32();
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 getDefaultInstance() {
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DenseMatInt64>
-        PARSER = new com.google.protobuf.AbstractParser<DenseMatInt64>() {
+    private static final com.google.protobuf.Parser<DenseMatint32>
+        PARSER = new com.google.protobuf.AbstractParser<DenseMatint32>() {
       @java.lang.Override
-      public DenseMatInt64 parsePartialFrom(
+      public DenseMatint32 parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new DenseMatInt64(input, extensionRegistry);
+        return new DenseMatint32(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<DenseMatInt64> parser() {
+    public static com.google.protobuf.Parser<DenseMatint32> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<DenseMatInt64> getParserForType() {
+    public com.google.protobuf.Parser<DenseMatint32> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatInt64 getDefaultInstanceForType() {
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatint32 getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface CooMatInt64OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  public interface CooMatint32OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return A list containing the rows.
      */
-    java.util.List<java.lang.Long> getRowsList();
+    java.util.List<java.lang.Integer> getRowsList();
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return The count of rows.
      */
     int getRowsCount();
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @param index The index of the element to return.
      * @return The rows at the given index.
      */
-    long getRows(int index);
+    int getRows(int index);
 
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return A list containing the cols.
      */
-    java.util.List<java.lang.Long> getColsList();
+    java.util.List<java.lang.Integer> getColsList();
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return The count of cols.
      */
     int getColsCount();
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @param index The index of the element to return.
      * @return The cols at the given index.
      */
-    long getCols(int index);
+    int getCols(int index);
 
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
-    java.util.List<java.lang.Long> getValuesList();
+    java.util.List<java.lang.Integer> getValuesList();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     int getValuesCount();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    long getValues(int index);
+    int getValues(int index);
   }
   /**
-   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64}
+   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32}
    */
-  public static final class CooMatInt64 extends
+  public static final class CooMatint32 extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
-      CooMatInt64OrBuilder {
+      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
+      CooMatint32OrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CooMatInt64.newBuilder() to construct.
-    private CooMatInt64(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CooMatint32.newBuilder() to construct.
+    private CooMatint32(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CooMatInt64() {
-      dims_ = emptyLongList();
-      rows_ = emptyLongList();
-      cols_ = emptyLongList();
-      values_ = emptyLongList();
+    private CooMatint32() {
+      dims_ = emptyIntList();
+      rows_ = emptyIntList();
+      cols_ = emptyIntList();
+      values_ = emptyIntList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CooMatInt64();
+      return new CooMatint32();
     }
 
     @java.lang.Override
@@ -5303,7 +5303,7 @@ public final class MatrixProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CooMatInt64(
+    private CooMatint32(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5324,84 +5324,84 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 16: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                rows_ = newLongList();
+                rows_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              rows_.addLong(input.readUInt64());
+              rows_.addInt(input.readUInt32());
               break;
             }
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                rows_ = newLongList();
+                rows_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                rows_.addLong(input.readUInt64());
+                rows_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                cols_ = newLongList();
+                cols_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
-              cols_.addLong(input.readUInt64());
+              cols_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
-                cols_ = newLongList();
+                cols_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                cols_.addLong(input.readUInt64());
+                cols_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 80: {
               if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
               }
-              values_.addLong(input.readInt64());
+              values_.addInt(input.readInt32());
               break;
             }
             case 82: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
               }
               while (input.getBytesUntilLimit() > 0) {
-                values_.addLong(input.readInt64());
+                values_.addInt(input.readInt32());
               }
               input.popLimit(limit);
               break;
@@ -5439,126 +5439,126 @@ public final class MatrixProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_descriptor;
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_fieldAccessorTable
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.Builder.class);
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.Builder.class);
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int ROWS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.LongList rows_;
+    private com.google.protobuf.Internal.IntList rows_;
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return A list containing the rows.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getRowsList() {
       return rows_;
     }
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @return The count of rows.
      */
     public int getRowsCount() {
       return rows_.size();
     }
     /**
-     * <code>repeated uint64 rows = 2;</code>
+     * <code>repeated uint32 rows = 2;</code>
      * @param index The index of the element to return.
      * @return The rows at the given index.
      */
-    public long getRows(int index) {
-      return rows_.getLong(index);
+    public int getRows(int index) {
+      return rows_.getInt(index);
     }
     private int rowsMemoizedSerializedSize = -1;
 
     public static final int COLS_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList cols_;
+    private com.google.protobuf.Internal.IntList cols_;
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return A list containing the cols.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getColsList() {
       return cols_;
     }
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @return The count of cols.
      */
     public int getColsCount() {
       return cols_.size();
     }
     /**
-     * <code>repeated uint64 cols = 3;</code>
+     * <code>repeated uint32 cols = 3;</code>
      * @param index The index of the element to return.
      * @return The cols at the given index.
      */
-    public long getCols(int index) {
-      return cols_.getLong(index);
+    public int getCols(int index) {
+      return cols_.getInt(index);
     }
     private int colsMemoizedSerializedSize = -1;
 
     public static final int VALUES_FIELD_NUMBER = 10;
-    private com.google.protobuf.Internal.LongList values_;
+    private com.google.protobuf.Internal.IntList values_;
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getValuesList() {
       return values_;
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     public int getValuesCount() {
       return values_.size();
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    public long getValues(int index) {
-      return values_.getLong(index);
+    public int getValues(int index) {
+      return values_.getInt(index);
     }
     private int valuesMemoizedSerializedSize = -1;
 
@@ -5582,28 +5582,28 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getRowsList().size() > 0) {
         output.writeUInt32NoTag(18);
         output.writeUInt32NoTag(rowsMemoizedSerializedSize);
       }
       for (int i = 0; i < rows_.size(); i++) {
-        output.writeUInt64NoTag(rows_.getLong(i));
+        output.writeUInt32NoTag(rows_.getInt(i));
       }
       if (getColsList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(colsMemoizedSerializedSize);
       }
       for (int i = 0; i < cols_.size(); i++) {
-        output.writeUInt64NoTag(cols_.getLong(i));
+        output.writeUInt32NoTag(cols_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
         output.writeUInt32NoTag(valuesMemoizedSerializedSize);
       }
       for (int i = 0; i < values_.size(); i++) {
-        output.writeInt64NoTag(values_.getLong(i));
+        output.writeInt32NoTag(values_.getInt(i));
       }
       unknownFields.writeTo(output);
     }
@@ -5618,7 +5618,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -5632,7 +5632,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < rows_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(rows_.getLong(i));
+            .computeUInt32SizeNoTag(rows_.getInt(i));
         }
         size += dataSize;
         if (!getRowsList().isEmpty()) {
@@ -5646,7 +5646,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < cols_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(cols_.getLong(i));
+            .computeUInt32SizeNoTag(cols_.getInt(i));
         }
         size += dataSize;
         if (!getColsList().isEmpty()) {
@@ -5660,7 +5660,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < values_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(values_.getLong(i));
+            .computeInt32SizeNoTag(values_.getInt(i));
         }
         size += dataSize;
         if (!getValuesList().isEmpty()) {
@@ -5680,10 +5680,10 @@ public final class MatrixProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64)) {
+      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32)) {
         return super.equals(obj);
       }
-      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64) obj;
+      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32) obj;
 
       if (!getDimsList()
           .equals(other.getDimsList())) return false;
@@ -5725,69 +5725,69 @@ public final class MatrixProto {
       return hash;
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(byte[] data)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseDelimitedFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseDelimitedFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5800,7 +5800,7 @@ public final class MatrixProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 prototype) {
+    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5816,26 +5816,26 @@ public final class MatrixProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64}
+     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64OrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_fieldAccessorTable
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.Builder.class);
+                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.Builder.class);
       }
 
-      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.newBuilder()
+      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5853,13 +5853,13 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        rows_ = emptyLongList();
+        rows_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        cols_ = emptyLongList();
+        cols_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -5867,17 +5867,17 @@ public final class MatrixProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_descriptor;
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 getDefaultInstanceForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.getDefaultInstance();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 getDefaultInstanceForType() {
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 build() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 result = buildPartial();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 build() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5885,8 +5885,8 @@ public final class MatrixProto {
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 buildPartial() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64(this);
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 buildPartial() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) != 0)) {
           dims_.makeImmutable();
@@ -5946,16 +5946,16 @@ public final class MatrixProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64) {
-          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64)other);
+        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32) {
+          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 other) {
-        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 other) {
+        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32.getDefaultInstance()) return this;
         if (!other.dims_.isEmpty()) {
           if (dims_.isEmpty()) {
             dims_ = other.dims_;
@@ -6011,11 +6011,11 @@ public final class MatrixProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 parsedMessage = null;
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64) e.getUnfinishedMessage();
+          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6026,7 +6026,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -6034,60 +6034,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -6095,17 +6095,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList rows_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList rows_ = emptyIntList();
       private void ensureRowsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           rows_ = mutableCopy(rows_);
@@ -6113,60 +6113,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @return A list containing the rows.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getRowsList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(rows_) : rows_;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @return The count of rows.
        */
       public int getRowsCount() {
         return rows_.size();
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param index The index of the element to return.
        * @return The rows at the given index.
        */
-      public long getRows(int index) {
-        return rows_.getLong(index);
+      public int getRows(int index) {
+        return rows_.getInt(index);
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param index The index to set the value at.
        * @param value The rows to set.
        * @return This builder for chaining.
        */
       public Builder setRows(
-          int index, long value) {
+          int index, int value) {
         ensureRowsIsMutable();
-        rows_.setLong(index, value);
+        rows_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param value The rows to add.
        * @return This builder for chaining.
        */
-      public Builder addRows(long value) {
+      public Builder addRows(int value) {
         ensureRowsIsMutable();
-        rows_.addLong(value);
+        rows_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @param values The rows to add.
        * @return This builder for chaining.
        */
       public Builder addAllRows(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureRowsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, rows_);
@@ -6174,17 +6174,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 rows = 2;</code>
+       * <code>repeated uint32 rows = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearRows() {
-        rows_ = emptyLongList();
+        rows_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList cols_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList cols_ = emptyIntList();
       private void ensureColsIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
           cols_ = mutableCopy(cols_);
@@ -6192,60 +6192,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @return A list containing the cols.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getColsList() {
         return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(cols_) : cols_;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @return The count of cols.
        */
       public int getColsCount() {
         return cols_.size();
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param index The index of the element to return.
        * @return The cols at the given index.
        */
-      public long getCols(int index) {
-        return cols_.getLong(index);
+      public int getCols(int index) {
+        return cols_.getInt(index);
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param index The index to set the value at.
        * @param value The cols to set.
        * @return This builder for chaining.
        */
       public Builder setCols(
-          int index, long value) {
+          int index, int value) {
         ensureColsIsMutable();
-        cols_.setLong(index, value);
+        cols_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param value The cols to add.
        * @return This builder for chaining.
        */
-      public Builder addCols(long value) {
+      public Builder addCols(int value) {
         ensureColsIsMutable();
-        cols_.addLong(value);
+        cols_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @param values The cols to add.
        * @return This builder for chaining.
        */
       public Builder addAllCols(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureColsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, cols_);
@@ -6253,17 +6253,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 cols = 3;</code>
+       * <code>repeated uint32 cols = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearCols() {
-        cols_ = emptyLongList();
+        cols_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList values_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList values_ = emptyIntList();
       private void ensureValuesIsMutable() {
         if (!((bitField0_ & 0x00000008) != 0)) {
           values_ = mutableCopy(values_);
@@ -6271,60 +6271,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return A list containing the values.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getValuesList() {
         return ((bitField0_ & 0x00000008) != 0) ?
                  java.util.Collections.unmodifiableList(values_) : values_;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return The count of values.
        */
       public int getValuesCount() {
         return values_.size();
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index of the element to return.
        * @return The values at the given index.
        */
-      public long getValues(int index) {
-        return values_.getLong(index);
+      public int getValues(int index) {
+        return values_.getInt(index);
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index to set the value at.
        * @param value The values to set.
        * @return This builder for chaining.
        */
       public Builder setValues(
-          int index, long value) {
+          int index, int value) {
         ensureValuesIsMutable();
-        values_.setLong(index, value);
+        values_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param value The values to add.
        * @return This builder for chaining.
        */
-      public Builder addValues(long value) {
+      public Builder addValues(int value) {
         ensureValuesIsMutable();
-        values_.addLong(value);
+        values_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param values The values to add.
        * @return This builder for chaining.
        */
       public Builder addAllValues(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureValuesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, values_);
@@ -6332,11 +6332,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearValues() {
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
@@ -6354,142 +6354,142 @@ public final class MatrixProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
     }
 
-    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
-    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
+    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64();
+      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32();
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 getDefaultInstance() {
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CooMatInt64>
-        PARSER = new com.google.protobuf.AbstractParser<CooMatInt64>() {
+    private static final com.google.protobuf.Parser<CooMatint32>
+        PARSER = new com.google.protobuf.AbstractParser<CooMatint32>() {
       @java.lang.Override
-      public CooMatInt64 parsePartialFrom(
+      public CooMatint32 parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CooMatInt64(input, extensionRegistry);
+        return new CooMatint32(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CooMatInt64> parser() {
+    public static com.google.protobuf.Parser<CooMatint32> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CooMatInt64> getParserForType() {
+    public com.google.protobuf.Parser<CooMatint32> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatInt64 getDefaultInstanceForType() {
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CooMatint32 getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface CsrMatInt64OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  public interface CsrMatint32OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return A list containing the rowOffsets.
      */
-    java.util.List<java.lang.Long> getRowOffsetsList();
+    java.util.List<java.lang.Integer> getRowOffsetsList();
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return The count of rowOffsets.
      */
     int getRowOffsetsCount();
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The rowOffsets at the given index.
      */
-    long getRowOffsets(int index);
+    int getRowOffsets(int index);
 
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return A list containing the colIndices.
      */
-    java.util.List<java.lang.Long> getColIndicesList();
+    java.util.List<java.lang.Integer> getColIndicesList();
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return The count of colIndices.
      */
     int getColIndicesCount();
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The colIndices at the given index.
      */
-    long getColIndices(int index);
+    int getColIndices(int index);
 
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
-    java.util.List<java.lang.Long> getValuesList();
+    java.util.List<java.lang.Integer> getValuesList();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     int getValuesCount();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    long getValues(int index);
+    int getValues(int index);
   }
   /**
-   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64}
+   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32}
    */
-  public static final class CsrMatInt64 extends
+  public static final class CsrMatint32 extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
-      CsrMatInt64OrBuilder {
+      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
+      CsrMatint32OrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CsrMatInt64.newBuilder() to construct.
-    private CsrMatInt64(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CsrMatint32.newBuilder() to construct.
+    private CsrMatint32(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CsrMatInt64() {
-      dims_ = emptyLongList();
-      rowOffsets_ = emptyLongList();
-      colIndices_ = emptyLongList();
-      values_ = emptyLongList();
+    private CsrMatint32() {
+      dims_ = emptyIntList();
+      rowOffsets_ = emptyIntList();
+      colIndices_ = emptyIntList();
+      values_ = emptyIntList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CsrMatInt64();
+      return new CsrMatint32();
     }
 
     @java.lang.Override
@@ -6497,7 +6497,7 @@ public final class MatrixProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CsrMatInt64(
+    private CsrMatint32(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6518,84 +6518,84 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 16: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                rowOffsets_ = newLongList();
+                rowOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              rowOffsets_.addLong(input.readUInt64());
+              rowOffsets_.addInt(input.readUInt32());
               break;
             }
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                rowOffsets_ = newLongList();
+                rowOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                rowOffsets_.addLong(input.readUInt64());
+                rowOffsets_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                colIndices_ = newLongList();
+                colIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
-              colIndices_.addLong(input.readUInt64());
+              colIndices_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
-                colIndices_ = newLongList();
+                colIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                colIndices_.addLong(input.readUInt64());
+                colIndices_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 80: {
               if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
               }
-              values_.addLong(input.readInt64());
+              values_.addInt(input.readInt32());
               break;
             }
             case 82: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
               }
               while (input.getBytesUntilLimit() > 0) {
-                values_.addLong(input.readInt64());
+                values_.addInt(input.readInt32());
               }
               input.popLimit(limit);
               break;
@@ -6633,126 +6633,126 @@ public final class MatrixProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_descriptor;
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_fieldAccessorTable
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.Builder.class);
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.Builder.class);
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int ROW_OFFSETS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.LongList rowOffsets_;
+    private com.google.protobuf.Internal.IntList rowOffsets_;
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return A list containing the rowOffsets.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getRowOffsetsList() {
       return rowOffsets_;
     }
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @return The count of rowOffsets.
      */
     public int getRowOffsetsCount() {
       return rowOffsets_.size();
     }
     /**
-     * <code>repeated uint64 row_offsets = 2;</code>
+     * <code>repeated uint32 row_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The rowOffsets at the given index.
      */
-    public long getRowOffsets(int index) {
-      return rowOffsets_.getLong(index);
+    public int getRowOffsets(int index) {
+      return rowOffsets_.getInt(index);
     }
     private int rowOffsetsMemoizedSerializedSize = -1;
 
     public static final int COL_INDICES_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList colIndices_;
+    private com.google.protobuf.Internal.IntList colIndices_;
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return A list containing the colIndices.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getColIndicesList() {
       return colIndices_;
     }
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @return The count of colIndices.
      */
     public int getColIndicesCount() {
       return colIndices_.size();
     }
     /**
-     * <code>repeated uint64 col_indices = 3;</code>
+     * <code>repeated uint32 col_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The colIndices at the given index.
      */
-    public long getColIndices(int index) {
-      return colIndices_.getLong(index);
+    public int getColIndices(int index) {
+      return colIndices_.getInt(index);
     }
     private int colIndicesMemoizedSerializedSize = -1;
 
     public static final int VALUES_FIELD_NUMBER = 10;
-    private com.google.protobuf.Internal.LongList values_;
+    private com.google.protobuf.Internal.IntList values_;
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getValuesList() {
       return values_;
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     public int getValuesCount() {
       return values_.size();
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    public long getValues(int index) {
-      return values_.getLong(index);
+    public int getValues(int index) {
+      return values_.getInt(index);
     }
     private int valuesMemoizedSerializedSize = -1;
 
@@ -6776,28 +6776,28 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getRowOffsetsList().size() > 0) {
         output.writeUInt32NoTag(18);
         output.writeUInt32NoTag(rowOffsetsMemoizedSerializedSize);
       }
       for (int i = 0; i < rowOffsets_.size(); i++) {
-        output.writeUInt64NoTag(rowOffsets_.getLong(i));
+        output.writeUInt32NoTag(rowOffsets_.getInt(i));
       }
       if (getColIndicesList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(colIndicesMemoizedSerializedSize);
       }
       for (int i = 0; i < colIndices_.size(); i++) {
-        output.writeUInt64NoTag(colIndices_.getLong(i));
+        output.writeUInt32NoTag(colIndices_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
         output.writeUInt32NoTag(valuesMemoizedSerializedSize);
       }
       for (int i = 0; i < values_.size(); i++) {
-        output.writeInt64NoTag(values_.getLong(i));
+        output.writeInt32NoTag(values_.getInt(i));
       }
       unknownFields.writeTo(output);
     }
@@ -6812,7 +6812,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -6826,7 +6826,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < rowOffsets_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(rowOffsets_.getLong(i));
+            .computeUInt32SizeNoTag(rowOffsets_.getInt(i));
         }
         size += dataSize;
         if (!getRowOffsetsList().isEmpty()) {
@@ -6840,7 +6840,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < colIndices_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(colIndices_.getLong(i));
+            .computeUInt32SizeNoTag(colIndices_.getInt(i));
         }
         size += dataSize;
         if (!getColIndicesList().isEmpty()) {
@@ -6854,7 +6854,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < values_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(values_.getLong(i));
+            .computeInt32SizeNoTag(values_.getInt(i));
         }
         size += dataSize;
         if (!getValuesList().isEmpty()) {
@@ -6874,10 +6874,10 @@ public final class MatrixProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64)) {
+      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32)) {
         return super.equals(obj);
       }
-      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64) obj;
+      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32) obj;
 
       if (!getDimsList()
           .equals(other.getDimsList())) return false;
@@ -6919,69 +6919,69 @@ public final class MatrixProto {
       return hash;
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(byte[] data)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseDelimitedFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseDelimitedFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6994,7 +6994,7 @@ public final class MatrixProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 prototype) {
+    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7010,26 +7010,26 @@ public final class MatrixProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64}
+     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64OrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_fieldAccessorTable
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.Builder.class);
+                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.Builder.class);
       }
 
-      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.newBuilder()
+      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7047,13 +7047,13 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        rowOffsets_ = emptyLongList();
+        rowOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        colIndices_ = emptyLongList();
+        colIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -7061,17 +7061,17 @@ public final class MatrixProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_descriptor;
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 getDefaultInstanceForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.getDefaultInstance();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 getDefaultInstanceForType() {
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 build() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 result = buildPartial();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 build() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7079,8 +7079,8 @@ public final class MatrixProto {
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 buildPartial() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64(this);
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 buildPartial() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) != 0)) {
           dims_.makeImmutable();
@@ -7140,16 +7140,16 @@ public final class MatrixProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64) {
-          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64)other);
+        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32) {
+          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 other) {
-        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 other) {
+        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32.getDefaultInstance()) return this;
         if (!other.dims_.isEmpty()) {
           if (dims_.isEmpty()) {
             dims_ = other.dims_;
@@ -7205,11 +7205,11 @@ public final class MatrixProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 parsedMessage = null;
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64) e.getUnfinishedMessage();
+          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7220,7 +7220,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -7228,60 +7228,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -7289,17 +7289,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList rowOffsets_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList rowOffsets_ = emptyIntList();
       private void ensureRowOffsetsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           rowOffsets_ = mutableCopy(rowOffsets_);
@@ -7307,60 +7307,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @return A list containing the rowOffsets.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getRowOffsetsList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(rowOffsets_) : rowOffsets_;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @return The count of rowOffsets.
        */
       public int getRowOffsetsCount() {
         return rowOffsets_.size();
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param index The index of the element to return.
        * @return The rowOffsets at the given index.
        */
-      public long getRowOffsets(int index) {
-        return rowOffsets_.getLong(index);
+      public int getRowOffsets(int index) {
+        return rowOffsets_.getInt(index);
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param index The index to set the value at.
        * @param value The rowOffsets to set.
        * @return This builder for chaining.
        */
       public Builder setRowOffsets(
-          int index, long value) {
+          int index, int value) {
         ensureRowOffsetsIsMutable();
-        rowOffsets_.setLong(index, value);
+        rowOffsets_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param value The rowOffsets to add.
        * @return This builder for chaining.
        */
-      public Builder addRowOffsets(long value) {
+      public Builder addRowOffsets(int value) {
         ensureRowOffsetsIsMutable();
-        rowOffsets_.addLong(value);
+        rowOffsets_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @param values The rowOffsets to add.
        * @return This builder for chaining.
        */
       public Builder addAllRowOffsets(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureRowOffsetsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, rowOffsets_);
@@ -7368,17 +7368,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 row_offsets = 2;</code>
+       * <code>repeated uint32 row_offsets = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearRowOffsets() {
-        rowOffsets_ = emptyLongList();
+        rowOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList colIndices_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList colIndices_ = emptyIntList();
       private void ensureColIndicesIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
           colIndices_ = mutableCopy(colIndices_);
@@ -7386,60 +7386,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @return A list containing the colIndices.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getColIndicesList() {
         return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(colIndices_) : colIndices_;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @return The count of colIndices.
        */
       public int getColIndicesCount() {
         return colIndices_.size();
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param index The index of the element to return.
        * @return The colIndices at the given index.
        */
-      public long getColIndices(int index) {
-        return colIndices_.getLong(index);
+      public int getColIndices(int index) {
+        return colIndices_.getInt(index);
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param index The index to set the value at.
        * @param value The colIndices to set.
        * @return This builder for chaining.
        */
       public Builder setColIndices(
-          int index, long value) {
+          int index, int value) {
         ensureColIndicesIsMutable();
-        colIndices_.setLong(index, value);
+        colIndices_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param value The colIndices to add.
        * @return This builder for chaining.
        */
-      public Builder addColIndices(long value) {
+      public Builder addColIndices(int value) {
         ensureColIndicesIsMutable();
-        colIndices_.addLong(value);
+        colIndices_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @param values The colIndices to add.
        * @return This builder for chaining.
        */
       public Builder addAllColIndices(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureColIndicesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, colIndices_);
@@ -7447,17 +7447,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 col_indices = 3;</code>
+       * <code>repeated uint32 col_indices = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearColIndices() {
-        colIndices_ = emptyLongList();
+        colIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList values_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList values_ = emptyIntList();
       private void ensureValuesIsMutable() {
         if (!((bitField0_ & 0x00000008) != 0)) {
           values_ = mutableCopy(values_);
@@ -7465,60 +7465,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return A list containing the values.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getValuesList() {
         return ((bitField0_ & 0x00000008) != 0) ?
                  java.util.Collections.unmodifiableList(values_) : values_;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return The count of values.
        */
       public int getValuesCount() {
         return values_.size();
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index of the element to return.
        * @return The values at the given index.
        */
-      public long getValues(int index) {
-        return values_.getLong(index);
+      public int getValues(int index) {
+        return values_.getInt(index);
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index to set the value at.
        * @param value The values to set.
        * @return This builder for chaining.
        */
       public Builder setValues(
-          int index, long value) {
+          int index, int value) {
         ensureValuesIsMutable();
-        values_.setLong(index, value);
+        values_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param value The values to add.
        * @return This builder for chaining.
        */
-      public Builder addValues(long value) {
+      public Builder addValues(int value) {
         ensureValuesIsMutable();
-        values_.addLong(value);
+        values_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param values The values to add.
        * @return This builder for chaining.
        */
       public Builder addAllValues(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureValuesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, values_);
@@ -7526,11 +7526,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearValues() {
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
@@ -7548,142 +7548,142 @@ public final class MatrixProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
     }
 
-    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
-    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
+    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64();
+      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32();
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 getDefaultInstance() {
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CsrMatInt64>
-        PARSER = new com.google.protobuf.AbstractParser<CsrMatInt64>() {
+    private static final com.google.protobuf.Parser<CsrMatint32>
+        PARSER = new com.google.protobuf.AbstractParser<CsrMatint32>() {
       @java.lang.Override
-      public CsrMatInt64 parsePartialFrom(
+      public CsrMatint32 parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CsrMatInt64(input, extensionRegistry);
+        return new CsrMatint32(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CsrMatInt64> parser() {
+    public static com.google.protobuf.Parser<CsrMatint32> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CsrMatInt64> getParserForType() {
+    public com.google.protobuf.Parser<CsrMatint32> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatInt64 getDefaultInstanceForType() {
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CsrMatint32 getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface CscMatInt64OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  public interface CscMatint32OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
-    java.util.List<java.lang.Long> getDimsList();
+    java.util.List<java.lang.Integer> getDimsList();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     int getDimsCount();
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    long getDims(int index);
+    int getDims(int index);
 
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return A list containing the colOffsets.
      */
-    java.util.List<java.lang.Long> getColOffsetsList();
+    java.util.List<java.lang.Integer> getColOffsetsList();
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return The count of colOffsets.
      */
     int getColOffsetsCount();
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The colOffsets at the given index.
      */
-    long getColOffsets(int index);
+    int getColOffsets(int index);
 
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return A list containing the rowIndices.
      */
-    java.util.List<java.lang.Long> getRowIndicesList();
+    java.util.List<java.lang.Integer> getRowIndicesList();
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return The count of rowIndices.
      */
     int getRowIndicesCount();
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The rowIndices at the given index.
      */
-    long getRowIndices(int index);
+    int getRowIndices(int index);
 
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
-    java.util.List<java.lang.Long> getValuesList();
+    java.util.List<java.lang.Integer> getValuesList();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     int getValuesCount();
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    long getValues(int index);
+    int getValues(int index);
   }
   /**
-   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64}
+   * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32}
    */
-  public static final class CscMatInt64 extends
+  public static final class CscMatint32 extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
-      CscMatInt64OrBuilder {
+      // @@protoc_insertion_point(message_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
+      CscMatint32OrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CscMatInt64.newBuilder() to construct.
-    private CscMatInt64(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CscMatint32.newBuilder() to construct.
+    private CscMatint32(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CscMatInt64() {
-      dims_ = emptyLongList();
-      colOffsets_ = emptyLongList();
-      rowIndices_ = emptyLongList();
-      values_ = emptyLongList();
+    private CscMatint32() {
+      dims_ = emptyIntList();
+      colOffsets_ = emptyIntList();
+      rowIndices_ = emptyIntList();
+      values_ = emptyIntList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CscMatInt64();
+      return new CscMatint32();
     }
 
     @java.lang.Override
@@ -7691,7 +7691,7 @@ public final class MatrixProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CscMatInt64(
+    private CscMatint32(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7712,84 +7712,84 @@ public final class MatrixProto {
               break;
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              dims_.addLong(input.readUInt64());
+              dims_.addInt(input.readUInt32());
               break;
             }
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                dims_ = newLongList();
+                dims_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                dims_.addLong(input.readUInt64());
+                dims_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 16: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                colOffsets_ = newLongList();
+                colOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
-              colOffsets_.addLong(input.readUInt64());
+              colOffsets_.addInt(input.readUInt32());
               break;
             }
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                colOffsets_ = newLongList();
+                colOffsets_ = newIntList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                colOffsets_.addLong(input.readUInt64());
+                colOffsets_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                rowIndices_ = newLongList();
+                rowIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
-              rowIndices_.addLong(input.readUInt64());
+              rowIndices_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
-                rowIndices_ = newLongList();
+                rowIndices_ = newIntList();
                 mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                rowIndices_.addLong(input.readUInt64());
+                rowIndices_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 80: {
               if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
               }
-              values_.addLong(input.readInt64());
+              values_.addInt(input.readInt32());
               break;
             }
             case 82: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
-                values_ = newLongList();
+                values_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
               }
               while (input.getBytesUntilLimit() > 0) {
-                values_.addLong(input.readInt64());
+                values_.addInt(input.readInt32());
               }
               input.popLimit(limit);
               break;
@@ -7827,126 +7827,126 @@ public final class MatrixProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_descriptor;
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_fieldAccessorTable
+      return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.Builder.class);
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.Builder.class);
     }
 
     public static final int DIMS_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.LongList dims_;
+    private com.google.protobuf.Internal.IntList dims_;
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return A list containing the dims.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getDimsList() {
       return dims_;
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @return The count of dims.
      */
     public int getDimsCount() {
       return dims_.size();
     }
     /**
-     * <code>repeated uint64 dims = 1;</code>
+     * <code>repeated uint32 dims = 1;</code>
      * @param index The index of the element to return.
      * @return The dims at the given index.
      */
-    public long getDims(int index) {
-      return dims_.getLong(index);
+    public int getDims(int index) {
+      return dims_.getInt(index);
     }
     private int dimsMemoizedSerializedSize = -1;
 
     public static final int COL_OFFSETS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.LongList colOffsets_;
+    private com.google.protobuf.Internal.IntList colOffsets_;
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return A list containing the colOffsets.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getColOffsetsList() {
       return colOffsets_;
     }
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @return The count of colOffsets.
      */
     public int getColOffsetsCount() {
       return colOffsets_.size();
     }
     /**
-     * <code>repeated uint64 col_offsets = 2;</code>
+     * <code>repeated uint32 col_offsets = 2;</code>
      * @param index The index of the element to return.
      * @return The colOffsets at the given index.
      */
-    public long getColOffsets(int index) {
-      return colOffsets_.getLong(index);
+    public int getColOffsets(int index) {
+      return colOffsets_.getInt(index);
     }
     private int colOffsetsMemoizedSerializedSize = -1;
 
     public static final int ROW_INDICES_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList rowIndices_;
+    private com.google.protobuf.Internal.IntList rowIndices_;
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return A list containing the rowIndices.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getRowIndicesList() {
       return rowIndices_;
     }
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @return The count of rowIndices.
      */
     public int getRowIndicesCount() {
       return rowIndices_.size();
     }
     /**
-     * <code>repeated uint64 row_indices = 3;</code>
+     * <code>repeated uint32 row_indices = 3;</code>
      * @param index The index of the element to return.
      * @return The rowIndices at the given index.
      */
-    public long getRowIndices(int index) {
-      return rowIndices_.getLong(index);
+    public int getRowIndices(int index) {
+      return rowIndices_.getInt(index);
     }
     private int rowIndicesMemoizedSerializedSize = -1;
 
     public static final int VALUES_FIELD_NUMBER = 10;
-    private com.google.protobuf.Internal.LongList values_;
+    private com.google.protobuf.Internal.IntList values_;
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return A list containing the values.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getValuesList() {
       return values_;
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @return The count of values.
      */
     public int getValuesCount() {
       return values_.size();
     }
     /**
-     * <code>repeated int64 values = 10;</code>
+     * <code>repeated int32 values = 10;</code>
      * @param index The index of the element to return.
      * @return The values at the given index.
      */
-    public long getValues(int index) {
-      return values_.getLong(index);
+    public int getValues(int index) {
+      return values_.getInt(index);
     }
     private int valuesMemoizedSerializedSize = -1;
 
@@ -7970,28 +7970,28 @@ public final class MatrixProto {
         output.writeUInt32NoTag(dimsMemoizedSerializedSize);
       }
       for (int i = 0; i < dims_.size(); i++) {
-        output.writeUInt64NoTag(dims_.getLong(i));
+        output.writeUInt32NoTag(dims_.getInt(i));
       }
       if (getColOffsetsList().size() > 0) {
         output.writeUInt32NoTag(18);
         output.writeUInt32NoTag(colOffsetsMemoizedSerializedSize);
       }
       for (int i = 0; i < colOffsets_.size(); i++) {
-        output.writeUInt64NoTag(colOffsets_.getLong(i));
+        output.writeUInt32NoTag(colOffsets_.getInt(i));
       }
       if (getRowIndicesList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(rowIndicesMemoizedSerializedSize);
       }
       for (int i = 0; i < rowIndices_.size(); i++) {
-        output.writeUInt64NoTag(rowIndices_.getLong(i));
+        output.writeUInt32NoTag(rowIndices_.getInt(i));
       }
       if (getValuesList().size() > 0) {
         output.writeUInt32NoTag(82);
         output.writeUInt32NoTag(valuesMemoizedSerializedSize);
       }
       for (int i = 0; i < values_.size(); i++) {
-        output.writeInt64NoTag(values_.getLong(i));
+        output.writeInt32NoTag(values_.getInt(i));
       }
       unknownFields.writeTo(output);
     }
@@ -8006,7 +8006,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < dims_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(dims_.getLong(i));
+            .computeUInt32SizeNoTag(dims_.getInt(i));
         }
         size += dataSize;
         if (!getDimsList().isEmpty()) {
@@ -8020,7 +8020,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < colOffsets_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(colOffsets_.getLong(i));
+            .computeUInt32SizeNoTag(colOffsets_.getInt(i));
         }
         size += dataSize;
         if (!getColOffsetsList().isEmpty()) {
@@ -8034,7 +8034,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < rowIndices_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(rowIndices_.getLong(i));
+            .computeUInt32SizeNoTag(rowIndices_.getInt(i));
         }
         size += dataSize;
         if (!getRowIndicesList().isEmpty()) {
@@ -8048,7 +8048,7 @@ public final class MatrixProto {
         int dataSize = 0;
         for (int i = 0; i < values_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(values_.getLong(i));
+            .computeInt32SizeNoTag(values_.getInt(i));
         }
         size += dataSize;
         if (!getValuesList().isEmpty()) {
@@ -8068,10 +8068,10 @@ public final class MatrixProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64)) {
+      if (!(obj instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32)) {
         return super.equals(obj);
       }
-      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64) obj;
+      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32) obj;
 
       if (!getDimsList()
           .equals(other.getDimsList())) return false;
@@ -8113,69 +8113,69 @@ public final class MatrixProto {
       return hash;
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(byte[] data)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseDelimitedFrom(java.io.InputStream input)
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseDelimitedFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parseFrom(
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8188,7 +8188,7 @@ public final class MatrixProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 prototype) {
+    public static Builder newBuilder(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8204,26 +8204,26 @@ public final class MatrixProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64}
+     * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64OrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_fieldAccessorTable
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.Builder.class);
+                com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.Builder.class);
       }
 
-      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.newBuilder()
+      // Construct using com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8241,13 +8241,13 @@ public final class MatrixProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        colOffsets_ = emptyLongList();
+        colOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
-        rowIndices_ = emptyLongList();
+        rowIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -8255,17 +8255,17 @@ public final class MatrixProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_descriptor;
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_descriptor;
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 getDefaultInstanceForType() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.getDefaultInstance();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 getDefaultInstanceForType() {
+        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 build() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 result = buildPartial();
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 build() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8273,8 +8273,8 @@ public final class MatrixProto {
       }
 
       @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 buildPartial() {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64(this);
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 buildPartial() {
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) != 0)) {
           dims_.makeImmutable();
@@ -8334,16 +8334,16 @@ public final class MatrixProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64) {
-          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64)other);
+        if (other instanceof com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32) {
+          return mergeFrom((com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 other) {
-        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 other) {
+        if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32.getDefaultInstance()) return this;
         if (!other.dims_.isEmpty()) {
           if (dims_.isEmpty()) {
             dims_ = other.dims_;
@@ -8399,11 +8399,11 @@ public final class MatrixProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 parsedMessage = null;
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64) e.getUnfinishedMessage();
+          parsedMessage = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8414,7 +8414,7 @@ public final class MatrixProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.LongList dims_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList dims_ = emptyIntList();
       private void ensureDimsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           dims_ = mutableCopy(dims_);
@@ -8422,60 +8422,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return A list containing the dims.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getDimsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(dims_) : dims_;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return The count of dims.
        */
       public int getDimsCount() {
         return dims_.size();
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index of the element to return.
        * @return The dims at the given index.
        */
-      public long getDims(int index) {
-        return dims_.getLong(index);
+      public int getDims(int index) {
+        return dims_.getInt(index);
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param index The index to set the value at.
        * @param value The dims to set.
        * @return This builder for chaining.
        */
       public Builder setDims(
-          int index, long value) {
+          int index, int value) {
         ensureDimsIsMutable();
-        dims_.setLong(index, value);
+        dims_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param value The dims to add.
        * @return This builder for chaining.
        */
-      public Builder addDims(long value) {
+      public Builder addDims(int value) {
         ensureDimsIsMutable();
-        dims_.addLong(value);
+        dims_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @param values The dims to add.
        * @return This builder for chaining.
        */
       public Builder addAllDims(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureDimsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, dims_);
@@ -8483,17 +8483,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 dims = 1;</code>
+       * <code>repeated uint32 dims = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDims() {
-        dims_ = emptyLongList();
+        dims_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList colOffsets_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList colOffsets_ = emptyIntList();
       private void ensureColOffsetsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
           colOffsets_ = mutableCopy(colOffsets_);
@@ -8501,60 +8501,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @return A list containing the colOffsets.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getColOffsetsList() {
         return ((bitField0_ & 0x00000002) != 0) ?
                  java.util.Collections.unmodifiableList(colOffsets_) : colOffsets_;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @return The count of colOffsets.
        */
       public int getColOffsetsCount() {
         return colOffsets_.size();
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param index The index of the element to return.
        * @return The colOffsets at the given index.
        */
-      public long getColOffsets(int index) {
-        return colOffsets_.getLong(index);
+      public int getColOffsets(int index) {
+        return colOffsets_.getInt(index);
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param index The index to set the value at.
        * @param value The colOffsets to set.
        * @return This builder for chaining.
        */
       public Builder setColOffsets(
-          int index, long value) {
+          int index, int value) {
         ensureColOffsetsIsMutable();
-        colOffsets_.setLong(index, value);
+        colOffsets_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param value The colOffsets to add.
        * @return This builder for chaining.
        */
-      public Builder addColOffsets(long value) {
+      public Builder addColOffsets(int value) {
         ensureColOffsetsIsMutable();
-        colOffsets_.addLong(value);
+        colOffsets_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @param values The colOffsets to add.
        * @return This builder for chaining.
        */
       public Builder addAllColOffsets(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureColOffsetsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, colOffsets_);
@@ -8562,17 +8562,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 col_offsets = 2;</code>
+       * <code>repeated uint32 col_offsets = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearColOffsets() {
-        colOffsets_ = emptyLongList();
+        colOffsets_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList rowIndices_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList rowIndices_ = emptyIntList();
       private void ensureRowIndicesIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
           rowIndices_ = mutableCopy(rowIndices_);
@@ -8580,60 +8580,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @return A list containing the rowIndices.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getRowIndicesList() {
         return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(rowIndices_) : rowIndices_;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @return The count of rowIndices.
        */
       public int getRowIndicesCount() {
         return rowIndices_.size();
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param index The index of the element to return.
        * @return The rowIndices at the given index.
        */
-      public long getRowIndices(int index) {
-        return rowIndices_.getLong(index);
+      public int getRowIndices(int index) {
+        return rowIndices_.getInt(index);
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param index The index to set the value at.
        * @param value The rowIndices to set.
        * @return This builder for chaining.
        */
       public Builder setRowIndices(
-          int index, long value) {
+          int index, int value) {
         ensureRowIndicesIsMutable();
-        rowIndices_.setLong(index, value);
+        rowIndices_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param value The rowIndices to add.
        * @return This builder for chaining.
        */
-      public Builder addRowIndices(long value) {
+      public Builder addRowIndices(int value) {
         ensureRowIndicesIsMutable();
-        rowIndices_.addLong(value);
+        rowIndices_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @param values The rowIndices to add.
        * @return This builder for chaining.
        */
       public Builder addAllRowIndices(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureRowIndicesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, rowIndices_);
@@ -8641,17 +8641,17 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated uint64 row_indices = 3;</code>
+       * <code>repeated uint32 row_indices = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearRowIndices() {
-        rowIndices_ = emptyLongList();
+        rowIndices_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList values_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList values_ = emptyIntList();
       private void ensureValuesIsMutable() {
         if (!((bitField0_ & 0x00000008) != 0)) {
           values_ = mutableCopy(values_);
@@ -8659,60 +8659,60 @@ public final class MatrixProto {
          }
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return A list containing the values.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getValuesList() {
         return ((bitField0_ & 0x00000008) != 0) ?
                  java.util.Collections.unmodifiableList(values_) : values_;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return The count of values.
        */
       public int getValuesCount() {
         return values_.size();
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index of the element to return.
        * @return The values at the given index.
        */
-      public long getValues(int index) {
-        return values_.getLong(index);
+      public int getValues(int index) {
+        return values_.getInt(index);
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param index The index to set the value at.
        * @param value The values to set.
        * @return This builder for chaining.
        */
       public Builder setValues(
-          int index, long value) {
+          int index, int value) {
         ensureValuesIsMutable();
-        values_.setLong(index, value);
+        values_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param value The values to add.
        * @return This builder for chaining.
        */
-      public Builder addValues(long value) {
+      public Builder addValues(int value) {
         ensureValuesIsMutable();
-        values_.addLong(value);
+        values_.addInt(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @param values The values to add.
        * @return This builder for chaining.
        */
       public Builder addAllValues(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureValuesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, values_);
@@ -8720,11 +8720,11 @@ public final class MatrixProto {
         return this;
       }
       /**
-       * <code>repeated int64 values = 10;</code>
+       * <code>repeated int32 values = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearValues() {
-        values_ = emptyLongList();
+        values_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
@@ -8742,41 +8742,41 @@ public final class MatrixProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+      // @@protoc_insertion_point(builder_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
     }
 
-    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
-    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
+    private static final com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64();
+      DEFAULT_INSTANCE = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32();
     }
 
-    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 getDefaultInstance() {
+    public static com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CscMatInt64>
-        PARSER = new com.google.protobuf.AbstractParser<CscMatInt64>() {
+    private static final com.google.protobuf.Parser<CscMatint32>
+        PARSER = new com.google.protobuf.AbstractParser<CscMatint32>() {
       @java.lang.Override
-      public CscMatInt64 parsePartialFrom(
+      public CscMatint32 parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CscMatInt64(input, extensionRegistry);
+        return new CscMatint32(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CscMatInt64> parser() {
+    public static com.google.protobuf.Parser<CscMatint32> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CscMatInt64> getParserForType() {
+    public com.google.protobuf.Parser<CscMatint32> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatInt64 getDefaultInstanceForType() {
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatint32 getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8803,25 +8803,25 @@ public final class MatrixProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatFloat_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_descriptor;
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_fieldAccessorTable;
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_descriptor;
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_fieldAccessorTable;
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_descriptor;
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_fieldAccessorTable;
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_descriptor;
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_fieldAccessorTable;
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -8834,21 +8834,21 @@ public final class MatrixProto {
       "\n:com/hitnslab/dnssecurity/deeparcher/ap" +
       "i/proto/matrix.proto\022-com.hitnslab.dnsse" +
       "curity.deeparcher.api.proto\"-\n\rDenseMatF" +
-      "loat\022\014\n\004dims\030\001 \003(\004\022\016\n\006values\030\n \003(\002\"G\n\013Co" +
-      "oMatFloat\022\014\n\004dims\030\001 \003(\004\022\014\n\004rows\030\002 \003(\004\022\014\n" +
-      "\004cols\030\003 \003(\004\022\016\n\006values\030\n \003(\002\"U\n\013CsrMatFlo" +
-      "at\022\014\n\004dims\030\001 \003(\004\022\023\n\013row_offsets\030\002 \003(\004\022\023\n" +
-      "\013col_indices\030\003 \003(\004\022\016\n\006values\030\n \003(\002\"U\n\013Cs" +
-      "cMatFloat\022\014\n\004dims\030\001 \003(\004\022\023\n\013col_offsets\030\002" +
-      " \003(\004\022\023\n\013row_indices\030\003 \003(\004\022\016\n\006values\030\n \003(" +
-      "\002\"-\n\rDenseMatInt64\022\014\n\004dims\030\001 \003(\004\022\016\n\006valu" +
-      "es\030\n \003(\003\"G\n\013CooMatInt64\022\014\n\004dims\030\001 \003(\004\022\014\n" +
-      "\004rows\030\002 \003(\004\022\014\n\004cols\030\003 \003(\004\022\016\n\006values\030\n \003(" +
-      "\003\"U\n\013CsrMatInt64\022\014\n\004dims\030\001 \003(\004\022\023\n\013row_of" +
-      "fsets\030\002 \003(\004\022\023\n\013col_indices\030\003 \003(\004\022\016\n\006valu" +
-      "es\030\n \003(\003\"U\n\013CscMatInt64\022\014\n\004dims\030\001 \003(\004\022\023\n" +
-      "\013col_offsets\030\002 \003(\004\022\023\n\013row_indices\030\003 \003(\004\022" +
-      "\016\n\006values\030\n \003(\003BP\n<com.hitnslab.dnssecur" +
+      "loat\022\014\n\004dims\030\001 \003(\r\022\016\n\006values\030\n \003(\002\"G\n\013Co" +
+      "oMatFloat\022\014\n\004dims\030\001 \003(\r\022\014\n\004rows\030\002 \003(\r\022\014\n" +
+      "\004cols\030\003 \003(\r\022\016\n\006values\030\n \003(\002\"U\n\013CsrMatFlo" +
+      "at\022\014\n\004dims\030\001 \003(\r\022\023\n\013row_offsets\030\002 \003(\r\022\023\n" +
+      "\013col_indices\030\003 \003(\r\022\016\n\006values\030\n \003(\002\"U\n\013Cs" +
+      "cMatFloat\022\014\n\004dims\030\001 \003(\r\022\023\n\013col_offsets\030\002" +
+      " \003(\r\022\023\n\013row_indices\030\003 \003(\r\022\016\n\006values\030\n \003(" +
+      "\002\"-\n\rDenseMatint32\022\014\n\004dims\030\001 \003(\r\022\016\n\006valu" +
+      "es\030\n \003(\005\"G\n\013CooMatint32\022\014\n\004dims\030\001 \003(\r\022\014\n" +
+      "\004rows\030\002 \003(\r\022\014\n\004cols\030\003 \003(\r\022\016\n\006values\030\n \003(" +
+      "\005\"U\n\013CsrMatint32\022\014\n\004dims\030\001 \003(\r\022\023\n\013row_of" +
+      "fsets\030\002 \003(\r\022\023\n\013col_indices\030\003 \003(\r\022\016\n\006valu" +
+      "es\030\n \003(\005\"U\n\013CscMatint32\022\014\n\004dims\030\001 \003(\r\022\023\n" +
+      "\013col_offsets\030\002 \003(\r\022\023\n\013row_indices\030\003 \003(\r\022" +
+      "\016\n\006values\030\n \003(\005BP\n<com.hitnslab.dnssecur" +
       "ity.deeparcher.api.proto.generated.javaB" +
       "\013MatrixProtoH\001\370\001\001b\006proto3"
     };
@@ -8880,29 +8880,29 @@ public final class MatrixProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatFloat_descriptor,
         new java.lang.String[] { "Dims", "ColOffsets", "RowIndices", "Values", });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_descriptor =
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_fieldAccessorTable = new
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatInt64_descriptor,
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_DenseMatint32_descriptor,
         new java.lang.String[] { "Dims", "Values", });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_descriptor =
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_fieldAccessorTable = new
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatInt64_descriptor,
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CooMatint32_descriptor,
         new java.lang.String[] { "Dims", "Rows", "Cols", "Values", });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_descriptor =
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_fieldAccessorTable = new
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatInt64_descriptor,
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CsrMatint32_descriptor,
         new java.lang.String[] { "Dims", "RowOffsets", "ColIndices", "Values", });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_descriptor =
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_fieldAccessorTable = new
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatInt64_descriptor,
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_CscMatint32_descriptor,
         new java.lang.String[] { "Dims", "ColOffsets", "RowIndices", "Values", });
   }
 

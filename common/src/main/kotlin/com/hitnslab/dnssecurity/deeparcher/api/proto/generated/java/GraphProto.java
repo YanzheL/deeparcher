@@ -25,10 +25,10 @@ public final class GraphProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>int64 id = 1;</code>
+     * <code>uint32 id = 1;</code>
      * @return The id.
      */
-    long getId();
+    int getId();
 
     /**
      * <pre>
@@ -36,10 +36,10 @@ public final class GraphProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>int64 nodes = 2;</code>
+     * <code>int32 nodes = 2;</code>
      * @return The nodes.
      */
-    long getNodes();
+    int getNodes();
 
     /**
      * <pre>
@@ -47,10 +47,10 @@ public final class GraphProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>int64 edges = 3;</code>
+     * <code>int32 edges = 3;</code>
      * @return The edges.
      */
-    long getEdges();
+    int getEdges();
 
     /**
      * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat dense = 10;</code>
@@ -114,6 +114,16 @@ public final class GraphProto {
 
     /**
      * <pre>
+     * Parent graph ID. 
+     * </pre>
+     *
+     * <code>uint32 parent_id = 14;</code>
+     * @return The parentId.
+     */
+    int getParentId();
+
+    /**
+     * <pre>
      * If true, then this is a directed graph.
      * NULLABLE, default = false. 
      * </pre>
@@ -152,10 +162,10 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 node_id_remap = 19;</code>
+     * <code>repeated uint32 node_id_remap = 19;</code>
      * @return A list containing the nodeIdRemap.
      */
-    java.util.List<java.lang.Long> getNodeIdRemapList();
+    java.util.List<java.lang.Integer> getNodeIdRemapList();
     /**
      * <pre>
      * If present, then it means all node ids in this graph are consecutive.
@@ -163,7 +173,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 node_id_remap = 19;</code>
+     * <code>repeated uint32 node_id_remap = 19;</code>
      * @return The count of nodeIdRemap.
      */
     int getNodeIdRemapCount();
@@ -174,11 +184,109 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 node_id_remap = 19;</code>
+     * <code>repeated uint32 node_id_remap = 19;</code>
      * @param index The index of the element to return.
      * @return The nodeIdRemap at the given index.
      */
-    long getNodeIdRemap(int index);
+    int getNodeIdRemap(int index);
+
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> 
+        getNodeAttrsList();
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrs(int index);
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    int getNodeAttrsCount();
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+        getNodeAttrsOrBuilderList();
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getNodeAttrsOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> 
+        getEdgeAttrsList();
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrs(int index);
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    int getEdgeAttrsCount();
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+        getEdgeAttrsOrBuilderList();
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getEdgeAttrsOrBuilder(
+        int index);
 
     /**
      * <pre>
@@ -186,7 +294,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     java.util.List<com.google.protobuf.Any> 
         getAttributesList();
@@ -196,7 +304,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     com.google.protobuf.Any getAttributes(int index);
     /**
@@ -205,7 +313,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     int getAttributesCount();
     /**
@@ -214,7 +322,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
         getAttributesOrBuilderList();
@@ -224,7 +332,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     com.google.protobuf.AnyOrBuilder getAttributesOrBuilder(
         int index);
@@ -244,7 +352,9 @@ public final class GraphProto {
       super(builder);
     }
     private Graph() {
-      nodeIdRemap_ = emptyLongList();
+      nodeIdRemap_ = emptyIntList();
+      nodeAttrs_ = java.util.Collections.emptyList();
+      edgeAttrs_ = java.util.Collections.emptyList();
       attributes_ = java.util.Collections.emptyList();
     }
 
@@ -281,17 +391,17 @@ public final class GraphProto {
               break;
             case 8: {
 
-              id_ = input.readInt64();
+              id_ = input.readUInt32();
               break;
             }
             case 16: {
 
-              nodes_ = input.readInt64();
+              nodes_ = input.readInt32();
               break;
             }
             case 24: {
 
-              edges_ = input.readInt64();
+              edges_ = input.readInt32();
               break;
             }
             case 82: {
@@ -350,6 +460,11 @@ public final class GraphProto {
               adjCase_ = 13;
               break;
             }
+            case 112: {
+
+              parentId_ = input.readUInt32();
+              break;
+            }
             case 128: {
 
               directed_ = input.readBool();
@@ -367,29 +482,47 @@ public final class GraphProto {
             }
             case 152: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                nodeIdRemap_ = newLongList();
+                nodeIdRemap_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              nodeIdRemap_.addLong(input.readUInt64());
+              nodeIdRemap_.addInt(input.readUInt32());
               break;
             }
             case 154: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                nodeIdRemap_ = newLongList();
+                nodeIdRemap_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                nodeIdRemap_.addLong(input.readUInt64());
+                nodeIdRemap_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 258: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                attributes_ = new java.util.ArrayList<com.google.protobuf.Any>();
+                nodeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>();
                 mutable_bitField0_ |= 0x00000002;
+              }
+              nodeAttrs_.add(
+                  input.readMessage(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.parser(), extensionRegistry));
+              break;
+            }
+            case 266: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                edgeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              edgeAttrs_.add(
+                  input.readMessage(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.parser(), extensionRegistry));
+              break;
+            }
+            case 282: {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+                attributes_ = new java.util.ArrayList<com.google.protobuf.Any>();
+                mutable_bitField0_ |= 0x00000008;
               }
               attributes_.add(
                   input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry));
@@ -414,6 +547,12 @@ public final class GraphProto {
           nodeIdRemap_.makeImmutable(); // C
         }
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          nodeAttrs_ = java.util.Collections.unmodifiableList(nodeAttrs_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          edgeAttrs_ = java.util.Collections.unmodifiableList(edgeAttrs_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
           attributes_ = java.util.Collections.unmodifiableList(attributes_);
         }
         this.unknownFields = unknownFields.build();
@@ -479,7 +618,7 @@ public final class GraphProto {
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private long id_;
+    private int id_;
     /**
      * <pre>
      * Graph ID.
@@ -487,43 +626,43 @@ public final class GraphProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>int64 id = 1;</code>
+     * <code>uint32 id = 1;</code>
      * @return The id.
      */
     @java.lang.Override
-    public long getId() {
+    public int getId() {
       return id_;
     }
 
     public static final int NODES_FIELD_NUMBER = 2;
-    private long nodes_;
+    private int nodes_;
     /**
      * <pre>
      * Number of nodes in graph.
      * NOT NULL. 
      * </pre>
      *
-     * <code>int64 nodes = 2;</code>
+     * <code>int32 nodes = 2;</code>
      * @return The nodes.
      */
     @java.lang.Override
-    public long getNodes() {
+    public int getNodes() {
       return nodes_;
     }
 
     public static final int EDGES_FIELD_NUMBER = 3;
-    private long edges_;
+    private int edges_;
     /**
      * <pre>
      * Number of edges in graph.
      * NOT NULL. 
      * </pre>
      *
-     * <code>int64 edges = 3;</code>
+     * <code>int32 edges = 3;</code>
      * @return The edges.
      */
     @java.lang.Override
-    public long getEdges() {
+    public int getEdges() {
       return edges_;
     }
 
@@ -651,6 +790,21 @@ public final class GraphProto {
       return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat.getDefaultInstance();
     }
 
+    public static final int PARENT_ID_FIELD_NUMBER = 14;
+    private int parentId_;
+    /**
+     * <pre>
+     * Parent graph ID. 
+     * </pre>
+     *
+     * <code>uint32 parent_id = 14;</code>
+     * @return The parentId.
+     */
+    @java.lang.Override
+    public int getParentId() {
+      return parentId_;
+    }
+
     public static final int DIRECTED_FIELD_NUMBER = 16;
     private boolean directed_;
     /**
@@ -700,7 +854,7 @@ public final class GraphProto {
     }
 
     public static final int NODE_ID_REMAP_FIELD_NUMBER = 19;
-    private com.google.protobuf.Internal.LongList nodeIdRemap_;
+    private com.google.protobuf.Internal.IntList nodeIdRemap_;
     /**
      * <pre>
      * If present, then it means all node ids in this graph are consecutive.
@@ -708,11 +862,11 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 node_id_remap = 19;</code>
+     * <code>repeated uint32 node_id_remap = 19;</code>
      * @return A list containing the nodeIdRemap.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getNodeIdRemapList() {
       return nodeIdRemap_;
     }
@@ -723,7 +877,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 node_id_remap = 19;</code>
+     * <code>repeated uint32 node_id_remap = 19;</code>
      * @return The count of nodeIdRemap.
      */
     public int getNodeIdRemapCount() {
@@ -736,16 +890,146 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 node_id_remap = 19;</code>
+     * <code>repeated uint32 node_id_remap = 19;</code>
      * @param index The index of the element to return.
      * @return The nodeIdRemap at the given index.
      */
-    public long getNodeIdRemap(int index) {
-      return nodeIdRemap_.getLong(index);
+    public int getNodeIdRemap(int index) {
+      return nodeIdRemap_.getInt(index);
     }
     private int nodeIdRemapMemoizedSerializedSize = -1;
 
-    public static final int ATTRIBUTES_FIELD_NUMBER = 32;
+    public static final int NODE_ATTRS_FIELD_NUMBER = 32;
+    private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> nodeAttrs_;
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrsList() {
+      return nodeAttrs_;
+    }
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+        getNodeAttrsOrBuilderList() {
+      return nodeAttrs_;
+    }
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    @java.lang.Override
+    public int getNodeAttrsCount() {
+      return nodeAttrs_.size();
+    }
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    @java.lang.Override
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrs(int index) {
+      return nodeAttrs_.get(index);
+    }
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+     */
+    @java.lang.Override
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getNodeAttrsOrBuilder(
+        int index) {
+      return nodeAttrs_.get(index);
+    }
+
+    public static final int EDGE_ATTRS_FIELD_NUMBER = 33;
+    private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> edgeAttrs_;
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrsList() {
+      return edgeAttrs_;
+    }
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+        getEdgeAttrsOrBuilderList() {
+      return edgeAttrs_;
+    }
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    @java.lang.Override
+    public int getEdgeAttrsCount() {
+      return edgeAttrs_.size();
+    }
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    @java.lang.Override
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrs(int index) {
+      return edgeAttrs_.get(index);
+    }
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+     */
+    @java.lang.Override
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getEdgeAttrsOrBuilder(
+        int index) {
+      return edgeAttrs_.get(index);
+    }
+
+    public static final int ATTRIBUTES_FIELD_NUMBER = 35;
     private java.util.List<com.google.protobuf.Any> attributes_;
     /**
      * <pre>
@@ -753,7 +1037,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     @java.lang.Override
     public java.util.List<com.google.protobuf.Any> getAttributesList() {
@@ -765,7 +1049,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     @java.lang.Override
     public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
@@ -778,7 +1062,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     @java.lang.Override
     public int getAttributesCount() {
@@ -790,7 +1074,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     @java.lang.Override
     public com.google.protobuf.Any getAttributes(int index) {
@@ -802,7 +1086,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .google.protobuf.Any attributes = 32;</code>
+     * <code>repeated .google.protobuf.Any attributes = 35;</code>
      */
     @java.lang.Override
     public com.google.protobuf.AnyOrBuilder getAttributesOrBuilder(
@@ -825,14 +1109,14 @@ public final class GraphProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (id_ != 0L) {
-        output.writeInt64(1, id_);
+      if (id_ != 0) {
+        output.writeUInt32(1, id_);
       }
-      if (nodes_ != 0L) {
-        output.writeInt64(2, nodes_);
+      if (nodes_ != 0) {
+        output.writeInt32(2, nodes_);
       }
-      if (edges_ != 0L) {
-        output.writeInt64(3, edges_);
+      if (edges_ != 0) {
+        output.writeInt32(3, edges_);
       }
       if (adjCase_ == 10) {
         output.writeMessage(10, (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.DenseMatFloat) adj_);
@@ -845,6 +1129,9 @@ public final class GraphProto {
       }
       if (adjCase_ == 13) {
         output.writeMessage(13, (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat) adj_);
+      }
+      if (parentId_ != 0) {
+        output.writeUInt32(14, parentId_);
       }
       if (directed_ != false) {
         output.writeBool(16, directed_);
@@ -860,10 +1147,16 @@ public final class GraphProto {
         output.writeUInt32NoTag(nodeIdRemapMemoizedSerializedSize);
       }
       for (int i = 0; i < nodeIdRemap_.size(); i++) {
-        output.writeUInt64NoTag(nodeIdRemap_.getLong(i));
+        output.writeUInt32NoTag(nodeIdRemap_.getInt(i));
+      }
+      for (int i = 0; i < nodeAttrs_.size(); i++) {
+        output.writeMessage(32, nodeAttrs_.get(i));
+      }
+      for (int i = 0; i < edgeAttrs_.size(); i++) {
+        output.writeMessage(33, edgeAttrs_.get(i));
       }
       for (int i = 0; i < attributes_.size(); i++) {
-        output.writeMessage(32, attributes_.get(i));
+        output.writeMessage(35, attributes_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -874,17 +1167,17 @@ public final class GraphProto {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0L) {
+      if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, id_);
+          .computeUInt32Size(1, id_);
       }
-      if (nodes_ != 0L) {
+      if (nodes_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, nodes_);
+          .computeInt32Size(2, nodes_);
       }
-      if (edges_ != 0L) {
+      if (edges_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, edges_);
+          .computeInt32Size(3, edges_);
       }
       if (adjCase_ == 10) {
         size += com.google.protobuf.CodedOutputStream
@@ -902,6 +1195,10 @@ public final class GraphProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.CscMatFloat) adj_);
       }
+      if (parentId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(14, parentId_);
+      }
       if (directed_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(16, directed_);
@@ -918,7 +1215,7 @@ public final class GraphProto {
         int dataSize = 0;
         for (int i = 0; i < nodeIdRemap_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(nodeIdRemap_.getLong(i));
+            .computeUInt32SizeNoTag(nodeIdRemap_.getInt(i));
         }
         size += dataSize;
         if (!getNodeIdRemapList().isEmpty()) {
@@ -928,9 +1225,17 @@ public final class GraphProto {
         }
         nodeIdRemapMemoizedSerializedSize = dataSize;
       }
+      for (int i = 0; i < nodeAttrs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(32, nodeAttrs_.get(i));
+      }
+      for (int i = 0; i < edgeAttrs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(33, edgeAttrs_.get(i));
+      }
       for (int i = 0; i < attributes_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(32, attributes_.get(i));
+          .computeMessageSize(35, attributes_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -953,6 +1258,8 @@ public final class GraphProto {
           != other.getNodes()) return false;
       if (getEdges()
           != other.getEdges()) return false;
+      if (getParentId()
+          != other.getParentId()) return false;
       if (getDirected()
           != other.getDirected()) return false;
       if (getConnected()
@@ -961,6 +1268,10 @@ public final class GraphProto {
           != other.getUnweighted()) return false;
       if (!getNodeIdRemapList()
           .equals(other.getNodeIdRemapList())) return false;
+      if (!getNodeAttrsList()
+          .equals(other.getNodeAttrsList())) return false;
+      if (!getEdgeAttrsList()
+          .equals(other.getEdgeAttrsList())) return false;
       if (!getAttributesList()
           .equals(other.getAttributesList())) return false;
       if (!getAdjCase().equals(other.getAdjCase())) return false;
@@ -996,14 +1307,13 @@ public final class GraphProto {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getId());
+      hash = (53 * hash) + getId();
       hash = (37 * hash) + NODES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNodes());
+      hash = (53 * hash) + getNodes();
       hash = (37 * hash) + EDGES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getEdges());
+      hash = (53 * hash) + getEdges();
+      hash = (37 * hash) + PARENT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getParentId();
       hash = (37 * hash) + DIRECTED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getDirected());
@@ -1016,6 +1326,14 @@ public final class GraphProto {
       if (getNodeIdRemapCount() > 0) {
         hash = (37 * hash) + NODE_ID_REMAP_FIELD_NUMBER;
         hash = (53 * hash) + getNodeIdRemapList().hashCode();
+      }
+      if (getNodeAttrsCount() > 0) {
+        hash = (37 * hash) + NODE_ATTRS_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeAttrsList().hashCode();
+      }
+      if (getEdgeAttrsCount() > 0) {
+        hash = (37 * hash) + EDGE_ATTRS_FIELD_NUMBER;
+        hash = (53 * hash) + getEdgeAttrsList().hashCode();
       }
       if (getAttributesCount() > 0) {
         hash = (37 * hash) + ATTRIBUTES_FIELD_NUMBER;
@@ -1169,17 +1487,21 @@ public final class GraphProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getNodeAttrsFieldBuilder();
+          getEdgeAttrsFieldBuilder();
           getAttributesFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0L;
+        id_ = 0;
 
-        nodes_ = 0L;
+        nodes_ = 0;
 
-        edges_ = 0L;
+        edges_ = 0;
+
+        parentId_ = 0;
 
         directed_ = false;
 
@@ -1187,11 +1509,23 @@ public final class GraphProto {
 
         unweighted_ = false;
 
-        nodeIdRemap_ = emptyLongList();
+        nodeIdRemap_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
+        if (nodeAttrsBuilder_ == null) {
+          nodeAttrs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          nodeAttrsBuilder_.clear();
+        }
+        if (edgeAttrsBuilder_ == null) {
+          edgeAttrs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          edgeAttrsBuilder_.clear();
+        }
         if (attributesBuilder_ == null) {
           attributes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           attributesBuilder_.clear();
         }
@@ -1255,6 +1589,7 @@ public final class GraphProto {
             result.adj_ = cscBuilder_.build();
           }
         }
+        result.parentId_ = parentId_;
         result.directed_ = directed_;
         result.connected_ = connected_;
         result.unweighted_ = unweighted_;
@@ -1263,10 +1598,28 @@ public final class GraphProto {
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.nodeIdRemap_ = nodeIdRemap_;
-        if (attributesBuilder_ == null) {
+        if (nodeAttrsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
-            attributes_ = java.util.Collections.unmodifiableList(attributes_);
+            nodeAttrs_ = java.util.Collections.unmodifiableList(nodeAttrs_);
             bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.nodeAttrs_ = nodeAttrs_;
+        } else {
+          result.nodeAttrs_ = nodeAttrsBuilder_.build();
+        }
+        if (edgeAttrsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            edgeAttrs_ = java.util.Collections.unmodifiableList(edgeAttrs_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.edgeAttrs_ = edgeAttrs_;
+        } else {
+          result.edgeAttrs_ = edgeAttrsBuilder_.build();
+        }
+        if (attributesBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0)) {
+            attributes_ = java.util.Collections.unmodifiableList(attributes_);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.attributes_ = attributes_;
         } else {
@@ -1321,14 +1674,17 @@ public final class GraphProto {
 
       public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphProto.Graph other) {
         if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphProto.Graph.getDefaultInstance()) return this;
-        if (other.getId() != 0L) {
+        if (other.getId() != 0) {
           setId(other.getId());
         }
-        if (other.getNodes() != 0L) {
+        if (other.getNodes() != 0) {
           setNodes(other.getNodes());
         }
-        if (other.getEdges() != 0L) {
+        if (other.getEdges() != 0) {
           setEdges(other.getEdges());
+        }
+        if (other.getParentId() != 0) {
+          setParentId(other.getParentId());
         }
         if (other.getDirected() != false) {
           setDirected(other.getDirected());
@@ -1349,11 +1705,63 @@ public final class GraphProto {
           }
           onChanged();
         }
+        if (nodeAttrsBuilder_ == null) {
+          if (!other.nodeAttrs_.isEmpty()) {
+            if (nodeAttrs_.isEmpty()) {
+              nodeAttrs_ = other.nodeAttrs_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureNodeAttrsIsMutable();
+              nodeAttrs_.addAll(other.nodeAttrs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.nodeAttrs_.isEmpty()) {
+            if (nodeAttrsBuilder_.isEmpty()) {
+              nodeAttrsBuilder_.dispose();
+              nodeAttrsBuilder_ = null;
+              nodeAttrs_ = other.nodeAttrs_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              nodeAttrsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getNodeAttrsFieldBuilder() : null;
+            } else {
+              nodeAttrsBuilder_.addAllMessages(other.nodeAttrs_);
+            }
+          }
+        }
+        if (edgeAttrsBuilder_ == null) {
+          if (!other.edgeAttrs_.isEmpty()) {
+            if (edgeAttrs_.isEmpty()) {
+              edgeAttrs_ = other.edgeAttrs_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureEdgeAttrsIsMutable();
+              edgeAttrs_.addAll(other.edgeAttrs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.edgeAttrs_.isEmpty()) {
+            if (edgeAttrsBuilder_.isEmpty()) {
+              edgeAttrsBuilder_.dispose();
+              edgeAttrsBuilder_ = null;
+              edgeAttrs_ = other.edgeAttrs_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              edgeAttrsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEdgeAttrsFieldBuilder() : null;
+            } else {
+              edgeAttrsBuilder_.addAllMessages(other.edgeAttrs_);
+            }
+          }
+        }
         if (attributesBuilder_ == null) {
           if (!other.attributes_.isEmpty()) {
             if (attributes_.isEmpty()) {
               attributes_ = other.attributes_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureAttributesIsMutable();
               attributes_.addAll(other.attributes_);
@@ -1366,7 +1774,7 @@ public final class GraphProto {
               attributesBuilder_.dispose();
               attributesBuilder_ = null;
               attributes_ = other.attributes_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000008);
               attributesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getAttributesFieldBuilder() : null;
@@ -1441,7 +1849,7 @@ public final class GraphProto {
 
       private int bitField0_;
 
-      private long id_ ;
+      private int id_ ;
       /**
        * <pre>
        * Graph ID.
@@ -1449,11 +1857,11 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 id = 1;</code>
+       * <code>uint32 id = 1;</code>
        * @return The id.
        */
       @java.lang.Override
-      public long getId() {
+      public int getId() {
         return id_;
       }
       /**
@@ -1463,11 +1871,11 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 id = 1;</code>
+       * <code>uint32 id = 1;</code>
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(long value) {
+      public Builder setId(int value) {
         
         id_ = value;
         onChanged();
@@ -1480,28 +1888,28 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 id = 1;</code>
+       * <code>uint32 id = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearId() {
         
-        id_ = 0L;
+        id_ = 0;
         onChanged();
         return this;
       }
 
-      private long nodes_ ;
+      private int nodes_ ;
       /**
        * <pre>
        * Number of nodes in graph.
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 nodes = 2;</code>
+       * <code>int32 nodes = 2;</code>
        * @return The nodes.
        */
       @java.lang.Override
-      public long getNodes() {
+      public int getNodes() {
         return nodes_;
       }
       /**
@@ -1510,11 +1918,11 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 nodes = 2;</code>
+       * <code>int32 nodes = 2;</code>
        * @param value The nodes to set.
        * @return This builder for chaining.
        */
-      public Builder setNodes(long value) {
+      public Builder setNodes(int value) {
         
         nodes_ = value;
         onChanged();
@@ -1526,28 +1934,28 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 nodes = 2;</code>
+       * <code>int32 nodes = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearNodes() {
         
-        nodes_ = 0L;
+        nodes_ = 0;
         onChanged();
         return this;
       }
 
-      private long edges_ ;
+      private int edges_ ;
       /**
        * <pre>
        * Number of edges in graph.
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 edges = 3;</code>
+       * <code>int32 edges = 3;</code>
        * @return The edges.
        */
       @java.lang.Override
-      public long getEdges() {
+      public int getEdges() {
         return edges_;
       }
       /**
@@ -1556,11 +1964,11 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 edges = 3;</code>
+       * <code>int32 edges = 3;</code>
        * @param value The edges to set.
        * @return This builder for chaining.
        */
-      public Builder setEdges(long value) {
+      public Builder setEdges(int value) {
         
         edges_ = value;
         onChanged();
@@ -1572,12 +1980,12 @@ public final class GraphProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>int64 edges = 3;</code>
+       * <code>int32 edges = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearEdges() {
         
-        edges_ = 0L;
+        edges_ = 0;
         onChanged();
         return this;
       }
@@ -2146,6 +2554,49 @@ public final class GraphProto {
         return cscBuilder_;
       }
 
+      private int parentId_ ;
+      /**
+       * <pre>
+       * Parent graph ID. 
+       * </pre>
+       *
+       * <code>uint32 parent_id = 14;</code>
+       * @return The parentId.
+       */
+      @java.lang.Override
+      public int getParentId() {
+        return parentId_;
+      }
+      /**
+       * <pre>
+       * Parent graph ID. 
+       * </pre>
+       *
+       * <code>uint32 parent_id = 14;</code>
+       * @param value The parentId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setParentId(int value) {
+        
+        parentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Parent graph ID. 
+       * </pre>
+       *
+       * <code>uint32 parent_id = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearParentId() {
+        
+        parentId_ = 0;
+        onChanged();
+        return this;
+      }
+
       private boolean directed_ ;
       /**
        * <pre>
@@ -2284,7 +2735,7 @@ public final class GraphProto {
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList nodeIdRemap_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList nodeIdRemap_ = emptyIntList();
       private void ensureNodeIdRemapIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           nodeIdRemap_ = mutableCopy(nodeIdRemap_);
@@ -2298,10 +2749,10 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @return A list containing the nodeIdRemap.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getNodeIdRemapList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(nodeIdRemap_) : nodeIdRemap_;
@@ -2313,7 +2764,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @return The count of nodeIdRemap.
        */
       public int getNodeIdRemapCount() {
@@ -2326,12 +2777,12 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @param index The index of the element to return.
        * @return The nodeIdRemap at the given index.
        */
-      public long getNodeIdRemap(int index) {
-        return nodeIdRemap_.getLong(index);
+      public int getNodeIdRemap(int index) {
+        return nodeIdRemap_.getInt(index);
       }
       /**
        * <pre>
@@ -2340,15 +2791,15 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @param index The index to set the value at.
        * @param value The nodeIdRemap to set.
        * @return This builder for chaining.
        */
       public Builder setNodeIdRemap(
-          int index, long value) {
+          int index, int value) {
         ensureNodeIdRemapIsMutable();
-        nodeIdRemap_.setLong(index, value);
+        nodeIdRemap_.setInt(index, value);
         onChanged();
         return this;
       }
@@ -2359,13 +2810,13 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @param value The nodeIdRemap to add.
        * @return This builder for chaining.
        */
-      public Builder addNodeIdRemap(long value) {
+      public Builder addNodeIdRemap(int value) {
         ensureNodeIdRemapIsMutable();
-        nodeIdRemap_.addLong(value);
+        nodeIdRemap_.addInt(value);
         onChanged();
         return this;
       }
@@ -2376,12 +2827,12 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @param values The nodeIdRemap to add.
        * @return This builder for chaining.
        */
       public Builder addAllNodeIdRemap(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureNodeIdRemapIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, nodeIdRemap_);
@@ -2395,22 +2846,682 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 node_id_remap = 19;</code>
+       * <code>repeated uint32 node_id_remap = 19;</code>
        * @return This builder for chaining.
        */
       public Builder clearNodeIdRemap() {
-        nodeIdRemap_ = emptyLongList();
+        nodeIdRemap_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
+      private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> nodeAttrs_ =
+        java.util.Collections.emptyList();
+      private void ensureNodeAttrsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          nodeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>(nodeAttrs_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> nodeAttrsBuilder_;
+
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrsList() {
+        if (nodeAttrsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(nodeAttrs_);
+        } else {
+          return nodeAttrsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public int getNodeAttrsCount() {
+        if (nodeAttrsBuilder_ == null) {
+          return nodeAttrs_.size();
+        } else {
+          return nodeAttrsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrs(int index) {
+        if (nodeAttrsBuilder_ == null) {
+          return nodeAttrs_.get(index);
+        } else {
+          return nodeAttrsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder setNodeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (nodeAttrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.set(index, value);
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder setNodeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
+        if (nodeAttrsBuilder_ == null) {
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder addNodeAttrs(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (nodeAttrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.add(value);
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder addNodeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (nodeAttrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.add(index, value);
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder addNodeAttrs(
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
+        if (nodeAttrsBuilder_ == null) {
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder addNodeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
+        if (nodeAttrsBuilder_ == null) {
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder addAllNodeAttrs(
+          java.lang.Iterable<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> values) {
+        if (nodeAttrsBuilder_ == null) {
+          ensureNodeAttrsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, nodeAttrs_);
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder clearNodeAttrs() {
+        if (nodeAttrsBuilder_ == null) {
+          nodeAttrs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public Builder removeNodeAttrs(int index) {
+        if (nodeAttrsBuilder_ == null) {
+          ensureNodeAttrsIsMutable();
+          nodeAttrs_.remove(index);
+          onChanged();
+        } else {
+          nodeAttrsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder getNodeAttrsBuilder(
+          int index) {
+        return getNodeAttrsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getNodeAttrsOrBuilder(
+          int index) {
+        if (nodeAttrsBuilder_ == null) {
+          return nodeAttrs_.get(index);  } else {
+          return nodeAttrsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+           getNodeAttrsOrBuilderList() {
+        if (nodeAttrsBuilder_ != null) {
+          return nodeAttrsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(nodeAttrs_);
+        }
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addNodeAttrsBuilder() {
+        return getNodeAttrsFieldBuilder().addBuilder(
+            com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addNodeAttrsBuilder(
+          int index) {
+        return getNodeAttrsFieldBuilder().addBuilder(
+            index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 32;</code>
+       */
+      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder> 
+           getNodeAttrsBuilderList() {
+        return getNodeAttrsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+          getNodeAttrsFieldBuilder() {
+        if (nodeAttrsBuilder_ == null) {
+          nodeAttrsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder>(
+                  nodeAttrs_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          nodeAttrs_ = null;
+        }
+        return nodeAttrsBuilder_;
+      }
+
+      private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> edgeAttrs_ =
+        java.util.Collections.emptyList();
+      private void ensureEdgeAttrsIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          edgeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>(edgeAttrs_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> edgeAttrsBuilder_;
+
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrsList() {
+        if (edgeAttrsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(edgeAttrs_);
+        } else {
+          return edgeAttrsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public int getEdgeAttrsCount() {
+        if (edgeAttrsBuilder_ == null) {
+          return edgeAttrs_.size();
+        } else {
+          return edgeAttrsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrs(int index) {
+        if (edgeAttrsBuilder_ == null) {
+          return edgeAttrs_.get(index);
+        } else {
+          return edgeAttrsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder setEdgeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (edgeAttrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.set(index, value);
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder setEdgeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
+        if (edgeAttrsBuilder_ == null) {
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder addEdgeAttrs(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (edgeAttrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.add(value);
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder addEdgeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (edgeAttrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.add(index, value);
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder addEdgeAttrs(
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
+        if (edgeAttrsBuilder_ == null) {
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder addEdgeAttrs(
+          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
+        if (edgeAttrsBuilder_ == null) {
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder addAllEdgeAttrs(
+          java.lang.Iterable<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> values) {
+        if (edgeAttrsBuilder_ == null) {
+          ensureEdgeAttrsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, edgeAttrs_);
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder clearEdgeAttrs() {
+        if (edgeAttrsBuilder_ == null) {
+          edgeAttrs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public Builder removeEdgeAttrs(int index) {
+        if (edgeAttrsBuilder_ == null) {
+          ensureEdgeAttrsIsMutable();
+          edgeAttrs_.remove(index);
+          onChanged();
+        } else {
+          edgeAttrsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder getEdgeAttrsBuilder(
+          int index) {
+        return getEdgeAttrsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getEdgeAttrsOrBuilder(
+          int index) {
+        if (edgeAttrsBuilder_ == null) {
+          return edgeAttrs_.get(index);  } else {
+          return edgeAttrsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+           getEdgeAttrsOrBuilderList() {
+        if (edgeAttrsBuilder_ != null) {
+          return edgeAttrsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(edgeAttrs_);
+        }
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addEdgeAttrsBuilder() {
+        return getEdgeAttrsFieldBuilder().addBuilder(
+            com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addEdgeAttrsBuilder(
+          int index) {
+        return getEdgeAttrsFieldBuilder().addBuilder(
+            index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 33;</code>
+       */
+      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder> 
+           getEdgeAttrsBuilderList() {
+        return getEdgeAttrsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
+          getEdgeAttrsFieldBuilder() {
+        if (edgeAttrsBuilder_ == null) {
+          edgeAttrsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder>(
+                  edgeAttrs_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          edgeAttrs_ = null;
+        }
+        return edgeAttrsBuilder_;
+      }
+
       private java.util.List<com.google.protobuf.Any> attributes_ =
         java.util.Collections.emptyList();
       private void ensureAttributesIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
+        if (!((bitField0_ & 0x00000008) != 0)) {
           attributes_ = new java.util.ArrayList<com.google.protobuf.Any>(attributes_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -2423,7 +3534,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public java.util.List<com.google.protobuf.Any> getAttributesList() {
         if (attributesBuilder_ == null) {
@@ -2438,7 +3549,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public int getAttributesCount() {
         if (attributesBuilder_ == null) {
@@ -2453,7 +3564,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public com.google.protobuf.Any getAttributes(int index) {
         if (attributesBuilder_ == null) {
@@ -2468,7 +3579,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder setAttributes(
           int index, com.google.protobuf.Any value) {
@@ -2490,7 +3601,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder setAttributes(
           int index, com.google.protobuf.Any.Builder builderForValue) {
@@ -2509,7 +3620,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder addAttributes(com.google.protobuf.Any value) {
         if (attributesBuilder_ == null) {
@@ -2530,7 +3641,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder addAttributes(
           int index, com.google.protobuf.Any value) {
@@ -2552,7 +3663,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder addAttributes(
           com.google.protobuf.Any.Builder builderForValue) {
@@ -2571,7 +3682,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder addAttributes(
           int index, com.google.protobuf.Any.Builder builderForValue) {
@@ -2590,7 +3701,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder addAllAttributes(
           java.lang.Iterable<? extends com.google.protobuf.Any> values) {
@@ -2610,12 +3721,12 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder clearAttributes() {
         if (attributesBuilder_ == null) {
           attributes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           attributesBuilder_.clear();
@@ -2628,7 +3739,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public Builder removeAttributes(int index) {
         if (attributesBuilder_ == null) {
@@ -2646,7 +3757,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public com.google.protobuf.Any.Builder getAttributesBuilder(
           int index) {
@@ -2658,7 +3769,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public com.google.protobuf.AnyOrBuilder getAttributesOrBuilder(
           int index) {
@@ -2673,7 +3784,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
            getAttributesOrBuilderList() {
@@ -2689,7 +3800,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public com.google.protobuf.Any.Builder addAttributesBuilder() {
         return getAttributesFieldBuilder().addBuilder(
@@ -2701,7 +3812,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public com.google.protobuf.Any.Builder addAttributesBuilder(
           int index) {
@@ -2714,7 +3825,7 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .google.protobuf.Any attributes = 32;</code>
+       * <code>repeated .google.protobuf.Any attributes = 35;</code>
        */
       public java.util.List<com.google.protobuf.Any.Builder> 
            getAttributesBuilderList() {
@@ -2727,7 +3838,7 @@ public final class GraphProto {
           attributesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
                   attributes_,
-                  ((bitField0_ & 0x00000002) != 0),
+                  ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
                   isClean());
           attributes_ = null;
@@ -2805,27 +3916,34 @@ public final class GraphProto {
       "i/proto/graph.proto\022-com.hitnslab.dnssec" +
       "urity.deeparcher.api.proto\032:com/hitnslab" +
       "/dnssecurity/deeparcher/api/proto/matrix" +
-      ".proto\032\031google/protobuf/any.proto\"\342\003\n\005Gr" +
-      "aph\022\n\n\002id\030\001 \001(\003\022\r\n\005nodes\030\002 \001(\003\022\r\n\005edges\030" +
-      "\003 \001(\003\022M\n\005dense\030\n \001(\0132<.com.hitnslab.dnss" +
-      "ecurity.deeparcher.api.proto.DenseMatFlo" +
-      "atH\000\022I\n\003coo\030\013 \001(\0132:.com.hitnslab.dnssecu" +
-      "rity.deeparcher.api.proto.CooMatFloatH\000\022" +
-      "I\n\003csr\030\014 \001(\0132:.com.hitnslab.dnssecurity." +
-      "deeparcher.api.proto.CsrMatFloatH\000\022I\n\003cs" +
-      "c\030\r \001(\0132:.com.hitnslab.dnssecurity.deepa" +
-      "rcher.api.proto.CscMatFloatH\000\022\020\n\010directe" +
-      "d\030\020 \001(\010\022\021\n\tconnected\030\021 \001(\010\022\022\n\nunweighted" +
-      "\030\022 \001(\010\022\025\n\rnode_id_remap\030\023 \003(\004\022(\n\nattribu" +
-      "tes\030  \003(\0132\024.google.protobuf.AnyB\005\n\003adjBO" +
-      "\n<com.hitnslab.dnssecurity.deeparcher.ap" +
-      "i.proto.generated.javaB\nGraphProtoH\001\370\001\001b" +
-      "\006proto3"
+      ".proto\032Dcom/hitnslab/dnssecurity/deeparc" +
+      "her/api/proto/graph_attributes.proto\032\031go" +
+      "ogle/protobuf/any.proto\"\247\005\n\005Graph\022\n\n\002id\030" +
+      "\001 \001(\r\022\r\n\005nodes\030\002 \001(\005\022\r\n\005edges\030\003 \001(\005\022M\n\005d" +
+      "ense\030\n \001(\0132<.com.hitnslab.dnssecurity.de" +
+      "eparcher.api.proto.DenseMatFloatH\000\022I\n\003co" +
+      "o\030\013 \001(\0132:.com.hitnslab.dnssecurity.deepa" +
+      "rcher.api.proto.CooMatFloatH\000\022I\n\003csr\030\014 \001" +
+      "(\0132:.com.hitnslab.dnssecurity.deeparcher" +
+      ".api.proto.CsrMatFloatH\000\022I\n\003csc\030\r \001(\0132:." +
+      "com.hitnslab.dnssecurity.deeparcher.api." +
+      "proto.CscMatFloatH\000\022\021\n\tparent_id\030\016 \001(\r\022\020" +
+      "\n\010directed\030\020 \001(\010\022\021\n\tconnected\030\021 \001(\010\022\022\n\nu" +
+      "nweighted\030\022 \001(\010\022\025\n\rnode_id_remap\030\023 \003(\r\022W" +
+      "\n\nnode_attrs\030  \003(\0132C.com.hitnslab.dnssec" +
+      "urity.deeparcher.api.proto.GraphElements" +
+      "AttrMap\022W\n\nedge_attrs\030! \003(\0132C.com.hitnsl" +
+      "ab.dnssecurity.deeparcher.api.proto.Grap" +
+      "hElementsAttrMap\022(\n\nattributes\030# \003(\0132\024.g" +
+      "oogle.protobuf.AnyB\005\n\003adjBO\n<com.hitnsla" +
+      "b.dnssecurity.deeparcher.api.proto.gener" +
+      "ated.javaB\nGraphProtoH\001\370\001\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.getDescriptor(),
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.getDescriptor(),
           com.google.protobuf.AnyProto.getDescriptor(),
         });
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_descriptor =
@@ -2833,8 +3951,9 @@ public final class GraphProto {
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_descriptor,
-        new java.lang.String[] { "Id", "Nodes", "Edges", "Dense", "Coo", "Csr", "Csc", "Directed", "Connected", "Unweighted", "NodeIdRemap", "Attributes", "Adj", });
+        new java.lang.String[] { "Id", "Nodes", "Edges", "Dense", "Coo", "Csr", "Csc", "ParentId", "Directed", "Connected", "Unweighted", "NodeIdRemap", "NodeAttrs", "EdgeAttrs", "Attributes", "Adj", });
     com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.MatrixProto.getDescriptor();
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
   }
 

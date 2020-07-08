@@ -104,7 +104,7 @@ const char descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2
   "i/proto/graph_event.proto\022-com.hitnslab."
   "dnssecurity.deeparcher.api.proto\032\031google"
   "/protobuf/any.proto\"\336\002\n\nGraphEvent\022\r\n\005no"
-  "de1\030\001 \001(\004\022\r\n\005node2\030\002 \001(\004\022P\n\006action\030\003 \001(\016"
+  "de1\030\001 \001(\r\022\r\n\005node2\030\002 \001(\r\022P\n\006action\030\003 \001(\016"
   "2@.com.hitnslab.dnssecurity.deeparcher.a"
   "pi.proto.GraphEvent.Action\022]\n\nattributes"
   "\030\004 \003(\0132I.com.hitnslab.dnssecurity.deepar"
@@ -263,17 +263,17 @@ const char* GraphEvent::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint64 node1 = 1;
+      // uint32 node1 = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          node1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          node1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint64 node2 = 2;
+      // uint32 node2 = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          node2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          node2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -325,16 +325,16 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 node1 = 1;
+  // uint32 node1 = 1;
   if (this->node1() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_node1(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_node1(), target);
   }
 
-  // uint64 node2 = 2;
+  // uint32 node2 = 2;
   if (this->node2() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_node2(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_node2(), target);
   }
 
   // .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action action = 3;
@@ -410,17 +410,17 @@ size_t GraphEvent::ByteSizeLong() const {
     total_size += GraphEvent_AttributesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
-  // uint64 node1 = 1;
+  // uint32 node1 = 1;
   if (this->node1() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_node1());
   }
 
-  // uint64 node2 = 2;
+  // uint32 node2 = 2;
   if (this->node2() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_node2());
   }
 

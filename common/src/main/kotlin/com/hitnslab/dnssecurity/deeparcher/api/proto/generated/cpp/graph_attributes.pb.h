@@ -34,7 +34,6 @@
 #include <google/protobuf/map.h>  // IWYU pragma: export
 #include <google/protobuf/map_entry.h>
 #include <google/protobuf/map_field_inl.h>
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -91,32 +90,6 @@ namespace deeparcher {
 namespace api {
 namespace proto {
 
-enum GraphElementsAttrMap_GraphElementsAttrTarget : int {
-  GraphElementsAttrMap_GraphElementsAttrTarget_UNKNOWN = 0,
-  GraphElementsAttrMap_GraphElementsAttrTarget_EDGE = 1,
-  GraphElementsAttrMap_GraphElementsAttrTarget_NODE = 2,
-  GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrMap_GraphElementsAttrTarget_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrMap_GraphElementsAttrTarget_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
-};
-bool GraphElementsAttrMap_GraphElementsAttrTarget_IsValid(int value);
-constexpr GraphElementsAttrMap_GraphElementsAttrTarget GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_MIN = GraphElementsAttrMap_GraphElementsAttrTarget_UNKNOWN;
-constexpr GraphElementsAttrMap_GraphElementsAttrTarget GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_MAX = GraphElementsAttrMap_GraphElementsAttrTarget_NODE;
-constexpr int GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_ARRAYSIZE = GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* GraphElementsAttrMap_GraphElementsAttrTarget_descriptor();
-template<typename T>
-inline const std::string& GraphElementsAttrMap_GraphElementsAttrTarget_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, GraphElementsAttrMap_GraphElementsAttrTarget>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function GraphElementsAttrMap_GraphElementsAttrTarget_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    GraphElementsAttrMap_GraphElementsAttrTarget_descriptor(), enum_t_value);
-}
-inline bool GraphElementsAttrMap_GraphElementsAttrTarget_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, GraphElementsAttrMap_GraphElementsAttrTarget* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<GraphElementsAttrMap_GraphElementsAttrTarget>(
-    GraphElementsAttrMap_GraphElementsAttrTarget_descriptor(), name, value);
-}
 // ===================================================================
 
 class ComponentAttr PROTOBUF_FINAL :
@@ -233,47 +206,37 @@ class ComponentAttr PROTOBUF_FINAL :
 
   enum : int {
     kComponentsFieldNumber = 3,
-    kParentIdFieldNumber = 1,
     kComponentIdFieldNumber = 2,
   };
-  // repeated uint64 components = 3;
+  // repeated uint32 components = 3;
   int components_size() const;
   private:
   int _internal_components_size() const;
   public:
   void clear_components();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_components(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_components(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_components() const;
-  void _internal_add_components(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_components(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_components();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 components(int index) const;
-  void set_components(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_components(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 components(int index) const;
+  void set_components(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_components(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       components() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_components();
 
-  // uint64 parent_id = 1;
-  void clear_parent_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 parent_id() const;
-  void set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_parent_id() const;
-  void _internal_set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
-  // uint64 component_id = 2;
+  // uint32 component_id = 2;
   void clear_component_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 component_id() const;
-  void set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 component_id() const;
+  void set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_component_id() const;
-  void _internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_component_id() const;
+  void _internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr)
@@ -283,24 +246,23 @@ class ComponentAttr PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > components_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > components_;
   mutable std::atomic<int> _components_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 parent_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 component_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 component_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto;
 };
 // -------------------------------------------------------------------
 
 class GraphElementsAttrMap_DataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<GraphElementsAttrMap_DataEntry_DoNotUse, 
-    ::PROTOBUF_NAMESPACE_ID::uint64, std::string,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT64,
+    ::PROTOBUF_NAMESPACE_ID::uint32, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
     0 > {
 public:
   typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<GraphElementsAttrMap_DataEntry_DoNotUse, 
-    ::PROTOBUF_NAMESPACE_ID::uint64, std::string,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT64,
+    ::PROTOBUF_NAMESPACE_ID::uint32, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
     0 > SuperType;
   GraphElementsAttrMap_DataEntry_DoNotUse();
@@ -433,61 +395,28 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
   // nested types ----------------------------------------------------
 
 
-  typedef GraphElementsAttrMap_GraphElementsAttrTarget GraphElementsAttrTarget;
-  static constexpr GraphElementsAttrTarget UNKNOWN =
-    GraphElementsAttrMap_GraphElementsAttrTarget_UNKNOWN;
-  static constexpr GraphElementsAttrTarget EDGE =
-    GraphElementsAttrMap_GraphElementsAttrTarget_EDGE;
-  static constexpr GraphElementsAttrTarget NODE =
-    GraphElementsAttrMap_GraphElementsAttrTarget_NODE;
-  static inline bool GraphElementsAttrTarget_IsValid(int value) {
-    return GraphElementsAttrMap_GraphElementsAttrTarget_IsValid(value);
-  }
-  static constexpr GraphElementsAttrTarget GraphElementsAttrTarget_MIN =
-    GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_MIN;
-  static constexpr GraphElementsAttrTarget GraphElementsAttrTarget_MAX =
-    GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_MAX;
-  static constexpr int GraphElementsAttrTarget_ARRAYSIZE =
-    GraphElementsAttrMap_GraphElementsAttrTarget_GraphElementsAttrTarget_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  GraphElementsAttrTarget_descriptor() {
-    return GraphElementsAttrMap_GraphElementsAttrTarget_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& GraphElementsAttrTarget_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, GraphElementsAttrTarget>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function GraphElementsAttrTarget_Name.");
-    return GraphElementsAttrMap_GraphElementsAttrTarget_Name(enum_t_value);
-  }
-  static inline bool GraphElementsAttrTarget_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      GraphElementsAttrTarget* value) {
-    return GraphElementsAttrMap_GraphElementsAttrTarget_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
     kDataFieldNumber = 3,
     kNameFieldNumber = 1,
     kTypeUrlFieldNumber = 4,
-    kTargetFieldNumber = 2,
   };
-  // map<uint64, bytes> data = 3;
+  // map<uint32, bytes> data = 3;
   int data_size() const;
   private:
   int _internal_data_size() const;
   public:
   void clear_data();
   private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >&
       _internal_data() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >*
+  ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >*
       _internal_mutable_data();
   public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >&
       data() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >*
+  ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >*
       mutable_data();
 
   // string name = 1;
@@ -522,15 +451,6 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
   std::string* _internal_mutable_type_url();
   public:
 
-  // .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;
-  void clear_target();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget target() const;
-  void set_target(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget value);
-  private:
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget _internal_target() const;
-  void _internal_set_target(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget value);
-  public:
-
   // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap)
  private:
   class _Internal;
@@ -540,13 +460,12 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::MapField<
       GraphElementsAttrMap_DataEntry_DoNotUse,
-      ::PROTOBUF_NAMESPACE_ID::uint64, std::string,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT64,
+      ::PROTOBUF_NAMESPACE_ID::uint32, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
       0 > data_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_url_;
-  int target_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto;
 };
@@ -561,47 +480,27 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
 #endif  // __GNUC__
 // ComponentAttr
 
-// uint64 parent_id = 1;
-inline void ComponentAttr::clear_parent_id() {
-  parent_id_ = PROTOBUF_ULONGLONG(0);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::_internal_parent_id() const {
-  return parent_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::parent_id() const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.parent_id)
-  return _internal_parent_id();
-}
-inline void ComponentAttr::_internal_set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  parent_id_ = value;
-}
-inline void ComponentAttr::set_parent_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_set_parent_id(value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.parent_id)
-}
-
-// uint64 component_id = 2;
+// uint32 component_id = 2;
 inline void ComponentAttr::clear_component_id() {
-  component_id_ = PROTOBUF_ULONGLONG(0);
+  component_id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::_internal_component_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::_internal_component_id() const {
   return component_id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::component_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::component_id() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id)
   return _internal_component_id();
 }
-inline void ComponentAttr::_internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void ComponentAttr::_internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   component_id_ = value;
 }
-inline void ComponentAttr::set_component_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void ComponentAttr::set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_component_id(value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id)
 }
 
-// repeated uint64 components = 3;
+// repeated uint32 components = 3;
 inline int ComponentAttr::_internal_components_size() const {
   return components_.size();
 }
@@ -611,38 +510,38 @@ inline int ComponentAttr::components_size() const {
 inline void ComponentAttr::clear_components() {
   components_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::_internal_components(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::_internal_components(int index) const {
   return components_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ComponentAttr::components(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::components(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
   return _internal_components(index);
 }
-inline void ComponentAttr::set_components(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void ComponentAttr::set_components(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   components_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
 }
-inline void ComponentAttr::_internal_add_components(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void ComponentAttr::_internal_add_components(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   components_.Add(value);
 }
-inline void ComponentAttr::add_components(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void ComponentAttr::add_components(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_components(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 ComponentAttr::_internal_components() const {
   return components_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 ComponentAttr::components() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
   return _internal_components();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 ComponentAttr::_internal_mutable_components() {
   return &components_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 ComponentAttr::mutable_components() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components)
   return _internal_mutable_components();
@@ -716,27 +615,7 @@ inline void GraphElementsAttrMap::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
 }
 
-// .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;
-inline void GraphElementsAttrMap::clear_target() {
-  target_ = 0;
-}
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget GraphElementsAttrMap::_internal_target() const {
-  return static_cast< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget >(target_);
-}
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget GraphElementsAttrMap::target() const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.target)
-  return _internal_target();
-}
-inline void GraphElementsAttrMap::_internal_set_target(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget value) {
-  
-  target_ = value;
-}
-inline void GraphElementsAttrMap::set_target(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget value) {
-  _internal_set_target(value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.target)
-}
-
-// map<uint64, bytes> data = 3;
+// map<uint32, bytes> data = 3;
 inline int GraphElementsAttrMap::_internal_data_size() const {
   return data_.size();
 }
@@ -746,20 +625,20 @@ inline int GraphElementsAttrMap::data_size() const {
 inline void GraphElementsAttrMap::clear_data() {
   data_.Clear();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >&
+inline const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >&
 GraphElementsAttrMap::_internal_data() const {
   return data_.GetMap();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >&
+inline const ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >&
 GraphElementsAttrMap::data() const {
   // @@protoc_insertion_point(field_map:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.data)
   return _internal_data();
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >*
+inline ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >*
 GraphElementsAttrMap::_internal_mutable_data() {
   return data_.MutableMap();
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint64, std::string >*
+inline ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >*
 GraphElementsAttrMap::mutable_data() {
   // @@protoc_insertion_point(field_mutable_map:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.data)
   return _internal_mutable_data();
@@ -843,16 +722,6 @@ inline void GraphElementsAttrMap::set_allocated_type_url(std::string* type_url) 
 }  // namespace dnssecurity
 }  // namespace hitnslab
 }  // namespace com
-
-PROTOBUF_NAMESPACE_OPEN
-
-template <> struct is_proto_enum< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget>() {
-  return ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap_GraphElementsAttrTarget_descriptor();
-}
-
-PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

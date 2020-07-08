@@ -24,10 +24,10 @@ public final class GraphEventProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>uint64 node1 = 1;</code>
+     * <code>uint32 node1 = 1;</code>
      * @return The node1.
      */
-    long getNode1();
+    int getNode1();
 
     /**
      * <pre>
@@ -35,10 +35,10 @@ public final class GraphEventProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>uint64 node2 = 2;</code>
+     * <code>uint32 node2 = 2;</code>
      * @return The node2.
      */
-    long getNode2();
+    int getNode2();
 
     /**
      * <pre>
@@ -173,12 +173,12 @@ public final class GraphEventProto {
               break;
             case 8: {
 
-              node1_ = input.readUInt64();
+              node1_ = input.readUInt32();
               break;
             }
             case 16: {
 
-              node2_ = input.readUInt64();
+              node2_ = input.readUInt32();
               break;
             }
             case 24: {
@@ -409,34 +409,34 @@ public final class GraphEventProto {
     }
 
     public static final int NODE1_FIELD_NUMBER = 1;
-    private long node1_;
+    private int node1_;
     /**
      * <pre>
      * First node of this edge.
      * NOT NULL. 
      * </pre>
      *
-     * <code>uint64 node1 = 1;</code>
+     * <code>uint32 node1 = 1;</code>
      * @return The node1.
      */
     @java.lang.Override
-    public long getNode1() {
+    public int getNode1() {
       return node1_;
     }
 
     public static final int NODE2_FIELD_NUMBER = 2;
-    private long node2_;
+    private int node2_;
     /**
      * <pre>
      * Second node of this edge.
      * NOT NULL. 
      * </pre>
      *
-     * <code>uint64 node2 = 2;</code>
+     * <code>uint32 node2 = 2;</code>
      * @return The node2.
      */
     @java.lang.Override
-    public long getNode2() {
+    public int getNode2() {
       return node2_;
     }
 
@@ -584,11 +584,11 @@ public final class GraphEventProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (node1_ != 0L) {
-        output.writeUInt64(1, node1_);
+      if (node1_ != 0) {
+        output.writeUInt32(1, node1_);
       }
-      if (node2_ != 0L) {
-        output.writeUInt64(2, node2_);
+      if (node2_ != 0) {
+        output.writeUInt32(2, node2_);
       }
       if (action_ != com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action.UPSERT.getNumber()) {
         output.writeEnum(3, action_);
@@ -608,13 +608,13 @@ public final class GraphEventProto {
       if (size != -1) return size;
 
       size = 0;
-      if (node1_ != 0L) {
+      if (node1_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, node1_);
+          .computeUInt32Size(1, node1_);
       }
-      if (node2_ != 0L) {
+      if (node2_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, node2_);
+          .computeUInt32Size(2, node2_);
       }
       if (action_ != com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.Action.UPSERT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -664,11 +664,9 @@ public final class GraphEventProto {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NODE1_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNode1());
+      hash = (53 * hash) + getNode1();
       hash = (37 * hash) + NODE2_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNode2());
+      hash = (53 * hash) + getNode2();
       hash = (37 * hash) + ACTION_FIELD_NUMBER;
       hash = (53 * hash) + action_;
       if (!internalGetAttributes().getMap().isEmpty()) {
@@ -834,9 +832,9 @@ public final class GraphEventProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        node1_ = 0L;
+        node1_ = 0;
 
-        node2_ = 0L;
+        node2_ = 0;
 
         action_ = 0;
 
@@ -921,10 +919,10 @@ public final class GraphEventProto {
 
       public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent other) {
         if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent.getDefaultInstance()) return this;
-        if (other.getNode1() != 0L) {
+        if (other.getNode1() != 0) {
           setNode1(other.getNode1());
         }
-        if (other.getNode2() != 0L) {
+        if (other.getNode2() != 0) {
           setNode2(other.getNode2());
         }
         if (other.action_ != 0) {
@@ -962,18 +960,18 @@ public final class GraphEventProto {
       }
       private int bitField0_;
 
-      private long node1_ ;
+      private int node1_ ;
       /**
        * <pre>
        * First node of this edge.
        * NOT NULL. 
        * </pre>
        *
-       * <code>uint64 node1 = 1;</code>
+       * <code>uint32 node1 = 1;</code>
        * @return The node1.
        */
       @java.lang.Override
-      public long getNode1() {
+      public int getNode1() {
         return node1_;
       }
       /**
@@ -982,11 +980,11 @@ public final class GraphEventProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>uint64 node1 = 1;</code>
+       * <code>uint32 node1 = 1;</code>
        * @param value The node1 to set.
        * @return This builder for chaining.
        */
-      public Builder setNode1(long value) {
+      public Builder setNode1(int value) {
         
         node1_ = value;
         onChanged();
@@ -998,28 +996,28 @@ public final class GraphEventProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>uint64 node1 = 1;</code>
+       * <code>uint32 node1 = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearNode1() {
         
-        node1_ = 0L;
+        node1_ = 0;
         onChanged();
         return this;
       }
 
-      private long node2_ ;
+      private int node2_ ;
       /**
        * <pre>
        * Second node of this edge.
        * NOT NULL. 
        * </pre>
        *
-       * <code>uint64 node2 = 2;</code>
+       * <code>uint32 node2 = 2;</code>
        * @return The node2.
        */
       @java.lang.Override
-      public long getNode2() {
+      public int getNode2() {
         return node2_;
       }
       /**
@@ -1028,11 +1026,11 @@ public final class GraphEventProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>uint64 node2 = 2;</code>
+       * <code>uint32 node2 = 2;</code>
        * @param value The node2 to set.
        * @return This builder for chaining.
        */
-      public Builder setNode2(long value) {
+      public Builder setNode2(int value) {
         
         node2_ = value;
         onChanged();
@@ -1044,12 +1042,12 @@ public final class GraphEventProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>uint64 node2 = 2;</code>
+       * <code>uint32 node2 = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearNode2() {
         
-        node2_ = 0L;
+        node2_ = 0;
         onChanged();
         return this;
       }
@@ -1371,7 +1369,7 @@ public final class GraphEventProto {
       "i/proto/graph_event.proto\022-com.hitnslab." +
       "dnssecurity.deeparcher.api.proto\032\031google" +
       "/protobuf/any.proto\"\336\002\n\nGraphEvent\022\r\n\005no" +
-      "de1\030\001 \001(\004\022\r\n\005node2\030\002 \001(\004\022P\n\006action\030\003 \001(\016" +
+      "de1\030\001 \001(\r\022\r\n\005node2\030\002 \001(\r\022P\n\006action\030\003 \001(\016" +
       "2@.com.hitnslab.dnssecurity.deeparcher.a" +
       "pi.proto.GraphEvent.Action\022]\n\nattributes" +
       "\030\004 \003(\0132I.com.hitnslab.dnssecurity.deepar" +

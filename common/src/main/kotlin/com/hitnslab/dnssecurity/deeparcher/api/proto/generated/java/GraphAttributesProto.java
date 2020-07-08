@@ -20,23 +20,13 @@ public final class GraphAttributesProto {
 
     /**
      * <pre>
-     * Parent graph ID. 
-     * </pre>
-     *
-     * <code>uint64 parent_id = 1;</code>
-     * @return The parentId.
-     */
-    long getParentId();
-
-    /**
-     * <pre>
      * Component id. 
      * </pre>
      *
-     * <code>uint64 component_id = 2;</code>
+     * <code>uint32 component_id = 2;</code>
      * @return The componentId.
      */
-    long getComponentId();
+    int getComponentId();
 
     /**
      * <pre>
@@ -44,17 +34,17 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 components = 3;</code>
+     * <code>repeated uint32 components = 3;</code>
      * @return A list containing the components.
      */
-    java.util.List<java.lang.Long> getComponentsList();
+    java.util.List<java.lang.Integer> getComponentsList();
     /**
      * <pre>
      * Node IDs of this component in parent graph.
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 components = 3;</code>
+     * <code>repeated uint32 components = 3;</code>
      * @return The count of components.
      */
     int getComponentsCount();
@@ -64,11 +54,11 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 components = 3;</code>
+     * <code>repeated uint32 components = 3;</code>
      * @param index The index of the element to return.
      * @return The components at the given index.
      */
-    long getComponents(int index);
+    int getComponents(int index);
   }
   /**
    * Protobuf type {@code com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr}
@@ -83,7 +73,7 @@ public final class GraphAttributesProto {
       super(builder);
     }
     private ComponentAttr() {
-      components_ = emptyLongList();
+      components_ = emptyIntList();
     }
 
     @java.lang.Override
@@ -117,33 +107,28 @@ public final class GraphAttributesProto {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              parentId_ = input.readUInt64();
-              break;
-            }
             case 16: {
 
-              componentId_ = input.readUInt64();
+              componentId_ = input.readUInt32();
               break;
             }
             case 24: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                components_ = newLongList();
+                components_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              components_.addLong(input.readUInt64());
+              components_.addInt(input.readUInt32());
               break;
             }
             case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                components_ = newLongList();
+                components_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                components_.addLong(input.readUInt64());
+                components_.addInt(input.readUInt32());
               }
               input.popLimit(limit);
               break;
@@ -183,49 +168,34 @@ public final class GraphAttributesProto {
               com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr.Builder.class);
     }
 
-    public static final int PARENT_ID_FIELD_NUMBER = 1;
-    private long parentId_;
-    /**
-     * <pre>
-     * Parent graph ID. 
-     * </pre>
-     *
-     * <code>uint64 parent_id = 1;</code>
-     * @return The parentId.
-     */
-    @java.lang.Override
-    public long getParentId() {
-      return parentId_;
-    }
-
     public static final int COMPONENT_ID_FIELD_NUMBER = 2;
-    private long componentId_;
+    private int componentId_;
     /**
      * <pre>
      * Component id. 
      * </pre>
      *
-     * <code>uint64 component_id = 2;</code>
+     * <code>uint32 component_id = 2;</code>
      * @return The componentId.
      */
     @java.lang.Override
-    public long getComponentId() {
+    public int getComponentId() {
       return componentId_;
     }
 
     public static final int COMPONENTS_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.LongList components_;
+    private com.google.protobuf.Internal.IntList components_;
     /**
      * <pre>
      * Node IDs of this component in parent graph.
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 components = 3;</code>
+     * <code>repeated uint32 components = 3;</code>
      * @return A list containing the components.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getComponentsList() {
       return components_;
     }
@@ -235,7 +205,7 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 components = 3;</code>
+     * <code>repeated uint32 components = 3;</code>
      * @return The count of components.
      */
     public int getComponentsCount() {
@@ -247,12 +217,12 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated uint64 components = 3;</code>
+     * <code>repeated uint32 components = 3;</code>
      * @param index The index of the element to return.
      * @return The components at the given index.
      */
-    public long getComponents(int index) {
-      return components_.getLong(index);
+    public int getComponents(int index) {
+      return components_.getInt(index);
     }
     private int componentsMemoizedSerializedSize = -1;
 
@@ -271,18 +241,15 @@ public final class GraphAttributesProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (parentId_ != 0L) {
-        output.writeUInt64(1, parentId_);
-      }
-      if (componentId_ != 0L) {
-        output.writeUInt64(2, componentId_);
+      if (componentId_ != 0) {
+        output.writeUInt32(2, componentId_);
       }
       if (getComponentsList().size() > 0) {
         output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(componentsMemoizedSerializedSize);
       }
       for (int i = 0; i < components_.size(); i++) {
-        output.writeUInt64NoTag(components_.getLong(i));
+        output.writeUInt32NoTag(components_.getInt(i));
       }
       unknownFields.writeTo(output);
     }
@@ -293,19 +260,15 @@ public final class GraphAttributesProto {
       if (size != -1) return size;
 
       size = 0;
-      if (parentId_ != 0L) {
+      if (componentId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, parentId_);
-      }
-      if (componentId_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, componentId_);
+          .computeUInt32Size(2, componentId_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < components_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(components_.getLong(i));
+            .computeUInt32SizeNoTag(components_.getInt(i));
         }
         size += dataSize;
         if (!getComponentsList().isEmpty()) {
@@ -330,8 +293,6 @@ public final class GraphAttributesProto {
       }
       com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr) obj;
 
-      if (getParentId()
-          != other.getParentId()) return false;
       if (getComponentId()
           != other.getComponentId()) return false;
       if (!getComponentsList()
@@ -347,12 +308,8 @@ public final class GraphAttributesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PARENT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getParentId());
       hash = (37 * hash) + COMPONENT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getComponentId());
+      hash = (53 * hash) + getComponentId();
       if (getComponentsCount() > 0) {
         hash = (37 * hash) + COMPONENTS_FIELD_NUMBER;
         hash = (53 * hash) + getComponentsList().hashCode();
@@ -490,11 +447,9 @@ public final class GraphAttributesProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        parentId_ = 0L;
+        componentId_ = 0;
 
-        componentId_ = 0L;
-
-        components_ = emptyLongList();
+        components_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -523,7 +478,6 @@ public final class GraphAttributesProto {
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr buildPartial() {
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr(this);
         int from_bitField0_ = bitField0_;
-        result.parentId_ = parentId_;
         result.componentId_ = componentId_;
         if (((bitField0_ & 0x00000001) != 0)) {
           components_.makeImmutable();
@@ -578,10 +532,7 @@ public final class GraphAttributesProto {
 
       public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr other) {
         if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr.getDefaultInstance()) return this;
-        if (other.getParentId() != 0L) {
-          setParentId(other.getParentId());
-        }
-        if (other.getComponentId() != 0L) {
+        if (other.getComponentId() != 0) {
           setComponentId(other.getComponentId());
         }
         if (!other.components_.isEmpty()) {
@@ -624,60 +575,17 @@ public final class GraphAttributesProto {
       }
       private int bitField0_;
 
-      private long parentId_ ;
-      /**
-       * <pre>
-       * Parent graph ID. 
-       * </pre>
-       *
-       * <code>uint64 parent_id = 1;</code>
-       * @return The parentId.
-       */
-      @java.lang.Override
-      public long getParentId() {
-        return parentId_;
-      }
-      /**
-       * <pre>
-       * Parent graph ID. 
-       * </pre>
-       *
-       * <code>uint64 parent_id = 1;</code>
-       * @param value The parentId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setParentId(long value) {
-        
-        parentId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Parent graph ID. 
-       * </pre>
-       *
-       * <code>uint64 parent_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearParentId() {
-        
-        parentId_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long componentId_ ;
+      private int componentId_ ;
       /**
        * <pre>
        * Component id. 
        * </pre>
        *
-       * <code>uint64 component_id = 2;</code>
+       * <code>uint32 component_id = 2;</code>
        * @return The componentId.
        */
       @java.lang.Override
-      public long getComponentId() {
+      public int getComponentId() {
         return componentId_;
       }
       /**
@@ -685,11 +593,11 @@ public final class GraphAttributesProto {
        * Component id. 
        * </pre>
        *
-       * <code>uint64 component_id = 2;</code>
+       * <code>uint32 component_id = 2;</code>
        * @param value The componentId to set.
        * @return This builder for chaining.
        */
-      public Builder setComponentId(long value) {
+      public Builder setComponentId(int value) {
         
         componentId_ = value;
         onChanged();
@@ -700,17 +608,17 @@ public final class GraphAttributesProto {
        * Component id. 
        * </pre>
        *
-       * <code>uint64 component_id = 2;</code>
+       * <code>uint32 component_id = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearComponentId() {
         
-        componentId_ = 0L;
+        componentId_ = 0;
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.Internal.LongList components_ = emptyLongList();
+      private com.google.protobuf.Internal.IntList components_ = emptyIntList();
       private void ensureComponentsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           components_ = mutableCopy(components_);
@@ -723,10 +631,10 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @return A list containing the components.
        */
-      public java.util.List<java.lang.Long>
+      public java.util.List<java.lang.Integer>
           getComponentsList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(components_) : components_;
@@ -737,7 +645,7 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @return The count of components.
        */
       public int getComponentsCount() {
@@ -749,12 +657,12 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @param index The index of the element to return.
        * @return The components at the given index.
        */
-      public long getComponents(int index) {
-        return components_.getLong(index);
+      public int getComponents(int index) {
+        return components_.getInt(index);
       }
       /**
        * <pre>
@@ -762,15 +670,15 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @param index The index to set the value at.
        * @param value The components to set.
        * @return This builder for chaining.
        */
       public Builder setComponents(
-          int index, long value) {
+          int index, int value) {
         ensureComponentsIsMutable();
-        components_.setLong(index, value);
+        components_.setInt(index, value);
         onChanged();
         return this;
       }
@@ -780,13 +688,13 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @param value The components to add.
        * @return This builder for chaining.
        */
-      public Builder addComponents(long value) {
+      public Builder addComponents(int value) {
         ensureComponentsIsMutable();
-        components_.addLong(value);
+        components_.addInt(value);
         onChanged();
         return this;
       }
@@ -796,12 +704,12 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @param values The components to add.
        * @return This builder for chaining.
        */
       public Builder addAllComponents(
-          java.lang.Iterable<? extends java.lang.Long> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureComponentsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, components_);
@@ -814,11 +722,11 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated uint64 components = 3;</code>
+       * <code>repeated uint32 components = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearComponents() {
-        components_ = emptyLongList();
+        components_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
@@ -903,23 +811,12 @@ public final class GraphAttributesProto {
         getNameBytes();
 
     /**
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-     * @return The enum numeric value on the wire for target.
-     */
-    int getTargetValue();
-    /**
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-     * @return The target.
-     */
-    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget getTarget();
-
-    /**
      * <pre>
      * Node ID to serialized attribute value mapping.
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
     int getDataCount();
     /**
@@ -928,15 +825,15 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
     boolean containsData(
-        long key);
+        int key);
     /**
      * Use {@link #getDataMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+    java.util.Map<java.lang.Integer, com.google.protobuf.ByteString>
     getData();
     /**
      * <pre>
@@ -944,9 +841,9 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
-    java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+    java.util.Map<java.lang.Integer, com.google.protobuf.ByteString>
     getDataMap();
     /**
      * <pre>
@@ -954,11 +851,11 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
 
     com.google.protobuf.ByteString getDataOrDefault(
-        long key,
+        int key,
         com.google.protobuf.ByteString defaultValue);
     /**
      * <pre>
@@ -966,11 +863,11 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
 
     com.google.protobuf.ByteString getDataOrThrow(
-        long key);
+        int key);
 
     /**
      * <pre>
@@ -1029,7 +926,6 @@ public final class GraphAttributesProto {
     }
     private GraphElementsAttrMap() {
       name_ = "";
-      target_ = 0;
       typeUrl_ = "";
     }
 
@@ -1070,19 +966,13 @@ public final class GraphAttributesProto {
               name_ = s;
               break;
             }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              target_ = rawValue;
-              break;
-            }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 data_ = com.google.protobuf.MapField.newMapField(
                     DataDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, com.google.protobuf.ByteString>
+              com.google.protobuf.MapEntry<java.lang.Integer, com.google.protobuf.ByteString>
               data__ = input.readMessage(
                   DataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               data_.getMutableMap().put(
@@ -1139,123 +1029,6 @@ public final class GraphAttributesProto {
               com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder.class);
     }
 
-    /**
-     * Protobuf enum {@code com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget}
-     */
-    public enum GraphElementsAttrTarget
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>UNKNOWN = 0;</code>
-       */
-      UNKNOWN(0),
-      /**
-       * <code>EDGE = 1;</code>
-       */
-      EDGE(1),
-      /**
-       * <code>NODE = 2;</code>
-       */
-      NODE(2),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <code>UNKNOWN = 0;</code>
-       */
-      public static final int UNKNOWN_VALUE = 0;
-      /**
-       * <code>EDGE = 1;</code>
-       */
-      public static final int EDGE_VALUE = 1;
-      /**
-       * <code>NODE = 2;</code>
-       */
-      public static final int NODE_VALUE = 2;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static GraphElementsAttrTarget valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static GraphElementsAttrTarget forNumber(int value) {
-        switch (value) {
-          case 0: return UNKNOWN;
-          case 1: return EDGE;
-          case 2: return NODE;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<GraphElementsAttrTarget>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          GraphElementsAttrTarget> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<GraphElementsAttrTarget>() {
-              public GraphElementsAttrTarget findValueByNumber(int number) {
-                return GraphElementsAttrTarget.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final GraphElementsAttrTarget[] VALUES = values();
-
-      public static GraphElementsAttrTarget valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private GraphElementsAttrTarget(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget)
-    }
-
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
@@ -1304,40 +1077,21 @@ public final class GraphAttributesProto {
       }
     }
 
-    public static final int TARGET_FIELD_NUMBER = 2;
-    private int target_;
-    /**
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-     * @return The enum numeric value on the wire for target.
-     */
-    @java.lang.Override public int getTargetValue() {
-      return target_;
-    }
-    /**
-     * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-     * @return The target.
-     */
-    @java.lang.Override public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget getTarget() {
-      @SuppressWarnings("deprecation")
-      com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.valueOf(target_);
-      return result == null ? com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.UNRECOGNIZED : result;
-    }
-
     public static final int DATA_FIELD_NUMBER = 3;
     private static final class DataDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.Long, com.google.protobuf.ByteString> defaultEntry =
+          java.lang.Integer, com.google.protobuf.ByteString> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.Long, com.google.protobuf.ByteString>newDefaultInstance(
+              .<java.lang.Integer, com.google.protobuf.ByteString>newDefaultInstance(
                   com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_DataEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.UINT64,
-                  0L,
+                  com.google.protobuf.WireFormat.FieldType.UINT32,
+                  0,
                   com.google.protobuf.WireFormat.FieldType.BYTES,
                   com.google.protobuf.ByteString.EMPTY);
     }
     private com.google.protobuf.MapField<
-        java.lang.Long, com.google.protobuf.ByteString> data_;
-    private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+        java.lang.Integer, com.google.protobuf.ByteString> data_;
+    private com.google.protobuf.MapField<java.lang.Integer, com.google.protobuf.ByteString>
     internalGetData() {
       if (data_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1355,12 +1109,12 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
 
     @java.lang.Override
     public boolean containsData(
-        long key) {
+        int key) {
       
       return internalGetData().getMap().containsKey(key);
     }
@@ -1369,7 +1123,7 @@ public final class GraphAttributesProto {
      */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getData() {
+    public java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> getData() {
       return getDataMap();
     }
     /**
@@ -1378,11 +1132,11 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
     @java.lang.Override
 
-    public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getDataMap() {
+    public java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> getDataMap() {
       return internalGetData().getMap();
     }
     /**
@@ -1391,15 +1145,15 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
     @java.lang.Override
 
     public com.google.protobuf.ByteString getDataOrDefault(
-        long key,
+        int key,
         com.google.protobuf.ByteString defaultValue) {
       
-      java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+      java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> map =
           internalGetData().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
@@ -1409,14 +1163,14 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
      */
     @java.lang.Override
 
     public com.google.protobuf.ByteString getDataOrThrow(
-        long key) {
+        int key) {
       
-      java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+      java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> map =
           internalGetData().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -1497,11 +1251,8 @@ public final class GraphAttributesProto {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (target_ != com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.UNKNOWN.getNumber()) {
-        output.writeEnum(2, target_);
-      }
       com.google.protobuf.GeneratedMessageV3
-        .serializeLongMapTo(
+        .serializeIntegerMapTo(
           output,
           internalGetData(),
           DataDefaultEntryHolder.defaultEntry,
@@ -1521,13 +1272,9 @@ public final class GraphAttributesProto {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (target_ != com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.UNKNOWN.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, target_);
-      }
-      for (java.util.Map.Entry<java.lang.Long, com.google.protobuf.ByteString> entry
+      for (java.util.Map.Entry<java.lang.Integer, com.google.protobuf.ByteString> entry
            : internalGetData().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, com.google.protobuf.ByteString>
+        com.google.protobuf.MapEntry<java.lang.Integer, com.google.protobuf.ByteString>
         data__ = DataDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1555,7 +1302,6 @@ public final class GraphAttributesProto {
 
       if (!getName()
           .equals(other.getName())) return false;
-      if (target_ != other.target_) return false;
       if (!internalGetData().equals(
           other.internalGetData())) return false;
       if (!getTypeUrl()
@@ -1573,8 +1319,6 @@ public final class GraphAttributesProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + TARGET_FIELD_NUMBER;
-      hash = (53 * hash) + target_;
       if (!internalGetData().getMap().isEmpty()) {
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + internalGetData().hashCode();
@@ -1751,8 +1495,6 @@ public final class GraphAttributesProto {
         super.clear();
         name_ = "";
 
-        target_ = 0;
-
         internalGetMutableData().clear();
         typeUrl_ = "";
 
@@ -1784,7 +1526,6 @@ public final class GraphAttributesProto {
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap(this);
         int from_bitField0_ = bitField0_;
         result.name_ = name_;
-        result.target_ = target_;
         result.data_ = internalGetData();
         result.data_.makeImmutable();
         result.typeUrl_ = typeUrl_;
@@ -1839,9 +1580,6 @@ public final class GraphAttributesProto {
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
-        }
-        if (other.target_ != 0) {
-          setTargetValue(other.getTargetValue());
         }
         internalGetMutableData().mergeFrom(
             other.internalGetData());
@@ -1980,63 +1718,9 @@ public final class GraphAttributesProto {
         return this;
       }
 
-      private int target_ = 0;
-      /**
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-       * @return The enum numeric value on the wire for target.
-       */
-      @java.lang.Override public int getTargetValue() {
-        return target_;
-      }
-      /**
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-       * @param value The enum numeric value on the wire for target to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTargetValue(int value) {
-        
-        target_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-       * @return The target.
-       */
-      @java.lang.Override
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget getTarget() {
-        @SuppressWarnings("deprecation")
-        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget result = com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.valueOf(target_);
-        return result == null ? com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-       * @param value The target to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTarget(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.GraphElementsAttrTarget value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        target_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget target = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTarget() {
-        
-        target_ = 0;
-        onChanged();
-        return this;
-      }
-
       private com.google.protobuf.MapField<
-          java.lang.Long, com.google.protobuf.ByteString> data_;
-      private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+          java.lang.Integer, com.google.protobuf.ByteString> data_;
+      private com.google.protobuf.MapField<java.lang.Integer, com.google.protobuf.ByteString>
       internalGetData() {
         if (data_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2044,7 +1728,7 @@ public final class GraphAttributesProto {
         }
         return data_;
       }
-      private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+      private com.google.protobuf.MapField<java.lang.Integer, com.google.protobuf.ByteString>
       internalGetMutableData() {
         onChanged();;
         if (data_ == null) {
@@ -2066,12 +1750,12 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
 
       @java.lang.Override
       public boolean containsData(
-          long key) {
+          int key) {
         
         return internalGetData().getMap().containsKey(key);
       }
@@ -2080,7 +1764,7 @@ public final class GraphAttributesProto {
        */
       @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getData() {
+      public java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> getData() {
         return getDataMap();
       }
       /**
@@ -2089,11 +1773,11 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
       @java.lang.Override
 
-      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getDataMap() {
+      public java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> getDataMap() {
         return internalGetData().getMap();
       }
       /**
@@ -2102,15 +1786,15 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
       @java.lang.Override
 
       public com.google.protobuf.ByteString getDataOrDefault(
-          long key,
+          int key,
           com.google.protobuf.ByteString defaultValue) {
         
-        java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+        java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> map =
             internalGetData().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
@@ -2120,14 +1804,14 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
       @java.lang.Override
 
       public com.google.protobuf.ByteString getDataOrThrow(
-          long key) {
+          int key) {
         
-        java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+        java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> map =
             internalGetData().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -2146,11 +1830,11 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
 
       public Builder removeData(
-          long key) {
+          int key) {
         
         internalGetMutableData().getMutableMap()
             .remove(key);
@@ -2160,7 +1844,7 @@ public final class GraphAttributesProto {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+      public java.util.Map<java.lang.Integer, com.google.protobuf.ByteString>
       getMutableData() {
         return internalGetMutableData().getMutableMap();
       }
@@ -2170,10 +1854,10 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
       public Builder putData(
-          long key,
+          int key,
           com.google.protobuf.ByteString value) {
         
         if (value == null) { throw new java.lang.NullPointerException(); }
@@ -2187,11 +1871,11 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint64, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
        */
 
       public Builder putAllData(
-          java.util.Map<java.lang.Long, com.google.protobuf.ByteString> values) {
+          java.util.Map<java.lang.Integer, com.google.protobuf.ByteString> values) {
         internalGetMutableData().getMutableMap()
             .putAll(values);
         return this;
@@ -2396,21 +2080,16 @@ public final class GraphAttributesProto {
     java.lang.String[] descriptorData = {
       "\nDcom/hitnslab/dnssecurity/deeparcher/ap" +
       "i/proto/graph_attributes.proto\022-com.hitn" +
-      "slab.dnssecurity.deeparcher.api.proto\"L\n" +
-      "\rComponentAttr\022\021\n\tparent_id\030\001 \001(\004\022\024\n\014com" +
-      "ponent_id\030\002 \001(\004\022\022\n\ncomponents\030\003 \003(\004\"\351\002\n\024" +
-      "GraphElementsAttrMap\022\014\n\004name\030\001 \001(\t\022k\n\006ta" +
-      "rget\030\002 \001(\0162[.com.hitnslab.dnssecurity.de" +
-      "eparcher.api.proto.GraphElementsAttrMap." +
-      "GraphElementsAttrTarget\022[\n\004data\030\003 \003(\0132M." +
-      "com.hitnslab.dnssecurity.deeparcher.api." +
-      "proto.GraphElementsAttrMap.DataEntry\022\020\n\010" +
-      "type_url\030\004 \001(\t\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\004" +
-      "\022\r\n\005value\030\002 \001(\014:\0028\001\":\n\027GraphElementsAttr" +
-      "Target\022\013\n\007UNKNOWN\020\000\022\010\n\004EDGE\020\001\022\010\n\004NODE\020\002B" +
-      "Y\n<com.hitnslab.dnssecurity.deeparcher.a" +
-      "pi.proto.generated.javaB\024GraphAttributes" +
-      "ProtoH\001\370\001\001b\006proto3"
+      "slab.dnssecurity.deeparcher.api.proto\"9\n" +
+      "\rComponentAttr\022\024\n\014component_id\030\002 \001(\r\022\022\n\n" +
+      "components\030\003 \003(\r\"\300\001\n\024GraphElementsAttrMa" +
+      "p\022\014\n\004name\030\001 \001(\t\022[\n\004data\030\003 \003(\0132M.com.hitn" +
+      "slab.dnssecurity.deeparcher.api.proto.Gr" +
+      "aphElementsAttrMap.DataEntry\022\020\n\010type_url" +
+      "\030\004 \001(\t\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005valu" +
+      "e\030\002 \001(\014:\0028\001BY\n<com.hitnslab.dnssecurity." +
+      "deeparcher.api.proto.generated.javaB\024Gra" +
+      "phAttributesProtoH\001\370\001\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2421,13 +2100,13 @@ public final class GraphAttributesProto {
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_ComponentAttr_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_ComponentAttr_descriptor,
-        new java.lang.String[] { "ParentId", "ComponentId", "Components", });
+        new java.lang.String[] { "ComponentId", "Components", });
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_descriptor,
-        new java.lang.String[] { "Name", "Target", "Data", "TypeUrl", });
+        new java.lang.String[] { "Name", "Data", "TypeUrl", });
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_DataEntry_descriptor =
       internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_descriptor.getNestedTypes().get(0);
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_DataEntry_fieldAccessorTable = new

@@ -19,40 +19,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\024GraphAttributesProtoH\001\370\001\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\nDcom/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"L\n\rComponentAttr\x12\x11\n\tparent_id\x18\x01 \x01(\x04\x12\x14\n\x0c\x63omponent_id\x18\x02 \x01(\x04\x12\x12\n\ncomponents\x18\x03 \x03(\x04\"\xe9\x02\n\x14GraphElementsAttrMap\x12\x0c\n\x04name\x18\x01 \x01(\t\x12k\n\x06target\x18\x02 \x01(\x0e\x32[.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget\x12[\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32M.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.DataEntry\x12\x10\n\x08type_url\x18\x04 \x01(\t\x1a+\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\x04\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\":\n\x17GraphElementsAttrTarget\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04\x45\x44GE\x10\x01\x12\x08\n\x04NODE\x10\x02\x42Y\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x14GraphAttributesProtoH\x01\xf8\x01\x01\x62\x06proto3'
+  serialized_pb=b'\nDcom/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"9\n\rComponentAttr\x12\x14\n\x0c\x63omponent_id\x18\x02 \x01(\r\x12\x12\n\ncomponents\x18\x03 \x03(\r\"\xc0\x01\n\x14GraphElementsAttrMap\x12\x0c\n\x04name\x18\x01 \x01(\t\x12[\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32M.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.DataEntry\x12\x10\n\x08type_url\x18\x04 \x01(\t\x1a+\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\x42Y\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x14GraphAttributesProtoH\x01\xf8\x01\x01\x62\x06proto3'
 )
 
 
-
-_GRAPHELEMENTSATTRMAP_GRAPHELEMENTSATTRTARGET = _descriptor.EnumDescriptor(
-  name='GraphElementsAttrTarget',
-  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.GraphElementsAttrTarget',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNKNOWN', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='EDGE', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='NODE', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=501,
-  serialized_end=559,
-)
-_sym_db.RegisterEnumDescriptor(_GRAPHELEMENTSATTRMAP_GRAPHELEMENTSATTRTARGET)
 
 
 _COMPONENTATTR = _descriptor.Descriptor(
@@ -64,22 +34,15 @@ _COMPONENTATTR = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='parent_id', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.parent_id', index=0,
-      number=1, type=4, cpp_type=4, label=1,
+      name='component_id', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id', index=0,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='component_id', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id', index=1,
-      number=2, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='components', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components', index=2,
-      number=3, type=4, cpp_type=4, label=3,
+      name='components', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.components', index=1,
+      number=3, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -97,7 +60,7 @@ _COMPONENTATTR = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=119,
-  serialized_end=195,
+  serialized_end=176,
 )
 
 
@@ -111,7 +74,7 @@ _GRAPHELEMENTSATTRMAP_DATAENTRY = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='key', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.DataEntry.key', index=0,
-      number=1, type=4, cpp_type=4, label=1,
+      number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -135,8 +98,8 @@ _GRAPHELEMENTSATTRMAP_DATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=456,
-  serialized_end=499,
+  serialized_start=328,
+  serialized_end=371,
 )
 
 _GRAPHELEMENTSATTRMAP = _descriptor.Descriptor(
@@ -155,21 +118,14 @@ _GRAPHELEMENTSATTRMAP = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='target', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.target', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='data', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.data', index=2,
+      name='data', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.data', index=1,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='type_url', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.type_url', index=3,
+      name='type_url', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.type_url', index=2,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -180,7 +136,6 @@ _GRAPHELEMENTSATTRMAP = _descriptor.Descriptor(
   ],
   nested_types=[_GRAPHELEMENTSATTRMAP_DATAENTRY, ],
   enum_types=[
-    _GRAPHELEMENTSATTRMAP_GRAPHELEMENTSATTRTARGET,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -188,14 +143,12 @@ _GRAPHELEMENTSATTRMAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=198,
-  serialized_end=559,
+  serialized_start=179,
+  serialized_end=371,
 )
 
 _GRAPHELEMENTSATTRMAP_DATAENTRY.containing_type = _GRAPHELEMENTSATTRMAP
-_GRAPHELEMENTSATTRMAP.fields_by_name['target'].enum_type = _GRAPHELEMENTSATTRMAP_GRAPHELEMENTSATTRTARGET
 _GRAPHELEMENTSATTRMAP.fields_by_name['data'].message_type = _GRAPHELEMENTSATTRMAP_DATAENTRY
-_GRAPHELEMENTSATTRMAP_GRAPHELEMENTSATTRTARGET.containing_type = _GRAPHELEMENTSATTRMAP
 DESCRIPTOR.message_types_by_name['ComponentAttr'] = _COMPONENTATTR
 DESCRIPTOR.message_types_by_name['GraphElementsAttrMap'] = _GRAPHELEMENTSATTRMAP
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)

@@ -319,22 +319,22 @@ class GraphEvent PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, PROTOBUF_NAMESPACE_ID::Any >*
       mutable_attributes();
 
-  // uint64 node1 = 1;
+  // uint32 node1 = 1;
   void clear_node1();
-  ::PROTOBUF_NAMESPACE_ID::uint64 node1() const;
-  void set_node1(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 node1() const;
+  void set_node1(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_node1() const;
-  void _internal_set_node1(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_node1() const;
+  void _internal_set_node1(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // uint64 node2 = 2;
+  // uint32 node2 = 2;
   void clear_node2();
-  ::PROTOBUF_NAMESPACE_ID::uint64 node2() const;
-  void set_node2(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 node2() const;
+  void set_node2(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_node2() const;
-  void _internal_set_node2(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_node2() const;
+  void _internal_set_node2(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.Action action = 3;
@@ -359,8 +359,8 @@ class GraphEvent PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
       0 > attributes_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 node1_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 node2_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 node1_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 node2_;
   int action_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fevent_2eproto;
@@ -378,42 +378,42 @@ class GraphEvent PROTOBUF_FINAL :
 
 // GraphEvent
 
-// uint64 node1 = 1;
+// uint32 node1 = 1;
 inline void GraphEvent::clear_node1() {
-  node1_ = PROTOBUF_ULONGLONG(0);
+  node1_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 GraphEvent::_internal_node1() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 GraphEvent::_internal_node1() const {
   return node1_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 GraphEvent::node1() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 GraphEvent::node1() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.node1)
   return _internal_node1();
 }
-inline void GraphEvent::_internal_set_node1(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void GraphEvent::_internal_set_node1(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   node1_ = value;
 }
-inline void GraphEvent::set_node1(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void GraphEvent::set_node1(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_node1(value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.node1)
 }
 
-// uint64 node2 = 2;
+// uint32 node2 = 2;
 inline void GraphEvent::clear_node2() {
-  node2_ = PROTOBUF_ULONGLONG(0);
+  node2_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 GraphEvent::_internal_node2() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 GraphEvent::_internal_node2() const {
   return node2_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 GraphEvent::node2() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 GraphEvent::node2() const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.node2)
   return _internal_node2();
 }
-inline void GraphEvent::_internal_set_node2(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void GraphEvent::_internal_set_node2(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   node2_ = value;
 }
-inline void GraphEvent::set_node2(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void GraphEvent::set_node2(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_node2(value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphEvent.node2)
 }

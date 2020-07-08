@@ -63,27 +63,27 @@ namespace proto {
 class CooMatFloat;
 class CooMatFloatDefaultTypeInternal;
 extern CooMatFloatDefaultTypeInternal _CooMatFloat_default_instance_;
-class CooMatInt64;
-class CooMatInt64DefaultTypeInternal;
-extern CooMatInt64DefaultTypeInternal _CooMatInt64_default_instance_;
+class CooMatint32;
+class CooMatint32DefaultTypeInternal;
+extern CooMatint32DefaultTypeInternal _CooMatint32_default_instance_;
 class CscMatFloat;
 class CscMatFloatDefaultTypeInternal;
 extern CscMatFloatDefaultTypeInternal _CscMatFloat_default_instance_;
-class CscMatInt64;
-class CscMatInt64DefaultTypeInternal;
-extern CscMatInt64DefaultTypeInternal _CscMatInt64_default_instance_;
+class CscMatint32;
+class CscMatint32DefaultTypeInternal;
+extern CscMatint32DefaultTypeInternal _CscMatint32_default_instance_;
 class CsrMatFloat;
 class CsrMatFloatDefaultTypeInternal;
 extern CsrMatFloatDefaultTypeInternal _CsrMatFloat_default_instance_;
-class CsrMatInt64;
-class CsrMatInt64DefaultTypeInternal;
-extern CsrMatInt64DefaultTypeInternal _CsrMatInt64_default_instance_;
+class CsrMatint32;
+class CsrMatint32DefaultTypeInternal;
+extern CsrMatint32DefaultTypeInternal _CsrMatint32_default_instance_;
 class DenseMatFloat;
 class DenseMatFloatDefaultTypeInternal;
 extern DenseMatFloatDefaultTypeInternal _DenseMatFloat_default_instance_;
-class DenseMatInt64;
-class DenseMatInt64DefaultTypeInternal;
-extern DenseMatInt64DefaultTypeInternal _DenseMatInt64_default_instance_;
+class DenseMatint32;
+class DenseMatint32DefaultTypeInternal;
+extern DenseMatint32DefaultTypeInternal _DenseMatint32_default_instance_;
 }  // namespace proto
 }  // namespace api
 }  // namespace deeparcher
@@ -92,13 +92,13 @@ extern DenseMatInt64DefaultTypeInternal _DenseMatInt64_default_instance_;
 }  // namespace com
 PROTOBUF_NAMESPACE_OPEN
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatFloat>(Arena*);
-template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatInt64>(Arena*);
+template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CooMatint32>(Arena*);
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatFloat>(Arena*);
-template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatInt64>(Arena*);
+template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CscMatint32>(Arena*);
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatFloat>(Arena*);
-template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatInt64>(Arena*);
+template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::CsrMatint32>(Arena*);
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatFloat>(Arena*);
-template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatInt64>(Arena*);
+template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::DenseMatint32>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace com {
 namespace hitnslab {
@@ -225,26 +225,26 @@ class DenseMatFloat PROTOBUF_FINAL :
     kDimsFieldNumber = 1,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
   // repeated float values = 10;
@@ -276,7 +276,7 @@ class DenseMatFloat PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
@@ -403,70 +403,70 @@ class CooMatFloat PROTOBUF_FINAL :
     kColsFieldNumber = 3,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated uint64 rows = 2;
+  // repeated uint32 rows = 2;
   int rows_size() const;
   private:
   int _internal_rows_size() const;
   public:
   void clear_rows();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_rows(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_rows(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_rows() const;
-  void _internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_rows();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 rows(int index) const;
-  void set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 rows(int index) const;
+  void set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       rows() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_rows();
 
-  // repeated uint64 cols = 3;
+  // repeated uint32 cols = 3;
   int cols_size() const;
   private:
   int _internal_cols_size() const;
   public:
   void clear_cols();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_cols(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_cols(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_cols() const;
-  void _internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_cols();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 cols(int index) const;
-  void set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 cols(int index) const;
+  void set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       cols() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_cols();
 
   // repeated float values = 10;
@@ -498,11 +498,11 @@ class CooMatFloat PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > rows_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > rows_;
   mutable std::atomic<int> _rows_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > cols_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > cols_;
   mutable std::atomic<int> _cols_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
@@ -629,70 +629,70 @@ class CsrMatFloat PROTOBUF_FINAL :
     kColIndicesFieldNumber = 3,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated uint64 row_offsets = 2;
+  // repeated uint32 row_offsets = 2;
   int row_offsets_size() const;
   private:
   int _internal_row_offsets_size() const;
   public:
   void clear_row_offsets();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_row_offsets(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_row_offsets(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_row_offsets() const;
-  void _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_row_offsets();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 row_offsets(int index) const;
-  void set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 row_offsets(int index) const;
+  void set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       row_offsets() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_row_offsets();
 
-  // repeated uint64 col_indices = 3;
+  // repeated uint32 col_indices = 3;
   int col_indices_size() const;
   private:
   int _internal_col_indices_size() const;
   public:
   void clear_col_indices();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_col_indices(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_col_indices(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_col_indices() const;
-  void _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_col_indices();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 col_indices(int index) const;
-  void set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 col_indices(int index) const;
+  void set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       col_indices() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_col_indices();
 
   // repeated float values = 10;
@@ -724,11 +724,11 @@ class CsrMatFloat PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > row_offsets_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > row_offsets_;
   mutable std::atomic<int> _row_offsets_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > col_indices_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > col_indices_;
   mutable std::atomic<int> _col_indices_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
@@ -855,70 +855,70 @@ class CscMatFloat PROTOBUF_FINAL :
     kRowIndicesFieldNumber = 3,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated uint64 col_offsets = 2;
+  // repeated uint32 col_offsets = 2;
   int col_offsets_size() const;
   private:
   int _internal_col_offsets_size() const;
   public:
   void clear_col_offsets();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_col_offsets(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_col_offsets(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_col_offsets() const;
-  void _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_col_offsets();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 col_offsets(int index) const;
-  void set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 col_offsets(int index) const;
+  void set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       col_offsets() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_col_offsets();
 
-  // repeated uint64 row_indices = 3;
+  // repeated uint32 row_indices = 3;
   int row_indices_size() const;
   private:
   int _internal_row_indices_size() const;
   public:
   void clear_row_indices();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_row_indices(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_row_indices(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_row_indices() const;
-  void _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_row_indices();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 row_indices(int index) const;
-  void set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 row_indices(int index) const;
+  void set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       row_indices() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_row_indices();
 
   // repeated float values = 10;
@@ -950,11 +950,11 @@ class CscMatFloat PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > col_offsets_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > col_offsets_;
   mutable std::atomic<int> _col_offsets_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > row_indices_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > row_indices_;
   mutable std::atomic<int> _row_indices_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
@@ -963,23 +963,23 @@ class CscMatFloat PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
-class DenseMatInt64 PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64) */ {
+class DenseMatint32 PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32) */ {
  public:
-  inline DenseMatInt64() : DenseMatInt64(nullptr) {};
-  virtual ~DenseMatInt64();
+  inline DenseMatint32() : DenseMatint32(nullptr) {};
+  virtual ~DenseMatint32();
 
-  DenseMatInt64(const DenseMatInt64& from);
-  DenseMatInt64(DenseMatInt64&& from) noexcept
-    : DenseMatInt64() {
+  DenseMatint32(const DenseMatint32& from);
+  DenseMatint32(DenseMatint32&& from) noexcept
+    : DenseMatint32() {
     *this = ::std::move(from);
   }
 
-  inline DenseMatInt64& operator=(const DenseMatInt64& from) {
+  inline DenseMatint32& operator=(const DenseMatint32& from) {
     CopyFrom(from);
     return *this;
   }
-  inline DenseMatInt64& operator=(DenseMatInt64&& from) noexcept {
+  inline DenseMatint32& operator=(DenseMatint32&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -997,20 +997,20 @@ class DenseMatInt64 PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const DenseMatInt64& default_instance();
+  static const DenseMatint32& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const DenseMatInt64* internal_default_instance() {
-    return reinterpret_cast<const DenseMatInt64*>(
-               &_DenseMatInt64_default_instance_);
+  static inline const DenseMatint32* internal_default_instance() {
+    return reinterpret_cast<const DenseMatint32*>(
+               &_DenseMatint32_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  friend void swap(DenseMatInt64& a, DenseMatInt64& b) {
+  friend void swap(DenseMatint32& a, DenseMatint32& b) {
     a.Swap(&b);
   }
-  inline void Swap(DenseMatInt64* other) {
+  inline void Swap(DenseMatint32* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -1018,7 +1018,7 @@ class DenseMatInt64 PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(DenseMatInt64* other) {
+  void UnsafeArenaSwap(DenseMatint32* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -1026,17 +1026,17 @@ class DenseMatInt64 PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline DenseMatInt64* New() const final {
-    return CreateMaybeMessage<DenseMatInt64>(nullptr);
+  inline DenseMatint32* New() const final {
+    return CreateMaybeMessage<DenseMatint32>(nullptr);
   }
 
-  DenseMatInt64* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<DenseMatInt64>(arena);
+  DenseMatint32* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DenseMatint32>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const DenseMatInt64& from);
-  void MergeFrom(const DenseMatInt64& from);
+  void CopyFrom(const DenseMatint32& from);
+  void MergeFrom(const DenseMatint32& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1050,13 +1050,13 @@ class DenseMatInt64 PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(DenseMatInt64* other);
+  void InternalSwap(DenseMatint32* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64";
+    return "com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32";
   }
   protected:
-  explicit DenseMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit DenseMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1079,83 +1079,83 @@ class DenseMatInt64 PROTOBUF_FINAL :
     kDimsFieldNumber = 1,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   int values_size() const;
   private:
   int _internal_values_size() const;
   public:
   void clear_values();
   private:
-  ::PROTOBUF_NAMESPACE_ID::int64 _internal_values(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_values(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       _internal_values() const;
-  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       _internal_mutable_values();
   public:
-  ::PROTOBUF_NAMESPACE_ID::int64 values(int index) const;
-  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value);
-  void add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 values(int index) const;
+  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       values() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_values();
 
-  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64)
+  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 > values_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto;
 };
 // -------------------------------------------------------------------
 
-class CooMatInt64 PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64) */ {
+class CooMatint32 PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32) */ {
  public:
-  inline CooMatInt64() : CooMatInt64(nullptr) {};
-  virtual ~CooMatInt64();
+  inline CooMatint32() : CooMatint32(nullptr) {};
+  virtual ~CooMatint32();
 
-  CooMatInt64(const CooMatInt64& from);
-  CooMatInt64(CooMatInt64&& from) noexcept
-    : CooMatInt64() {
+  CooMatint32(const CooMatint32& from);
+  CooMatint32(CooMatint32&& from) noexcept
+    : CooMatint32() {
     *this = ::std::move(from);
   }
 
-  inline CooMatInt64& operator=(const CooMatInt64& from) {
+  inline CooMatint32& operator=(const CooMatint32& from) {
     CopyFrom(from);
     return *this;
   }
-  inline CooMatInt64& operator=(CooMatInt64&& from) noexcept {
+  inline CooMatint32& operator=(CooMatint32&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1173,20 +1173,20 @@ class CooMatInt64 PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const CooMatInt64& default_instance();
+  static const CooMatint32& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const CooMatInt64* internal_default_instance() {
-    return reinterpret_cast<const CooMatInt64*>(
-               &_CooMatInt64_default_instance_);
+  static inline const CooMatint32* internal_default_instance() {
+    return reinterpret_cast<const CooMatint32*>(
+               &_CooMatint32_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  friend void swap(CooMatInt64& a, CooMatInt64& b) {
+  friend void swap(CooMatint32& a, CooMatint32& b) {
     a.Swap(&b);
   }
-  inline void Swap(CooMatInt64* other) {
+  inline void Swap(CooMatint32* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -1194,7 +1194,7 @@ class CooMatInt64 PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(CooMatInt64* other) {
+  void UnsafeArenaSwap(CooMatint32* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -1202,17 +1202,17 @@ class CooMatInt64 PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline CooMatInt64* New() const final {
-    return CreateMaybeMessage<CooMatInt64>(nullptr);
+  inline CooMatint32* New() const final {
+    return CreateMaybeMessage<CooMatint32>(nullptr);
   }
 
-  CooMatInt64* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<CooMatInt64>(arena);
+  CooMatint32* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CooMatint32>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const CooMatInt64& from);
-  void MergeFrom(const CooMatInt64& from);
+  void CopyFrom(const CooMatint32& from);
+  void MergeFrom(const CooMatint32& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1226,13 +1226,13 @@ class CooMatInt64 PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(CooMatInt64* other);
+  void InternalSwap(CooMatint32* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64";
+    return "com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32";
   }
   protected:
-  explicit CooMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit CooMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1257,131 +1257,131 @@ class CooMatInt64 PROTOBUF_FINAL :
     kColsFieldNumber = 3,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated uint64 rows = 2;
+  // repeated uint32 rows = 2;
   int rows_size() const;
   private:
   int _internal_rows_size() const;
   public:
   void clear_rows();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_rows(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_rows(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_rows() const;
-  void _internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_rows();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 rows(int index) const;
-  void set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 rows(int index) const;
+  void set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       rows() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_rows();
 
-  // repeated uint64 cols = 3;
+  // repeated uint32 cols = 3;
   int cols_size() const;
   private:
   int _internal_cols_size() const;
   public:
   void clear_cols();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_cols(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_cols(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_cols() const;
-  void _internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_cols();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 cols(int index) const;
-  void set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 cols(int index) const;
+  void set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       cols() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_cols();
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   int values_size() const;
   private:
   int _internal_values_size() const;
   public:
   void clear_values();
   private:
-  ::PROTOBUF_NAMESPACE_ID::int64 _internal_values(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_values(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       _internal_values() const;
-  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       _internal_mutable_values();
   public:
-  ::PROTOBUF_NAMESPACE_ID::int64 values(int index) const;
-  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value);
-  void add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 values(int index) const;
+  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       values() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_values();
 
-  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64)
+  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > rows_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > rows_;
   mutable std::atomic<int> _rows_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > cols_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > cols_;
   mutable std::atomic<int> _cols_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 > values_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto;
 };
 // -------------------------------------------------------------------
 
-class CsrMatInt64 PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64) */ {
+class CsrMatint32 PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32) */ {
  public:
-  inline CsrMatInt64() : CsrMatInt64(nullptr) {};
-  virtual ~CsrMatInt64();
+  inline CsrMatint32() : CsrMatint32(nullptr) {};
+  virtual ~CsrMatint32();
 
-  CsrMatInt64(const CsrMatInt64& from);
-  CsrMatInt64(CsrMatInt64&& from) noexcept
-    : CsrMatInt64() {
+  CsrMatint32(const CsrMatint32& from);
+  CsrMatint32(CsrMatint32&& from) noexcept
+    : CsrMatint32() {
     *this = ::std::move(from);
   }
 
-  inline CsrMatInt64& operator=(const CsrMatInt64& from) {
+  inline CsrMatint32& operator=(const CsrMatint32& from) {
     CopyFrom(from);
     return *this;
   }
-  inline CsrMatInt64& operator=(CsrMatInt64&& from) noexcept {
+  inline CsrMatint32& operator=(CsrMatint32&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1399,20 +1399,20 @@ class CsrMatInt64 PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const CsrMatInt64& default_instance();
+  static const CsrMatint32& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const CsrMatInt64* internal_default_instance() {
-    return reinterpret_cast<const CsrMatInt64*>(
-               &_CsrMatInt64_default_instance_);
+  static inline const CsrMatint32* internal_default_instance() {
+    return reinterpret_cast<const CsrMatint32*>(
+               &_CsrMatint32_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     6;
 
-  friend void swap(CsrMatInt64& a, CsrMatInt64& b) {
+  friend void swap(CsrMatint32& a, CsrMatint32& b) {
     a.Swap(&b);
   }
-  inline void Swap(CsrMatInt64* other) {
+  inline void Swap(CsrMatint32* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -1420,7 +1420,7 @@ class CsrMatInt64 PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(CsrMatInt64* other) {
+  void UnsafeArenaSwap(CsrMatint32* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -1428,17 +1428,17 @@ class CsrMatInt64 PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline CsrMatInt64* New() const final {
-    return CreateMaybeMessage<CsrMatInt64>(nullptr);
+  inline CsrMatint32* New() const final {
+    return CreateMaybeMessage<CsrMatint32>(nullptr);
   }
 
-  CsrMatInt64* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<CsrMatInt64>(arena);
+  CsrMatint32* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CsrMatint32>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const CsrMatInt64& from);
-  void MergeFrom(const CsrMatInt64& from);
+  void CopyFrom(const CsrMatint32& from);
+  void MergeFrom(const CsrMatint32& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1452,13 +1452,13 @@ class CsrMatInt64 PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(CsrMatInt64* other);
+  void InternalSwap(CsrMatint32* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64";
+    return "com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32";
   }
   protected:
-  explicit CsrMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit CsrMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1483,131 +1483,131 @@ class CsrMatInt64 PROTOBUF_FINAL :
     kColIndicesFieldNumber = 3,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated uint64 row_offsets = 2;
+  // repeated uint32 row_offsets = 2;
   int row_offsets_size() const;
   private:
   int _internal_row_offsets_size() const;
   public:
   void clear_row_offsets();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_row_offsets(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_row_offsets(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_row_offsets() const;
-  void _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_row_offsets();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 row_offsets(int index) const;
-  void set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 row_offsets(int index) const;
+  void set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       row_offsets() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_row_offsets();
 
-  // repeated uint64 col_indices = 3;
+  // repeated uint32 col_indices = 3;
   int col_indices_size() const;
   private:
   int _internal_col_indices_size() const;
   public:
   void clear_col_indices();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_col_indices(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_col_indices(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_col_indices() const;
-  void _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_col_indices();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 col_indices(int index) const;
-  void set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 col_indices(int index) const;
+  void set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       col_indices() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_col_indices();
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   int values_size() const;
   private:
   int _internal_values_size() const;
   public:
   void clear_values();
   private:
-  ::PROTOBUF_NAMESPACE_ID::int64 _internal_values(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_values(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       _internal_values() const;
-  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       _internal_mutable_values();
   public:
-  ::PROTOBUF_NAMESPACE_ID::int64 values(int index) const;
-  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value);
-  void add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 values(int index) const;
+  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       values() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_values();
 
-  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64)
+  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > row_offsets_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > row_offsets_;
   mutable std::atomic<int> _row_offsets_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > col_indices_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > col_indices_;
   mutable std::atomic<int> _col_indices_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 > values_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto;
 };
 // -------------------------------------------------------------------
 
-class CscMatInt64 PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64) */ {
+class CscMatint32 PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32) */ {
  public:
-  inline CscMatInt64() : CscMatInt64(nullptr) {};
-  virtual ~CscMatInt64();
+  inline CscMatint32() : CscMatint32(nullptr) {};
+  virtual ~CscMatint32();
 
-  CscMatInt64(const CscMatInt64& from);
-  CscMatInt64(CscMatInt64&& from) noexcept
-    : CscMatInt64() {
+  CscMatint32(const CscMatint32& from);
+  CscMatint32(CscMatint32&& from) noexcept
+    : CscMatint32() {
     *this = ::std::move(from);
   }
 
-  inline CscMatInt64& operator=(const CscMatInt64& from) {
+  inline CscMatint32& operator=(const CscMatint32& from) {
     CopyFrom(from);
     return *this;
   }
-  inline CscMatInt64& operator=(CscMatInt64&& from) noexcept {
+  inline CscMatint32& operator=(CscMatint32&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1625,20 +1625,20 @@ class CscMatInt64 PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const CscMatInt64& default_instance();
+  static const CscMatint32& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const CscMatInt64* internal_default_instance() {
-    return reinterpret_cast<const CscMatInt64*>(
-               &_CscMatInt64_default_instance_);
+  static inline const CscMatint32* internal_default_instance() {
+    return reinterpret_cast<const CscMatint32*>(
+               &_CscMatint32_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     7;
 
-  friend void swap(CscMatInt64& a, CscMatInt64& b) {
+  friend void swap(CscMatint32& a, CscMatint32& b) {
     a.Swap(&b);
   }
-  inline void Swap(CscMatInt64* other) {
+  inline void Swap(CscMatint32* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -1646,7 +1646,7 @@ class CscMatInt64 PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(CscMatInt64* other) {
+  void UnsafeArenaSwap(CscMatint32* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -1654,17 +1654,17 @@ class CscMatInt64 PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline CscMatInt64* New() const final {
-    return CreateMaybeMessage<CscMatInt64>(nullptr);
+  inline CscMatint32* New() const final {
+    return CreateMaybeMessage<CscMatint32>(nullptr);
   }
 
-  CscMatInt64* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<CscMatInt64>(arena);
+  CscMatint32* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CscMatint32>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const CscMatInt64& from);
-  void MergeFrom(const CscMatInt64& from);
+  void CopyFrom(const CscMatint32& from);
+  void MergeFrom(const CscMatint32& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1678,13 +1678,13 @@ class CscMatInt64 PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(CscMatInt64* other);
+  void InternalSwap(CscMatint32* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64";
+    return "com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32";
   }
   protected:
-  explicit CscMatInt64(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit CscMatint32(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1709,108 +1709,108 @@ class CscMatInt64 PROTOBUF_FINAL :
     kRowIndicesFieldNumber = 3,
     kValuesFieldNumber = 10,
   };
-  // repeated uint64 dims = 1;
+  // repeated uint32 dims = 1;
   int dims_size() const;
   private:
   int _internal_dims_size() const;
   public:
   void clear_dims();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_dims(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dims(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_dims() const;
-  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_dims();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 dims(int index) const;
-  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 dims(int index) const;
+  void set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       dims() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_dims();
 
-  // repeated uint64 col_offsets = 2;
+  // repeated uint32 col_offsets = 2;
   int col_offsets_size() const;
   private:
   int _internal_col_offsets_size() const;
   public:
   void clear_col_offsets();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_col_offsets(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_col_offsets(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_col_offsets() const;
-  void _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_col_offsets();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 col_offsets(int index) const;
-  void set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 col_offsets(int index) const;
+  void set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       col_offsets() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_col_offsets();
 
-  // repeated uint64 row_indices = 3;
+  // repeated uint32 row_indices = 3;
   int row_indices_size() const;
   private:
   int _internal_row_indices_size() const;
   public:
   void clear_row_indices();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_row_indices(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_row_indices(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       _internal_row_indices() const;
-  void _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  void _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       _internal_mutable_row_indices();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint64 row_indices(int index) const;
-  void set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value);
-  void add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+  ::PROTOBUF_NAMESPACE_ID::uint32 row_indices(int index) const;
+  void set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
       row_indices() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_row_indices();
 
-  // repeated int64 values = 10;
+  // repeated int32 values = 10;
   int values_size() const;
   private:
   int _internal_values_size() const;
   public:
   void clear_values();
   private:
-  ::PROTOBUF_NAMESPACE_ID::int64 _internal_values(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_values(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       _internal_values() const;
-  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  void _internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       _internal_mutable_values();
   public:
-  ::PROTOBUF_NAMESPACE_ID::int64 values(int index) const;
-  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value);
-  void add_values(::PROTOBUF_NAMESPACE_ID::int64 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
+  ::PROTOBUF_NAMESPACE_ID::int32 values(int index) const;
+  void set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_values(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
       values() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_values();
 
-  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64)
+  // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > dims_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > dims_;
   mutable std::atomic<int> _dims_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > col_offsets_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > col_offsets_;
   mutable std::atomic<int> _col_offsets_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > row_indices_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > row_indices_;
   mutable std::atomic<int> _row_indices_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 > values_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > values_;
   mutable std::atomic<int> _values_cached_byte_size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fmatrix_2eproto;
@@ -1826,7 +1826,7 @@ class CscMatInt64 PROTOBUF_FINAL :
 #endif  // __GNUC__
 // DenseMatFloat
 
-// repeated uint64 dims = 1;
+// repeated uint32 dims = 1;
 inline int DenseMatFloat::_internal_dims_size() const {
   return dims_.size();
 }
@@ -1836,38 +1836,38 @@ inline int DenseMatFloat::dims_size() const {
 inline void DenseMatFloat::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 DenseMatFloat::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DenseMatFloat::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 DenseMatFloat::dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DenseMatFloat::dims(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat.dims)
   return _internal_dims(index);
 }
-inline void DenseMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void DenseMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat.dims)
 }
-inline void DenseMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void DenseMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void DenseMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void DenseMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 DenseMatFloat::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 DenseMatFloat::dims() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 DenseMatFloat::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 DenseMatFloat::mutable_dims() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloat.dims)
   return _internal_mutable_dims();
@@ -1924,7 +1924,7 @@ DenseMatFloat::mutable_values() {
 
 // CooMatFloat
 
-// repeated uint64 dims = 1;
+// repeated uint32 dims = 1;
 inline int CooMatFloat::_internal_dims_size() const {
   return dims_.size();
 }
@@ -1934,44 +1934,44 @@ inline int CooMatFloat::dims_size() const {
 inline void CooMatFloat::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatFloat::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatFloat::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatFloat::dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatFloat::dims(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.dims)
   return _internal_dims(index);
 }
-inline void CooMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.dims)
 }
-inline void CooMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void CooMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CooMatFloat::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CooMatFloat::dims() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CooMatFloat::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CooMatFloat::mutable_dims() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.dims)
   return _internal_mutable_dims();
 }
 
-// repeated uint64 rows = 2;
+// repeated uint32 rows = 2;
 inline int CooMatFloat::_internal_rows_size() const {
   return rows_.size();
 }
@@ -1981,44 +1981,44 @@ inline int CooMatFloat::rows_size() const {
 inline void CooMatFloat::clear_rows() {
   rows_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatFloat::_internal_rows(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatFloat::_internal_rows(int index) const {
   return rows_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatFloat::rows(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatFloat::rows(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.rows)
   return _internal_rows(index);
 }
-inline void CooMatFloat::set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   rows_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.rows)
 }
-inline void CooMatFloat::_internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::_internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   rows_.Add(value);
 }
-inline void CooMatFloat::add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_rows(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.rows)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CooMatFloat::_internal_rows() const {
   return rows_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CooMatFloat::rows() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.rows)
   return _internal_rows();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CooMatFloat::_internal_mutable_rows() {
   return &rows_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CooMatFloat::mutable_rows() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.rows)
   return _internal_mutable_rows();
 }
 
-// repeated uint64 cols = 3;
+// repeated uint32 cols = 3;
 inline int CooMatFloat::_internal_cols_size() const {
   return cols_.size();
 }
@@ -2028,38 +2028,38 @@ inline int CooMatFloat::cols_size() const {
 inline void CooMatFloat::clear_cols() {
   cols_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatFloat::_internal_cols(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatFloat::_internal_cols(int index) const {
   return cols_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatFloat::cols(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatFloat::cols(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.cols)
   return _internal_cols(index);
 }
-inline void CooMatFloat::set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   cols_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.cols)
 }
-inline void CooMatFloat::_internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::_internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   cols_.Add(value);
 }
-inline void CooMatFloat::add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatFloat::add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_cols(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.cols)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CooMatFloat::_internal_cols() const {
   return cols_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CooMatFloat::cols() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.cols)
   return _internal_cols();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CooMatFloat::_internal_mutable_cols() {
   return &cols_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CooMatFloat::mutable_cols() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloat.cols)
   return _internal_mutable_cols();
@@ -2116,7 +2116,7 @@ CooMatFloat::mutable_values() {
 
 // CsrMatFloat
 
-// repeated uint64 dims = 1;
+// repeated uint32 dims = 1;
 inline int CsrMatFloat::_internal_dims_size() const {
   return dims_.size();
 }
@@ -2126,44 +2126,44 @@ inline int CsrMatFloat::dims_size() const {
 inline void CsrMatFloat::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatFloat::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatFloat::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatFloat::dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatFloat::dims(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.dims)
   return _internal_dims(index);
 }
-inline void CsrMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.dims)
 }
-inline void CsrMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void CsrMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CsrMatFloat::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CsrMatFloat::dims() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CsrMatFloat::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CsrMatFloat::mutable_dims() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.dims)
   return _internal_mutable_dims();
 }
 
-// repeated uint64 row_offsets = 2;
+// repeated uint32 row_offsets = 2;
 inline int CsrMatFloat::_internal_row_offsets_size() const {
   return row_offsets_.size();
 }
@@ -2173,44 +2173,44 @@ inline int CsrMatFloat::row_offsets_size() const {
 inline void CsrMatFloat::clear_row_offsets() {
   row_offsets_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatFloat::_internal_row_offsets(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatFloat::_internal_row_offsets(int index) const {
   return row_offsets_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatFloat::row_offsets(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatFloat::row_offsets(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.row_offsets)
   return _internal_row_offsets(index);
 }
-inline void CsrMatFloat::set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_offsets_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.row_offsets)
 }
-inline void CsrMatFloat::_internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::_internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_offsets_.Add(value);
 }
-inline void CsrMatFloat::add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_row_offsets(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.row_offsets)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CsrMatFloat::_internal_row_offsets() const {
   return row_offsets_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CsrMatFloat::row_offsets() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.row_offsets)
   return _internal_row_offsets();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CsrMatFloat::_internal_mutable_row_offsets() {
   return &row_offsets_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CsrMatFloat::mutable_row_offsets() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.row_offsets)
   return _internal_mutable_row_offsets();
 }
 
-// repeated uint64 col_indices = 3;
+// repeated uint32 col_indices = 3;
 inline int CsrMatFloat::_internal_col_indices_size() const {
   return col_indices_.size();
 }
@@ -2220,38 +2220,38 @@ inline int CsrMatFloat::col_indices_size() const {
 inline void CsrMatFloat::clear_col_indices() {
   col_indices_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatFloat::_internal_col_indices(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatFloat::_internal_col_indices(int index) const {
   return col_indices_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatFloat::col_indices(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatFloat::col_indices(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.col_indices)
   return _internal_col_indices(index);
 }
-inline void CsrMatFloat::set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_indices_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.col_indices)
 }
-inline void CsrMatFloat::_internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::_internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_indices_.Add(value);
 }
-inline void CsrMatFloat::add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatFloat::add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_col_indices(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.col_indices)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CsrMatFloat::_internal_col_indices() const {
   return col_indices_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CsrMatFloat::col_indices() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.col_indices)
   return _internal_col_indices();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CsrMatFloat::_internal_mutable_col_indices() {
   return &col_indices_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CsrMatFloat::mutable_col_indices() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloat.col_indices)
   return _internal_mutable_col_indices();
@@ -2308,7 +2308,7 @@ CsrMatFloat::mutable_values() {
 
 // CscMatFloat
 
-// repeated uint64 dims = 1;
+// repeated uint32 dims = 1;
 inline int CscMatFloat::_internal_dims_size() const {
   return dims_.size();
 }
@@ -2318,44 +2318,44 @@ inline int CscMatFloat::dims_size() const {
 inline void CscMatFloat::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatFloat::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatFloat::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatFloat::dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatFloat::dims(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.dims)
   return _internal_dims(index);
 }
-inline void CscMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.dims)
 }
-inline void CscMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void CscMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CscMatFloat::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CscMatFloat::dims() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CscMatFloat::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CscMatFloat::mutable_dims() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.dims)
   return _internal_mutable_dims();
 }
 
-// repeated uint64 col_offsets = 2;
+// repeated uint32 col_offsets = 2;
 inline int CscMatFloat::_internal_col_offsets_size() const {
   return col_offsets_.size();
 }
@@ -2365,44 +2365,44 @@ inline int CscMatFloat::col_offsets_size() const {
 inline void CscMatFloat::clear_col_offsets() {
   col_offsets_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatFloat::_internal_col_offsets(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatFloat::_internal_col_offsets(int index) const {
   return col_offsets_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatFloat::col_offsets(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatFloat::col_offsets(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.col_offsets)
   return _internal_col_offsets(index);
 }
-inline void CscMatFloat::set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_offsets_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.col_offsets)
 }
-inline void CscMatFloat::_internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::_internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_offsets_.Add(value);
 }
-inline void CscMatFloat::add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_col_offsets(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.col_offsets)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CscMatFloat::_internal_col_offsets() const {
   return col_offsets_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CscMatFloat::col_offsets() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.col_offsets)
   return _internal_col_offsets();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CscMatFloat::_internal_mutable_col_offsets() {
   return &col_offsets_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CscMatFloat::mutable_col_offsets() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.col_offsets)
   return _internal_mutable_col_offsets();
 }
 
-// repeated uint64 row_indices = 3;
+// repeated uint32 row_indices = 3;
 inline int CscMatFloat::_internal_row_indices_size() const {
   return row_indices_.size();
 }
@@ -2412,38 +2412,38 @@ inline int CscMatFloat::row_indices_size() const {
 inline void CscMatFloat::clear_row_indices() {
   row_indices_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatFloat::_internal_row_indices(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatFloat::_internal_row_indices(int index) const {
   return row_indices_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatFloat::row_indices(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatFloat::row_indices(int index) const {
   // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.row_indices)
   return _internal_row_indices(index);
 }
-inline void CscMatFloat::set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_indices_.Set(index, value);
   // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.row_indices)
 }
-inline void CscMatFloat::_internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::_internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_indices_.Add(value);
 }
-inline void CscMatFloat::add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatFloat::add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_row_indices(value);
   // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.row_indices)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CscMatFloat::_internal_row_indices() const {
   return row_indices_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
 CscMatFloat::row_indices() const {
   // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.row_indices)
   return _internal_row_indices();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CscMatFloat::_internal_mutable_row_indices() {
   return &row_indices_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
 CscMatFloat::mutable_row_indices() {
   // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloat.row_indices)
   return _internal_mutable_row_indices();
@@ -2498,675 +2498,675 @@ CscMatFloat::mutable_values() {
 
 // -------------------------------------------------------------------
 
-// DenseMatInt64
+// DenseMatint32
 
-// repeated uint64 dims = 1;
-inline int DenseMatInt64::_internal_dims_size() const {
+// repeated uint32 dims = 1;
+inline int DenseMatint32::_internal_dims_size() const {
   return dims_.size();
 }
-inline int DenseMatInt64::dims_size() const {
+inline int DenseMatint32::dims_size() const {
   return _internal_dims_size();
 }
-inline void DenseMatInt64::clear_dims() {
+inline void DenseMatint32::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 DenseMatInt64::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DenseMatint32::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 DenseMatInt64::dims(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DenseMatint32::dims(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.dims)
   return _internal_dims(index);
 }
-inline void DenseMatInt64::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void DenseMatint32::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.dims)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.dims)
 }
-inline void DenseMatInt64::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void DenseMatint32::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void DenseMatInt64::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void DenseMatint32::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.dims)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-DenseMatInt64::_internal_dims() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+DenseMatint32::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-DenseMatInt64::dims() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.dims)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+DenseMatint32::dims() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-DenseMatInt64::_internal_mutable_dims() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+DenseMatint32::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-DenseMatInt64::mutable_dims() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+DenseMatint32::mutable_dims() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.dims)
   return _internal_mutable_dims();
 }
 
-// repeated int64 values = 10;
-inline int DenseMatInt64::_internal_values_size() const {
+// repeated int32 values = 10;
+inline int DenseMatint32::_internal_values_size() const {
   return values_.size();
 }
-inline int DenseMatInt64::values_size() const {
+inline int DenseMatint32::values_size() const {
   return _internal_values_size();
 }
-inline void DenseMatInt64::clear_values() {
+inline void DenseMatint32::clear_values() {
   values_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 DenseMatInt64::_internal_values(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 DenseMatint32::_internal_values(int index) const {
   return values_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 DenseMatInt64::values(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::int32 DenseMatint32::values(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.values)
   return _internal_values(index);
 }
-inline void DenseMatInt64::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void DenseMatint32::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.values)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.values)
 }
-inline void DenseMatInt64::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void DenseMatint32::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Add(value);
 }
-inline void DenseMatInt64::add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void DenseMatint32::add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_add_values(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.values)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.values)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-DenseMatInt64::_internal_values() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+DenseMatint32::_internal_values() const {
   return values_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-DenseMatInt64::values() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.values)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+DenseMatint32::values() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.values)
   return _internal_values();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-DenseMatInt64::_internal_mutable_values() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+DenseMatint32::_internal_mutable_values() {
   return &values_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-DenseMatInt64::mutable_values() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+DenseMatint32::mutable_values() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.values)
   return _internal_mutable_values();
 }
 
 // -------------------------------------------------------------------
 
-// CooMatInt64
+// CooMatint32
 
-// repeated uint64 dims = 1;
-inline int CooMatInt64::_internal_dims_size() const {
+// repeated uint32 dims = 1;
+inline int CooMatint32::_internal_dims_size() const {
   return dims_.size();
 }
-inline int CooMatInt64::dims_size() const {
+inline int CooMatint32::dims_size() const {
   return _internal_dims_size();
 }
-inline void CooMatInt64::clear_dims() {
+inline void CooMatint32::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatInt64::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatint32::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatInt64::dims(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatint32::dims(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.dims)
   return _internal_dims(index);
 }
-inline void CooMatInt64::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.dims)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.dims)
 }
-inline void CooMatInt64::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void CooMatInt64::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.dims)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CooMatInt64::_internal_dims() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CooMatint32::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CooMatInt64::dims() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.dims)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CooMatint32::dims() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CooMatInt64::_internal_mutable_dims() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CooMatint32::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CooMatInt64::mutable_dims() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CooMatint32::mutable_dims() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.dims)
   return _internal_mutable_dims();
 }
 
-// repeated uint64 rows = 2;
-inline int CooMatInt64::_internal_rows_size() const {
+// repeated uint32 rows = 2;
+inline int CooMatint32::_internal_rows_size() const {
   return rows_.size();
 }
-inline int CooMatInt64::rows_size() const {
+inline int CooMatint32::rows_size() const {
   return _internal_rows_size();
 }
-inline void CooMatInt64::clear_rows() {
+inline void CooMatint32::clear_rows() {
   rows_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatInt64::_internal_rows(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatint32::_internal_rows(int index) const {
   return rows_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatInt64::rows(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.rows)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatint32::rows(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.rows)
   return _internal_rows(index);
 }
-inline void CooMatInt64::set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::set_rows(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   rows_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.rows)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.rows)
 }
-inline void CooMatInt64::_internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::_internal_add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   rows_.Add(value);
 }
-inline void CooMatInt64::add_rows(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::add_rows(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_rows(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.rows)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.rows)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CooMatInt64::_internal_rows() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CooMatint32::_internal_rows() const {
   return rows_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CooMatInt64::rows() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.rows)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CooMatint32::rows() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.rows)
   return _internal_rows();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CooMatInt64::_internal_mutable_rows() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CooMatint32::_internal_mutable_rows() {
   return &rows_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CooMatInt64::mutable_rows() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.rows)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CooMatint32::mutable_rows() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.rows)
   return _internal_mutable_rows();
 }
 
-// repeated uint64 cols = 3;
-inline int CooMatInt64::_internal_cols_size() const {
+// repeated uint32 cols = 3;
+inline int CooMatint32::_internal_cols_size() const {
   return cols_.size();
 }
-inline int CooMatInt64::cols_size() const {
+inline int CooMatint32::cols_size() const {
   return _internal_cols_size();
 }
-inline void CooMatInt64::clear_cols() {
+inline void CooMatint32::clear_cols() {
   cols_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatInt64::_internal_cols(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatint32::_internal_cols(int index) const {
   return cols_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CooMatInt64::cols(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.cols)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CooMatint32::cols(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.cols)
   return _internal_cols(index);
 }
-inline void CooMatInt64::set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::set_cols(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   cols_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.cols)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.cols)
 }
-inline void CooMatInt64::_internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::_internal_add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   cols_.Add(value);
 }
-inline void CooMatInt64::add_cols(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CooMatint32::add_cols(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_cols(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.cols)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.cols)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CooMatInt64::_internal_cols() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CooMatint32::_internal_cols() const {
   return cols_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CooMatInt64::cols() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.cols)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CooMatint32::cols() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.cols)
   return _internal_cols();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CooMatInt64::_internal_mutable_cols() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CooMatint32::_internal_mutable_cols() {
   return &cols_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CooMatInt64::mutable_cols() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.cols)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CooMatint32::mutable_cols() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.cols)
   return _internal_mutable_cols();
 }
 
-// repeated int64 values = 10;
-inline int CooMatInt64::_internal_values_size() const {
+// repeated int32 values = 10;
+inline int CooMatint32::_internal_values_size() const {
   return values_.size();
 }
-inline int CooMatInt64::values_size() const {
+inline int CooMatint32::values_size() const {
   return _internal_values_size();
 }
-inline void CooMatInt64::clear_values() {
+inline void CooMatint32::clear_values() {
   values_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 CooMatInt64::_internal_values(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 CooMatint32::_internal_values(int index) const {
   return values_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 CooMatInt64::values(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::int32 CooMatint32::values(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.values)
   return _internal_values(index);
 }
-inline void CooMatInt64::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CooMatint32::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.values)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.values)
 }
-inline void CooMatInt64::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CooMatint32::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Add(value);
 }
-inline void CooMatInt64::add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CooMatint32::add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_add_values(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.values)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.values)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-CooMatInt64::_internal_values() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CooMatint32::_internal_values() const {
   return values_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-CooMatInt64::values() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.values)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CooMatint32::values() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.values)
   return _internal_values();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-CooMatInt64::_internal_mutable_values() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CooMatint32::_internal_mutable_values() {
   return &values_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-CooMatInt64::mutable_values() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CooMatint32::mutable_values() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.values)
   return _internal_mutable_values();
 }
 
 // -------------------------------------------------------------------
 
-// CsrMatInt64
+// CsrMatint32
 
-// repeated uint64 dims = 1;
-inline int CsrMatInt64::_internal_dims_size() const {
+// repeated uint32 dims = 1;
+inline int CsrMatint32::_internal_dims_size() const {
   return dims_.size();
 }
-inline int CsrMatInt64::dims_size() const {
+inline int CsrMatint32::dims_size() const {
   return _internal_dims_size();
 }
-inline void CsrMatInt64::clear_dims() {
+inline void CsrMatint32::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatInt64::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatint32::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatInt64::dims(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatint32::dims(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.dims)
   return _internal_dims(index);
 }
-inline void CsrMatInt64::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.dims)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.dims)
 }
-inline void CsrMatInt64::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void CsrMatInt64::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.dims)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CsrMatInt64::_internal_dims() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CsrMatint32::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CsrMatInt64::dims() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.dims)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CsrMatint32::dims() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CsrMatInt64::_internal_mutable_dims() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CsrMatint32::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CsrMatInt64::mutable_dims() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CsrMatint32::mutable_dims() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.dims)
   return _internal_mutable_dims();
 }
 
-// repeated uint64 row_offsets = 2;
-inline int CsrMatInt64::_internal_row_offsets_size() const {
+// repeated uint32 row_offsets = 2;
+inline int CsrMatint32::_internal_row_offsets_size() const {
   return row_offsets_.size();
 }
-inline int CsrMatInt64::row_offsets_size() const {
+inline int CsrMatint32::row_offsets_size() const {
   return _internal_row_offsets_size();
 }
-inline void CsrMatInt64::clear_row_offsets() {
+inline void CsrMatint32::clear_row_offsets() {
   row_offsets_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatInt64::_internal_row_offsets(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatint32::_internal_row_offsets(int index) const {
   return row_offsets_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatInt64::row_offsets(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.row_offsets)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatint32::row_offsets(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.row_offsets)
   return _internal_row_offsets(index);
 }
-inline void CsrMatInt64::set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::set_row_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_offsets_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.row_offsets)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.row_offsets)
 }
-inline void CsrMatInt64::_internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::_internal_add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_offsets_.Add(value);
 }
-inline void CsrMatInt64::add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::add_row_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_row_offsets(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.row_offsets)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.row_offsets)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CsrMatInt64::_internal_row_offsets() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CsrMatint32::_internal_row_offsets() const {
   return row_offsets_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CsrMatInt64::row_offsets() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.row_offsets)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CsrMatint32::row_offsets() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.row_offsets)
   return _internal_row_offsets();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CsrMatInt64::_internal_mutable_row_offsets() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CsrMatint32::_internal_mutable_row_offsets() {
   return &row_offsets_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CsrMatInt64::mutable_row_offsets() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.row_offsets)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CsrMatint32::mutable_row_offsets() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.row_offsets)
   return _internal_mutable_row_offsets();
 }
 
-// repeated uint64 col_indices = 3;
-inline int CsrMatInt64::_internal_col_indices_size() const {
+// repeated uint32 col_indices = 3;
+inline int CsrMatint32::_internal_col_indices_size() const {
   return col_indices_.size();
 }
-inline int CsrMatInt64::col_indices_size() const {
+inline int CsrMatint32::col_indices_size() const {
   return _internal_col_indices_size();
 }
-inline void CsrMatInt64::clear_col_indices() {
+inline void CsrMatint32::clear_col_indices() {
   col_indices_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatInt64::_internal_col_indices(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatint32::_internal_col_indices(int index) const {
   return col_indices_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CsrMatInt64::col_indices(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.col_indices)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CsrMatint32::col_indices(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.col_indices)
   return _internal_col_indices(index);
 }
-inline void CsrMatInt64::set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::set_col_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_indices_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.col_indices)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.col_indices)
 }
-inline void CsrMatInt64::_internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::_internal_add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_indices_.Add(value);
 }
-inline void CsrMatInt64::add_col_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CsrMatint32::add_col_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_col_indices(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.col_indices)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.col_indices)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CsrMatInt64::_internal_col_indices() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CsrMatint32::_internal_col_indices() const {
   return col_indices_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CsrMatInt64::col_indices() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.col_indices)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CsrMatint32::col_indices() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.col_indices)
   return _internal_col_indices();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CsrMatInt64::_internal_mutable_col_indices() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CsrMatint32::_internal_mutable_col_indices() {
   return &col_indices_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CsrMatInt64::mutable_col_indices() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.col_indices)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CsrMatint32::mutable_col_indices() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.col_indices)
   return _internal_mutable_col_indices();
 }
 
-// repeated int64 values = 10;
-inline int CsrMatInt64::_internal_values_size() const {
+// repeated int32 values = 10;
+inline int CsrMatint32::_internal_values_size() const {
   return values_.size();
 }
-inline int CsrMatInt64::values_size() const {
+inline int CsrMatint32::values_size() const {
   return _internal_values_size();
 }
-inline void CsrMatInt64::clear_values() {
+inline void CsrMatint32::clear_values() {
   values_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 CsrMatInt64::_internal_values(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 CsrMatint32::_internal_values(int index) const {
   return values_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 CsrMatInt64::values(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::int32 CsrMatint32::values(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.values)
   return _internal_values(index);
 }
-inline void CsrMatInt64::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CsrMatint32::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.values)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.values)
 }
-inline void CsrMatInt64::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CsrMatint32::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Add(value);
 }
-inline void CsrMatInt64::add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CsrMatint32::add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_add_values(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.values)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.values)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-CsrMatInt64::_internal_values() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CsrMatint32::_internal_values() const {
   return values_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-CsrMatInt64::values() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.values)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CsrMatint32::values() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.values)
   return _internal_values();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-CsrMatInt64::_internal_mutable_values() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CsrMatint32::_internal_mutable_values() {
   return &values_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-CsrMatInt64::mutable_values() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CsrMatint32::mutable_values() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.values)
   return _internal_mutable_values();
 }
 
 // -------------------------------------------------------------------
 
-// CscMatInt64
+// CscMatint32
 
-// repeated uint64 dims = 1;
-inline int CscMatInt64::_internal_dims_size() const {
+// repeated uint32 dims = 1;
+inline int CscMatint32::_internal_dims_size() const {
   return dims_.size();
 }
-inline int CscMatInt64::dims_size() const {
+inline int CscMatint32::dims_size() const {
   return _internal_dims_size();
 }
-inline void CscMatInt64::clear_dims() {
+inline void CscMatint32::clear_dims() {
   dims_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatInt64::_internal_dims(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatint32::_internal_dims(int index) const {
   return dims_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatInt64::dims(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatint32::dims(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.dims)
   return _internal_dims(index);
 }
-inline void CscMatInt64::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::set_dims(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.dims)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.dims)
 }
-inline void CscMatInt64::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::_internal_add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   dims_.Add(value);
 }
-inline void CscMatInt64::add_dims(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::add_dims(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_dims(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.dims)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.dims)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CscMatInt64::_internal_dims() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CscMatint32::_internal_dims() const {
   return dims_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CscMatInt64::dims() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.dims)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CscMatint32::dims() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.dims)
   return _internal_dims();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CscMatInt64::_internal_mutable_dims() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CscMatint32::_internal_mutable_dims() {
   return &dims_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CscMatInt64::mutable_dims() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.dims)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CscMatint32::mutable_dims() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.dims)
   return _internal_mutable_dims();
 }
 
-// repeated uint64 col_offsets = 2;
-inline int CscMatInt64::_internal_col_offsets_size() const {
+// repeated uint32 col_offsets = 2;
+inline int CscMatint32::_internal_col_offsets_size() const {
   return col_offsets_.size();
 }
-inline int CscMatInt64::col_offsets_size() const {
+inline int CscMatint32::col_offsets_size() const {
   return _internal_col_offsets_size();
 }
-inline void CscMatInt64::clear_col_offsets() {
+inline void CscMatint32::clear_col_offsets() {
   col_offsets_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatInt64::_internal_col_offsets(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatint32::_internal_col_offsets(int index) const {
   return col_offsets_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatInt64::col_offsets(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.col_offsets)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatint32::col_offsets(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.col_offsets)
   return _internal_col_offsets(index);
 }
-inline void CscMatInt64::set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::set_col_offsets(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_offsets_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.col_offsets)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.col_offsets)
 }
-inline void CscMatInt64::_internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::_internal_add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   col_offsets_.Add(value);
 }
-inline void CscMatInt64::add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::add_col_offsets(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_col_offsets(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.col_offsets)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.col_offsets)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CscMatInt64::_internal_col_offsets() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CscMatint32::_internal_col_offsets() const {
   return col_offsets_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CscMatInt64::col_offsets() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.col_offsets)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CscMatint32::col_offsets() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.col_offsets)
   return _internal_col_offsets();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CscMatInt64::_internal_mutable_col_offsets() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CscMatint32::_internal_mutable_col_offsets() {
   return &col_offsets_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CscMatInt64::mutable_col_offsets() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.col_offsets)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CscMatint32::mutable_col_offsets() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.col_offsets)
   return _internal_mutable_col_offsets();
 }
 
-// repeated uint64 row_indices = 3;
-inline int CscMatInt64::_internal_row_indices_size() const {
+// repeated uint32 row_indices = 3;
+inline int CscMatint32::_internal_row_indices_size() const {
   return row_indices_.size();
 }
-inline int CscMatInt64::row_indices_size() const {
+inline int CscMatint32::row_indices_size() const {
   return _internal_row_indices_size();
 }
-inline void CscMatInt64::clear_row_indices() {
+inline void CscMatint32::clear_row_indices() {
   row_indices_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatInt64::_internal_row_indices(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatint32::_internal_row_indices(int index) const {
   return row_indices_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 CscMatInt64::row_indices(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.row_indices)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CscMatint32::row_indices(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.row_indices)
   return _internal_row_indices(index);
 }
-inline void CscMatInt64::set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::set_row_indices(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_indices_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.row_indices)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.row_indices)
 }
-inline void CscMatInt64::_internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::_internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   row_indices_.Add(value);
 }
-inline void CscMatInt64::add_row_indices(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void CscMatint32::add_row_indices(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_row_indices(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.row_indices)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.row_indices)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CscMatInt64::_internal_row_indices() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CscMatint32::_internal_row_indices() const {
   return row_indices_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >&
-CscMatInt64::row_indices() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.row_indices)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+CscMatint32::row_indices() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.row_indices)
   return _internal_row_indices();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CscMatInt64::_internal_mutable_row_indices() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CscMatint32::_internal_mutable_row_indices() {
   return &row_indices_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
-CscMatInt64::mutable_row_indices() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.row_indices)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+CscMatint32::mutable_row_indices() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.row_indices)
   return _internal_mutable_row_indices();
 }
 
-// repeated int64 values = 10;
-inline int CscMatInt64::_internal_values_size() const {
+// repeated int32 values = 10;
+inline int CscMatint32::_internal_values_size() const {
   return values_.size();
 }
-inline int CscMatInt64::values_size() const {
+inline int CscMatint32::values_size() const {
   return _internal_values_size();
 }
-inline void CscMatInt64::clear_values() {
+inline void CscMatint32::clear_values() {
   values_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 CscMatInt64::_internal_values(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 CscMatint32::_internal_values(int index) const {
   return values_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::int64 CscMatInt64::values(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::int32 CscMatint32::values(int index) const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.values)
   return _internal_values(index);
 }
-inline void CscMatInt64::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CscMatint32::set_values(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Set(index, value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.values)
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.values)
 }
-inline void CscMatInt64::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CscMatint32::_internal_add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   values_.Add(value);
 }
-inline void CscMatInt64::add_values(::PROTOBUF_NAMESPACE_ID::int64 value) {
+inline void CscMatint32::add_values(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_add_values(value);
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.values)
+  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.values)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-CscMatInt64::_internal_values() const {
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CscMatint32::_internal_values() const {
   return values_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >&
-CscMatInt64::values() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.values)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CscMatint32::values() const {
+  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.values)
   return _internal_values();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-CscMatInt64::_internal_mutable_values() {
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CscMatint32::_internal_mutable_values() {
   return &values_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int64 >*
-CscMatInt64::mutable_values() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt64.values)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CscMatint32::mutable_values() {
+  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.values)
   return _internal_mutable_values();
 }
 
