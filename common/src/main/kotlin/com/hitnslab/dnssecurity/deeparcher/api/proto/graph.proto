@@ -59,11 +59,11 @@ message Graph {
 
   /* Node attributes
    * NULLABLE. */
-  repeated GraphElementsAttrMap node_attrs = 21;
+  map<string, GraphElementsAttrMap> node_attrs = 21;
 
   /* Edge attributes
    * NULLABLE. */
-  repeated GraphElementsAttrMap edge_attrs = 22;
+  map<string, GraphElementsAttrMap> edge_attrs = 22;
 
   /* General attributes related to this graph.
    * NULLABLE. */

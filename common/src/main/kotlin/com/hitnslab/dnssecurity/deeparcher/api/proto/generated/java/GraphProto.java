@@ -196,26 +196,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-     */
-    java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> 
-        getNodeAttrsList();
-    /**
-     * <pre>
-     * Node attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-     */
-    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrs(int index);
-    /**
-     * <pre>
-     * Node attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
      */
     int getNodeAttrsCount();
     /**
@@ -224,20 +205,49 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
      */
-    java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-        getNodeAttrsOrBuilderList();
+    boolean containsNodeAttrs(
+        java.lang.String key);
+    /**
+     * Use {@link #getNodeAttrsMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+    getNodeAttrs();
     /**
      * <pre>
      * Node attributes
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
      */
-    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getNodeAttrsOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+    getNodeAttrsMap();
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
+     */
+
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrsOrDefault(
+        java.lang.String key,
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap defaultValue);
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
+     */
+
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrsOrThrow(
+        java.lang.String key);
 
     /**
      * <pre>
@@ -245,26 +255,7 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-     */
-    java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> 
-        getEdgeAttrsList();
-    /**
-     * <pre>
-     * Edge attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-     */
-    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrs(int index);
-    /**
-     * <pre>
-     * Edge attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
      */
     int getEdgeAttrsCount();
     /**
@@ -273,20 +264,49 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
      */
-    java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-        getEdgeAttrsOrBuilderList();
+    boolean containsEdgeAttrs(
+        java.lang.String key);
+    /**
+     * Use {@link #getEdgeAttrsMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+    getEdgeAttrs();
     /**
      * <pre>
      * Edge attributes
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
      */
-    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getEdgeAttrsOrBuilder(
-        int index);
+    java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+    getEdgeAttrsMap();
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
+     */
+
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrsOrDefault(
+        java.lang.String key,
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap defaultValue);
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
+     */
+
+    com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrsOrThrow(
+        java.lang.String key);
 
     /**
      * <pre>
@@ -363,8 +383,6 @@ public final class GraphProto {
     }
     private Graph() {
       nodeIdRemap_ = emptyIntList();
-      nodeAttrs_ = java.util.Collections.emptyList();
-      edgeAttrs_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -512,20 +530,28 @@ public final class GraphProto {
             }
             case 170: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                nodeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>();
+                nodeAttrs_ = com.google.protobuf.MapField.newMapField(
+                    NodeAttrsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              nodeAttrs_.add(
-                  input.readMessage(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+              nodeAttrs__ = input.readMessage(
+                  NodeAttrsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              nodeAttrs_.getMutableMap().put(
+                  nodeAttrs__.getKey(), nodeAttrs__.getValue());
               break;
             }
             case 178: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                edgeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>();
+                edgeAttrs_ = com.google.protobuf.MapField.newMapField(
+                    EdgeAttrsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000004;
               }
-              edgeAttrs_.add(
-                  input.readMessage(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+              edgeAttrs__ = input.readMessage(
+                  EdgeAttrsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              edgeAttrs_.getMutableMap().put(
+                  edgeAttrs__.getKey(), edgeAttrs__.getValue());
               break;
             }
             case 186: {
@@ -559,12 +585,6 @@ public final class GraphProto {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           nodeIdRemap_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          nodeAttrs_ = java.util.Collections.unmodifiableList(nodeAttrs_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          edgeAttrs_ = java.util.Collections.unmodifiableList(edgeAttrs_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -579,6 +599,10 @@ public final class GraphProto {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
+        case 21:
+          return internalGetNodeAttrs();
+        case 22:
+          return internalGetEdgeAttrs();
         case 23:
           return internalGetAttributes();
         default:
@@ -922,43 +946,30 @@ public final class GraphProto {
     private int nodeIdRemapMemoizedSerializedSize = -1;
 
     public static final int NODE_ATTRS_FIELD_NUMBER = 21;
-    private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> nodeAttrs_;
-    /**
-     * <pre>
-     * Node attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrsList() {
+    private static final class NodeAttrsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>newDefaultInstance(
+                  com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_NodeAttrsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> nodeAttrs_;
+    private com.google.protobuf.MapField<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+    internalGetNodeAttrs() {
+      if (nodeAttrs_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            NodeAttrsDefaultEntryHolder.defaultEntry);
+      }
       return nodeAttrs_;
     }
-    /**
-     * <pre>
-     * Node attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-        getNodeAttrsOrBuilderList() {
-      return nodeAttrs_;
-    }
-    /**
-     * <pre>
-     * Node attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-     */
-    @java.lang.Override
+
     public int getNodeAttrsCount() {
-      return nodeAttrs_.size();
+      return internalGetNodeAttrs().getMap().size();
     }
     /**
      * <pre>
@@ -966,11 +977,22 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsNodeAttrs(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetNodeAttrs().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getNodeAttrsMap()} instead.
      */
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrs(int index) {
-      return nodeAttrs_.get(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrs() {
+      return getNodeAttrsMap();
     }
     /**
      * <pre>
@@ -978,52 +1000,77 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
      */
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getNodeAttrsOrBuilder(
-        int index) {
-      return nodeAttrs_.get(index);
+
+    public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrsMap() {
+      return internalGetNodeAttrs().getMap();
+    }
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
+     */
+    @java.lang.Override
+
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrsOrDefault(
+        java.lang.String key,
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+          internalGetNodeAttrs().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * Node attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
+     */
+    @java.lang.Override
+
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+          internalGetNodeAttrs().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     public static final int EDGE_ATTRS_FIELD_NUMBER = 22;
-    private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> edgeAttrs_;
-    /**
-     * <pre>
-     * Edge attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrsList() {
+    private static final class EdgeAttrsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>newDefaultInstance(
+                  com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphProto.internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_EdgeAttrsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> edgeAttrs_;
+    private com.google.protobuf.MapField<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+    internalGetEdgeAttrs() {
+      if (edgeAttrs_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            EdgeAttrsDefaultEntryHolder.defaultEntry);
+      }
       return edgeAttrs_;
     }
-    /**
-     * <pre>
-     * Edge attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-        getEdgeAttrsOrBuilderList() {
-      return edgeAttrs_;
-    }
-    /**
-     * <pre>
-     * Edge attributes
-     * NULLABLE. 
-     * </pre>
-     *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-     */
-    @java.lang.Override
+
     public int getEdgeAttrsCount() {
-      return edgeAttrs_.size();
+      return internalGetEdgeAttrs().getMap().size();
     }
     /**
      * <pre>
@@ -1031,11 +1078,22 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsEdgeAttrs(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetEdgeAttrs().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getEdgeAttrsMap()} instead.
      */
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrs(int index) {
-      return edgeAttrs_.get(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrs() {
+      return getEdgeAttrsMap();
     }
     /**
      * <pre>
@@ -1043,12 +1101,50 @@ public final class GraphProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
      */
     @java.lang.Override
-    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getEdgeAttrsOrBuilder(
-        int index) {
-      return edgeAttrs_.get(index);
+
+    public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrsMap() {
+      return internalGetEdgeAttrs().getMap();
+    }
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
+     */
+    @java.lang.Override
+
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrsOrDefault(
+        java.lang.String key,
+        com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+          internalGetEdgeAttrs().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * Edge attributes
+     * NULLABLE. 
+     * </pre>
+     *
+     * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
+     */
+    @java.lang.Override
+
+    public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+          internalGetEdgeAttrs().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     public static final int ATTRIBUTES_FIELD_NUMBER = 23;
@@ -1207,12 +1303,18 @@ public final class GraphProto {
       for (int i = 0; i < nodeIdRemap_.size(); i++) {
         output.writeUInt32NoTag(nodeIdRemap_.getInt(i));
       }
-      for (int i = 0; i < nodeAttrs_.size(); i++) {
-        output.writeMessage(21, nodeAttrs_.get(i));
-      }
-      for (int i = 0; i < edgeAttrs_.size(); i++) {
-        output.writeMessage(22, edgeAttrs_.get(i));
-      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetNodeAttrs(),
+          NodeAttrsDefaultEntryHolder.defaultEntry,
+          21);
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetEdgeAttrs(),
+          EdgeAttrsDefaultEntryHolder.defaultEntry,
+          22);
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
@@ -1286,13 +1388,25 @@ public final class GraphProto {
         }
         nodeIdRemapMemoizedSerializedSize = dataSize;
       }
-      for (int i = 0; i < nodeAttrs_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> entry
+           : internalGetNodeAttrs().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+        nodeAttrs__ = NodeAttrsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(21, nodeAttrs_.get(i));
+            .computeMessageSize(21, nodeAttrs__);
       }
-      for (int i = 0; i < edgeAttrs_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> entry
+           : internalGetEdgeAttrs().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+        edgeAttrs__ = EdgeAttrsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(22, edgeAttrs_.get(i));
+            .computeMessageSize(22, edgeAttrs__);
       }
       for (java.util.Map.Entry<java.lang.String, com.google.protobuf.Any> entry
            : internalGetAttributes().getMap().entrySet()) {
@@ -1335,10 +1449,10 @@ public final class GraphProto {
           != other.getUnweighted()) return false;
       if (!getNodeIdRemapList()
           .equals(other.getNodeIdRemapList())) return false;
-      if (!getNodeAttrsList()
-          .equals(other.getNodeAttrsList())) return false;
-      if (!getEdgeAttrsList()
-          .equals(other.getEdgeAttrsList())) return false;
+      if (!internalGetNodeAttrs().equals(
+          other.internalGetNodeAttrs())) return false;
+      if (!internalGetEdgeAttrs().equals(
+          other.internalGetEdgeAttrs())) return false;
       if (!internalGetAttributes().equals(
           other.internalGetAttributes())) return false;
       if (!getAdjCase().equals(other.getAdjCase())) return false;
@@ -1394,13 +1508,13 @@ public final class GraphProto {
         hash = (37 * hash) + NODE_ID_REMAP_FIELD_NUMBER;
         hash = (53 * hash) + getNodeIdRemapList().hashCode();
       }
-      if (getNodeAttrsCount() > 0) {
+      if (!internalGetNodeAttrs().getMap().isEmpty()) {
         hash = (37 * hash) + NODE_ATTRS_FIELD_NUMBER;
-        hash = (53 * hash) + getNodeAttrsList().hashCode();
+        hash = (53 * hash) + internalGetNodeAttrs().hashCode();
       }
-      if (getEdgeAttrsCount() > 0) {
+      if (!internalGetEdgeAttrs().getMap().isEmpty()) {
         hash = (37 * hash) + EDGE_ATTRS_FIELD_NUMBER;
-        hash = (53 * hash) + getEdgeAttrsList().hashCode();
+        hash = (53 * hash) + internalGetEdgeAttrs().hashCode();
       }
       if (!internalGetAttributes().getMap().isEmpty()) {
         hash = (37 * hash) + ATTRIBUTES_FIELD_NUMBER;
@@ -1537,6 +1651,10 @@ public final class GraphProto {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
+          case 21:
+            return internalGetNodeAttrs();
+          case 22:
+            return internalGetEdgeAttrs();
           case 23:
             return internalGetAttributes();
           default:
@@ -1548,6 +1666,10 @@ public final class GraphProto {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
+          case 21:
+            return internalGetMutableNodeAttrs();
+          case 22:
+            return internalGetMutableEdgeAttrs();
           case 23:
             return internalGetMutableAttributes();
           default:
@@ -1576,8 +1698,6 @@ public final class GraphProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getNodeAttrsFieldBuilder();
-          getEdgeAttrsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -1599,18 +1719,8 @@ public final class GraphProto {
 
         nodeIdRemap_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (nodeAttrsBuilder_ == null) {
-          nodeAttrs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          nodeAttrsBuilder_.clear();
-        }
-        if (edgeAttrsBuilder_ == null) {
-          edgeAttrs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        } else {
-          edgeAttrsBuilder_.clear();
-        }
+        internalGetMutableNodeAttrs().clear();
+        internalGetMutableEdgeAttrs().clear();
         internalGetMutableAttributes().clear();
         adjCase_ = 0;
         adj_ = null;
@@ -1681,24 +1791,10 @@ public final class GraphProto {
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.nodeIdRemap_ = nodeIdRemap_;
-        if (nodeAttrsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            nodeAttrs_ = java.util.Collections.unmodifiableList(nodeAttrs_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.nodeAttrs_ = nodeAttrs_;
-        } else {
-          result.nodeAttrs_ = nodeAttrsBuilder_.build();
-        }
-        if (edgeAttrsBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
-            edgeAttrs_ = java.util.Collections.unmodifiableList(edgeAttrs_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.edgeAttrs_ = edgeAttrs_;
-        } else {
-          result.edgeAttrs_ = edgeAttrsBuilder_.build();
-        }
+        result.nodeAttrs_ = internalGetNodeAttrs();
+        result.nodeAttrs_.makeImmutable();
+        result.edgeAttrs_ = internalGetEdgeAttrs();
+        result.edgeAttrs_.makeImmutable();
         result.attributes_ = internalGetAttributes();
         result.attributes_.makeImmutable();
         result.adjCase_ = adjCase_;
@@ -1781,58 +1877,10 @@ public final class GraphProto {
           }
           onChanged();
         }
-        if (nodeAttrsBuilder_ == null) {
-          if (!other.nodeAttrs_.isEmpty()) {
-            if (nodeAttrs_.isEmpty()) {
-              nodeAttrs_ = other.nodeAttrs_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureNodeAttrsIsMutable();
-              nodeAttrs_.addAll(other.nodeAttrs_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.nodeAttrs_.isEmpty()) {
-            if (nodeAttrsBuilder_.isEmpty()) {
-              nodeAttrsBuilder_.dispose();
-              nodeAttrsBuilder_ = null;
-              nodeAttrs_ = other.nodeAttrs_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              nodeAttrsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getNodeAttrsFieldBuilder() : null;
-            } else {
-              nodeAttrsBuilder_.addAllMessages(other.nodeAttrs_);
-            }
-          }
-        }
-        if (edgeAttrsBuilder_ == null) {
-          if (!other.edgeAttrs_.isEmpty()) {
-            if (edgeAttrs_.isEmpty()) {
-              edgeAttrs_ = other.edgeAttrs_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureEdgeAttrsIsMutable();
-              edgeAttrs_.addAll(other.edgeAttrs_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.edgeAttrs_.isEmpty()) {
-            if (edgeAttrsBuilder_.isEmpty()) {
-              edgeAttrsBuilder_.dispose();
-              edgeAttrsBuilder_ = null;
-              edgeAttrs_ = other.edgeAttrs_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              edgeAttrsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEdgeAttrsFieldBuilder() : null;
-            } else {
-              edgeAttrsBuilder_.addAllMessages(other.edgeAttrs_);
-            }
-          }
-        }
+        internalGetMutableNodeAttrs().mergeFrom(
+            other.internalGetNodeAttrs());
+        internalGetMutableEdgeAttrs().mergeFrom(
+            other.internalGetEdgeAttrs());
         internalGetMutableAttributes().mergeFrom(
             other.internalGetAttributes());
         switch (other.getAdjCase()) {
@@ -2908,47 +2956,31 @@ public final class GraphProto {
         return this;
       }
 
-      private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> nodeAttrs_ =
-        java.util.Collections.emptyList();
-      private void ensureNodeAttrsIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          nodeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>(nodeAttrs_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> nodeAttrsBuilder_;
-
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrsList() {
-        if (nodeAttrsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(nodeAttrs_);
-        } else {
-          return nodeAttrsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<
+          java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> nodeAttrs_;
+      private com.google.protobuf.MapField<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+      internalGetNodeAttrs() {
+        if (nodeAttrs_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              NodeAttrsDefaultEntryHolder.defaultEntry);
         }
+        return nodeAttrs_;
       }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
+      private com.google.protobuf.MapField<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+      internalGetMutableNodeAttrs() {
+        onChanged();;
+        if (nodeAttrs_ == null) {
+          nodeAttrs_ = com.google.protobuf.MapField.newMapField(
+              NodeAttrsDefaultEntryHolder.defaultEntry);
+        }
+        if (!nodeAttrs_.isMutable()) {
+          nodeAttrs_ = nodeAttrs_.copy();
+        }
+        return nodeAttrs_;
+      }
+
       public int getNodeAttrsCount() {
-        if (nodeAttrsBuilder_ == null) {
-          return nodeAttrs_.size();
-        } else {
-          return nodeAttrsBuilder_.getCount();
-        }
+        return internalGetNodeAttrs().getMap().size();
       }
       /**
        * <pre>
@@ -2956,14 +2988,22 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
        */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrs(int index) {
-        if (nodeAttrsBuilder_ == null) {
-          return nodeAttrs_.get(index);
-        } else {
-          return nodeAttrsBuilder_.getMessage(index);
-        }
+
+      @java.lang.Override
+      public boolean containsNodeAttrs(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetNodeAttrs().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getNodeAttrsMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrs() {
+        return getNodeAttrsMap();
       }
       /**
        * <pre>
@@ -2971,21 +3011,12 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
        */
-      public Builder setNodeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
-        if (nodeAttrsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.set(index, value);
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.setMessage(index, value);
-        }
-        return this;
+      @java.lang.Override
+
+      public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getNodeAttrsMap() {
+        return internalGetNodeAttrs().getMap();
       }
       /**
        * <pre>
@@ -2993,18 +3024,17 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
        */
-      public Builder setNodeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
-        if (nodeAttrsBuilder_ == null) {
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
+      @java.lang.Override
+
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrsOrDefault(
+          java.lang.String key,
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+            internalGetNodeAttrs().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <pre>
@@ -3012,117 +3042,24 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
        */
-      public Builder addNodeAttrs(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
-        if (nodeAttrsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.add(value);
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.addMessage(value);
+      @java.lang.Override
+
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getNodeAttrsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+            internalGetNodeAttrs().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
         }
-        return this;
+        return map.get(key);
       }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public Builder addNodeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
-        if (nodeAttrsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.add(index, value);
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public Builder addNodeAttrs(
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
-        if (nodeAttrsBuilder_ == null) {
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.add(builderForValue.build());
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public Builder addNodeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
-        if (nodeAttrsBuilder_ == null) {
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public Builder addAllNodeAttrs(
-          java.lang.Iterable<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> values) {
-        if (nodeAttrsBuilder_ == null) {
-          ensureNodeAttrsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, nodeAttrs_);
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
+
       public Builder clearNodeAttrs() {
-        if (nodeAttrsBuilder_ == null) {
-          nodeAttrs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.clear();
-        }
+        internalGetMutableNodeAttrs().getMutableMap()
+            .clear();
         return this;
       }
       /**
@@ -3131,16 +3068,39 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
        */
-      public Builder removeNodeAttrs(int index) {
-        if (nodeAttrsBuilder_ == null) {
-          ensureNodeAttrsIsMutable();
-          nodeAttrs_.remove(index);
-          onChanged();
-        } else {
-          nodeAttrsBuilder_.remove(index);
-        }
+
+      public Builder removeNodeAttrs(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableNodeAttrs().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+      getMutableNodeAttrs() {
+        return internalGetMutableNodeAttrs().getMutableMap();
+      }
+      /**
+       * <pre>
+       * Node attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
+       */
+      public Builder putNodeAttrs(
+          java.lang.String key,
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableNodeAttrs().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
@@ -3149,136 +3109,41 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; node_attrs = 21;</code>
        */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder getNodeAttrsBuilder(
-          int index) {
-        return getNodeAttrsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getNodeAttrsOrBuilder(
-          int index) {
-        if (nodeAttrsBuilder_ == null) {
-          return nodeAttrs_.get(index);  } else {
-          return nodeAttrsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-           getNodeAttrsOrBuilderList() {
-        if (nodeAttrsBuilder_ != null) {
-          return nodeAttrsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(nodeAttrs_);
-        }
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addNodeAttrsBuilder() {
-        return getNodeAttrsFieldBuilder().addBuilder(
-            com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addNodeAttrsBuilder(
-          int index) {
-        return getNodeAttrsFieldBuilder().addBuilder(
-            index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * Node attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;</code>
-       */
-      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder> 
-           getNodeAttrsBuilderList() {
-        return getNodeAttrsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-          getNodeAttrsFieldBuilder() {
-        if (nodeAttrsBuilder_ == null) {
-          nodeAttrsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder>(
-                  nodeAttrs_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          nodeAttrs_ = null;
-        }
-        return nodeAttrsBuilder_;
+
+      public Builder putAllNodeAttrs(
+          java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> values) {
+        internalGetMutableNodeAttrs().getMutableMap()
+            .putAll(values);
+        return this;
       }
 
-      private java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> edgeAttrs_ =
-        java.util.Collections.emptyList();
-      private void ensureEdgeAttrsIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
-          edgeAttrs_ = new java.util.ArrayList<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>(edgeAttrs_);
-          bitField0_ |= 0x00000004;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> edgeAttrsBuilder_;
-
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrsList() {
-        if (edgeAttrsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(edgeAttrs_);
-        } else {
-          return edgeAttrsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<
+          java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> edgeAttrs_;
+      private com.google.protobuf.MapField<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+      internalGetEdgeAttrs() {
+        if (edgeAttrs_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              EdgeAttrsDefaultEntryHolder.defaultEntry);
         }
+        return edgeAttrs_;
       }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
+      private com.google.protobuf.MapField<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+      internalGetMutableEdgeAttrs() {
+        onChanged();;
+        if (edgeAttrs_ == null) {
+          edgeAttrs_ = com.google.protobuf.MapField.newMapField(
+              EdgeAttrsDefaultEntryHolder.defaultEntry);
+        }
+        if (!edgeAttrs_.isMutable()) {
+          edgeAttrs_ = edgeAttrs_.copy();
+        }
+        return edgeAttrs_;
+      }
+
       public int getEdgeAttrsCount() {
-        if (edgeAttrsBuilder_ == null) {
-          return edgeAttrs_.size();
-        } else {
-          return edgeAttrsBuilder_.getCount();
-        }
+        return internalGetEdgeAttrs().getMap().size();
       }
       /**
        * <pre>
@@ -3286,14 +3151,22 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
        */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrs(int index) {
-        if (edgeAttrsBuilder_ == null) {
-          return edgeAttrs_.get(index);
-        } else {
-          return edgeAttrsBuilder_.getMessage(index);
-        }
+
+      @java.lang.Override
+      public boolean containsEdgeAttrs(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetEdgeAttrs().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getEdgeAttrsMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrs() {
+        return getEdgeAttrsMap();
       }
       /**
        * <pre>
@@ -3301,21 +3174,12 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
        */
-      public Builder setEdgeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
-        if (edgeAttrsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.set(index, value);
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.setMessage(index, value);
-        }
-        return this;
+      @java.lang.Override
+
+      public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> getEdgeAttrsMap() {
+        return internalGetEdgeAttrs().getMap();
       }
       /**
        * <pre>
@@ -3323,18 +3187,17 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
        */
-      public Builder setEdgeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
-        if (edgeAttrsBuilder_ == null) {
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
+      @java.lang.Override
+
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrsOrDefault(
+          java.lang.String key,
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+            internalGetEdgeAttrs().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <pre>
@@ -3342,117 +3205,24 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
        */
-      public Builder addEdgeAttrs(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
-        if (edgeAttrsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.add(value);
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.addMessage(value);
+      @java.lang.Override
+
+      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap getEdgeAttrsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> map =
+            internalGetEdgeAttrs().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
         }
-        return this;
+        return map.get(key);
       }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public Builder addEdgeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
-        if (edgeAttrsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.add(index, value);
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public Builder addEdgeAttrs(
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
-        if (edgeAttrsBuilder_ == null) {
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.add(builderForValue.build());
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public Builder addEdgeAttrs(
-          int index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder builderForValue) {
-        if (edgeAttrsBuilder_ == null) {
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public Builder addAllEdgeAttrs(
-          java.lang.Iterable<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> values) {
-        if (edgeAttrsBuilder_ == null) {
-          ensureEdgeAttrsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, edgeAttrs_);
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
+
       public Builder clearEdgeAttrs() {
-        if (edgeAttrsBuilder_ == null) {
-          edgeAttrs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.clear();
-        }
+        internalGetMutableEdgeAttrs().getMutableMap()
+            .clear();
         return this;
       }
       /**
@@ -3461,16 +3231,39 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
        */
-      public Builder removeEdgeAttrs(int index) {
-        if (edgeAttrsBuilder_ == null) {
-          ensureEdgeAttrsIsMutable();
-          edgeAttrs_.remove(index);
-          onChanged();
-        } else {
-          edgeAttrsBuilder_.remove(index);
-        }
+
+      public Builder removeEdgeAttrs(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableEdgeAttrs().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap>
+      getMutableEdgeAttrs() {
+        return internalGetMutableEdgeAttrs().getMutableMap();
+      }
+      /**
+       * <pre>
+       * Edge attributes
+       * NULLABLE. 
+       * </pre>
+       *
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
+       */
+      public Builder putEdgeAttrs(
+          java.lang.String key,
+          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableEdgeAttrs().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
@@ -3479,93 +3272,14 @@ public final class GraphProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
+       * <code>map&lt;string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap&gt; edge_attrs = 22;</code>
        */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder getEdgeAttrsBuilder(
-          int index) {
-        return getEdgeAttrsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder getEdgeAttrsOrBuilder(
-          int index) {
-        if (edgeAttrsBuilder_ == null) {
-          return edgeAttrs_.get(index);  } else {
-          return edgeAttrsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public java.util.List<? extends com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-           getEdgeAttrsOrBuilderList() {
-        if (edgeAttrsBuilder_ != null) {
-          return edgeAttrsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(edgeAttrs_);
-        }
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addEdgeAttrsBuilder() {
-        return getEdgeAttrsFieldBuilder().addBuilder(
-            com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder addEdgeAttrsBuilder(
-          int index) {
-        return getEdgeAttrsFieldBuilder().addBuilder(
-            index, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * Edge attributes
-       * NULLABLE. 
-       * </pre>
-       *
-       * <code>repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;</code>
-       */
-      public java.util.List<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder> 
-           getEdgeAttrsBuilderList() {
-        return getEdgeAttrsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder> 
-          getEdgeAttrsFieldBuilder() {
-        if (edgeAttrsBuilder_ == null) {
-          edgeAttrsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMapOrBuilder>(
-                  edgeAttrs_,
-                  ((bitField0_ & 0x00000004) != 0),
-                  getParentForChildren(),
-                  isClean());
-          edgeAttrs_ = null;
-        }
-        return edgeAttrsBuilder_;
+
+      public Builder putAllEdgeAttrs(
+          java.util.Map<java.lang.String, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap> values) {
+        internalGetMutableEdgeAttrs().getMutableMap()
+            .putAll(values);
+        return this;
       }
 
       private com.google.protobuf.MapField<
@@ -3789,6 +3503,16 @@ public final class GraphProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_NodeAttrsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_NodeAttrsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_EdgeAttrsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_EdgeAttrsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_AttributesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3808,7 +3532,7 @@ public final class GraphProto {
       "/dnssecurity/deeparcher/api/proto/matrix" +
       ".proto\032Dcom/hitnslab/dnssecurity/deeparc" +
       "her/api/proto/graph_attributes.proto\032\031go" +
-      "ogle/protobuf/any.proto\"\240\006\n\005Graph\022\n\n\002id\030" +
+      "ogle/protobuf/any.proto\"\216\010\n\005Graph\022\n\n\002id\030" +
       "\001 \001(\r\022\r\n\005nodes\030\002 \001(\005\022\r\n\005edges\030\003 \001(\005\022M\n\005d" +
       "ense\030\010 \001(\0132<.com.hitnslab.dnssecurity.de" +
       "eparcher.api.proto.DenseMatFloatH\000\022I\n\003co" +
@@ -3821,16 +3545,22 @@ public final class GraphProto {
       "\n\010directed\030\021 \001(\010\022\021\n\tconnected\030\022 \001(\010\022\022\n\nu" +
       "nweighted\030\023 \001(\010\022\025\n\rnode_id_remap\030\024 \003(\r\022W" +
       "\n\nnode_attrs\030\025 \003(\0132C.com.hitnslab.dnssec" +
-      "urity.deeparcher.api.proto.GraphElements" +
-      "AttrMap\022W\n\nedge_attrs\030\026 \003(\0132C.com.hitnsl" +
+      "urity.deeparcher.api.proto.Graph.NodeAtt" +
+      "rsEntry\022W\n\nedge_attrs\030\026 \003(\0132C.com.hitnsl" +
       "ab.dnssecurity.deeparcher.api.proto.Grap" +
-      "hElementsAttrMap\022X\n\nattributes\030\027 \003(\0132D.c" +
+      "h.EdgeAttrsEntry\022X\n\nattributes\030\027 \003(\0132D.c" +
       "om.hitnslab.dnssecurity.deeparcher.api.p" +
-      "roto.Graph.AttributesEntry\032G\n\017Attributes" +
-      "Entry\022\013\n\003key\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.goog" +
-      "le.protobuf.Any:\0028\001B\005\n\003adjBO\n<com.hitnsl" +
-      "ab.dnssecurity.deeparcher.api.proto.gene" +
-      "rated.javaB\nGraphProtoH\001\370\001\001b\006proto3"
+      "roto.Graph.AttributesEntry\032u\n\016NodeAttrsE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022R\n\005value\030\002 \001(\0132C.com.h" +
+      "itnslab.dnssecurity.deeparcher.api.proto" +
+      ".GraphElementsAttrMap:\0028\001\032u\n\016EdgeAttrsEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022R\n\005value\030\002 \001(\0132C.com.hi" +
+      "tnslab.dnssecurity.deeparcher.api.proto." +
+      "GraphElementsAttrMap:\0028\001\032G\n\017AttributesEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.google" +
+      ".protobuf.Any:\0028\001B\005\n\003adjBO\n<com.hitnslab" +
+      ".dnssecurity.deeparcher.api.proto.genera" +
+      "ted.javaB\nGraphProtoH\001\370\001\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3845,8 +3575,20 @@ public final class GraphProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_descriptor,
         new java.lang.String[] { "Id", "Nodes", "Edges", "Dense", "Coo", "Csr", "Csc", "ParentId", "Directed", "Connected", "Unweighted", "NodeIdRemap", "NodeAttrs", "EdgeAttrs", "Attributes", "Adj", });
-    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_AttributesEntry_descriptor =
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_NodeAttrsEntry_descriptor =
       internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_descriptor.getNestedTypes().get(0);
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_NodeAttrsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_NodeAttrsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_EdgeAttrsEntry_descriptor =
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_descriptor.getNestedTypes().get(1);
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_EdgeAttrsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_EdgeAttrsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_AttributesEntry_descriptor =
+      internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_descriptor.getNestedTypes().get(2);
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_AttributesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_Graph_AttributesEntry_descriptor,

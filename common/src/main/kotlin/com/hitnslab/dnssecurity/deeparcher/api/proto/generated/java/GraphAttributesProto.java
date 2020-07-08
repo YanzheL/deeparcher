@@ -790,33 +790,11 @@ public final class GraphAttributesProto {
 
     /**
      * <pre>
-     * Attribute name.
-     * NOT NULL. 
-     * </pre>
-     *
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    java.lang.String getName();
-    /**
-     * <pre>
-     * Attribute name.
-     * NOT NULL. 
-     * </pre>
-     *
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    /**
-     * <pre>
      * Node ID to serialized attribute value mapping.
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
     int getDataCount();
     /**
@@ -825,7 +803,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
     boolean containsData(
         int key);
@@ -841,7 +819,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
     java.util.Map<java.lang.Integer, com.google.protobuf.ByteString>
     getDataMap();
@@ -851,7 +829,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
 
     com.google.protobuf.ByteString getDataOrDefault(
@@ -863,7 +841,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
 
     com.google.protobuf.ByteString getDataOrThrow(
@@ -879,7 +857,7 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>string type_url = 4;</code>
+     * <code>string type_url = 2;</code>
      * @return The typeUrl.
      */
     java.lang.String getTypeUrl();
@@ -893,7 +871,7 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>string type_url = 4;</code>
+     * <code>string type_url = 2;</code>
      * @return The bytes for typeUrl.
      */
     com.google.protobuf.ByteString
@@ -925,7 +903,6 @@ public final class GraphAttributesProto {
       super(builder);
     }
     private GraphElementsAttrMap() {
-      name_ = "";
       typeUrl_ = "";
     }
 
@@ -961,12 +938,6 @@ public final class GraphAttributesProto {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 data_ = com.google.protobuf.MapField.newMapField(
                     DataDefaultEntryHolder.defaultEntry);
@@ -979,7 +950,7 @@ public final class GraphAttributesProto {
                   data__.getKey(), data__.getValue());
               break;
             }
-            case 34: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               typeUrl_ = s;
@@ -1014,7 +985,7 @@ public final class GraphAttributesProto {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 3:
+        case 1:
           return internalGetData();
         default:
           throw new RuntimeException(
@@ -1029,55 +1000,7 @@ public final class GraphAttributesProto {
               com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.Builder.class);
     }
 
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
-    /**
-     * <pre>
-     * Attribute name.
-     * NOT NULL. 
-     * </pre>
-     *
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    @java.lang.Override
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * Attribute name.
-     * NOT NULL. 
-     * </pre>
-     *
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DATA_FIELD_NUMBER = 3;
+    public static final int DATA_FIELD_NUMBER = 1;
     private static final class DataDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.Integer, com.google.protobuf.ByteString> defaultEntry =
@@ -1109,7 +1032,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
 
     @java.lang.Override
@@ -1132,7 +1055,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
     @java.lang.Override
 
@@ -1145,7 +1068,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
     @java.lang.Override
 
@@ -1163,7 +1086,7 @@ public final class GraphAttributesProto {
      * NOT NULL. 
      * </pre>
      *
-     * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+     * <code>map&lt;uint32, bytes&gt; data = 1;</code>
      */
     @java.lang.Override
 
@@ -1178,7 +1101,7 @@ public final class GraphAttributesProto {
       return map.get(key);
     }
 
-    public static final int TYPE_URL_FIELD_NUMBER = 4;
+    public static final int TYPE_URL_FIELD_NUMBER = 2;
     private volatile java.lang.Object typeUrl_;
     /**
      * <pre>
@@ -1190,7 +1113,7 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>string type_url = 4;</code>
+     * <code>string type_url = 2;</code>
      * @return The typeUrl.
      */
     @java.lang.Override
@@ -1216,7 +1139,7 @@ public final class GraphAttributesProto {
      * NULLABLE. 
      * </pre>
      *
-     * <code>string type_url = 4;</code>
+     * <code>string type_url = 2;</code>
      * @return The bytes for typeUrl.
      */
     @java.lang.Override
@@ -1248,17 +1171,14 @@ public final class GraphAttributesProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-      }
       com.google.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetData(),
           DataDefaultEntryHolder.defaultEntry,
-          3);
+          1);
       if (!getTypeUrlBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, typeUrl_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, typeUrl_);
       }
       unknownFields.writeTo(output);
     }
@@ -1269,9 +1189,6 @@ public final class GraphAttributesProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-      }
       for (java.util.Map.Entry<java.lang.Integer, com.google.protobuf.ByteString> entry
            : internalGetData().getMap().entrySet()) {
         com.google.protobuf.MapEntry<java.lang.Integer, com.google.protobuf.ByteString>
@@ -1280,10 +1197,10 @@ public final class GraphAttributesProto {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, data__);
+            .computeMessageSize(1, data__);
       }
       if (!getTypeUrlBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, typeUrl_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, typeUrl_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1300,8 +1217,6 @@ public final class GraphAttributesProto {
       }
       com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap) obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
       if (!internalGetData().equals(
           other.internalGetData())) return false;
       if (!getTypeUrl()
@@ -1317,8 +1232,6 @@ public final class GraphAttributesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
       if (!internalGetData().getMap().isEmpty()) {
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + internalGetData().hashCode();
@@ -1449,7 +1362,7 @@ public final class GraphAttributesProto {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 3:
+          case 1:
             return internalGetData();
           default:
             throw new RuntimeException(
@@ -1460,7 +1373,7 @@ public final class GraphAttributesProto {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 3:
+          case 1:
             return internalGetMutableData();
           default:
             throw new RuntimeException(
@@ -1493,8 +1406,6 @@ public final class GraphAttributesProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        name_ = "";
-
         internalGetMutableData().clear();
         typeUrl_ = "";
 
@@ -1525,7 +1436,6 @@ public final class GraphAttributesProto {
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap buildPartial() {
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap(this);
         int from_bitField0_ = bitField0_;
-        result.name_ = name_;
         result.data_ = internalGetData();
         result.data_.makeImmutable();
         result.typeUrl_ = typeUrl_;
@@ -1577,10 +1487,6 @@ public final class GraphAttributesProto {
 
       public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap other) {
         if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.GraphElementsAttrMap.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          onChanged();
-        }
         internalGetMutableData().mergeFrom(
             other.internalGetData());
         if (!other.getTypeUrl().isEmpty()) {
@@ -1617,107 +1523,6 @@ public final class GraphAttributesProto {
       }
       private int bitField0_;
 
-      private java.lang.Object name_ = "";
-      /**
-       * <pre>
-       * Attribute name.
-       * NOT NULL. 
-       * </pre>
-       *
-       * <code>string name = 1;</code>
-       * @return The name.
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Attribute name.
-       * NOT NULL. 
-       * </pre>
-       *
-       * <code>string name = 1;</code>
-       * @return The bytes for name.
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Attribute name.
-       * NOT NULL. 
-       * </pre>
-       *
-       * <code>string name = 1;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Attribute name.
-       * NOT NULL. 
-       * </pre>
-       *
-       * <code>string name = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Attribute name.
-       * NOT NULL. 
-       * </pre>
-       *
-       * <code>string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
       private com.google.protobuf.MapField<
           java.lang.Integer, com.google.protobuf.ByteString> data_;
       private com.google.protobuf.MapField<java.lang.Integer, com.google.protobuf.ByteString>
@@ -1750,7 +1555,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
 
       @java.lang.Override
@@ -1773,7 +1578,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
       @java.lang.Override
 
@@ -1786,7 +1591,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
       @java.lang.Override
 
@@ -1804,7 +1609,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
       @java.lang.Override
 
@@ -1830,7 +1635,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
 
       public Builder removeData(
@@ -1854,7 +1659,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
       public Builder putData(
           int key,
@@ -1871,7 +1676,7 @@ public final class GraphAttributesProto {
        * NOT NULL. 
        * </pre>
        *
-       * <code>map&lt;uint32, bytes&gt; data = 3;</code>
+       * <code>map&lt;uint32, bytes&gt; data = 1;</code>
        */
 
       public Builder putAllData(
@@ -1892,7 +1697,7 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>string type_url = 4;</code>
+       * <code>string type_url = 2;</code>
        * @return The typeUrl.
        */
       public java.lang.String getTypeUrl() {
@@ -1917,7 +1722,7 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>string type_url = 4;</code>
+       * <code>string type_url = 2;</code>
        * @return The bytes for typeUrl.
        */
       public com.google.protobuf.ByteString
@@ -1943,7 +1748,7 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>string type_url = 4;</code>
+       * <code>string type_url = 2;</code>
        * @param value The typeUrl to set.
        * @return This builder for chaining.
        */
@@ -1967,7 +1772,7 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>string type_url = 4;</code>
+       * <code>string type_url = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTypeUrl() {
@@ -1986,7 +1791,7 @@ public final class GraphAttributesProto {
        * NULLABLE. 
        * </pre>
        *
-       * <code>string type_url = 4;</code>
+       * <code>string type_url = 2;</code>
        * @param value The bytes for typeUrl to set.
        * @return This builder for chaining.
        */
@@ -2082,14 +1887,14 @@ public final class GraphAttributesProto {
       "i/proto/graph_attributes.proto\022-com.hitn" +
       "slab.dnssecurity.deeparcher.api.proto\"9\n" +
       "\rComponentAttr\022\024\n\014component_id\030\002 \001(\r\022\022\n\n" +
-      "components\030\003 \003(\r\"\300\001\n\024GraphElementsAttrMa" +
-      "p\022\014\n\004name\030\001 \001(\t\022[\n\004data\030\003 \003(\0132M.com.hitn" +
-      "slab.dnssecurity.deeparcher.api.proto.Gr" +
-      "aphElementsAttrMap.DataEntry\022\020\n\010type_url" +
-      "\030\004 \001(\t\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005valu" +
-      "e\030\002 \001(\014:\0028\001BY\n<com.hitnslab.dnssecurity." +
-      "deeparcher.api.proto.generated.javaB\024Gra" +
-      "phAttributesProtoH\001\370\001\001b\006proto3"
+      "components\030\003 \003(\r\"\262\001\n\024GraphElementsAttrMa" +
+      "p\022[\n\004data\030\001 \003(\0132M.com.hitnslab.dnssecuri" +
+      "ty.deeparcher.api.proto.GraphElementsAtt" +
+      "rMap.DataEntry\022\020\n\010type_url\030\002 \001(\t\032+\n\tData" +
+      "Entry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\014:\0028\001BY\n" +
+      "<com.hitnslab.dnssecurity.deeparcher.api" +
+      ".proto.generated.javaB\024GraphAttributesPr" +
+      "otoH\001\370\001\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2106,7 +1911,7 @@ public final class GraphAttributesProto {
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_descriptor,
-        new java.lang.String[] { "Name", "Data", "TypeUrl", });
+        new java.lang.String[] { "Data", "TypeUrl", });
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_DataEntry_descriptor =
       internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_descriptor.getNestedTypes().get(0);
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_DataEntry_fieldAccessorTable = new

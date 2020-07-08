@@ -53,7 +53,7 @@ struct TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgra
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -72,6 +72,12 @@ extern GraphDefaultTypeInternal _Graph_default_instance_;
 class Graph_AttributesEntry_DoNotUse;
 class Graph_AttributesEntry_DoNotUseDefaultTypeInternal;
 extern Graph_AttributesEntry_DoNotUseDefaultTypeInternal _Graph_AttributesEntry_DoNotUse_default_instance_;
+class Graph_EdgeAttrsEntry_DoNotUse;
+class Graph_EdgeAttrsEntry_DoNotUseDefaultTypeInternal;
+extern Graph_EdgeAttrsEntry_DoNotUseDefaultTypeInternal _Graph_EdgeAttrsEntry_DoNotUse_default_instance_;
+class Graph_NodeAttrsEntry_DoNotUse;
+class Graph_NodeAttrsEntry_DoNotUseDefaultTypeInternal;
+extern Graph_NodeAttrsEntry_DoNotUseDefaultTypeInternal _Graph_NodeAttrsEntry_DoNotUse_default_instance_;
 }  // namespace proto
 }  // namespace api
 }  // namespace deeparcher
@@ -81,6 +87,8 @@ extern Graph_AttributesEntry_DoNotUseDefaultTypeInternal _Graph_AttributesEntry_
 PROTOBUF_NAMESPACE_OPEN
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph>(Arena*);
 template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph_AttributesEntry_DoNotUse>(Arena*);
+template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph_EdgeAttrsEntry_DoNotUse* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph_EdgeAttrsEntry_DoNotUse>(Arena*);
+template<> ::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph_NodeAttrsEntry_DoNotUse* Arena::CreateMaybeMessage<::com::hitnslab::dnssecurity::deeparcher::api::proto::Graph_NodeAttrsEntry_DoNotUse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace com {
 namespace hitnslab {
@@ -90,6 +98,70 @@ namespace api {
 namespace proto {
 
 // ===================================================================
+
+class Graph_NodeAttrsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Graph_NodeAttrsEntry_DoNotUse, 
+    std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Graph_NodeAttrsEntry_DoNotUse, 
+    std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  Graph_NodeAttrsEntry_DoNotUse();
+  explicit Graph_NodeAttrsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Graph_NodeAttrsEntry_DoNotUse& other);
+  static const Graph_NodeAttrsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Graph_NodeAttrsEntry_DoNotUse*>(&_Graph_NodeAttrsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.NodeAttrsEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto);
+    return ::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto.file_level_metadata[0];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class Graph_EdgeAttrsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Graph_EdgeAttrsEntry_DoNotUse, 
+    std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Graph_EdgeAttrsEntry_DoNotUse, 
+    std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  Graph_EdgeAttrsEntry_DoNotUse();
+  explicit Graph_EdgeAttrsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Graph_EdgeAttrsEntry_DoNotUse& other);
+  static const Graph_EdgeAttrsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Graph_EdgeAttrsEntry_DoNotUse*>(&_Graph_EdgeAttrsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.EdgeAttrsEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto);
+    return ::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto.file_level_metadata[1];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
 
 class Graph_AttributesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Graph_AttributesEntry_DoNotUse, 
     std::string, PROTOBUF_NAMESPACE_ID::Any,
@@ -115,7 +187,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto);
-    return ::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto.file_level_metadata[0];
+    return ::descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_2eproto.file_level_metadata[2];
   }
 
   public:
@@ -173,7 +245,7 @@ class Graph PROTOBUF_FINAL :
                &_Graph_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(Graph& a, Graph& b) {
     a.Swap(&b);
@@ -283,41 +355,39 @@ class Graph PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_node_id_remap();
 
-  // repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;
+  // map<string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap> node_attrs = 21;
   int node_attrs_size() const;
   private:
   int _internal_node_attrs_size() const;
   public:
   void clear_node_attrs();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* mutable_node_attrs(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
-      mutable_node_attrs();
   private:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& _internal_node_attrs(int index) const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* _internal_add_node_attrs();
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+      _internal_node_attrs() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+      _internal_mutable_node_attrs();
   public:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& node_attrs(int index) const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* add_node_attrs();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
       node_attrs() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+      mutable_node_attrs();
 
-  // repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;
+  // map<string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap> edge_attrs = 22;
   int edge_attrs_size() const;
   private:
   int _internal_edge_attrs_size() const;
   public:
   void clear_edge_attrs();
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* mutable_edge_attrs(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
-      mutable_edge_attrs();
   private:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& _internal_edge_attrs(int index) const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* _internal_add_edge_attrs();
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+      _internal_edge_attrs() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+      _internal_mutable_edge_attrs();
   public:
-  const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& edge_attrs(int index) const;
-  ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* add_edge_attrs();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
       edge_attrs() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+      mutable_edge_attrs();
 
   // map<string, .google.protobuf.Any> attributes = 23;
   int attributes_size() const;
@@ -489,8 +559,18 @@ class Graph PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > node_id_remap_;
   mutable std::atomic<int> _node_id_remap_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap > node_attrs_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap > edge_attrs_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      Graph_NodeAttrsEntry_DoNotUse,
+      std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > node_attrs_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      Graph_EdgeAttrsEntry_DoNotUse,
+      std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > edge_attrs_;
   ::PROTOBUF_NAMESPACE_ID::internal::MapField<
       Graph_AttributesEntry_DoNotUse,
       std::string, PROTOBUF_NAMESPACE_ID::Any,
@@ -525,6 +605,10 @@ class Graph PROTOBUF_FINAL :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // Graph
@@ -976,76 +1060,56 @@ Graph::mutable_node_id_remap() {
   return _internal_mutable_node_id_remap();
 }
 
-// repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap node_attrs = 21;
+// map<string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap> node_attrs = 21;
 inline int Graph::_internal_node_attrs_size() const {
   return node_attrs_.size();
 }
 inline int Graph::node_attrs_size() const {
   return _internal_node_attrs_size();
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* Graph::mutable_node_attrs(int index) {
-  // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
-  return node_attrs_.Mutable(index);
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+Graph::_internal_node_attrs() const {
+  return node_attrs_.GetMap();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
-Graph::mutable_node_attrs() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
-  return &node_attrs_;
-}
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& Graph::_internal_node_attrs(int index) const {
-  return node_attrs_.Get(index);
-}
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& Graph::node_attrs(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
-  return _internal_node_attrs(index);
-}
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* Graph::_internal_add_node_attrs() {
-  return node_attrs_.Add();
-}
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* Graph::add_node_attrs() {
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
-  return _internal_add_node_attrs();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
 Graph::node_attrs() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
-  return node_attrs_;
+  // @@protoc_insertion_point(field_map:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
+  return _internal_node_attrs();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+Graph::_internal_mutable_node_attrs() {
+  return node_attrs_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+Graph::mutable_node_attrs() {
+  // @@protoc_insertion_point(field_mutable_map:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs)
+  return _internal_mutable_node_attrs();
 }
 
-// repeated .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap edge_attrs = 22;
+// map<string, .com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap> edge_attrs = 22;
 inline int Graph::_internal_edge_attrs_size() const {
   return edge_attrs_.size();
 }
 inline int Graph::edge_attrs_size() const {
   return _internal_edge_attrs_size();
 }
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* Graph::mutable_edge_attrs(int index) {
-  // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
-  return edge_attrs_.Mutable(index);
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+Graph::_internal_edge_attrs() const {
+  return edge_attrs_.GetMap();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
-Graph::mutable_edge_attrs() {
-  // @@protoc_insertion_point(field_mutable_list:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
-  return &edge_attrs_;
-}
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& Graph::_internal_edge_attrs(int index) const {
-  return edge_attrs_.Get(index);
-}
-inline const ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap& Graph::edge_attrs(int index) const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
-  return _internal_edge_attrs(index);
-}
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* Graph::_internal_add_edge_attrs() {
-  return edge_attrs_.Add();
-}
-inline ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap* Graph::add_edge_attrs() {
-  // @@protoc_insertion_point(field_add:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
-  return _internal_add_edge_attrs();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >&
 Graph::edge_attrs() const {
-  // @@protoc_insertion_point(field_list:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
-  return edge_attrs_;
+  // @@protoc_insertion_point(field_map:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
+  return _internal_edge_attrs();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+Graph::_internal_mutable_edge_attrs() {
+  return edge_attrs_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap >*
+Graph::mutable_edge_attrs() {
+  // @@protoc_insertion_point(field_mutable_map:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs)
+  return _internal_mutable_edge_attrs();
 }
 
 // map<string, .google.protobuf.Any> attributes = 23;
@@ -1086,6 +1150,10 @@ inline Graph::AdjCase Graph::adj_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

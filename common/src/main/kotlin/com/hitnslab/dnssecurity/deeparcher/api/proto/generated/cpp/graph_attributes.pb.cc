@@ -107,7 +107,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_com_2fhitnslab_2fdnssecurity_2
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap, name_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap, data_),
   PROTOBUF_FIELD_OFFSET(::com::hitnslab::dnssecurity::deeparcher::api::proto::GraphElementsAttrMap, type_url_),
 };
@@ -128,14 +127,14 @@ const char descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2
   "i/proto/graph_attributes.proto\022-com.hitn"
   "slab.dnssecurity.deeparcher.api.proto\"9\n"
   "\rComponentAttr\022\024\n\014component_id\030\002 \001(\r\022\022\n\n"
-  "components\030\003 \003(\r\"\300\001\n\024GraphElementsAttrMa"
-  "p\022\014\n\004name\030\001 \001(\t\022[\n\004data\030\003 \003(\0132M.com.hitn"
-  "slab.dnssecurity.deeparcher.api.proto.Gr"
-  "aphElementsAttrMap.DataEntry\022\020\n\010type_url"
-  "\030\004 \001(\t\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005valu"
-  "e\030\002 \001(\014:\0028\001BY\n<com.hitnslab.dnssecurity."
-  "deeparcher.api.proto.generated.javaB\024Gra"
-  "phAttributesProtoH\001\370\001\001b\006proto3"
+  "components\030\003 \003(\r\"\262\001\n\024GraphElementsAttrMa"
+  "p\022[\n\004data\030\001 \003(\0132M.com.hitnslab.dnssecuri"
+  "ty.deeparcher.api.proto.GraphElementsAtt"
+  "rMap.DataEntry\022\020\n\010type_url\030\002 \001(\t\032+\n\tData"
+  "Entry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\014:\0028\001BY\n"
+  "<com.hitnslab.dnssecurity.deeparcher.api"
+  ".proto.generated.javaB\024GraphAttributesPr"
+  "otoH\001\370\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto_deps[1] = {
 };
@@ -146,7 +145,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_com
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto = {
-  false, false, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto", 470,
+  false, false, descriptor_table_protodef_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto, "com/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto", 456,
   &descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto_once, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto_sccs, descriptor_table_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto::offsets,
   file_level_metadata_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto, 3, file_level_enum_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto, file_level_service_descriptors_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto,
@@ -433,11 +432,6 @@ GraphElementsAttrMap::GraphElementsAttrMap(const GraphElementsAttrMap& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   data_.MergeFrom(from.data_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_name().empty()) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
-      GetArena());
-  }
   type_url_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_type_url().empty()) {
     type_url_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_type_url(),
@@ -448,7 +442,6 @@ GraphElementsAttrMap::GraphElementsAttrMap(const GraphElementsAttrMap& from)
 
 void GraphElementsAttrMap::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GraphElementsAttrMap_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto.base);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   type_url_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -460,7 +453,6 @@ GraphElementsAttrMap::~GraphElementsAttrMap() {
 
 void GraphElementsAttrMap::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   type_url_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -486,7 +478,6 @@ void GraphElementsAttrMap::Clear() {
   (void) cached_has_bits;
 
   data_.Clear();
-  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   type_url_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -499,30 +490,21 @@ const char* GraphElementsAttrMap::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string name = 1;
+      // map<uint32, bytes> data = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // map<uint32, bytes> data = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(&data_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
-      // string type_url = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+      // string type_url = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_type_url();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.type_url"));
@@ -557,17 +539,7 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_name(), target);
-  }
-
-  // map<uint32, bytes> data = 3;
+  // map<uint32, bytes> data = 1;
   if (!this->_internal_data().empty()) {
     typedef ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >::const_pointer
         ConstPtr;
@@ -587,25 +559,25 @@ failure:
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
       for (size_type i = 0; i < n; i++) {
-        target = GraphElementsAttrMap_DataEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+        target = GraphElementsAttrMap_DataEntry_DoNotUse::Funcs::InternalSerialize(1, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
       }
     } else {
       for (::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >::const_iterator
           it = this->_internal_data().begin();
           it != this->_internal_data().end(); ++it) {
-        target = GraphElementsAttrMap_DataEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+        target = GraphElementsAttrMap_DataEntry_DoNotUse::Funcs::InternalSerialize(1, it->first, it->second, target, stream);
       }
     }
   }
 
-  // string type_url = 4;
+  // string type_url = 2;
   if (this->type_url().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_type_url().data(), static_cast<int>(this->_internal_type_url().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.type_url");
     target = stream->WriteStringMaybeAliased(
-        4, this->_internal_type_url(), target);
+        2, this->_internal_type_url(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -624,7 +596,7 @@ size_t GraphElementsAttrMap::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // map<uint32, bytes> data = 3;
+  // map<uint32, bytes> data = 1;
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_data_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >::const_iterator
@@ -633,14 +605,7 @@ size_t GraphElementsAttrMap::ByteSizeLong() const {
     total_size += GraphElementsAttrMap_DataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
-  // string name = 1;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
-  }
-
-  // string type_url = 4;
+  // string type_url = 2;
   if (this->type_url().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -679,9 +644,6 @@ void GraphElementsAttrMap::MergeFrom(const GraphElementsAttrMap& from) {
   (void) cached_has_bits;
 
   data_.MergeFrom(from.data_);
-  if (from.name().size() > 0) {
-    _internal_set_name(from._internal_name());
-  }
   if (from.type_url().size() > 0) {
     _internal_set_type_url(from._internal_type_url());
   }
@@ -709,7 +671,6 @@ void GraphElementsAttrMap::InternalSwap(GraphElementsAttrMap* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   data_.Swap(&other->data_);
-  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   type_url_.Swap(&other->type_url_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 

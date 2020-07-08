@@ -30,13 +30,9 @@ message ComponentAttr {
  * By using this representation, nodes without this attribute will not occupy space. */
 message GraphElementsAttrMap {
 
-  /* Attribute name.
-   * NOT NULL. */
-  string name = 1;
-
   /* Node ID to serialized attribute value mapping.
    * NOT NULL. */
-  map<uint32, bytes> data = 3;
+  map<uint32, bytes> data = 1;
 
   /* Type URL of the data map values.
    * It assumes that every value of data map is a [google.protobuf.Any] object with this type_url.
@@ -44,5 +40,5 @@ message GraphElementsAttrMap {
    * Actually, the value of data map can be any serializable objects with same type.
    * You can omit this field if map values are not protobuf messages, and you should parse these bytes by yourself.
    * NULLABLE. */
-  string type_url = 4;
+  string type_url = 2;
 }

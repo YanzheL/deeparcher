@@ -398,11 +398,10 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDataFieldNumber = 3,
-    kNameFieldNumber = 1,
-    kTypeUrlFieldNumber = 4,
+    kDataFieldNumber = 1,
+    kTypeUrlFieldNumber = 2,
   };
-  // map<uint32, bytes> data = 3;
+  // map<uint32, bytes> data = 1;
   int data_size() const;
   private:
   int _internal_data_size() const;
@@ -419,23 +418,7 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::uint32, std::string >*
       mutable_data();
 
-  // string name = 1;
-  void clear_name();
-  const std::string& name() const;
-  void set_name(const std::string& value);
-  void set_name(std::string&& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  std::string* mutable_name();
-  std::string* release_name();
-  void set_allocated_name(std::string* name);
-  private:
-  const std::string& _internal_name() const;
-  void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
-  public:
-
-  // string type_url = 4;
+  // string type_url = 2;
   void clear_type_url();
   const std::string& type_url() const;
   void set_type_url(const std::string& value);
@@ -464,7 +447,6 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BYTES,
       0 > data_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_url_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto;
@@ -553,69 +535,7 @@ ComponentAttr::mutable_components() {
 
 // GraphElementsAttrMap
 
-// string name = 1;
-inline void GraphElementsAttrMap::clear_name() {
-  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline const std::string& GraphElementsAttrMap::name() const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-  return _internal_name();
-}
-inline void GraphElementsAttrMap::set_name(const std::string& value) {
-  _internal_set_name(value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-}
-inline std::string* GraphElementsAttrMap::mutable_name() {
-  // @@protoc_insertion_point(field_mutable:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-  return _internal_mutable_name();
-}
-inline const std::string& GraphElementsAttrMap::_internal_name() const {
-  return name_.Get();
-}
-inline void GraphElementsAttrMap::_internal_set_name(const std::string& value) {
-  
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
-}
-inline void GraphElementsAttrMap::set_name(std::string&& value) {
-  
-  name_.Set(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-}
-inline void GraphElementsAttrMap::set_name(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
-              GetArena());
-  // @@protoc_insertion_point(field_set_char:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-}
-inline void GraphElementsAttrMap::set_name(const char* value,
-    size_t size) {
-  
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-}
-inline std::string* GraphElementsAttrMap::_internal_mutable_name() {
-  
-  return name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline std::string* GraphElementsAttrMap::release_name() {
-  // @@protoc_insertion_point(field_release:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline void GraphElementsAttrMap::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
-    
-  } else {
-    
-  }
-  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
-      GetArena());
-  // @@protoc_insertion_point(field_set_allocated:com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.name)
-}
-
-// map<uint32, bytes> data = 3;
+// map<uint32, bytes> data = 1;
 inline int GraphElementsAttrMap::_internal_data_size() const {
   return data_.size();
 }
@@ -644,7 +564,7 @@ GraphElementsAttrMap::mutable_data() {
   return _internal_mutable_data();
 }
 
-// string type_url = 4;
+// string type_url = 2;
 inline void GraphElementsAttrMap::clear_type_url() {
   type_url_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
