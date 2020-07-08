@@ -22,12 +22,50 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\nGraphProtoH\001\370\001\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n9com/hitnslab/dnssecurity/deeparcher/api/proto/graph.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\x1a:com/hitnslab/dnssecurity/deeparcher/api/proto/matrix.proto\x1a\x44\x63om/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto\x1a\x19google/protobuf/any.proto\"\xa7\x05\n\x05Graph\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05nodes\x18\x02 \x01(\x05\x12\r\n\x05\x65\x64ges\x18\x03 \x01(\x05\x12M\n\x05\x64\x65nse\x18\n \x01(\x0b\x32<.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloatH\x00\x12I\n\x03\x63oo\x18\x0b \x01(\x0b\x32:.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloatH\x00\x12I\n\x03\x63sr\x18\x0c \x01(\x0b\x32:.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloatH\x00\x12I\n\x03\x63sc\x18\r \x01(\x0b\x32:.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloatH\x00\x12\x11\n\tparent_id\x18\x0e \x01(\r\x12\x10\n\x08\x64irected\x18\x10 \x01(\x08\x12\x11\n\tconnected\x18\x11 \x01(\x08\x12\x12\n\nunweighted\x18\x12 \x01(\x08\x12\x15\n\rnode_id_remap\x18\x13 \x03(\r\x12W\n\nnode_attrs\x18  \x03(\x0b\x32\x43.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap\x12W\n\nedge_attrs\x18! \x03(\x0b\x32\x43.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap\x12(\n\nattributes\x18# \x03(\x0b\x32\x14.google.protobuf.AnyB\x05\n\x03\x61\x64jBO\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\nGraphProtoH\x01\xf8\x01\x01\x62\x06proto3'
+  serialized_pb=b'\n9com/hitnslab/dnssecurity/deeparcher/api/proto/graph.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\x1a:com/hitnslab/dnssecurity/deeparcher/api/proto/matrix.proto\x1a\x44\x63om/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto\x1a\x19google/protobuf/any.proto\"\xa0\x06\n\x05Graph\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05nodes\x18\x02 \x01(\x05\x12\r\n\x05\x65\x64ges\x18\x03 \x01(\x05\x12M\n\x05\x64\x65nse\x18\x08 \x01(\x0b\x32<.com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatFloatH\x00\x12I\n\x03\x63oo\x18\t \x01(\x0b\x32:.com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatFloatH\x00\x12I\n\x03\x63sr\x18\n \x01(\x0b\x32:.com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatFloatH\x00\x12I\n\x03\x63sc\x18\x0b \x01(\x0b\x32:.com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatFloatH\x00\x12\x11\n\tparent_id\x18\x10 \x01(\r\x12\x10\n\x08\x64irected\x18\x11 \x01(\x08\x12\x11\n\tconnected\x18\x12 \x01(\x08\x12\x12\n\nunweighted\x18\x13 \x01(\x08\x12\x15\n\rnode_id_remap\x18\x14 \x03(\r\x12W\n\nnode_attrs\x18\x15 \x03(\x0b\x32\x43.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap\x12W\n\nedge_attrs\x18\x16 \x03(\x0b\x32\x43.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap\x12X\n\nattributes\x18\x17 \x03(\x0b\x32\x44.com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.AttributesEntry\x1aG\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any:\x02\x38\x01\x42\x05\n\x03\x61\x64jBO\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\nGraphProtoH\x01\xf8\x01\x01\x62\x06proto3'
   ,
   dependencies=[com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_matrix__pb2.DESCRIPTOR,com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_graph__attributes__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
 
 
+
+_GRAPH_ATTRIBUTESENTRY = _descriptor.Descriptor(
+  name='AttributesEntry',
+  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.AttributesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.AttributesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.AttributesEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=988,
+  serialized_end=1059,
+)
 
 _GRAPH = _descriptor.Descriptor(
   name='Graph',
@@ -60,84 +98,84 @@ _GRAPH = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='dense', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.dense', index=3,
-      number=10, type=11, cpp_type=10, label=1,
+      number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='coo', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.coo', index=4,
-      number=11, type=11, cpp_type=10, label=1,
+      number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='csr', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csr', index=5,
-      number=12, type=11, cpp_type=10, label=1,
+      number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='csc', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.csc', index=6,
-      number=13, type=11, cpp_type=10, label=1,
+      number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='parent_id', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.parent_id', index=7,
-      number=14, type=13, cpp_type=3, label=1,
+      number=16, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='directed', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.directed', index=8,
-      number=16, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='connected', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.connected', index=9,
       number=17, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unweighted', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.unweighted', index=10,
+      name='connected', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.connected', index=9,
       number=18, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
+      name='unweighted', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.unweighted', index=10,
+      number=19, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
       name='node_id_remap', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_id_remap', index=11,
-      number=19, type=13, cpp_type=3, label=3,
+      number=20, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='node_attrs', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.node_attrs', index=12,
-      number=32, type=11, cpp_type=10, label=3,
+      number=21, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='edge_attrs', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.edge_attrs', index=13,
-      number=33, type=11, cpp_type=10, label=3,
+      number=22, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='attributes', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.attributes', index=14,
-      number=35, type=11, cpp_type=10, label=3,
+      number=23, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -145,7 +183,7 @@ _GRAPH = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_GRAPH_ATTRIBUTESENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -160,16 +198,18 @@ _GRAPH = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=266,
-  serialized_end=945,
+  serialized_end=1066,
 )
 
+_GRAPH_ATTRIBUTESENTRY.fields_by_name['value'].message_type = google_dot_protobuf_dot_any__pb2._ANY
+_GRAPH_ATTRIBUTESENTRY.containing_type = _GRAPH
 _GRAPH.fields_by_name['dense'].message_type = com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_matrix__pb2._DENSEMATFLOAT
 _GRAPH.fields_by_name['coo'].message_type = com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_matrix__pb2._COOMATFLOAT
 _GRAPH.fields_by_name['csr'].message_type = com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_matrix__pb2._CSRMATFLOAT
 _GRAPH.fields_by_name['csc'].message_type = com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_matrix__pb2._CSCMATFLOAT
 _GRAPH.fields_by_name['node_attrs'].message_type = com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_graph__attributes__pb2._GRAPHELEMENTSATTRMAP
 _GRAPH.fields_by_name['edge_attrs'].message_type = com_dot_hitnslab_dot_dnssecurity_dot_deeparcher_dot_api_dot_proto_dot_graph__attributes__pb2._GRAPHELEMENTSATTRMAP
-_GRAPH.fields_by_name['attributes'].message_type = google_dot_protobuf_dot_any__pb2._ANY
+_GRAPH.fields_by_name['attributes'].message_type = _GRAPH_ATTRIBUTESENTRY
 _GRAPH.oneofs_by_name['adj'].fields.append(
   _GRAPH.fields_by_name['dense'])
 _GRAPH.fields_by_name['dense'].containing_oneof = _GRAPH.oneofs_by_name['adj']
@@ -186,12 +226,21 @@ DESCRIPTOR.message_types_by_name['Graph'] = _GRAPH
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Graph = _reflection.GeneratedProtocolMessageType('Graph', (_message.Message,), {
+
+  'AttributesEntry' : _reflection.GeneratedProtocolMessageType('AttributesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _GRAPH_ATTRIBUTESENTRY,
+    '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.graph_pb2'
+    # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph.AttributesEntry)
+    })
+  ,
   'DESCRIPTOR' : _GRAPH,
   '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.graph_pb2'
   # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.Graph)
   })
 _sym_db.RegisterMessage(Graph)
+_sym_db.RegisterMessage(Graph.AttributesEntry)
 
 
 DESCRIPTOR._options = None
+_GRAPH_ATTRIBUTESENTRY._options = None
 # @@protoc_insertion_point(module_scope)

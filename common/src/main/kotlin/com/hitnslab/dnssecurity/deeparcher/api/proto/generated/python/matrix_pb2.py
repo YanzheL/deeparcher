@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\013MatrixProtoH\001\370\001\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n:com/hitnslab/dnssecurity/deeparcher/api/proto/matrix.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"-\n\rDenseMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"G\n\x0b\x43ooMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0c\n\x04rows\x18\x02 \x03(\r\x12\x0c\n\x04\x63ols\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"U\n\x0b\x43srMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0brow_offsets\x18\x02 \x03(\r\x12\x13\n\x0b\x63ol_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"U\n\x0b\x43scMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0b\x63ol_offsets\x18\x02 \x03(\r\x12\x13\n\x0brow_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"-\n\rDenseMatint32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\"G\n\x0b\x43ooMatint32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0c\n\x04rows\x18\x02 \x03(\r\x12\x0c\n\x04\x63ols\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\"U\n\x0b\x43srMatint32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0brow_offsets\x18\x02 \x03(\r\x12\x13\n\x0b\x63ol_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\"U\n\x0b\x43scMatint32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0b\x63ol_offsets\x18\x02 \x03(\r\x12\x13\n\x0brow_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\x42P\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x0bMatrixProtoH\x01\xf8\x01\x01\x62\x06proto3'
+  serialized_pb=b'\n:com/hitnslab/dnssecurity/deeparcher/api/proto/matrix.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"-\n\rDenseMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"G\n\x0b\x43ooMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0c\n\x04rows\x18\x02 \x03(\r\x12\x0c\n\x04\x63ols\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"U\n\x0b\x43srMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0brow_offsets\x18\x02 \x03(\r\x12\x13\n\x0b\x63ol_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"U\n\x0b\x43scMatFloat\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0b\x63ol_offsets\x18\x02 \x03(\r\x12\x13\n\x0brow_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x02\"-\n\rDenseMatInt32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\"G\n\x0b\x43ooMatInt32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x0c\n\x04rows\x18\x02 \x03(\r\x12\x0c\n\x04\x63ols\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\"U\n\x0b\x43srMatInt32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0brow_offsets\x18\x02 \x03(\r\x12\x13\n\x0b\x63ol_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\"U\n\x0b\x43scMatInt32\x12\x0c\n\x04\x64ims\x18\x01 \x03(\r\x12\x13\n\x0b\x63ol_offsets\x18\x02 \x03(\r\x12\x13\n\x0brow_indices\x18\x03 \x03(\r\x12\x0e\n\x06values\x18\n \x03(\x05\x42P\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x0bMatrixProtoH\x01\xf8\x01\x01\x62\x06proto3'
 )
 
 
@@ -224,22 +224,22 @@ _CSCMATFLOAT = _descriptor.Descriptor(
 
 
 _DENSEMATINT32 = _descriptor.Descriptor(
-  name='DenseMatint32',
-  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32',
+  name='DenseMatInt32',
+  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt32',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.dims', index=0,
+      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt32.dims', index=0,
       number=1, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32.values', index=1,
+      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt32.values', index=1,
       number=10, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -263,36 +263,36 @@ _DENSEMATINT32 = _descriptor.Descriptor(
 
 
 _COOMATINT32 = _descriptor.Descriptor(
-  name='CooMatint32',
-  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32',
+  name='CooMatInt32',
+  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt32',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.dims', index=0,
+      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt32.dims', index=0,
       number=1, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='rows', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.rows', index=1,
+      name='rows', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt32.rows', index=1,
       number=2, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='cols', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.cols', index=2,
+      name='cols', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt32.cols', index=2,
       number=3, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32.values', index=3,
+      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt32.values', index=3,
       number=10, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -316,36 +316,36 @@ _COOMATINT32 = _descriptor.Descriptor(
 
 
 _CSRMATINT32 = _descriptor.Descriptor(
-  name='CsrMatint32',
-  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32',
+  name='CsrMatInt32',
+  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt32',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.dims', index=0,
+      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt32.dims', index=0,
       number=1, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='row_offsets', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.row_offsets', index=1,
+      name='row_offsets', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt32.row_offsets', index=1,
       number=2, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='col_indices', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.col_indices', index=2,
+      name='col_indices', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt32.col_indices', index=2,
       number=3, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32.values', index=3,
+      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt32.values', index=3,
       number=10, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -369,36 +369,36 @@ _CSRMATINT32 = _descriptor.Descriptor(
 
 
 _CSCMATINT32 = _descriptor.Descriptor(
-  name='CscMatint32',
-  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32',
+  name='CscMatInt32',
+  full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt32',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.dims', index=0,
+      name='dims', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt32.dims', index=0,
       number=1, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='col_offsets', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.col_offsets', index=1,
+      name='col_offsets', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt32.col_offsets', index=1,
       number=2, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='row_indices', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.row_indices', index=2,
+      name='row_indices', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt32.row_indices', index=2,
       number=3, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32.values', index=3,
+      name='values', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt32.values', index=3,
       number=10, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -424,10 +424,10 @@ DESCRIPTOR.message_types_by_name['DenseMatFloat'] = _DENSEMATFLOAT
 DESCRIPTOR.message_types_by_name['CooMatFloat'] = _COOMATFLOAT
 DESCRIPTOR.message_types_by_name['CsrMatFloat'] = _CSRMATFLOAT
 DESCRIPTOR.message_types_by_name['CscMatFloat'] = _CSCMATFLOAT
-DESCRIPTOR.message_types_by_name['DenseMatint32'] = _DENSEMATINT32
-DESCRIPTOR.message_types_by_name['CooMatint32'] = _COOMATINT32
-DESCRIPTOR.message_types_by_name['CsrMatint32'] = _CSRMATINT32
-DESCRIPTOR.message_types_by_name['CscMatint32'] = _CSCMATINT32
+DESCRIPTOR.message_types_by_name['DenseMatInt32'] = _DENSEMATINT32
+DESCRIPTOR.message_types_by_name['CooMatInt32'] = _COOMATINT32
+DESCRIPTOR.message_types_by_name['CsrMatInt32'] = _CSRMATINT32
+DESCRIPTOR.message_types_by_name['CscMatInt32'] = _CSCMATINT32
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DenseMatFloat = _reflection.GeneratedProtocolMessageType('DenseMatFloat', (_message.Message,), {
@@ -458,33 +458,33 @@ CscMatFloat = _reflection.GeneratedProtocolMessageType('CscMatFloat', (_message.
   })
 _sym_db.RegisterMessage(CscMatFloat)
 
-DenseMatint32 = _reflection.GeneratedProtocolMessageType('DenseMatint32', (_message.Message,), {
+DenseMatInt32 = _reflection.GeneratedProtocolMessageType('DenseMatInt32', (_message.Message,), {
   'DESCRIPTOR' : _DENSEMATINT32,
   '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.matrix_pb2'
-  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatint32)
+  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.DenseMatInt32)
   })
-_sym_db.RegisterMessage(DenseMatint32)
+_sym_db.RegisterMessage(DenseMatInt32)
 
-CooMatint32 = _reflection.GeneratedProtocolMessageType('CooMatint32', (_message.Message,), {
+CooMatInt32 = _reflection.GeneratedProtocolMessageType('CooMatInt32', (_message.Message,), {
   'DESCRIPTOR' : _COOMATINT32,
   '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.matrix_pb2'
-  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatint32)
+  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CooMatInt32)
   })
-_sym_db.RegisterMessage(CooMatint32)
+_sym_db.RegisterMessage(CooMatInt32)
 
-CsrMatint32 = _reflection.GeneratedProtocolMessageType('CsrMatint32', (_message.Message,), {
+CsrMatInt32 = _reflection.GeneratedProtocolMessageType('CsrMatInt32', (_message.Message,), {
   'DESCRIPTOR' : _CSRMATINT32,
   '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.matrix_pb2'
-  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatint32)
+  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CsrMatInt32)
   })
-_sym_db.RegisterMessage(CsrMatint32)
+_sym_db.RegisterMessage(CsrMatInt32)
 
-CscMatint32 = _reflection.GeneratedProtocolMessageType('CscMatint32', (_message.Message,), {
+CscMatInt32 = _reflection.GeneratedProtocolMessageType('CscMatInt32', (_message.Message,), {
   'DESCRIPTOR' : _CSCMATINT32,
   '__module__' : 'com.hitnslab.dnssecurity.deeparcher.api.proto.matrix_pb2'
-  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatint32)
+  # @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.CscMatInt32)
   })
-_sym_db.RegisterMessage(CscMatint32)
+_sym_db.RegisterMessage(CscMatInt32)
 
 
 DESCRIPTOR._options = None

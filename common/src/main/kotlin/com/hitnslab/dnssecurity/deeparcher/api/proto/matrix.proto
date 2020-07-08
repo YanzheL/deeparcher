@@ -34,26 +34,26 @@ message CscMatFloat {
   repeated float values = 10;
 }
 
-message DenseMatint32 {
+message DenseMatInt32 {
   repeated uint32 dims = 1;
   repeated int32 values = 10;
 }
 
-message CooMatint32 {
+message CooMatInt32 {
   repeated uint32 dims = 1;
   repeated uint32 rows = 2;
   repeated uint32 cols = 3;
   repeated int32 values = 10;
 }
 
-message CsrMatint32 {
+message CsrMatInt32 {
   repeated uint32 dims = 1;
   repeated uint32 row_offsets = 2;
   repeated uint32 col_indices = 3;
   repeated int32 values = 10;
 }
 
-message CscMatint32 {
+message CscMatInt32 {
   repeated uint32 dims = 1;
   repeated uint32 col_offsets = 2;
   repeated uint32 row_indices = 3;

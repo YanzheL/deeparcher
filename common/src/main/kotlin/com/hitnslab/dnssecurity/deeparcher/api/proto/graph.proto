@@ -31,41 +31,41 @@ message Graph {
    * If graph edge has multiple weights, then the adjacent matrix can have a depth, which means it can be a 3D or ND-matrix.
    * NOT NULL. */
   oneof adj {
-    DenseMatFloat dense = 10;
-    CooMatFloat coo = 11;
-    CsrMatFloat csr = 12;
-    CscMatFloat csc = 13;
+    DenseMatFloat dense = 8;
+    CooMatFloat coo = 9;
+    CsrMatFloat csr = 10;
+    CscMatFloat csc = 11;
   }
 
   /* Parent graph ID. */
-  uint32 parent_id = 14;
+  uint32 parent_id = 16;
 
   /* If true, then this is a directed graph.
    * NULLABLE, default = false. */
-  bool directed = 16;
+  bool directed = 17;
 
   /* If true, then this is a connected graph without any isolated node.
    * NULLABLE, default = false. */
-  bool connected = 17;
+  bool connected = 18;
 
   /* If true, then this is a unweighted graph.
    * NULLABLE, default = false. */
-  bool unweighted = 18;
+  bool unweighted = 19;
 
   /* If present, then it means all node ids in this graph are consecutive.
    * Actual node id, which will be used to fetch node attributes from global attributes store, can be obtained by node_id_remap[node_id].
    * NULLABLE. */
-  repeated uint32 node_id_remap = 19;
+  repeated uint32 node_id_remap = 20;
 
   /* Node attributes
    * NULLABLE. */
-  repeated GraphElementsAttrMap node_attrs = 32;
+  repeated GraphElementsAttrMap node_attrs = 21;
 
   /* Edge attributes
    * NULLABLE. */
-  repeated GraphElementsAttrMap edge_attrs = 33;
+  repeated GraphElementsAttrMap edge_attrs = 22;
 
   /* General attributes related to this graph.
    * NULLABLE. */
-  repeated google.protobuf.Any attributes = 35;
+  map<string, google.protobuf.Any> attributes = 23;
 }
