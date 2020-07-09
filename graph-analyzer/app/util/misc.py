@@ -1,16 +1,15 @@
 import time
-from typing import List, Tuple
+from typing import *
 
 import numpy as np
 from tld import get_fld
 
-from app.struct.graph_attributes import GraphElementsAttrMap
 from app.util.logger_router import LoggerRouter
 
-default_logger = LoggerRouter().get_logger(__name__)
+DEFAULT_LOGGER = LoggerRouter().get_logger(__name__)
 
 
-def load_blacklist(path: str, logger=default_logger) -> np.ndarray:
+def load_blacklist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
     logger.info('Loading blacklist file <{}>...'.format(path))
     with open(path, 'r') as f:
         blacklist = f.read().splitlines()
@@ -20,7 +19,7 @@ def load_blacklist(path: str, logger=default_logger) -> np.ndarray:
         return blacklist
 
 
-def load_whitelist(path: str, logger=default_logger) -> np.ndarray:
+def load_whitelist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
     logger.info('Loading whitelist file <{}>...'.format(path))
     with open(path, 'r') as f:
         whitelist = f.read().splitlines()
@@ -33,7 +32,7 @@ def load_whitelist(path: str, logger=default_logger) -> np.ndarray:
         return whitelist
 
 
-def timing(method, logger=default_logger):
+def timing(method, logger=DEFAULT_LOGGER):
     def timed(*args, **kw):
         ts = time.perf_counter()
         result = method(*args, **kw)
@@ -48,16 +47,11 @@ def timing(method, logger=default_logger):
     return timed
 
 
-def extract_labels(name: str, attrs: List[GraphElementsAttrMap], n_expected=-1) -> np.ndarray:
-    node_labels = []
-    for attr in attrs:
-        if attr.name == name:
-            items: List[Tuple[int, object]] = attr.data.items()
-            items.sort(key=lambda x: x[0])
-            for _, data in items:
-                node_labels.append(data)
-            break
-    if 0 < n_expected != len(node_labels):
-        raise ValueError(
-            "Expected {} attributes of {}, found {} instead".format(n_expected, name, len(node_labels)))
-    return np.array(node_labels, dtype=str)
+def extract_bool_attr_ids(name: str, attrs: Dict[str, Dict[int, object]]) -> Tuple[np.ndarray, np.ndarray]:
+    true_nodes = []
+    false_nodes = []
+    attr = attrs.get(name, {})
+    for k, v in attr.items():
+        target = true_nodes if v else false_nodes
+        target.append(k)
+    return np.array(true_nodes, dtype=np.int32), np.array(false_nodes, dtype=np.int32)
