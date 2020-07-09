@@ -37,7 +37,7 @@ class LLGCAnalyzer(GraphAnalyzer):
             alpha: float = 0.99,
             max_iter: int = 30,
             attr_name: str = 'black_or_white'
-    ) -> Graph:
+    ) -> Optional[Graph]:
         """Analyzer entrypoint.
 
         Args:
@@ -52,6 +52,9 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         """
 
+        if not graph.connected:
+            self.logger.warn('Current graph is not connected, now skipped.')
+            return
         labels = self._extract_boolean_attributes(graph, attr_name)
         if labels.shape[0] == 0:
             raise ValueError('No node on the input graph is labeled by {}'.format(attr_name))

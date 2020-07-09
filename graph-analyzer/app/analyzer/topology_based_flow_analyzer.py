@@ -18,7 +18,8 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
     （5）根据判断标签类别的阈值，得到最后的标签结果
     """
 
-    def analyze(self, graph: Graph, ctx: dict, n_iters, legal_weight) -> Graph:
+    def analyze(self, graph: Graph, ctx: dict, n_iters=5, legal_weight: float = -1,
+                attr_name: str = 'black_or_white') -> Graph:
         black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
         adj_triu = triu(graph.adj, k=1)  # 获取除对角线以外的上三角
         M = adj_triu + adj_triu.T  # 写成对称邻接矩阵
@@ -35,8 +36,8 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
             # 用矩阵乘法传播有边相连结点之间的声誉信息
             P[:, :] = P + M.dot(P)
             # 进行声誉归一化操作
-            self._normalize(white_node_ids, v_bad, v_good)
-            self._normalize(black_node_ids, v_good, v_bad)
+            v_good = (v_good - v_good.min()) / (v_good.max() - v_good.min())
+            v_bad = (v_bad - v_bad.min()) / (v_bad.max() - v_bad.min())
 
         # 好坏流根据各自重要性得出的最终声誉评分（此时评分在w到1之间）
         v_result = v_bad + legal_weight * v_good  # shape = (nodes,)
@@ -50,9 +51,9 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
         graph.node_attrs['tbf_prob'] = scores
         return graph
 
-    @staticmethod
-    def _normalize(s1: np.ndarray, v1: np.ndarray, v2: np.ndarray) -> NoReturn:
-        avg_2 = np.sum(v2[s1]) / np.count_nonzero(v2[s1])
-        v1[v1 > 1] = 1.0
-        v1[s1] = 0.0
-        v1[v1 > 1 - avg_2] = 1.0
+# `    @staticmethod
+#     def _normalize(s1: np.ndarray, v1: np.ndarray, v2: np.ndarray) -> NoReturn:
+#         avg_2 = np.sum(v2[s1]) / np.count_nonzero(v2[s1])
+#         v1[v1 > 1] = 1.0
+#         v2[s1] = 1.0
+#         v1[v1 > 1 - avg_2] = 1.0

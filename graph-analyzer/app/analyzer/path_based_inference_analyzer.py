@@ -13,16 +13,39 @@ from app.struct import Graph
 from app.util.misc import timing, extract_bool_attr_ids
 
 
-class MaliciousAssociationAnalyzer(GraphAnalyzer):
+class PathBasedInferenceAnalyzer(GraphAnalyzer):
+    """GraphAnalyzer for computing path-based inference algorithm by Khalil et al.
 
-    def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> Union[Graph, List[Graph], None]:
+    Author:
+        Yanzhe Lee <lee.yanzhe@yanzhe.org>
+
+    References:
+        Issa K., Ting Y., and Bei G. (2016).
+        Discovering Malicious Domains through Passive DNS Data Graph Analysis.
+        In Proceedings of the 11th ACM on Asia Conference on Computer and Communications Security (ASIA CCS ’16).
+        Association for Computing Machinery, New York, NY, USA, 663–674.
+
+    """
+
+    def analyze(self, graph: Graph, ctx: dict, attr_name: str = 'black_or_white') -> Optional[Graph]:
+        """Analyzer entrypoint.
+
+        Args:
+            graph: The graph struct.
+            ctx: Shared analyzer context.
+            attr_name: Name of a boolean node attribute which indicates whether the node is a known black or white node.
+
+        Returns:
+            Graph: An analyzed graph with 'pbi_prob' node attribute.
+
+        """
         if not graph.connected:
             self.logger.warn('Current graph is not connected, now skipped.')
-            return []
+            return
         if 'cugraph' not in graph.meta:
             graph.meta['cugraph'] = build_cugraph(graph.adj)
         cug = graph.meta['cugraph']
-        seeds, _ = extract_bool_attr_ids('black_or_white', graph.node_attrs)
+        seeds, _ = extract_bool_attr_ids(attr_name, graph.node_attrs)
         scores: Dict[int, float] = {s: 1.0 for s in seeds}
         if seeds.size <= 1:
             self.logger.info('Skipped a trivial graph. It has only {} seeds in {} nodes.'.format(
@@ -37,7 +60,8 @@ class MaliciousAssociationAnalyzer(GraphAnalyzer):
         dists = cupy.asarray(dists).T  # shape = (nodes, seeds)
         scores.update(zip(graph.node_id_remap, self._compute_mal_scores(dists)))
         self.logger.info('Updated {} scores'.format(len(scores)))
-        graph.node_attrs['mal_assoc_prob'] = scores
+        graph.node_attrs['pbi_prob'] = scores
+        return graph
 
     @staticmethod
     @timing

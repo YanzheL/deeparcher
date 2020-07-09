@@ -10,7 +10,7 @@ from app.util.misc import extract_bool_attr_ids
 
 class BeliefPropagationAnalyzer(GraphAnalyzer):
 
-    def analyze(self, graph: Graph, ctx: dict, max_iter: int, prob_diff: float) -> Graph:
+    def analyze(self, graph: Graph, ctx: dict, max_iter: int, prob_diff: float) -> Optional[Graph]:
         """Analyzer entrypoint.
 
         Args:
@@ -23,6 +23,9 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             Graph: An analyzed graph with 'bp_prob' node attribute.
 
         """
+        if not graph.connected:
+            self.logger.warn('Current graph is not connected, now skipped.')
+            return
         black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
         g = fg.Graph()
         # Construct the fg.Graph
