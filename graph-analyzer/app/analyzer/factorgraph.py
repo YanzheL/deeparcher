@@ -472,8 +472,7 @@ class Graph(object):
             marg, _ = rv.get_belief()
             if normalize:
                 marg /= sum(marg)
-
-            tuples += [(rv, marg)]
+            tuples.append((rv, marg))
         return tuples
 
     def print_rv_marginals(self, rvs=None, normalize=False):
@@ -653,9 +652,9 @@ class RV(object):
             m = f.get_outgoing_for(self)
             if self.debug:
                 assert m.shape == (self.n_opts,)
-            incoming += [m]
+            incoming.append(m)
             total *= m
-        return (total, incoming)
+        return total, incoming
 
     def n_edges(self):
         '''

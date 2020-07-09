@@ -1,7 +1,7 @@
 from typing import *
 
-import networkx as nx
 import numpy as np
+
 import app.analyzer.factorgraph as fg
 from app.analyzer.interface import GraphAnalyzer
 from app.struct import Graph
@@ -10,38 +10,47 @@ from app.util.misc import extract_bool_attr_ids
 
 class BeliefPropagationAnalyzer(GraphAnalyzer):
 
-    def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> Union[Graph, List[Graph], None]:
-        set_bad, set_good = extract_bool_attr_ids('black_or_white', graph.node_attrs)
-        scores: Dict[int, float] = {}
-        nx_graph = nx.Graph(incoming_graph_data=graph.adj)
-        # 黑白名单结点列表读取
-        T = max_iter  # 迭代次数T
-        D = d  # 推断概率差值D
+    def analyze(self, graph: Graph, ctx: dict, max_iter: int, prob_diff: float) -> Graph:
+        """Analyzer entrypoint.
+
+        Args:
+            graph: The graph struct.
+            ctx: Shared analyzer context.
+            max_iter: Max iterations.
+            prob_diff: Difference of inference possibility.
+
+        Returns:
+            Graph: An analyzed graph with 'bp_prob' node attribute.
+
+        """
+        black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
         g = fg.Graph()
-        # 写入结点
-        for n in nx_graph.nodes():
-            g.rv(str(n), 2)
-
-        # 根据传入标签添加信息
-        # 添加显示信息
-        for good in set_good:
+        # Construct the fg.Graph
+        for rv_marginal in range(graph.nodes):
+            g.rv(str(rv_marginal), 2)
+        # Add explicit node potentials.
+        for good in white_node_ids:
             g.factor([str(good)], potential=np.array([0.99, 0.01]))  # 良性
-        for bad in set_bad:
+        for bad in black_node_ids:
             g.factor([str(bad)], potential=np.array([0.01, 0.99]))  # 恶意
-        # 添加隐式信息
-        for e in nx_graph.edges():
-            g.factor([str(e[0]), str(e[1])], potential=np.array([
-                [0.5 + self.D, 0.5 - self.D],
-                [0.5 - self.D, 0.5 + self.D],
-            ]))
-
-        # 进行置信传播
-        g.lbp(init=True, normalize=True, max_iters=self.T, progress=False)
-        tuples = g.print_rv_marginals()
-        result_belief = {}
-        for n in tuples:
-            belief = list(n[1])
-            name = n[0].name
-            result_belief[name] = belief[0] / (belief[0] + belief[1])
-        scores = result_belief
+        # Add implicit node potentials.
+        adj = graph.adj.tocoo()
+        for i, j, v in zip(adj.row, adj.col, adj.data):
+            g.factor(
+                [str(i), str(j)],
+                potential=np.array([
+                    [0.5 + prob_diff, 0.5 - prob_diff],
+                    [0.5 - prob_diff, 0.5 + prob_diff],
+                ])
+            )
+        # Start propagation.
+        g.lbp(init=True, normalize=True, max_iters=max_iter, progress=False)
+        # Write results.
+        scores: Dict[int, float] = {}
+        rv_marginals = g.rv_marginals()
+        for rv, marginal in rv_marginals:
+            total, incoming = marginal
+            name = rv.name
+            scores[int(name)] = total / (total + incoming)
         graph.node_attrs['bp_prob'] = scores
+        return graph
