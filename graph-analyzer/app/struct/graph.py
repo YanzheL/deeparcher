@@ -1,10 +1,10 @@
 from typing import *
 
 import numpy as np
-from scipy.sparse import spmatrix
+from scipy.sparse import spmatrix, tril, triu
 
 from app.struct.base import MutableBean
-from app.struct.graph_attributes import ComponentAttr, NodeAttrMap, EdgeAttrMap
+from app.struct.graph_attributes import ComponentAttr
 
 
 class Graph(MutableBean):
@@ -17,11 +17,12 @@ class Graph(MutableBean):
             directed: bool,
             connected: bool,
             unweighted: bool,
+            parent_id: int = 0,
             node_id_remap: Optional[np.ndarray] = None,
             component_attrs: List[ComponentAttr] = None,
-            node_attrs: List[NodeAttrMap] = None,
-            edge_attrs: List[EdgeAttrMap] = None
-
+            node_attrs: Dict[str, Dict[int, object]] = None,
+            edge_attrs: Dict[str, Dict[int, object]] = None,
+            attributes: Dict[str, object] = None
     ):
         super().__init__()
         self._id = id
@@ -31,11 +32,15 @@ class Graph(MutableBean):
         self._directed = directed
         self._connected = connected
         self._unweighted = unweighted
-        self._node_id_remap = node_id_remap
+        self._parent_id = parent_id,
+        self._node_id_remap = node_id_remap,
         self._component_attrs = component_attrs if component_attrs is not None else []
-        self._node_attrs = node_attrs if node_attrs is not None else []
-        self._edge_attrs = edge_attrs if edge_attrs is not None else []
+        self._node_attrs = node_attrs if node_attrs is not None else {}
+        self._edge_attrs = edge_attrs if edge_attrs is not None else {}
+        self._attributes = attributes if attributes is not None else {}
         self._modified = False
+        self.meta = {}
+        self._finalize()
 
     @property
     def id(self):
@@ -86,6 +91,14 @@ class Graph(MutableBean):
         self._set_property('unweighted', value)
 
     @property
+    def parent_id(self):
+        return self._parent_id
+
+    @parent_id.setter
+    def parent_id(self, value):
+        self._set_property('parent_id', value)
+
+    @property
     def node_id_remap(self):
         return self._node_id_remap
 
@@ -104,3 +117,13 @@ class Graph(MutableBean):
     @property
     def edge_attrs(self):
         return self._edge_attrs
+
+    def _finalize(self):
+        if not (self._nodes == self._adj.shape[0] == self._adj.shape[1]):
+            raise ValueError("Graph nodes do not match adjacent matrix's shape.")
+        if not self._directed and np.any(tril(self._adj, k=-1)):
+            self._adj = triu(self._adj) + tril(self._adj, k=-1).transpose()
+        if self._unweighted:
+            nz_rows, nz_cols = self._adj.nonzero()
+            self._adj = self._adj.tocsr()
+            self._adj[nz_rows, nz_cols] = 1.0

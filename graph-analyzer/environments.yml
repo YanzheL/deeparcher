@@ -13,5 +13,5 @@ dependencies:
   - networkx
   - rapids=0.14
   - cudatoolkit=10.2
+  - llvmlite=0.32.1
 prefix: ./envs
-
