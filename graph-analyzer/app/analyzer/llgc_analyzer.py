@@ -1,9 +1,8 @@
 from typing import *
 
 import numpy as np
-from numpy.linalg import matrix_power
-from scipy.sparse import diags
-from scipy.sparse import spmatrix
+from numpy.linalg import LinAlgError, inv
+from scipy.sparse import diags, spmatrix
 
 from app.analyzer.interface import GraphAnalyzer
 from app.struct import Graph
@@ -12,7 +11,8 @@ from app.struct import Graph
 class LLGCAnalyzer(GraphAnalyzer):
     """GraphAnalyzer for computing local and global consistency algorithm by Zhou et al.
 
-    This implementation is based on networkx.algorithms.node_classification.lgc.local_and_global_consistency(...).
+    This implementation is an optimized version of
+    networkx.algorithms.node_classification.lgc.local_and_global_consistency.
     The dependency of networkx library is removed here to avoid graph conversion overhead.
 
     Author:
@@ -144,12 +144,15 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         """
         converged = False
-        try:
-            n_samples = P.shape[0]
-            X = np.eye(n_samples, dtype=np.float32) - P
-            F = np.linalg.inv(X).dot(B)
-            converged = True
-        except np.linalg.LinAlgError:
+        if not force_iter:
+            try:
+                n_samples = P.shape[0]
+                X = np.eye(n_samples, dtype=np.float32) - P
+                F = inv(X).dot(B)
+                converged = True
+            except LinAlgError:
+                converged = False
+        if not converged:
             remaining_iter = max_iters
             while remaining_iter > 0:
                 F = P.dot(F) + B
@@ -163,9 +166,6 @@ class LLGCAnalyzer(GraphAnalyzer):
         Args:
             F : numpy array, shape = [n_samples, n_classes]
                 Learnt (resulting) label matrix
-            label_dict : numpy array, shape = [n_classes]
-                Array of labels
-                i-th element contains the label corresponding label ID `i`
 
         Returns:
             numpy.ndarray: Array of predicted label ids, shape = [n_samples].
