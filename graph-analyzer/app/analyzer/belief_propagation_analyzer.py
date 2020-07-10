@@ -25,8 +25,8 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             self,
             graph: Graph,
             ctx: dict,
-            max_iter: int,
-            prob_diff: float,
+            max_iter: int = 30,
+            prob_diff: float = 0.01,
             bw_attr: str = 'black_or_white',
             dst_attr: str = 'bp_prob'
     ) -> Graph:
