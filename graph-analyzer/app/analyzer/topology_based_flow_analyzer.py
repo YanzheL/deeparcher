@@ -23,9 +23,16 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
     （5）根据判断标签类别的阈值，得到最后的标签结果
     """
 
-    def analyze(self, graph: Graph, ctx: dict, max_iters: int = 5, legal_weight: float = -1,
-                attr_name: str = 'black_or_white') -> Graph:
-        black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
+    def analyze(
+            self,
+            graph: Graph,
+            ctx: dict,
+            max_iters: int = 5,
+            legal_weight: float = -1,
+            bw_attr: str = 'black_or_white',
+            dst_attr: str = 'tbf_prob'
+    ) -> Graph:
+        black_node_ids, white_node_ids = extract_bool_attr_ids(bw_attr, graph.node_attrs)
         if not graph.directed:
             adj_triu = csr_matrix(triu(graph.adj, k=1))  # 获取除对角线以外的上三角
             M = adj_triu + adj_triu.T  # 写成对称邻接矩阵
@@ -56,8 +63,8 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
         v_result[black_node_ids] = 1.0  # 如果是恶意结点，则V_good对应声誉为0，因此最终声誉为1
         # 归一化操作（将评分投影到0到1之间）,并从np.array转化为字典类型
         rep = self._normalize(v_result)
-        scores: Dict[int, float] = {k: v for k, v in enumerate(rep)}
-        graph.node_attrs['tbf_prob'] = scores
+        scores: Dict[int, float] = dict(enumerate(rep))
+        graph.node_attrs[dst_attr] = scores
         return graph
 
     def accept(self, graph: Graph) -> bool:

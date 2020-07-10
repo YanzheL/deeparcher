@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional, Dict, Tuple
+from typing import TYPE_CHECKING, Dict, Tuple
 
 if TYPE_CHECKING:
     from app.struct import Graph
@@ -42,8 +42,9 @@ class LLGCAnalyzer(GraphAnalyzer):
             ctx: dict,
             alpha: float = 0.99,
             max_iter: int = 30,
-            attr_name: str = 'black_or_white'
-    ) -> Optional[Graph]:
+            bw_attr: str = 'black_or_white',
+            dst_attr: str = 'llgc_prob'
+    ) -> Graph:
         """Analyzer entrypoint.
 
         Args:
@@ -51,16 +52,17 @@ class LLGCAnalyzer(GraphAnalyzer):
             ctx: Shared analyzer context.
             alpha: Clamping factor.
             max_iter: Max iterations.
-            attr_name: Name of a boolean node attribute which indicates whether the node is a known black or white node.
+            bw_attr: Name of a boolean node attribute which indicates whether the node is a known black or white node.
+            dst_attr: dst_attr: Name of the output node attribute.
 
         Returns:
-            Graph: An analyzed graph with 'llgc_prob' node attribute.
+            Graph: An analyzed graph which contains an output node attribute.
 
         """
 
-        labels = self._extract_boolean_attributes(graph, attr_name)
+        labels = self._extract_boolean_attributes(graph, bw_attr)
         if labels.shape[0] == 0:
-            raise ValueError('No node on the input graph is labeled by {}'.format(attr_name))
+            raise ValueError('No node on the input graph is labeled by {}'.format(bw_attr))
 
         X = csr_matrix(graph.adj)
         n_samples = X.shape[0]
@@ -71,8 +73,8 @@ class LLGCAnalyzer(GraphAnalyzer):
         F, converged = self._propagate_converged(P, F, B, max_iter)
         predicted = self._predict(F)
         # 将list形式的预测结果转变为_scores={数字编号：信誉度,}
-        scores: Dict[int, float] = {node: value for node, value in enumerate(predicted)}
-        graph.node_attrs['llgc_prob'] = scores
+        scores: Dict[int, float] = dict(enumerate(predicted))
+        graph.node_attrs[dst_attr] = scores
         return graph
 
     def accept(self, graph: Graph) -> bool:
@@ -114,7 +116,7 @@ class LLGCAnalyzer(GraphAnalyzer):
         return S
 
     @staticmethod
-    def _build_base_matrix(X: spmatrix, labels: cupy.ndarray, alpha: float, n_classes: int):
+    def _build_base_matrix(X: spmatrix, labels: cupy.ndarray, alpha: float, n_classes: int) -> cupy.ndarray:
         """Build base matrix of Local and global consistency
 
         Args:
@@ -134,8 +136,12 @@ class LLGCAnalyzer(GraphAnalyzer):
         return B
 
     @staticmethod
-    def _propagate_converged(P: spmatrix, F: cupy.ndarray, B: cupy.ndarray, max_iters: int, force_iter=False) -> Tuple[
-        cupy.ndarray, bool]:
+    def _propagate_converged(
+            P: spmatrix,
+            F: cupy.ndarray,
+            B: cupy.ndarray,
+            max_iters: int,
+            force_iter=False) -> Tuple[cupy.ndarray, bool]:
         """Try to propagate F = P * F + B to its converged value.
 
         .. math::

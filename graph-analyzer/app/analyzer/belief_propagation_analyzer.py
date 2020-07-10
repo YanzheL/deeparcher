@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional, Dict
+from typing import TYPE_CHECKING, Dict
 
 if TYPE_CHECKING:
     from app.struct import Graph
@@ -21,7 +21,15 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
 
     """
 
-    def analyze(self, graph: Graph, ctx: dict, max_iter: int, prob_diff: float) -> Optional[Graph]:
+    def analyze(
+            self,
+            graph: Graph,
+            ctx: dict,
+            max_iter: int,
+            prob_diff: float,
+            bw_attr: str = 'black_or_white',
+            dst_attr: str = 'bp_prob'
+    ) -> Graph:
         """Analyzer entrypoint.
 
         Args:
@@ -29,13 +37,15 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             ctx: Shared analyzer context.
             max_iter: Max iterations.
             prob_diff: Difference of inference possibility.
+            bw_attr: Name of a boolean node attribute which indicates whether the node is a known black or white node.
+            dst_attr: Name of the output node attribute.
 
         Returns:
-            Graph: An analyzed graph with 'bp_prob' node attribute.
+            Graph: An analyzed graph which contains an output node attribute.
 
         """
 
-        black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
+        black_node_ids, white_node_ids = extract_bool_attr_ids(bw_attr, graph.node_attrs)
         g = fg.Graph()
         # Construct the fg.Graph
         for rv_marginal in range(graph.nodes):
@@ -64,7 +74,7 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             total, incoming = marginal
             name = rv.name
             scores[int(name)] = total / (total + incoming)
-        graph.node_attrs['bp_prob'] = scores
+        graph.node_attrs[dst_attr] = scores
         return graph
 
     def accept(self, graph: Graph) -> bool:

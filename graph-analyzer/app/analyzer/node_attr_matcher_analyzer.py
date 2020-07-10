@@ -54,7 +54,7 @@ class NodeAttrMatcherAnalyzer(GraphAnalyzer):
             dst_attr: Name of the output node attribute.
 
         Returns:
-            Graph: An analyzed graph with 'dst_attr' node attribute.
+            Graph: An analyzed graph which contains an output node attribute.
 
         """
         src = graph.node_attrs[src_attr]
