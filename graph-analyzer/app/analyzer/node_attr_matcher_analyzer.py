@@ -25,7 +25,7 @@ class NodeAttrMatcherAnalyzer(GraphAnalyzer):
             true_list: array_like
                 The attribute values which should be considered as True.
             false_list: array_like
-                The attribute values which should be considered as True.
+                The attribute values which should be considered as False.
             exclude_common: bool, optional
                 If True, common items will be excluded from both lists.
 
