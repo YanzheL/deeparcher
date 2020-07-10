@@ -1,4 +1,9 @@
-from typing import *
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, List, Dict
+
+if TYPE_CHECKING:
+    from app.struct import Graph
 
 import numpy as np
 from cugraph.components.connectivity import weakly_connected_components, strongly_connected_components
@@ -6,7 +11,6 @@ from scipy.sparse import csr_matrix
 
 from app.analyzer.interface import GraphAnalyzer
 from app.io.graph_converter import build_cugraph
-from app.struct.graph import Graph
 from app.struct.graph_attributes import ComponentAttr
 
 

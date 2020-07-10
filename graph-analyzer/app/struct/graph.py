@@ -1,10 +1,14 @@
-from typing import *
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, List, Optional, Dict
+
+if TYPE_CHECKING:
+    from app.struct.graph_attributes import ComponentAttr
 
 import numpy as np
 from scipy.sparse import spmatrix, tril, triu
 
 from app.struct.base import MutableBean
-from app.struct.graph_attributes import ComponentAttr
 
 
 class Graph(MutableBean):

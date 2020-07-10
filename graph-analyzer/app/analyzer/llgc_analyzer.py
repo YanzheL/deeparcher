@@ -1,12 +1,17 @@
-from typing import *
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Optional, Dict, Tuple
+
+if TYPE_CHECKING:
+    from app.struct import Graph
+    from cupyx.scipy.sparse import spmatrix
 
 import cupy
 import cupyx
-from cupyx.scipy.sparse import spmatrix, diags, csr_matrix
+from cupyx.scipy.sparse import diags, csr_matrix
 from numpy.linalg import LinAlgError
 
 from app.analyzer.interface import GraphAnalyzer
-from app.struct import Graph
 
 
 class LLGCAnalyzer(GraphAnalyzer):

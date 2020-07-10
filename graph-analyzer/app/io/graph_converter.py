@@ -1,8 +1,12 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from scipy.sparse import spmatrix
+
 import cudf
 import cugraph
-from scipy.sparse import spmatrix
 
 
 def build_cugraph(adj: spmatrix, symmetrized=True) -> cugraph.Graph:

@@ -1,6 +1,11 @@
-from abc import ABCMeta, abstractmethod
+from __future__ import annotations
 
-from app.struct import Graph
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.struct.graph import Graph
+
+from abc import ABCMeta, abstractmethod
 
 
 class GraphReader(metaclass=ABCMeta):

@@ -1,10 +1,15 @@
-from typing import *
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Optional, Dict
+
+if TYPE_CHECKING:
+    from app.struct import Graph
 
 import numpy as np
 
 import app.third_party.factorgraph as fg
 from app.analyzer.interface import GraphAnalyzer
-from app.struct import Graph
+
 from app.util.misc import extract_bool_attr_ids
 
 

@@ -1,11 +1,15 @@
-from typing import *
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Dict
+
+if TYPE_CHECKING:
+    from app.struct import Graph
 
 import cupy
 from cupyx.scipy.sparse import csr_matrix
 from scipy.sparse import triu
 
 from app.analyzer.interface import GraphAnalyzer
-from app.struct import Graph
 from app.util.misc import extract_bool_attr_ids
 
 
@@ -19,7 +23,7 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
     （5）根据判断标签类别的阈值，得到最后的标签结果
     """
 
-    def analyze(self, graph: Graph, ctx: dict, max_iters=5, legal_weight: float = -1,
+    def analyze(self, graph: Graph, ctx: dict, max_iters: int = 5, legal_weight: float = -1,
                 attr_name: str = 'black_or_white') -> Graph:
         black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
         if not graph.directed:

@@ -1,7 +1,10 @@
 from abc import ABCMeta, abstractmethod
-from typing import *
 
-from app.struct import Graph
+from typing import TYPE_CHECKING, List, Union, NoReturn
+
+if TYPE_CHECKING:
+    from app.struct import Graph
+
 from app.util.logger_router import LoggerRouter
 
 

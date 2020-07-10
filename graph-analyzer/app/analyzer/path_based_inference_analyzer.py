@@ -1,5 +1,10 @@
+from __future__ import annotations
+
 import math
-from typing import *
+from typing import TYPE_CHECKING, Optional, Dict
+
+if TYPE_CHECKING:
+    from app.struct import Graph
 
 import cudf
 import cugraph
@@ -8,7 +13,6 @@ from cugraph.traversal.sssp import sssp
 
 from app.analyzer.interface import GraphAnalyzer
 from app.io.graph_converter import build_cugraph
-from app.struct import Graph
 from app.util.misc import extract_bool_attr_ids
 
 

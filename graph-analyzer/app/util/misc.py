@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import time
-from typing import *
+from typing import Dict, Tuple
 
 import numpy as np
 from tld import get_fld
@@ -28,7 +30,7 @@ def load_whitelist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
             map(lambda i: get_fld(i, fail_silently=True, fix_protocol=True), whitelist)
         ))
         whitelist = np.array(whitelist, dtype=str)
-        logger.info('Loaded {} unique FQDNs from whitelist file <{}>'.format(whitelist.size, path))
+        logger.info('Loaded {} unique FLDs from whitelist file <{}>'.format(whitelist.size, path))
         return whitelist
 
 

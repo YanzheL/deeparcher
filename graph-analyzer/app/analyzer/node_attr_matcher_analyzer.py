@@ -1,9 +1,13 @@
-from typing import Dict
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Dict
+
+if TYPE_CHECKING:
+    from app.struct import Graph
 
 import numpy as np
 
 from app.analyzer.interface import GraphAnalyzer
-from app.struct.graph import Graph
 
 
 class NodeAttrMatcherAnalyzer(GraphAnalyzer):
