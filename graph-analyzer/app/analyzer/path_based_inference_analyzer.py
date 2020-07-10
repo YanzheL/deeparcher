@@ -4,13 +4,12 @@ from typing import *
 import cudf
 import cugraph
 import cupy
-import numpy as np
 from cugraph.traversal.sssp import sssp
 
 from app.analyzer.interface import GraphAnalyzer
 from app.io.graph_converter import build_cugraph
 from app.struct import Graph
-from app.util.misc import timing, extract_bool_attr_ids
+from app.util.misc import extract_bool_attr_ids
 
 
 class PathBasedInferenceAnalyzer(GraphAnalyzer):
@@ -39,32 +38,31 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
             Graph: An analyzed graph with 'pbi_prob' node attribute.
 
         """
-        if not graph.connected:
-            self.logger.warn('Current graph is not connected, now skipped.')
-            return
-        if 'cugraph' not in graph.meta:
-            graph.meta['cugraph'] = build_cugraph(graph.adj)
-        cug = graph.meta['cugraph']
+
+        if 'cu_graph' not in graph.meta:
+            graph.meta['cu_graph'] = build_cugraph(graph.adj)
+        cu_graph = graph.meta['cu_graph']
         seeds, _ = extract_bool_attr_ids(attr_name, graph.node_attrs)
-        scores: Dict[int, float] = {s: 1.0 for s in seeds}
         if seeds.size <= 1:
             self.logger.info('Skipped a trivial graph. It has only {} seeds in {} nodes.'.format(
                 seeds.size, graph.nodes))
             return
-        self._initialize_weights(cug)
-        dists = []
+        self._transform_weights(cu_graph)
         # np.vectorize(lambda s: sssp(graph,s)['distance'].to_array(),signature='()->(n)')
-        for seed in seeds:
-            dist = cupy.asarray(sssp(cug, seed)['distance'].data)
-            dists.append(dist)
+        dists = [
+            cupy.asarray(sssp(cu_graph, seed)['distance'].data)
+            for seed in seeds
+        ]
         dists = cupy.asarray(dists).T  # shape = (nodes, seeds)
-        scores.update(zip(graph.node_id_remap, self._compute_mal_scores(dists)))
+        scores: Dict[int, float] = {k: v for k, v in enumerate(self._compute_mal_scores(dists))}
         self.logger.info('Updated {} scores'.format(len(scores)))
         graph.node_attrs['pbi_prob'] = scores
         return graph
 
+    def accept(self, graph: Graph) -> bool:
+        return graph.connected and not graph.directed
+
     @staticmethod
-    @timing
     def _compute_mal_scores(dists: cupy.ndarray) -> cupy.ndarray:
         n_seeds = dists.shape[1]
         assocs = dists
@@ -74,11 +72,11 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
         largest_assoc = assocs[:, -1]
         mal = largest_assoc
         if n_seeds > 2:
-            coef = cupy.logspace(n_seeds - 1, 2 - 1, num=n_seeds - 1, base=0.5, dtype=np.float64)
+            coef = cupy.logspace(n_seeds - 1, 2 - 1, num=n_seeds - 1, base=0.5, dtype=cupy.float32)
             mal += (1 - largest_assoc) * cupy.sum(coef * assocs[:, 1:], axis=1)
         return mal
 
     @staticmethod
-    def _initialize_weights(graph: cugraph.Graph):
+    def _transform_weights(graph: cugraph.Graph):
         weights: cudf.Series = graph.view_edge_list()['weight']
         graph.view_edge_list()['weight'] = weights.applymap(lambda x: math.log(x + 1 / x))

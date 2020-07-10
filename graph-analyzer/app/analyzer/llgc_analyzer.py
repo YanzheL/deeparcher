@@ -1,8 +1,9 @@
 from typing import *
 
-import numpy as np
-from numpy.linalg import LinAlgError, inv
-from scipy.sparse import diags, spmatrix
+import cupy
+import cupyx
+from cupyx.scipy.sparse import spmatrix, diags, csr_matrix
+from numpy.linalg import LinAlgError
 
 from app.analyzer.interface import GraphAnalyzer
 from app.struct import Graph
@@ -52,17 +53,14 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         """
 
-        if not graph.connected:
-            self.logger.warn('Current graph is not connected, now skipped.')
-            return
         labels = self._extract_boolean_attributes(graph, attr_name)
         if labels.shape[0] == 0:
             raise ValueError('No node on the input graph is labeled by {}'.format(attr_name))
 
-        X = graph.adj
+        X = csr_matrix(graph.adj)
         n_samples = X.shape[0]
-        n_classes = np.unique(labels[:, 1]).size
-        F = np.zeros((n_samples, n_classes))
+        n_classes = cupy.unique(labels[:, 1]).size
+        F = cupy.zeros((n_samples, n_classes))
         P = self._build_propagation_matrix(X, alpha)
         B = self._build_base_matrix(X, labels, alpha, n_classes)
         F, converged = self._propagate_converged(P, F, B, max_iter)
@@ -72,8 +70,11 @@ class LLGCAnalyzer(GraphAnalyzer):
         graph.node_attrs['llgc_prob'] = scores
         return graph
 
+    def accept(self, graph: Graph) -> bool:
+        return graph.connected
+
     @staticmethod
-    def _extract_boolean_attributes(graph: Graph, attr_name: str) -> np.ndarray:
+    def _extract_boolean_attributes(graph: Graph, attr_name: str) -> cupy.ndarray:
         """Get and return information of boolean node attribute from the input graph
 
         Args:
@@ -86,7 +87,7 @@ class LLGCAnalyzer(GraphAnalyzer):
         """
 
         attr = graph.node_attrs.get(attr_name, {})
-        return np.array([[node_id, int(value)] for node_id, value in attr.items()], dtype=np.int32)
+        return cupy.array([[node_id, int(value)] for node_id, value in attr.items()], dtype=cupy.int32)
 
     @staticmethod
     def _build_propagation_matrix(X: spmatrix, alpha: float) -> spmatrix:
@@ -97,17 +98,18 @@ class LLGCAnalyzer(GraphAnalyzer):
             alpha: Clamping factor
 
         Returns:
-            scipy.sparse.spmatrix: Propagation matrix, shape = [n_samples, n_samples].
+            cupy.sparse.spmatrix: Propagation matrix, shape = [n_samples, n_samples].
 
         """
+
         degrees = X.sum(axis=0).A[0]
         degrees[degrees == 0] = 1  # Avoid division by 0
-        D2 = np.sqrt(diags((1.0 / degrees), offsets=0))
+        D2 = cupy.sqrt(diags((1.0 / degrees), offsets=0))
         S = alpha * D2.dot(X).dot(D2)
         return S
 
     @staticmethod
-    def _build_base_matrix(X: spmatrix, labels: np.ndarray, alpha: float, n_classes: int):
+    def _build_base_matrix(X: spmatrix, labels: cupy.ndarray, alpha: float, n_classes: int):
         """Build base matrix of Local and global consistency
 
         Args:
@@ -122,18 +124,18 @@ class LLGCAnalyzer(GraphAnalyzer):
         """
 
         n_samples = X.shape[0]
-        B = np.zeros((n_samples, n_classes))
+        B = cupy.zeros((n_samples, n_classes))
         B[labels[:, 0], labels[:, 1]] = 1 - alpha
         return B
 
     @staticmethod
-    def _propagate_converged(P: spmatrix, F: np.ndarray, B: np.ndarray, max_iters: int, force_iter=False) -> Tuple[
-        np.ndarray, bool]:
+    def _propagate_converged(P: spmatrix, F: cupy.ndarray, B: cupy.ndarray, max_iters: int, force_iter=False) -> Tuple[
+        cupy.ndarray, bool]:
         """Try to propagate F = P * F + B to its converged value.
 
         .. math::
 
-            F = \lim_{n \\to + \\infty} P^{n} * F_{0} + ( \sum_{k=0}^{n-1} P_{k} ) * B  = (I - P)^{-1} * B
+            F = \lim_{n \\to + \\infty} (P^{n} * F_{0} + ( \sum_{k=0}^{n-1} P_{k} ) * B)  = (I - P)^{-1} * B
 
         Args:
             P: Propagation matrix, shape = [n_samples, n_samples].
@@ -143,15 +145,16 @@ class LLGCAnalyzer(GraphAnalyzer):
             force_iter: Use iterations instead of trying to find optimal value.
 
         Returns:
-            np.ndarray: Label matrix, shape = [n_samples, n_classes].
+            cupy.ndarray: Label matrix, shape = [n_samples, n_classes].
 
         """
         converged = False
         if not force_iter:
+            cupyx.seterr(linalg='raise')
+            n_samples = P.shape[0]
+            X = cupy.eye(n_samples, dtype=cupy.float32) - P
             try:
-                n_samples = P.shape[0]
-                X = np.eye(n_samples, dtype=np.float32) - P
-                F = inv(X).dot(B)
+                F = cupy.linalg.inv(X).dot(B)
                 converged = True
             except LinAlgError:
                 converged = False
@@ -163,7 +166,7 @@ class LLGCAnalyzer(GraphAnalyzer):
         return F, converged
 
     @staticmethod
-    def _predict(F):
+    def _predict(F: cupy.ndarray):
         """Predict labels by learnt label matrix
 
         Args:
@@ -175,5 +178,5 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         """
 
-        predicted_label_ids = np.argmax(F, axis=1)
+        predicted_label_ids = cupy.argmax(F, axis=1)
         return predicted_label_ids

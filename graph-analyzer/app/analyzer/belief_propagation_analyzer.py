@@ -23,9 +23,7 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             Graph: An analyzed graph with 'bp_prob' node attribute.
 
         """
-        if not graph.connected:
-            self.logger.warn('Current graph is not connected, now skipped.')
-            return
+
         black_node_ids, white_node_ids = extract_bool_attr_ids('black_or_white', graph.node_attrs)
         g = fg.Graph()
         # Construct the fg.Graph
@@ -57,3 +55,6 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             scores[int(name)] = total / (total + incoming)
         graph.node_attrs['bp_prob'] = scores
         return graph
+
+    def accept(self, graph: Graph) -> bool:
+        return graph.connected

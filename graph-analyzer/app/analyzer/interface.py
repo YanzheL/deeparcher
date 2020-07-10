@@ -17,5 +17,8 @@ class GraphAnalyzer(metaclass=ABCMeta):
     def reset(self) -> NoReturn:
         pass
 
+    def accept(self, graph: Graph) -> bool:
+        return True
+
     def exception_caught(self, e: Exception):
         raise e
