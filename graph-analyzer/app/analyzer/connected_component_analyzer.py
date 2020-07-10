@@ -1,7 +1,7 @@
 from typing import *
 
 import numpy as np
-from cugraph.components.connectivity import weakly_connected_components
+from cugraph.components.connectivity import weakly_connected_components, strongly_connected_components
 from scipy.sparse import csr_matrix
 
 from app.analyzer.interface import GraphAnalyzer
@@ -11,23 +11,35 @@ from app.struct.graph_attributes import ComponentAttr
 
 
 class ConnectedComponentsAnalyzer(GraphAnalyzer):
+    """GraphAnalyzer for splitting a sparse graph into connected components.
 
-    def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> Union[Graph, List[Graph], None]:
+    Components will be output as a sub-graph list.
+
+    Author:
+        Yanzhe Lee <lee.yanzhe@yanzhe.org>
+
+    """
+
+    def __init__(self, weak=True):
+        super().__init__()
+        self._cc_func = weakly_connected_components if weak else strongly_connected_components
+
+    def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> List[Graph]:
         if graph.connected or len(graph.component_attrs) == 1:
             self.logger.warn('Current graph is connected, now skipped.')
             graph.connected = True
-            return graph
+            return [graph]
         if len(graph.component_attrs) == 0:
             self.logger.info('Computing weakly connected components...')
             if 'cugraph' not in graph.meta:
                 graph.meta['cugraph'] = build_cugraph(graph.adj)
             cug = graph.meta['cugraph']
-            cc_df = weakly_connected_components(cug)['labels']
+            cc_df = self._cc_func(cug)['labels']
             n_components = cc_df.max()
             self.logger.info('Got {} weakly connected components.'.format(n_components))
             if n_components == 1:
                 graph.connected = True
-                return graph
+                return [graph]
             else:
                 for i in range(1, cc_df.max() + 1):
                     component = cc_df.query("labels == {}".format(i))['vertices'].to_array()

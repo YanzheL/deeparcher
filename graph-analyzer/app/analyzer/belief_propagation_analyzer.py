@@ -9,6 +9,12 @@ from app.util.misc import extract_bool_attr_ids
 
 
 class BeliefPropagationAnalyzer(GraphAnalyzer):
+    """GraphAnalyzer for computing belief propagation algorithm.
+
+    Author:
+        Yanzhe Lee <lee.yanzhe@yanzhe.org>, Linxin Chen <chen_linxin@outlook.com>
+
+    """
 
     def analyze(self, graph: Graph, ctx: dict, max_iter: int, prob_diff: float) -> Optional[Graph]:
         """Analyzer entrypoint.
