@@ -19,11 +19,17 @@ class GraphAnalyzer(metaclass=ABCMeta):
     def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> Union[Graph, List[Graph], None]:
         pass
 
-    def reset(self) -> NoReturn:
-        pass
-
     def accept(self, graph: Graph) -> bool:
         return True
 
     def exception_caught(self, e: Exception):
         raise e
+
+
+class StatefulOperation(metaclass=ABCMeta):
+
+    def prepare(self, *args, **kwargs) -> NoReturn:
+        pass
+
+    def reset(self) -> NoReturn:
+        pass
