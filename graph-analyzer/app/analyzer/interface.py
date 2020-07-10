@@ -8,6 +8,8 @@ from app.util.logger_router import LoggerRouter
 class GraphAnalyzer(metaclass=ABCMeta):
 
     def __init__(self):
+        if self.__class__.__name__ == 'GraphAnalyzer':
+            raise ValueError("This class is not intended to be instantiated directly.")
         self.logger = LoggerRouter().get_logger(__name__)
 
     @abstractmethod

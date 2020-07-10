@@ -1,5 +1,7 @@
 class MutableBean:
     def __init__(self):
+        if self.__class__.__name__ == 'MutableBean':
+            raise ValueError("This class is not intended to be instantiated directly.")
         self.__modified_attrs = {}
 
     @property
