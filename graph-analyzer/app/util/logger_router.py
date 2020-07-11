@@ -34,7 +34,10 @@ class LoggerRouter(metaclass=Singleton):
         return logger
 
     def initialize_default_config(self):
-        self.level = logging.INFO
+        if sys.gettrace() is not None or os.getenv('DEBUG', False):
+            self.level = logging.DEBUG
+        else:
+            self.level = logging.INFO
         self.formatter = logging.Formatter('%(asctime)s %(levelname)-8s [%(name)s:%(lineno)s] %(message)s',
                                            datefmt='%Y-%m-%d %H:%M:%S')
         self.handlers = [
