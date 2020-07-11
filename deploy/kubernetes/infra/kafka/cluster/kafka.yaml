@@ -8,9 +8,9 @@ spec:
   clientsCa:
     generateCertificateAuthority: false
   kafka:
-    image: leeyanzhe/kafka:0.18.0-kafka-2.5.0-graalvm
+    image: hitnslab/kafka:0.18.0-kafka-2.5.0-graalvm
     tlsSidecar:
-      image: leeyanzhe/kafka:0.18.0-kafka-2.5.0-graalvm
+      image: hitnslab/kafka:0.18.0-kafka-2.5.0-graalvm
     version: "2.5.0"
     replicas: 5
     authorization:
@@ -58,7 +58,7 @@ spec:
       message.max.bytes: 33554432 #32Mi
       replica.fetch.max.bytes: 33554432
       ssl.protocol: TLSv1.2
-      ssl.enabled.protocols: TLSv1.3,TLSv1.2
+      #      ssl.enabled.protocols: TLSv1.3,TLSv1.2
       metric.reporters: io.confluent.metrics.reporter.ConfluentMetricsReporter
       confluent.metrics.reporter.publish.ms: 15000
       confluent.metrics.reporter.bootstrap.servers: kafka-kafka-bootstrap:9093
@@ -129,7 +129,7 @@ spec:
                         - kafka-kafka
   zookeeper:
     replicas: 1
-    image: leeyanzhe/kafka:0.18.0-kafka-2.5.0-graalvm
+    image: hitnslab/kafka:0.18.0-kafka-2.5.0-graalvm
     config:
       ssl.protocol: TLSv1.2
       ssl.enabled.protocols: TLSv1.3,TLSv1.2
@@ -203,7 +203,7 @@ spec:
           #           - 'true'
   entityOperator:
     tlsSidecar:
-      image: leeyanzhe/kafka:0.18.0-kafka-2.5.0-graalvm
+      image: hitnslab/kafka:0.18.0-kafka-2.5.0-graalvm
     topicOperator:
       resources:
         requests:

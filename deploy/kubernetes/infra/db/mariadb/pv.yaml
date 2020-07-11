@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-deeparcher-mariadb-0
+spec:
+  storageClassName: local
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /srv/volumes/data-deeparcher-mariadb-0
+  claimRef:
+    namespace: default
+    name: data-deeparcher-mariadb-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-gpu-node0
