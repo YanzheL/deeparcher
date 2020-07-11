@@ -125,8 +125,10 @@ class Graph(MutableBean):
     def _finalize(self):
         if not (self._nodes == self._adj.shape[0] == self._adj.shape[1]):
             raise ValueError("Graph nodes do not match adjacent matrix's shape.")
-        if not self._directed and np.any(tril(self._adj, k=-1)):
-            self._adj = triu(self._adj) + tril(self._adj, k=-1).transpose()
+        if not self._directed:
+            tl = tril(self._adj, k=-1)
+            if tl.count_nonzero() > 0:
+                self._adj = triu(self._adj) + tl.transpose()
         if self._unweighted:
             nz_rows, nz_cols = self._adj.nonzero()
             self._adj = self._adj.tocsr()
