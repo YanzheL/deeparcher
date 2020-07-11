@@ -32,12 +32,12 @@ class Graph(MutableBean):
         self._id = id
         self._nodes = nodes
         self._edges = edges
-        self._adj = adj,
+        self._adj = adj
         self._directed = directed
         self._connected = connected
         self._unweighted = unweighted
-        self._parent_id = parent_id,
-        self._node_id_remap = node_id_remap,
+        self._parent_id = parent_id
+        self._node_id_remap = node_id_remap
         self._component_attrs = component_attrs if component_attrs is not None else []
         self._node_attrs = node_attrs if node_attrs is not None else {}
         self._edge_attrs = edge_attrs if edge_attrs is not None else {}
