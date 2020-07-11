@@ -11,6 +11,14 @@ from app.util.logger_router import LoggerRouter
 DEFAULT_LOGGER = LoggerRouter().get_logger(__name__)
 
 
+def load_lines_as_array(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
+    logger.info('Loading file <{}>...'.format(path))
+    with open(path, 'r') as f:
+        lines = np.array([i.strip() for i in f.read().splitlines()], dtype=str)
+        logger.info('Loaded {} items from file <{}>'.format(lines.size, path))
+        return lines
+
+
 def load_blacklist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
     logger.info('Loading blacklist file <{}>...'.format(path))
     with open(path, 'r') as f:
