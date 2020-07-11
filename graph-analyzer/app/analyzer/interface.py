@@ -1,5 +1,6 @@
-from abc import ABCMeta, abstractmethod
+from __future__ import annotations
 
+from abc import ABCMeta, abstractmethod
 from typing import TYPE_CHECKING, List, Union, NoReturn
 
 if TYPE_CHECKING:
