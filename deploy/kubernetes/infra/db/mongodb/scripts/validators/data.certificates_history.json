@@ -1,0 +1,107 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "fqdn",
+      "domain",
+      "fingerprint",
+      "dn",
+      "raw"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "fqdn": {
+        "bsonType": "string"
+      },
+      "domain": {
+        "bsonType": "string"
+      },
+      "raw": {
+        "bsonType": "string"
+      },
+      "fingerprint": {
+        "bsonType": "object",
+        "properties": {
+          "type": {
+            "bsonType": "string"
+          },
+          "value": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "tbs_fingerprint": {
+        "bsonType": "object",
+        "properties": {
+          "type": {
+            "bsonType": "string"
+          },
+          "value": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "spki_subject_fingerprint": {
+        "bsonType": "object",
+        "properties": {
+          "type": {
+            "bsonType": "string"
+          },
+          "value": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "dn": {
+        "bsonType": "object",
+        "properties": {
+          "full": {
+            "bsonType": "string"
+          },
+          "cn": {
+            "bsonType": "string"
+          },
+          "c": {
+            "bsonType": "string"
+          },
+          "st": {
+            "bsonType": "string"
+          },
+          "o": {
+            "bsonType": "string"
+          },
+          "ou": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "issuer": {
+        "bsonType": "object",
+        "properties": {
+          "dn": {
+            "bsonType": "object",
+            "properties": {
+              "full": {
+                "bsonType": "string"
+              },
+              "cn": {
+                "bsonType": "string"
+              },
+              "c": {
+                "bsonType": "string"
+              },
+              "st": {
+                "bsonType": "string"
+              },
+              "o": {
+                "bsonType": "string"
+              },
+              "ou": {
+                "bsonType": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

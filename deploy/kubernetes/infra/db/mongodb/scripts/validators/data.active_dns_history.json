@@ -1,0 +1,60 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "domain",
+      "created_at",
+      "dns_server",
+      "type",
+      "name",
+      "content",
+      "ttl"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "domain": {
+        "bsonType": "string"
+      },
+      "created_at": {
+        "bsonType": "date"
+      },
+      "type": {
+        "bsonType": "string",
+        "enum": [
+          "A",
+          "AAAA",
+          "MX",
+          "SOA",
+          "TXT",
+          "SRV"
+        ]
+      },
+      "name": {
+        "bsonType": "string"
+      },
+      "content": {
+        "bsonType": "string"
+      },
+      "ttl": {
+        "bsonType": "int"
+      },
+      "priority": {
+        "bsonType": "int"
+      },
+      "dns_server": {
+        "bsonType": "object",
+        "required": [
+          "auth",
+          "address"
+        ],
+        "properties": {
+          "auth": {
+            "bsonType": "bool"
+          },
+          "address": {
+            "bsonType": "string"
+          }
+        }
+      }
+    }
+  }
+}

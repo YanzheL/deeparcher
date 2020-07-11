@@ -1,0 +1,86 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "timestamp",
+      "source",
+      "method",
+      "fqdn",
+      "domain"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "timestamp": {
+        "bsonType": "date"
+      },
+      "source": {
+        "bsonType": "string"
+      },
+      "method": {
+        "bsonType": "string"
+      },
+      "fqdn": {
+        "bsonType": "string"
+      },
+      "domain": {
+        "bsonType": "string"
+      },
+      "attributes": {
+        "bsonType": "object",
+        "properties": {
+          "url": {
+            "bsonType": "string"
+          },
+          "type": {
+            "bsonType": "string"
+          },
+          "asn": {
+            "bsonType": "int"
+          },
+          "remark": {
+            "bsonType": "string"
+          },
+          "created_at": {
+            "bsonType": "date"
+          },
+          "updated_at": {
+            "bsonType": "date"
+          },
+          "ipv4_addrs": {
+            "bsonType": "array",
+            "minItems": 1.0,
+            "uniqueItems": true,
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "ipv6_addrs": {
+            "bsonType": "array",
+            "minItems": 1.0,
+            "uniqueItems": true,
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "cnames": {
+            "bsonType": "array",
+            "minItems": 1.0,
+            "uniqueItems": true,
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": [
+              "UNKNOWN",
+              "ACTIVE",
+              "HOLD",
+              "DEAD",
+              "OTHER"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

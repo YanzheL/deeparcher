@@ -1,0 +1,46 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "fqdn",
+      "domain",
+      "updated_at"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "fqdn": {
+        "bsonType": "string"
+      },
+      "domain": {
+        "bsonType": "string"
+      },
+      "updated_at": {
+        "bsonType": "date"
+      },
+      "city": {
+        "bsonType": "string"
+      },
+      "country": {
+        "bsonType": "string"
+      },
+      "continent": {
+        "bsonType": "string"
+      },
+      "location": {
+        "bsonType": "object",
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "properties": {
+          "type": {
+            "bsonType": "string"
+          },
+          "coordinates": {
+            "bsonType": "array",
+            "minItems": 1.0
+          }
+        }
+      }
+    }
+  }
+}

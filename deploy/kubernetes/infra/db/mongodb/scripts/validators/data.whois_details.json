@@ -1,0 +1,102 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "fqdn",
+      "tld",
+      "public_suffix",
+      "record_updated_at"
+    ],
+    "properties": {
+      "record_updated_at": {
+        "bsonType": "date"
+      },
+      "registrant": {
+        "bsonType": "object",
+        "properties": {
+          "organization": {
+            "bsonType": "string"
+          },
+          "state": {
+            "bsonType": "string"
+          },
+          "country": {
+            "bsonType": "string"
+          },
+          "email": {
+            "bsonType": "string"
+          },
+          "phone": {
+            "bsonType": "string"
+          },
+          "name": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "nameservers": {
+        "bsonType": "array",
+        "minItems": 1.0,
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "top_whois_server": {
+        "bsonType": "string"
+      },
+      "updated_at": {
+        "bsonType": "date"
+      },
+      "expires_at": {
+        "bsonType": "date"
+      },
+      "tld": {
+        "bsonType": "string"
+      },
+      "public_suffix": {
+        "bsonType": "string"
+      },
+      "sec_whois_server": {
+        "bsonType": "string"
+      },
+      "registered_at": {
+        "bsonType": "date"
+      },
+      "fqdn": {
+        "bsonType": "string"
+      },
+      "statuses": {
+        "bsonType": "array",
+        "minItems": 1.0,
+        "uniqueItems": true,
+        "items": {
+          "enum": [
+            "addPeriod",
+            "autoRenewPeriod",
+            "inactive",
+            "ok",
+            "pendingCreate",
+            "pendingDelete",
+            "pendingRenew",
+            "pendingRestore",
+            "pendingTransfer",
+            "pendingUpdate",
+            "redemptionPeriod",
+            "renewPeriod",
+            "serverDeleteProhibited",
+            "serverHold",
+            "serverRenewProhibited",
+            "serverTransferProhibited",
+            "serverUpdateProhibited",
+            "transferPeriod",
+            "clientDeleteProhibited",
+            "clientHold",
+            "clientRenewProhibited",
+            "clientTransferProhibited",
+            "clientUpdateProhibited"
+          ]
+        }
+      }
+    }
+  }
+}

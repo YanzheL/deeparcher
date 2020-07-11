@@ -1,0 +1,24 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "fqdn",
+      "domain",
+      "updated_at"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "fqdn": {
+        "bsonType": "string"
+      },
+      "domain": {
+        "bsonType": "string"
+      },
+      "updated_at": {
+        "bsonType": "date"
+      },
+      "graph_node_id": {
+        "bsonType": "int"
+      }
+    }
+  }
+}

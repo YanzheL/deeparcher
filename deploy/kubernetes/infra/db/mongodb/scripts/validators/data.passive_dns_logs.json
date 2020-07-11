@@ -1,0 +1,55 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "fqdn",
+      "domain",
+      "q_time",
+      "q_type",
+      "r_code"
+    ],
+    "properties": {
+      "fqdn": {
+        "bsonType": "string"
+      },
+      "domain": {
+        "bsonType": "string"
+      },
+      "q_time": {
+        "bsonType": "date"
+      },
+      "q_type": {
+        "bsonType": "int"
+      },
+      "r_code": {
+        "bsonType": "int"
+      },
+      "client_ip": {
+        "bsonType": "string"
+      },
+      "r_ipv4_addrs": {
+        "bsonType": "array",
+        "minItems": 1.0,
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "r_ipv6_addrs": {
+        "bsonType": "array",
+        "minItems": 1.0,
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "r_cnames": {
+        "bsonType": "array",
+        "minItems": 1.0,
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "string"
+        }
+      }
+    }
+  }
+}

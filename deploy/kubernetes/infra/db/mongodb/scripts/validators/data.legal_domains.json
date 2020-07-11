@@ -1,0 +1,26 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "domain",
+      "types",
+      "updated_at"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "domain": {
+        "bsonType": "string"
+      },
+      "updated_at": {
+        "bsonType": "date"
+      },
+      "types": {
+        "bsonType": "array",
+        "minItems": 1.0,
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "string"
+        }
+      }
+    }
+  }
+}
