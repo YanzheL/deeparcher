@@ -121,7 +121,7 @@ class MongoStringIdService(
 
     private fun getCurrentMaxIdRemote(): Long {
         val agg = newAggregation(group().max(valueField).`as`("max"))
-        return template.aggregate(agg, collection, BasicDBObject::class.java).uniqueMappedResult?.getLong("max") ?: -1
+        return template.aggregate(agg, collection, BasicDBObject::class.java).uniqueMappedResult?.getLong("max", -1L)!!
     }
 
     private fun getExistingIdRemote(key: String): Long? {
