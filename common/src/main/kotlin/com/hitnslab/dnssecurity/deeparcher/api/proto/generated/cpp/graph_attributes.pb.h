@@ -206,7 +206,7 @@ class ComponentAttr PROTOBUF_FINAL :
 
   enum : int {
     kComponentsFieldNumber = 3,
-    kComponentIdFieldNumber = 2,
+    kIdFieldNumber = 2,
   };
   // repeated uint32 components = 3;
   int components_size() const;
@@ -230,13 +230,13 @@ class ComponentAttr PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_components();
 
-  // uint32 component_id = 2;
-  void clear_component_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 component_id() const;
-  void set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 id = 2;
+  void clear_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_component_id() const;
-  void _internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
+  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr)
@@ -248,7 +248,7 @@ class ComponentAttr PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > components_;
   mutable std::atomic<int> _components_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 component_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_com_2fhitnslab_2fdnssecurity_2fdeeparcher_2fapi_2fproto_2fgraph_5fattributes_2eproto;
 };
@@ -462,24 +462,24 @@ class GraphElementsAttrMap PROTOBUF_FINAL :
 #endif  // __GNUC__
 // ComponentAttr
 
-// uint32 component_id = 2;
-inline void ComponentAttr::clear_component_id() {
-  component_id_ = 0u;
+// uint32 id = 2;
+inline void ComponentAttr::clear_id() {
+  id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::_internal_component_id() const {
-  return component_id_;
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::_internal_id() const {
+  return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::component_id() const {
-  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id)
-  return _internal_component_id();
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ComponentAttr::id() const {
+  // @@protoc_insertion_point(field_get:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.id)
+  return _internal_id();
 }
-inline void ComponentAttr::_internal_set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ComponentAttr::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
-  component_id_ = value;
+  id_ = value;
 }
-inline void ComponentAttr::set_component_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_component_id(value);
-  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id)
+inline void ComponentAttr::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.id)
 }
 
 // repeated uint32 components = 3;

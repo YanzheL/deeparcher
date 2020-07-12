@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\024GraphAttributesProtoH\001\370\001\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\nDcom/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"9\n\rComponentAttr\x12\x14\n\x0c\x63omponent_id\x18\x02 \x01(\r\x12\x12\n\ncomponents\x18\x03 \x03(\r\"\xb2\x01\n\x14GraphElementsAttrMap\x12[\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32M.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.DataEntry\x12\x10\n\x08type_url\x18\x02 \x01(\t\x1a+\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\x42Y\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x14GraphAttributesProtoH\x01\xf8\x01\x01\x62\x06proto3'
+  serialized_pb=b'\nDcom/hitnslab/dnssecurity/deeparcher/api/proto/graph_attributes.proto\x12-com.hitnslab.dnssecurity.deeparcher.api.proto\"/\n\rComponentAttr\x12\n\n\x02id\x18\x02 \x01(\r\x12\x12\n\ncomponents\x18\x03 \x03(\r\"\xb2\x01\n\x14GraphElementsAttrMap\x12[\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32M.com.hitnslab.dnssecurity.deeparcher.api.proto.GraphElementsAttrMap.DataEntry\x12\x10\n\x08type_url\x18\x02 \x01(\t\x1a+\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\x42Y\n<com.hitnslab.dnssecurity.deeparcher.api.proto.generated.javaB\x14GraphAttributesProtoH\x01\xf8\x01\x01\x62\x06proto3'
 )
 
 
@@ -34,7 +34,7 @@ _COMPONENTATTR = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='component_id', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.component_id', index=0,
+      name='id', full_name='com.hitnslab.dnssecurity.deeparcher.api.proto.ComponentAttr.id', index=0,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -60,7 +60,7 @@ _COMPONENTATTR = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=119,
-  serialized_end=176,
+  serialized_end=166,
 )
 
 
@@ -98,8 +98,8 @@ _GRAPHELEMENTSATTRMAP_DATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=314,
-  serialized_end=357,
+  serialized_start=304,
+  serialized_end=347,
 )
 
 _GRAPHELEMENTSATTRMAP = _descriptor.Descriptor(
@@ -136,8 +136,8 @@ _GRAPHELEMENTSATTRMAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=179,
-  serialized_end=357,
+  serialized_start=169,
+  serialized_end=347,
 )
 
 _GRAPHELEMENTSATTRMAP_DATAENTRY.containing_type = _GRAPHELEMENTSATTRMAP

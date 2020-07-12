@@ -23,10 +23,10 @@ public final class GraphAttributesProto {
      * Component id. 
      * </pre>
      *
-     * <code>uint32 component_id = 2;</code>
-     * @return The componentId.
+     * <code>uint32 id = 2;</code>
+     * @return The id.
      */
-    int getComponentId();
+    int getId();
 
     /**
      * <pre>
@@ -109,7 +109,7 @@ public final class GraphAttributesProto {
               break;
             case 16: {
 
-              componentId_ = input.readUInt32();
+              id_ = input.readUInt32();
               break;
             }
             case 24: {
@@ -168,19 +168,19 @@ public final class GraphAttributesProto {
               com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr.class, com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr.Builder.class);
     }
 
-    public static final int COMPONENT_ID_FIELD_NUMBER = 2;
-    private int componentId_;
+    public static final int ID_FIELD_NUMBER = 2;
+    private int id_;
     /**
      * <pre>
      * Component id. 
      * </pre>
      *
-     * <code>uint32 component_id = 2;</code>
-     * @return The componentId.
+     * <code>uint32 id = 2;</code>
+     * @return The id.
      */
     @java.lang.Override
-    public int getComponentId() {
-      return componentId_;
+    public int getId() {
+      return id_;
     }
 
     public static final int COMPONENTS_FIELD_NUMBER = 3;
@@ -241,8 +241,8 @@ public final class GraphAttributesProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (componentId_ != 0) {
-        output.writeUInt32(2, componentId_);
+      if (id_ != 0) {
+        output.writeUInt32(2, id_);
       }
       if (getComponentsList().size() > 0) {
         output.writeUInt32NoTag(26);
@@ -260,9 +260,9 @@ public final class GraphAttributesProto {
       if (size != -1) return size;
 
       size = 0;
-      if (componentId_ != 0) {
+      if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, componentId_);
+          .computeUInt32Size(2, id_);
       }
       {
         int dataSize = 0;
@@ -293,8 +293,8 @@ public final class GraphAttributesProto {
       }
       com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr other = (com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr) obj;
 
-      if (getComponentId()
-          != other.getComponentId()) return false;
+      if (getId()
+          != other.getId()) return false;
       if (!getComponentsList()
           .equals(other.getComponentsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -308,8 +308,8 @@ public final class GraphAttributesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + COMPONENT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getComponentId();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
       if (getComponentsCount() > 0) {
         hash = (37 * hash) + COMPONENTS_FIELD_NUMBER;
         hash = (53 * hash) + getComponentsList().hashCode();
@@ -447,7 +447,7 @@ public final class GraphAttributesProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        componentId_ = 0;
+        id_ = 0;
 
         components_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -478,7 +478,7 @@ public final class GraphAttributesProto {
       public com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr buildPartial() {
         com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr result = new com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr(this);
         int from_bitField0_ = bitField0_;
-        result.componentId_ = componentId_;
+        result.id_ = id_;
         if (((bitField0_ & 0x00000001) != 0)) {
           components_.makeImmutable();
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -532,8 +532,8 @@ public final class GraphAttributesProto {
 
       public Builder mergeFrom(com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr other) {
         if (other == com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAttributesProto.ComponentAttr.getDefaultInstance()) return this;
-        if (other.getComponentId() != 0) {
-          setComponentId(other.getComponentId());
+        if (other.getId() != 0) {
+          setId(other.getId());
         }
         if (!other.components_.isEmpty()) {
           if (components_.isEmpty()) {
@@ -575,31 +575,31 @@ public final class GraphAttributesProto {
       }
       private int bitField0_;
 
-      private int componentId_ ;
+      private int id_ ;
       /**
        * <pre>
        * Component id. 
        * </pre>
        *
-       * <code>uint32 component_id = 2;</code>
-       * @return The componentId.
+       * <code>uint32 id = 2;</code>
+       * @return The id.
        */
       @java.lang.Override
-      public int getComponentId() {
-        return componentId_;
+      public int getId() {
+        return id_;
       }
       /**
        * <pre>
        * Component id. 
        * </pre>
        *
-       * <code>uint32 component_id = 2;</code>
-       * @param value The componentId to set.
+       * <code>uint32 id = 2;</code>
+       * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setComponentId(int value) {
+      public Builder setId(int value) {
         
-        componentId_ = value;
+        id_ = value;
         onChanged();
         return this;
       }
@@ -608,12 +608,12 @@ public final class GraphAttributesProto {
        * Component id. 
        * </pre>
        *
-       * <code>uint32 component_id = 2;</code>
+       * <code>uint32 id = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearComponentId() {
+      public Builder clearId() {
         
-        componentId_ = 0;
+        id_ = 0;
         onChanged();
         return this;
       }
@@ -1885,16 +1885,16 @@ public final class GraphAttributesProto {
     java.lang.String[] descriptorData = {
       "\nDcom/hitnslab/dnssecurity/deeparcher/ap" +
       "i/proto/graph_attributes.proto\022-com.hitn" +
-      "slab.dnssecurity.deeparcher.api.proto\"9\n" +
-      "\rComponentAttr\022\024\n\014component_id\030\002 \001(\r\022\022\n\n" +
-      "components\030\003 \003(\r\"\262\001\n\024GraphElementsAttrMa" +
-      "p\022[\n\004data\030\001 \003(\0132M.com.hitnslab.dnssecuri" +
-      "ty.deeparcher.api.proto.GraphElementsAtt" +
-      "rMap.DataEntry\022\020\n\010type_url\030\002 \001(\t\032+\n\tData" +
-      "Entry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\014:\0028\001BY\n" +
-      "<com.hitnslab.dnssecurity.deeparcher.api" +
-      ".proto.generated.javaB\024GraphAttributesPr" +
-      "otoH\001\370\001\001b\006proto3"
+      "slab.dnssecurity.deeparcher.api.proto\"/\n" +
+      "\rComponentAttr\022\n\n\002id\030\002 \001(\r\022\022\n\ncomponents" +
+      "\030\003 \003(\r\"\262\001\n\024GraphElementsAttrMap\022[\n\004data\030" +
+      "\001 \003(\0132M.com.hitnslab.dnssecurity.deeparc" +
+      "her.api.proto.GraphElementsAttrMap.DataE" +
+      "ntry\022\020\n\010type_url\030\002 \001(\t\032+\n\tDataEntry\022\013\n\003k" +
+      "ey\030\001 \001(\r\022\r\n\005value\030\002 \001(\014:\0028\001BY\n<com.hitns" +
+      "lab.dnssecurity.deeparcher.api.proto.gen" +
+      "erated.javaB\024GraphAttributesProtoH\001\370\001\001b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1905,7 +1905,7 @@ public final class GraphAttributesProto {
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_ComponentAttr_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_ComponentAttr_descriptor,
-        new java.lang.String[] { "ComponentId", "Components", });
+        new java.lang.String[] { "Id", "Components", });
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_hitnslab_dnssecurity_deeparcher_api_proto_GraphElementsAttrMap_fieldAccessorTable = new
