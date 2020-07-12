@@ -53,7 +53,10 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
 
         """
 
-        black_node_ids, white_node_ids = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        bw_meta_key = 'bw_node_ids_{}'.format(bw_attr)
+        if bw_meta_key not in graph.meta:
+            graph.meta[bw_meta_key] = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        black_node_ids, white_node_ids = graph.meta[bw_meta_key]
         if not graph.directed:
             # Symmetrize the adjacent matrix of undirected graph.
             adj_triu = csr_matrix(triu(graph.adj, k=1))

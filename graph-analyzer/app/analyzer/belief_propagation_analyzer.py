@@ -44,8 +44,10 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             Graph: An analyzed graph which contains an output node attribute.
 
         """
-
-        black_node_ids, white_node_ids = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        bw_meta_key = 'bw_node_ids_{}'.format(bw_attr)
+        if bw_meta_key not in graph.meta:
+            graph.meta[bw_meta_key] = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        black_node_ids, white_node_ids = graph.meta[bw_meta_key]
         g = fg.Graph()
         # Construct the fg.Graph
         for node_id in range(graph.nodes):

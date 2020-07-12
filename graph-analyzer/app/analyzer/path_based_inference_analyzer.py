@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional, Dict
+from typing import TYPE_CHECKING, Dict
 
 if TYPE_CHECKING:
     from app.struct import Graph
@@ -34,7 +34,7 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
             ctx: dict,
             bw_attr: str = 'black_or_white',
             dst_attr: str = 'pbi_prob'
-    ) -> Optional[Graph]:
+    ) -> Graph:
         """Analyzer entrypoint.
 
         Args:
@@ -49,9 +49,12 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
         """
 
         cu_graph = build_cugraph(graph.adj, weight_transform=lambda x: math.log(x + 1 / x))
-        seeds, _ = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        bw_meta_key = 'bw_node_ids_{}'.format(bw_attr)
+        if bw_meta_key not in graph.meta:
+            graph.meta[bw_meta_key] = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        seeds, _ = graph.meta[bw_meta_key]
         if seeds.size < 1:
-            return
+            return graph
         self.logger.info("Found {} black nodes in {} nodes".format(seeds.size, graph.nodes))
         dists = [
             cupy.asarray(sssp(cu_graph, seed)['distance'])

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Tuple, Optional
+from typing import TYPE_CHECKING, Dict, Tuple
 
 if TYPE_CHECKING:
     from app.struct import Graph
@@ -46,7 +46,7 @@ class LLGCAnalyzer(GraphAnalyzer):
             max_iters: int = 30,
             bw_attr: str = 'black_or_white',
             dst_attr: str = 'llgc_prob'
-    ) -> Optional[Graph]:
+    ) -> Graph:
         """Analyzer entrypoint.
 
         Args:
@@ -64,8 +64,9 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         labels = self._extract_boolean_attributes(graph, bw_attr)
         if labels.shape[0] == 0:
-            raise ValueError('No node on Graph<parent_id={},id={}>  is labeled by {}'.format(
+            self.logger.error('No node on Graph<parent_id={},id={}>  is labeled by {}'.format(
                 graph.parent_id, graph.id, bw_attr))
+            return graph
 
         X = csr_matrix(graph.adj)
         n_samples = X.shape[0]
@@ -75,7 +76,7 @@ class LLGCAnalyzer(GraphAnalyzer):
             self.logger.warn(
                 "Graph<parent_id={},id={}> has insufficient label classes, expected {}, got {}, skipped.".format(
                     graph.parent_id, graph.id, n_expected_classes, n_labeled_classes))
-            return
+            return graph
         F = cupy.zeros((n_samples, n_expected_classes), dtype=cupy.float32)
         P = self._build_propagation_matrix(X, alpha)
         B = self._build_base_matrix(X, labels, alpha, n_expected_classes)
