@@ -75,6 +75,9 @@ class MongoStringIdService(
     }
 
     override fun commit(): Boolean {
+        if (uncommitedEntries.isEmpty()) {
+            return true
+        }
         val ops = template.bulkOps(BulkOperations.BulkMode.UNORDERED, collection)
         val batch = mutableListOf<Map.Entry<String, Long>>()
         while (uncommitedEntries.isNotEmpty()) {
