@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Tuple
+from typing import TYPE_CHECKING, Dict, Tuple, Optional
 
 if TYPE_CHECKING:
     from app.struct import Graph
@@ -17,9 +17,11 @@ from app.analyzer.interface import GraphAnalyzer
 class LLGCAnalyzer(GraphAnalyzer):
     """GraphAnalyzer for computing local and global consistency algorithm by Zhou et al.
 
-    This implementation is an optimized version of
+    This is a GPU optimized implementation of
     networkx.algorithms.node_classification.lgc.local_and_global_consistency.
     The dependency of networkx library is removed here to avoid graph conversion overhead.
+
+    Labeled samples should contains only 2 classes. In other words, the label value should be boolean.
 
     Author:
         Yanzhe Lee <lee.yanzhe@yanzhe.org>, Linxin Chen <chen_linxin@outlook.com>
@@ -44,7 +46,7 @@ class LLGCAnalyzer(GraphAnalyzer):
             max_iter: int = 30,
             bw_attr: str = 'black_or_white',
             dst_attr: str = 'llgc_prob'
-    ) -> Graph:
+    ) -> Optional[Graph]:
         """Analyzer entrypoint.
 
         Args:
@@ -62,17 +64,27 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         labels = self._extract_boolean_attributes(graph, bw_attr)
         if labels.shape[0] == 0:
-            raise ValueError('No node on the input graph is labeled by {}'.format(bw_attr))
+            raise ValueError('No node on Graph<parent_id={},id={}>  is labeled by {}'.format(
+                graph.parent_id, graph.id, bw_attr))
 
         X = csr_matrix(graph.adj)
         n_samples = X.shape[0]
-        n_classes = cupy.unique(labels[:, 1]).size
-        F = cupy.zeros((n_samples, n_classes))
+        n_labeled_classes = cupy.unique(labels[:, 1]).size
+        n_expected_classes = 2
+        if n_labeled_classes != n_expected_classes:
+            self.logger.warn(
+                "Graph<parent_id={},id={}> has insufficient label classes, expected {}, got {}, skipped.".format(
+                    graph.parent_id, graph.id, n_expected_classes, n_labeled_classes))
+            return
+        F = cupy.zeros((n_samples, n_expected_classes), dtype=cupy.float32)
         P = self._build_propagation_matrix(X, alpha)
-        B = self._build_base_matrix(X, labels, alpha, n_classes)
+        B = self._build_base_matrix(X, labels, alpha, n_expected_classes)
         F, converged = self._propagate_converged(P, F, B, max_iter)
-        predicted = self._predict(F)
-        # 将list形式的预测结果转变为_scores={数字编号：信誉度,}
+        predicted = self._compute_positive_prob(F)
+        if not converged:
+            self.logger.info(
+                "The computed {} attribute of Graph<parent_id={},id={}> is not converged. This is ok but not optimal.".format(
+                    dst_attr, graph.parent_id, graph.id, n_labeled_classes, n_expected_classes))
         scores: Dict[int, float] = dict(enumerate(predicted))
         graph.node_attrs[dst_attr] = scores
         return graph
@@ -108,10 +120,9 @@ class LLGCAnalyzer(GraphAnalyzer):
             cupy.sparse.spmatrix: Propagation matrix, shape = [n_samples, n_samples].
 
         """
-
-        degrees = X.sum(axis=0).A[0]
+        degrees = X.sum(axis=0)[0]
         degrees[degrees == 0] = 1  # Avoid division by 0
-        D2 = cupy.sqrt(diags((1.0 / degrees), offsets=0))
+        D2 = diags((1.0 / degrees), offsets=0).sqrt()
         S = alpha * D2.dot(X).dot(D2)
         return S
 
@@ -157,37 +168,43 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         Returns:
             cupy.ndarray: Label matrix, shape = [n_samples, n_classes].
+            bool: If true, the result is convergent.
 
         """
-        converged = False
+        convergent = False
         if not force_iter:
             cupyx.seterr(linalg='raise')
             n_samples = P.shape[0]
             X = cupy.eye(n_samples, dtype=cupy.float32) - P
             try:
+                # If matrix (I - P) is invertible, then the propagation series is convergent.
                 F = cupy.linalg.inv(X).dot(B)
-                converged = True
+                convergent = True
             except LinAlgError:
-                converged = False
-        if not converged:
+                convergent = False
+        if not convergent:
             remaining_iter = max_iters
             while remaining_iter > 0:
                 F = P.dot(F) + B
                 remaining_iter -= 1
-        return F, converged
+        return F, convergent
 
     @staticmethod
-    def _predict(F: cupy.ndarray):
+    def _compute_positive_prob(F: cupy.ndarray) -> cupy.ndarray:
         """Predict labels by learnt label matrix
 
         Args:
-            F : numpy array, shape = [n_samples, n_classes]
+            F : cupy array, shape = [n_samples, 2]
                 Learnt (resulting) label matrix
 
         Returns:
-            numpy.ndarray: Array of predicted label ids, shape = [n_samples].
+            cupy.ndarray: The probability of label 'True', shape = [n_samples].
 
         """
 
-        predicted_label_ids = cupy.argmax(F, axis=1)
-        return predicted_label_ids
+        tan = F[:, 1] / F[:, 0]
+        arctan = cupy.arctan(tan, out=tan)
+        prob = arctan / (cupy.pi * 0.5)
+        prob[prob <= cupy.finfo(cupy.float32).eps] = 0
+        # predicted_label_ids = cupy.argmax(F, axis=1)
+        return prob
