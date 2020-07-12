@@ -3,15 +3,15 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List, Dict
 
 if TYPE_CHECKING:
-    from app.struct import Graph
+    from scipy.sparse import csr_matrix
 
 import numpy as np
+import cupy
 from cugraph.components.connectivity import weakly_connected_components, strongly_connected_components
-from scipy.sparse import csr_matrix
-
 from app.analyzer.interface import GraphAnalyzer
 from app.io.graph_converter import build_cugraph
 from app.struct.graph_attributes import ComponentAttr
+from app.struct import Graph
 
 
 class ConnectedComponentsAnalyzer(GraphAnalyzer):
@@ -28,7 +28,7 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
         super().__init__()
         self._cc_func = weakly_connected_components if weak else strongly_connected_components
 
-    def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> List[Graph]:
+    def analyze(self, graph: Graph, ctx: dict, cc_size_thres=50) -> List[Graph]:
         if graph.connected or len(graph.component_attrs) == 1:
             self.logger.warn('Current graph is connected, now skipped.')
             graph.connected = True
@@ -38,26 +38,41 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
             if 'cugraph' not in graph.meta:
                 graph.meta['cugraph'] = build_cugraph(graph.adj)
             cug = graph.meta['cugraph']
-            cc_df = self._cc_func(cug)['labels']
-            n_components = cc_df.max()
-            self.logger.info('Got {} weakly connected components.'.format(n_components))
+            cc_res = self._cc_func(cug)
+            # self.logger.debug(cc_res)
+            cc_mat: cupy.ndarray = cupy.fromDlpack(cc_res.to_dlpack())
+            # self.logger.debug(cc_mat)
+            grouped = cc_res.groupby('labels')
+            label_count = grouped.count()
+            # self.logger.debug('\n{}'.format(label_count))
+            n_components = len(label_count)
+            self.logger.info('Got {} weakly connected components'.format(n_components))
             if n_components == 1:
                 graph.connected = True
                 return [graph]
             else:
-                for i in range(1, cc_df.max() + 1):
-                    component = cc_df.query("labels == {}".format(i))['vertices'].to_array()
+                interested_labels = label_count.query('vertices > {}'.format(cc_size_thres)) \
+                    .index.to_series()
+                interested_labels = cupy.asarray(interested_labels)
+                self.logger.info('Got {} components larger than {} nodes'.format(interested_labels.size, cc_size_thres))
+                for i in interested_labels:
+                    # component = cc_res.query('labels == {}'.format(i))['vertices']
+                    component: cupy.ndarray = cc_mat[cc_mat[:, 1] == i][:, 0]
+                    component = cupy.sort(component)
+                    component = cupy.asnumpy(component)
+                    # self.logger.debug(component)
                     component_attr = ComponentAttr(i - 1, component)
                     graph.component_attrs.append(component_attr)
         else:
             self.logger.info('Found {} precomputed weakly connected components in graph attributes.'.format(
                 len(graph.component_attrs)))
+        self.logger.info('Constructing {} sub-graphs'.format(len(graph.component_attrs)))
         return [self.extract_subgraph(graph, component_attr) for component_attr in graph.component_attrs]
 
     @staticmethod
     def extract_subgraph(graph: Graph, component_attr: ComponentAttr) -> Graph:
         component = component_attr.components
-        adj: csr_matrix = graph.adj.tocsr()[component, component]
+        adj: csr_matrix = graph.adj.tocsr()[component, :][:, component]
         return Graph(
             id=component_attr.component_id,
             nodes=component.size,
@@ -77,11 +92,11 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
             -> Dict[str, Dict[int, object]]:
         ret = {}
         for name, data in attrs.items():
-            ids = data.keys()
+            ids = list(data.keys())
             parent_attr_ids, component_attr_ids, _ = np.intersect1d(component, ids, assume_unique=True,
                                                                     return_indices=True)
-            values = [data[i] for i in parent_attr_ids]
-            sub_attr_map = {k: v for k, v in zip(component_attr_ids, values)}
+            values = map(lambda i: data[i], parent_attr_ids)
+            sub_attr_map = dict(zip(component_attr_ids, values))
             if len(sub_attr_map) > 0:
                 ret[name] = sub_attr_map
         return ret

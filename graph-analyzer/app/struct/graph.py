@@ -32,12 +32,12 @@ class Graph(MutableBean):
         self._id = id
         self._nodes = nodes
         self._edges = edges
-        self._adj = adj,
+        self._adj = adj
         self._directed = directed
         self._connected = connected
         self._unweighted = unweighted
-        self._parent_id = parent_id,
-        self._node_id_remap = node_id_remap,
+        self._parent_id = parent_id
+        self._node_id_remap = node_id_remap
         self._component_attrs = component_attrs if component_attrs is not None else []
         self._node_attrs = node_attrs if node_attrs is not None else {}
         self._edge_attrs = edge_attrs if edge_attrs is not None else {}
@@ -125,8 +125,14 @@ class Graph(MutableBean):
     def _finalize(self):
         if not (self._nodes == self._adj.shape[0] == self._adj.shape[1]):
             raise ValueError("Graph nodes do not match adjacent matrix's shape.")
-        if not self._directed and np.any(tril(self._adj, k=-1)):
-            self._adj = triu(self._adj) + tril(self._adj, k=-1).transpose()
+        if self._adj.count_nonzero() == 0:
+            raise ValueError("Graph adjacent list has no non-zero value.")
+        if not self._directed:
+            tl = tril(self._adj, k=-1)
+            if tl.count_nonzero() > 0:
+                self._adj = triu(self._adj) + tl.transpose()
+        if self._edges != self._adj.count_nonzero():
+            raise ValueError("Number of non-zero values in adjacent list does not match the number of edges.")
         if self._unweighted:
             nz_rows, nz_cols = self._adj.nonzero()
             self._adj = self._adj.tocsr()

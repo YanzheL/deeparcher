@@ -44,12 +44,14 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             Graph: An analyzed graph which contains an output node attribute.
 
         """
-
-        black_node_ids, white_node_ids = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        bw_meta_key = 'bw_node_ids_{}'.format(bw_attr)
+        if bw_meta_key not in graph.meta:
+            graph.meta[bw_meta_key] = extract_bool_attr_ids(bw_attr, graph.node_attrs)
+        black_node_ids, white_node_ids = graph.meta[bw_meta_key]
         g = fg.Graph()
         # Construct the fg.Graph
-        for rv_marginal in range(graph.nodes):
-            g.rv(str(rv_marginal), 2)
+        for node_id in range(graph.nodes):
+            g.rv(str(node_id), 2)
         # Add explicit node potentials.
         for good in white_node_ids:
             g.factor([str(good)], potential=np.array([0.99, 0.01]))  # 良性
@@ -74,6 +76,11 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             total, incoming = marginal
             name = rv.name
             scores[int(name)] = total / (total + incoming)
+        self.logger.info(
+            "The computed {} attribute of Graph<parent_id={},id={}> has {} values.".format(
+                dst_attr, graph.parent_id, graph.id, len(scores))
+        )
+        # Write the result to graph.node_attrs
         graph.node_attrs[dst_attr] = scores
         return graph
 

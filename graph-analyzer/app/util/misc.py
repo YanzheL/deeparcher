@@ -11,6 +11,30 @@ from app.util.logger_router import LoggerRouter
 DEFAULT_LOGGER = LoggerRouter().get_logger(__name__)
 
 
+def normalize(a):
+    if a.any():
+        max = a.max()
+        min = a.min()
+        diff = max - min
+        return (a - min) if diff == 0 else (a - min) / diff
+    else:
+        return a
+
+
+def normalize_sparse(m):
+    coo = m.tocoo()
+    coo.data = normalize(coo.data)
+    return coo.tocsr()
+
+
+def load_lines_as_array(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
+    logger.info('Loading file <{}>...'.format(path))
+    with open(path, 'r') as f:
+        lines = np.array([i.strip() for i in f.read().splitlines()], dtype=str)
+        logger.info('Loaded {} items from file <{}>'.format(lines.size, path))
+        return lines
+
+
 def load_blacklist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
     logger.info('Loading blacklist file <{}>...'.format(path))
     with open(path, 'r') as f:
