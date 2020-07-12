@@ -2,14 +2,21 @@ package com.hitnslab.dnssecurity.deeparcher.stream.processor
 
 import com.github.benmanes.caffeine.cache.Cache
 import com.github.benmanes.caffeine.cache.Caffeine
+import com.google.protobuf.Any
+import com.google.protobuf.Int32Value
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.DomainDnsDetailProto.DomainDnsDetail
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
+import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent
+import com.hitnslab.dnssecurity.deeparcher.stream.service.ObjectIdService
 import com.hitnslab.dnssecurity.deeparcher.util.diffSize
 import com.hitnslab.dnssecurity.deeparcher.util.intersectionSize
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import mu.KotlinLogging
-import org.apache.kafka.streams.kstream.ValueMapper
+import org.apache.kafka.streams.kstream.ValueTransformer
+import org.apache.kafka.streams.processor.ProcessorContext
+import org.apache.kafka.streams.processor.PunctuationType
+import java.time.Duration
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
@@ -24,13 +31,14 @@ import java.util.concurrent.TimeUnit
  *
  * This is a thread-unsafe singleton class, because the order of [DomainDnsDetail] inputs should be maintained.
  *
- * Call [GraphEdgeGenerator.getInstance] static method to get a singleton instance.
- *
- * TODO: Implement [ValueTransformer][org.apache.kafka.streams.kstream.ValueTransformer] interface instead of [ValueMapper]
+ * Call [GraphEventGenerator.getInstance] static method to get a singleton instance.
  *
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
-class GraphEdgeGenerator private constructor() : ValueMapper<DomainDnsDetail, Iterable<GraphAssocEdgeUpdate>> {
+class GraphEventGenerator(val nodeIdService: ObjectIdService<String>) :
+    ValueTransformer<DomainDnsDetail, Iterable<GraphEvent>> {
+
+    private val logger = KotlinLogging.logger {}
 
     private val cacheLimit: Long = 1000000L
 
@@ -50,12 +58,13 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainDnsDetail, It
 
     private val cnameTable = mutableMapOf<String, Collection<String>>()
 
-//    private val cnameCache = Caffeine.newBuilder()
-//        .expireAfterAccess(10, TimeUnit.MINUTES)
-//        .maximumSize(cacheSize)
-//        .build<String, Collection<String>>()
+    override fun init(context: ProcessorContext) {
+        context.schedule(Duration.ofSeconds(20), PunctuationType.STREAM_TIME) {
+            nodeIdService.commit()
+        }
+    }
 
-    override fun apply(value: DomainDnsDetail): Iterable<GraphAssocEdgeUpdate> {
+    override fun transform(value: DomainDnsDetail): Iterable<GraphEvent> {
         val result = mutableMapOf<String, Int>()
         selectBytesIntersectedKeys(value.fqdn, value.ipv4Addrs.toByteArray(), 4, ipv4Table, ipv4Cache)
             .forEach { (k, v) -> result.merge(k, v) { v1, v2 -> v1 + v2 } }
@@ -64,15 +73,21 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainDnsDetail, It
         selectStringsIntersectedKeys(value.fqdn, value.cnamesList, cnameTable)
             .forEach { (k, v) -> result.merge(k, v) { v1, v2 -> v1 + v2 } }
         return result.map { (k, v) ->
-            // Make sure the natural order of fqdn1 < fqdn2
-            val (first, last) = if (value.fqdn < k) value.fqdn to k else k to value.fqdn
-            GraphAssocEdgeUpdate
+            val node1 = nodeIdService.getOrCreateId(value.fqdn).toInt()
+            val node2 = nodeIdService.getOrCreateId(k).toInt()
+            val (v1, v2) = if (node1 < node2) node1.to(node2) else node2.to(node1)
+            val attribute = Int32Value.newBuilder().setValue(v).build()
+            GraphEvent
                 .newBuilder()
-                .setFqdn1(first)
-                .setFqdn2(last)
-                .setNSharedFields(v)
+                .setNode1(v1)
+                .setNode2(v2)
+                .putAttributes("weight", Any.pack(attribute))
                 .build()
         }
+    }
+
+    override fun close() {
+        nodeIdService.close()
     }
 
     /**
@@ -181,20 +196,5 @@ class GraphEdgeGenerator private constructor() : ValueMapper<DomainDnsDetail, It
                 }
         }
         return result
-    }
-
-    companion object {
-
-        private lateinit var INSTANCE: GraphEdgeGenerator
-
-        private val logger = KotlinLogging.logger {}
-
-        @Synchronized
-        fun getInstance(): GraphEdgeGenerator {
-            if (!::INSTANCE.isInitialized) {
-                INSTANCE = GraphEdgeGenerator()
-            }
-            return INSTANCE
-        }
     }
 }
