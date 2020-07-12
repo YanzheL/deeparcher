@@ -1,8 +1,8 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.service
 
 import com.github.benmanes.caffeine.cache.Caffeine
+import com.mongodb.BasicDBObject
 import mu.KotlinLogging
-import org.bson.Document
 import org.springframework.data.mongodb.BulkOperationException
 import org.springframework.data.mongodb.core.BulkOperations
 import org.springframework.data.mongodb.core.MongoTemplate
@@ -70,7 +70,7 @@ class MongoStringIdService(
         query.fields().include(keyField).include(valueField).exclude("_id")
         return template.find(
             query,
-            Document::class.java
+            BasicDBObject::class.java
         ).map { AbstractMap.SimpleEntry(it.getString(keyField), it.getLong(valueField)) }.asSequence()
     }
 
@@ -121,13 +121,13 @@ class MongoStringIdService(
 
     private fun getCurrentMaxIdRemote(): Long {
         val agg = newAggregation(group().max(valueField).`as`("max"))
-        return template.aggregate(agg, collection, Document::class.java).uniqueMappedResult?.getLong("max") ?: -1
+        return template.aggregate(agg, collection, BasicDBObject::class.java).uniqueMappedResult?.getLong("max") ?: -1
     }
 
     private fun getExistingIdRemote(key: String): Long? {
         return template.findOne(
             query(where(keyField).`is`(key).and(valueField).exists(true)),
-            Document::class.java
+            BasicDBObject::class.java
         )?.getLong(valueField)
     }
 
