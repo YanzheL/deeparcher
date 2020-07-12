@@ -14,7 +14,7 @@ class GraphAnalyzer(metaclass=ABCMeta):
     def __init__(self):
         if self.__class__.__name__ == 'GraphAnalyzer':
             raise ValueError("This class is not intended to be instantiated directly.")
-        self.logger = LoggerRouter().get_logger(__name__)
+        self.logger = LoggerRouter().get_logger(self.__class__.__name__)
 
     @abstractmethod
     def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> Union[Graph, List[Graph], None]:
