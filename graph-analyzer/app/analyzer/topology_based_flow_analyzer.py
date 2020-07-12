@@ -84,9 +84,15 @@ class TopologyBasedFlowAnalyzer(GraphAnalyzer):
         v_result[white_node_ids] = legal_weight
         v_result[black_node_ids] = 1.0
         # Normalize the final reputation vector.
-        rep = normalize(v_result)
+        possibilities = normalize(v_result)
+        possibilities[possibilities <= cupy.finfo(cupy.float32).eps] = 0.0
+        # self.logger.debug(reputations[reputations.nonzero()])
+        self.logger.info(
+            "The computed {} attribute of Graph<parent_id={},id={}> has {} positive values.".format(
+                dst_attr, graph.parent_id, graph.id, cupy.count_nonzero(possibilities))
+        )
         # Write the result to graph.node_attrs
-        scores: Dict[int, float] = dict(enumerate(rep))
+        scores: Dict[int, float] = dict(enumerate(possibilities))
         graph.node_attrs[dst_attr] = scores
         return graph
 

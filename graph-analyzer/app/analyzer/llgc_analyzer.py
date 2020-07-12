@@ -80,12 +80,18 @@ class LLGCAnalyzer(GraphAnalyzer):
         P = self._build_propagation_matrix(X, alpha)
         B = self._build_base_matrix(X, labels, alpha, n_expected_classes)
         F, converged = self._propagate_converged(P, F, B, max_iters)
-        predicted = self._compute_positive_prob(F)
         if not converged:
             self.logger.info(
                 "The computed {} attribute of Graph<parent_id={},id={}> is not converged. This is ok but not optimal.".format(
                     dst_attr, graph.parent_id, graph.id, n_labeled_classes, n_expected_classes))
-        scores: Dict[int, float] = dict(enumerate(predicted))
+        possibilities = self._compute_positive_prob(F)
+        possibilities[possibilities <= cupy.finfo(cupy.float32).eps] = 0.0
+        self.logger.info(
+            "The computed {} attribute of Graph<parent_id={},id={}> has {} positive values.".format(
+                dst_attr, graph.parent_id, graph.id, cupy.count_nonzero(possibilities))
+        )
+        # Write the result to graph.node_attrs
+        scores: Dict[int, float] = dict(enumerate(possibilities))
         graph.node_attrs[dst_attr] = scores
         return graph
 

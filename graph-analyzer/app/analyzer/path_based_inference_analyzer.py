@@ -60,12 +60,17 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
         dists = cupy.asarray(dists).T  # shape = (nodes, seeds)
         dists[dists > 1e14] = cupy.inf
         # self.logger.info('dists = \n{}'.format(dists))
-        mal = self._compute_mal_scores(dists)
-        # if not (mal[seeds] == 1.0).all():
+        possibilities = self._compute_mal_scores(dists)
+        # if not (possibilities[seeds] == 1.0).all():
         #     self.logger.warn("PBI result maybe invalid.")
-        #     self.logger.warn('mal = \n{}'.format(mal))
-        scores: Dict[int, float] = dict(enumerate(mal))
-        self.logger.info('Updated {} scores'.format(mal.size))
+        #     self.logger.warn('mal = \n{}'.format(possibilities))
+        possibilities[possibilities <= cupy.finfo(cupy.float32).eps] = 0.0
+        self.logger.info(
+            "The computed {} attribute of Graph<parent_id={},id={}> has {} positive values.".format(
+                dst_attr, graph.parent_id, graph.id, cupy.count_nonzero(possibilities))
+        )
+        # Write the result to graph.node_attrs
+        scores: Dict[int, float] = dict(enumerate(possibilities))
         graph.node_attrs[dst_attr] = scores
         return graph
 
