@@ -73,6 +73,11 @@
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-core</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>atomicfu</artifactId>
