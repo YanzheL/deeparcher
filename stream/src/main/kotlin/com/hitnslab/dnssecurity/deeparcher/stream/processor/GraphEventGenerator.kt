@@ -5,7 +5,6 @@ import com.github.benmanes.caffeine.cache.Caffeine
 import com.google.protobuf.Any
 import com.google.protobuf.Int32Value
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.DomainDnsDetailProto.DomainDnsDetail
-import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphAssocEdgeUpdateProto.GraphAssocEdgeUpdate
 import com.hitnslab.dnssecurity.deeparcher.api.proto.generated.java.GraphEventProto.GraphEvent
 import com.hitnslab.dnssecurity.deeparcher.stream.service.ObjectIdService
 import com.hitnslab.dnssecurity.deeparcher.util.diffSize
@@ -24,14 +23,12 @@ import java.util.concurrent.TimeUnit
  * Generate weighed graph edges based on aggregated [DomainDnsDetail] inputs.
  *
  * Inputs are regarded as [KTable][org.apache.kafka.streams.kstream.KTable] changelog, and in-memory tables will be re-constructed based on that changelog.
- * For each input, it outputs all edges with type [GraphAssocEdgeUpdate].
+ * For each input, it outputs all graph edge events with type [GraphEvent].
  * The edge weight represents the intersected items of IPv4/IPv6/CNAME sets between current input and a related row in table (zero-weighted edges are omitted).
  * Tables are scanned in parallel, and results are cached internally.
  * These in-memory tables will not persist between restarts, which means this is a non-persistent stateful operation.
  *
  * This is a thread-unsafe singleton class, because the order of [DomainDnsDetail] inputs should be maintained.
- *
- * Call [GraphEventGenerator.getInstance] static method to get a singleton instance.
  *
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
