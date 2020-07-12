@@ -11,7 +11,7 @@ option cc_enable_arenas = true;
 message ComponentAttr {
 
   /* Component id. */
-  uint32 component_id = 2;
+  uint32 id = 2;
 
   /* Node IDs of this component in parent graph.
    * NULLABLE. */
