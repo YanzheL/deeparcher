@@ -136,7 +136,7 @@ Package Modules Custom JVM Image On Branch:
   extends: .build_image_maven
   script:
     - |
-      for JVM in graalvm-ee-java11 zing-11 openj9-jre11; do
+      for JVM in graalvm-ee-java11; do
         for MOD in stream pdns-data-loader; do
             mvn $MAVEN_CLI_OPTS \
                 compile jib:build \
@@ -181,7 +181,7 @@ Package Modules Custom JVM Image On Master:
   extends: .build_image_maven
   script:
     - |
-      for JVM in graalvm-ee-java11 zing-11 openj9-jre11; do
+      for JVM in graalvm-ee-java11; do
         for MOD in stream pdns-data-loader; do
             mvn $MAVEN_CLI_OPTS \
                 compile jib:build \
