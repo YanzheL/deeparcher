@@ -65,6 +65,11 @@
             <groupId>dnsjava</groupId>
             <artifactId>dnsjava</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>atomicfu</artifactId>
+            <type>pom</type>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
         <dependency>
             <artifactId>caffeine</artifactId>
