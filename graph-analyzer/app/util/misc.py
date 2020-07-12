@@ -12,7 +12,13 @@ DEFAULT_LOGGER = LoggerRouter().get_logger(__name__)
 
 
 def normalize(a):
-    return (a - a.min()) / (a.max() - a.min())
+    if a.any():
+        max = a.max()
+        min = a.min()
+        diff = max - min
+        return (a - min) if diff == 0 else (a - min) / diff
+    else:
+        return a
 
 
 def normalize_sparse(m):
