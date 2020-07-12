@@ -3,30 +3,36 @@ package com.hitnslab.dnssecurity.deeparcher.stream.config
 import com.google.common.hash.BloomFilter
 import com.google.common.hash.Funnels
 import com.hitnslab.dnssecurity.deeparcher.serde.*
-import com.hitnslab.dnssecurity.deeparcher.stream.processor.GraphEdgeGenerator
+import com.hitnslab.dnssecurity.deeparcher.stream.processor.GraphEventGenerator
 import com.hitnslab.dnssecurity.deeparcher.stream.property.GraphProperties
+import com.hitnslab.dnssecurity.deeparcher.stream.service.MongoStringIdService
 import mu.KotlinLogging
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
 import org.apache.kafka.streams.kstream.Produced
+import org.apache.kafka.streams.kstream.ValueTransformerSupplier
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.mongodb.core.MongoTemplate
 
 /**
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 @Configuration
 @EnableConfigurationProperties(GraphProperties::class)
-@ConditionalOnProperty(prefix = "app.graph", name = ["enabled"], havingValue = "true")
-class GraphStreamConfig : AppStreamConfigurer() {
+@ConditionalOnProperty(prefix = "app.graph-builder", name = ["enabled"], havingValue = "true")
+class GraphBuilderStreamConfig : AppStreamConfigurer() {
 
     @Autowired
     lateinit var properties: GraphProperties
+
+    @Autowired
+    lateinit var mongoTemplate: MongoTemplate
 
     private val logger = KotlinLogging.logger {}
 
@@ -39,8 +45,14 @@ class GraphStreamConfig : AppStreamConfigurer() {
                 GenericSerde(DomainDnsDetailProtoSerializer::class, DomainDnsDetailProtoDeserializer::class)
             )
         )
+        val nodeIdService = MongoStringIdService(
+            mongoTemplate,
+            properties.nodeIdService.collection,
+            properties.nodeIdService.keyField,
+            properties.nodeIdService.valueField
+        )
         var sinkSrc = src
-            .flatMapValues(GraphEdgeGenerator.getInstance())
+            .flatTransformValues(ValueTransformerSupplier { GraphEventGenerator(nodeIdService) })
         val outputOpts = properties.output.options
         val unique = outputOpts.getOrDefault("unique", "false").toBoolean()
         if (unique) {
@@ -62,8 +74,8 @@ class GraphStreamConfig : AppStreamConfigurer() {
                 Produced.with(
                     Serdes.String(),
                     GenericSerde(
-                        GraphAssocEdgeUpdateProtoSerializer::class,
-                        GraphAssocEdgeUpdateProtoDeserializer::class
+                        GraphEventProtoSerializer::class,
+                        GraphEventProtoDeserializer::class
                     )
                 )
             )

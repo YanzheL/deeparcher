@@ -18,7 +18,5 @@ interface ObjectIdService<K> {
         return true
     }
 
-    fun close(): Boolean {
-        return true
-    }
+    fun close() {}
 }
