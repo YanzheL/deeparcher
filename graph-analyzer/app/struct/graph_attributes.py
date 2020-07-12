@@ -9,15 +9,15 @@ if TYPE_CHECKING:
 class ComponentAttr:
     def __init__(
             self,
-            component_id: int,
+            id: int,
             components: np.ndarray
     ):
-        self._component_id = component_id
+        self._id = id
         self._components = components
 
     @property
-    def component_id(self):
-        return self._component_id
+    def id(self):
+        return self._id
 
     @property
     def components(self):
