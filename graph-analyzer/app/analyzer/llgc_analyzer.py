@@ -43,7 +43,7 @@ class LLGCAnalyzer(GraphAnalyzer):
             graph: Graph,
             ctx: dict,
             alpha: float = 0.99,
-            max_iter: int = 30,
+            max_iters: int = 30,
             bw_attr: str = 'black_or_white',
             dst_attr: str = 'llgc_prob'
     ) -> Optional[Graph]:
@@ -53,7 +53,7 @@ class LLGCAnalyzer(GraphAnalyzer):
             graph: The graph struct.
             ctx: Shared analyzer context.
             alpha: Clamping factor.
-            max_iter: Max iterations.
+            max_iters: Max iterations.
             bw_attr: Name of a boolean node attribute which indicates whether the node is a known black or white node.
             dst_attr: dst_attr: Name of the output node attribute.
 
@@ -79,7 +79,7 @@ class LLGCAnalyzer(GraphAnalyzer):
         F = cupy.zeros((n_samples, n_expected_classes), dtype=cupy.float32)
         P = self._build_propagation_matrix(X, alpha)
         B = self._build_base_matrix(X, labels, alpha, n_expected_classes)
-        F, converged = self._propagate_converged(P, F, B, max_iter)
+        F, converged = self._propagate_converged(P, F, B, max_iters)
         predicted = self._compute_positive_prob(F)
         if not converged:
             self.logger.info(

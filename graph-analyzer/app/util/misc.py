@@ -11,6 +11,16 @@ from app.util.logger_router import LoggerRouter
 DEFAULT_LOGGER = LoggerRouter().get_logger(__name__)
 
 
+def normalize(a):
+    return (a - a.min()) / (a.max() - a.min())
+
+
+def normalize_sparse(m):
+    coo = m.tocoo()
+    coo.data = normalize(coo.data)
+    return coo.tocsr()
+
+
 def load_lines_as_array(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
     logger.info('Loading file <{}>...'.format(path))
     with open(path, 'r') as f:
