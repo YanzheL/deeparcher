@@ -13,7 +13,7 @@ class LoggerRouter(metaclass=Singleton):
         self.handlers = []
         self.initialize_default_config()
         self.queue = Queue(max(100, listener_no))
-        self.que_handler = self._config_handler(QueueHandler(self.queue))
+        self.queue_handler = QueueHandler(self.queue)
         self.listeners = [QueueListener(self.queue, *self.handlers) for i in range(listener_no)]
         for ls in self.listeners:
             ls.start()
@@ -29,7 +29,8 @@ class LoggerRouter(metaclass=Singleton):
         return hd
 
     def _config_logger(self, logger):
-        logger.addHandler(self.que_handler)
+        if self.queue_handler not in logger.handlers:
+            logger.addHandler(self.queue_handler)
         logger.setLevel(self.level)
         return logger
 
