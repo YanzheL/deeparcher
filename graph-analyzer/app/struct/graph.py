@@ -122,6 +122,28 @@ class Graph(MutableBean):
     def edge_attrs(self):
         return self._edge_attrs
 
+    def __eq__(self, other: Graph):
+        if self._id != other._id:
+            return False
+        if self._nodes != other.nodes:
+            return False
+        if self._edges != other._edges:
+            return False
+        if (self._adj != other._adj).nnz == 0:
+            return False
+        if self._directed != other._directed:
+            return False
+        if self._connected != other._connected:
+            return False
+        if self._unweighted != other._unweighted:
+            return False
+        if self._parent_id != other._parent_id:
+            return False
+        if not np.array_equal(self._node_id_remap, other._node_id_remap):
+            return False
+
+        # TODO (Yanzhe Lee): Check equality of attributes.
+
     def _finalize(self):
         if not (self._nodes == self._adj.shape[0] == self._adj.shape[1]):
             raise ValueError("Graph nodes do not match adjacent matrix's shape.")
