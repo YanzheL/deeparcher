@@ -2,6 +2,7 @@ package com.hitnslab.dnssecurity.deeparcher.stream.service
 
 import com.github.benmanes.caffeine.cache.Caffeine
 import com.mongodb.ConnectionString
+import com.mongodb.MongoBulkWriteException
 import com.mongodb.MongoClientSettings
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoClients
@@ -18,7 +19,6 @@ import com.mongodb.client.model.Updates.set
 import com.mongodb.client.model.WriteModel
 import mu.KotlinLogging
 import org.bson.Document
-import org.springframework.data.mongodb.BulkOperationException
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicLong
@@ -125,12 +125,12 @@ class MongoStringIdService(
             val result = col.bulkWrite(bulk, BulkWriteOptions().ordered(false))
             logger.info { "Committed ${result.upserts.size} graph node ids to MongoDB." }
             true
-        } catch (e: BulkOperationException) {
-            val succeed = e.result.upserts.map { it.index }.map { batch[it] }
+        } catch (e: MongoBulkWriteException) {
+            val succeed = e.writeResult.upserts.map { it.index }.map { batch[it] }
             batch.removeAll(succeed)
             logger.error {
                 "Cannot commit graph node ids to MongoDB, " +
-                        "result = <${e.result}>, exception = <${e}>, errors = <${e.errors}>. " +
+                        "result = <${e.writeResult}>, exception = <${e}>, errors = <${e.writeErrors}>. " +
                         "${batch.size} unsuccessful upserts will be retried later."
             }
             uncommitedEntries.addAll(batch)
