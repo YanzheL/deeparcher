@@ -146,7 +146,7 @@ class MongoStringIdService(
     private fun getCurrentMaxIdRemote(): Long {
         return col.aggregate(
             listOf(
-                group(null, max("max", valueField))
+                group(null, max("max", "\$${valueField}"))
             )
         ).first()?.getLong("max") ?: -1
     }
