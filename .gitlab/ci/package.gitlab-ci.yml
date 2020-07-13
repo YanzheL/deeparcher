@@ -30,7 +30,7 @@
 .build_image_kaniko:
   stage: package
   image:
-    name: gcr.io/kaniko-project/executor:debug-v0.16.0
+    name: hitnslab/kaniko-executor:debug-v0.24.0
     entrypoint: [""]
   before_script:
     - |
@@ -71,6 +71,15 @@
     paths:
       - .m2/repository/
       - .jib/
+
+Package graph-analyzer Kaniko Image On Branch:
+  extends: .build_image_kaniko
+  script:
+    - /kaniko/default-executor --dockerfile graph-analyzer/Dockerfile --destination $CI_REGISTRY_IMAGE/graph-analyzer:${CI_COMMIT_BRANCH}
+  except:
+    - master
+  only:
+    - branches
 
 #Package pdns-data-loader Kaniko Image On Branch:
 #  extends: .build_image_kaniko
