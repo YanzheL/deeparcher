@@ -33,24 +33,24 @@ class MongoStringIdService(
 
     private val logger = KotlinLogging.logger {}
 
-//    private val cacheLimit: Long = 1000000L
-
     private val maxId = AtomicLong(-1)
 
     private val db: MongoDatabase
 
     private val col: MongoCollection<Document>
 
+    private var initialized = false
+
+    private val uncommitedEntries: Queue<Map.Entry<String, Long>>
+
     private val cache = Caffeine.newBuilder()
         .build<String, Long>(::generateId)
 
-    private var initialized = false
-
-    private val uncommitedEntries = ConcurrentLinkedQueue<Map.Entry<String, Long>>()
 
     init {
         db = client.getDatabase(database)
         col = db.getCollection(collection)
+        uncommitedEntries = ConcurrentLinkedQueue()
     }
 
     override fun getCurrentMaxId(): Long {
@@ -163,8 +163,13 @@ class MongoStringIdService(
         // TODO: This is not thread-safe.
         if (!initialized) {
             maxId.set(getCurrentMaxIdRemote())
-            getAllExistingEntries().forEach { cache.put(it.key, it.value) }
+            var count = 0
+            getAllExistingEntries().forEach {
+                cache.put(it.key, it.value)
+                ++count
+            }
             initialized = true
+            logger.info { "Initialized ${count} entries from MongoDB, current max id = ${maxId.get()}" }
         }
     }
 }

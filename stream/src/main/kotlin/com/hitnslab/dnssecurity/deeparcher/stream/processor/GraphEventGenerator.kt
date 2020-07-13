@@ -34,8 +34,8 @@ import java.util.concurrent.TimeUnit
  */
 class GraphEventGenerator(
     val nodeIdService: ObjectIdService<String>,
-    val cacheLimit: Long = 1000000L,
-    val commitInterval: Long = 10
+    val cacheLimit: Long,
+    val commitInterval: Long
 ) :
     ValueTransformer<DomainDnsDetail, Iterable<GraphEvent>> {
 

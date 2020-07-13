@@ -8,7 +8,9 @@ import org.springframework.boot.context.properties.ConstructorBinding
 data class GraphBuilderProperties(
     val input: AppProperties.ResourceSpec,
     val output: AppProperties.ResourceSpec,
-    val nodeIdService: NodeIdService
+    val nodeIdService: NodeIdService,
+    val cacheLimit: Long = 1000000L,
+    val commitInterval: Long = 30
 ) {
     data class NodeIdService(
         val database: String,

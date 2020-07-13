@@ -61,7 +61,13 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
             )
         }
         var sinkSrc = src
-            .flatTransformValues(ValueTransformerSupplier { GraphEventGenerator(nodeIdService) })
+            .flatTransformValues(ValueTransformerSupplier {
+                GraphEventGenerator(
+                    nodeIdService,
+                    builderProperties.cacheLimit,
+                    builderProperties.commitInterval
+                )
+            })
         val outputOpts = builderProperties.output.options
         val unique = outputOpts.getOrDefault("unique", "false").toBoolean()
         if (unique) {
