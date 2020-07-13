@@ -6,12 +6,16 @@ interface ObjectIdService<K> {
 
     fun getExistingId(key: K): Long?
 
+    fun getExistingIds(keys: Iterable<K>): Sequence<Long?> {
+        return keys.asSequence().map(::getExistingId)
+    }
+
     fun getOrCreateId(key: K): Long
 
     fun getAllExistingEntries(): Sequence<Map.Entry<K, Long>>
 
     fun getOrCreateIds(keys: Iterable<K>): Sequence<Long> {
-        return keys.asSequence().map { k -> getOrCreateId(k) }
+        return keys.asSequence().map(::getOrCreateId)
     }
 
     fun commit(): Boolean {

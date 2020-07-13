@@ -15,20 +15,23 @@ import com.mongodb.client.model.Filters.*
 import com.mongodb.client.model.Projections.include
 import com.mongodb.client.model.UpdateOneModel
 import com.mongodb.client.model.UpdateOptions
-import com.mongodb.client.model.Updates.set
+import com.mongodb.client.model.Updates.*
 import com.mongodb.client.model.WriteModel
 import mu.KotlinLogging
 import org.bson.Document
+import org.bson.conversions.Bson
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicLong
+import java.util.function.Function
 
 class MongoStringIdService(
     uri: String,
     database: String,
     collection: String,
     val keyField: String,
-    val valueField: String
+    val valueField: String,
+    val setOnInsertProvider: Function<Map.Entry<String, Long>, Iterable<Bson>>? = null
 ) : ObjectIdService<String> {
 
     private val logger = KotlinLogging.logger {}
@@ -104,10 +107,17 @@ class MongoStringIdService(
         while (uncommitedEntries.isNotEmpty()) {
             val entry = uncommitedEntries.poll()
             batch.add(entry)
+            val setOnInserts = setOnInsertProvider
+                ?.apply(entry)
+                ?.map { setOnInsert(it) }?.toTypedArray() ?: emptyArray()
             bulk.add(
                 UpdateOneModel(
                     eq(keyField, entry.key),
-                    set(valueField, entry.value),
+                    combine(
+                        set(valueField, entry.value),
+                        set("updated_at", Date()),
+                        *setOnInserts
+                    ),
                     UpdateOptions().upsert(true)
                 ),
             )

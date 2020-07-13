@@ -2,6 +2,7 @@ package com.hitnslab.dnssecurity.deeparcher.stream.config
 
 import com.google.common.hash.BloomFilter
 import com.google.common.hash.Funnels
+import com.google.common.net.InternetDomainName
 import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.processor.GraphEventGenerator
 import com.hitnslab.dnssecurity.deeparcher.stream.property.GraphProperties
@@ -13,6 +14,7 @@ import org.apache.kafka.streams.kstream.Consumed
 import org.apache.kafka.streams.kstream.KStream
 import org.apache.kafka.streams.kstream.Produced
 import org.apache.kafka.streams.kstream.ValueTransformerSupplier
+import org.bson.Document
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -48,7 +50,11 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
             nodeIdServiceProps.collection,
             nodeIdServiceProps.keyField,
             nodeIdServiceProps.valueField
-        )
+        ) { (k, _) ->
+            listOf(
+                Document("domain", InternetDomainName.from(k).topPrivateDomain())
+            )
+        }
         var sinkSrc = src
             .flatTransformValues(ValueTransformerSupplier { GraphEventGenerator(nodeIdService) })
         val outputOpts = properties.output.options
