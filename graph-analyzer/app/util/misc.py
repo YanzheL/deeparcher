@@ -8,7 +8,7 @@ from tld import get_fld
 
 from app.util.logger_router import LoggerRouter
 
-DEFAULT_LOGGER = LoggerRouter().get_logger(__name__)
+logger = LoggerRouter().get_logger(__name__)
 
 
 def normalize(a):
@@ -27,7 +27,7 @@ def normalize_sparse(m):
     return coo.tocsr()
 
 
-def load_lines_as_array(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
+def load_lines_as_array(path: str) -> np.ndarray:
     logger.info('Loading file <{}>...'.format(path))
     with open(path, 'r') as f:
         lines = np.array([i.strip() for i in f.read().splitlines()], dtype=str)
@@ -35,30 +35,29 @@ def load_lines_as_array(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
         return lines
 
 
-def load_blacklist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
+def load_blacklist(path: str) -> np.ndarray:
     logger.info('Loading blacklist file <{}>...'.format(path))
     with open(path, 'r') as f:
         blacklist = f.read().splitlines()
-        blacklist = set(i.lower().strip() for i in blacklist)
-        blacklist = np.array(blacklist, dtype=str)
+        blacklist = np.unique([i.lower().strip() for i in blacklist])
         logger.info('Loaded {} unique FQDNs from blacklist file <{}>'.format(blacklist.size, path))
         return blacklist
 
 
-def load_whitelist(path: str, logger=DEFAULT_LOGGER) -> np.ndarray:
+def load_whitelist(path: str) -> np.ndarray:
     logger.info('Loading whitelist file <{}>...'.format(path))
     with open(path, 'r') as f:
         whitelist = f.read().splitlines()
-        whitelist = set(filter(
+        whitelist = list(filter(
             lambda x: x is not None,
             map(lambda i: get_fld(i, fail_silently=True, fix_protocol=True), whitelist)
         ))
-        whitelist = np.array(whitelist, dtype=str)
+        whitelist = np.unique(whitelist)
         logger.info('Loaded {} unique FLDs from whitelist file <{}>'.format(whitelist.size, path))
         return whitelist
 
 
-def timing(method, logger=DEFAULT_LOGGER):
+def timing(method):
     def timed(*args, **kw):
         ts = time.perf_counter()
         result = method(*args, **kw)

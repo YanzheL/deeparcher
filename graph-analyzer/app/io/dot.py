@@ -45,7 +45,7 @@ def from_dot(path: str, extract_node_attrs=False, extract_edge_attrs=False) -> G
                 continue
             try:
                 v = float(v)
-            except Exception:
+            except ValueError:
                 pass
             if extract_edge_attrs:
                 d = edge_attrs_unordered.get(k, {})
@@ -71,7 +71,7 @@ def from_dot(path: str, extract_node_attrs=False, extract_edge_attrs=False) -> G
             for k, v in attrs.iteritems():
                 try:
                     v = float(v)
-                except Exception:
+                except ValueError:
                     pass
                 value_dict = node_attrs.get(k, {})
                 value_dict[node_id_reverse_map[int(i)]] = v

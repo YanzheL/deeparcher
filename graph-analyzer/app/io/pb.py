@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING, Dict
 
 if TYPE_CHECKING:
@@ -6,7 +8,12 @@ if TYPE_CHECKING:
     from app.struct.proto.graph_attributes_pb2 import GraphElementsAttrMap
 
 
-def to_pb(graph: Graph) -> GraphProto:
+def to_pb(graph: Graph, path: str):
+    with open(path, 'wb') as f:
+        f.write(to_pb_object(graph).SerializeToString())
+
+
+def to_pb_object(graph: Graph) -> GraphProto:
     from app.struct.proto.graph_pb2 import Graph as GraphProto
     from app.struct.proto.graph_attributes_pb2 import ComponentAttr as ComponentAttrProto
     proto = GraphProto()
@@ -30,7 +37,15 @@ def to_pb(graph: Graph) -> GraphProto:
     return proto
 
 
-def from_pb(proto: GraphProto) -> Graph:
+def from_pb(path: str) -> Graph:
+    from app.struct.proto.graph_pb2 import Graph as GraphProto
+    with open(path, 'rb') as f:
+        proto = GraphProto()
+        proto.ParseFromString(f.read())
+        return from_pb_object(proto)
+
+
+def from_pb_object(proto: GraphProto) -> Graph:
     from scipy.sparse import coo_matrix, csr_matrix, csc_matrix
     from app.struct.graph import Graph
     import numpy as np
