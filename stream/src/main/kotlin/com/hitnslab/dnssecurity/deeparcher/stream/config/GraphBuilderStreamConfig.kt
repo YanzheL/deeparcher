@@ -18,7 +18,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.mongodb.core.MongoTemplate
 
 /**
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
@@ -31,9 +30,6 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
     @Autowired
     lateinit var properties: GraphProperties
 
-    @Autowired
-    lateinit var mongoTemplate: MongoTemplate
-
     private val logger = KotlinLogging.logger {}
 
     @Bean
@@ -45,11 +41,13 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
                 GenericSerde(DomainDnsDetailProtoSerializer::class, DomainDnsDetailProtoDeserializer::class)
             )
         )
+        val nodeIdServiceProps = properties.nodeIdService
         val nodeIdService = MongoStringIdService(
-            mongoTemplate,
-            properties.nodeIdService.collection,
-            properties.nodeIdService.keyField,
-            properties.nodeIdService.valueField
+            nodeIdServiceProps.uri,
+            nodeIdServiceProps.database,
+            nodeIdServiceProps.collection,
+            nodeIdServiceProps.keyField,
+            nodeIdServiceProps.valueField
         )
         var sinkSrc = src
             .flatTransformValues(ValueTransformerSupplier { GraphEventGenerator(nodeIdService) })

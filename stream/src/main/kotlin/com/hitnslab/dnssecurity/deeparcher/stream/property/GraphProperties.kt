@@ -11,6 +11,8 @@ data class GraphProperties(
     val nodeIdService: NodeIdService
 ) {
     data class NodeIdService(
+        val uri: String,
+        val database: String,
         val collection: String,
         val keyField: String,
         val valueField: String
