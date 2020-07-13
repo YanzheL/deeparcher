@@ -1,24 +1,32 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.service
 
 import com.github.benmanes.caffeine.cache.Caffeine
-import com.mongodb.BasicDBObject
+import com.mongodb.ConnectionString
+import com.mongodb.MongoClientSettings
+import com.mongodb.client.MongoClient
+import com.mongodb.client.MongoClients
+import com.mongodb.client.MongoCollection
+import com.mongodb.client.MongoDatabase
+import com.mongodb.client.model.Accumulators.max
+import com.mongodb.client.model.Aggregates.group
+import com.mongodb.client.model.BulkWriteOptions
+import com.mongodb.client.model.Filters.*
+import com.mongodb.client.model.Projections.include
+import com.mongodb.client.model.UpdateOneModel
+import com.mongodb.client.model.UpdateOptions
+import com.mongodb.client.model.Updates.set
+import com.mongodb.client.model.WriteModel
 import mu.KotlinLogging
+import org.bson.Document
 import org.springframework.data.mongodb.BulkOperationException
-import org.springframework.data.mongodb.core.BulkOperations
-import org.springframework.data.mongodb.core.MongoTemplate
-import org.springframework.data.mongodb.core.aggregation.Aggregation.group
-import org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation
-import org.springframework.data.mongodb.core.query.Criteria.where
-import org.springframework.data.mongodb.core.query.Query.query
-import org.springframework.data.mongodb.core.query.Update.update
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicLong
 
-
 class MongoStringIdService(
-    val template: MongoTemplate,
-    val collection: String,
+    uri: String,
+    database: String,
+    collection: String,
     val keyField: String,
     val valueField: String
 ) : ObjectIdService<String> {
@@ -28,6 +36,12 @@ class MongoStringIdService(
     private val cacheLimit: Long = 1000000L
 
     private val maxId = AtomicLong(-1)
+
+    private val client: MongoClient
+
+    private val db: MongoDatabase
+
+    private val col: MongoCollection<Document>
 
     private val cache = Caffeine.newBuilder()
         .maximumSize(cacheLimit)
@@ -44,6 +58,17 @@ class MongoStringIdService(
     private var initialized = false
 
     private val uncommitedEntries = ConcurrentLinkedQueue<Map.Entry<String, Long>>()
+
+    init {
+        val connString = ConnectionString(uri)
+        val settings = MongoClientSettings.builder()
+            .applyConnectionString(connString)
+            .retryWrites(true)
+            .build()
+        client = MongoClients.create(settings)
+        db = client.getDatabase(database)
+        col = db.getCollection(collection)
+    }
 
     override fun getCurrentMaxId(): Long {
         ensureInitialized()
@@ -66,30 +91,38 @@ class MongoStringIdService(
     }
 
     override fun getAllExistingEntries(): Sequence<Map.Entry<String, Long>> {
-        val query = query(where(keyField).exists(true).and(valueField).exists(true))
-        query.fields().include(keyField).include(valueField).exclude("_id")
-        return template.find(
-            query,
-            BasicDBObject::class.java
-        ).map { AbstractMap.SimpleEntry(it.getString(keyField), it.getLong(valueField)) }.asSequence()
+        return col.find(
+            and(
+                exists(keyField),
+                exists(valueField)
+            )
+        )
+            .projection(
+                include(keyField, valueField)
+            )
+            .map { AbstractMap.SimpleEntry(it.getString(keyField), it.getLong(valueField)) }
+            .asSequence()
     }
 
     override fun commit(): Boolean {
         if (uncommitedEntries.isEmpty()) {
             return true
         }
-        val ops = template.bulkOps(BulkOperations.BulkMode.UNORDERED, collection)
+        val bulk = mutableListOf<WriteModel<Document>>()
         val batch = mutableListOf<Map.Entry<String, Long>>()
         while (uncommitedEntries.isNotEmpty()) {
             val entry = uncommitedEntries.poll()
             batch.add(entry)
-            ops.upsert(
-                query(where(keyField).`is`(entry.key)),
-                update(valueField, entry.value)
+            bulk.add(
+                UpdateOneModel(
+                    eq(keyField, entry.key),
+                    set(valueField, entry.value),
+                    UpdateOptions().upsert(true)
+                ),
             )
         }
         return try {
-            val result = ops.execute()
+            val result = col.bulkWrite(bulk, BulkWriteOptions().ordered(false))
             logger.info { "Committed ${result.upserts.size} graph node ids to MongoDB." }
             true
         } catch (e: BulkOperationException) {
@@ -120,15 +153,20 @@ class MongoStringIdService(
     }
 
     private fun getCurrentMaxIdRemote(): Long {
-        val agg = newAggregation(group().max(valueField).`as`("max"))
-        return template.aggregate(agg, collection, BasicDBObject::class.java).uniqueMappedResult?.getLong("max", -1L)!!
+        return col.aggregate(
+            listOf(
+                group(null, max("max", valueField))
+            )
+        ).first()?.getLong("max") ?: -1
     }
 
     private fun getExistingIdRemote(key: String): Long? {
-        return template.findOne(
-            query(where(keyField).`is`(key).and(valueField).exists(true)),
-            BasicDBObject::class.java
-        )?.getLong(valueField)
+        return col.find(
+            and(
+                eq(keyField, key),
+                exists(valueField)
+            )
+        ).first()?.getLong(valueField)
     }
 
     private fun ensureInitialized() {
