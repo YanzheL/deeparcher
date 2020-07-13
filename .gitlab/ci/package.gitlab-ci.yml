@@ -1,88 +1,6 @@
-.build_image_docker:
-  stage: package
-  image: library/docker:19.03.5
-  #  services:
-  #   - docker:19.03.5-dind
-  before_script:
-    - |
-      cat <<-EOF > /usr/local/bin/default-docker
-      #!/bin/sh
-      docker \
-        --tls \
-        "\$@"
-      EOF
-      chmod +x /usr/local/bin/default-docker
-    - mkdir -p /root/.docker
-    - wget -O /root/.docker/ca.pem "http://seafile/d/37b586af5a1241b5bfc8/files/?p=%2FHIT_NIST_Root_CA.crt&dl=1"
-    - default-docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - ls -ah .
-  variables:
-    # Specify to Docker where to create the certificates, Docker will
-    # create them automatically on boot, and will create
-    # `/certs/client` that will be shared between the service and
-    # build container.
-    DOCKER_TLS_CERTDIR: "/certs"
-    DOCKER_BUILDKIT: "1"
-    DOCKER_HOST: tcp://10.245.146.40:2376
-    DOCKER_DRIVER: overlay2
-    DOCKER_DEFAULT_BUILD_OPTS: --build-arg HTTP_PROXY=http://v2ray.production:1081 --build-arg HTTPS_PROXY=http://v2ray.production:1081
-
-.build_image_kaniko:
-  stage: package
-  image:
-    name: hitnslab/kaniko-executor:debug-v0.24.0
-    entrypoint: [""]
-  before_script:
-    - |
-      cat <<-EOF > /kaniko/.docker/config.json
-      {
-        "auths": {
-          "$CI_REGISTRY": {
-            "username": "$CI_REGISTRY_USER",
-            "password": "$CI_REGISTRY_PASSWORD"
-          }
-        }
-      }
-      EOF
-      mkdir -p $CI_PROJECT_DIR/.kaniko
-      cat <<-EOF > /kaniko/default-executor
-      #!/busybox/sh
-      /kaniko/executor \
-        --digest-file /dev/termination-log \
-        --cache \
-        --cache-dir $CI_PROJECT_DIR/.kaniko \
-        --context dir://$CI_PROJECT_DIR \
-        --build-arg HTTP_PROXY=$HTTP_PROXY \
-        --build-arg HTTPS_PROXY=$HTTPS_PROXY \
-        "\$@"
-      EOF
-      chmod +x /kaniko/default-executor
-    - find . -maxdepth 3
-  cache:
-    paths:
-      - .kaniko/
-
-.build_image_maven:
-  extends: .maven_ctx
-  stage: package
-  variables:
-    JIB_DEFAULT_OPTS: "-Djib.console=plain -Djib.httpTimeout=60000 -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app -Djib.to.auth.username=$CI_REGISTRY_USER -Djib.to.auth.password=$CI_REGISTRY_PASSWORD"
-  cache:
-    paths:
-      - .m2/repository/
-      - .jib/
-
-Package graph-analyzer Kaniko Image On Branch:
-  extends: .build_image_kaniko
-  script:
-    - /kaniko/default-executor --dockerfile graph-analyzer/Dockerfile --destination $CI_REGISTRY_IMAGE/graph-analyzer:${CI_COMMIT_BRANCH}
-  except:
-    - master
-  only:
-    - branches
-
 #Package pdns-data-loader Kaniko Image On Branch:
 #  extends: .build_image_kaniko
+#  stage: package
 #  script:
 #    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
 #  except:
@@ -92,6 +10,7 @@ Package graph-analyzer Kaniko Image On Branch:
 #
 #Package pdns-data-loader Kaniko Image On Master:
 #  extends: .build_image_kaniko
+#  stage: package
 #  script:
 #    - /kaniko/default-executor --dockerfile Dockerfile-CI --destination $CI_REGISTRY_IMAGE:latest
 #  only:
@@ -99,6 +18,7 @@ Package graph-analyzer Kaniko Image On Branch:
 
 #Package pdns-data-loader Docker Image On Branch:
 #  extends: .build_image_docker
+#  stage: package
 #  script:
 #    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH} .
 #    - default-docker push $CI_REGISTRY_IMAGE:${CI_COMMIT_BRANCH}
@@ -111,6 +31,7 @@ Package graph-analyzer Kaniko Image On Branch:
 
 #Package pdns-data-loader Image On Branch:
 #  extends: .build_image_maven
+#  stage: package
 #  script:
 #    - |
 #      mvn $MAVEN_CLI_OPTS \
@@ -127,6 +48,7 @@ Package graph-analyzer Kaniko Image On Branch:
 
 #Package stream Image On Branch:
 #  extends: .build_image_maven
+#  stage: package
 #  script:
 #    - |
 #      mvn $MAVEN_CLI_OPTS \
@@ -143,6 +65,7 @@ Package graph-analyzer Kaniko Image On Branch:
 
 Package Modules Custom JVM Image On Branch:
   extends: .build_image_maven
+  stage: package
   script:
     - |
       for JVM in graalvm-ee-java11; do
@@ -164,6 +87,7 @@ Package Modules Custom JVM Image On Branch:
 
 #Package pdns-data-loader Docker Image On Master:
 #  extends: .build_image_docker
+#  stage: package
 #  script:
 #    - default-docker build $DOCKER_DEFAULT_BUILD_OPTS -f Dockerfile-CI -t $CI_REGISTRY_IMAGE:latest .
 #    - default-docker push $CI_REGISTRY_IMAGE:latest
@@ -174,6 +98,7 @@ Package Modules Custom JVM Image On Branch:
 
 #Package pdns-data-loader Image On Master:
 #  extends: .build_image_maven
+#  stage: package
 #  script:
 #    - |
 #      mvn $MAVEN_CLI_OPTS \
@@ -188,6 +113,7 @@ Package Modules Custom JVM Image On Branch:
 
 Package Modules Custom JVM Image On Master:
   extends: .build_image_maven
+  stage: package
   script:
     - |
       for JVM in graalvm-ee-java11; do
@@ -207,6 +133,7 @@ Package Modules Custom JVM Image On Master:
 
 #Package stream Image On Master:
 #  extends: .build_image_maven
+#  stage: package
 #  script:
 #    - |
 #      mvn $MAVEN_CLI_OPTS \

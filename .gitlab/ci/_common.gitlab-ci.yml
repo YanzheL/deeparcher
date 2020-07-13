@@ -2,3 +2,107 @@ stages:
   - build
   - package
   - test
+
+.build_image_kaniko:
+  image:
+    name: hitnslab/kaniko-executor:debug-v0.24.0
+    entrypoint: [""]
+  before_script:
+    - |
+      cat <<-EOF > /kaniko/.docker/config.json
+      {
+        "auths": {
+          "$CI_REGISTRY": {
+            "username": "$CI_REGISTRY_USER",
+            "password": "$CI_REGISTRY_PASSWORD"
+          }
+        }
+      }
+      EOF
+      mkdir -p $CI_PROJECT_DIR/.kaniko
+      cat <<-EOF > /kaniko/default-executor
+      #!/busybox/sh
+      /kaniko/executor \
+        --digest-file /dev/termination-log \
+        --cache \
+        --cache-dir $CI_PROJECT_DIR/.kaniko \
+        --context dir://$CI_PROJECT_DIR \
+        --build-arg HTTP_PROXY=$HTTP_PROXY \
+        --build-arg HTTPS_PROXY=$HTTPS_PROXY \
+        "\$@"
+      EOF
+      chmod +x /kaniko/default-executor
+    - find . -maxdepth 3
+  cache:
+    paths:
+      - .kaniko/
+
+.build_image_docker:
+  image: library/docker:19.03.5
+  #  services:
+  #   - docker:19.03.5-dind
+  before_script:
+    - |
+      cat <<-EOF > /usr/local/bin/default-docker
+      #!/bin/sh
+      docker \
+        --tls \
+        "\$@"
+      EOF
+      chmod +x /usr/local/bin/default-docker
+    - mkdir -p /root/.docker
+    - wget -O /root/.docker/ca.pem "http://seafile/d/37b586af5a1241b5bfc8/files/?p=%2FHIT_NIST_Root_CA.crt&dl=1"
+    - default-docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - ls -ah .
+  variables:
+    # Specify to Docker where to create the certificates, Docker will
+    # create them automatically on boot, and will create
+    # `/certs/client` that will be shared between the service and
+    # build container.
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_BUILDKIT: "1"
+    DOCKER_HOST: tcp://10.245.146.40:2376
+    DOCKER_DRIVER: overlay2
+    DOCKER_DEFAULT_BUILD_OPTS: --build-arg HTTP_PROXY=$HTTP_PROXY --build-arg HTTPS_PROXY=$HTTPS_PROXY
+
+.maven_ctx:
+  image: library/maven:3-jdk-11
+  variables:
+    # This will suppress any download for dependencies and plugins or upload messages which would clutter the console log.
+    # `showDateTime` will show the passed time in milliseconds. You need to specify `--batch-mode` to make this work.
+    # -DsocksProxyHost=v2ray.production -DsocksProxyPort=1080
+    MAVEN_OPTS: "-Dhttp.proxyHost=v2ray -Dhttp.proxyPort=1081 -Dhttps.proxyHost=v2ray -Dhttps.proxyPort=1081 -Djava.net.useSystemProxies=true -Dhttps.protocols=TLSv1.2,TLSv1.3 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+    # As of Maven 3.3.0 instead of this you may define these options in `.mvn/maven.config` so the same config is used
+    # when running from the command line.
+    # `installAtEnd` and `deployAtEnd` are only effective with recent version of the corresponding plugins.
+    MAVEN_CLI_OPTS: "-T 4C --batch-mode --errors --fail-at-end --show-version"
+  #    HTTP_PROXY: http://v2ray.production:1081
+  #    HTTPS_PROXY: http://v2ray.production:1081
+  #    NO_PROXY: '*.cluster.local,*.hitnslab.com,10.0.0.0/8,172.16.0.0/12'
+  before_script:
+    - mkdir -p .m2 .jib/base .jib/app
+  #    - |
+  #      cat <<-EOF > .m2/settings.xml
+  #      <settings>
+  #        <mirrors>
+  #          <mirror>
+  #            <id>aliyun-maven</id>
+  #            <mirrorOf>central</mirrorOf>
+  #            <name>Aliyun Mirrors</name>
+  #            <url>https://maven.aliyun.com/repository/public</url>
+  #          </mirror>
+  #        </mirrors>
+  #      </settings>
+  #      EOF
+  cache:
+    paths:
+      - .m2/repository/
+
+.build_image_maven:
+  extends: .maven_ctx
+  variables:
+    JIB_DEFAULT_OPTS: "-Djib.console=plain -Djib.httpTimeout=60000 -Djib.baseImageCache=$CI_PROJECT_DIR/.jib/base -Djib.applicationCache=$CI_PROJECT_DIR/.jib/app -Djib.to.auth.username=$CI_REGISTRY_USER -Djib.to.auth.password=$CI_REGISTRY_PASSWORD"
+  cache:
+    paths:
+      - .m2/repository/
+      - .jib/
