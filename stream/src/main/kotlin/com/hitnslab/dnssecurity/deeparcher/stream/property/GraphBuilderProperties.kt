@@ -5,13 +5,12 @@ import org.springframework.boot.context.properties.ConstructorBinding
 
 @ConstructorBinding
 @ConfigurationProperties(prefix = "app.graph-builder")
-data class GraphProperties(
+data class GraphBuilderProperties(
     val input: AppProperties.ResourceSpec,
     val output: AppProperties.ResourceSpec,
     val nodeIdService: NodeIdService
 ) {
     data class NodeIdService(
-        val uri: String,
         val database: String,
         val collection: String,
         val keyField: String,

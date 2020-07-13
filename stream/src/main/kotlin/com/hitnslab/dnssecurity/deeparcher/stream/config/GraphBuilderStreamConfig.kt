@@ -5,8 +5,9 @@ import com.google.common.hash.Funnels
 import com.google.common.net.InternetDomainName
 import com.hitnslab.dnssecurity.deeparcher.serde.*
 import com.hitnslab.dnssecurity.deeparcher.stream.processor.GraphEventGenerator
-import com.hitnslab.dnssecurity.deeparcher.stream.property.GraphProperties
+import com.hitnslab.dnssecurity.deeparcher.stream.property.GraphBuilderProperties
 import com.hitnslab.dnssecurity.deeparcher.stream.service.MongoStringIdService
+import com.mongodb.client.MongoClient
 import mu.KotlinLogging
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.StreamsBuilder
@@ -25,29 +26,32 @@ import org.springframework.context.annotation.Configuration
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
 @Configuration
-@EnableConfigurationProperties(GraphProperties::class)
+@EnableConfigurationProperties(GraphBuilderProperties::class)
 @ConditionalOnProperty(prefix = "app.graph-builder", name = ["enabled"], havingValue = "true")
 class GraphBuilderStreamConfig : AppStreamConfigurer() {
 
     @Autowired
-    lateinit var properties: GraphProperties
+    lateinit var builderProperties: GraphBuilderProperties
+
+    @Autowired
+    lateinit var mongoClient: MongoClient
 
     private val logger = KotlinLogging.logger {}
 
     @Bean
     fun stream(builder: StreamsBuilder): KStream<*, *> {
         val src = builder.stream(
-            properties.input.path,
+            builderProperties.input.path,
             Consumed.with(
                 Serdes.String(),
                 GenericSerde(DomainDnsDetailProtoSerializer::class, DomainDnsDetailProtoDeserializer::class)
             )
         )
-        val nodeIdServiceProps = properties.nodeIdService
+        val nodeIdServiceProps = builderProperties.nodeIdService
         val nodeIdService = MongoStringIdService(
-            nodeIdServiceProps.uri,
             nodeIdServiceProps.database,
             nodeIdServiceProps.collection,
+            mongoClient,
             nodeIdServiceProps.keyField,
             nodeIdServiceProps.valueField
         ) { (k, _) ->
@@ -58,7 +62,7 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
         }
         var sinkSrc = src
             .flatTransformValues(ValueTransformerSupplier { GraphEventGenerator(nodeIdService) })
-        val outputOpts = properties.output.options
+        val outputOpts = builderProperties.output.options
         val unique = outputOpts.getOrDefault("unique", "false").toBoolean()
         if (unique) {
             val filter = BloomFilter.create(
@@ -75,7 +79,7 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
         }
         sinkSrc
             .to(
-                properties.output.path,
+                builderProperties.output.path,
                 Produced.with(
                     Serdes.String(),
                     GenericSerde(

@@ -1,11 +1,8 @@
 package com.hitnslab.dnssecurity.deeparcher.stream.service
 
 import com.github.benmanes.caffeine.cache.Caffeine
-import com.mongodb.ConnectionString
 import com.mongodb.MongoBulkWriteException
-import com.mongodb.MongoClientSettings
 import com.mongodb.client.MongoClient
-import com.mongodb.client.MongoClients
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.Accumulators.max
@@ -26,12 +23,12 @@ import java.util.concurrent.atomic.AtomicLong
 import java.util.function.Function
 
 class MongoStringIdService(
-    uri: String,
     database: String,
     collection: String,
-    val keyField: String,
-    val valueField: String,
-    val setOnInsertProvider: Function<Map.Entry<String, Long>, Iterable<Bson>>? = null
+    client: MongoClient,
+    private val keyField: String,
+    private val valueField: String,
+    private val setOnInsertProvider: Function<Map.Entry<String, Long>, Iterable<Bson>>? = null
 ) : ObjectIdService<String> {
 
     private val logger = KotlinLogging.logger {}
@@ -39,8 +36,6 @@ class MongoStringIdService(
 //    private val cacheLimit: Long = 1000000L
 
     private val maxId = AtomicLong(-1)
-
-    private val client: MongoClient
 
     private val db: MongoDatabase
 
@@ -54,12 +49,6 @@ class MongoStringIdService(
     private val uncommitedEntries = ConcurrentLinkedQueue<Map.Entry<String, Long>>()
 
     init {
-        val connString = ConnectionString(uri)
-        val settings = MongoClientSettings.builder()
-            .applyConnectionString(connString)
-            .retryWrites(true)
-            .build()
-        client = MongoClients.create(settings)
         db = client.getDatabase(database)
         col = db.getCollection(collection)
     }
