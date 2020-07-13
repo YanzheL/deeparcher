@@ -17,8 +17,6 @@ spec:
       labels:
         <<: *labels
     spec:
-      #      nodeSelector:
-      #        kubernetes.io/hostname: k8s-gpu-node0
       enableServiceLinks: false
       affinity:
         podAntiAffinity:
@@ -32,21 +30,12 @@ spec:
                       operator: In
                       values:
                         - deeparcher
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 50
-              preference:
-                matchExpressions:
-                  - key: failure-domain.beta.kubernetes.io/region
-                    operator: In
-                    values:
-                      - ns-2
       imagePullSecrets:
         - name: default-registry-key
       containers:
         - name: stream
-          image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
-          # image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev
+          #          image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
+          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev-graalvm-ee-java11
           imagePullPolicy: Always
           ports:
             - containerPort: 9999

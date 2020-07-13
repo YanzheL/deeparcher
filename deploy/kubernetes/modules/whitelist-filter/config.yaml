@@ -10,6 +10,8 @@ metadata:
 data:
   application.yml: |-
     spring:
+      autoconfigure:
+        exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
       kafka:
         bootstrap-servers:
           - kafka-kafka-bootstrap:9093
@@ -41,10 +43,6 @@ data:
             consumer.auto-offset-reset: earliest
 
     app:
-      graph:
-        enabled: false
-      aggregator:
-        enabled: false
       whitelist-filter:
         enabled: true
         prefilters:
@@ -70,11 +68,3 @@ data:
               path: raw.pdns.not-in-whitelist
               options:
                 unique: false
-
-    com:
-      sun:
-        management:
-          jmxremote:
-            port: 9999
-            authenticate: false
-            ssl: false

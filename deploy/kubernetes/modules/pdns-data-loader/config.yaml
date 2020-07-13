@@ -88,10 +88,3 @@ data:
         com:
           zaxxer:
             hikari: DEBUG
-    com:
-      sun:
-        management:
-          jmxremote:
-            port: 56789
-            authenticate: false
-            ssl: false
