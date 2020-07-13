@@ -1,9 +1,19 @@
 spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  data:
+    mongodb:
+      database: test
+      username: test
+      password: test
+      host: 10.245.146.40
+      port: 32017
+      authentication-database: admin
   kafka:
     bootstrap-servers:
       - kafka.hitnslab.com:443
     ssl:
-      protocol: TLSv1.2
+      protocol: TLSv1.3
       key-store-type: PKCS12
       key-store-location: file:///tmp/kafka-user-test/user.p12
       key-store-password: h0IVo7v7EStE # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
@@ -12,8 +22,8 @@ spring:
       trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     properties:
       security.protocol: SSL
+      ssl.enabled.protocols: TLSv1.3
       ssl.endpoint.identification.algorithm: ""
-      ssl.enabled.protocols: TLSv1.2
       metadata.max.age.ms: 60000
       #      max.poll.interval.ms: 10000
       #      session.timeout.ms: 9000
@@ -21,13 +31,13 @@ spring:
       receive.buffer.bytes: 2097152
       delivery.timeout.ms: 1800000
     streams:
-      application-id: test.temp-work-remote
+      application-id: test.remote
       state-dir: /tmp/kafka-stream
       replication-factor: 1
       auto-startup: true
       properties:
         topology.optimization: all
-        num.stream.threads: 1
+        num.stream.threads: "${NUM_STREAM_THREADS:1}"
         #        producer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
         #        consumer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
         consumer.max-poll-records: 5000000
@@ -36,57 +46,15 @@ spring:
 
 
 app:
+  graph-builder:
+    enabled: false
   aggregator:
     enabled: false
-    lookup-timeout: 100
-    input:
-      type: topic
-      path: raw.pdns.not-in-whitelist
-    output:
-      - type: topic
-        path: test.domain.aggregate
   whitelist-filter:
     enabled: false
-    prefilters:
-      - field: domain
-        pattern: "hitwh\\.edu\\.cn$"
-        allow: false
-    whitelists:
-      - type: file
-        path: whitelist.txt
-      - type: regex
-        path: "\\.(edu|gov)(\\.[a-z]{2})?$"
-    input:
-      type: topic
-      path: raw.pdns
-    output:
-      match:
-        - type: topic
-          path: test.raw.pdns.in-whitelist
-          options:
-            unique: false
-        - type: file
-          path: in-whitelist.csv
-          options:
-            unique: true
-            expectedInsertions: 2000000000
-            fpp: 0.01
-      miss:
-        - type: topic
-          path: test.raw.pdns.not-in-whitelist
-          options:
-            unique: false
-        - type: file
-          path: not-in-whitelist.csv
-          options:
-            unique: true
-            expectedInsertions: 2000000000
-            fpp: 0.01
 
-com:
-  sun:
-    management:
-      jmxremote:
-        port: 9999
-        authenticate: false
-        ssl: false
+#logging:
+#  level:
+#    com:
+#      zaxxer:
+#        hikari: DEBUG

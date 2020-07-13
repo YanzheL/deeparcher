@@ -1,9 +1,19 @@
 spring:
+  #  autoconfigure:
+  #    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  data:
+    mongodb:
+      database: test
+      username: # Inject it via env $SPRING_DATA_MONGODB_USERNAME
+      password: # Inject it via env $SPRING_DATA_MONGODB_PASSWORD
+      host: deeparcher-mongodb-sharded
+      port: 27017
+      authentication-database: admin
   kafka:
     bootstrap-servers:
-      - kafka-kafka-bootstrap.default:9093
+      - kafka-kafka-bootstrap:9093
     ssl:
-      protocol: TLSv1.2
+      protocol: TLSv1.3
       key-store-type: PKCS12
       key-store-location: file:///tmp/kafka-user-test/user.p12
       key-store-password: h0IVo7v7EStE # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
@@ -12,7 +22,7 @@ spring:
       trust-store-password: 0abfa8f8-59fc-49cf-a294-555f755f7c0b # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
     properties:
       security.protocol: SSL
-      ssl.enabled.protocols: TLSv1.2
+      ssl.enabled.protocols: TLSv1.3
       #      ssl.endpoint.identification.algorithm: ""
       metadata.max.age.ms: 60000
       receive.buffer.bytes: 2097152
@@ -32,55 +42,9 @@ spring:
         consumer.auto-offset-reset: earliest
 
 app:
-  graph:
+  graph-builder:
     enabled: false
-    input:
-      type: topic
-      path: domain.aggregate
-    output:
-      type: topic
-      path: graph.edge
-      options:
-        unique: true
   aggregator:
     enabled: false
-    lookup-timeout: 100
-    input:
-      type: topic
-      path: raw.pdns.not-in-whitelist
-    output:
-      - type: topic
-        path: domain.aggregate
   whitelist-filter:
     enabled: false
-    prefilters:
-      - field: domain
-        pattern: "hitwh\\.edu\\.cn$"
-        allow: false
-    whitelists:
-      - type: file
-        path: file:///data/whitelist.txt
-      - type: regex
-        path: "\\.(edu|gov)(\\.[a-z]{2})?$"
-    input:
-      type: topic
-      path: raw.pdns
-    output:
-      match:
-        - type: topic
-          path: raw.pdns.in-whitelist
-          options:
-            unique: false
-      miss:
-        - type: topic
-          path: raw.pdns.not-in-whitelist
-          options:
-            unique: false
-
-com:
-  sun:
-    management:
-      jmxremote:
-        port: 9999
-        authenticate: false
-        ssl: false
