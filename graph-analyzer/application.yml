@@ -1,0 +1,45 @@
+app:
+  inputs:
+    graph:
+      type: pb
+      path: data/graph.pb
+    blacklist:
+      type: txt
+      path: data/blacklist.txt
+    whitelist:
+      type: txt
+      path: data/whitelist.txt
+  output:
+    type: csv
+    path: data/node_features.csv
+  analyzers:
+    - name: ConnectedComponentsAnalyzer
+      enable: true
+      config:
+        cc_size_thres: 50
+    - name: PathBasedInferenceAnalyzer
+      enable: true
+      config:
+        bw_attr: black_or_white
+        dst_attr: pbi_prob
+    - name: TopologyBasedFlowAnalyzer
+      enable: true
+      config:
+        max_iters: 5
+        legal_weight: -1.0
+        bw_attr: black_or_white
+        dst_attr: tbf_prob
+    - name: LLGCAnalyzer
+      enable: true
+      config:
+        alpha: 0.99
+        max_iters: 30
+        bw_attr: black_or_white
+        dst_attr: llgc_prob
+    - name: BeliefPropagationAnalyzer
+      enable: false
+      config:
+        max_iters: 30
+        prob_diff: 0.01
+        bw_attr: black_or_white
+        dst_attr: llgc_prob
