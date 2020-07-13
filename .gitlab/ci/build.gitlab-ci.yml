@@ -2,7 +2,7 @@ Build graph-analyzer Kaniko Image On Branch:
   extends: .build_image_kaniko
   stage: build
   script:
-    - /kaniko/default-executor --dockerfile graph-analyzer/Dockerfile --destination $CI_REGISTRY_IMAGE/graph-analyzer:${CI_COMMIT_BRANCH}
+    - /kaniko/default-executor --context dir://$CI_PROJECT_DIR/graph-analyzer --dockerfile Dockerfile --destination $CI_REGISTRY_IMAGE/graph-analyzer:${CI_COMMIT_BRANCH}
   except:
     - master
   only:
