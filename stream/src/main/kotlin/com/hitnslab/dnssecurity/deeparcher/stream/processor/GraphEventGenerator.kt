@@ -32,12 +32,14 @@ import java.util.concurrent.TimeUnit
  *
  * @author Yanzhe Lee [lee.yanzhe@yanzhe.org]
  */
-class GraphEventGenerator(val nodeIdService: ObjectIdService<String>) :
+class GraphEventGenerator(
+    val nodeIdService: ObjectIdService<String>,
+    val cacheLimit: Long = 1000000L,
+    val commitInterval: Long = 10
+) :
     ValueTransformer<DomainDnsDetail, Iterable<GraphEvent>> {
 
     private val logger = KotlinLogging.logger {}
-
-    private val cacheLimit: Long = 1000000L
 
     private val ipv4Table = mutableMapOf<String, ByteArray>()
 
@@ -56,7 +58,7 @@ class GraphEventGenerator(val nodeIdService: ObjectIdService<String>) :
     private val cnameTable = mutableMapOf<String, Collection<String>>()
 
     override fun init(context: ProcessorContext) {
-        context.schedule(Duration.ofSeconds(20), PunctuationType.STREAM_TIME) {
+        context.schedule(Duration.ofSeconds(commitInterval), PunctuationType.WALL_CLOCK_TIME) {
             nodeIdService.commit()
         }
     }
