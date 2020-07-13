@@ -52,7 +52,7 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
             nodeIdServiceProps.valueField
         ) { (k, _) ->
             listOf(
-                Document("domain", InternetDomainName.from(k).topPrivateDomain())
+                Document("domain", InternetDomainName.from(k).topPrivateDomain().toString())
             )
         }
         var sinkSrc = src
