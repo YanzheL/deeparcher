@@ -17,7 +17,7 @@ class GraphAnalyzer(metaclass=ABCMeta):
         self.logger = LoggerRouter().get_logger(self.__class__.__name__)
 
     @abstractmethod
-    def analyze(self, graph: Graph, ctx: dict, **runtime_configs) -> Union[Graph, List[Graph], None]:
+    def analyze(self, graph: Graph, ctx: dict, *args, **runtime_configs) -> Union[Graph, List[Graph], None]:
         pass
 
     def accept(self, graph: Graph) -> bool:

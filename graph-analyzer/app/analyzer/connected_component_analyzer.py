@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Dict
+from typing import TYPE_CHECKING, List, Dict, Union
 
 if TYPE_CHECKING:
     from scipy.sparse import csr_matrix
@@ -28,11 +28,11 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
         super().__init__()
         self._cc_func = weakly_connected_components if weak else strongly_connected_components
 
-    def analyze(self, graph: Graph, ctx: dict, cc_size_thres=50) -> List[Graph]:
+    def analyze(self, graph: Graph, ctx: dict, cc_size_thres=50) -> Union[List[Graph], Graph]:
         if graph.connected or len(graph.component_attrs) == 1:
-            self.logger.warn('Current graph is connected, now skipped.')
+            self.logger.debug('Current graph is connected, now skipped.')
             graph.connected = True
-            return [graph]
+            return graph
         if len(graph.component_attrs) == 0:
             self.logger.info('Computing weakly connected components...')
             if 'cugraph' not in graph.meta:
@@ -49,7 +49,7 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
             self.logger.info('Got {} weakly connected components'.format(n_components))
             if n_components == 1:
                 graph.connected = True
-                return [graph]
+                return graph
             else:
                 interested_labels = label_count.query('vertices > {}'.format(cc_size_thres)) \
                     .index.to_series()
@@ -74,7 +74,7 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
         component = component_attr.components
         adj: csr_matrix = graph.adj.tocsr()[component, :][:, component]
         return Graph(
-            id=component_attr.component_id,
+            id=component_attr.id,
             nodes=component.size,
             edges=adj.count_nonzero(),
             adj=adj,
