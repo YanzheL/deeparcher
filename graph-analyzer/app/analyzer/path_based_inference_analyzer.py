@@ -9,7 +9,7 @@ import cupy
 from cugraph.traversal.sssp import sssp
 
 from app.analyzer.interface import GraphAnalyzer
-from app.io.graph_converter import build_cugraph
+from app.io import to_cugraph
 from app.util.misc import extract_bool_attr_ids
 import math
 
@@ -48,7 +48,7 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
 
         """
 
-        cu_graph = build_cugraph(graph.adj, weight_transform=lambda x: math.log(x + 1 / x))
+        cu_graph = to_cugraph(graph.adj, weight_transform=lambda x: math.log(x + 1 / x))
         bw_meta_key = 'bw_node_ids_{}'.format(bw_attr)
         if bw_meta_key not in graph.meta:
             graph.meta[bw_meta_key] = extract_bool_attr_ids(bw_attr, graph.node_attrs)

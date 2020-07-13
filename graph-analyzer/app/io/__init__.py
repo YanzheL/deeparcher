@@ -1,1 +1,3 @@
-from .graph_converter import build_cugraph, from_dot
+from .cugraph import to_cugraph
+from .dot import from_dot
+from .pb import to_pb, from_pb

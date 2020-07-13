@@ -9,7 +9,7 @@ import numpy as np
 import cupy
 from cugraph.components.connectivity import weakly_connected_components, strongly_connected_components
 from app.analyzer.interface import GraphAnalyzer
-from app.io.graph_converter import build_cugraph
+from app.io import to_cugraph
 from app.struct.graph_attributes import ComponentAttr
 from app.struct import Graph
 
@@ -36,7 +36,7 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
         if len(graph.component_attrs) == 0:
             self.logger.info('Computing weakly connected components...')
             if 'cugraph' not in graph.meta:
-                graph.meta['cugraph'] = build_cugraph(graph.adj)
+                graph.meta['cugraph'] = to_cugraph(graph.adj)
             cug = graph.meta['cugraph']
             cc_res = self._cc_func(cug)
             # self.logger.debug(cc_res)
