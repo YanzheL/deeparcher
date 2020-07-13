@@ -57,20 +57,6 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: graph.edge
-  namespace: default
-  labels:
-    strimzi.io/cluster: kafka
-spec:
-  partitions: 8
-  replicas: 3
-  config:
-    "retention.ms": "-1"
-    "cleanup.policy": "compact"
----
-apiVersion: kafka.strimzi.io/v1beta1
-kind: KafkaTopic
-metadata:
   name: domain.aggregate.full
   namespace: default
   labels:
@@ -85,7 +71,21 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: graph.edge.full
+  name: graph.event
+  namespace: default
+  labels:
+    strimzi.io/cluster: kafka
+spec:
+  partitions: 8
+  replicas: 3
+  config:
+    "retention.ms": "-1"
+    "cleanup.policy": "compact"
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: graph.event.full
   namespace: default
   labels:
     strimzi.io/cluster: kafka

@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels: &labels
-    app.kubernetes.io/name: stream-aggregator
+    app.kubernetes.io/name: stream-aggregator-full
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
-  name: stream-aggregator
+  name: stream-aggregator-full
   namespace: default
 spec:
   replicas: 1
@@ -20,22 +20,12 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: k8s-gpu-node0
       enableServiceLinks: false
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 50
-              preference:
-                matchExpressions:
-                  - key: failure-domain.beta.kubernetes.io/region
-                    operator: In
-                    values:
-                      - ns-2
       imagePullSecrets:
         - name: default-registry-key
       containers:
         - name: stream
-          image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
-          # image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev
+          # image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
+          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev-graalvm-ee-java11
           imagePullPolicy: Always
           ports:
             - containerPort: 9999
@@ -43,7 +33,7 @@ spec:
               name: jmx
           env:
             - name: JAVA_TOOL_OPTIONS
-              value: -Xms100m -Xmx4g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Ddns.server=114.114.114.114,1.2.4.8,10.0.0.10
+              value: -Xms100m -Xmx3g -XX:+UnlockExperimentalVMOptions -XX:+EagerJVMCI -Dgraal.MitigateSpeculativeExecutionAttacks=None -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Ddns.server=114.114.114.114,1.2.4.8,10.0.0.10
             - name: SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -60,7 +50,7 @@ spec:
               memory: 500Mi
             limits:
               cpu: '8'
-              memory: 5.5Gi
+              memory: 4.5Gi
           volumeMounts:
             - mountPath: /var/run/secrets/java.io/keystores/
               name: keystores
@@ -85,7 +75,7 @@ spec:
             defaultMode: 256
         - name: config
           configMap:
-            name: stream-aggregator
+            name: stream-aggregator-full
             items:
               - key: application.yml
                 path: application.yml

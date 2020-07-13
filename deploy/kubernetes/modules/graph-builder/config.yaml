@@ -1,15 +1,23 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: stream-graph
+  name: stream-graph-builder-full
   namespace: default
   labels:
-    app.kubernetes.io/name: stream-graph
+    app.kubernetes.io/name: stream-graph-builder-full
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
 data:
   application.yml: |-
     spring:
+      data:
+        mongodb:
+          database: test
+          username: # Inject it via env $SPRING_DATA_MONGODB_USERNAME
+          password: # Inject it via env $SPRING_DATA_MONGODB_PASSWORD
+          host: deeparcher-mongodb-sharded
+          port: 27017
+          authentication-database: admin
       kafka:
         bootstrap-servers:
           - kafka-kafka-bootstrap:9093
@@ -29,7 +37,7 @@ data:
           receive.buffer.bytes: 2097152
           delivery.timeout.ms: 1800000
         streams:
-          application-id: stream-graph
+          application-id: stream-graph-builder-full
           state-dir: /tmp/kafka-stream
           replication-factor: 2
           auto-startup: true
@@ -41,21 +49,20 @@ data:
             consumer.auto-offset-reset: earliest
 
     app:
-      graph:
+      graph-builder:
         enabled: true
+        cache-limit: 1000000
+        commit-interval: 30
+        node-id-service:
+          database: analysis
+          collection: domain_attributes
+          key-field: fqdn
+          value-field: graph_node_id
         input:
           type: topic
-          path: domain.aggregate
+          path: domain.aggregate.full
         output:
           type: topic
-          path: graph.edge
+          path: graph.event.full
           options:
-            unique: true
-
-    com:
-      sun:
-        management:
-          jmxremote:
-            port: 9999
-            authenticate: false
-            ssl: false
+            unique: false

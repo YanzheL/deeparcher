@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: stream-graph
+  name: stream-graph-builder-full
   namespace: default
-  labels:
-    app.kubernetes.io/name: stream-graph
+  labels: &labels
+    app.kubernetes.io/name: stream-graph-builder-full
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
 spec:
@@ -15,6 +15,4 @@ spec:
       port: 9999
       protocol: TCP
   selector:
-    app.kubernetes.io/name: stream-graph
-    app.kubernetes.io/part-of: deeparcher
-    app.kubernetes.io/component: stream
+    <<: *labels

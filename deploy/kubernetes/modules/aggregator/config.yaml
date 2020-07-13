@@ -1,15 +1,17 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: stream-aggregator
+  name: stream-aggregator-full
   namespace: default
   labels:
-    app.kubernetes.io/name: stream-aggregator
+    app.kubernetes.io/name: stream-aggregator-full
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
 data:
   application.yml: |-
     spring:
+      autoconfigure:
+        exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
       kafka:
         bootstrap-servers:
           - kafka-kafka-bootstrap:9093
@@ -29,7 +31,7 @@ data:
           receive.buffer.bytes: 2097152
           delivery.timeout.ms: 1800000
         streams:
-          application-id: stream-aggregator
+          application-id: stream-aggregator-full
           state-dir: /tmp/kafka-stream
           replication-factor: 2
           auto-startup: true
@@ -46,15 +48,7 @@ data:
         lookup-timeout: 0
         input:
           type: topic
-          path: raw.pdns.not-in-whitelist
+          path: raw.pdns
         output:
           - type: topic
-            path: domain.aggregate
-
-    com:
-      sun:
-        management:
-          jmxremote:
-            port: 9999
-            authenticate: false
-            ssl: false
+            path: domain.aggregate.full

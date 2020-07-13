@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels: &labels
-    app.kubernetes.io/name: stream-graph
+    app.kubernetes.io/name: stream-graph-builder-full
     app.kubernetes.io/part-of: deeparcher
     app.kubernetes.io/component: stream
-  name: stream-graph
+  name: stream-graph-builder-full
   namespace: default
 spec:
-  replicas: 1
+  #  replicas: 1
   selector:
     matchLabels:
       <<: *labels
@@ -20,22 +20,12 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: k8s-gpu-node0
       enableServiceLinks: false
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 50
-              preference:
-                matchExpressions:
-                  - key: failure-domain.beta.kubernetes.io/region
-                    operator: In
-                    values:
-                      - ns-2
       imagePullSecrets:
         - name: default-registry-key
       containers:
         - name: stream
-          image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
-          # image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev
+          # image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
+          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev-graalvm-ee-java11
           imagePullPolicy: Always
           ports:
             - containerPort: 9999
@@ -54,13 +44,17 @@ spec:
                 secretKeyRef:
                   name: truststore
                   key: password
+            - name: SPRING_DATA_MONGODB_USERNAME
+              value: deeparcher
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              value: HITnsLAB-deeparcher!
           resources:
             requests:
               cpu: 100m
               memory: 500Mi
             limits:
               cpu: '8'
-              memory: 6Gi
+              memory: 6.5Gi
           volumeMounts:
             - mountPath: /var/run/secrets/java.io/keystores/
               name: keystores
@@ -85,7 +79,7 @@ spec:
             defaultMode: 256
         - name: config
           configMap:
-            name: stream-graph
+            name: stream-graph-builder-full
             items:
               - key: application.yml
                 path: application.yml
