@@ -52,6 +52,7 @@ class GraphBuilderStreamConfig : AppStreamConfigurer() {
             nodeIdServiceProps.valueField
         ) { (k, _) ->
             listOf(
+                Document("fqdn", k),
                 Document("domain", InternetDomainName.from(k).topPrivateDomain().toString())
             )
         }
