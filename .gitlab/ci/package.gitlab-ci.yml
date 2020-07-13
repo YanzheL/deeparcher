@@ -52,8 +52,8 @@
         --cache \
         --cache-dir $CI_PROJECT_DIR/.kaniko \
         --context dir://$CI_PROJECT_DIR \
-        --build-arg HTTP_PROXY=http://v2ray:1081 \
-        --build-arg HTTPS_PROXY=http://v2ray:1081 \
+        --build-arg HTTP_PROXY=$HTTP_PROXY \
+        --build-arg HTTPS_PROXY=$HTTPS_PROXY \
         "\$@"
       EOF
       chmod +x /kaniko/default-executor
