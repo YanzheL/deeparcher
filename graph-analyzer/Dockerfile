@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY environment.yml ./
 
-RUN conda env create -f environment.yml -p ./envs
+RUN conda env update -n rapids -f environment.yml
 
 COPY . .
 
-CMD ["conda", "run", "-p", "./envs", "python", "main.py"]
+CMD ["conda", "run", "-n", "rapids", "python", "main.py"]
