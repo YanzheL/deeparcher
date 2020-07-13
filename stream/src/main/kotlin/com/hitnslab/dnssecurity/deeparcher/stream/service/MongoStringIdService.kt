@@ -33,7 +33,7 @@ class MongoStringIdService(
 
     private val logger = KotlinLogging.logger {}
 
-    private val cacheLimit: Long = 1000000L
+//    private val cacheLimit: Long = 1000000L
 
     private val maxId = AtomicLong(-1)
 
@@ -44,15 +44,6 @@ class MongoStringIdService(
     private val col: MongoCollection<Document>
 
     private val cache = Caffeine.newBuilder()
-        .maximumSize(cacheLimit)
-        .removalListener<String, Long> { key, value, _ ->
-            uncommitedEntries.add(
-                AbstractMap.SimpleEntry(
-                    key!!,
-                    value!!
-                )
-            )
-        }
         .build<String, Long>(::generateId)
 
     private var initialized = false
