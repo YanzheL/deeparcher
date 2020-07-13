@@ -100,43 +100,43 @@
 #  needs:
 #    - Maven Build
 
-Package pdns-data-loader Image On Branch:
-  extends: .build_image_maven
-  script:
-    - |
-      mvn $MAVEN_CLI_OPTS \
-        compile jib:build \
-        -pl pdns-data-loader \
-        $JIB_DEFAULT_OPTS \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}
-  except:
-    - master
-  only:
-    - branches
-  needs:
-    - Maven Build Root
+#Package pdns-data-loader Image On Branch:
+#  extends: .build_image_maven
+#  script:
+#    - |
+#      mvn $MAVEN_CLI_OPTS \
+#        compile jib:build \
+#        -pl pdns-data-loader \
+#        $JIB_DEFAULT_OPTS \
+#        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:${CI_COMMIT_BRANCH}
+#  except:
+#    - master
+#  only:
+#    - branches
+#  needs:
+#    - Maven Build Root
 
-Package stream Image On Branch:
-  extends: .build_image_maven
-  script:
-    - |
-      mvn $MAVEN_CLI_OPTS \
-        compile jib:build \
-        -pl stream \
-        $JIB_DEFAULT_OPTS \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:${CI_COMMIT_BRANCH}
-  except:
-    - master
-  only:
-    - branches
-  needs:
-    - Maven Build Root
+#Package stream Image On Branch:
+#  extends: .build_image_maven
+#  script:
+#    - |
+#      mvn $MAVEN_CLI_OPTS \
+#        compile jib:build \
+#        -pl stream \
+#        $JIB_DEFAULT_OPTS \
+#        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:${CI_COMMIT_BRANCH}
+#  except:
+#    - master
+#  only:
+#    - branches
+#  needs:
+#    - Maven Build Root
 
 Package Modules Custom JVM Image On Branch:
   extends: .build_image_maven
   script:
     - |
-      for JVM in graalvm-ee-java11 zing-11 openj9-jre11; do
+      for JVM in graalvm-ee-java11; do
         for MOD in stream pdns-data-loader; do
             mvn $MAVEN_CLI_OPTS \
                 compile jib:build \
@@ -163,25 +163,25 @@ Package Modules Custom JVM Image On Branch:
 #  needs:
 #    - Maven Build
 
-Package pdns-data-loader Image On Master:
-  extends: .build_image_maven
-  script:
-    - |
-      mvn $MAVEN_CLI_OPTS \
-        compile jib:build \
-        -pl pdns-data-loader \
-        $JIB_DEFAULT_OPTS \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:latest
-  only:
-    - master
-  needs:
-    - Maven Build Root
+#Package pdns-data-loader Image On Master:
+#  extends: .build_image_maven
+#  script:
+#    - |
+#      mvn $MAVEN_CLI_OPTS \
+#        compile jib:build \
+#        -pl pdns-data-loader \
+#        $JIB_DEFAULT_OPTS \
+#        -Djib.to.image=$CI_REGISTRY_IMAGE/pdns-data-loader:latest
+#  only:
+#    - master
+#  needs:
+#    - Maven Build Root
 
 Package Modules Custom JVM Image On Master:
   extends: .build_image_maven
   script:
     - |
-      for JVM in graalvm-ee-java11 zing-11 openj9-jre11; do
+      for JVM in graalvm-ee-java11; do
         for MOD in stream pdns-data-loader; do
             mvn $MAVEN_CLI_OPTS \
                 compile jib:build \
@@ -196,19 +196,19 @@ Package Modules Custom JVM Image On Master:
   needs:
     - Maven Build Root
 
-Package stream Image On Master:
-  extends: .build_image_maven
-  script:
-    - |
-      mvn $MAVEN_CLI_OPTS \
-        compile jib:build \
-        -pl stream \
-        $JIB_DEFAULT_OPTS \
-        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:latest
-  only:
-    - master
-  needs:
-    - Maven Build Root
+#Package stream Image On Master:
+#  extends: .build_image_maven
+#  script:
+#    - |
+#      mvn $MAVEN_CLI_OPTS \
+#        compile jib:build \
+#        -pl stream \
+#        $JIB_DEFAULT_OPTS \
+#        -Djib.to.image=$CI_REGISTRY_IMAGE/stream:latest
+#  only:
+#    - master
+#  needs:
+#    - Maven Build Root
 
 #Package pdns-data-loader Graal Native Image:
 #  image: oracle/graalvm-ce:19.3.1-java11

@@ -62,6 +62,12 @@
                 <artifactId>dnsjava</artifactId>
                 <version>${dnsjava.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongodb-driver.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
@@ -135,6 +141,7 @@
         <fastjson.version>1.2.72</fastjson.version>
         <tika.version>1.24.1</tika.version>
         <jmh.version>1.23</jmh.version>
+        <mongodb-driver.version>3.12.6</mongodb-driver.version>
         <!--        <spring-framework.version>5.2.6.RELEASE</spring-framework.version>-->
         <!--        <spring-integration.version>5.2.6.RELEASE</spring-integration.version>-->
         <kotlin.serialization.version>0.20.0-${kotlin.version}</kotlin.serialization.version>
