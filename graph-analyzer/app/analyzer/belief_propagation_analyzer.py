@@ -77,8 +77,8 @@ class BeliefPropagationAnalyzer(GraphAnalyzer):
             name = rv.name
             scores[int(name)] = total / (total + incoming)
         self.logger.info(
-            "The computed {} attribute of Graph<parent_id={},id={}> has {} values.".format(
-                dst_attr, graph.parent_id, graph.id, len(scores))
+            "The computed {} attribute of {} has {} values.".format(
+                dst_attr, graph, len(scores))
         )
         # Write the result to graph.node_attrs
         graph.node_attrs[dst_attr] = scores

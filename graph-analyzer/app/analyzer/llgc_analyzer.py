@@ -64,8 +64,8 @@ class LLGCAnalyzer(GraphAnalyzer):
 
         labels = self._extract_boolean_attributes(graph, bw_attr)
         if labels.shape[0] == 0:
-            self.logger.error('No node on Graph<parent_id={},id={}>  is labeled by {}'.format(
-                graph.parent_id, graph.id, bw_attr))
+            self.logger.error('No node on {} is labeled by {}'.format(
+                graph, bw_attr))
             return graph
 
         X = csr_matrix(graph.adj)
@@ -74,8 +74,8 @@ class LLGCAnalyzer(GraphAnalyzer):
         n_expected_classes = 2
         if n_labeled_classes != n_expected_classes:
             self.logger.warn(
-                "Graph<parent_id={},id={}> has insufficient label classes, expected {}, got {}, skipped.".format(
-                    graph.parent_id, graph.id, n_expected_classes, n_labeled_classes))
+                "{} has insufficient label classes, expected {}, got {}, skipped.".format(
+                    graph, n_expected_classes, n_labeled_classes))
             return graph
         F = cupy.zeros((n_samples, n_expected_classes), dtype=cupy.float32)
         P = self._build_propagation_matrix(X, alpha)
@@ -83,13 +83,13 @@ class LLGCAnalyzer(GraphAnalyzer):
         F, converged = self._propagate_converged(P, F, B, max_iters)
         if not converged:
             self.logger.info(
-                "The computed {} attribute of Graph<parent_id={},id={}> is not converged. This is ok but not optimal.".format(
-                    dst_attr, graph.parent_id, graph.id, n_labeled_classes, n_expected_classes))
+                "The computed {} attribute of {} is not converged. This is ok but not optimal.".format(
+                    dst_attr, graph, n_labeled_classes, n_expected_classes))
         possibilities = self._compute_positive_prob(F)
         possibilities[possibilities <= cupy.finfo(cupy.float32).eps] = 0.0
         self.logger.info(
-            "The computed {} attribute of Graph<parent_id={},id={}> has {} positive values.".format(
-                dst_attr, graph.parent_id, graph.id, cupy.count_nonzero(possibilities))
+            "The computed {} attribute of {} has {} positive values.".format(
+                dst_attr, graph, cupy.count_nonzero(possibilities))
         )
         # Write the result to graph.node_attrs
         scores: Dict[int, float] = dict(enumerate(possibilities))

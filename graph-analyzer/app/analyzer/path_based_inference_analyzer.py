@@ -69,8 +69,8 @@ class PathBasedInferenceAnalyzer(GraphAnalyzer):
         #     self.logger.warn('mal = \n{}'.format(possibilities))
         possibilities[possibilities <= cupy.finfo(cupy.float32).eps] = 0.0
         self.logger.info(
-            "The computed {} attribute of Graph<parent_id={},id={}> has {} positive values.".format(
-                dst_attr, graph.parent_id, graph.id, cupy.count_nonzero(possibilities))
+            "The computed {} attribute of {} has {} positive values.".format(
+                dst_attr, graph, cupy.count_nonzero(possibilities))
         )
         # Write the result to graph.node_attrs
         scores: Dict[int, float] = dict(enumerate(possibilities))

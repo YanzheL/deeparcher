@@ -54,7 +54,8 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
                 interested_labels = label_count.query('vertices > {}'.format(cc_size_thres)) \
                     .index.to_series()
                 interested_labels = cupy.asarray(interested_labels)
-                self.logger.info('Got {} components larger than {} nodes'.format(interested_labels.size, cc_size_thres))
+                self.logger.info(
+                    'Got {} components larger than threshold.'.format(interested_labels.size, cc_size_thres))
                 for i in interested_labels:
                     # component = cc_res.query('labels == {}'.format(i))['vertices']
                     component: cupy.ndarray = cc_mat[cc_mat[:, 1] == i][:, 0]

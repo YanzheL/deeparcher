@@ -122,6 +122,9 @@ class Graph(MutableBean):
     def edge_attrs(self):
         return self._edge_attrs
 
+    def __repr__(self):
+        return f"Graph[parent_id={self._parent_id},id={self.id},nodes={self._nodes},edges={self._edges}]"
+
     def __eq__(self, other: Graph):
         if self._id != other._id:
             return False
