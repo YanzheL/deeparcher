@@ -32,7 +32,7 @@ def dump_attributes(attrs: Dict[str, Dict[int, object]], ignored_attrs: List[str
 
 
 def _sparse_dict_to_dense(data: Dict[int, object], dtype=None) -> np.ndarray:
-    size = max(data.keys())
+    size = max(data.keys()) + 1
     if dtype is None:
         sample = next(iter(data.values()))
         if isinstance(sample, str):
