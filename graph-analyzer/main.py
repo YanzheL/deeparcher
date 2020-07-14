@@ -50,7 +50,7 @@ def load_yaml(path: str) -> dict:
 
 def dump_node_attributes(graph: Graph, shared_data: Dict[str, np.ndarray], ignored_attrs: List[str] = None):
     from app.io import dump_attributes, merge_attributes
-    merge_attributes(dump_attributes(graph.node_attrs, ignored_attrs), graph.node_id_remap, shared_data)
+    merge_attributes(dump_attributes(graph.node_attrs, ignored_attrs), graph.node_id_remap, shared_data, graph.nodes)
 
 
 def main(inputs, output, analyzers):

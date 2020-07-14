@@ -8,10 +8,8 @@ if TYPE_CHECKING:
 import numpy as np
 
 
-def merge_attributes(data: Dict[str, np.ndarray], id_remap: np.ndarray, out: Dict[str, np.ndarray],
+def merge_attributes(data: Dict[str, np.ndarray], id_remap: np.ndarray, out: Dict[str, np.ndarray], parent_size,
                      ignored_attrs: List[str] = None) -> NoReturn:
-    parent_sample = next(iter(out.values()))
-    parent_size = parent_sample.size
     id_reverse_map = {i: idx for idx, i in enumerate(id_remap)}
     for name, values in data.items():
         if ignored_attrs is not None and name in ignored_attrs:
