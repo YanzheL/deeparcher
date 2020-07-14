@@ -9,12 +9,12 @@ import numpy as np
 
 
 def merge_attributes(data: Dict[str, np.ndarray], id_remap: np.ndarray, out: Dict[str, np.ndarray],
-                     ignored_attrs: List[str]) -> NoReturn:
+                     ignored_attrs: List[str] = None) -> NoReturn:
     parent_sample = next(iter(out.values()))
     parent_size = parent_sample.size
     id_reverse_map = {i: idx for idx, i in enumerate(id_remap)}
     for name, values in data.items():
-        if name in ignored_attrs:
+        if ignored_attrs is not None and name in ignored_attrs:
             continue
         parent_values = out.get(name, np.zeros((parent_size,), dtype=values.dtype))
         for idx, value in enumerate(values):
@@ -22,10 +22,10 @@ def merge_attributes(data: Dict[str, np.ndarray], id_remap: np.ndarray, out: Dic
         out[name] = parent_values
 
 
-def dump_attributes(attrs: Dict[str, Dict[int, object]], ignored_attrs: List[str]) -> Dict[str, np.ndarray]:
+def dump_attributes(attrs: Dict[str, Dict[int, object]], ignored_attrs: List[str] = None) -> Dict[str, np.ndarray]:
     data = {}
     for name, attr in attrs.items():
-        if name in ignored_attrs:
+        if ignored_attrs is not None and name in ignored_attrs:
             continue
         data[name] = _sparse_dict_to_dense(attr)
     return data

@@ -48,7 +48,7 @@ def load_yaml(path: str) -> dict:
     return data
 
 
-def dump_node_attributes(graph: Graph, shared_data: Dict[str, np.ndarray], ignored_attrs: List[str]):
+def dump_node_attributes(graph: Graph, shared_data: Dict[str, np.ndarray], ignored_attrs: List[str] = None):
     from app.io import dump_attributes, merge_attributes
     merge_attributes(dump_attributes(graph.node_attrs, ignored_attrs), graph.node_id_remap, shared_data)
 
@@ -95,7 +95,7 @@ def main(inputs, output, analyzers):
         graph = analyzed.get()
         ignored_attrs = ['fqdn']
         if 'initial' not in graph.meta:
-            ignored_attrs = []
+            ignored_attrs = None
         dump_node_attributes(graph, all_attributes, ignored_attrs)
     df = pd.DataFrame(data=all_attributes)
     df.to_csv(output['path'])
