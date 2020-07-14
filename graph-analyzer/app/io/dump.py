@@ -10,13 +10,12 @@ import numpy as np
 
 def merge_attributes(data: Dict[str, np.ndarray], id_remap: np.ndarray, out: Dict[str, np.ndarray], parent_size,
                      ignored_attrs: List[str] = None) -> NoReturn:
-    id_reverse_map = {i: idx for idx, i in enumerate(id_remap)}
     for name, values in data.items():
         if ignored_attrs is not None and name in ignored_attrs:
             continue
         parent_values = out.get(name, np.zeros((parent_size,), dtype=values.dtype))
         for idx, value in enumerate(values):
-            parent_values[id_reverse_map[idx]] = value
+            parent_values[id_remap[idx]] = value
         out[name] = parent_values
 
 
