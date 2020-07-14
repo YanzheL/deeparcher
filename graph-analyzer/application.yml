@@ -1,45 +1,77 @@
 app:
+  # 数据输入相关的配置
   inputs:
     graph:
+      # 图文件类型
+      # pb: protobuf类型的自定义图文件格式，适合1万节点以上的大型图。
+      # dot: dot类型图文件，适合2000节点以下的中型图。
       type: pb
+      # 文件路径
       path: data/graph.pb
     blacklist:
+      # 黑名单文件类型，目前只支持txt文件。每行代表一个域名。
       type: txt
+      # 文件路径
       path: data/blacklist.txt
     whitelist:
+      # 白名单文件类型，目前只支持txt文件。每行代表一个域名。
       type: txt
+      # 文件路径
       path: data/whitelist.txt
-  output:
-    type: csv
-    path: data/node_features.csv
+  # 算法分析器相关的配置
   analyzers:
     - name: ConnectedComponentsAnalyzer
+      # 是否激活连接子图分割(必须启动)。
       enable: true
+      # 算法配置参数。
       config:
+        # 连接子图尺寸阈值。只输出节点数超过该大小的连接子图给后续算法。
         cc_size_thres: 50
     - name: PathBasedInferenceAnalyzer
+      # 是否激活该算法。
       enable: true
       config:
+        # 无需修改该参数
         bw_attr: black_or_white
+        # 输出的属性名称
         dst_attr: pbi_prob
     - name: TopologyBasedFlowAnalyzer
       enable: true
       config:
+        # 最大迭代次数
         max_iters: 5
+        #
         legal_weight: -1.0
+        # 无需修改该参数
         bw_attr: black_or_white
+        # 输出的属性名称
         dst_attr: tbf_prob
     - name: LLGCAnalyzer
       enable: true
       config:
+        # alpha参数
         alpha: 0.99
+        # 最大迭代次数。
+        # 该算法会自动判断传播公式是否存在理论收敛值，若存在，则不会进行迭代，而是直接输出该理论值。若不存在，则最大迭代max_iters次数。
         max_iters: 30
+        # 无需修改该参数
         bw_attr: black_or_white
+        # 输出的属性名称
         dst_attr: llgc_prob
     - name: BeliefPropagationAnalyzer
       enable: false
       config:
+        # 最大迭代次数
         max_iters: 30
+        # 推断概率差值
         prob_diff: 0.01
+        # 无需修改该参数
         bw_attr: black_or_white
+        # 输出的属性名称
         dst_attr: llgc_prob
+  output:
+    # 输出的节点特征文件类型
+    # csv: csv格式，每行格式为: 节点ID, 特征1, 特征2, ... ,特征 n。特征数量和名称取决于上述配置的算法模块的dst_attr属性。
+    type: csv
+    # 文件路径
+    path: data/node_features.csv
