@@ -9,4 +9,4 @@ RUN conda env update -n rapids -f environment.yml && \
 
 COPY . .
 
-CMD ["conda", "run", "-n", "rapids", "python", "main.py"]
+CMD ["python", "main.py"]
