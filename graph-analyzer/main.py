@@ -7,14 +7,13 @@ if TYPE_CHECKING:
     from app.struct.graph import Graph
     import numpy as np
 
-    pass
-
 from app.analyzer import NodeAttrMatcherAnalyzer
 from app.util.misc import load_blacklist, load_whitelist
 from tld import get_fld
 from functools import partial
 from importlib import import_module
 from queue import Queue
+import pandas as pd
 
 
 def load_analyzer_instances(name: str, *args, **kwargs) -> GraphAnalyzer:
@@ -45,6 +44,11 @@ def load_yaml(path: str) -> dict:
     return data
 
 
+def dump_node_attributes(graph: Graph, shared_data: Dict[str, np.ndarray], ignored_attrs: List[str]):
+    from app.io import dump_attributes, merge_attributes
+    merge_attributes(dump_attributes(graph.node_attrs, ignored_attrs), graph.node_id_remap, shared_data)
+
+
 def main(inputs, output, analyzers):
     initial_graph, blacklist, whitelist = load_inputs(**inputs)
     pipeline: List[Tuple[GraphAnalyzer, dict]] = [(load_analyzer_instances(analyzer['name']), analyzer['config'])
@@ -64,10 +68,11 @@ def main(inputs, output, analyzers):
     )
 
     graphs = Queue()
+    initial_graph.meta['initial'] = True
     graphs.put(initial_graph)
-    analyzed = []
+    analyzed = Queue()
 
-    while not graphs.empty():
+    while not analyzed.empty():
         graph = graphs.get()
         for analyzer, runtime_configs in pipeline:
             ret = analyzer.analyze(graph, context, **runtime_configs)
@@ -77,7 +82,17 @@ def main(inputs, output, analyzers):
                 break
             else:
                 graph = ret
-        analyzed.append(graph)
+        analyzed.put(graph)
+
+    all_attributes: Dict[str, np.ndarray] = {}
+    while not graphs.empty():
+        graph = analyzed.get()
+        ignored_attrs = ['fqdn']
+        if 'initial' not in graph.meta:
+            ignored_attrs = []
+        dump_node_attributes(graph, all_attributes, ignored_attrs)
+    df = pd.DataFrame(data=all_attributes)
+    df.to_csv(output['path'])
 
 
 if __name__ == '__main__':

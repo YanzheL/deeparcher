@@ -74,4 +74,4 @@ app:
     # csv: csv格式，每行格式为: 节点ID, 特征1, 特征2, ... ,特征 n。特征数量和名称取决于上述配置的算法模块的dst_attr属性。
     type: csv
     # 文件路径
-    path: data/node_features.csv
+    path: data/graph.pb.node_features.csv
