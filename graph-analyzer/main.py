@@ -78,8 +78,7 @@ def main(inputs, output, analyzers):
     initial_graph.meta['initial'] = True
     graphs.put(initial_graph)
     analyzed = Queue()
-
-    while not analyzed.empty():
+    while not graphs.empty():
         graph = graphs.get()
         for analyzer, runtime_configs in pipeline:
             ret = analyzer.analyze(graph, context, **runtime_configs)
@@ -92,7 +91,7 @@ def main(inputs, output, analyzers):
         analyzed.put(graph)
     logger.info("Analysis finished")
     all_attributes: Dict[str, np.ndarray] = {}
-    while not graphs.empty():
+    while not analyzed.empty():
         graph = analyzed.get()
         ignored_attrs = ['fqdn']
         if 'initial' not in graph.meta:
