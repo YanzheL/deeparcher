@@ -1,4 +1,4 @@
-# Conda环境运行
+# Conda环境
 
 ## 前置条件
 
@@ -17,25 +17,33 @@
 
 ## 运行
 
-1. 进入本模块根目录
+1. 下载本项目代码 (如果已下载，可跳过。需要校园网)
+
+   ```shell
+   git clone https://git.hitnslab.com/dns-security/malicious-domain-rating/deeparcher.git
+
+   cd deeparcher
+   ```
+
+2. 进入本模块根目录
 
    ```shell
    cd graph-analyzer
    ```
 
-2. 初始化虚拟conda环境到`./envs`子目录 (只需要运行一次，以后不用)
+3. 初始化虚拟conda环境到`./envs`子目录 (只需要运行一次，以后不用)
 
    ```shell
-   conda env create -f environment.yl -p ./envs
+   conda env create -f environment.yml -p ./envs
    ```
 
-3. 激活虚拟环境
+4. 激活虚拟环境
 
    ```shell
    conda activate -p ./envs
    ```
 
-4. 根据需要修改配置文件
+5. 根据需要修改配置文件
 
    备份默认配置文件
 
@@ -49,7 +57,7 @@
    vi application.yml # 或者通过图形界面编辑该文件
    ```
 
-5. 运行
+6. 运行
 
    ```shell
    python main.py
