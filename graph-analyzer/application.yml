@@ -13,11 +13,15 @@ app:
       type: txt
       # 文件路径
       path: data/blacklist.txt
+      # 是否进行文件内容格式验证
+      validate: false
     whitelist:
       # 白名单文件类型，目前只支持txt文件。每行代表一个域名。
       type: txt
       # 文件路径
       path: data/whitelist.txt
+      # 是否进行文件内容格式验证
+      validate: false
   # 算法分析器相关的配置
   analyzers:
     - name: ConnectedComponentsAnalyzer

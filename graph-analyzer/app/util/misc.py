@@ -35,8 +35,10 @@ def load_lines_as_array(path: str) -> np.ndarray:
         return lines
 
 
-def load_blacklist(path: str) -> np.ndarray:
+def load_blacklist(path: str, validate=True) -> np.ndarray:
     logger.info('Loading blacklist file <{}>...'.format(path))
+    if not validate:
+        return load_lines_as_array(path)
     with open(path, 'r') as f:
         blacklist = f.read().splitlines()
         blacklist = np.unique([i.lower().strip() for i in blacklist])
@@ -44,8 +46,10 @@ def load_blacklist(path: str) -> np.ndarray:
         return blacklist
 
 
-def load_whitelist(path: str) -> np.ndarray:
+def load_whitelist(path: str, validate=True) -> np.ndarray:
     logger.info('Loading whitelist file <{}>...'.format(path))
+    if not validate:
+        return load_lines_as_array(path)
     with open(path, 'r') as f:
         whitelist = f.read().splitlines()
         whitelist = list(filter(
