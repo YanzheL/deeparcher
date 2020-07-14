@@ -15,10 +15,6 @@
 - Docker: 版本 18.09 及以上
 - [NVIDIA Docker Runtime](https://github.com/NVIDIA/nvidia-docker)
 
-## 配置
-
-所有配置参数在[application.yml](application.yml)中设置。各配置参数的含义可参考[application.yml](application.yml)中的注释。
-
 ## 运行
 
 1. 拉取容器镜像 (校园网)

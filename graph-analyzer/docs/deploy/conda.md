@@ -4,7 +4,7 @@
 
 下述环境均经过测试。对于其他相似环境，也许能够运行。
 
-#### 1. 硬件环境:
+#### 1. 硬件环境
 
 - 内存: 8GB
 - GPU: NVIDIA GTX 1080Ti, NVIDIA GTX 2080
@@ -14,10 +14,6 @@
 - 操作系统: Ubuntu 18.04
 - Conda: Anaconda 或 Miniconda, 版本 4.8 及以上
 - NVIDIA GPU 驱动: 版本 430 及以上
-
-## 配置
-
-所有配置参数在[application.yml](application.yml)中设置。各配置参数的含义可参考[application.yml](application.yml)中的注释。
 
 ## 运行
 

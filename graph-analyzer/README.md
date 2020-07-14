@@ -53,5 +53,6 @@
 
 ## 运行教程
 
+- [实验室GPU服务器预配置环境](docs/deploy/preconfigured-lab-server.md)
 - [Conda环境](docs/deploy/conda.md)
 - [Docker环境](docs/deploy/docker.md)
