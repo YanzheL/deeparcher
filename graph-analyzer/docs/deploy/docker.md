@@ -11,8 +11,8 @@
 
 #### 2. 软件环境
 
-- 操作系统: Ubuntu 18.04
-- Docker: 版本 18.09 及以上
+- 操作系统: Ubuntu 18.04 或其他Linux发行版，不支持macOS和Windows。
+- Docker: 版本 18.09 及以上。
 - [NVIDIA Docker Runtime](https://github.com/NVIDIA/nvidia-docker)
 
 ## 运行

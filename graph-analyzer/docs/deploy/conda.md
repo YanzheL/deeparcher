@@ -11,9 +11,9 @@
 
 #### 2. 软件环境
 
-- 操作系统: Ubuntu 18.04
-- Conda: Anaconda 或 Miniconda, 版本 4.8 及以上
-- NVIDIA GPU 驱动: 版本 430 及以上
+- 操作系统: Ubuntu 18.04 或其他Linux发行版，不支持macOS和Windows。
+- Conda: Anaconda 或 Miniconda, 版本 4.8 及以上。
+- NVIDIA GPU 驱动: 版本 430 及以上。
 
 ## 运行
 
