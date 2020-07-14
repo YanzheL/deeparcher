@@ -48,9 +48,10 @@ def load_yaml(path: str) -> dict:
     return data
 
 
-def dump_node_attributes(graph: Graph, shared_data: Dict[str, np.ndarray], ignored_attrs: List[str] = None):
+def dump_node_attributes(parent_nodes, graph: Graph, shared_data: Dict[str, np.ndarray],
+                         ignored_attrs: List[str] = None):
     from app.io import dump_attributes, merge_attributes
-    merge_attributes(dump_attributes(graph.node_attrs, ignored_attrs), graph.node_id_remap, shared_data, graph.nodes)
+    merge_attributes(dump_attributes(graph.node_attrs, ignored_attrs), graph.node_id_remap, shared_data, parent_nodes)
 
 
 def main(inputs, output, analyzers):
@@ -76,6 +77,7 @@ def main(inputs, output, analyzers):
     logger.info("Analyzed initial_graph")
     graphs = Queue()
     initial_graph.meta['initial'] = True
+    parent_nodes = initial_graph.nodes
     graphs.put(initial_graph)
     analyzed = Queue()
     while not graphs.empty():
@@ -96,7 +98,7 @@ def main(inputs, output, analyzers):
         ignored_attrs = ['fqdn']
         if 'initial' not in graph.meta:
             ignored_attrs = None
-        dump_node_attributes(graph, all_attributes, ignored_attrs)
+        dump_node_attributes(parent_nodes, graph, all_attributes, ignored_attrs)
     df = pd.DataFrame(data=all_attributes)
     df.to_csv(output['path'])
     logger.info("Output finished")
