@@ -4,7 +4,8 @@ WORKDIR /app
 
 COPY environment.yml ./
 
-RUN conda env update -n rapids -f environment.yml
+RUN conda env update -n rapids -f environment.yml && \
+    conda clean --all -y
 
 COPY . .
 
