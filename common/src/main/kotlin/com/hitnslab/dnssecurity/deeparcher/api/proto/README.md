@@ -26,7 +26,7 @@
 
 **类型名：**`PDnsData`
 
-**功能：**用于表示对原始DNS日志数据结构化后得到的被动DNS时间序列。
+**功能：** 用于表示对原始DNS日志数据结构化后得到的被动DNS时间序列。
 
 **属性定义：**
 
@@ -49,7 +49,7 @@
 
 **类型名：**`DomainDnsDetail`
 
-**功能：**用于表示被动DNS数据流经过Kafka Streams框架按照FQDN字段做聚合操作(GroupBy FQDN)后得到的域名的IPv4集合、IPv6集合、CNAME集合。
+**功能：** 用于表示被动DNS数据流经过Kafka Streams框架按照FQDN字段做聚合操作(GroupBy FQDN)后得到的域名的IPv4集合、IPv6集合、CNAME集合。
 
 **属性定义：**
 
@@ -65,7 +65,7 @@
 
 **Protobuf定义：** [matrix.proto](matrix.proto)
 
-**功能：**用于表示矩阵。支持的稀疏矩阵格式有[COO](https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_\(COO\))、[CSC](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))、[CSR](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))，同时也支持稠密矩阵。
+**功能：** 用于表示矩阵。支持的稀疏矩阵格式有[COO](https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_\(COO\))、[CSC](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))、[CSR](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))，同时也支持稠密矩阵。
 
 **结构名：**`CooMat`、`CscMat`、`CsrMat`、`DenseMat`
 
@@ -75,7 +75,7 @@
 
 **类型名：**`ComponentAttr`
 
-**功能：**存储一个子图的相关信息。
+**功能：** 存储一个子图的相关信息。
 
 **属性定义：**
 
@@ -86,7 +86,7 @@
 
 **类型名：**`GraphElementsAttrMap`
 
-**功能：**属性值稀疏映射表，以字典的方式来表示图上的节点ID到属性值的稀疏映射。
+**功能：** 属性值稀疏映射表，以字典的方式来表示图上的节点ID到属性值的稀疏映射。
 
 **属性定义：**
 
@@ -101,7 +101,7 @@
 
 **类型名：**`Graph`
 
-**功能：**表示一个稀疏图。
+**功能：** 表示一个稀疏图。
 
 **属性定义：**
 
@@ -126,7 +126,7 @@
 
 **类型名：**`GraphEvent`
 
-**功能：**表示一个图更新事件。
+**功能：** 表示一个图更新事件。
 
 **属性定义：**
 
@@ -139,7 +139,7 @@
 
 **类型名：**`Action`
 
-**功能：**枚举类型，表示该更新操作的类型
+**功能：** 枚举类型，表示该更新操作的类型
 
 **属性定义：**
 
@@ -156,7 +156,7 @@
 
 **类型名：**`KnownMaliciousDomain`
 
-**功能：**表示从外部渠道获取到的一条恶意域名信息，如网络爬取、外部数据库导入等等。
+**功能：** 表示从外部渠道获取到的一条恶意域名信息，如网络爬取、外部数据库导入等等。
 
 **属性定义：**
 
@@ -182,7 +182,7 @@
 
 **类型名：**`Status`
 
-**功能：**枚举类型，表示该恶意域名的状态
+**功能：** 枚举类型，表示该恶意域名的状态
 
 **属性定义：**
 
