@@ -1,4 +1,4 @@
-# MariaDB集群——Kubernetes方式部署
+# MariaDB单节点——Kubernetes方式部署
 
 ## 前置条件
 
