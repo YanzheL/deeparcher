@@ -14,15 +14,15 @@ data:
         exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
       kafka:
         bootstrap-servers:
-          - kafka-kafka-bootstrap:9093
-        ssl:
+          - kafka-kafka-bootstrap:9093 # Kafka 集群服务发现URL
+        ssl: # SSL参数设置，若Kafka集群未启用SSL，可注释此项
           protocol: TLSv1.3
-          key-store-type: PKCS12
-          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12
-          key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
-          trust-store-type: JKS
-          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks
-          trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+          key-store-type: PKCS12 # SSL 证书类型
+          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12 # SSL 证书位置(容器内)
+          key-store-password: # SSL 证书密码，使用$SPRING_KAFKA_SSL_KEY_STORE_PASSWORD环境变量注入
+          trust-store-type: JKS # SSL Trust Store 类型
+          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks # SSL Trust Store 位置(容器内)
+          trust-store-password: # SSL Trust Store 密码，使用$SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD环境变量注入
         properties:
           security.protocol: SSL
           ssl.enabled.protocols: TLSv1.3
@@ -31,7 +31,7 @@ data:
           receive.buffer.bytes: 2097152
           delivery.timeout.ms: 1800000
         streams:
-          application-id: stream-aggregator-full
+          application-id: stream-aggregator-full # Kafka Consumer Group ID
           state-dir: /tmp/kafka-stream
           replication-factor: 2
           auto-startup: true
@@ -48,7 +48,7 @@ data:
         lookup-timeout: 0
         input:
           type: topic
-          path: raw.pdns
+          path: raw.pdns # 输入的Kafka消息队列名称
         output:
           - type: topic
-            path: domain.aggregate.full
+            path: domain.aggregate.full # 输出的Kafka消息队列名称

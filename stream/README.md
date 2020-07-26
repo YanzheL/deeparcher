@@ -57,12 +57,18 @@
 
 根据域名属性聚合模块得到的域名属性聚合表，将两个域名的IP集合、CNAME集合的公共元素个数作为初始的关联边权重，增量生成域名关联图的关联边，作为图的增量更新事件推送到输出的Kafka消息队列。
 
+该模块会主动查询MongoDB数据库中存储的域名属性表中已有的图节点ID数据，为未分配图节点ID的完整域名分配图节点ID，并定期将新分配的图节点ID存入MongoDB数据库中，从而图中每一个节点的域名等其它属性值都能在MongoDB数据库中查询得到。
+
 #### 数据输入
 
 **Kafka Topic:** domain.aggregate.full
 
+**MongoDB Collection:**  analysis.domain_attributes
+
 #### 数据输出
 
 **Kafka Topic:** graph.event.full
+
+**MongoDB Collection:**  analysis.domain_attributes
 
 #### [部署文档](/deploy/kubernetes/modules/graph-builder)

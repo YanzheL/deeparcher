@@ -14,15 +14,15 @@ data:
         exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
       kafka:
         bootstrap-servers:
-          - kafka-kafka-bootstrap:9093
-        ssl:
+          - kafka-kafka-bootstrap:9093 # Kafka 集群服务发现URL
+        ssl: # SSL参数设置，若Kafka集群未启用SSL，可注释此项
           protocol: TLSv1.3
-          key-store-type: PKCS12
-          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12
-          key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
-          trust-store-type: JKS
-          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks
-          trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+          key-store-type: PKCS12 # SSL 证书类型
+          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12 # SSL 证书位置(容器内)
+          key-store-password: # SSL 证书密码，使用$SPRING_KAFKA_SSL_KEY_STORE_PASSWORD环境变量注入
+          trust-store-type: JKS # SSL Trust Store 密码
+          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks # SSL Trust Store 位置(容器内)
+          trust-store-password: # SSL Trust Store 密码，使用$SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD环境变量注入
         properties:
           security.protocol: SSL
           ssl.enabled.protocols: TLSv1.3
@@ -31,7 +31,7 @@ data:
           receive.buffer.bytes: 2097152
           delivery.timeout.ms: 1800000
         streams:
-          application-id: stream-whitelist-filter
+          application-id: stream-whitelist-filter # Kafka Consumer Group ID
           state-dir: /tmp/kafka-stream
           replication-factor: 2
           auto-startup: true
@@ -45,26 +45,26 @@ data:
     app:
       whitelist-filter:
         enabled: true
-        prefilters:
+        prefilters: # 域名预过滤规则，被预过滤规则匹配到的数据将不会出现在输出队列中
           - field: domain
             pattern: "hitwh\\.edu\\.cn$"
             allow: false
-        whitelists:
-          - type: file
-            path: file:///data/whitelist.txt
-          - type: regex
-            path: "\\.(edu|gov)(\\.[a-z]{2})?$"
+        whitelists: # 白名单过滤规则，被预过滤规则匹配到的数据将不会出现在输出队列中
+          - type: file # 文件类型的白名单
+            path: file:///data/whitelist.txt # 白名单文件路径（容器内）
+          - type: regex # 正则表达式类型的过滤规则
+            path: "\\.(edu|gov)(\\.[a-z]{2})?$" # 正则表达式
         input:
           type: topic
-          path: raw.pdns
+          path: raw.pdns # 输入的Kafka消息队列名称
         output:
           match:
             - type: topic
-              path: raw.pdns.in-whitelist
+              path: raw.pdns.in-whitelist # 与白名单匹配的域名所输出的队列名称
               options:
-                unique: false
+                unique: false # 是否对输出去重
           miss:
             - type: topic
-              path: raw.pdns.not-in-whitelist
+              path: raw.pdns.not-in-whitelist # 与白名单不匹配的域名所输出的队列名称
               options:
-                unique: false
+                unique: false # 是否对输出去重

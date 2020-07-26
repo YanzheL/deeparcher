@@ -11,24 +11,24 @@ data:
   application.yml: |-
     spring:
       data:
-        mongodb:
-          database: test
-          username: # Inject it via env $SPRING_DATA_MONGODB_USERNAME
-          password: # Inject it via env $SPRING_DATA_MONGODB_PASSWORD
-          host: deeparcher-mongodb-sharded
-          port: 27017
+        mongodb: # MongoDB连接参数配置
+          database: test # 不需要修改。具体数据库将在app.graph-builder参数处配置
+          username: # 通过$SPRING_DATA_MONGODB_USERNAME环境变量注入
+          password: # 通过$SPRING_DATA_MONGODB_PASSWORD环境变量注入
+          host: deeparcher-mongodb-sharded # MongoDB集群地址
+          port: 27017 # MongoDB集群端口
           authentication-database: admin
       kafka:
         bootstrap-servers:
-          - kafka-kafka-bootstrap:9093
-        ssl:
+          - kafka-kafka-bootstrap:9093 # Kafka 集群服务发现URL
+        ssl: # SSL参数设置，若Kafka集群未启用SSL，可注释此项
           protocol: TLSv1.3
-          key-store-type: PKCS12
-          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12
-          key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
-          trust-store-type: JKS
-          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks
-          trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+          key-store-type: PKCS12 # SSL 证书类型
+          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12 # SSL 证书位置(容器内)
+          key-store-password: # SSL 证书密码，使用$SPRING_KAFKA_SSL_KEY_STORE_PASSWORD环境变量注入
+          trust-store-type: JKS # SSL Trust Store 密码
+          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks # SSL Trust Store 位置(容器内)
+          trust-store-password: # SSL Trust Store 密码，使用$SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD环境变量注入
         properties:
           security.protocol: SSL
           ssl.enabled.protocols: TLSv1.3
@@ -37,7 +37,7 @@ data:
           receive.buffer.bytes: 2097152
           delivery.timeout.ms: 1800000
         streams:
-          application-id: stream-graph-builder-full
+          application-id: stream-graph-builder-full # Kafka Consumer Group ID
           state-dir: /tmp/kafka-stream
           replication-factor: 2
           auto-startup: true
@@ -54,15 +54,15 @@ data:
         cache-limit: 1000000
         commit-interval: 30
         node-id-service:
-          database: analysis
-          collection: domain_attributes
+          database: analysis # MongoDB中域名属性表所属的数据库名称
+          collection: domain_attributes # MongoDB域名属性表名称
           key-field: fqdn
           value-field: graph_node_id
         input:
           type: topic
-          path: domain.aggregate.full
+          path: domain.aggregate.full # 输入的Kafka消息队列名称
         output:
           type: topic
-          path: graph.event.full
+          path: graph.event.full # 输出的Kafka消息队列名称
           options:
-            unique: false
+            unique: false # 是否对输出去重

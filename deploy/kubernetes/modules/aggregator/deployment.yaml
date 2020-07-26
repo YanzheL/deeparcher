@@ -25,8 +25,8 @@ spec:
       containers:
         - name: stream
           # image: registry.lee-service.com/yanzhel/deeparcher/stream:dev-graalvm-ee-java11
-          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev-graalvm-ee-java11
-          imagePullPolicy: Always
+          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/stream:dev-graalvm-ee-java11 # 容器镜像地址
+          imagePullPolicy: Always # 或者填 IfNotPresent
           ports:
             - containerPort: 9999
               protocol: TCP
