@@ -16,7 +16,7 @@
 
 - [被动DNS日志导入模块](pdns-data-loader/)
 
-- [Kafka 流处理模块](stream/)
+- [Kafka 流处理](stream/)
 
   - 域名属性聚合模块
 
