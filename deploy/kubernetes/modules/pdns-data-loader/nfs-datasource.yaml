@@ -1,0 +1,48 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nfs-ns-2-b
+spec:
+  capacity:
+    storage: 5Ti
+  nfs:
+    server: 10.245.146.24
+    path: /data/general
+    readOnly: false
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+    kind: PersistentVolumeClaim
+    namespace: default
+    name: nfs-ns-2-b
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - rw
+    - relatime
+    - vers=4.1
+    - namlen=255
+    - hard
+    - port=0
+    - timeo=600
+    - retrans=3
+    - sec=sys
+    - local_lock=none
+    - fsc
+    - noatime
+    - nodiratime
+  volumeMode: Filesystem
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-ns-2-b
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: nfs-ns-2-b
+  storageClassName: ''
+  volumeMode: Filesystem

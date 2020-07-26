@@ -34,7 +34,7 @@ spec:
       containers:
         - name: pdns-data-loader
           # image: registry.gitlab.com/yanzhel/deeparcher/pdns-data-loader:dev-graalvm-ee-java11
-          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/pdns-data-loader:dev-graalvm-ee-java11
+          image: registry.hitnslab.com/dns-security/malicious-domain-rating/deeparcher/pdns-data-loader:dev-graalvm-ee-java11 # 容器镜像地址
           imagePullPolicy: Always
           ports:
             - containerPort: 9999
@@ -92,8 +92,8 @@ spec:
             defaultMode: 256
         - name: datasource
           persistentVolumeClaim:
-            claimName: nfs-k8s-gpu-node0
-            # claimName: nfs-ns-2-b
+            # claimName: nfs-k8s-gpu-node0
+            claimName: nfs-ns-2-b
         - name: config
           configMap:
             name: pdns-data-loader

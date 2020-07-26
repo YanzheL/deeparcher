@@ -17,16 +17,15 @@ data:
             max-size: 12
       kafka:
         bootstrap-servers:
-          - kafka-kafka-bootstrap:9093
-        ssl:
+          - kafka-kafka-bootstrap:9093 # Kafka 集群服务发现URL
+        ssl: # SSL参数设置，若Kafka集群未启用SSL，可注释此项
           protocol: TLSv1.3
-          key-store-type: PKCS12
-          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12
-          key-store-password: # Inject it via env $SPRING_KAFKA_SSL_KEY_STORE_PASSWORD
-          # key-password: $ Not needed
-          trust-store-type: JKS
-          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks
-          trust-store-password: # Inject it via env $SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD
+          key-store-type: PKCS12 # SSL 证书类型
+          key-store-location: file:///var/run/secrets/java.io/keystores/user.p12 # SSL 证书位置(容器内)
+          key-store-password: # SSL 证书密码，使用$SPRING_KAFKA_SSL_KEY_STORE_PASSWORD环境变量注入
+          trust-store-type: JKS # SSL Trust Store 密码
+          trust-store-location: file:///var/run/secrets/java.io/truststores/ca.jks # SSL Trust Store 位置(容器内)
+          trust-store-password: # SSL Trust Store 密码，使用$SPRING_KAFKA_SSL_TRUST_STORE_PASSWORD环境变量注入
         producer:
           key-serializer: org.apache.kafka.common.serialization.StringSerializer
           value-serializer: com.hitnslab.dnssecurity.deeparcher.serde.PDnsProtoSerializer
@@ -46,7 +45,7 @@ data:
         initialize-schema: always
         job:
           enabled: false  # Disable built-in CommandLineRunner
-      datasource:
+      datasource: # 用于存储日志导入状态的数据库配置
         url: jdbc:mariadb://deeparcher-mariadb:3306/springbatch?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8mb4
         username: # Inject it via env $SPRING_DATASOURCE_USERNAME
         password: # Inject it via env $SPRING_DATASOURCE_PASSWORD
@@ -61,15 +60,14 @@ data:
     app:
       job:
         pdns:
-          try-restart: false
+          try-restart: false # 是否尝试重启之前失败的导入任务
           step:
-            # transaction-manager: org.springframework.kafka.transaction.KafkaTransactionManager
             chunk-size: 3000
             retry-limit: 10
             item-reader:
-              field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogType1FieldSetMapper
+              field-set-mapper: com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.parsing.HITPDNSLogType1FieldSetMapper # 日志解析器的实现类
             item-processor:
-              prefilters:
+              prefilters: # 用于数据预过滤的正则表达式规则
                 - field: domain
                   pattern: "hitwh\\.edu\\.cn$"
                   allow: false
