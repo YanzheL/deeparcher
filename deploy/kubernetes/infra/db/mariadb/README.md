@@ -9,7 +9,7 @@
 #### 本地软件依赖
 
 - kubectl：Kubernetes集群管理命令行工具，版本1.17.x
-- helm: 版本3.x
+- [helm](https://helm.sh/): 版本3.x
 
 ## 参数配置
 
