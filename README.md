@@ -10,6 +10,8 @@
 
 - [MariaDB 单节点数据库 (可选)](deploy/kubernetes/infra/db/mariadb/)
 
+## [模块间接口数据结构](common/src/main/kotlin/com/hitnslab/dnssecurity/deeparcher/api/proto/)
+
 ## 各模块文档
 
 - [被动DNS日志导入模块](pdns-data-loader/)
