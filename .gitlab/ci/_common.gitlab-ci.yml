@@ -5,7 +5,7 @@ stages:
 
 .build_image_kaniko:
   image:
-    name: hitnslab/kaniko-executor:debug-v0.24.0
+    name: hitnslab/kaniko-executor:debug-v1.3.0
     entrypoint: [""]
   before_script:
     - |
