@@ -82,15 +82,23 @@ def main(inputs, output, analyzers):
     analyzed = Queue()
     while not graphs.empty():
         graph = graphs.get()
+        if graph is None:
+            continue
         for analyzer, runtime_configs in pipeline:
-            ret = analyzer.analyze(graph, context, **runtime_configs)
+            ret = None
+            try:
+                ret = analyzer.analyze(graph, context, **runtime_configs)
+            except Exception as e:
+                logger.exception(f"Analyzer exception:")
             if isinstance(ret, list):
                 for g in ret:
-                    graphs.put(g)
+                    if g is not None:
+                        graphs.put(g)
                 break
             else:
                 graph = ret
-        analyzed.put(graph)
+        if graph is not None:
+            analyzed.put(graph)
     logger.info("Analysis finished")
     all_attributes: Dict[str, np.ndarray] = {}
     while not analyzed.empty():

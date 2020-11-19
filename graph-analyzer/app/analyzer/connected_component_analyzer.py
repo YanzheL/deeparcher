@@ -57,8 +57,8 @@ class ConnectedComponentsAnalyzer(GraphAnalyzer):
                 self.logger.info(
                     'Got {} components larger than threshold.'.format(interested_labels.size, cc_size_thres))
                 for i in interested_labels:
-                    # component = cc_res.query('labels == {}'.format(i))['vertices']
-                    component: cupy.ndarray = cc_mat[cc_mat[:, 1] == i][:, 0]
+                    # component: cupy.ndarray = cupy.asarray(cc_res.query(f'labels == {i}')['vertices'])
+                    component: cupy.ndarray = cc_mat[cc_mat[:, 0] == i][:, 1]
                     component = cupy.sort(component)
                     component = cupy.asnumpy(component)
                     # self.logger.debug(component)

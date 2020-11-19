@@ -16,6 +16,13 @@ stages:
             "username": "$CI_REGISTRY_USER",
             "password": "$CI_REGISTRY_PASSWORD"
           }
+        },
+        "proxies": {
+          "default": {
+            "httpProxy": "http://v2ray.production:1081",
+            "httpsProxy": "http://v2ray.production:1081",
+            "noProxy": "*.hitnslab.com"
+          }
         }
       }
       EOF
