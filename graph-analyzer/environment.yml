@@ -7,11 +7,10 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.7
+  - python>=3.7
   - scipy
-  - rapids>=0.14,<0.15
-  - cudatoolkit>=10,<11
-  - llvmlite>=0.32,<0.32.9
+  - rapids>=0.14,<0.20
+  - cudatoolkit>=10,<12
   - protobuf
   - pygraphviz
   - pip

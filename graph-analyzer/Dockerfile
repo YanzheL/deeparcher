@@ -1,4 +1,4 @@
-FROM rapidsai/rapidsai:cuda10.2-base-ubuntu18.04-py3.7
+FROM rapidsai/rapidsai:0.16-cuda11.0-base-ubuntu18.04-py3.8
 
 WORKDIR /app
 
