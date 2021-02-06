@@ -80,7 +80,7 @@
     <parent>
         <artifactId>deeparcher-parent</artifactId>
         <groupId>com.hitnslab.dns-security.deeparcher</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <description>Passive DNS data loader</description>
     <modelVersion>4.0.0</modelVersion>
@@ -165,6 +165,6 @@
             </repositories>
         </profile>
     </profiles>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
 </project>
