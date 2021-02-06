@@ -27,11 +27,12 @@ cd target/native-image \
   --no-fallback \
   --initialize-at-build-time \
   -H:Name=$ARTIFACT \
-  -H:+TraceClassInitialization \
   -H:+ReportExceptionStackTraces \
   --allow-incomplete-classpath \
   --report-unsupported-elements-at-runtime \
+  --enable-all-security-services \
   -DremoveUnusedAutoconfig=true \
+  --initialize-at-run-time=org.springframework.core.io.VfsUtils \
   -cp "$CP" "$MAINCLASS" \
 && mv $ARTIFACT ../ \
 && echo "Finished"
