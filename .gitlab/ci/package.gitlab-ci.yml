@@ -147,15 +147,17 @@ Package Modules Custom JVM Image On Master:
 #    - Maven Build Root
 
 Package pdns-data-loader Graal Native Image:
- image: leeyanzhe/jvm:graalvm-ee-java11-full
- stage: package
- allow_failure: true
- variables:
-   NATIVE_IMAGE_VERSION: 21.0.0 # ${JAVA_HOME:23:-1}
- script:
-   - ./graal-compile.sh
- needs:
-   - Maven Build Graal
- artifacts:
-   paths:
-     - target/
+  image: leeyanzhe/jvm:graalvm-ee-java11-full
+  stage: package
+  allow_failure: true
+  variables:
+    NATIVE_IMAGE_VERSION: 21.0.0 # ${JAVA_HOME:23:-1}
+  script:
+    - |
+      cd pdns-data-loader && ./graal-compile.sh
+  needs:
+    - Maven Build Graal
+  artifacts:
+    expire_in: 30 mins
+    paths:
+      - "*/target"
