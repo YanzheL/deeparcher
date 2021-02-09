@@ -3,7 +3,7 @@ BASH_SOURCE_DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
 
 ARTIFACT=pdns-data-loader
 MAINCLASS=com.hitnslab.dnssecurity.deeparcher.pdnsdataloader.PDNSDataLoaderApplicationKt
-VERSION=$(cat VERSION)
+VERSION=$(cat ../VERSION)
 
 GRAALVM_VERSION=`native-image --version`
 JAR="$ARTIFACT-$VERSION.jar"

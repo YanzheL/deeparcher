@@ -28,4 +28,4 @@ Maven Build Graal:
     expire_in: 600 mins
     paths:
       - "*/target/*.jar"
-      - "*/VERSION"
+      - "VERSION"
