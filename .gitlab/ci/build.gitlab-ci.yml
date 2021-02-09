@@ -14,7 +14,7 @@ Maven Build Root:
   script:
     - mvn $MAVEN_CLI_OPTS -DskipTests clean install
   artifacts:
-    expire_in: 30 mins
+    expire_in: 600 mins
     paths:
       - "*/target"
 
@@ -25,6 +25,7 @@ Maven Build Graal:
     - mvn help:evaluate -Dexpression=project.version -q -DforceStdout > VERSION
     - mvn $MAVEN_CLI_OPTS -DskipTests -Pgraal -DskipNativeImage package
   artifacts:
+    expire_in: 600 mins
     paths:
-      - target/*.jar
-      - VERSION
+      - "*/target/*.jar"
+      - "*/VERSION"
