@@ -138,7 +138,7 @@
         <kotlinx-coroutines.version>1.4.2</kotlinx-coroutines.version>
         <!-- <spring-kafka.version>2.5.3.RELEASE</spring-kafka.version> -->
         <dnsjava.version>3.2.1</dnsjava.version>
-        <fastjson.version>1.2.75</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <tika.version>1.25</tika.version>
         <jmh.version>1.23</jmh.version>
         <mongodb-driver.version>3.12.7</mongodb-driver.version>
