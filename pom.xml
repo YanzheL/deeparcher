@@ -141,7 +141,7 @@
         <fastjson.version>1.2.75</fastjson.version>
         <tika.version>1.25</tika.version>
         <jmh.version>1.23</jmh.version>
-        <mongodb-driver.version>3.12.7</mongodb-driver.version>
+        <mongodb-driver.version>3.12.8</mongodb-driver.version>
         <!--        <spring-framework.version>5.2.6.RELEASE</spring-framework.version>-->
         <!--        <spring-integration.version>5.2.6.RELEASE</spring-integration.version>-->
         <kotlin.serialization.version>${kotlin.version}</kotlin.serialization.version>
