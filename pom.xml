@@ -133,7 +133,7 @@
         <google-jib.version>2.7.1</google-jib.version>
         <!--        <kafka.version>2.5.0</kafka.version>-->
         <protobuf.version>3.14.0</protobuf.version>
-        <guava.version>30.1-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
         <kotlin-logging.version>1.12.0</kotlin-logging.version>
         <kotlinx-coroutines.version>1.4.2</kotlinx-coroutines.version>
         <!-- <spring-kafka.version>2.5.3.RELEASE</spring-kafka.version> -->
